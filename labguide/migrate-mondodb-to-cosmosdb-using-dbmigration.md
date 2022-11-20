@@ -24,12 +24,12 @@ On the Azure Database Migration Service blade, select **+ New Migration Project*
 
 4. On the **New migration project** pane, enter the following values, then select **Create and run activity**:
 
-    - Project name: `fabmedical`
+    - Project name: `Tailwind`
     - Source server type: `MongoDB`
     - Target server type: `CosmosDB (MongoDB API)`
     - Choose type of activity: `Offline data migration`
 
-    ![The screenshot shows the New migration project pane with values entered.](media/cloud-native-migration.png  "New migration project pane")
+    ![The screenshot shows the New migration project pane with values entered.](media/mogodbmig.png  "New migration project pane")
 
     > **Note:** The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
 
@@ -42,7 +42,7 @@ On the Azure Database Migration Service blade, select **+ New Migration Project*
 
     > **Note:** Leave the **User Name** and **Password** blank as the MongoDB instance on the Build Agent VM for this lab does not have authentication turned on. The Azure Database Migration Service is connected to the same VNet as the Build Agent VM, so it's able to communicate within the VNet directly to the VM without exposing the MongoDB service to the Internet. In production scenarios, you should always have authentication enabled on MongoDB.
 
-    ![Select source tab with values selected for the MongoDB server.](media/dmsselectsource.png "MongoDB to Azure Database for CosmosDB - Select source")
+    ![Select source tab with values selected for the MongoDB server.](media/migrate2.png "MongoDB to Azure Database for CosmosDB - Select source")
     
     > **Note:** If you face an issue while connecting to the source DB with error connection refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on lab environment details page.
 
