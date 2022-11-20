@@ -70,14 +70,12 @@ In this task you will be building the docker image and will be pushing them to t
     ```
      docker login tailwindtradersacr[SUFFIX].azurecr.io -u tailwindtradersacr[SUFFIX] -p [password]     ```
 
-    ![.](media/loginacr.png "open cmd")
+   ![.](media/loginacr.png "open cmd")
 
 1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry.Also, make sure to update the SUFFIX value.
 
-   *   ``` 
-       docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest ```
-   *  ```
-       docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest ```
+   *   ``` docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest ```
+   *  ```  docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest ```
     
 1. You should be able to see the docker image getting pushed to ACR as per the below screenshots. 
     
