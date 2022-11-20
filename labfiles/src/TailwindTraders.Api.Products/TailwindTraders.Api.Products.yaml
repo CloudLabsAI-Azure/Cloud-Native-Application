@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tailwind-traders-products
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tailwind-traders-products
+  template:
+    metadata:
+      labels:
+        app: tailwind-traders-products
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+        - name: tailwind-traders-products
+          #@TODO: Replace 'test' in the next line with whatever your ENVIRONMENT github secret value is
+          image: tailwindtradersacrtest.azurecr.io/tailwindtradersapiproducts:latest
+          env:
+            - name: KeyVaultEndpoint
+              valueFrom:
+                secretKeyRef:
+                  name: tailwind-traders-kv-endpoint
+                  key: tailwind-traders-kv-endpoint
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tailwind-traders-products
+  annotations:
+    #@TODO: Replace 'test' in the next line with whatever your ENVIRONMENT github secret value is
+    service.beta.kubernetes.io/azure-dns-label-name: tailwind-traders-productstest
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: tailwind-traders-products
