@@ -37,7 +37,7 @@
 
 Task 2: Create docker images and push to container registry.
 
-    In this task you will be building the docker image and will be pushing them to the ACR to later use in AKS
+In this task you will be building the docker image and will be pushing them to the ACR to later use in AKS
 
 1. run the below command to login to Azure.
 
@@ -49,17 +49,17 @@ Task 2: Create docker images and push to container registry.
 1. Please make sure that you are in **labfiles** directory before running the next steos
 
     ```
-    cd Cloud-Native-Application/labfiles/ ```
+     cd Cloud-Native-Application/labfiles/ ```
     
 1. Now build the  Tailwindtraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the Suffix value.
 
     ```
-    docker build src -f ./src/TailwindTraders.Api.Carts/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest ```
+     docker build src -f ./src/TailwindTraders.Api.Carts/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest ```
     
 1. Repeat the steps to create the Tailwindtraders-Products docker image with the below command.
 
-    ```docker build src -f ./src/TailwindTraders.Api.Products/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest 
     ```
+     docker build src -f ./src/TailwindTraders.Api.Products/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest  ```
     
 1. Observe the built Docker images by running docker image ls. The images were tagged with latest, but it is possible to use other tag values for versioning.
 
@@ -68,17 +68,16 @@ Task 2: Create docker images and push to container registry.
 1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the belwo command. You should be able to see that output as below in the screenshot.
 
     ```
-    docker login tailwindtradersacr[SUFFIX].azurecr.io -u tailwindtradersacr[SUFFIX] -p [Passwrd] 
-    ```
+     docker login tailwindtradersacr[SUFFIX].azurecr.io -u tailwindtradersacr[SUFFIX] -p [password]     ```
 
     ![.](media/loginacr.png "open cmd")
 
 1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry.Also, make sure to update the SUFFIX value.
 
-   *   ``` docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest 
-    ```
-   *  ``` docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest 
-    ```
+   *   ``` 
+       docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest ```
+   *  ```
+       docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest ```
     
 1. You should be able to see the docker image getting pushed to ACR as per the below screenshots. 
     
