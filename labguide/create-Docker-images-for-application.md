@@ -52,7 +52,7 @@ In this task you will be building the docker image and will be pushing them to t
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Now build the  Tailwindtraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the Suffix value.
+1. Now build the Tailwindtraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the Suffix value.
 
     ```
      docker build src -f ./src/TailwindTraders.Api.Carts/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest
@@ -61,7 +61,8 @@ In this task you will be building the docker image and will be pushing them to t
 1. Repeat the steps to create the Tailwindtraders-Products docker image with the below command.
 
     ```
-     docker build src -f ./src/TailwindTraders.Api.Products/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest  ```
+     docker build src -f ./src/TailwindTraders.Api.Products/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest
+    ```
 
 1. Repeat the steps to create the Tailwindtraders-UI-Website docker image with the below command.
 
