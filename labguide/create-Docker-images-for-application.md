@@ -61,7 +61,7 @@ In this task you will be building the docker image and will be pushing them to t
     ```
      docker build src -f ./src/TailwindTraders.Api.Products/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest  ```
 
-1. Repeat the steps to create the Tailwindtraders-Products docker image with the below command.
+1. Repeat the steps to create the Tailwindtraders-UI-Website docker image with the below command.
 
     ```
         cd src/TailwindTraders.Ui.Website
