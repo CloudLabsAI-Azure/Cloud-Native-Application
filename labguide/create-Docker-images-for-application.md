@@ -60,6 +60,13 @@ In this task you will be building the docker image and will be pushing them to t
 
     ```
      docker build src -f ./src/TailwindTraders.Api.Products/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest  ```
+
+1. Repeat the steps to create the Tailwindtraders-Products docker image with the below command.
+
+    ```
+        cd src/TailwindTraders.Api.Products
+     docker build . -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersuiweb:latest  ```
+    
     
 1. Observe the built Docker images by running docker image ls. The images were tagged with latest, but it is possible to use other tag values for versioning.
 
@@ -76,6 +83,7 @@ In this task you will be building the docker image and will be pushing them to t
 
    *   ``` docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest ```
    *  ```  docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest ```
+   *  ```  docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersuiweb:latest ```
     
 1. You should be able to see the docker image getting pushed to ACR as per the below screenshots. 
     
