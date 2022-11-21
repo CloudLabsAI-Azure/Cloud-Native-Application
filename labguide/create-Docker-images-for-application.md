@@ -24,17 +24,21 @@
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
     ```
     
-1. After the github clonning is completed, run the below command to change the directory to the labfiles where we will be working on the labguide
+    ![](media/ex1-gitclone.png)
+    
+1. After the github cloning is completed, run the below command to change the directory to the labfiles.
     
     ```
     cd Cloud-Native-Application/labfiles/ 
     ```
     
+    ![](media/ex1-cd.png)
+    
 ### Task 2: Create Docker images and push to container registry
 
 In this task you will be building the docker image and will be pushing them to the ACR to later use in AKS
 
-1. run the below command to login to Azure.
+1. Run the below command to login to Azure.
 
     ``` 
     az login
