@@ -68,7 +68,8 @@ In this task you will be building the docker image and will be pushing them to t
 
     ```
     cd src/TailwindTraders.Ui.Website
-    docker build . -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersuiweb:latest         ```    
+    docker build . -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersuiweb:latest
+    ```    
     
 1. Observe the built Docker images by running docker image ls. The images were tagged with latest, but it is possible to use other tag values for versioning.
 
