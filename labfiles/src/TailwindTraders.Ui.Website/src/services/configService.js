@@ -7,7 +7,7 @@ const settingsUrl = "/api/settings";
 // const APIUrlShoppingCart = process.env.REACT_APP_API_URL_SHOPPINGCART;
 // @TODO: Replace 'test' in the next two lines with whatever your ENVIRONMENT github secret value is
 const APIUrl = 'https://tailwind-traders-productstest.azurewebsites.net/v1';
-const APIUrlShoppingCart = 'https://tailwind-traders-cartstest.azurewebsites.net/v1';
+const APIUrlShoppingCart = 'https://tailwind-traders-carts313121.azurewebsites.net/v1';
 const UseB2C = process.env.REACT_APP_USEB2C;
 const B2cAuthority = process.env.REACT_APP_B2CAUTHORITY;
 const B2cClientId = process.env.REACT_APP_B2CCLIENTID;
