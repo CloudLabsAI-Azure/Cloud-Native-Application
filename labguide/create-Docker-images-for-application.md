@@ -101,7 +101,13 @@ In this task, you will be building the docker image and will be pushing them to 
     
     ![](media/ex1-apiwebsite.png)
     
-1. Re-direct to `cd Cloud-Native-Application/labfiles/` directory. Observe the built Docker images by running command `docker image ls`. The images were tagged with latest, but it is possible to use other tag values for versioning.
+1. Redirect to the **labfiles** directory before running the next steps.
+
+    ```
+    cd Cloud-Native-Application/labfiles/
+    ```
+
+1. Observe the built Docker images by running command `docker image ls`. The images were tagged with latest, but it is possible to use other tag values for versioning.
 
     ```
     docker image ls
@@ -115,7 +121,7 @@ In this task, you will be building the docker image and will be pushing them to 
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
     ```
 
-   ![.](media/loginacr.png "open cmd")
+   ![.](media/ex1-dockerlogin.png "open cmd")
 
 1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry.Also, make sure to update the SUFFIX value.
 
