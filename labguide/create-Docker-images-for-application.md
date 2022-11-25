@@ -4,7 +4,7 @@
 
 1. Once you log into the VM, open **Command Prompt** from the desktop of your VM on the left side of the envrionment.
 
-    ![.](media/cmd.png "open cmd")
+    ![](media/cmd.png "open cmd")
     
 1. Run the below given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
    
@@ -18,7 +18,7 @@
    
     * Password: <inject key="Build Agent VM Password" enableCopy="true" />
 
-   ![.](media/ex1-connecttolinuxvm.png "open cmd")
+   ![](media/ex1-connecttolinuxvm.png "open cmd")
    
    >**Note**: Please note that while typing the password you wont be able to see it due to the security concerns.
     
@@ -48,7 +48,7 @@ In this task, you will be building the docker image and will be pushing them to 
    az login
    ```
     
-   ![](media/ex1-azlogincode.png)
+   ![](media/ex-azlogincode.png)
     
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
