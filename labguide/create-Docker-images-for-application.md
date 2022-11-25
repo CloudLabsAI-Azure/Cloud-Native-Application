@@ -2,7 +2,7 @@
 
 ### Task 1: Create Local Infrastructure using Linux VM
 
-1. Once you log into the VM, open **Command Prompt** from the desktop of your VM on the left side of the envrionment.
+1. Once you log into the VM, open **Command Prompt** from the desktop of your VM on the left side of the environment.
 
     ![](media/cmd.png "open cmd")
     
@@ -22,7 +22,7 @@
    
    >**Note**: Please note that while typing the password you wont be able to see it due to the security concerns.
     
-1. Once the VM is connected, run the below command to clone the Github repositry that we are going to use for the lab.
+1. Once the VM is connected, run the below command to clone the Github repository that we are going to use for the lab.
 
     ``` 
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
@@ -76,7 +76,7 @@ In this task, you will be building the docker image and will be pushing them to 
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the Suffix value.
+1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the DID value.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
@@ -115,7 +115,7 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-dockerimages.png)
     
-1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the belwo command. You should be able to see that output as below in the screenshot.
+1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the below command. You should be able to see that output as below in the screenshot.
 
     ```
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
