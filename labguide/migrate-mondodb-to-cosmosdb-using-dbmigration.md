@@ -16,7 +16,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. In the Azure Portal, navigate to your fabmedical(Build Agent) virtual machine in the resource group and copy the Private IP address (2) and Paste the private Ip address into the notepad for future use.
 
-1. Navigate to the Database Migration Service **Tailwind<inject key="DeploymentID" enableCopy="false" />** resource blade in the **Tailwind-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Navigate to the Database Migration Service **contoso<inject key="DeploymentID" enableCopy="false" />** resource blade in the **contoso-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
 On the Azure Database Migration Service blade, select **+ New Migration Project** on the **Overview** pane.
 
@@ -24,7 +24,7 @@ On the Azure Database Migration Service blade, select **+ New Migration Project*
 
 4. On the **New migration project** pane, enter the following values, then select **Create and run activity**:
 
-    - Project name: `Tailwind`
+    - Project name: `contoso`
     - Source server type: `MongoDB`
     - Target server type: `CosmosDB (MongoDB API)`
     - Choose type of activity: `Offline data migration`

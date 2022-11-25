@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tailwind-traders-products
+  name: contoso-traders-products
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tailwind-traders-products
+      app: contoso-traders-products
   template:
     metadata:
       labels:
-        app: tailwind-traders-products
+        app: contoso-traders-products
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-        - name: tailwind-traders-products
+        - name: contoso-traders-products
           #@TODO: Replace 'test' in the next line with whatever your ENVIRONMENT github secret value is
-          image: tailwindtradersacrtest.azurecr.io/tailwindtradersapiproducts:latest
+          image: contosotradersacrtest.azurecr.io/contosotradersapiproducts:latest
           env:
             - name: KeyVaultEndpoint
               valueFrom:
                 secretKeyRef:
-                  name: tailwind-traders-kv-endpoint
-                  key: tailwind-traders-kv-endpoint
+                  name: contoso-traders-kv-endpoint
+                  key: contoso-traders-kv-endpoint
           resources:
             requests:
               cpu: 100m
@@ -37,13 +37,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tailwind-traders-products
+  name: contoso-traders-products
   annotations:
     #@TODO: Replace 'test' in the next line with whatever your ENVIRONMENT github secret value is
-    service.beta.kubernetes.io/azure-dns-label-name: tailwind-traders-productstest
+    service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productstest
 spec:
   type: LoadBalancer
   ports:
     - port: 80
   selector:
-    app: tailwind-traders-products
+    app: contoso-traders-products

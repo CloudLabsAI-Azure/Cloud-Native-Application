@@ -1,7 +1,7 @@
-﻿namespace TailwindTraders.Api.Carts.Controllers;
+﻿namespace contosoTraders.Api.Carts.Controllers;
 
 [Route("v1/[controller]")]
-public class ShoppingCartController : TailwindTradersControllerBase
+public class ShoppingCartController : contosoTradersControllerBase
 {
     public ShoppingCartController(IMediator mediator) : base(mediator)
     {
@@ -66,7 +66,7 @@ public class ShoppingCartController : TailwindTradersControllerBase
     {
         var request = new GetCartRequest
         {
-            Email = "testuser@tailwindtraders.com"
+            Email = "testuser@contosotraders.com"
         };
 
         return await ProcessHttpRequestAsync(request);

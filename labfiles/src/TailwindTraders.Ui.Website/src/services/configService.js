@@ -6,8 +6,8 @@ const settingsUrl = "/api/settings";
 // const APIUrl = process.env.REACT_APP_DEV_API_URL;
 // const APIUrlShoppingCart = process.env.REACT_APP_API_URL_SHOPPINGCART;
 // @TODO: Replace 'test' in the next two lines with whatever your ENVIRONMENT github secret value is
-const APIUrl = 'https://tailwind-traders-productstest.azurewebsites.net/v1';
-const APIUrlShoppingCart = 'https://tailwind-traders-carts313121.azurewebsites.net/v1';
+const APIUrl = 'https://contoso-traders-productstest.azurewebsites.net/v1';
+const APIUrlShoppingCart = 'https://contoso-traders-carts313121.azurewebsites.net/v1';
 const UseB2C = process.env.REACT_APP_USEB2C;
 const B2cAuthority = process.env.REACT_APP_B2CAUTHORITY;
 const B2cClientId = process.env.REACT_APP_B2CCLIENTID;
@@ -45,7 +45,7 @@ const ConfigService = {
       //   data: {
       //     auth: null,
       //     apiUrl: "https://f6b8ea119d5d435c846c.westus2.aksapp.io/webbff/v1",
-      //     apiUrlShoppingCart: "https://backend.tailwindtraders.com/cart-api",
+      //     apiUrlShoppingCart: "https://backend.contosotraders.com/cart-api",
       //     useB2C: false,
       //     b2CAuth: { clientId: "", authority: "", scopes: "" },
       //     cart: null,

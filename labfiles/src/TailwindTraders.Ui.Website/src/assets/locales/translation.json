@@ -12,8 +12,8 @@
         "home.recommended.products": "Recommended products",
         "home.getapp.title": "Get your mobile App",
         "home.getapp.subtitle": "Try our smart shopping app for easy planning",
-        "home.getapp.appStoreImg": "Download Tailwind Traders for iOS",
-        "home.getapp.googlePlayImg": "Download Tailwind Traders for Android",
+        "home.getapp.appStoreImg": "Download contoso Traders for iOS",
+        "home.getapp.googlePlayImg": "Download contoso Traders for Android",
 
         "mycoupons.title": "My coupons",
         "mycoupons.subtitle": "Personalized coupons for you based on your purchase history and interest",
@@ -43,7 +43,7 @@
         "shared.header.or": "or",
         "shared.header.login": "Login",
         "shared.header.email": "Email",
-        "shared.header.emailPlaceholder": "admin@tailwindtraders.com",
+        "shared.header.emailPlaceholder": "admin@contosotraders.com",
         "shared.header.password": "Password",
         "shared.header.passwordPlaceholder": "••••••••",
         "shared.header.newArrivals": "New Arrivals",
@@ -53,13 +53,13 @@
         "shared.header.deals": "Deals",
 
         "shared.login.claim": "Log in to add your products to the cart and enjoy the purchase!",
-        "shared.login.B2CButton": "Tailwind Traders Login",
+        "shared.login.B2CButton": "contoso Traders Login",
 
         "shared.banner.uploadPhotoTitle": "upload new photo",
         "shared.banner.disclaimer": "Based on your photo we found these products for you",
         "shared.banner.info": "Not what you are looking for?",
 
-        "shared.footer.link": "Tailwind Traders",
+        "shared.footer.link": "contoso Traders",
         "shared.footer.link2": "Terms & Conditions",
         "shared.footer.link3": "Privacy Policy",
         "shared.footer.link4": "Help",

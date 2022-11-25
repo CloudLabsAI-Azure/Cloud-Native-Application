@@ -1,6 +1,6 @@
-﻿namespace TailwindTraders.Api.Core.Services.Implementations;
+﻿namespace contosoTraders.Api.Core.Services.Implementations;
 
-internal class StockService : TailwindTradersServiceBase, IStockService
+internal class StockService : contosoTradersServiceBase, IStockService
 {
     private readonly IStockRepository _stockRepository;
 

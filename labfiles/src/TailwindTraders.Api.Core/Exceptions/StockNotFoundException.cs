@@ -1,6 +1,6 @@
-﻿namespace TailwindTraders.Api.Core.Exceptions;
+﻿namespace contosoTraders.Api.Core.Exceptions;
 
-public class StockNotFoundException : TailwindTradersBaseException
+public class StockNotFoundException : contosoTradersBaseException
 {
     public StockNotFoundException(int productId)
         : base($"Stock not found for product id '{productId}'")

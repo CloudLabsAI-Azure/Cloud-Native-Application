@@ -376,7 +376,7 @@ export default class CallCard extends React.Component {
         {!this.state.chatView ? (
           <div className="call-screen text-center mt-3">
             {this.state.callState !== "Connected" && (
-              <div>Tailwind Traders</div>
+              <div>contoso Traders</div>
             )}
             {this.state.callState === "Connecting" && (
               <div

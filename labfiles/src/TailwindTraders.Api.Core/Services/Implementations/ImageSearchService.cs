@@ -1,4 +1,4 @@
-namespace TailwindTraders.Api.Core.Services.Implementations;
+namespace contosoTraders.Api.Core.Services.Implementations;
 
 internal class ImageSearchService : IImageSearchService
 {

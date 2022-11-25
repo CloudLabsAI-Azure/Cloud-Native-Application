@@ -1,7 +1,7 @@
 ﻿using Profile = AutoMapper.Profile;
-using ProfileDao = TailwindTraders.Api.Core.Models.Implementations.Dao.Profile;
+using ProfileDao = contosoTraders.Api.Core.Models.Implementations.Dao.Profile;
 
-namespace TailwindTraders.Api.Core.Models;
+namespace contosoTraders.Api.Core.Models;
 
 public class AutoMapperProfile : Profile
 {

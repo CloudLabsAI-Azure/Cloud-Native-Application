@@ -26,7 +26,7 @@ param aksLinuxAdminUsername string // value supplied via parameters file
 ////////////////////////////////////////////////////////////////////////////////
 
 // key vault
-var kvName = 'tailwindtraderskv${environment}'
+var kvName = 'contosotraderskv${environment}'
 var kvSecretNameProductsDbConnStr = 'productsDbConnectionString'
 var kvSecretNameProfilesDbConnStr = 'profilesDbConnectionString'
 var kvSecretNameStocksDbConnStr = 'stocksDbConnectionString'
@@ -38,87 +38,87 @@ var kvSecretNameCognitiveServicesAccountKey = 'cognitiveServicesAccountKey'
 var kvSecretNameAppInsightsConnStr = 'appInsightsConnectionString'
 
 // cosmos db (stocks db)
-var stocksDbAcctName = 'tailwind-traders-stocks${environment}'
+var stocksDbAcctName = 'contoso-traders-stocks${environment}'
 var stocksDbName = 'stocksdb'
 var stocksDbStocksContainerName = 'stocks'
 
 // cosmos db (carts db)
-var cartsDbAcctName = 'tailwind-traders-carts${environment}'
+var cartsDbAcctName = 'contoso-traders-carts${environment}'
 var cartsDbName = 'cartsdb'
 var cartsDbStocksContainerName = 'carts'
 
 // sql azure (products db)
-var productsDbServerName = 'tailwind-traders-products${environment}'
+var productsDbServerName = 'contoso-traders-products${environment}'
 var productsDbName = 'productsdb'
 var productsDbServerAdminLogin = 'localadmin'
 var productsDbServerAdminPassword = sqlPassword
 
 // sql azure (profiles db)
-var profilesDbServerName = 'tailwind-traders-profiles${environment}'
+var profilesDbServerName = 'contoso-traders-profiles${environment}'
 var profilesDbName = 'profilesdb'
 var profilesDbServerAdminLogin = 'localadmin'
 var profilesDbServerAdminPassword = sqlPassword
 
 // app service plan (products api)
-var productsApiAppSvcPlanName = 'tailwind-traders-products${environment}'
-var productsApiAppSvcName = 'tailwind-traders-products${environment}'
+var productsApiAppSvcPlanName = 'contoso-traders-products${environment}'
+var productsApiAppSvcName = 'contoso-traders-products${environment}'
 var productsApiSettingNameKeyVaultEndpoint = 'KeyVaultEndpoint'
 
 // azure container app (carts api)
-var cartsApiAcaName = 'tailwind-traders-carts${environment}'
-var cartsApiAcaEnvName = 'tailwindtradersacaenv${environment}'
+var cartsApiAcaName = 'contoso-traders-carts${environment}'
+var cartsApiAcaEnvName = 'contosotradersacaenv${environment}'
 var cartsApiAcaSecretAcrPassword = 'acr-password'
-var cartsApiAcaContainerDetailsName = 'tailwind-traders-carts${environment}'
+var cartsApiAcaContainerDetailsName = 'contoso-traders-carts${environment}'
 
 // storage account (product images)
-var productImagesStgAccName = 'tailwindtradersimg${environment}'
+var productImagesStgAccName = 'contosotradersimg${environment}'
 var productImagesProductDetailsContainerName = 'product-details'
 var productImagesProductListContainerName = 'product-list'
 
 // storage account (old website)
-var uiStgAccName = 'tailwindtradersui${environment}'
+var uiStgAccName = 'contosotradersui${environment}'
 
 // storage account (new website)
-var ui2StgAccName = 'tailwindtradersui2${environment}'
+var ui2StgAccName = 'contosotradersui2${environment}'
 
 // storage account (image classifier)
-var imageClassifierStgAccName = 'tailwindtradersic${environment}'
+var imageClassifierStgAccName = 'contosotradersic${environment}'
 var imageClassifierWebsiteUploadsContainerName = 'website-uploads'
 
 // cognitive service (image recognition)
-var cognitiveServiceName = 'tailwind-traders-cs${environment}'
+var cognitiveServiceName = 'contoso-traders-cs${environment}'
 
 // cdn
-var cdnProfileName = 'tailwind-traders-cdn${environment}'
-var cdnImagesEndpointName = 'tailwind-traders-images${environment}'
-var cdnUiEndpointName = 'tailwind-traders-ui${environment}'
-var cdnUi2EndpointName = 'tailwind-traders-ui2${environment}'
+var cdnProfileName = 'contoso-traders-cdn${environment}'
+var cdnImagesEndpointName = 'contoso-traders-images${environment}'
+var cdnUiEndpointName = 'contoso-traders-ui${environment}'
+var cdnUi2EndpointName = 'contoso-traders-ui2${environment}'
 
 // redis cache
-var redisCacheName = 'tailwind-traders-cache${environment}'
+var redisCacheName = 'contoso-traders-cache${environment}'
 
 // azure container registry
-var acrName = 'tailwindtradersacr${environment}'
-// var acrCartsApiRepositoryName = 'tailwindtradersapicarts' // @TODO: unused, probably remove later
+var acrName = 'contosotradersacr${environment}'
+// var acrCartsApiRepositoryName = 'contosotradersapicarts' // @TODO: unused, probably remove later
 
 // load testing service
-var loadTestSvcName = 'tailwind-traders-loadtest${environment}'
+var loadTestSvcName = 'contoso-traders-loadtest${environment}'
 
 // application insights
-var logAnalyticsWorkspaceName = 'tailwind-traders-loganalytics${environment}'
-var appInsightsName = 'tailwind-traders-ai${environment}'
+var logAnalyticsWorkspaceName = 'contoso-traders-loganalytics${environment}'
+var appInsightsName = 'contoso-traders-ai${environment}'
 
 // portal dashboard
-var portalDashboardName = 'tailwind-traders-dashboard${environment}'
+var portalDashboardName = 'contoso-traders-dashboard${environment}'
 
 // aks cluster
-var aksClusterName = 'tailwind-traders-aks${environment}'
-var aksClusterDnsPrefix = 'tailwind-traders-aks${environment}'
-var aksClusterNodeResourceGroup = 'tailwind-traders-aks-nodes-rg'
+var aksClusterName = 'contoso-traders-aks${environment}'
+var aksClusterDnsPrefix = 'contoso-traders-aks${environment}'
+var aksClusterNodeResourceGroup = 'contoso-traders-aks-nodes-rg'
 
 // tags
 var resourceTags = {
-  Product: 'tailwind-traders'
+  Product: 'contoso-traders'
   Environment: 'testing'
 }
 

@@ -1,6 +1,6 @@
-﻿using Type = TailwindTraders.Api.Core.Models.Implementations.Dao.Type;
+﻿using Type = contosoTraders.Api.Core.Models.Implementations.Dao.Type;
 
-namespace TailwindTraders.Api.Core.Models.Implementations.Dto;
+namespace contosoTraders.Api.Core.Models.Implementations.Dto;
 
 public class ProductDto
 {

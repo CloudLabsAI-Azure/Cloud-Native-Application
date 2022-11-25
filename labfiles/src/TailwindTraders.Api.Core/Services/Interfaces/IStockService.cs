@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Services.Interfaces;
+﻿namespace contosoTraders.Api.Core.Services.Interfaces;
 
 internal interface IStockService
 {

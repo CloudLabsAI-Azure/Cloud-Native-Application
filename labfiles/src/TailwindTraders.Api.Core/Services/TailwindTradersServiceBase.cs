@@ -1,11 +1,11 @@
-﻿namespace TailwindTraders.Api.Core.Services;
+﻿namespace contosoTraders.Api.Core.Services;
 
-internal abstract class TailwindTradersServiceBase
+internal abstract class contosoTradersServiceBase
 {
     protected readonly IConfiguration Configuration;
     protected readonly IMapper Mapper;
 
-    protected TailwindTradersServiceBase(IMapper mapper, IConfiguration configuration)
+    protected contosoTradersServiceBase(IMapper mapper, IConfiguration configuration)
     {
         Mapper = mapper;
         Configuration = configuration;

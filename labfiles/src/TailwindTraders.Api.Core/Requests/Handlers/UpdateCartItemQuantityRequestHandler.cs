@@ -1,6 +1,6 @@
 ﻿using MediatR.Pipeline;
 
-namespace TailwindTraders.Api.Core.Requests.Handlers;
+namespace contosoTraders.Api.Core.Requests.Handlers;
 
 internal class UpdateCartItemQuantityRequestHandler : IRequestPreProcessor<UpdateCartItemQuantityRequest>, IRequestHandler<UpdateCartItemQuantityRequest, IActionResult>
 {

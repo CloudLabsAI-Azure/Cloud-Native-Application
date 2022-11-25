@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Repositories.Interfaces;
+﻿namespace contosoTraders.Api.Core.Repositories.Interfaces;
 
 /// <remarks>
 ///     The type parameter constraint of 'class' is only required because of this open github issue:

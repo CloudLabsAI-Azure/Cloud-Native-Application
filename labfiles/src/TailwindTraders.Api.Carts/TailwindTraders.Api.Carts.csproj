@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\TailwindTraders.Api.Core\TailwindTraders.Api.Core.csproj" />
+		<ProjectReference Include="..\contosoTraders.Api.Core\contosoTraders.Api.Core.csproj" />
 	</ItemGroup>
 
 </Project>

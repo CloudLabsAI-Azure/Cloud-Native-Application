@@ -14,10 +14,10 @@ const Getapp = ({ t }) => {
                 <h1 className="getapp-title">{t("home.getapp.title")}</h1>
                 <p className="getapp-text">{t("home.getapp.subtitle")}</p>
                 <div className="getapp__stores-wrapper">
-                    <a className="btn btn--getapp btn--getapp--left" href="https://aka.ms/tailwindtradersios">
+                    <a className="btn btn--getapp btn--getapp--left" href="https://aka.ms/contosotradersios">
                         <div className="getapp-btntext">Get it now for </div>iOS
                     </a>
-                    <a className="btn btn--getapp btn--getapp--right" href="https://aka.ms/tailwindtradersandroid">
+                    <a className="btn btn--getapp btn--getapp--right" href="https://aka.ms/contosotradersandroid">
                         <div className="getapp-btntext">Get it now for </div>Android
                     </a>
                 </div>
@@ -33,7 +33,7 @@ const Getapp = ({ t }) => {
                 />
                 <img
                     srcSet={`${MockupSmall} 1x, ${MockupSmall2} 2x`}
-                    alt="Black iPhone displaying Tailwind Traders' home screen"
+                    alt="Black iPhone displaying contoso Traders' home screen"
                 />
             </picture>
         </section>

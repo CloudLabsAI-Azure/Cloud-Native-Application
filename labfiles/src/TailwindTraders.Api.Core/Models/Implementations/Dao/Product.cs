@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Models.Implementations.Dao;
+﻿namespace contosoTraders.Api.Core.Models.Implementations.Dao;
 
 public class Product
 {

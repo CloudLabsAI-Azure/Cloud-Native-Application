@@ -1,6 +1,6 @@
-﻿namespace TailwindTraders.Api.Core.Services.Implementations;
+﻿namespace contosoTraders.Api.Core.Services.Implementations;
 
-internal class CartService : TailwindTradersServiceBase, ICartService
+internal class CartService : contosoTradersServiceBase, ICartService
 {
     private readonly ICartRepository _cartRepository;
 

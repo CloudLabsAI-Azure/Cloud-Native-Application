@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Models.Implementations.Dto;
+﻿namespace contosoTraders.Api.Core.Models.Implementations.Dto;
 
 public class CartDto
 {

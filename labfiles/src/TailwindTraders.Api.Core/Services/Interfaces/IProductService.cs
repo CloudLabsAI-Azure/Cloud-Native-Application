@@ -1,6 +1,6 @@
-﻿using Type = TailwindTraders.Api.Core.Models.Implementations.Dao.Type;
+﻿using Type = contosoTraders.Api.Core.Models.Implementations.Dao.Type;
 
-namespace TailwindTraders.Api.Core.Services.Interfaces;
+namespace contosoTraders.Api.Core.Services.Interfaces;
 
 public interface IProductService
 {

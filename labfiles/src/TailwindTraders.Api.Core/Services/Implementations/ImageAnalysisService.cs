@@ -1,6 +1,6 @@
-﻿namespace TailwindTraders.Api.Core.Services.Implementations;
+﻿namespace contosoTraders.Api.Core.Services.Implementations;
 
-internal class ImageAnalysisService : TailwindTradersServiceBase, IImageAnalysisService
+internal class ImageAnalysisService : contosoTradersServiceBase, IImageAnalysisService
 {
     public ImageAnalysisService(IMapper mapper, IConfiguration configuration) : base(mapper, configuration)
     {

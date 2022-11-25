@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Type = TailwindTraders.Api.Core.Models.Implementations.Dao.Type;
+using Type = contosoTraders.Api.Core.Models.Implementations.Dao.Type;
 
-namespace TailwindTraders.Api.Core.Repositories;
+namespace contosoTraders.Api.Core.Repositories;
 
 public class ProductsDbContext : DbContext
 {

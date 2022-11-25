@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Type = TailwindTraders.Api.Core.Models.Implementations.Dao.Type;
+using Type = contosoTraders.Api.Core.Models.Implementations.Dao.Type;
 
-namespace TailwindTraders.Api.Core.Services.Implementations;
+namespace contosoTraders.Api.Core.Services.Implementations;
 
-internal class ProductService : TailwindTradersServiceBase, IProductService
+internal class ProductService : contosoTradersServiceBase, IProductService
 {
     private readonly ProductsDbContext _productRepository;
 

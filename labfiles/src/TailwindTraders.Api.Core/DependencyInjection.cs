@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Logging;
 
 [assembly: FunctionsStartup(typeof(DependencyInjection))]
 
-namespace TailwindTraders.Api.Core;
+namespace contosoTraders.Api.Core;
 
 public class DependencyInjection : FunctionsStartup
 {

@@ -1,6 +1,6 @@
-﻿namespace TailwindTraders.Api.Core.Exceptions;
+﻿namespace contosoTraders.Api.Core.Exceptions;
 
-public class CartNotFoundException : TailwindTradersBaseException
+public class CartNotFoundException : contosoTradersBaseException
 {
     public CartNotFoundException(string email)
         : base($"Shopping Cart for '{email}' could not be found.")

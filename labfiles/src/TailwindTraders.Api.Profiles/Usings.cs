@@ -1,1 +1,1 @@
-﻿global using TailwindTraders.Api.Core.Controllers;
+﻿global using contosoTraders.Api.Core.Controllers;

@@ -2,13 +2,13 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using TailwindTraders.Api.Core.Constants;
+using contosoTraders.Api.Core.Constants;
 
-namespace TailwindTraders.Api.Products.Controllers;
+namespace contosoTraders.Api.Products.Controllers;
 
 [Route("v1/[controller]")]
 [Produces("application/json")]
-public class LoginController : TailwindTradersControllerBase
+public class LoginController : contosoTradersControllerBase
 {
     private readonly IConfiguration config;
 
@@ -46,7 +46,7 @@ public class LoginController : TailwindTradersControllerBase
 
         var token = new JwtSecurityToken(
             claims: claims,
-            issuer: config["Issuer"] ?? "TailWindWebsite",
+            issuer: config["Issuer"] ?? "contosoWebsite",
             expires: DateTime.Now.AddDays(expiresInDays),
             signingCredentials: creds);
 

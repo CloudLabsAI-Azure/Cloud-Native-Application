@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
 
-namespace TailwindTraders.Api.Core.Repositories.Implementations;
+namespace contosoTraders.Api.Core.Repositories.Implementations;
 
 public class StockRepository : CosmosGenericRepositoryBase<StockDao>, IStockRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Repositories.Interfaces;
+﻿namespace contosoTraders.Api.Core.Repositories.Interfaces;
 
 public interface IStockRepository : ICosmosGenericRepository<StockDao>
 {

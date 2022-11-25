@@ -1,8 +1,8 @@
-﻿namespace TailwindTraders.Api.Core.Exceptions;
+﻿namespace contosoTraders.Api.Core.Exceptions;
 
-public abstract class TailwindTradersBaseException : Exception
+public abstract class contosoTradersBaseException : Exception
 {
-    protected TailwindTradersBaseException(string message) : base(message)
+    protected contosoTradersBaseException(string message) : base(message)
     {
     }
 

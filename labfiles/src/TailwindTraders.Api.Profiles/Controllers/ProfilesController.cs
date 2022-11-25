@@ -12,9 +12,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
-namespace TailwindTraders.Api.Profiles.Controllers;
+namespace contosoTraders.Api.Profiles.Controllers;
 
-public class ProfilesController : TailwindTradersControllerBase
+public class ProfilesController : contosoTradersControllerBase
 {
     private readonly ILogger<ProfilesController> _logger;
 

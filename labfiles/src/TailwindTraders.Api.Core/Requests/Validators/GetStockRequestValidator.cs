@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Requests.Validators;
+﻿namespace contosoTraders.Api.Core.Requests.Validators;
 
 public class GetStockRequestValidator : AbstractValidator<GetStockRequest>
 {

@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Models.Interfaces;
+﻿namespace contosoTraders.Api.Core.Models.Interfaces;
 
 public interface ICosmosDao<T>
 {

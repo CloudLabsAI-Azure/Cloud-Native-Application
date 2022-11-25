@@ -1,6 +1,6 @@
-﻿namespace TailwindTraders.Api.Core.Exceptions;
+﻿namespace contosoTraders.Api.Core.Exceptions;
 
-public class MatchingProductsNotFoundException : TailwindTradersBaseException
+public class MatchingProductsNotFoundException : contosoTradersBaseException
 {
     public MatchingProductsNotFoundException(string tags)
         : base($"No matching products found for tags :  {tags}")

@@ -1,11 +1,11 @@
-﻿namespace TailwindTraders.Api.Core.Controllers;
+﻿namespace contosoTraders.Api.Core.Controllers;
 
 [ApiController]
-public class TailwindTradersControllerBase : ControllerBase
+public class contosoTradersControllerBase : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    protected TailwindTradersControllerBase(IMediator mediator)
+    protected contosoTradersControllerBase(IMediator mediator)
     {
         _mediator = mediator;
     }
@@ -16,9 +16,9 @@ public class TailwindTradersControllerBase : ControllerBase
         {
             return await _mediator.Send(request);
         }
-        catch (TailwindTradersBaseException tailwindTradersBaseException)
+        catch (contosoTradersBaseException contosoTradersBaseException)
         {
-            return tailwindTradersBaseException.ToActionResult();
+            return contosoTradersBaseException.ToActionResult();
         }
         catch (ValidationException validationException)
         {

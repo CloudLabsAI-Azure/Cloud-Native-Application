@@ -1,8 +1,8 @@
-﻿namespace TailwindTraders.Api.Products.Controllers;
+﻿namespace contosoTraders.Api.Products.Controllers;
 
 [Route("v1/[controller]")]
 [Produces("application/json")]
-public class ProfilesController : TailwindTradersControllerBase
+public class ProfilesController : contosoTradersControllerBase
 {
     public ProfilesController(IMediator mediator) : base(mediator)
     {
@@ -21,7 +21,7 @@ public class ProfilesController : TailwindTradersControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetProfile()
     {
-        var email = "admin@tailwindtraders.com";
+        var email = "admin@contosotraders.com";
         var request = new GetProfileRequest
         {
             Email = email

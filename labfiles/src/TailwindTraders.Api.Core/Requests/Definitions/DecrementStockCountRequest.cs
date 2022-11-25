@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Requests.Definitions;
+﻿namespace contosoTraders.Api.Core.Requests.Definitions;
 
 public class DecrementStockCountRequest : IRequest<IActionResult>
 {

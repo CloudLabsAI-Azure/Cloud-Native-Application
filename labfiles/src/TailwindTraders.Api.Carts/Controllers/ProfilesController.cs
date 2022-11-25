@@ -1,7 +1,7 @@
-﻿namespace TailwindTraders.Api.Carts.Controllers;
+﻿namespace contosoTraders.Api.Carts.Controllers;
 
 [Route("v1/[controller]")]
-public class ProfilesController : TailwindTradersControllerBase
+public class ProfilesController : contosoTradersControllerBase
 {
     public ProfilesController(IMediator mediator) : base(mediator)
     {

@@ -1,4 +1,4 @@
-﻿namespace TailwindTraders.Api.Core.Constants;
+﻿namespace contosoTraders.Api.Core.Constants;
 
 public class CosmosConstants
 {

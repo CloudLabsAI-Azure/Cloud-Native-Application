@@ -22,16 +22,16 @@
 3. Login to AZ CLI using the [service principal details](./github-secrets.md):
    * `az login --service-principal -u <clientId> -p <clientSecret> --tenant <tenantId>`
 4. Run the Products API locally:
-   * Open a cmd window and navigate to the `src/TailwindTraders.Api.Products` folder.
-   * Run `dotnet user-secrets set "KeyVaultEndpoint" "https://tailwindtraderskv<ENVIRONMENT>.vault.azure.net/"`. Replace `<ENVIRONMENT>` with the [value used above](./github-secrets.md).
+   * Open a cmd window and navigate to the `src/contosoTraders.Api.Products` folder.
+   * Run `dotnet user-secrets set "KeyVaultEndpoint" "https://contosotraderskv<ENVIRONMENT>.vault.azure.net/"`. Replace `<ENVIRONMENT>` with the [value used above](./github-secrets.md).
    * Run `dotnet build && dotnet run`. This will start the web API on `https://localhost:62300/swagger`.
    * Note that your browser may show you a warning about insecure connection which you can safely ignore.
 5. Run the Carts API locally
-   * Open a cmd window and navigate to the `src/TailwindTraders.Api.Carts` folder.
-   * Run `dotnet user-secrets set "KeyVaultEndpoint" "https://tailwindtraderskv<ENVIRONMENT>.vault.azure.net/"`. Replace `<ENVIRONMENT>` with the [value used above](./github-secrets.md).
+   * Open a cmd window and navigate to the `src/contosoTraders.Api.Carts` folder.
+   * Run `dotnet user-secrets set "KeyVaultEndpoint" "https://contosotraderskv<ENVIRONMENT>.vault.azure.net/"`. Replace `<ENVIRONMENT>` with the [value used above](./github-secrets.md).
    * Run `dotnet build && dotnet run`. This will start the web API on `https://localhost:62300/swagger`.
    * Note that your browser may show you a warning about insecure connection which you can safely ignore.
 6. Run the UI locally:
-   * Open a cmd window and navigate to the `src/TailwindTraders.Ui.Website` folder.
+   * Open a cmd window and navigate to the `src/contosoTraders.Ui.Website` folder.
    * Run `npm install`.
    * Run `npm run start`. This will start the UI on `http://localhost:3000`.

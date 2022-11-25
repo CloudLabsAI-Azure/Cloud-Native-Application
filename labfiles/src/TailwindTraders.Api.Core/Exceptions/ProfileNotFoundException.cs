@@ -1,6 +1,6 @@
-namespace TailwindTraders.Api.Core.Exceptions;
+namespace contosoTraders.Api.Core.Exceptions;
 
-public class ProfileNotFoundException : TailwindTradersBaseException
+public class ProfileNotFoundException : contosoTradersBaseException
 {
     public ProfileNotFoundException(string email)
         : base($"Profile for email '{email}' could not be found.")

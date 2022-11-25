@@ -29,7 +29,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 2. Configure kubectl to connect to the Kubernetes cluster:
 
    ```bash
-   az aks get-credentials -a --name tailwind-traders-aksSUFFIX --resource-group Tailwindtraders-SUFFIX
+   az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group contosotraders-SUFFIX
    ```
 
 3. Test that the configuration is correct by running a simple kubectl command to produce a list of nodes:
@@ -45,7 +45,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    
   This task will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Define a new Namespace for our API deployment. Select the Namespaces blade of the tailwind-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Namespaces tab select + Create and then select **Create with YAML** button.
+1. Define a new Namespace for our API deployment. Select the Namespaces blade of the contoso-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Namespaces tab select + Create and then select **Create with YAML** button.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace.png "Add a Namespace")
     
@@ -59,7 +59,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
         name: ingress-demo
       name: ingress-demo
     ```   
-1. Define a Service for our API so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the tailwind-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Services tab, select **+ Create** and choose **Create with YAML**. 
+1. Define a Service for our API so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the contoso-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Services tab, select **+ Create** and choose **Create with YAML**. 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/createservice.png "Add a Service")
 
@@ -69,16 +69,16 @@ This task will gather the information you need about your Azure Kubernetes Servi
     apiVersion: v1
 kind: Service
 metadata:
-  name: tailwind-traders-products
+  name: contoso-traders-products
   annotations:
     #@TODO: Replace 'test' in the next line with whatever your ENVIRONMENT github secret value is
-    service.beta.kubernetes.io/azure-dns-label-name: tailwind-traders-products[SUFFIX]
+    service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-products[SUFFIX]
 spec:
   type: LoadBalancer
   ports:
     - port: 80
   selector:
-    app: tailwind-traders-products
+    app: contoso-traders-products
     ``` 
     
     ![Select workloads under Kubernetes resources.](media/addservice.png "Select workloads under Kubernetes resources") 
@@ -93,29 +93,29 @@ spec:
     apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tailwind-traders-products
+  name: contoso-traders-products
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tailwind-traders-products
+      app: contoso-traders-products
   template:
     metadata:
       labels:
-        app: tailwind-traders-products
+        app: contoso-traders-products
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-        - name: tailwind-traders-products
+        - name: contoso-traders-products
           #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT SUFFIX is
-          image: tailwindtradersacrSUFFIX.azurecr.io/tailwindtradersapiproducts:latest
+          image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
           env:
             - name: KeyVaultEndpoint
               valueFrom:
                 secretKeyRef:
-                  name: tailwind-traders-kv-endpoint
-                  key: tailwind-traders-kv-endpoint
+                  name: contoso-traders-kv-endpoint
+                  key: contoso-traders-kv-endpoint
           resources:
             requests:
               cpu: 100m

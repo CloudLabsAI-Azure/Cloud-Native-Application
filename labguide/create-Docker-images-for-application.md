@@ -52,23 +52,23 @@ In this task you will be building the docker image and will be pushing them to t
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Now build the Tailwindtraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the Suffix value.
+1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the Suffix value.
 
     ```
-     docker build src -f ./src/TailwindTraders.Api.Carts/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest
+     docker build src -f ./src/contosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
     ```
     
-1. Repeat the steps to create the Tailwindtraders-Products docker image with the below command.
+1. Repeat the steps to create the contosotraders-Products docker image with the below command.
 
     ```
-     docker build src -f ./src/TailwindTraders.Api.Products/Dockerfile -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest
+     docker build src -f ./src/contosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
     ```
 
-1. Repeat the steps to create the Tailwindtraders-UI-Website docker image with the below command.
+1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command.
 
     ```
-    cd src/TailwindTraders.Ui.Website
-    docker build . -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest -t tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersuiweb:latest
+    cd src/contosoTraders.Ui.Website
+    docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
     ```    
     
 1. Observe the built Docker images by running docker image ls. The images were tagged with latest, but it is possible to use other tag values for versioning.
@@ -78,16 +78,16 @@ In this task you will be building the docker image and will be pushing them to t
 1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the belwo command. You should be able to see that output as below in the screenshot.
 
     ```
-    docker login tailwindtradersacr[SUFFIX].azurecr.io -u tailwindtradersacr[SUFFIX] -p [password]
+    docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
     ```
 
    ![.](media/loginacr.png "open cmd")
 
 1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry.Also, make sure to update the SUFFIX value.
 
-   *   ``` docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapicarts:latest ```
-   *  ```  docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersapiproducts:latest ```
-   *  ```  docker push tailwindtradersacr[SUFFIX].azurecr.io/tailwindtradersuiweb:latest ```
+   *   ``` docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest ```
+   *  ```  docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest ```
+   *  ```  docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest ```
     
 1. You should be able to see the docker image getting pushed to ACR as per the below screenshots. 
     

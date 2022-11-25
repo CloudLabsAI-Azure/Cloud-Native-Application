@@ -55,7 +55,7 @@ const Footer = () => {
                             <img src={emailLogo} alt='email-logo'/>
                         </div>
                         <div className='list-element'>
-                            {' '}support@tailwindtraders.com
+                            {' '}support@contosotraders.com
                         </div>
                     </div> 
                 </li>

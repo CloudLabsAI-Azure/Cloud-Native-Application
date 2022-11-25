@@ -1,8 +1,8 @@
-﻿namespace TailwindTraders.Api.Products.Controllers;
+﻿namespace contosoTraders.Api.Products.Controllers;
 
 [Route("v1/[controller]")]
 [Produces("application/json")]
-public class StocksController : TailwindTradersControllerBase
+public class StocksController : contosoTradersControllerBase
 {
     public StocksController(IMediator mediator) : base(mediator)
     {

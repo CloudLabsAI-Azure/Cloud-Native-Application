@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Profile = TailwindTraders.Api.Core.Models.Implementations.Dao.Profile;
+using Profile = contosoTraders.Api.Core.Models.Implementations.Dao.Profile;
 
-namespace TailwindTraders.Api.Core.Repositories;
+namespace contosoTraders.Api.Core.Repositories;
 
 public class ProfilesDbContext : DbContext
 {

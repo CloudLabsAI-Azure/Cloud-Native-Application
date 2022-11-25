@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.Azure.Cosmos;
 
-namespace TailwindTraders.Api.Core.Repositories.Implementations;
+namespace contosoTraders.Api.Core.Repositories.Implementations;
 
 public abstract class CosmosGenericRepositoryBase<TEntity> : ICosmosGenericRepository<TEntity> where TEntity : class
 {

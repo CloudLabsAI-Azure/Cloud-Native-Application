@@ -7,7 +7,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "tailwind-traders-sandbox-rg",
+      "defaultValue": "contoso-traders-sandbox-rg",
       "metadata": {
         "description":
           "Name of the resource group for the resource. It is recommended to put resources under same resource group for better tracking."
@@ -23,7 +23,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "tailwind-traders-product",
+      "defaultValue": "contoso-traders-product",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

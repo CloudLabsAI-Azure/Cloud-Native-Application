@@ -1,6 +1,6 @@
 ﻿using MediatR.Pipeline;
 
-namespace TailwindTraders.Api.Core.Requests.Handlers;
+namespace contosoTraders.Api.Core.Requests.Handlers;
 
 internal class GetProductRequestHandler : IRequestPreProcessor<GetProductRequest>, IRequestHandler<GetProductRequest, IActionResult>
 {
