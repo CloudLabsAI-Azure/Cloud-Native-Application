@@ -1,4 +1,4 @@
-## Exercise 4: Working with services and routing application traffic
+## Exercise 5: Updating Apps & Managing Load Balancing
 
 **Duration**: 120 minutes
 
