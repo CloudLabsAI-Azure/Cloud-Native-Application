@@ -121,15 +121,23 @@ In this task, you will be building the docker image and will be pushing them to 
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
     ```
 
-   ![.](media/ex1-dockerlogin.png "open cmd")
+    ![](media/ex1-dockerlogin.png "open cmd")
 
-1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry.Also, make sure to update the SUFFIX value.
+1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry. Also, make sure to update the SUFFIX value.
 
-   *   ``` docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest ```
-   *  ```  docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest ```
-   *  ```  docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest ```
-    
+   ```
+   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
+   ```
+   
+   ```
+   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+   ```
+   
+   ```
+   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+   ```
+   
 1. You should be able to see the docker image getting pushed to ACR as per the below screenshots. 
     
-    ![.](media/dockerpushed.png "open cmd")
+    ![](media/ex1-dockerpush.png "open cmd")
     
