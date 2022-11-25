@@ -10,7 +10,8 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 1. Open a new command prompt from desktop of your jump VM and login to azure with the below commands after updating the values in the command
 
-    ``` az login -u [username] -p [Password]
+    ```
+    az login -u [username] -p [Password]
     ```
 
 2. Verify that you are connected to the correct subscription with the following command to show your default subscription:
