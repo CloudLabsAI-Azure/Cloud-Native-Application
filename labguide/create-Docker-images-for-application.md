@@ -82,11 +82,15 @@ In this task, you will be building the docker image and will be pushing them to 
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
     ```
     
+    ![](media/ex1-apicarts.png)
+    
 1. Repeat the steps to create the contosotraders-Products docker image with the below command.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
     ```
+
+    ![](media/ex1-apiproducts.png)
 
 1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command.
 
@@ -95,9 +99,15 @@ In this task, you will be building the docker image and will be pushing them to 
     docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
     ```    
     
-1. Observe the built Docker images by running docker image ls. The images were tagged with latest, but it is possible to use other tag values for versioning.
+    ![](media/ex1-apiwebsite.png)
+    
+1. Re-direct to `cd Cloud-Native-Application/labfiles/` directory. Observe the built Docker images by running command `docker image ls`. The images were tagged with latest, but it is possible to use other tag values for versioning.
 
-    ![.](media/dockerimages.png "open cmd")
+    ```
+    docker image ls
+    ```
+
+    ![](media/ex1-dockerimages.png)
     
 1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the belwo command. You should be able to see that output as below in the screenshot.
 
