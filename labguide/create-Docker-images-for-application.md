@@ -6,15 +6,19 @@
 
     ![.](media/cmd.png "open cmd")
     
-1. Run the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
+1. Run the below given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
    
-   ![.](media/sshvm.png "open cmd")
+   ```
+   ssh adminfabmedical@contosotraders[DID].[Region].cloudapp.azure.com
+   ```
+   
+   >**Note**: Replace the DeploymentID and Region in the above command.
    
 1. Once the ssh is getting connected to the VM, please enter the VM password given below:
    
     * Password: <inject key="Build Agent VM Password" enableCopy="true" />
 
-   ![.](media/connectedvm.png "open cmd")
+   ![.](media/ex1-connecttolinuxvm.png "open cmd")
    
    >**Note**: Please note that while typing the password you wont be able to see it due to the security concerns.
     
@@ -36,17 +40,37 @@
     
 ### Task 2: Create Docker images and push to container registry
 
-In this task you will be building the docker image and will be pushing them to the ACR to later use in AKS
+In this task, you will be building the docker image and will be pushing them to the ACR to later use in AKS
 
-1. Run the below command to login to Azure.
+1. Run the below command to login to Azure, navigate to device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 
-    ``` 
-    az login
-    ```
+   ``` 
+   az login
+   ```
+    
+   ![](media/ex1-azlogincode.png)
+    
+1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
-1. Once you logged in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR
+   ![](media/ex1-codelogin.png)
+   
+1. On **Sign in to Microsoft Azure** tab you will see login screen, in that enter following email/username and then click on **Next**.
 
-1. Please make sure that you are in **labfiles** directory before running the next steos
+   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+
+1. Now enter the following password and click on **Sign in**.
+
+   * Password: <inject key="AzureAdUserPassword"></inject> 
+
+1. In a pop-up to confirm the sign in to Microsoft Azure CLI, click on **Continue**.
+
+   ![](media/ex1-logincontinue.png)
+
+1. Once you logged in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
+
+   ![](media/ex1-logincomplete.png)
+
+1. Please make sure that you are in **labfiles** directory before running the next steps.
 
     ```
     cd Cloud-Native-Application/labfiles/
