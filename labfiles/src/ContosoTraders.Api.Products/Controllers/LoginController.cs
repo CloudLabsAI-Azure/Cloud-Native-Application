@@ -1,14 +1,14 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using ContosoTraders.Api.Core.Constants;
 using Microsoft.IdentityModel.Tokens;
-using contosoTraders.Api.Core.Constants;
 
-namespace contosoTraders.Api.Products.Controllers;
+namespace ContosoTraders.Api.Products.Controllers;
 
 [Route("v1/[controller]")]
 [Produces("application/json")]
-public class LoginController : contosoTradersControllerBase
+public class LoginController : ContosoTradersControllerBase
 {
     private readonly IConfiguration config;
 
@@ -46,7 +46,7 @@ public class LoginController : contosoTradersControllerBase
 
         var token = new JwtSecurityToken(
             claims: claims,
-            issuer: config["Issuer"] ?? "contosoWebsite",
+            issuer: config["Issuer"] ?? "ContosoWebsite",
             expires: DateTime.Now.AddDays(expiresInDays),
             signingCredentials: creds);
 

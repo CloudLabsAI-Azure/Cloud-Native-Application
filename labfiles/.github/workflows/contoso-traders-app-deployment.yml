@@ -1,0 +1,154 @@
+name: contoso-traders-app-deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["master"]
+    paths:
+      [
+        "src/ContosoTraders.Api.Carts/**",
+        "src/ContosoTraders.Api.Core/**",
+        "src/ContosoTraders.Api.Images/**",
+        "src/ContosoTraders.Api.Products/**",
+        "src/ContosoTraders.Ui.Website/**",
+      ]
+
+env:
+  ACR_NAME: contosotradersacr
+  AKS_CLUSTER_NAME: contoso-traders-aks
+  AKS_NODES_RESOURCE_GROUP_NAME: contoso-traders-aks-nodes-rg
+  AKS_SECRET_NAME_ACR_PASSWORD: contoso-traders-acr-password
+  AKS_SECRET_NAME_KV_ENDPOINT: contoso-traders-kv-endpoint
+  CARTS_ACA_NAME: contoso-traders-carts
+  CARTS_ACR_REPOSITORY_NAME: contosotradersapicarts
+  CDN_PROFILE_NAME: contoso-traders-cdn
+  KV_NAME: contosotraderskv
+  PRODUCTS_ACR_REPOSITORY_NAME: contosotradersapiproducts
+  RESOURCE_GROUP_NAME: contoso-traders-rg
+  UI_CDN_ENDPOINT_NAME: contoso-traders-ui2
+  UI_STORAGE_ACCOUNT_NAME: contosotradersui2
+
+jobs:
+  deploy-carts-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: install dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: azure container registry login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io
+          username: ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: docker build
+        run: docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}:latest -t ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}:${{ github.sha }}
+      - name: docker push (to acr)
+        run: docker push --all-tags ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}
+      - name: azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SERVICEPRINCIPAL }}
+      - name: deploy to aca
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az config set extension.use_dynamic_install=yes_without_prompt
+            az containerapp update -n ${{ env.CARTS_ACA_NAME }}${{ secrets.ENVIRONMENT }} -g ${{ env.RESOURCE_GROUP_NAME }} --image ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}:${{ github.sha }}
+
+  deploy-products-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SERVICEPRINCIPAL }}
+      - name: azure container registry login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io
+          username: ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: docker build
+        run: docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.PRODUCTS_ACR_REPOSITORY_NAME }}:latest -t ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.PRODUCTS_ACR_REPOSITORY_NAME }}:${{ github.sha }}
+      - name: docker push (to acr)
+        run: docker push --all-tags ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.PRODUCTS_ACR_REPOSITORY_NAME }}
+      - name: set aks context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: ${{ env.RESOURCE_GROUP_NAME }}
+          cluster-name: ${{ env.AKS_CLUSTER_NAME }}${{ secrets.ENVIRONMENT }}
+      - name: setup kubectl
+        uses: azure/setup-kubectl@v3
+      - name: create kubernetes secret (acr password)
+        uses: Azure/k8s-create-secret@v3.0
+        with:
+          secret-name: ${{ env.AKS_SECRET_NAME_ACR_PASSWORD }}
+          container-registry-url: ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io
+          container-registry-username: ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}
+          container-registry-password: ${{ secrets.ACR_PASSWORD }}
+      - name: create kubernetes secret (kv endpoint)
+        uses: Azure/k8s-create-secret@v3.0
+        with:
+          secret-type: "generic"
+          secret-name: ${{ env.AKS_SECRET_NAME_KV_ENDPOINT }}
+          string-data: '{ "${{ env.AKS_SECRET_NAME_KV_ENDPOINT }}" : "https://${{ env.KV_NAME }}${{ secrets.ENVIRONMENT }}.vault.azure.net/" }'
+      - name: substitute tokens in manifest
+        uses: cschleiden/replace-tokens@v1.2
+        with:
+          tokenPrefix: "{"
+          tokenSuffix: "}"
+          files: ./src/ContosoTraders.Api.Products/ContosoTraders.Api.Products.yaml
+        env:
+          ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+      - name: lint manifest
+        uses: azure/k8s-lint@v1
+        with:
+          manifests: ./src/ContosoTraders.Api.Products/ContosoTraders.Api.Products.yaml
+      - name: deploy to aks
+        uses: Azure/k8s-deploy@v4
+        with:
+          manifests: ./src/ContosoTraders.Api.Products/ContosoTraders.Api.Products.yaml
+          images: ${{ env.ACR_NAME }}${{ secrets.ENVIRONMENT }}.azurecr.io/${{ env.PRODUCTS_ACR_REPOSITORY_NAME }}:${{ github.sha }}
+          imagepullsecrets: ${{ env.AKS_SECRET_NAME_ACR_PASSWORD }}
+          force: true
+      # hack: extract the endpoint url of the aks app from public IP address (AFAIK this can't be fetched from AZ AKS CLI or kubectl)
+      - name: get productsApiEndpoint
+        uses: azure/CLI@v1
+        id: get-productsApiEndpoint
+        with:
+          # note: There should be a whitespace between ')' and ']'. More details: https://stackoverflow.com/a/59154958
+          inlineScript: echo "productsApiEndpoint"="$(az network public-ip list --query "[?starts_with(name,'kubernetes-') ].dnsSettings.fqdn" -o tsv -g ${{ env.AKS_NODES_RESOURCE_GROUP_NAME }})" >> $GITHUB_OUTPUT
+      - name: set productsApiEndpoint in kv
+        uses: azure/CLI@v1
+        with:
+          inlineScript: az keyvault secret set --vault-name ${{ env.KV_NAME }}${{ secrets.ENVIRONMENT }} --name productsApiEndpoint --value ${{ steps.get-productsApiEndpoint.outputs.productsApiEndpoint }} --description "endpoint url (fqdn) of the products api"
+
+  deploy-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: npm install
+        run: npm install
+        working-directory: src/ContosoTraders.Ui.Website
+      - name: npm run build
+        run: npm run build
+        working-directory: src/ContosoTraders.Ui.Website
+      - name: azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SERVICEPRINCIPAL }}
+      - name: deploy to storage
+        uses: azure/CLI@v1
+        with:
+          inlineScript: az storage blob sync --account-name '${{ env.UI_STORAGE_ACCOUNT_NAME }}${{ secrets.ENVIRONMENT }}' -c '$web' -s 'src/ContosoTraders.Ui.Website/build'
+      - name: purge CDN endpoint
+        uses: azure/CLI@v1
+        with:
+          inlineScript: az cdn endpoint purge --no-wait --content-paths '/*' -n '${{ env.UI_CDN_ENDPOINT_NAME }}${{ secrets.ENVIRONMENT }}' -g '${{ env.RESOURCE_GROUP_NAME }}' --profile-name '${{ env.CDN_PROFILE_NAME }}${{ secrets.ENVIRONMENT }}'

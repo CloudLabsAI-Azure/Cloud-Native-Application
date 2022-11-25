@@ -12,9 +12,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
-namespace contosoTraders.Api.Profiles.Controllers;
+namespace ContosoTraders.Api.Profiles.Controllers;
 
-public class ProfilesController : contosoTradersControllerBase
+public class ProfilesController : ContosoTradersControllerBase
 {
     private readonly ILogger<ProfilesController> _logger;
 

@@ -22,11 +22,16 @@ param tenantId string = subscription().tenantId
 // aks
 param aksLinuxAdminUsername string // value supplied via parameters file
 
+param prefix string = 'contosotraders'
+
+param prefixHyphenated string = 'contoso-traders'
+
 // variables
 ////////////////////////////////////////////////////////////////////////////////
 
 // key vault
-var kvName = 'contosotraderskv${environment}'
+var kvName = '${prefix}kv${environment}'
+var kvSecretNameProductsApiEndpoint = 'productsApiEndpoint'
 var kvSecretNameProductsDbConnStr = 'productsDbConnectionString'
 var kvSecretNameProfilesDbConnStr = 'profilesDbConnectionString'
 var kvSecretNameStocksDbConnStr = 'stocksDbConnectionString'
@@ -38,87 +43,82 @@ var kvSecretNameCognitiveServicesAccountKey = 'cognitiveServicesAccountKey'
 var kvSecretNameAppInsightsConnStr = 'appInsightsConnectionString'
 
 // cosmos db (stocks db)
-var stocksDbAcctName = 'contoso-traders-stocks${environment}'
+var stocksDbAcctName = '${prefixHyphenated}-stocks${environment}'
 var stocksDbName = 'stocksdb'
 var stocksDbStocksContainerName = 'stocks'
 
 // cosmos db (carts db)
-var cartsDbAcctName = 'contoso-traders-carts${environment}'
+var cartsDbAcctName = '${prefixHyphenated}-carts${environment}'
 var cartsDbName = 'cartsdb'
 var cartsDbStocksContainerName = 'carts'
 
 // sql azure (products db)
-var productsDbServerName = 'contoso-traders-products${environment}'
+var productsDbServerName = '${prefixHyphenated}-products${environment}'
 var productsDbName = 'productsdb'
 var productsDbServerAdminLogin = 'localadmin'
 var productsDbServerAdminPassword = sqlPassword
 
 // sql azure (profiles db)
-var profilesDbServerName = 'contoso-traders-profiles${environment}'
+var profilesDbServerName = '${prefixHyphenated}-profiles${environment}'
 var profilesDbName = 'profilesdb'
 var profilesDbServerAdminLogin = 'localadmin'
 var profilesDbServerAdminPassword = sqlPassword
 
-// app service plan (products api)
-var productsApiAppSvcPlanName = 'contoso-traders-products${environment}'
-var productsApiAppSvcName = 'contoso-traders-products${environment}'
-var productsApiSettingNameKeyVaultEndpoint = 'KeyVaultEndpoint'
-
 // azure container app (carts api)
-var cartsApiAcaName = 'contoso-traders-carts${environment}'
-var cartsApiAcaEnvName = 'contosotradersacaenv${environment}'
+var cartsApiAcaName = '${prefixHyphenated}-carts${environment}'
+var cartsApiAcaEnvName = '${prefix}acaenv${environment}'
 var cartsApiAcaSecretAcrPassword = 'acr-password'
-var cartsApiAcaContainerDetailsName = 'contoso-traders-carts${environment}'
+var cartsApiAcaContainerDetailsName = '${prefixHyphenated}-carts${environment}'
 
 // storage account (product images)
-var productImagesStgAccName = 'contosotradersimg${environment}'
+var productImagesStgAccName = '${prefix}img${environment}'
 var productImagesProductDetailsContainerName = 'product-details'
 var productImagesProductListContainerName = 'product-list'
 
 // storage account (old website)
-var uiStgAccName = 'contosotradersui${environment}'
+var uiStgAccName = '${prefix}ui${environment}'
 
 // storage account (new website)
-var ui2StgAccName = 'contosotradersui2${environment}'
+var ui2StgAccName = '${prefix}ui2${environment}'
 
 // storage account (image classifier)
-var imageClassifierStgAccName = 'contosotradersic${environment}'
+var imageClassifierStgAccName = '${prefix}ic${environment}'
 var imageClassifierWebsiteUploadsContainerName = 'website-uploads'
 
 // cognitive service (image recognition)
-var cognitiveServiceName = 'contoso-traders-cs${environment}'
+var cognitiveServiceName = '${prefixHyphenated}-cs${environment}'
 
 // cdn
-var cdnProfileName = 'contoso-traders-cdn${environment}'
-var cdnImagesEndpointName = 'contoso-traders-images${environment}'
-var cdnUiEndpointName = 'contoso-traders-ui${environment}'
-var cdnUi2EndpointName = 'contoso-traders-ui2${environment}'
+var cdnProfileName = '${prefixHyphenated}-cdn${environment}'
+var cdnImagesEndpointName = '${prefixHyphenated}-images${environment}'
+var cdnUiEndpointName = '${prefixHyphenated}-ui${environment}'
+var cdnUi2EndpointName = '${prefixHyphenated}-ui2${environment}'
 
 // redis cache
-var redisCacheName = 'contoso-traders-cache${environment}'
+var redisCacheName = '${prefixHyphenated}-cache${environment}'
 
 // azure container registry
-var acrName = 'contosotradersacr${environment}'
-// var acrCartsApiRepositoryName = 'contosotradersapicarts' // @TODO: unused, probably remove later
+var acrName = '${prefix}acr${environment}'
+// var acrCartsApiRepositoryName = '${prefix}apicarts' // @TODO: unused, probably remove later
 
 // load testing service
-var loadTestSvcName = 'contoso-traders-loadtest${environment}'
+var loadTestSvcName = '${prefixHyphenated}-loadtest${environment}'
 
 // application insights
-var logAnalyticsWorkspaceName = 'contoso-traders-loganalytics${environment}'
-var appInsightsName = 'contoso-traders-ai${environment}'
+var logAnalyticsWorkspaceName = '${prefixHyphenated}-loganalytics${environment}'
+var appInsightsName = '${prefixHyphenated}-ai${environment}'
 
 // portal dashboard
-var portalDashboardName = 'contoso-traders-dashboard${environment}'
+var portalDashboardName = '${prefixHyphenated}-dashboard${environment}'
 
 // aks cluster
-var aksClusterName = 'contoso-traders-aks${environment}'
-var aksClusterDnsPrefix = 'contoso-traders-aks${environment}'
-var aksClusterNodeResourceGroup = 'contoso-traders-aks-nodes-rg'
+var aksClusterName = '${prefixHyphenated}-aks${environment}'
+var aksClusterDnsPrefix = '${prefixHyphenated}-aks${environment}'
+var aksClusterNodeResourceGroup = '${prefixHyphenated}-aks-nodes-rg-801077'
 
 // tags
 var resourceTags = {
-  Product: 'contoso-traders'
+  Product: prefixHyphenated
   Environment: 'testing'
 }
 
@@ -151,26 +151,6 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
           ]
         }
       }
-      {
-        objectId: '934b38ce-5fb9-4c3d-9dbe-b621ffecd34c'
-        tenantId: tenantId
-        permissions: {
-          secrets: [
-            'get'
-            'list'
-          ]
-        }
-      }
-      {
-        objectId: '55694e57-8acc-40cf-bad2-a8a7a37a905c'
-        tenantId: tenantId
-        permissions: {
-          secrets: [
-            'get'
-            'list'
-          ]
-        }
-      }
     ]
     sku: {
       family: 'A'
@@ -178,6 +158,16 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     }
     softDeleteRetentionInDays: 7
     tenantId: tenantId
+  }
+
+  // secret
+  resource kv_secretProductsApiEndpoint 'secrets' = {
+    name: kvSecretNameProductsApiEndpoint
+    tags: resourceTags
+    properties: {
+      contentType: 'endpoint url (fqdn) of the products api'
+      value: 'placeholder' // Note: This will be set via github worfklow
+    }
   }
 
   // secret 
@@ -216,7 +206,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     tags: resourceTags
     properties: {
       contentType: 'endpoint url (fqdn) of the carts api'
-      value: cartsapiaca.properties.latestRevisionFqdn
+      value: cartsapiaca.properties.configuration.ingress.fqdn
     }
   }
 
@@ -277,13 +267,6 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
       // @TODO: I was unable to figure out how to assign an access policy to the AKS cluster's agent pool's managed identity.
       // Hence, that specific access policy will be assigned from a github workflow (using AZ CLI).
       accessPolicies: [
-        {
-          tenantId: tenantId
-          objectId: productsapiappsvc.identity.principalId
-          permissions: {
-            secrets: [ 'get', 'list' ]
-          }
-        }
         {
           tenantId: tenantId
           objectId: cartsapiaca.identity.principalId
@@ -490,49 +473,6 @@ resource profilesdbsrv 'Microsoft.Sql/servers@2022-05-01-preview' = {
     properties: {
       endIpAddress: '0.0.0.0'
       startIpAddress: '0.0.0.0'
-    }
-  }
-}
-
-//
-// products api
-//
-
-// app service plan (linux)
-resource productsapiappsvcplan 'Microsoft.Web/serverfarms@2022-03-01' = {
-  name: productsApiAppSvcPlanName
-  location: resourceLocation
-  tags: resourceTags
-  sku: {
-    name: 'B1'
-  }
-  properties: {
-    reserved: true
-  }
-  kind: 'linux'
-}
-
-// app service
-resource productsapiappsvc 'Microsoft.Web/sites@2022-03-01' = {
-  name: productsApiAppSvcName
-  location: resourceLocation
-  tags: resourceTags
-  identity: {
-    type: 'SystemAssigned'
-  }
-  properties: {
-    clientAffinityEnabled: false
-    httpsOnly: true
-    serverFarmId: productsapiappsvcplan.id
-    siteConfig: {
-      linuxFxVersion: 'DOTNETCORE|6.0'
-      alwaysOn: true
-      appSettings: [
-        {
-          name: productsApiSettingNameKeyVaultEndpoint
-          value: kv.properties.vaultUri
-        }
-      ]
     }
   }
 }
@@ -1094,7 +1034,6 @@ resource cdnprofile_ui2endpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-pre
                 typeName: 'DeliveryRuleUrlRedirectActionParameters'
                 redirectType: 'Found'
                 destinationProtocol: 'Https'
-                customHostname: 'www.contosotraders.com'
               }
             }
           ]
@@ -1252,6 +1191,15 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-09-02-preview' = {
         ]
       }
     }
+    // Note: Commented out due to github issue #84: https://github.com/CloudLabs-AI/ContosoTraders/issues/84
+    // addonProfiles: {
+    //   omsagent: {
+    //     enabled: true
+    //     config: {
+    //       logAnalyticsWorkspaceResourceID: loganalyticsworkspace.id
+    //     }
+    //   }
+    // }
   }
 }
 

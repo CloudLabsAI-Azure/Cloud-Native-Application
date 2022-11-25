@@ -1,7 +1,7 @@
 ﻿global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
-global using contosoTraders.Api.Core;
-global using contosoTraders.Api.Core.Services.Interfaces;
-global using contosoTraders.Api.Core.Controllers;
-global using contosoTraders.Api.Core.Models.Implementations.Dto;
-global using contosoTraders.Api.Core.Requests.Definitions;
+global using ContosoTraders.Api.Core;
+global using ContosoTraders.Api.Core.Services.Interfaces;
+global using ContosoTraders.Api.Core.Controllers;
+global using ContosoTraders.Api.Core.Models.Implementations.Dto;
+global using ContosoTraders.Api.Core.Requests.Definitions;

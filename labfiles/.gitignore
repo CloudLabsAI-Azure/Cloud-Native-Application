@@ -333,8 +333,8 @@ ASALocalRun/
 Deploy/helm/__values/*
 !Deploy/helm/__values/readme.txt
 
-Source\Services\contoso.Traders.Rewards.Registration.Api\Properties\PublishProfiles\*.pubxml
-Source/Services/contoso.Traders.Cart.Api/.env
+Source\Services\Contoso.Traders.Rewards.Registration.Api\Properties\PublishProfiles\*.pubxml
+Source/Services/Contoso.Traders.Cart.Api/.env
 
 /Source/.env
 _gvalues.dev.yaml

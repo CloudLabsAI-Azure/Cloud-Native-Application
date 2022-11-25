@@ -6,22 +6,24 @@ targetScope = 'subscription'
 
 param rgLocation string = 'eastus'
 
+param prefixHyphenated string = 'contoso-traders'
+
 // variables
 ////////////////////////////////////////////////////////////////////////////////
 
 // rg for storage account, service bus, cosmos db & function app
-var rgName = 'contoso-traders-rg'
+var rgName = '${prefixHyphenated}-rg'
 
 // tags
 var rgTags = {
-  Product: 'contoso-traders'
+  Product: prefixHyphenated
   Environment: 'testing'
 }
 
 // resource groups
 ////////////////////////////////////////////////////////////////////////////////
 
-resource contosoTradersResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: rgName
   location: rgLocation
   tags: rgTags
@@ -30,4 +32,4 @@ resource contosoTradersResourceGroup 'Microsoft.Resources/resourceGroups@2021-04
 // outputs
 ////////////////////////////////////////////////////////////////////////////////
 
-output outputRgName string = contosoTradersResourceGroup.name
+output outputRgName string = rg.name

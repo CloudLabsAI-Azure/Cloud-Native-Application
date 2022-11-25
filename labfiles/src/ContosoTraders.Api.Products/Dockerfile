@@ -5,17 +5,17 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["contosoTraders.Api.Products/contosoTraders.Api.Products.csproj", "contosoTraders.Api.Products/"]
-COPY ["contosoTraders.Api.Core/contosoTraders.Api.Core.csproj", "contosoTraders.Api.Core/"]
-RUN dotnet restore "contosoTraders.Api.Products/contosoTraders.Api.Products.csproj"
+COPY ["ContosoTraders.Api.Products/ContosoTraders.Api.Products.csproj", "ContosoTraders.Api.Products/"]
+COPY ["ContosoTraders.Api.Core/ContosoTraders.Api.Core.csproj", "ContosoTraders.Api.Core/"]
+RUN dotnet restore "ContosoTraders.Api.Products/ContosoTraders.Api.Products.csproj"
 COPY . .
-WORKDIR "/src/contosoTraders.Api.Products"
-RUN dotnet build "contosoTraders.Api.Products.csproj" -c Release -o /app/build
+WORKDIR "/src/ContosoTraders.Api.Products"
+RUN dotnet build "ContosoTraders.Api.Products.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "contosoTraders.Api.Products.csproj" -c Release -o /app/publish
+RUN dotnet publish "ContosoTraders.Api.Products.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "contosoTraders.Api.Products.dll"]
+ENTRYPOINT ["dotnet", "ContosoTraders.Api.Products.dll"]

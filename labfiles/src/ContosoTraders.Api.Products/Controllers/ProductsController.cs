@@ -1,8 +1,8 @@
-﻿namespace contosoTraders.Api.Products.Controllers;
+﻿namespace ContosoTraders.Api.Products.Controllers;
 
 [Route("v1/[controller]")]
 [Produces("application/json")]
-public class ProductsController : contosoTradersControllerBase
+public class ProductsController : ContosoTradersControllerBase
 {
     public ProductsController(IMediator mediator) : base(mediator)
     {

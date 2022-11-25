@@ -1,7 +1,7 @@
-﻿namespace contosoTraders.Api.Carts.Controllers;
+﻿namespace ContosoTraders.Api.Carts.Controllers;
 
 [Route("v1/[controller]")]
-public class ShoppingCartController : contosoTradersControllerBase
+public class ShoppingCartController : ContosoTradersControllerBase
 {
     public ShoppingCartController(IMediator mediator) : base(mediator)
     {
