@@ -121,13 +121,12 @@ spec:
                   key: contoso-traders-kv-endpoint
           resources:
             requests:
-              cpu: 100m
+              cpu: 1000m
               memory: 128Mi
-            limits:
-              cpu: 250m
-              memory: 256Mi
           ports:
             - containerPort: 80
+              hostPort: 3001
+              protocol: TCP
             ```
    ![Selecting + Add to create a deployment.](media/newworksload.png "Selecing + Add to create a deployment")
 
