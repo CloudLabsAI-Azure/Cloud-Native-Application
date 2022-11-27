@@ -39,7 +39,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    kubectl get nodes
    ```
 
-   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/kubectlnodes.png "kubectl get nodes")
+   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/newnodes.png "kubectl get nodes")
    
    
 ## Task 2: Deploy a service using the Azure Portal
@@ -48,21 +48,21 @@ This task will gather the information you need about your Azure Kubernetes Servi
    
 1. Define a new Namespace for our API deployment. Select the Namespaces blade of the contoso-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Namespaces tab select + Create and then select **Create with YAML** button.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace2.png "Add a Namespace")
     
-1. In the **Add with YAML** screen, paste the following YAML and click on **Add**.
+1. In the **Add with YAML** screen, paste the following YAML and click on **Add**. Once added you should be able to see a new namespace with **contoso-traders** name.
 
     ```yaml
     apiVersion: v1
     kind: Namespace
     metadata:
       labels:
-        name: ingress-demo
-      name: ingress-demo
+        name: contoso-traders
+      name: contoso-traders
     ```   
 1. Define a Service for our API so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the contoso-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Services tab, select **+ Create** and choose **Create with YAML**. 
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/createservice.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/nwservice1.png "Add a Service")
 
 1. In the **Add with YAML** screen, paste the YAML below and choose **Add**. Make sure to update the SUFFIX value in the YAML file.
 
@@ -71,9 +71,10 @@ This task will gather the information you need about your Azure Kubernetes Servi
 kind: Service
 metadata:
   name: contoso-traders-products
+  namespace: contoso-traders
   annotations:
-    #@TODO: Replace 'test' in the next line with whatever your ENVIRONMENT github secret value is
-    service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-products[SUFFIX]
+    #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT github secret value is
+    service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
 spec:
   type: LoadBalancer
   ports:
@@ -82,11 +83,11 @@ spec:
     app: contoso-traders-products
     ``` 
     
-    ![Select workloads under Kubernetes resources.](media/addservice.png "Select workloads under Kubernetes resources") 
+   ![Select workloads under Kubernetes resources.](media/addservice.png "Select workloads under Kubernetes resources") 
 
 1. Select Workloads under the Kubernetes resources section in the left navigation. From the Workloads view, with Deployments selected (the default), then select + Add.
 
-    ![Select workloads under Kubernetes resources.](media/createworkload.png "Select workloads under Kubernetes resources")
+    ![Select workloads under Kubernetes resources.](media/wkrload.png "Select workloads under Kubernetes resources")
 
 1. In the Add with YAML screen that loads, paste the following YAML and update the [LOGINSERVER] placeholder with the name of the ACR instance.
 
@@ -95,6 +96,7 @@ spec:
 kind: Deployment
 metadata:
   name: contoso-traders-products
+    namespace: contoso-traders
 spec:
   replicas: 1
   selector:
@@ -127,21 +129,142 @@ spec:
           ports:
             - containerPort: 80
             ```
-   ![Selecting + Add to create a deployment.](media/deployment.png "Selecing + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/newworksload.png "Selecing + Add to create a deployment")
 
-1. Select Add to initiate the deployment. This can take a few minutes after which you will see the deployment listed.
+1. Select Add to initiate the deployment. This can take a few minutes after which you will see the deployment listed and after few seconds, it should be in running state.
 
-     ![Selecting + Add to create a deployment.](media/deployment.png "Selecing + Add to create a deployment")
+     ![Selecting + Add to create a deployment.](media/conrunning.png "Selecing + Add to create a deployment")
 
 
 ## Task3: Deploy a service using kubectl
-In this task, deploy the web service using kubectl
 
-1. In the same command prompt. Run the below command to create a yml file.
+In this task, you will deploy the web service using kubectl
 
-    ``` code web.deployment.yml
+1. Open a **new** Azure Cloud Shell console.
+
+2. Create a text file called `web.deployment.yml` in the `~/Fabmedical` folder using the Azure Cloud Shell
+   Editor.
+
+   ```bash
+   cd ~/Fabmedical
+   code web.deployment.yml
+   ```
+
+3. Copy and paste the following text into the editor:
+
+    > **Note**: Be sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
+
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: web
+      name: web
+      namespace: ingress-demo
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: web
+      strategy:
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 1
+        type: RollingUpdate
+      template:
+        metadata:
+          labels:
+            app: web
+          name: web
+        spec:
+          containers:
+          - image: [LOGINSERVER].azurecr.io/content-web
+            env:
+              - name: CONTENT_API_URL
+                value: http://api:3001
+            livenessProbe:
+              httpGet:
+                path: /
+                port: 3000
+              initialDelaySeconds: 30
+              periodSeconds: 20
+              timeoutSeconds: 10
+              failureThreshold: 3
+            imagePullPolicy: Always
+            name: web
+            ports:
+              - containerPort: 3000
+                hostPort: 80
+                protocol: TCP
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 128Mi
+            securityContext:
+              privileged: false
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
     ```
-3. Now the VS code should open for you, please paste the below content in the VS code and save it with CTRL+S.
-4. 
+
+4. Update the `[LOGINSERVER]` entry to match the name of your ACR Login Server.
+
+5. Select the **...** button and choose **Save**.
+
+   ![In this screenshot of an Azure Cloud Shell editor window, the ... button has been selected and the Save option is highlighted.](media/b4-image62.png "Save Azure Cloud Shell changes")
+
+6. Select the **...** button again and choose **Close Editor**.
+
+    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/b4-image63.png "Close Azure Cloud Editor")
+
+7. Create a text file called `web.service.yml` in the `~/Fabmedical` folder using the Azure Cloud Shell Editor.
+
+    ```bash
+    code web.service.yml
+    ```
+
+8. Copy and paste the following text into the editor:
+
+    > **Note**: Be sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
+
+    ```yaml
+    apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: web
+      name: web
+      namespace: ingress-demo
+    spec:
+      ports:
+        - name: web-traffic
+          port: 80
+          protocol: TCP
+          targetPort: 3000
+      selector:
+        app: web
+      sessionAffinity: None
+      type: LoadBalancer
+    ```
+
+9. Save changes and close the editor.
+
+10. Execute the commands below to deploy the application described by the YAML files. You will receive a message indicating the items `kubectl` has created a web deployment and a web service.
+
+    ```bash
+    cd ~/Fabmedical
+    kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
+    ```
+
+    ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/image93.png "kubectl create application")
+
+11. Return to the AKS blade in the Azure Portal. From the navigation menu, under **Kubernetes resources**, select the **Services and ingresses** view. You should be able to access the website via an external endpoint.
+
+    ![AKS services and ingresses shown with External IP highlighted](media/aks-resources-services-ingresses-view.png "AKS services and ingresses shown with External IP highlighted")
 
 
