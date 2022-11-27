@@ -78,9 +78,26 @@ In this task, you will resolve the failed API replicas. These failures occur due
    ![In the Workload view with the API deployment highlighted.](media/HS3.png "API deployment is now healthy")
    
 ### Task 3: Configure Horizontal Autoscaling for AKS pods
+   In this task you will be configuring the Horizontal Autoscaling for your AKS pods
+   
+1. Navigate back to your windows command shell
+
+3. Run the below command to configure the Horizontal autoscalling for you apiProducts pods
+
+   ``` kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10 ```
+   
+   ![In the Workload view with the API deployment highlighted.](media/HS11.png "API deployment is now healthy")
+   
+1. Now run the below command to check the status of the newly-made HorizontalPodAutoscaler
+
+   ``` kubectl get hpa -n contoso-traders ```
+   
+   ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
 ### Task 4: Configure Vertical Autoscaling for AKS pods
-
+   In this Task you will be configuring the Vertical autocaling for you AKS pods
+   
+1. 
 ### Task 3: Restart containers and test HA
 
 In this task, you will restart containers and validate that the restart does not impact the running service.
@@ -129,27 +146,23 @@ In this task, you will restart containers and validate that the restart does not
 
 In this task, you will setup Autoscale on Azure Cosmos DB.
 
-1. In the Azure Portal, navigate to the **fabmedical-<inject key="DeploymentID" />** Azure Cosmos DB Account.
-
-    ![](media_prod/cna33.png "View replica details")
+1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" />** Azure Cosmos DB Account.
 
 2. Select **Data Explorer**.
 
-    ![](media_prod/cna48.png "View replica details")
+    ![](media_prod/cosmosdata.png "View replica details")
 
-3. Within **Data Explorer**, expand the `contentdb` (1) database, then expand the `sessions` (2) collection.
+3. Within **Data Explorer**, expand the `productdb` (1) database.
 
-    ![](media_prod/cna35.png "View replica details")
+    ![](media_prod/scalecosmos.png "View replica details")
 
-4. Under the `sessions` collection, select **Scale & Settings**.
+4. Under the `productdb` collection, select **Scale**.
 
-    ![](media_prod/cna36.png "View replica details")
+    ![](media_prod/productdb.png "View replica details")
 
-5. On the **Scale & Settings**, select **Autoscale** (1) for the **Throughput** setting under **Scale** and click on **Save** (2).
+5. On the **Scale**, select **Autoscale** (1) for the **Throughput** setting under **Scale** and click on **Save** (2).
 
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media_prod/cna37.png "CosmosDB collection scale and settings")
-
-6. Perform the same task to enable **Autoscale** Throughput on the `speakers` collection.
+    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autoscale.png "CosmosDB collection scale and settings")
 
 ### Task 5: Test Cosmos DB Autoscale
 
@@ -169,11 +182,11 @@ In this task, you will run a performance test script that will test the Autoscal
 
     >**Note**: In your Cosmos DB account, you may see that the host endpoint uses `.mongo.cosmos.azure.com`, which is for version 3.6 of Mongo DB. The endpoint shown here is `.documents.azure.com`, which is for version 3.2 of Mongo DB. You can use either endpoint for the purposes of this Task. If you are curious about the new features added to version 3.6 (that do not affect the application in this lab), consult [this](https://devblogs.microsoft.com/cosmosdb/upgrade-your-server-version-from-3-2-to-3-6-for-azure-cosmos-db-api-for-mongodb/) post.
 
-4. Open the Azure Cloud Shell, connect to build agent vm using the **Command to Connect to Build Agent VM**, which is given on lab environment details page.
+4. Open the Command prompt, connect to build agent vm using the **Command to Connect to Build Agent VM**, which is given on lab environment details page.
 
 5. When asked for the password, enter **Build Agent VM Password** given below.
 
-   * Azure Password: **<inject key="Build Agent VM Password"></inject>**
+   * build agent Password: **<inject key="Build Agent VM Password"></inject>**
 
 6. On the **Build agent VM**, navigate to the `~/Fabmedical` directory.
 
