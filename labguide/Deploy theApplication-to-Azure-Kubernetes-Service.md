@@ -140,13 +140,13 @@ spec:
 
 In this task, you will deploy the web service using kubectl
 
-1. Open a **new** Azure Cloud Shell console.
+1. Open a **new** windows command prompt.
 
-2. Create a text file called `web.deployment.yml` in the `~/Fabmedical` folder using the Azure Cloud Shell
+2. Create a text file called `web.deployment.yml` in the `~/lab-files` folder using the windows command prompt using VS code.
    Editor.
 
    ```bash
-   cd ~/Fabmedical
+   cd C:/lab-files
    code web.deployment.yml
    ```
 
@@ -156,73 +156,69 @@ In this task, you will deploy the web service using kubectl
 
     ```yaml
     apiVersion: apps/v1
-    kind: Deployment
+kind: Deployment
+metadata:
+  labels:
+    app: contoso-traders-web
+  name: contoso-traders-web
+  namespace: contoso-traders
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contoso-traders-web
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
     metadata:
       labels:
-        app: web
-      name: web
-      namespace: ingress-demo
+        app: contoso-traders-web
+      name: contoso-traders-web
     spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          app: web
-      strategy:
-        rollingUpdate:
-          maxSurge: 1
-          maxUnavailable: 1
-        type: RollingUpdate
-      template:
-        metadata:
-          labels:
-            app: web
-          name: web
-        spec:
-          containers:
-          - image: [LOGINSERVER].azurecr.io/content-web
-            env:
-              - name: CONTENT_API_URL
-                value: http://api:3001
-            livenessProbe:
-              httpGet:
-                path: /
-                port: 3000
-              initialDelaySeconds: 30
-              periodSeconds: 20
-              timeoutSeconds: 10
-              failureThreshold: 3
-            imagePullPolicy: Always
-            name: web
-            ports:
-              - containerPort: 3000
-                hostPort: 80
-                protocol: TCP
-            resources:
-              requests:
-                cpu: 1000m
-                memory: 128Mi
-            securityContext:
-              privileged: false
-            terminationMessagePath: /dev/termination-log
-            terminationMessagePolicy: File
-          dnsPolicy: ClusterFirst
-          restartPolicy: Always
-          schedulerName: default-scheduler
-          securityContext: {}
-          terminationGracePeriodSeconds: 30
+      containers:
+      - image: contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest
+        env:
+          - name: contosotraderproduct
+            value: http://contoso-traders-products:3001
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 20
+          timeoutSeconds: 10
+          failureThreshold: 3
+        imagePullPolicy: Always
+        name: contoso-traders-web
+        ports:
+          - containerPort: 3000
+            hostPort: 80
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 128Mi
+        securityContext:
+          privileged: false
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
     ```
 
-4. Update the `[LOGINSERVER]` entry to match the name of your ACR Login Server.
+4. Update the `suffix` entry to match the name of your ACR Login Server.
 
-5. Select the **...** button and choose **Save**.
+    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/sfx.png "Close Azure Cloud Editor")
 
-   ![In this screenshot of an Azure Cloud Shell editor window, the ... button has been selected and the Save option is highlighted.](media/b4-image62.png "Save Azure Cloud Shell changes")
+5. Enter **CTRL+S** button to **Save**.
 
-6. Select the **...** button again and choose **Close Editor**.
-
-    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/b4-image63.png "Close Azure Cloud Editor")
-
-7. Create a text file called `web.service.yml` in the `~/Fabmedical` folder using the Azure Cloud Shell Editor.
+7. Now again, navigate back to window command shell and create a text file called `web.service.yml` in the `~/lab-files` folder using the Azure Cloud Shell Editor.
 
     ```bash
     code web.service.yml
@@ -234,37 +230,40 @@ In this task, you will deploy the web service using kubectl
 
     ```yaml
     apiVersion: v1
-    kind: Service
-    metadata:
-      labels:
-        app: web
-      name: web
-      namespace: ingress-demo
-    spec:
-      ports:
-        - name: web-traffic
-          port: 80
-          protocol: TCP
-          targetPort: 3000
-      selector:
-        app: web
-      sessionAffinity: None
-      type: LoadBalancer
+kind: Service
+metadata:
+  labels:
+    app: contoso-traders-web
+  name: contoso-traders-web
+  namespace: contoso-traders
+spec:
+  ports:
+    - name: web-traffic
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: contoso-traders-web
+  sessionAffinity: None
+  type: LoadBalancer
     ```
 
-9. Save changes and close the editor.
+9. Save changes with **CTRL+S** and close the VS Code.
+
+1. Login to Azure using the below commands.
+
+    ``` az login -u [username] -p [Password] ```
 
 10. Execute the commands below to deploy the application described by the YAML files. You will receive a message indicating the items `kubectl` has created a web deployment and a web service.
 
     ```bash
-    cd ~/Fabmedical
-    kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
+       kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
     ```
 
-    ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/image93.png "kubectl create application")
+    ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/kubectlcreated.png "kubectl create application")
 
 11. Return to the AKS blade in the Azure Portal. From the navigation menu, under **Kubernetes resources**, select the **Services and ingresses** view. You should be able to access the website via an external endpoint.
 
-    ![AKS services and ingresses shown with External IP highlighted](media/aks-resources-services-ingresses-view.png "AKS services and ingresses shown with External IP highlighted")
+    ![AKS services and ingresses shown with External IP highlighted](media/website.png "AKS services and ingresses shown with External IP highlighted")
 
-
+     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
