@@ -22,9 +22,9 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/HS3.png "View replica details")
 
-4. From the navigation menu, select **Workloads**. Note that the api Deployment has an alert and shows a pod count 1 of 2 instances (shown as `1/2`).
+4. From the navigation menu, select **Workloads**. Note that the contoso-traders-product  Deployment has an alert and shows a pod count 1 of 2 instances (shown as `1/2`).
 
-   ![In the Deployments box, the api service is highlighted with a grey timer icon at left and a pod count of 1/2 listed at right.](media/cna30.png "View api active pods")
+   ![In the Deployments box, the contoso-traders-product service is highlighted with a grey timer icon at left and a pod count of 1/2 listed at right.](media/cna30.png "View api active pods")
 
    > **Note**: If you receive an error about insufficient CPU that is OK. We will see how to deal with this in the next Task (Hint: you can use the **Insights** option in the AKS Azure Portal to review the **Node** status and view the Kubernetes event logs).
 
@@ -32,17 +32,17 @@ In this task, you will increase the number of instances for the API deployment i
 
    - One Deployment and one Replica Set are each healthy for the web service.
 
-   - The api Deployment and Replica Set are in a warning state.
+   - The contoso-traders-product Deployment and Replica Set are in a warning state.
 
    - Two pods are healthy in the 'default' namespace.
 
-5. Open the Contoso Traders web application. The application should still work without errors .
+5. Open the Contoso Traders web application. The application should still work without errors.
 
 ### Task 2: Resolve failed provisioning of replicas
 
 In this task, you will resolve the failed API replicas. These failures occur due to the clusters' inability to meet the requested resources.
 
-1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the **api** (2) deployment. 
+1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the ** contoso-traders-product ** (2) deployment. 
 
    ![In the Workload view with the API deployment highlighted.](media/cna28.png "API deployment is now healthy")
 
@@ -69,7 +69,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
           memory: 128Mi
       ```
 
-   Select **Review + save** and, when prompted, confirm the changes and select **Save**.
+   Select **Review + save** and, when prompted, confirm the changes, and select **Save**.
 
    ![In the edit YAML dialog, showing two changes required.](media/hostport.png "Modify deployment manifest")
 
@@ -82,20 +82,20 @@ In this task, you will resolve the failed API replicas. These failures occur due
    
 1. Navigate back to your windows command shell
 
-3. Run the below command to configure the Horizontal autoscalling for you apiProducts pods
+3. Run the below command to configure the Horizontal autoscaling for you apiProducts pods
 
    ``` kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10 ```
    
    ![In the Workload view with the API deployment highlighted.](media/HS11.png "API deployment is now healthy")
    
-1. Now run the below command to check the status of the newly-made HorizontalPodAutoscaler
+1. Now run the below command to check the status of the newly made HorizontalPodAutoscaler
 
    ``` kubectl get hpa -n contoso-traders ```
    
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
 ### Task 4: Configure Vertical Autoscaling for AKS pods
-   In this Task you will be configuring the Vertical autocaling for you AKS pods
+   In this Task you will be configuring the Vertical autoscaling for you AKS pods
    
 1. 
 ### Task 3: Restart containers and test HA
@@ -106,7 +106,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![The Stats page is visible in this screenshot of the Contoso Neuro web application.](media/image123.png "Contoso web task details")
    
-1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the **api** (2) deployment. 
+1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the **contoso-traders-product** (2) deployment. 
 
    ![In the Workload view with the API deployment highlighted.](media/cna28.png "API deployment is now healthy")
 
@@ -114,11 +114,11 @@ In this task, you will restart containers and validate that the restart does not
 
    ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/2021-03-26-17-30-28.png "API pod deployments")
 
-3. After a few moments you will find that the API deployment is now running 4 replicas successfully.
+3. After a few moments you will find that the contoso-traders-product deployment is now running 4 replicas successfully.
 
    ![Viewing replica set in the Azure Portal.](media/cna32.png "Viewing replica set in the Azure Portal")
 
-4. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors, but you will see the api host name change between the four api pod instances periodically. The task id and pid might also change between the four api pod instances.
+4. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors, but you will see the contoso-traders-product host name change between the four api pod instances periodically. The task id and pid might also change between the four api pod instances.
 
    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/image126.png "View web task hostname")
 
@@ -168,7 +168,7 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
-1. In the Azure Portal, navigate to the **fabmedical-<inject key="DeploymentID" />** Azure Cosmos DB Account.
+1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" />** Azure Cosmos DB Account.
 
    ![](media/cna33.png "View replica details")
 
@@ -188,10 +188,10 @@ In this task, you will run a performance test script that will test the Autoscal
 
    * build agent Password: **<inject key="Build Agent VM Password"></inject>**
 
-6. On the **Build agent VM**, navigate to the `~/Fabmedical` directory.
+6. On the **Build agent VM**, navigate to the `~/lab-files` directory.
 
     ```bash
-    cd ~/Fabmedical
+    cd ~/lab-files
     ```
 
 7. Run the following command to open the `perftest.sh` script for editing in Vim.
@@ -220,7 +220,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
    ![](media/cna33.png "View replica details")
 
-12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade, and locate the **Request Charge** graph.
+12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
     > **Note:** It may take 2 - 5 minutes for the activity on the Cosmos DB collection to appear in the activity log. Wait a couple minutes and then refresh the pane if the recent Request charge doesn't show up right now.
 
@@ -231,5 +231,4 @@ In this task, you will run a performance test script that will test the Autoscal
     >**Note**: In case if you don't see data on the graph. Please set the time range to last 1 hour.
 
 14. Click on the **Next** button present in the bottom-right corner of this lab guide.
-
 
