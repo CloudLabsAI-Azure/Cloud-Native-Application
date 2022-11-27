@@ -6,58 +6,16 @@ In the previous exercise, we introduced a restriction to the scale properties of
 
 Kubernetes services can discover the ports assigned to each pod, allowing you to run multiple instances of the pod on the same agent node --- something that is not possible when you configure a specific static port (such as 3001 for the API service).
 
-### Task 1: Update an external service to support dynamic discovery with a load balancer
-
-In this task, you will update the web service so that it supports dynamic discovery through an Azure load balancer.
-
-1. From AKS **Kubernetes resources** menu, select **Deployments** (2) under **Workloads** (1). From the list select the **web** (3) deployment.
-
-   ![](media_prod/cna39.png "Remove web container hostPort entry")
-
-2. Select **YAML** (1), then select the **JSON** tab (2).
-
-   ![](media_prod/cna40.png "Remove web container hostPort entry")
-
-3. First locate the replicas node and update the required count to `4`.
-
-4. Next, scroll to the web containers spec as shown in the screenshot. Remove the hostPort entry for the web container's port mapping.
-
-   ![This is a screenshot of the Edit a Deployment dialog box with various displayed information about spec, containers, ports, and env. The ports node, containerPort: 3001 and protocol: TCP are highlighted, along with the increase to 4 replicas.](media/update-web-deployment.png "Remove web container hostPort entry")
-
-5. Select **Review + save** and then confirm the change and **Save**.
-
-6. Check the status of the scale out by refreshing the web deployment's view. From the navigation menu, select **Pods** from under Workloads. Select the **web** pods. From this view, you should see an error like that shown in the following screenshot.
-
-   ![Deployments is selected under Workloads in the navigation menu on the left. On the right are the Details and New Replica Set boxes. The web deployment is highlighted in the New Replica Set box, indicating an error.](media/2021-03-26-18-23-38.png "View Pod deployment events")
-
-Like the API deployment, the web deployment used a fixed _hostPort_, and your ability to scale was limited by the number of available agent nodes. However, after resolving this issue for the web service by removing the _hostPort_ setting, the web deployment is still unable to scale past two pods due to CPU constraints. The deployment is requesting more CPU than the web application needs, so you will fix this constraint in the next task.
-
-### Task 2: Adjust CPU constraints to improve scale
-
-In this task, you will modify the CPU requirements for the web service so that it can scale out to more instances.
-
-1. Re-open the JSON view for the web deployment and then find the **cpu** resource requirements for the web container. Change this value to `125m`.
-
-   ![This is a screenshot of the Edit a Deployment dialog box with various displayed information about ports, env, and resources. The resources node, with cpu: 125m selected, is highlighted.](media/2021-03-26-18-24-06.png "Change cpu value")
-
-2. Select **Review + save**, confirm the change and then select **Save** to update the deployment.
-
-3. From the navigation menu, select **Replica Sets** under **Workloads**. From the view's Replica Sets list select the web replica set.
-
-4. When the deployment update completes, four web pods should be shown in running state.
-
-   ![Four web pods are listed in the Pods box, and all have green check marks and are listed as Running.](media/2021-03-26-18-24-35.png "Four pods running")
-
-### Task 3: Perform a rolling update
+### Task 1: Perform a rolling update
  
 In this task, you will edit the web application source code to add Application Insights and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change.
 
->**Note**: Please perform this task using a new Cloudshell which should be not connected to  build agent VM.
+>**Note**: Please perform this task using a new windows command prompt which should be not connected to  build agent VM but should be logged into azure.
 
-1. Execute this command in Azure Cloud Shell to retrieve the instrumentation key for the `content-web` Application Insights resource. Replace the `SUFFIX` placeholder with **<inject key="DeploymentID" />**.
+1. Execute this command in windows command prompt to retrieve the instrumentation key for the `content-web` Application Insights resource. Replace the `SUFFIX` placeholder with **<inject key="DeploymentID" />**.
 
    ```bash
-   az resource show -g fabmedical-[SUFFIX] -n content-web --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey -o tsv
+   az resource show -g contosotraders-[SUFFIX] -n content-web --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey -o tsv
    ```
 
    Copy this value. You will use it later.
@@ -67,10 +25,10 @@ In this task, you will edit the web application source code to add Application I
 2. From an Azure Cloud Shell terminal, Update your Fabmedical repository files by pulling the latest changes from the git repository and then updating deployment YAML files.
 
     ```bash
-    cd ~/Fabmedical/content-web
-    kubectl get deployment api -n ingress-demo -o=yaml > api.deployment.yaml
-    kubectl get deployment web -n ingress-demo -o=yaml > web.deployment.yaml
-    git pull
+    cd C:/lab-files
+    kubectl get deployment contoso-traders-products -n contoso-traders -o=yaml > contoso-traders-products.deployment.yaml
+    kubectl get deployment contoso-traders-web -n contoso-traders -o=yaml > contoso-traders-web.deployment.yaml
+    
     ```
 
     > **Note**: The calls to `kubectl` are necessary to fetch recent changes to the port and CPU resource configurations made in previous steps for the `web` and `api` deployments.
