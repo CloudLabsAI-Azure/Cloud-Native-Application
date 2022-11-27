@@ -1,26 +1,26 @@
-## Exercise 3: Scale the application and test HA
+## Exercise 4: Scale the application and test HA
 
 **Duration**: 40 minutes
 
-At this point, you have deployed a single instance of the web and API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front-end on the existing cluster.
+At this point, you have deployed a single instance of the web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front-end on the existing cluster.
 
 ### Task 1: Increase service instances from the Azure Portal
 
 In this task, you will increase the number of instances for the API deployment in the AKS Azure Portal blade. While it is deploying, you will observe the changing status.
 
-1. In the AKS blade in the Azure Portal select **Workloads** and then select the **API** deployment.
+1. In the AKS blade in the Azure Portal select **Workloads** and then select the **contoso-traders-products** deployment.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media_prod/cna28.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media_prod/HA1.png "Setting replicas to 2")
 
-2. Select **YAML** in the window that loads and scroll down until you find **replicas**. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
+2. Select **YAML** in the window that loads and scroll down until you find **replicas** under spec section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/2021-03-26-16-49-32.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA2.png "Setting replicas to 2")
 
    > **Note**: If the deployment completes quickly, you may not see the deployment Waiting states in the portal, as described in the following steps.
 
 3. In Workloads tab (1), From the Replica Set view (2) for the API, you will see it is now deploying and that there is one healthy instance and one pending instance (3).
 
-   ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media_prod/cna29.png "View replica details")
+   ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media_prod/HS3.png "View replica details")
 
 4. From the navigation menu, select **Workloads**. Note that the api Deployment has an alert and shows a pod count 1 of 2 instances (shown as `1/2`).
 
@@ -36,23 +36,7 @@ In this task, you will increase the number of instances for the API deployment i
 
    - Two pods are healthy in the 'default' namespace.
 
-5. Open the Contoso Neuro Conference web application. The application should still work without errors as you navigate to Speakers and Sessions pages.
-
-   - Navigate to the `/stats` page. You will see information about the hosting environment including:
-
-     - **webTaskId:** The task identifier for the web service instance.
-
-     - **taskId:** The task identifier for the API service instance.
-
-     - **hostName:** The hostname identifier for the API service instance.
-
-     - **pid:** The process id for the API service instance.
-
-     - **mem:** Some memory indicators returned from the API service instance.
-
-     - **counters:** Counters for the service itself, as returned by the API service instance.
-
-     - **uptime:** The up time for the API service.
+5. Open the Contoso Traders web application. The application should still work without errors .
 
 ### Task 2: Resolve failed provisioning of replicas
 
@@ -87,11 +71,15 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
    Select **Review + save** and, when prompted, confirm the changes and select **Save**.
 
-   ![In the edit YAML dialog, showing two changes required.](media/2021-03-26-16-56-28.png "Modify deployment manifest")
+   ![In the edit YAML dialog, showing two changes required.](media/hostport.png "Modify deployment manifest")
 
 1. Return to the **Workloads** main view on the AKS Azure Portal and you will now see that the Deployment is healthy with two Pods operating.
 
-   ![In the Workload view with the API deployment highlighted.](media/healthy-deployment.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/HS3.png "API deployment is now healthy")
+   
+### Task 3: Configure Horizontal Autoscaling for AKS pods
+
+### Task 4: Configure Vertical Autoscaling for AKS pods
 
 ### Task 3: Restart containers and test HA
 
