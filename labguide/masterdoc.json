@@ -1,0 +1,36 @@
+[
+    {
+      "Name": "Azure Immersion Workshop: Hybrid Cloud Solutions",
+      "Language": "English",
+      "BaseURL": "https://github.com/CloudLabsAI-Azure/Cloud-Native-Application",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/Deploy%20theApplication-to-Azure-Kubernetes-Service.md",
+          "Order": 1
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/migrate-mondodb-to-cosmosdb-using-dbmigration.md",
+          "Order": 2
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/create-Docker-images-for-application.md",
+          "Order": 3
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/04-Scale-the-application-and-Validate-HA.md",
+          "Order": 4
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/05-Updating-Apps%26Managing-Load-Balancing.md",
+          "Order": 5
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/Azure%2006-Monitor-for-Containers.md",
+          "Order": 6
+        }
+        
+      
+     
+      ]
+    }
+  ]
