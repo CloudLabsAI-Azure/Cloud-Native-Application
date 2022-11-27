@@ -10,7 +10,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 1. In the AKS blade in the Azure Portal select **Workloads** and then select the **contoso-traders-products** deployment.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media_prod/HA1.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA1.png "Setting replicas to 2")
 
 2. Select **YAML** in the window that loads and scroll down until you find **replicas** under spec section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
 
@@ -20,11 +20,11 @@ In this task, you will increase the number of instances for the API deployment i
 
 3. In Workloads tab (1), From the Replica Set view (2) for the API, you will see it is now deploying and that there is one healthy instance and one pending instance (3).
 
-   ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media_prod/HS3.png "View replica details")
+   ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/HS3.png "View replica details")
 
 4. From the navigation menu, select **Workloads**. Note that the api Deployment has an alert and shows a pod count 1 of 2 instances (shown as `1/2`).
 
-   ![In the Deployments box, the api service is highlighted with a grey timer icon at left and a pod count of 1/2 listed at right.](media_prod/cna30.png "View api active pods")
+   ![In the Deployments box, the api service is highlighted with a grey timer icon at left and a pod count of 1/2 listed at right.](media/cna30.png "View api active pods")
 
    > **Note**: If you receive an error about insufficient CPU that is OK. We will see how to deal with this in the next Task (Hint: you can use the **Insights** option in the AKS Azure Portal to review the **Node** status and view the Kubernetes event logs).
 
@@ -44,11 +44,11 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the **api** (2) deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media_prod/cna28.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/cna28.png "API deployment is now healthy")
 
 1. Select the **YAML** navigation item.
 
-   ![In the Workload view with the API deployment highlighted.](media_prod/cna31.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/cna31.png "API deployment is now healthy")
 
 1. In the **YAML** screen scroll down and change the following items:
 
@@ -108,7 +108,7 @@ In this task, you will restart containers and validate that the restart does not
    
 1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the **api** (2) deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media_prod/cna28.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/cna28.png "API deployment is now healthy")
 
 2. Select the **YAML** navigation item and increase the required replica count to `4`. Use the same process as Exercise 4, Task 1.
 
@@ -116,7 +116,7 @@ In this task, you will restart containers and validate that the restart does not
 
 3. After a few moments you will find that the API deployment is now running 4 replicas successfully.
 
-   ![Viewing replica set in the Azure Portal.](media_prod/cna32.png "Viewing replica set in the Azure Portal")
+   ![Viewing replica set in the Azure Portal.](media/cna32.png "Viewing replica set in the Azure Portal")
 
 4. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors, but you will see the api host name change between the four api pod instances periodically. The task id and pid might also change between the four api pod instances.
 
@@ -150,15 +150,15 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
 2. Select **Data Explorer**.
 
-    ![](media_prod/cosmosdata.png "View replica details")
+    ![](media/cosmosdata.png "View replica details")
 
 3. Within **Data Explorer**, expand the `productdb` (1) database.
 
-    ![](media_prod/scalecosmos.png "View replica details")
+    ![](media/scalecosmos.png "View replica details")
 
 4. Under the `productdb` collection, select **Scale**.
 
-    ![](media_prod/productdb.png "View replica details")
+    ![](media/productdb.png "View replica details")
 
 5. On the **Scale**, select **Autoscale** (1) for the **Throughput** setting under **Scale** and click on **Save** (2).
 
@@ -170,11 +170,11 @@ In this task, you will run a performance test script that will test the Autoscal
 
 1. In the Azure Portal, navigate to the **fabmedical-<inject key="DeploymentID" />** Azure Cosmos DB Account.
 
-   ![](media_prod/cna33.png "View replica details")
+   ![](media/cna33.png "View replica details")
 
 2. Select **Connection String** under **Settings**.
 
-   ![](media_prod/cna38.png "View replica details")
+   ![](media/cna38.png "View replica details")
 
 3. On the **Connection String** pane, copy the **HOST**, **USERNAME**, and **PRIMARY PASSWORD** values. Save these for use later.
 
@@ -218,7 +218,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 11. Once the script has completed, navigate back to the **Cosmos DB account** in the Azure portal.
 
-   ![](media_prod/cna33.png "View replica details")
+   ![](media/cna33.png "View replica details")
 
 12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade, and locate the **Request Charge** graph.
 
