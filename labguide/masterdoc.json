@@ -6,7 +6,7 @@
       "Files": [
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/Deploy%20theApplication-to-Azure-Kubernetes-Service.md",
-          "Order": 1
+          "Order": 3
         },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/migrate-mondodb-to-cosmosdb-using-dbmigration.md",
@@ -14,7 +14,7 @@
         },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/create-Docker-images-for-application.md",
-          "Order": 3
+          "Order": 1
         },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/04-Scale-the-application-and-Validate-HA.md",
