@@ -18,23 +18,9 @@ In this task, you will increase the number of instances for the API deployment i
 
    > **Note**: If the deployment completes quickly, you may not see the deployment Waiting states in the portal, as described in the following steps.
 
-3. In Workloads tab (1), From the Replica Set view (2) for the API, you will see it is now deploying and that there is one healthy instance and one pending instance (3).
+3. You will see it is now deploying and that there is one healthy instance and one pending instance (3).
 
    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/HS3.png "View replica details")
-
-4. From the navigation menu, select **Workloads**. Note that the contoso-traders-product  Deployment has an alert and shows a pod count 1 of 2 instances (shown as `1/2`).
-
-   ![In the Deployments box, the contoso-traders-product service is highlighted with a grey timer icon at left and a pod count of 1/2 listed at right.](media/cna30.png "View api active pods")
-
-   > **Note**: If you receive an error about insufficient CPU that is OK. We will see how to deal with this in the next Task (Hint: you can use the **Insights** option in the AKS Azure Portal to review the **Node** status and view the Kubernetes event logs).
-
-   At this point, here is a health overview of the environment:
-
-   - One Deployment and one Replica Set are each healthy for the web service.
-
-   - The contoso-traders-product Deployment and Replica Set are in a warning state.
-
-   - Two pods are healthy in the 'default' namespace.
 
 5. Open the Contoso Traders web application. The application should still work without errors.
 
@@ -44,11 +30,11 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the ** contoso-traders-product ** (2) deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/cna28.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/productwkrlos.png "API deployment is now healthy")
 
 1. Select the **YAML** navigation item.
 
-   ![In the Workload view with the API deployment highlighted.](media/cna31.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/yaml.png "API deployment is now healthy")
 
 1. In the **YAML** screen scroll down and change the following items:
 
@@ -84,7 +70,8 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 3. Run the below command to configure the Horizontal autoscaling for you apiProducts pods
 
-   ``` kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10 ```
+   ``` bash 
+   kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10 ```
    
    ![In the Workload view with the API deployment highlighted.](media/HS11.png "API deployment is now healthy")
    
@@ -98,7 +85,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
    In this Task you will be configuring the Vertical autoscaling for you AKS pods
    
 1. 
-### Task 3: Restart containers and test HA
+### Task 5: Restart containers and test HA
 
 In this task, you will restart containers and validate that the restart does not impact the running service.
 
@@ -142,7 +129,7 @@ In this task, you will restart containers and validate that the restart does not
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/2021-03-26-17-32-24.png "View replica details")
 
-### Task 4: Configure Cosmos DB Autoscale
+### Task 6: Configure Cosmos DB Autoscale
 
 In this task, you will setup Autoscale on Azure Cosmos DB.
 
@@ -164,7 +151,7 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
     ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autoscale.png "CosmosDB collection scale and settings")
 
-### Task 5: Test Cosmos DB Autoscale
+### Task 7: Test Cosmos DB Autoscale
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
