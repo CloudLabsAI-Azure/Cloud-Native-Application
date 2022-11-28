@@ -26,7 +26,7 @@
 
    ![](media/ex6-logsconfig.png)
    
-1. In the Configure Container Insights pane, select the **contosotraders<inject key="DeploymentID" enableCopy="false"/>** Log Analytics workspace from the drop-down and click on **Configure**.
+1. In the Configure Container Insights pane, select the **contosotraders-<inject key="DeploymentID" enableCopy="false"/>** Log Analytics workspace from the drop-down and click on **Configure**.
 
    ![](media/ex6-config-ci.png) 
     
