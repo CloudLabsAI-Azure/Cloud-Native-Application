@@ -1,4 +1,4 @@
-## Exercise 6: Azure Monitor for Containers 
+## Exercise 6: Azure Monitor for Containers-Optional
 
   In this task you will be configuring the Azure Monitor on your containers
   
