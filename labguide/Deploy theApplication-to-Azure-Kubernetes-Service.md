@@ -8,7 +8,10 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 > **Note**: The following tasks should be executed in command prompt.
 
-1. Open a new command prompt from desktop of your jump VM and login to azure with the below commands after updating the values in the command
+1. Open a new command prompt in your jump VM and login to azure with the below commands after updating the values in the command.
+
+   * Username: **<inject key="AzureAdUserEmail"></inject>**
+   * Password: **<inject key="AzureAdUserPassword"></inject>**
 
     ```
     az login -u [username] -p [Password]
@@ -27,7 +30,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account set --subscription {id}
    ```
 
-1. Configure kubectl to connect to the Kubernetes cluster:
+1. Configure kubectl to connect to the Kubernetes cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
    ```bash
    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group contosotraders-SUFFIX
