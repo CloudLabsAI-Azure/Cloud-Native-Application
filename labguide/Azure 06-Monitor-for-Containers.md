@@ -1,6 +1,6 @@
 ## Exercise 6: Azure Monitor for Containers-Optional
 
-  In this task you will be configuring the Azure Monitor on your containers
+  In this exercise, you will be configuring the Azure Monitor on your containers.
   
 ### Task 1: Deploy Azure Monitor for Containers 
   
@@ -9,8 +9,6 @@
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor.png "Add a Namespace")
     
 1. Select **Monitor** from the list. 
-
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor.png "Add a Namespace")
      
 1. On the Azure Monitor Overview page, Select Container from the left side menu.
      
