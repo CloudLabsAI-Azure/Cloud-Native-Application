@@ -1,6 +1,8 @@
 # Exercise 1: Create Docker Images for Application
-   Duration: 30 Minutes
+   **Duration**: 30 Minutes
 
+   In this exercise, you will be building the docker images and will be pushing the image to ACR using kubectl.
+   
 ### Task 1: Create Local Infrastructure using Linux VM
 
 1. Once you log into the VM, search for **cmd** **(1)** in the search bar and click on **Command Prompt** **(2)** to open.
