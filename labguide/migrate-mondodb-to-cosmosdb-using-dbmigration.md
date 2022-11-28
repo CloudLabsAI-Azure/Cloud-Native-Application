@@ -123,4 +123,3 @@ In this task, you will create a Migration project within Azure Database Migratio
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
 
 1. Click on the **Next** button present in the bottom-right corner of this lab guide to continue with the next exercise.
-
