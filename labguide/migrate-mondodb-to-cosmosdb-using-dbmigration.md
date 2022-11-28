@@ -6,24 +6,28 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
 ### Task 1: Seed the data into on-prem mongo db
 
 1. While connected to you Linux VM, you will be setting up the docker network in the next steps.
-    >Note: Mongodb is already installed and configured in the Linux VM
+    
+   >**Note**: Mongodb is already installed and configured in the Linux VM
 
 1.  Run the following command to create the docker network and and run it on port 27017
 
     ``` bash 
     docker network create contosotraders
-    docker container run --name mongo --net contosotraders -p 27017:27017 -d mongo:4.0 ```
+    docker container run --name mongo --net contosotraders -p 27017:27017 -d mongo:4.0
+    ```
 
 1. Now run the below command to run the seed the data into mongodb.
-    >Note: You need to make sure the you are running this command from this directory: **/Cloud-Native-Application/labfiles/src/developer/content-init$**
+    
+   >**Note**: You need to make sure the you are running this command from this directory: **/Cloud-Native-Application/labfiles/src/developer/content-init$**
 
     ``` bash 
     npm ci
-    nodejs server.js ```
+    nodejs server.js
+    ```
 
 1. After running this command you should be able to see the results as below.
 
-     ![](media/dataimported.png)
+   ![](media/dataimported.png)
 
 ### Task2: Migrate data to Azure Cosmos DB
 
@@ -48,7 +52,7 @@ On the Azure Database Migration Service blade, select **+ New Migration Project*
 
     ![The screenshot shows the New migration project pane with values entered.](media/offlineactvity.png  "New migration project pane")
 
-    > **Note:** The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
+    >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
 
 5. On the **MongoDB to Azure Database for CosmosDB Offline Migration Wizard** pane, enter the following values for the **Select source** tab:
 
