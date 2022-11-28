@@ -10,7 +10,7 @@
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor.png "Add a Namespace")
      
-1. On the Azure Monitor Overview page, Select Container from the left side menu.
+1. In the Overview page of Monitor, select **Container** from the left side menu.
      
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/container1.png "Add a Namespace")
      
