@@ -67,7 +67,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/nwservice1.png "Add a Service")
 
-1. In the **Add with YAML** pane, paste the YAML below and choose **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
+1. In the **Add with YAML** pane, paste the YAML below and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
 
     ```yaml
     apiVersion: v1
@@ -92,7 +92,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![Select workloads under Kubernetes resources.](media/wkrload.png "Select workloads under Kubernetes resources")
 
-1. In the Add with YAML screen that loads, paste the following YAML and update the [LOGINSERVER] placeholder with the name of the ACR instance.
+1. In the Add with YAML screen that loads, paste the following YAML and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
 
     ```YAML
     apiVersion: apps/v1
@@ -131,11 +131,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                     hostPort: 3001
                     protocol: TCP
     ```
-   ![Selecting + Add to create a deployment.](media/newworksload.png "Selecing + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecing + Add to create a deployment")
 
-1. Select Add to initiate the deployment. This can take a few minutes after which you will see the deployment listed and after few seconds, it should be in running state.
+1. This can take a few minutes after which you will see the deployment listed and it should be in running state.
 
-     ![Selecting + Add to create a deployment.](media/conrunning.png "Selecing + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecing + Add to create a deployment")
 
 
 ## Task 4: Deploy a service using kubectl
