@@ -33,7 +33,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 1. Configure kubectl to connect to the Kubernetes cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
    ```bash
-   az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group contosotraders-SUFFIX
+   az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
    ```
 
 1. Test that the configuration is correct by running a simple kubectl command to produce a list of nodes:
