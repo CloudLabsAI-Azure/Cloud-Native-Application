@@ -81,11 +81,8 @@ In this task, you will resolve the failed API replicas. These failures occur due
    
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
-### Task 4: Configure Vertical Autoscaling for AKS pods
-   In this Task you will be configuring the Vertical autoscaling for you AKS pods
-   
-1. 
-### Task 5: Restart containers and test HA
+
+### Task 4: Restart containers and test HA
 
 In this task, you will restart containers and validate that the restart does not impact the running service.
 
@@ -119,7 +116,7 @@ In this task, you will restart containers and validate that the restart does not
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
 
-### Task 6: Configure Cosmos DB Autoscale
+### Task 5: Configure Cosmos DB Autoscale
 
 In this task, you will setup Autoscale on Azure Cosmos DB.
 
@@ -141,7 +138,7 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
     ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autodbscale.png "CosmosDB collection scale and settings")
 
-### Task 7: Test Cosmos DB Autoscale
+### Task 6: Test Cosmos DB Autoscale
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
