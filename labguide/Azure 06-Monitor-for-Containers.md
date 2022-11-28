@@ -14,7 +14,7 @@
      
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/container1.png "Add a Namespace")
      
-1. On the Getting Started page, Click on **Onboard unmonitored clusters** to onboard your container and cluster
+1. On the Getting Started page, click on **Onboard unmonitored clusters** to onboard your container and cluster
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/onboardcluster.png "Add a Namespace")
     
@@ -52,4 +52,3 @@
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/enablealert.png "Add a Namespace")
      
 1. So far, we have enabled the alerts and you can see these alerts using Log analytic workspace and Azure Monitor, to read more about this:  https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview
-
