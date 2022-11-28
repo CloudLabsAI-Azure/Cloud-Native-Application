@@ -25,7 +25,7 @@ In this task, you will edit the web application source code to add Application I
 2. From an Azure Cloud Shell terminal, Update your Fabmedical repository files by pulling the latest changes from the git repository and then updating deployment YAML files.
 
     ```bash
-    cd C:/lab-files
+    cd C:\lab-files\Cloud-Native-Application\labfiles\src\ContosoTraders.Ui.Website\src\
     kubectl get deployment contoso-traders-products -n contoso-traders -o=yaml > contoso-traders-products.deployment.yaml
     kubectl get deployment contoso-traders-web -n contoso-traders -o=yaml > contoso-traders-web.deployment.yaml
     
@@ -39,9 +39,9 @@ In this task, you will edit the web application source code to add Application I
     npm install applicationinsights --force --save
     ```
 
-    > **Note**: Make sure to include the `--save` argument. Without this, a reference to the `applicationinsights` npm package will not get added to the `package.json` file of the `content-web` nodejs project, resulting in a deployment failure in later steps.
+    > **Note**: Make sure to include the `--save` argument. Without this, a reference to the `applicationinsights` npm package will not get added to the `package.json` file of the `content-web` nodejs project, resulting in a deployment failure in later steps. Also this can take upto 5 minutes to complete the installation.
 
-4. Edit the `app.js` file using  the command ```code app.js ``` Visual Studio Code remote and and add the following lines immediately after `express` is instantiated on line 6. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
+4. Edit the `app.js` file using  the command ```code configservice.js ``` Visual Studio Code remote and and add the following lines immediately after `B2cScopes` is instantiated on line 14. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
 
     ```javascript
     const appInsights = require("applicationinsights");
@@ -49,125 +49,37 @@ In this task, you will edit the web application source code to add Application I
     appInsights.start();
     ```
 
-    ![A screenshot of the code editor showing updates in context of the app.js file](media/hol-2019-10-02_12-33-29.png "AppInsights updates in app.js")
+    ![A screenshot of the code editor showing updates in context of the app.js file](media/npminsight.png "AppInsights updates in app.js")
 
 5. Save changes and close the editor.
 
-6. Paste the following commands to be in the right path. You'll be able to see `content-web.yml`, `content-api.yml`, and `content-init.yml` files.
-
-   ```bash
-   cd ~/Fabmedical
-   cd .github
-   cd workflows
-   ls
-   ```
-
-7. Add the following entries (uncomment) to the path triggers in the `content-web.yml` workflow file using `code content-web.yml` command in the `.github/workflows` folder.
-
-    ```yaml
-    on:
-      push:
-        branches:
-        - main
-        paths:
-        - 'content-web/**'
-        - web.deployment.yml  # These two file
-        - web.service.yml     # entries here
-    ```
-    
-    ![](media_prod/uncomment.png "content-web")
-
-8. Replace the commented task in the end of the file and add the following task in the `content-web.yml` workflow file in the `.github/workflows` folder. Be sure to indent the YAML formatting of the task to be consistent with the formatting of the existing file.
-
-   >**NOTE**: To make the file to be in proper indentation. You can use the following online YAML Vaildator `https://yamlchecker.com/`.
-
-   ```yaml 
-          - name: Deploy to AKS
-            uses: azure/k8s-deploy@v1
-            with:
-              manifests: |
-                web.deployment.yml
-                web.service.yml
-              images: |
-                ${{ env.containerRegistry }}/${{ env.imageRepository }}:${{ env.tag }}
-              imagepullsecrets: |
-                ingress-demo-secret
-              namespace: ingress-demo
-   ```
-   
-   ![](media_prod/contentadd.png "content-web")
-    
-9. Save the file and close the editor.
-
-   ![This is a screenshot of the code editor save and close actions.](media/Ex2-Task1.17.1.png "Code editor configuration update")
-
-10. Add the following entries (uncomment) to the path triggers in the `content-api.yml` workflow file using `code content-api.yml` command in the `.github/workflows` folder.
-
-    ```yaml
-    on:
-      push:
-        branches:
-        - main
-        paths:
-        - 'content-api/**'
-        - api.deployment.yml  # These two file
-        - api.service.yml     # entries here
-    ```
-    
-    ![](media_prod/uncommentapi.png "content-web")
-
-11. Replace the commented task in the end of the file and add the following task in the `content-api.yml` workflow file in the `.github/workflows` folder. Be sure to indent the YAML formatting of the task to be consistent with the formatting of the existing file.
-
-    >**NOTE**: To make the file to be in proper indentation. You can use the following online YAML Vaildator `https://yamlchecker.com/`.
-
-    ```yaml
-          - uses: Azure/aks-set-context@v1
-            with:
-              creds: '${{ secrets.AZURE_CREDENTIALS }}'
-              cluster-name: '${{ env.clusterName }}'
-              resource-group: '${{ env.resourceGroupName }}'
-              
-          - name: Deploy to AKS
-            uses: azure/k8s-deploy@v1
-            with:
-              manifests: |
-                api.deployment.yml
-                api.service.yml
-              images: |
-                ${{ env.containerRegistry }}/${{ env.imageRepository }}:${{ env.tag }}
-              imagepullsecrets: |
-                ingress-demo-secret
-              namespace: ingress-demo
-    ```   
-    ![](media_prod/contentapiadd.png "content-web")
-    
-12. Save the file and close the editor.
-
-    ![This is a screenshot of the code editor save and close actions.](media/Ex2-Task1.17.1.png "Code editor configuration update")
-
-13. Push these changes to your repository so that GitHub Actions CI will build and deploy a new Container image.
+13. Delete the existing deployment so that you can build and deploy a new Container image.
 
     ```bash
-    cd ~/Fabmedical
-    git add .
-    kubectl delete deployment web -n ingress-demo
-    kubectl delete deployment api -n ingress-demo
-    git commit -m "Added Application Insights"
-    git push
+    
+    kubectl delete deployment contoso-traders-web -n contoso-traders
     ```
-14. From **Actions** (1) tab in Github, Visit the `content-web` and `content-api` Actions (2) for your GitHub Fabmedical repository and observe the images being built and deployed into the Kubernetes cluster.
+14. Now run the below commands to create and pusht the new image to ACR and AKS. 
 
-    ![On the Stats page, the hostName is highlighted.](media_prod/cna41.png "On Stats page hostName is displayed")
+     ```bash
+     docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest ```
 
-15. While the pipelines runs, return the Azure Portal in the browser.
+    ```bash 
+       docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest ```
+    
+15. Once the build and push is completed, run the below command to create the workload in AKS.
 
-16. From the navigation menu, select **Replica Sets** (2) under **Workloads** (1). From this view, you will see a new replica set for the **web** (3), which may still be in the process of deploying (as shown below) or already fully deployed.
+    ```bash
+      cd C:/lab-files
+      kubectl create --save-config=true -f web.deployment.yml -f web.service.yml ```
 
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media_prod/cna43.png "Pod deployment is in progress")
+16. From the navigation menu, select **Replica Sets** (2) under **Workloads** (1). From this view, you will see a new replica set for the **contoso-traders-web** (3), which may still be in the process of deploying (as shown below) or already fully deployed.
 
-17. While the deployment is in progress, you can navigate to the web application and visit the stats page at `/stats`. Refresh the page as the rolling update executes. Observe that the service is running normally, and tasks continue to be load balanced.
+    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/rollingupdate.png "Pod deployment is in progress")
 
-    ![On the Stats page, the hostName is highlighted.](media/image145.png "On Stats page hostName is displayed")
+17. While the deployment is in progress, you can navigate to the web application and observe that the service is running normally, and tasks continue to be load balanced.
+
+    ![On the Stats page, the hostName is highlighted.](media/website3.png "On Stats page hostName is displayed")
 
 ### Task 2: Configure Kubernetes Ingress
 
