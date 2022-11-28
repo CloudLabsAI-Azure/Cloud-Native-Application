@@ -16,4 +16,4 @@ In this hands-on lab, you will assist with completing this POC with a subset of 
 
 
   
-  ![Selecting + Add to create a deployment.](media/MicrosoftTeams-image (4).png "Selecing + Add to create a deployment")
+  ![Selecting Add to create a deployment.](media/MicrosoftTeams-image%20(4).png "Selecing + Add to create a deployment")
