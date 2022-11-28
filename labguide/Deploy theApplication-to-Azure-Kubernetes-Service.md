@@ -158,16 +158,16 @@ In this task, you will deploy the web service using kubectl
 
     ```yaml
     apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: contoso-traders-web
-  name: contoso-traders-web
-  namespace: contoso-traders
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
+    kind: Deployment
+    metadata:
+      labels:
+        app: contoso-traders-web
+        name: contoso-traders-web
+        amespace: contoso-traders
+      spec:
+        replicas: 1
+      selector:
+      matchLabels:
       app: contoso-traders-web
   strategy:
     rollingUpdate:
@@ -236,8 +236,8 @@ spec:
     metadata:
       labels:
         app: contoso-traders-web
-        name: contoso-traders-web
-        namespace: contoso-traders
+      name: contoso-traders-web
+      namespace: contoso-traders
     spec:
       ports:
         - name: web-traffic
@@ -246,8 +246,8 @@ spec:
           targetPort: 3000
       selector:
         app: contoso-traders-web
-        sessionAffinity: None
-        type: LoadBalancer
+      sessionAffinity: None
+      type: LoadBalancer
 
     ```
 
