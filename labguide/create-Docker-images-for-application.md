@@ -2,9 +2,9 @@
 
 ### Task 1: Create Local Infrastructure using Linux VM
 
-1. Once you log into the VM, open **Command Prompt** from the desktop of your VM on the left side of the environment.
+1. Once you log into the VM, search for **cmd** **(1)** in the search bar and click on **Command Prompt** **(2)** to open.
 
-    ![](media/cmd.png "open cmd")
+   ![](media/latest-ex1-opencmd.png "open cmd")
     
 1. Run the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
    
