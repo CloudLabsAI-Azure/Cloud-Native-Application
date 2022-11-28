@@ -111,18 +111,17 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
 
-   ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media_prod/migratedata.png "Migration summary")
+   ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media/migratedata.png "Migration summary")
 
 1. The status for the migration activity will be shown. The migration will only take a few seconds to complete. Select **Refresh** to reload the status to ensure it shows a **Status** of **Complete**.
 
-   ![The screenshot shows the MigrateData activity showing the status has completed.](media_prod/completed.png "MigrateData activity completed")
+   ![The screenshot shows the MigrateData activity showing the status has completed.](media/completed.png "MigrateData activity completed")
 
 1. To verify the data was migrated, navigate to the **Cosmos DB Account** for the lab within the Azure Portal, then select the **Data Explorer**. You will see the `items` and `items` collections listed within the `contentdb` database, and you will be able to explore the documents within.
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrateditem.png "Cosmos DB is open")
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
-
 
 1. Click on the **Next** button present in the bottom-right corner of this lab guide to continue with the next exercise.
 
