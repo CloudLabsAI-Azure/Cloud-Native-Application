@@ -33,7 +33,8 @@ In this exercise you will be setting up the key vault secrets and later will be 
 1. Open a new windows command prompt and run the below command to create secret using kubectl. 
 
     ```sh
-    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=https://contosotraderkv801076.vault.azure.net/secrets/mongodbconnetion/2cdaa5e15d3d42f69cb686e8538647b3 ```
+    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=yourkeyvaultsecret] 
+    ```
     
 ### Task 2: Tunnel into the Azure Kubernetes Service cluster  
 
