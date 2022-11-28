@@ -1,4 +1,5 @@
 # Exercise 1: Create Docker Images for Application
+  Duration: 30 Minutes
 
 ### Task 1: Create Local Infrastructure using Linux VM
 
