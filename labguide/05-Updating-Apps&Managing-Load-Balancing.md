@@ -10,7 +10,7 @@ Kubernetes services can discover the ports assigned to each pod, allowing you to
  
 In this task, you will edit the web application source code to add Application Insights and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change.
 
->**Note**: Please perform this task using a new windows command prompt which should be not connected to  build agent VM but should be logged into azure.
+>**Note**: Please perform this task using a new windows command prompt which should be not connected to build agent VM but should be logged into azure.
 
 1. Execute this command in windows command prompt to retrieve the instrumentation key for the `content-web` Application Insights resource. Replace the `SUFFIX` placeholder with **<inject key="DeploymentID" />**.
 
@@ -22,7 +22,7 @@ In this task, you will edit the web application source code to add Application I
 
    >**Note**: If you have a blank result check that the command you issued refers to the right resource.
 
-2. From an Azure Cloud Shell terminal, Update your Fabmedical repository files by pulling the latest changes from the git repository and then updating deployment YAML files.
+2. From an windows command terminal, update your development files by pulling the latest changes from the azure and then updating deployment YAML files.
 
     ```bash
     cd C:\lab-files\Cloud-Native-Application\labfiles\src\ContosoTraders.Ui.Website\src\
@@ -39,9 +39,9 @@ In this task, you will edit the web application source code to add Application I
     npm install applicationinsights --force --save
     ```
 
-    > **Note**: Make sure to include the `--save` argument. Without this, a reference to the `applicationinsights` npm package will not get added to the `package.json` file of the `content-web` nodejs project, resulting in a deployment failure in later steps. Also this can take upto 5 minutes to complete the installation.
+    > **Note**: Make sure to include the `--save` argument. Without this, a reference to the `applicationinsights` npm package will not get added to the `package.json` file of the `content-web` nodejs project, resulting in a deployment failure in later steps. Also, this can take up to 5 minutes to complete the installation.
 
-4. Edit the `app.js` file using  the command ```code configservice.js ``` Visual Studio Code remote and and add the following lines immediately after `B2cScopes` is instantiated on line 14. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
+4. Edit the `app.js` file using the command ```code configservice.js ``` Visual Studio Code remote and and add the following lines immediately after `B2cScopes` is instantiated on line 14. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
 
     ```javascript
     const appInsights = require("applicationinsights");
@@ -124,7 +124,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 5. Within the Azure Cloud Shell, create a script to update the public DNS name for the external ingress IP.
 
    ```bash
-   cd ~/Fabmedical
    code update-ip.sh
    ```
    
