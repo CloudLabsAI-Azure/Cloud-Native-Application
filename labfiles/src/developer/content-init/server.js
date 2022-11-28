@@ -15,10 +15,10 @@ mongoose.connect(config.appSettings.db, { useNewUrlParser: true, useUnifiedTopol
 });
 
 require('./models/product.model');
-const product = mongoose.model('product');
+const Session = mongoose.model('product');
 
 require('./models/items.model');
-const items = mongoose.model('items');
+const Speaker = mongoose.model('items');
 
 async.waterfall([
     function (callback) {
