@@ -1,6 +1,6 @@
-host="fabmedical-[SUFFIX].documents.azure.com"
-username="fabmedical-[SUFFIX]"
-password="[PASSWORD]"
+host="contosotraders-SUFFIX.mongo.cosmos.azure.com"
+username="contosotraders-SUFFIX"
+password="PASSWORD"
 dbname="contentdb"
 port="10255"
 
