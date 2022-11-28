@@ -41,7 +41,7 @@
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in insight blade.
     
-  ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/logscontainer.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/logscontainer.png "Add a Namespace")
 
 1. Now to setup the alerts, Click on **Recommended alerts** on the same insight page.
 
@@ -52,3 +52,5 @@
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/enablealert.png "Add a Namespace")
      
 1. So far, we have enabled the alerts and you can see these alerts using Log analytic workspace and Azure Monitor, to read more about this:  https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview
+
+## Lab ends
