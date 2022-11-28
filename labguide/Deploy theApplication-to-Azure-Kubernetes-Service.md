@@ -144,11 +144,11 @@ In this task, you will deploy the web service using kubectl
 
 1. Open a **new** windows command prompt.
 
-1. Create a text file called `web.deployment.yml` in the `~/lab-files` folder using the windows command prompt using VS code.
+1. Create a text file called `web.deployment.yml` in the `~/LABFILES` folder using the windows command prompt using VS code.
    Editor.
 
    ```bash
-   cd C:/lab-files
+   cd C:/LABFILES
    code web.deployment.yml
    ```
 
