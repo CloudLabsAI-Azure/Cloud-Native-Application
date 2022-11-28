@@ -232,22 +232,23 @@ spec:
 
     ```yaml
     apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: contoso-traders-web
-  name: contoso-traders-web
-  namespace: contoso-traders
-spec:
-  ports:
-    - name: web-traffic
-      port: 80
-      protocol: TCP
-      targetPort: 3000
-  selector:
-    app: contoso-traders-web
-  sessionAffinity: None
-  type: LoadBalancer
+    kind: Service
+    metadata:
+      labels:
+        app: contoso-traders-web
+        name: contoso-traders-web
+        namespace: contoso-traders
+    spec:
+      ports:
+        - name: web-traffic
+          port: 80
+          protocol: TCP
+          targetPort: 3000
+      selector:
+        app: contoso-traders-web
+        sessionAffinity: None
+        type: LoadBalancer
+
     ```
 
 1. Save changes with **CTRL+S** and close the VS Code.
