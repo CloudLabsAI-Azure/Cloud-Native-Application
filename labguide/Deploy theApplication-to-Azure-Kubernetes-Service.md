@@ -162,57 +162,57 @@ In this task, you will deploy the web service using kubectl
     metadata:
       labels:
         app: contoso-traders-web
-        name: contoso-traders-web
-        amespace: contoso-traders
-      spec:
-        replicas: 1
-      selector:
-      matchLabels:
-      app: contoso-traders-web
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: contoso-traders-web
       name: contoso-traders-web
+      namespace: contoso-traders
     spec:
-      containers:
-      - image: contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest
-        env:
-          - name: contosotraderproduct
-            value: http://contoso-traders-products:3001
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 3000
-          initialDelaySeconds: 30
-          periodSeconds: 20
-          timeoutSeconds: 10
-          failureThreshold: 3
-        imagePullPolicy: Always
-        name: contoso-traders-web
-        ports:
-          - containerPort: 3000
-            hostPort: 80
-            protocol: TCP
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 128Mi
-        securityContext:
-          privileged: false
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
-    ```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: contoso-traders-web
+      strategy:
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 1
+        type: RollingUpdate
+      template:
+        metadata:
+          labels:
+            app: contoso-traders-web
+          name: contoso-traders-web
+        spec:
+          containers:
+          - image: contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest
+            env:
+              - name: contosotraderproduct
+                value: http://contoso-traders-products:3001
+            livenessProbe:
+              httpGet:
+                path: /
+                port: 3000
+              initialDelaySeconds: 30
+              periodSeconds: 20
+              timeoutSeconds: 10
+              failureThreshold: 3
+            imagePullPolicy: Always
+            name: contoso-traders-web
+            ports:
+              - containerPort: 3000
+                hostPort: 80
+                protocol: TCP
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 128Mi
+            securityContext:
+              privileged: false
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
+   ```
 
 1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
 
