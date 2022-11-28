@@ -1,6 +1,6 @@
 ## Exercise 5: Updating Apps & Managing Load Balancing
 
-**Duration**: 120 minutes
+**Duration**: 40 minutes
 
 In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the api deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
 
