@@ -23,6 +23,18 @@ import {
 import "./i18n";
 import "./main.scss";
 
+const contentApiUrl = process.env.CONTENT_API_URL || "http://localhost:3001";
+app.get('/api/stats', function (req, res) {
+  stats(function (err, result) {
+    if (!err) {
+      result.webTaskId = process.pid;
+      res.send(result);
+    } else {
+      res.send(err);
+    }
+  });
+});
+
 
 class App extends Component {
   constructor() {
