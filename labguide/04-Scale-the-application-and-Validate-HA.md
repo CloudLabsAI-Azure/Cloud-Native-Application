@@ -200,5 +200,5 @@ In this task, you will run a performance test script that will test the Autoscal
     
     >**Note**: In case if you don't see data on the graph. Please set the time range to last 1 hour.
 
-14. Click on the **Next** button present in the bottom-right corner of this lab guide.
+14. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
 
