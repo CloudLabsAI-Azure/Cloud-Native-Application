@@ -18,7 +18,7 @@
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/onboardcluster.png "Add a Namespace")
     
-1. You will be redirected to the **Unmonitored Cluster** section, here click on you AKS cluster to onboard it Azure Monitor.
+1. You will be redirected to the **Unmonitored Cluster** section, here click on your AKS cluster to onboard it to Azure Monitor.
 
 1. Once you click on the Cluster, you will be redirected to logs section on AKS.
     
