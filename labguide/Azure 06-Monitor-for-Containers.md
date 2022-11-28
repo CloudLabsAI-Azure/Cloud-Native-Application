@@ -20,12 +20,20 @@
     
 1. You will be redirected to the **Unmonitored Cluster** section, here click on your AKS cluster to onboard it to Azure Monitor.
 
-1. Once you click on the Cluster, you will be redirected to logs section on AKS.
+   ![](media/ex6-monitoraks.png)
+
+1. Once you click on the Cluster, you will be redirected to AKS resource. Select **Logs** under Monitoring from the left-menu and click on **Configure** to Configure Azure Monitor container insights.
+
+   ![](media/ex6-logsconfig.png)
+   
+1. In the Configure Container Insights pane, select the **contosotraders<inject key="DeploymentID" enableCopy="false"/>** Log Analytics workspace from the drop-down and click on **Configure**.
+
+   ![](media/ex6-config-ci.png) 
     
 
 ### Task 2: Review Azure Monitor metrics & Setup Alerts 
 
-1. Once you onboarded the cluster to Azure monitor, To review the logs, Navigate to **Monitored clusters** section and select you AKS.
+1. Once you onboarded the cluster to Azure monitor. To review the logs, navigate to **Monitored clusters** section and select your AKS.
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitoredclster.png "Add a Namespace")
    
