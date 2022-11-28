@@ -5,22 +5,22 @@
 ### Task 1: Deploy Azure Monitor for Containers 
   
 1. Navigate back to Azure Portal in the browser and search for **Monitor**. 
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor.png "Add a Namespace")
     
-1. Select **Monitor** from the list. 
+1. Select **Monitor** from the list.
+
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor.png "Add a Namespace")
      
 1. On the Azure Monitor Overview page, Select Container from the left side menu.
      
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/container1.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/container1.png "Add a Namespace")
      
 1. On the Getting Started page, Click on **Onboard unmonitored clusters** to onboard your container and cluster
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/onboardcluster.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/onboardcluster.png "Add a Namespace")
     
 1. You will be redirected to the **Unmonitored Cluster** section, here click on you AKS cluster to onboard it Azure Monitor.
 
-1. Once you click on the Cluster, you will be redirected to logs section on AKS
+1. Once you click on the Cluster, you will be redirected to logs section on AKS.
     
 
 ### Task 2: Review Azure Monitor metrics & Setup Alerts 
