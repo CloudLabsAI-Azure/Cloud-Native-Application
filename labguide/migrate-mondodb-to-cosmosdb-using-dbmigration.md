@@ -55,7 +55,7 @@ In this task, you will create a Migration project within Azure Database Migratio
     - Target server type: `CosmosDB (MongoDB API)`
     - Choose type of activity: `Offline data migration`
 
-    ![The screenshot shows the New migration project pane with values entered.](media/offlineactvity.png  "New migration project pane")
+    ![The screenshot shows the New migration project pane with values entered.](media/ex2-newmigrationproject.png  "New migration project pane")
 
     >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
 
