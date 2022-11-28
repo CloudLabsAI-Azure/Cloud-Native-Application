@@ -173,7 +173,7 @@ In this task, you will edit the web application source code to add Application I
 
 This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.
 
-1. Run the following command from an Azure Cloud Shell terminal to add the Nginx stable Helm repository:
+1. Run the following command from an windows command terminal to add the Nginx stable Helm repository:
 
     ```bash
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -194,12 +194,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 3. Install the Ingress Controller resource to handle ingress requests as they come in. The Ingress Controller will receive a public IP of its own on the Azure Load Balancer and handle requests for multiple services over ports 80 and 443.
 
    ```bash
-   helm install nginx-ingress ingress-nginx/ingress-nginx \
-    --namespace ingress-demo \
-    --set controller.replicaCount=2 \
-    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
+   helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=2 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
    ```
 
 4. In the Azure Portal under **Services and ingresses**, copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
@@ -209,10 +204,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
     >
     > ```bash
-    > kubectl get svc --namespace ingress-demo
+    > kubectl get svc --namespace contoso-traders
     > ```
     >
-   ![A screenshot of Azure Cloud Shell showing the command output.](media/Ex4-Task5.5a.png "View the ingress controller LoadBalancer")
+   ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
 
 5. Within the Azure Cloud Shell, create a script to update the public DNS name for the external ingress IP.
 
@@ -234,10 +229,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    IP="[INGRESS PUBLIC IP]"
 
    # Resource Group that contains AKS Node Pool
-   KUBERNETES_NODE_RG="MC_fabmedical-[SUFFIX]_fabmedical-[SUFFIX]_[REGION]"
+   KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
    # Name to associate with public IP address
-   DNSNAME="fabmedical-[SUFFIX]-ingress"
+   DNSNAME="contosotrader-[SUFFIX]-ingress"
 
    # Get the resource-id of the public ip
    PUBLICIPID=$(az network public-ip list --resource-group $KUBERNETES_NODE_RG --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
@@ -245,9 +240,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    # Update public ip address with dns name
    az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
    ```
-
-   ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/cloud-native-update-ip.png "Update the IP and SUFFIX values")
-
 6. Save changes and close the editor.
 
 7. Run the update script.
@@ -255,13 +247,16 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```bash
    bash ./update-ip.sh
    ```
+   
+    ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/updateip.png "Update the IP and SUFFIX values")
+
 
 8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** in the URL before browsing it.
 
     > **Note**: It is normal to receive a 404 message at this time.
 
     ```text
-    http://fabmedical-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
+    http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
     ```
 
    ![A screenshot of the fabmedical browser URL.](media/Ex4-Task5.9.png "fabmedical browser URL")
@@ -282,10 +277,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
-10. Create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates.
+10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates run the below command in windows prompt.
 
     ```bash
-    cd ~/Fabmedical
+    cd C:\lab-files
     code clusterissuer.yml
     ```
 
@@ -299,7 +294,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
         # The ACME server URL
         server: https://acme-v02.api.letsencrypt.org/directory
         # Email address used for ACME registration
-        email: user@fabmedical.com
+        email: user@contosotraders.com
         # Name of a secret used to store the ACME account private key
         privateKeySecretRef:
           name: letsencrypt-prod
@@ -329,7 +324,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     > If a certificate is already available, skip to step 16.
 
     ```bash
-    cd ~/Fabmedical
     code certificate.yml
     ```
 
@@ -374,7 +368,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 16. Now you can create an ingress resource for the content applications.
 
     ```bash
-    cd ~/Fabmedical
     code content.ingress.yml
     ```
 
@@ -384,8 +377,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
-      name: content-ingress
-      namespace: ingress-demo
+      name: contoso-ingress
+      namespace: contoso-traders
       annotations:
         kubernetes.io/ingress.class: nginx
         nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -395,10 +388,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     spec:
       tls:
       - hosts:
-          - fabmedical-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
+          - contosotrader-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
         secretName: tls-secret
       rules:
-      - host: fabmedical-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
+      - host: contosotrader-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
         http:
           paths:
           - path: /(.*)
@@ -425,19 +418,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kubectl create --save-config=true -f content.ingress.yml
     ```
 
-19. Refresh the ingress endpoint in your browser. You should be able to visit the speakers and sessions pages and see all the content.
+19. Refresh the ingress endpoint in your browser. You should be able to visit the website and see all the content.
 
-20. Visit the API directly, by navigating to `/content-api/sessions` at the ingress endpoint.
-
-    ![A screenshot showing the output of the sessions content in the browser.](media_prod/finalop.png "Content api sessions")
-       >**Note**: If the URL doesn't work or you don't receive 404 error. Please run the below mentioned command and try accessing the URL again.
-
-    ```bash
-    helm upgrade nginx-ingress ingress-nginx/ingress-nginx \
-     --namespace ingress-demo \
-     --set controller.service.externalTrafficPolicy=Local
-    ```    
-
-21. Test TLS termination by visiting both services again using `https`.
+21. Test TLS termination by visiting services again using `https`.
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from letsencrypt.
