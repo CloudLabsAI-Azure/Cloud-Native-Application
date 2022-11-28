@@ -72,7 +72,7 @@ In this task, you will be building the docker image and will be pushing them to 
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the DID value.
+1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the given DeploymentID <inject key="DeploymentID" enableCopy="true"/> value.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
@@ -80,7 +80,7 @@ In this task, you will be building the docker image and will be pushing them to 
     
     ![](media/ex1-apicarts.png)
     
-1. Repeat the steps to create the contosotraders-Products docker image with the below command.
+1. Repeat the steps to create the contosotraders-Products docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID <inject key="DeploymentID" enableCopy="true"/> value in the below command.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
@@ -88,7 +88,7 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-apiproducts.png)
 
-1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command.
+1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID <inject key="DeploymentID" enableCopy="true"/> value in the below command.
 
     ```
     cd src/ContosoTraders.Ui.Website
