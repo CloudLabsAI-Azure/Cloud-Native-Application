@@ -37,9 +37,10 @@
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitoredclster.png "Add a Namespace")
    
-1. You will be redirect to the Insight seciton in you AKS resource blade and you should be able to see some logs.
+1. You will be redirect to the Insight section in you AKS resource blade and you should be able to see some logs.
 
-    > Note: The Azure Monitor can take upto 15 minutes to populate the data in insight blade
+   > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in insight blade.
+    
   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/logscontainer.png "Add a Namespace")
 
 1. Now to setup the alerts, Click on **Recommended alerts** on the same insight page.
