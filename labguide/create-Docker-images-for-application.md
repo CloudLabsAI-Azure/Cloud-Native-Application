@@ -6,13 +6,9 @@
 
     ![](media/cmd.png "open cmd")
     
-1. Run the below given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
+1. Run the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
    
-   ```
-   ssh adminfabmedical@contosotraders[DID].[Region].cloudapp.azure.com
-   ```
-   
-   >**Note**: Replace the DeploymentID and Region in the above command.
+   >**Note**: In the command prompt, type **yes** and press **Enter** for `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
    
 1. Once the ssh is getting connected to the VM, please enter the VM password given below:
    
