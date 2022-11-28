@@ -1,7 +1,7 @@
 ## Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
-  Duration: 30 Minutes
+  **Duration**: 30 Minutes
    
-In this exercise you will be migrating you on-prem mongodb database to Azure cosmos db using Azure database migration.
+In this exercise, you will be migrating you on-prem mongodb database to Azure cosmos db using Azure database migration.
 
 ### Task 1: Seed the data into on-prem mongo db
 
