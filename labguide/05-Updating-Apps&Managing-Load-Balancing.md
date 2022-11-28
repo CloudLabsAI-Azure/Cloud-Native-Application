@@ -335,3 +335,5 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 21. Test TLS termination by visiting services again using `https`.
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from letsencrypt.
+
+1. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
