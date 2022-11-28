@@ -1,5 +1,5 @@
 ## Exercise 6: Azure Monitor for Containers-Optional
-
+   **Duration**: 20 Minutes
   In this exercise, you will be configuring the Azure Monitor on your containers.
   
 ### Task 1: Deploy Azure Monitor for Containers 
