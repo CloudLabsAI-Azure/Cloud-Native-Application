@@ -130,7 +130,7 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
     ![](media/expnddb.png "View replica details")
 
-4. Under the `contentdb`  database, expand **Items** collection, select **Scale & Settings**.
+4. Under the `contentdb` database, expand **Items** collection, select **Scale & Settings**.
 
     ![](media/scaleitem.png "View replica details")
 
@@ -161,7 +161,7 @@ In this task, you will run a performance test script that will test the Autoscal
 6. On the **Build agent VM**, navigate to the `~/lab-files` directory.
 
     ```bash
-    cd ~/labfiles
+    cd ~/lab-files
     ```
 
 7. Run the following command to open the `perftest.sh` script for editing in Vim.
