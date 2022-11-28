@@ -11,7 +11,7 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
 
 1.  Run the following command to create the docker network and and run it on port 27017
 
-    ``` bash 
+    ```bash 
     docker network create contosotraders
     docker container run --name mongo --net contosotraders -p 27017:27017 -d mongo:4.0
     ```
@@ -20,7 +20,7 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
     
    >**Note**: You need to make sure the you are running this command from this directory: **/Cloud-Native-Application/labfiles/src/developer/content-init$**
 
-    ``` bash 
+    ```bash 
     npm ci
     nodejs server.js
     ```
@@ -86,37 +86,37 @@ On the Azure Database Migration Service blade, select **+ New Migration Project*
 
     - Select Cosmos DB name: Select the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB instance.
 
-    ![The Select target tab with values selected.](media/targetmongo.png "MongoDB to Azure Database for CosmosDB - Select target")
+   ![The Select target tab with values selected.](media/targetmongo.png "MongoDB to Azure Database for CosmosDB - Select target")
 
-    Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
+   Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
 1. Select **Next: Database setting >>**.
 
 1. On the **Database setting** tab, select the `contentdb` **Source Database** so this database from MongoDB will be migrated to Azure Cosmos DB.
 
-    ![The screenshot shows the Database setting tab with the contentdb source database selected.](media/contentdb.png "Database setting tab")
+   ![The screenshot shows the Database setting tab with the contentdb source database selected.](media/contentdb.png "Database setting tab")
 
 1. Select **Next: Collection setting >>**.
 
 1. On the **Collection setting** tab, expand the **contentdb** database, and ensure both the **products** and **items** collections are selected for migration. Also, update the **Throughput (RU/s)** to `400` for both collections.
 
-    ![The screenshot shows the Collection setting tab with both items and items collections selected with Throughput RU/s set to 400 for both collections.](media/db3.png "Throughput RU")
+   ![The screenshot shows the Collection setting tab with both items and items collections selected with Throughput RU/s set to 400 for both collections.](media/db3.png "Throughput RU")
 
 1. Select **Next: Migration summary >>**.
 
 1. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
 
-     ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media_prod/migratedata.png "Migration summary")
+   ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media_prod/migratedata.png "Migration summary")
 
 1. The status for the migration activity will be shown. The migration will only take a few seconds to complete. Select **Refresh** to reload the status to ensure it shows a **Status** of **Complete**.
 
-    ![The screenshot shows the MigrateData activity showing the status has completed.](media_prod/completed.png "MigrateData activity completed")
+   ![The screenshot shows the MigrateData activity showing the status has completed.](media_prod/completed.png "MigrateData activity completed")
 
 1. To verify the data was migrated, navigate to the **Cosmos DB Account** for the lab within the Azure Portal, then select the **Data Explorer**. You will see the `items` and `items` collections listed within the `contentdb` database, and you will be able to explore the documents within.
 
-    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrateditem.png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrateditem.png "Cosmos DB is open")
 
-    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
 
 
 1. Click on the **Next** button present in the bottom-right corner of this lab guide to continue with the next exercise.
