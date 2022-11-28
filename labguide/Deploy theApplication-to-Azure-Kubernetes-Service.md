@@ -47,9 +47,9 @@ This task will gather the information you need about your Azure Kubernetes Servi
    
 ## Task 3: Deploy a service using the Azure Portal
    
-  This task will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
+In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Define a new Namespace for our API deployment. Select the Namespaces blade of the contoso-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Namespaces tab select + Create and then select **Create with YAML** button.
+1. Define a new Namespace for our API deployment. Select the Namespaces blade of the contoso-traders-aks<inject key="DeploymentID"/> AKS resource detail page of the Azure Portal, and on the Namespaces tab select **+ Create** and then select **Create with YAML** button.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace2.png "Add a Namespace")
     
