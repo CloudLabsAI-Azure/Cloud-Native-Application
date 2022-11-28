@@ -169,7 +169,7 @@ In this task, you will edit the web application source code to add Application I
 
     ![On the Stats page, the hostName is highlighted.](media/image145.png "On Stats page hostName is displayed")
 
-### Task 4: Configure Kubernetes Ingress
+### Task 2: Configure Kubernetes Ingress
 
 This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.
 
