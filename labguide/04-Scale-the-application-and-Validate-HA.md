@@ -68,7 +68,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
    
 1. Navigate back to your windows command shell
 
-3. Run the below command to configure the Horizontal autoscaling for you apiProducts pods
+1. Run the below command to configure the Horizontal autoscaling for you apiProducts pods
 
    ``` bash 
    kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10 ```
@@ -90,29 +90,29 @@ In this task, you will restart containers and validate that the restart does not
 
    ![In the Workload view with the API deployment highlighted.](media/productwkrlos.png "API deployment is now healthy")
 
-2. Select the **YAML** navigation item and increase the required replica count to `4`. 
+1. Select the **YAML** navigation item and increase the required replica count to `4`. 
 
    ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/replica4.png "API pod deployments")
 
-3. After a few moments you will find that the contoso-traders-product deployment is now running 4 replicas successfully.
+1. After a few moments you will find that the contoso-traders-product deployment is now running 4 replicas successfully.
 
    ![Viewing replica set in the Azure Portal.](media/4replica.png "Viewing replica set in the Azure Portal")
 
-4. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
+1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/website3.png "View web task hostname")
 
-7. Select two of the Pods at random and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
+1. Select two of the Pods at random and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
 
    ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/2021-03-26-17-31-31.png "Delete running pod instance")
 
-8. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
+1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
 
    ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/nwcontainer.png "API Pods changing state")
 
-9. Return to the API Deployment and scale it back to `1` replica. See Step 3 above for how to do this if you are unsure.
+1. Return to the API Deployment and scale it back to `1` replica. See Step 3 above for how to do this if you are unsure.
 
-10. Return to the sample web site's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
+1. Return to the sample web site's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
 
