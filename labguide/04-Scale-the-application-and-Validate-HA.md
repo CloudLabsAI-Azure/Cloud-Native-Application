@@ -24,6 +24,8 @@ In this task, you will increase the number of instances for the API deployment i
 
 5. Open the Contoso Traders web application. The application should still work without errors.
 
+    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/website3.png "View replica details")
+
 ### Task 2: Resolve failed provisioning of replicas
 
 In this task, you will resolve the failed API replicas. These failures occur due to the clusters' inability to meet the requested resources.
@@ -104,7 +106,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Select two of the Pods at random and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/2021-03-26-17-31-31.png "Delete running pod instance")
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/nwcontainer.png "Delete running pod instance")
 
 1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
 
@@ -187,8 +189,6 @@ In this task, you will run a performance test script that will test the Autoscal
     > **Note:** The script will take a minute to complete executing.
 
 11. Once the script has completed, navigate back to the **Cosmos DB account** in the Azure portal.
-
-   ![](media/cna33.png "View replica details")
 
 12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
