@@ -15,4 +15,5 @@ In this hands-on lab, you will assist with completing this POC with a subset of 
 
 > **Important**: Most Azure resources require unique names. Throughout these steps, you will see the word "SUFFIX" as part of resource names. You should replace this with a unique handle (like your Microsoft Account email prefix) to ensure unique names for resources.
 
- ![Selecting + Add to create a deployment.](media/MicrosoftTeams-image (4).png "Selecing + Add to create a deployment")
+  
+  ![Selecting + Add to create a deployment.](media/MicrosoftTeams-image (4).png "Selecing + Add to create a deployment")
