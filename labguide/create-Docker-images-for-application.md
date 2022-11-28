@@ -12,7 +12,7 @@
    
 1. Once the ssh is getting connected to the VM, please enter the VM password given below:
    
-    * Password: <inject key="Build Agent VM Password" enableCopy="true" />
+    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
    ![](media/ex1-connecttolinuxvm.png "open cmd")
    
@@ -52,11 +52,11 @@ In this task, you will be building the docker image and will be pushing them to 
    
 1. On **Sign in to Microsoft Azure** tab you will see login screen, in that enter following email/username and then click on **Next**.
 
-   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+   * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
 
 1. Now enter the following password and click on **Sign in**.
 
-   * Password: <inject key="AzureAdUserPassword"></inject> 
+   * Password: **<inject key="AzureAdUserPassword"></inject>**
 
 1. In a pop-up to confirm the sign in to Microsoft Azure CLI, click on **Continue**.
 
@@ -72,7 +72,7 @@ In this task, you will be building the docker image and will be pushing them to 
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the given DeploymentID <inject key="DeploymentID" enableCopy="true"/> value.
+1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
@@ -80,7 +80,7 @@ In this task, you will be building the docker image and will be pushing them to 
     
     ![](media/ex1-apicarts.png)
     
-1. Repeat the steps to create the contosotraders-Products docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID <inject key="DeploymentID" enableCopy="true"/> value in the below command.
+1. Repeat the steps to create the contosotraders-Products docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
@@ -88,7 +88,7 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-apiproducts.png)
 
-1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID <inject key="DeploymentID" enableCopy="true"/> value in the below command.
+1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     cd src/ContosoTraders.Ui.Website
@@ -111,7 +111,7 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-dockerimages.png)
     
-1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the below command. You should be able to see that output as below in the screenshot.
+1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the below command. You should be able to see that output as below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
@@ -119,7 +119,7 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-dockerlogin.png "open cmd")
 
-1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry. Also, make sure to update the SUFFIX value.
+1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry. Also, make sure to update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
 
    ```
    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
