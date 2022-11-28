@@ -1,8 +1,10 @@
-# Exercise 3: Deploy the Application to Azure Kubernetes Service
+## Exercise 3: Deploy the Application to Azure Kubernetes Service
 
 In this exercise you will be setting up the key vault secrets and later will be deploying the app to Azure Kubernetes services using the docker images
 
-## Task 2: Tunnel into the Azure Kubernetes Service cluster  
+### Task 3: Setup Key Vault & Secrets 
+
+### Task 2: Tunnel into the Azure Kubernetes Service cluster  
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
 
@@ -45,7 +47,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/newnodes.png "kubectl get nodes")
    
    
-## Task 3: Deploy a service using the Azure Portal
+### Task 3: Deploy a service using the Azure Portal
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
@@ -138,7 +140,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecing + Add to create a deployment")
 
 
-## Task 4: Deploy a service using kubectl
+### Task 4: Deploy a service using kubectl
 
 In this task, you will deploy the web service using kubectl
 
