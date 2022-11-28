@@ -214,7 +214,7 @@ spec:
       terminationGracePeriodSeconds: 30
     ```
 
-1. Update the `suffix` entry to match the name of your ACR Login Server.
+1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
 
     ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/sfx.png "Close Azure Cloud Editor")
 
@@ -252,7 +252,10 @@ spec:
 
 1. Save changes with **CTRL+S** and close the VS Code.
 
-1. Login to Azure using the below commands.
+1. Login to azure with the below commands after updating the values in the command.
+
+   * Username: **<inject key="AzureAdUserEmail"></inject>**
+   * Password: **<inject key="AzureAdUserPassword"></inject>**
 
     ```
     az login -u [username] -p [Password]
@@ -261,7 +264,7 @@ spec:
 1. Execute the commands below to deploy the application described by the YAML files. You will receive a message indicating the items `kubectl` has created a web deployment and a web service.
 
     ```bash
-       kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
+    kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
     ```
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/kubectlcreated.png "kubectl create application")
