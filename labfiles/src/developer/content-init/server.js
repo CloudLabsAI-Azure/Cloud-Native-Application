@@ -22,22 +22,22 @@ const items = mongoose.model('items');
 
 async.waterfall([
     function (callback) {
-        console.log('Clean products table');
-        product.remove({}, function (err) {
+        console.log('Clean product table');
+        Session.remove({}, function (err) {
             if (err) {
                 callback(err);
             } else {
-                console.log(chalk.green('All products deleted'));
+                console.log(chalk.green('All product deleted'));
                 callback(null);
             }
         })
     },
     function (callback) {
-        console.log('Load products from JSON file');
-        const productsTemplate = require('./json/products');
-        const createproduct = function (object, itemCallback) {
-            const product = new product(object);
-            product.save(function (err) {
+        console.log('Load product from JSON file');
+        const sessionsTemplate = require('./json/product');
+        const createSession = function (object, itemCallback) {
+            const session = new Session(object);
+            session.save(function (err) {
                 if (err) {
                     itemCallback(err);
                 } else {
@@ -46,11 +46,11 @@ async.waterfall([
                 }
             });
         };
-        async.each(productsTemplate, createproduct, callback)
+        async.each(sessionsTemplate, createSession, callback)
     },
     function (callback) {
         console.log('Clean items table');
-        items.remove({}, function (err) {
+        Speaker.remove({}, function (err) {
             if (err) {
                 callback(err);
             } else {
@@ -61,10 +61,10 @@ async.waterfall([
     },
     function (callback) {
         console.log('Load items from JSON file');
-        const itemsTemplate = require('./json/items');
-        const createitems = function (object, itemCallback) {
-            const items = new items(object);
-            items.save(function (err) {
+        const speakersTemplate = require('./json/items');
+        const createSpeaker = function (object, itemCallback) {
+            const speaker = new Speaker(object);
+            speaker.save(function (err) {
                 if (err) {
                     itemCallback(err);
                 } else {
@@ -73,7 +73,7 @@ async.waterfall([
                 }
             });
         };
-        async.each(itemsTemplate, createitems, callback)
+        async.each(speakersTemplate, createSpeaker, callback)
     }
 ], function (err) {
     if (err) {

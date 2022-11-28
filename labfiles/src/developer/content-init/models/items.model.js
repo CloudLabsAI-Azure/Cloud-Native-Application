@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var SpeakerSchema = new Schema({
+var itemsSchema = new Schema({
     _id: {
         type: String
     },
@@ -45,4 +45,4 @@ var SpeakerSchema = new Schema({
     }]
 });
 
-module.exports = mongoose.model('items', SpeakerSchema);
+module.exports = mongoose.model('items', itemsSchema);
