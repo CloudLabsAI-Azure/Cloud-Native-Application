@@ -2,8 +2,39 @@
 
 In this exercise you will be setting up the key vault secrets and later will be deploying the app to Azure Kubernetes services using the docker images
 
-### Task 3: Setup Key Vault & Secrets 
+### Task 1: Setup Key Vault & Secrets 
 
+1. On the browser, Navigate to Azure portal and search for **Key Vault** and select **Key vaults** from the list.
+
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
+    
+1. Now select the available Key vault on the page.
+
+1. Once you are on Key vault page, select **secrets** from the left side menu.
+
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv2.png "Add a Namespace")
+    
+1. Now click on the **Generate/Import** button to create the new secret.
+
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv3.png "Add a Namespace")
+    
+1. Now on the page of **Create a secret**, Enter the following details:
+
+    - Name: mongodbconnetion
+    - Secret Value: Paste the connection string you have copied in previous exercise
+    Keep other values default and click on **Create**
+    
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv4.png "Add a Namespace")
+     
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
+     
+1. Once the secret is created in Key vault, you will be creating the secret in AKS to create the conenction between AKS and Key vault.
+
+1. Open a new windows command prompt and run the below command to create secret using kubectl. 
+
+    ```sh
+    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=https://contosotraderkv801076.vault.azure.net/secrets/mongodbconnetion/2cdaa5e15d3d42f69cb686e8538647b3 ```
+    
 ### Task 2: Tunnel into the Azure Kubernetes Service cluster  
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
