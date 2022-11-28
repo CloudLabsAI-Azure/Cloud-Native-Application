@@ -158,3 +158,4 @@ In this task, you will be building the docker image and will be pushing them to 
     
     ![](media/ex1-dockerpush.png "open cmd")
     
+1. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
