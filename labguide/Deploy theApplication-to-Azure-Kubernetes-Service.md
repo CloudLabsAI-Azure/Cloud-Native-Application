@@ -28,7 +28,7 @@ In this exercise you will be setting up the key vault secrets and later will be 
      
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
      
-1. Once the secret is created in Key vault, you will be creating the secret in AKS to create the conenction between AKS and Key vault.
+1. Once the secret is created in Key vault, you will be creating the secret in AKS to create the connection between AKS and Key vault.
 
 1. Open a new windows command prompt and run the below command to create secret using kubectl. 
 
@@ -37,7 +37,7 @@ In this exercise you will be setting up the key vault secrets and later will be 
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv6.png "Add a Namespace")
     
-1. Navigate back to browser and open AKS in azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secerts you should be able to see the newly created secret. 
+1. Navigate back to browser and open AKS in azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets you should be able to see the newly created secret. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
@@ -62,7 +62,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account show
    ```
 
-   - Ensure you are connected to the correct subscription. List your subscriptions and then set the subscription by its id with the following commands (similar to what you did in cloud shell before the lab):
+   - Ensure you are connected to the correct subscription. List your subscriptions and then set the subscription by its id with the following commands (like what you did in cloud shell before the lab):
 
    ```bash
    az account list
@@ -88,7 +88,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Define a new Namespace for our API deployment. Select the Namespaces blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal, and on the Namespaces tab select **+ Create** and then select **Create with YAML** button.
+1. Define a new Namespace for our API deployment. Select the Namespaces blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal, and on the Namespaces, tab select **+ Create** and then select **Create with YAML** button.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace2.png "Add a Namespace")
     
@@ -170,11 +170,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                     hostPort: 3001
                     protocol: TCP
     ```
-   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecing + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
 1. This can take a few minutes after which you will see the deployment listed and it should be in running state.
 
-   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecing + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
 
 ### Task 4: Deploy a service using kubectl
@@ -314,3 +314,5 @@ In this task, you will deploy the web service using kubectl
     ![AKS services and ingresses shown with External IP highlighted](media/website.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
+    
+1. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
