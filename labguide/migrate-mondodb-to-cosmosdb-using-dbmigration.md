@@ -5,7 +5,7 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
 
 ### Task 1: Seed the data into on-prem mongo db
 
-1. While connected to you Linux VM, check the mondodb service status.
+1. While connected to you Linux VM, check the mongodb service status.
     >Note: Mongodb is already installed and configured in the Linux VM
 
 1. Now run the below command to run the seed script to import the data into mongodb
