@@ -88,10 +88,24 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-apiproducts.png)
 
+1. Run the below command to change the directory to `services` and open `configService.js` file.
+
+    ```
+    cd src/ContosoTraders.Ui.Website/src/services
+    vi configService.js
+    ```
+    
+    ![](media/latest-ex1-cd-website.png)
+    
+1. In the `vi` editor, press `i` to get in to the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Press `Esc` to exit from the `insert` mode and type `:wq` to exit from the `vi` editor.
+
+    ![](media/latest-ex1-didconfig.png)
+
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
     ```
-    cd src/ContosoTraders.Ui.Website
+    cd
+    cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
 1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
@@ -100,11 +114,12 @@ In this task, you will be building the docker image and will be pushing them to 
     docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
     ```    
     
-    ![](media/ex1-apiwebsite.png)
+    ![](media/latest-ex1-apiwebsite.png)
     
 1. Redirect to the **labfiles** directory before running the next steps.
 
     ```
+    cd
     cd Cloud-Native-Application/labfiles/
     ```
 
