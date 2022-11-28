@@ -75,15 +75,15 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     metadata:
       name: contoso-traders-products
       namespace: contoso-traders
-    annotations:
-      #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT github secret value is
-      service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-      spec:
+      annotations:
+        #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT github secret value is
+        service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+    spec:
       type: LoadBalancer
       ports:
         - port: 80
       selector:
-      app: contoso-traders-products
+        app: contoso-traders-products
     ``` 
     
    ![Select workloads under Kubernetes resources.](media/addservice.png "Select workloads under Kubernetes resources") 
