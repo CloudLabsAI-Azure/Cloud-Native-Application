@@ -88,10 +88,15 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-apiproducts.png)
 
-1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
     ```
     cd src/ContosoTraders.Ui.Website
+    ```
+
+1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+
+    ```
     docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
     ```    
     
