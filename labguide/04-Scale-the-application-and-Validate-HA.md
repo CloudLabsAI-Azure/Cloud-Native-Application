@@ -89,31 +89,21 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 In this task, you will restart containers and validate that the restart does not impact the running service.
 
-1. Open the sample web application and navigate to the "Stats" page as shown.
-
-   ![The Stats page is visible in this screenshot of the Contoso Neuro web application.](media/image123.png "Contoso web task details")
-   
 1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the **contoso-traders-product** (2) deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/cna28.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/productwkrlos.png "API deployment is now healthy")
 
-2. Select the **YAML** navigation item and increase the required replica count to `4`. Use the same process as Exercise 4, Task 1.
+2. Select the **YAML** navigation item and increase the required replica count to `4`. 
 
-   ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/2021-03-26-17-30-28.png "API pod deployments")
+   ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/replica4.png "API pod deployments")
 
 3. After a few moments you will find that the contoso-traders-product deployment is now running 4 replicas successfully.
 
-   ![Viewing replica set in the Azure Portal.](media/cna32.png "Viewing replica set in the Azure Portal")
+   ![Viewing replica set in the Azure Portal.](media/4replica.png "Viewing replica set in the Azure Portal")
 
-4. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors, but you will see the contoso-traders-product host name change between the four api pod instances periodically. The task id and pid might also change between the four api pod instances.
+4. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
-   ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/image126.png "View web task hostname")
-
-5. After refreshing enough times to see that the `hostName` value is changing, and the service remains healthy, you can open the **Replica Sets** view for the API in the Azure Portal.
-
-6. On this view you can see the hostName value shown in the web application stats page matches the pod names for the pods that are running.
-
-   ![Viewing replica set in the Azure Portal.](media/2021-03-26-17-31-02.png "Viewing replica set in the Azure Portal")
+   ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/website3.png "View web task hostname")
 
 7. Select two of the Pods at random and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
 
@@ -121,13 +111,13 @@ In this task, you will restart containers and validate that the restart does not
 
 8. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
 
-   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/2021-03-26-17-31-54.png "API Pods changing state")
+   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/nwcontainer.png "API Pods changing state")
 
 9. Return to the API Deployment and scale it back to `1` replica. See Step 3 above for how to do this if you are unsure.
 
-10. Return to the sample web site's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You will notice that only one API host name shows up, even though you may still see several running pods in the API replica set view. Even though several pods are running, Kubernetes will no longer send traffic to the pods it has selected to terminate. In a few moments, only one pod will show in the API Replica Set view.
+10. Return to the sample web site's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/2021-03-26-17-32-24.png "View replica details")
+    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
 
 ### Task 6: Configure Cosmos DB Autoscale
 
@@ -139,17 +129,17 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
     ![](media/cosmosdata.png "View replica details")
 
-3. Within **Data Explorer**, expand the `productdb` (1) database.
+3. Within **Data Explorer**, expand the `contentdb` (1) database.
 
-    ![](media/scalecosmos.png "View replica details")
+    ![](media/expnddb.png "View replica details")
 
-4. Under the `productdb` collection, select **Scale**.
+4. Under the `contentdb`  database, expand **Items** collection, select **Scale & Settings**.
 
-    ![](media/productdb.png "View replica details")
+    ![](media/scaleitem.png "View replica details")
 
 5. On the **Scale**, select **Autoscale** (1) for the **Throughput** setting under **Scale** and click on **Save** (2).
 
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autoscale.png "CosmosDB collection scale and settings")
+    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autodbscale.png "CosmosDB collection scale and settings")
 
 ### Task 7: Test Cosmos DB Autoscale
 
@@ -157,17 +147,13 @@ In this task, you will run a performance test script that will test the Autoscal
 
 1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" />** Azure Cosmos DB Account.
 
-   ![](media/cna33.png "View replica details")
-
 2. Select **Connection String** under **Settings**.
 
-   ![](media/cna38.png "View replica details")
+   ![](media/cnctionstring.png "View replica details")
 
 3. On the **Connection String** pane, copy the **HOST**, **USERNAME**, and **PRIMARY PASSWORD** values. Save these for use later.
 
-    ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cosmos-connection-string-pane.png "View CosmosDB connection string")
-
-    >**Note**: In your Cosmos DB account, you may see that the host endpoint uses `.mongo.cosmos.azure.com`, which is for version 3.6 of Mongo DB. The endpoint shown here is `.documents.azure.com`, which is for version 3.2 of Mongo DB. You can use either endpoint for the purposes of this Task. If you are curious about the new features added to version 3.6 (that do not affect the application in this lab), consult [this](https://devblogs.microsoft.com/cosmosdb/upgrade-your-server-version-from-3-2-to-3-6-for-azure-cosmos-db-api-for-mongodb/) post.
+    ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/password.png "View CosmosDB connection string")
 
 4. Open the Command prompt, connect to build agent vm using the **Command to Connect to Build Agent VM**, which is given on lab environment details page.
 
@@ -178,7 +164,7 @@ In this task, you will run a performance test script that will test the Autoscal
 6. On the **Build agent VM**, navigate to the `~/lab-files` directory.
 
     ```bash
-    cd ~/lab-files
+    cd ~/labfiles
     ```
 
 7. Run the following command to open the `perftest.sh` script for editing in Vim.
@@ -189,7 +175,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 8. There are several variables declared at the top of the `perftest.sh` script. Modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
 
-    ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/cosmos-perf-test-variables.png "Modify the connection information in Vim")
+    ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/updatepreftest.png "Modify the connection information in Vim")
 
 9. Then press **_ESC_**, write **_:wq_** to save you changes and close the file.
     
