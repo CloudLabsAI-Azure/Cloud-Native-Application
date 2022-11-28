@@ -9,7 +9,7 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
     
    >**Note**: Mongodb is already installed and configured in the Linux VM
 
-1.  Run the following command to create the docker network and and run it on port 27017
+1. Run the following command to create the docker network and and run it on port 27017
 
     ```bash 
     docker network create contosotraders
@@ -20,8 +20,7 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
     ```
     cd Cloud-Native-Application/labfiles/src/developer/content-init
     ```
-
-
+    
 1. Now run the below command to run the seed the data into mongodb.
     
    >**Note**: You need to make sure the you are running this command from this directory: **/Cloud-Native-Application/labfiles/src/developer/content-init$**
@@ -39,17 +38,17 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
 
 In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB.
 
-1. In the Azure Portal, navigate to your contosotraders(Build Agent) virtual machine in the resource group and copy the Private IP address (2) and Paste the private Ip address into the notepad for future use.
+1. In the Azure Portal, navigate to your **contosotraders(Build Agent)** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group and copy the **Private IP address**. Paste the private Ip address into the notepad for later use.
 
-    ![](media/privateip.png)
+   ![](media/privateip.png)
 
-1. Navigate to the Database Migration Service **contosotraders<inject key="DeploymentID" enableCopy="false" />** resource blade in the **Contoso-Traders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Navigate to the Azure Database Migration Service **contosotraders<inject key="DeploymentID" enableCopy="false" />** resource blade in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
-On the Azure Database Migration Service blade, select **+ New Migration Project** on the **Overview** pane.
+1. On the Azure Database Migration Service blade, select **+ New Migration Project** on the **Overview** pane.
 
    ![](media/newproject.png)
 
-4. On the **New migration project** pane, enter the following values, then select **Create and run activity**:
+1. On the **New migration project** pane, enter the following values, then select **Create and run activity**:
 
     - Project name: `contoso`
     - Source server type: `MongoDB`
@@ -60,7 +59,7 @@ On the Azure Database Migration Service blade, select **+ New Migration Project*
 
     >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
 
-5. On the **MongoDB to Azure Database for CosmosDB Offline Migration Wizard** pane, enter the following values for the **Select source** tab:
+1. On the **MongoDB to Azure Database for CosmosDB Offline Migration Wizard** pane, enter the following values for the **Select source** tab:
 
     - Mode: **Standard mode**
     - Source server name: Enter the Private IP Address of the Build Agent VM used in this lab.
