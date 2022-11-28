@@ -111,8 +111,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 4. In the Azure Portal under **Services and ingresses**, copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
 
-   ![A screenshot of the Kubernetes management dashboard showing the ingress controller settings.](media/2021-03-26-18-26-13.png "Copy ingress controller settings")
-
     > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
     >
     > ```bash
@@ -169,8 +167,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     ```text
     http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
     ```
-
-   ![A screenshot of the fabmedical browser URL.](media/Ex4-Task5.9.png "fabmedical browser URL")
    
    >**Note**: If the URL doesn't work or you don't receive 404 error. Please run the below mentioned command and try accessing the URL again.
 
