@@ -35,7 +35,12 @@ In this exercise you will be setting up the key vault secrets and later will be 
     ```sh
     kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=yourkeyvaultsecret] 
     ```
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv6.png "Add a Namespace")
     
+1. Navigate back to browser and open AKS in azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secerts you should be able to see the newly created secret. 
+
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
+     
 ### Task 2: Tunnel into the Azure Kubernetes Service cluster  
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
