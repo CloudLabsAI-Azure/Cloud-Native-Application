@@ -53,7 +53,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace2.png "Add a Namespace")
     
-1. In the **Add with YAML** screen, paste the following YAML and click on **Add**. Once added you should be able to see a new namespace with **contoso-traders** name.
+1. In the **Add with YAML** pane, paste the following YAML and click on **Add**. Once added you should be able to see a new namespace with **contoso-traders** name.
 
     ```yaml
     apiVersion: v1
@@ -67,7 +67,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/nwservice1.png "Add a Service")
 
-1. In the **Add with YAML** screen, paste the YAML below and choose **Add**. Make sure to update the SUFFIX value in the YAML file.
+1. In the **Add with YAML** pane, paste the YAML below and choose **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
 
     ```yaml
     apiVersion: v1
@@ -86,9 +86,9 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
         app: contoso-traders-products
     ``` 
     
-   ![Select workloads under Kubernetes resources.](media/addservice.png "Select workloads under Kubernetes resources") 
+   ![Select workloads under Kubernetes resources.](media/ex3-task3-servicecreate.png "Select workloads under Kubernetes resources") 
 
-1. Select Workloads under the Kubernetes resources section in the left navigation. From the Workloads view, with Deployments selected (the default), then select + Add.
+1. Select **Workloads** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create** and then choose **Create with YAML**.
 
     ![Select workloads under Kubernetes resources.](media/wkrload.png "Select workloads under Kubernetes resources")
 
@@ -96,41 +96,41 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ```YAML
     apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: contoso-traders-products
-    namespace: contoso-traders
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: contoso-traders-products
-  template:
+    kind: Deployment
     metadata:
-      labels:
-        app: contoso-traders-products
+      name: contoso-traders-products
+      namespace: contoso-traders
     spec:
-      nodeSelector:
-        "kubernetes.io/os": linux
-      containers:
-        - name: contoso-traders-products
-          #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT SUFFIX is
-          image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
-          env:
-            - name: KeyVaultEndpoint
-              valueFrom:
-                secretKeyRef:
-                  name: contoso-traders-kv-endpoint
-                  key: contoso-traders-kv-endpoint
-          resources:
-            requests:
-              cpu: 1000m
-              memory: 128Mi
-          ports:
-            - containerPort: 80
-              hostPort: 3001
-              protocol: TCP
-            ```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: contoso-traders-products
+      template:
+        metadata:
+          labels:
+            app: contoso-traders-products
+        spec:
+          nodeSelector:
+            "kubernetes.io/os": linux
+          containers:
+            - name: contoso-traders-products
+              #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT SUFFIX is
+              image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
+              env:
+                - name: KeyVaultEndpoint
+                  valueFrom:
+                    secretKeyRef:
+                      name: contoso-traders-kv-endpoint
+                      key: contoso-traders-kv-endpoint
+              resources:
+                requests:
+                  cpu: 1000m
+                  memory: 128Mi
+                ports:
+                  - containerPort: 80
+                    hostPort: 3001
+                    protocol: TCP
+    ```
    ![Selecting + Add to create a deployment.](media/newworksload.png "Selecing + Add to create a deployment")
 
 1. Select Add to initiate the deployment. This can take a few minutes after which you will see the deployment listed and after few seconds, it should be in running state.
