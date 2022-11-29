@@ -1,7 +1,8 @@
-## Exercise 3: Deploy the Application to Azure Kubernetes Service
-   **Duration**: 40 Minutes
+## Exercise 3: Deploy the application to the Azure Kubernetes Service
    
-  In this exercise you will be setting up the key vault secrets and later will be deploying the app to Azure Kubernetes services using the docker images
+**Duration**: 40 Minutes
+   
+In this exercise, you will be setting up the key vault secrets, and then you will be deploying the app to Azure Kubernetes Services using the Docker images.
 
 ### Task 1: Setup Key Vault & Secrets 
 
@@ -85,15 +86,15 @@ This task will gather the information you need about your Azure Kubernetes Servi
    ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/newnodes.png "kubectl get nodes")
    
    
-### Task 3: Deploy a service using the Azure Portal
+### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Define a new Namespace for our API deployment. Select the Namespaces blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal, and on the Namespaces, tab select **+ Create** and then select **Create with YAML** button.
+1. Define a new Namespace for our API deployment. Select the **Namespaces** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal. In the Namespaces tab, select **+ Create** and then select **Create with YAML** button.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace2.png "Add a Namespace")
     
-1. In the **Add with YAML** pane, paste the following YAML and click on **Add**. Once added you should be able to see a new namespace with **contoso-traders** name.
+1. In the **Add with YAML** pane, paste the below YAML code which creates a namespace in AKS and click on **Add**. Once added you should be able to see a new namespace with **contoso-traders** name.
 
     ```yaml
     apiVersion: v1
@@ -103,11 +104,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
         name: contoso-traders
       name: contoso-traders
     ```   
-1. Define a Service for our API so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the contoso-traders-aks[SUFFIX] AKS resource detail page of the Azure Portal, and on the Services tab, select **+ Create** and choose **Create with YAML**. 
+1. Define a Service for our API so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal. In the Services tab, select **+ Create** and choose **Create with YAML**. 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/nwservice1.png "Add a Service")
 
-1. In the **Add with YAML** pane, paste the YAML below and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
+1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
 
     ```yaml
     apiVersion: v1
@@ -132,7 +133,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![Select workloads under Kubernetes resources.](media/wkrload.png "Select workloads under Kubernetes resources")
 
-1. In the Add with YAML screen that loads, paste the following YAML and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+1. In the Add with YAML screen that loads, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
 
     ```YAML
     apiVersion: apps/v1
@@ -317,3 +318,7 @@ In this task, you will deploy the web service using kubectl
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
     
 1. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+
+## Summary
+
+In this exercise, you have deployed a namespace, service, and workload in the Azure Kubernetes. Also, you have created a service to AKS and accessed website using external endpoint.
