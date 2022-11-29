@@ -1,9 +1,11 @@
 ## Exercise 6: Azure Monitor for Containers-Optional
    **Duration**: 20 Minutes
    
-  In this exercise, you will be configuring the Azure Monitor on your containers.
+  In this exercise, you will be configuring the Azure Monitor on your containers. Azure Monitor helps you maximize the availability and performance of your applications and services. It delivers a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments.
   
-### Task 1: Deploy Azure Monitor for Containers 
+### Task 1: Deploy Azure Monitor for Containers
+
+In this task, you will be configuring Azure Monitor container insights for the Unmonitored AKS cluster.
   
 1. Navigate back to Azure Portal in the browser and search for **Monitor**. 
     
@@ -32,7 +34,9 @@
    ![](media/ex6-config-ci.png) 
     
 
-### Task 2: Review Azure Monitor metrics & Setup Alerts 
+### Task 2: Review Azure Monitor metrics & Setup Alerts
+
+In this task, you will be reviewing the monitored AKS cluster that you configured in the previous task and setting up the alerts.
 
 1. Once you onboarded the cluster to Azure monitor. To review the logs, navigate to **Monitored clusters** section and select your AKS.
 
@@ -53,5 +57,9 @@
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/enablealert.png "Add a Namespace")
      
 1. So far, we have enabled the alerts and you can see these alerts using Log analytic workspace and Azure Monitor, to read more about this:  https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview
+
+## Summary
+
+In this exercise, you have configured Azure Monitor container insights for an unmonitored AKS cluster and reviewed them. Also, you have set up the alerts for the recommendations.
 
 ## Lab ends
