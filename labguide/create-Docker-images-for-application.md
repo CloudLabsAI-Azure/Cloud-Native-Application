@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will learn how to create Docker images so that you can deploy your own apps and make them available. Also, you will be pushing the created Docker images to the Azure Container Registry.
+In this exercise, you will learn how to create Docker images so that you can deploy your own apps and make them available. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
