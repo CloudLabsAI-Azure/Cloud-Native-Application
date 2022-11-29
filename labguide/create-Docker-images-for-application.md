@@ -1,9 +1,12 @@
-# Exercise 1: Create Docker Images for Application
-   **Duration**: 30 Minutes
+# Exercise 1: Build Docker Images for the Application
+  
+  **Duration**: 30 Minutes
 
-   In this exercise, you will be building the docker images and will be pushing the image to ACR using kubectl.
+## Overview
+
+In this exercise, you'll learn how to build Docker images so you can deploy your own applications and make them available. Also, you will be pushing the created docker images to Azure Container registry using Kubernetes.
    
-### Task 1: Create Local Infrastructure using Linux VM
+### Task 1: Set up a local infrastructure with the Linux VM
 
 1. Once you log into the VM, search for **cmd** **(1)** in the search bar and click on **Command Prompt** **(2)** to open.
 
@@ -37,7 +40,7 @@
     
     ![](media/ex1-cd.png)
     
-### Task 2: Create Docker images and push to container registry
+### Task 2: Build Docker Images and push to container registry
 
 In this task, you will be building the docker image and will be pushing them to the ACR to later use in AKS
 
@@ -161,3 +164,8 @@ In this task, you will be building the docker image and will be pushing them to 
     ![](media/ex1-dockerpush.png "open cmd")
     
 1. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+
+
+## Summary
+
+In this exercise, you have completed building docker images and pushed to container registry using Kubernetes.
