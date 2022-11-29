@@ -1,7 +1,16 @@
 ## Exercise 6: Azure Monitor for Containers-Optional
-   **Duration**: 20 Minutes
    
-  In this exercise, you will be configuring the Azure Monitor on your containers. Azure Monitor helps you maximize the availability and performance of your applications and services. It delivers a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments.
+**Duration**: 20 Minutes
+
+## Overview
+
+In this exercise, you will be configuring the Azure Monitor on your containers. Azure Monitor helps you maximize the availability and performance of your applications and services. It delivers a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments. 
+
+A few examples of what you can do with Azure Monitor includes:
+
+- Detect and diagnose issues across applications and dependencies with Application Insights.
+- Correlate infrastructure issues with VM insights and Container insights.
+- Collect data from monitored resources by using Azure Monitor Metrics.
   
 ### Task 1: Deploy Azure Monitor for Containers
 
