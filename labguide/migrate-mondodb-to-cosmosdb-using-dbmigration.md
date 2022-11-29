@@ -34,7 +34,7 @@ In this exercise, you will be migrating your on-premises MongoDB database to Azu
 
    ![](media/dataimported.png)
 
-### Task 2: Migrating data to Azure Cosmos DB
+### Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
 In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB.
 
