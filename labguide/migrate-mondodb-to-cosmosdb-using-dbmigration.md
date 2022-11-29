@@ -1,4 +1,4 @@
-## Exercise 2: Using Azure Database Migration, migrate MongoDB to Cosmos DB
+## Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
   
 **Duration**: 30 Minutes
    
