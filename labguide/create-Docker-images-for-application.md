@@ -8,6 +8,8 @@ In this exercise, you will learn how to create Docker images so that you can dep
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
+In this task, you will be connecting to Build agent VM using Command prompt. 
+
 1. Once you log into the VM, search for **cmd** **(1)** in the search bar and click on **Command Prompt** **(2)** to open.
 
    ![](media/latest-ex1-opencmd.png "open cmd")
