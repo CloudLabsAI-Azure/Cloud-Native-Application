@@ -105,6 +105,10 @@ In this task, you will be building the docker image and will be pushing them to 
     
 1. In the `vi` editor, press `i` to get in to the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Press `Esc` to exit from the `insert` mode and type `:wq` to exit from the `vi` editor.
 
+    ```
+    const APIUrl = 'http://contoso-traders-productsXXXXX.eastus.cloudapp.azure.com';
+    ```
+
     ![](media/latest-ex1-didconfig.png)
 
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
