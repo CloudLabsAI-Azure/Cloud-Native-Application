@@ -185,7 +185,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 ### Task 4: Deploy a service using kubectl
 
-In this task, you will deploy the web service using kubectl
+In this task, you will deploy the web service using kubectl.
 
 1. Open a **new** windows command prompt.
 
