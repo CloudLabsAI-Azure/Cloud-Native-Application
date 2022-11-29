@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you'll learn how to build Docker images so you can deploy your own applications and make them available. Also, you will be pushing the created docker images to Azure Container registry using Kubernetes.
+In this exercise, you will learn how to create Docker images so that you can deploy your own apps and make them available. Also, you will be pushing the created Docker images to the Azure Container Registry.
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
@@ -40,7 +40,7 @@ In this exercise, you'll learn how to build Docker images so you can deploy your
     
     ![](media/ex1-cd.png)
     
-### Task 2: Build Docker Images and push to container registry
+### Task 2: Build Docker images and push them to the container registry
 
 In this task, you will be building the docker image and will be pushing them to the ACR to later use in AKS
 
@@ -168,4 +168,4 @@ In this task, you will be building the docker image and will be pushing them to 
 
 ## Summary
 
-In this exercise, you have completed building docker images and pushed to container registry using Kubernetes.
+In this exercise, you have completed building Docker images and pushed them to the container registry.
