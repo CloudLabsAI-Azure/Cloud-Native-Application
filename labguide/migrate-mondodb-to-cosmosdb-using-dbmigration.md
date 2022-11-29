@@ -1,7 +1,9 @@
 ## Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
   
 **Duration**: 30 Minutes
-   
+
+## Overview
+
 In this exercise, you will be migrating your on-premises MongoDB database to Azure CosmosDB using Azure database migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure. 
 
 ### Task 1: Seed the data into the on-premises MongoDB
