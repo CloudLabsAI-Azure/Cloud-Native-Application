@@ -1,7 +1,9 @@
 ## Exercise 3: Deploy the application to the Azure Kubernetes Service
    
 **Duration**: 40 Minutes
-   
+
+## Overview
+
 In this exercise, you will be setting up the key vault secrets, and then you will be deploying the app to Azure Kubernetes Services using the Docker images.
 
 ### Task 1: Setup Key Vault & Secrets 
