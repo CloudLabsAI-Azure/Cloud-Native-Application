@@ -8,6 +8,8 @@ In this exercise, you will be setting up the key vault secrets, and then you wil
 
 ### Task 1: Setup Key Vault & Secrets 
 
+In this task, you will be generating a secret in Key vault and creating the connection between AKS and Key vault.
+
 1. On the browser, Navigate to Azure portal and search for **Key Vault** and select **Key vaults** from the list.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
