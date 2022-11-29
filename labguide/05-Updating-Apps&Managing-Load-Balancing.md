@@ -2,6 +2,8 @@
 
 **Duration**: 40 minutes
 
+## Overview
+
 In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the api deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
 
 Kubernetes services can discover the ports assigned to each pod, allowing you to run multiple instances of the pod on the same agent node --- something that is not possible when you configure a specific static port (such as 3001 for the API service).
@@ -41,7 +43,7 @@ In this task, you will edit the web application source code to add Application I
 
     > **Note**: Make sure to include the `--save` argument. Without this, a reference to the `applicationinsights` npm package will not get added to the `package.json` file of the `content-web` nodejs project, resulting in a deployment failure in later steps. Also, this can take up to 5 minutes to complete the installation.
 
-4. Edit the `app.js` file using the command ```code configservice.js ``` Visual Studio Code remote and and add the following lines immediately after `B2cScopes` is instantiated on line 14. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
+4. Edit the `app.js` file using the command ```code configservice.js``` Visual Studio Code remote and and add the following lines immediately after `B2cScopes` is instantiated on line 14. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
 
     ```javascript
     const appInsights = require("applicationinsights");
@@ -53,31 +55,33 @@ In this task, you will edit the web application source code to add Application I
 
 5. Save changes and close the editor.
 
-13. Delete the existing deployment so that you can build and deploy a new Container image.
+6. Delete the existing deployment so that you can build and deploy a new Container image.
 
-    ```bash
-    
+    ```bash   
     kubectl delete deployment contoso-traders-web -n contoso-traders
     ```
-14. Now run the below commands to create and pusht the new image to ACR and AKS. 
-
-     ```bash
-     docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest ```
-
-    ```bash 
-       docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest ```
-    
-15. Once the build and push is completed, run the below command to create the workload in AKS.
+7. Now run the below commands to create and pusht the new image to ACR and AKS. 
 
     ```bash
-      cd C:/lab-files
-      kubectl create --save-config=true -f web.deployment.yml -f web.service.yml ```
+    docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest
+    ```
 
-16. From the navigation menu, select **Replica Sets** (2) under **Workloads** (1). From this view, you will see a new replica set for the **contoso-traders-web** (3), which may still be in the process of deploying (as shown below) or already fully deployed.
+    ```bash 
+    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+    ```
+    
+8. Once the build and push is completed, run the below command to create the workload in AKS.
+
+     ```bash
+     cd C:/lab-files
+     kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
+     ```
+
+9. From the navigation menu, select **Replica Sets** (2) under **Workloads** (1). From this view, you will see a new replica set for the **contoso-traders-web** (3), which may still be in the process of deploying (as shown below) or already fully deployed.
 
     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/rollingupdate.png "Pod deployment is in progress")
 
-17. While the deployment is in progress, you can navigate to the web application and observe that the service is running normally, and tasks continue to be load balanced.
+10. While the deployment is in progress, you can navigate to the web application and observe that the service is running normally, and tasks continue to be load balanced.
 
     ![On the Stats page, the hostName is highlighted.](media/website3.png "On Stats page hostName is displayed")
 
@@ -331,4 +335,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from letsencrypt.
 
-1. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+22. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+
+## Summary
+
+In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
