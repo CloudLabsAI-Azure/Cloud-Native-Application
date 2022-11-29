@@ -1,12 +1,14 @@
-## Exercise 4: Scale the application and test HA
+## Exercise 4: Scale the application and testing HA
 
 **Duration**: 40 minutes
 
-At this point, you have deployed a single instance of the web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front-end on the existing cluster.
+## Overview
+
+At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front-end on the existing cluster.
 
 ### Task 1: Increase service instances from the Azure Portal
 
-In this task, you will increase the number of instances for the API deployment in the AKS Azure Portal blade. While it is deploying, you will observe the changing status.
+In this task, you will increase the number of instances for the API deployment in the AKS. While it is deploying, you will observe the changing status.
 
 1. In the AKS blade in the Azure Portal select **Workloads** and then select the **contoso-traders-products** deployment.
 
@@ -26,9 +28,9 @@ In this task, you will increase the number of instances for the API deployment i
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/website3.png "View replica details")
 
-### Task 2: Resolve failed provisioning of replicas
+### Task 2: Resolve failed replica provisioning 
 
-In this task, you will resolve the failed API replicas. These failures occur due to the clusters' inability to meet the requested resources.
+In this task, you will resolve the failed API replicas. These failures occur due to the clusters'inability to meet the requested resources.
 
 1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the ** contoso-traders-product ** (2) deployment. 
 
@@ -66,9 +68,10 @@ In this task, you will resolve the failed API replicas. These failures occur due
    ![In the Workload view with the API deployment highlighted.](media/HS3.png "API deployment is now healthy")
    
 ### Task 3: Configure Horizontal Autoscaling for AKS pods
-   In this task you will be configuring the Horizontal Autoscaling for your AKS pods
+
+In this task you will be configuring the Horizontal Autoscaling for your AKS pods.
    
-1. Navigate back to your windows command shell
+1. Navigate back to your windows command shell.
 
 1. Run the below command to configure the Horizontal autoscaling for you apiProducts pods
 
@@ -118,7 +121,7 @@ In this task, you will restart containers and validate that the restart does not
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
 
-### Task 5: Configure Cosmos DB Autoscale
+### Task 5: Configure CosmosDB Autoscale
 
 In this task, you will setup Autoscale on Azure Cosmos DB.
 
@@ -140,7 +143,7 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
     ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autodbscale.png "CosmosDB collection scale and settings")
 
-### Task 6: Test Cosmos DB Autoscale
+### Task 6: Test CosmosDB Autoscale
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
@@ -201,4 +204,8 @@ In this task, you will run a performance test script that will test the Autoscal
     >**Note**: In case if you don't see data on the graph. Please set the time range to last 1 hour.
 
 14. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+
+## Summary
+
+In this exercise, you have increased service instnace and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
 
