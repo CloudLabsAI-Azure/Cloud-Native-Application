@@ -16,7 +16,7 @@ A few examples of what you can do with Azure Monitor includes:
 
 In this task, you will be configuring Azure Monitor container insights for the Unmonitored AKS cluster.
   
-1. Navigate back to Azure Portal in the browser and search for **Monitor**. 
+1. Navigate back to Azure portal in the browser and search for **Monitor**. 
     
 1. Select **Monitor** from the list.
 
@@ -34,7 +34,7 @@ In this task, you will be configuring Azure Monitor container insights for the U
 
    ![](media/ex6-monitoraks.png)
 
-1. Once you click on the Cluster, you will be redirected to AKS resource. Select **Logs** under Monitoring from the left-menu and click on **Configure** to Configure Azure Monitor container insights.
+1. Once you click on the Cluster, you will be redirected to Kubernetes service resource. Select **Logs** under Monitoring from the left-menu and click on **Configure** to Configure Azure Monitor container insights.
 
    ![](media/ex6-logsconfig.png)
    
@@ -47,17 +47,17 @@ In this task, you will be configuring Azure Monitor container insights for the U
 
 In this task, you will be reviewing the monitored AKS cluster that you configured in the previous task and setting up the alerts.
 
-1. Once you onboarded the cluster to Azure monitor. To review the logs, navigate to **Monitored clusters** section and select your AKS.
+1. Once you onboarded the cluster to Azure monitor. To review the logs, navigate to **Monitored clusters** section and select your Kubernetes service.
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitoredclster.png "Add a Namespace")
    
-1. You will be redirect to the Insight section in you AKS resource blade and you should be able to see some logs.
+1. You will be redirect to the Insight section in your Kubernetes service resource blade and you should be able to see some logs.
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in insight blade.
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/logscontainer.png "Add a Namespace")
 
-1. Now to setup the alerts, Click on **Recommended alerts** on the same insight page.
+1. Now setup the alerts, Click on **Recommended alerts** on the same insight page.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/setalerts.png "Add a Namespace")
 
