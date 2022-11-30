@@ -10,13 +10,13 @@ In this exercise, you will be setting up the key vault secrets, and then you wil
 
 In this task, you will be generating a secret in Key vault and creating the connection between AKS and Key vault.
 
-1. On the browser, Navigate to Azure portal and search for **Key Vault** and select **Key vaults** from the list.
+1. Navigate to Azure portal, search for **Key Vault** in the search bar and select **Key vaults** from the list.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
-    
-1. Now select the available Key vault on the page.
 
-1. Once you are on Key vault page, select **secrets** from the left side menu.
+1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vaults** from the list.
+
+1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **secrets** under Objects from the left side menu.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv2.png "Add a Namespace")
     
@@ -24,10 +24,11 @@ In this task, you will be generating a secret in Key vault and creating the conn
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv3.png "Add a Namespace")
     
-1. Now on the page of **Create a secret**, Enter the following details:
+1. In the **Create a secret** pane, enter the following details:
 
-    - Name: mongodbconnetion
+    - Name: **mongodbconnetion**
     - Secret Value: Paste the connection string you have copied in previous exercise
+    
     Keep other values default and click on **Create**
     
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv4.png "Add a Namespace")
@@ -36,14 +37,14 @@ In this task, you will be generating a secret in Key vault and creating the conn
      
 1. Once the secret is created in Key vault, you will be creating the secret in AKS to create the connection between AKS and Key vault.
 
-1. Open a new windows command prompt and run the below command to create secret using kubectl. 
+1. Open a new **Command Prompt** and run the below command to create secret using kubectl. Make sure to update your key vault secret in the below command which you created in the previous steps.
 
     ```sh
-    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=yourkeyvaultsecret] 
+    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=[yourkeyvaultsecret] 
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv6.png "Add a Namespace")
     
-1. Navigate back to browser and open AKS in azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets you should be able to see the newly created secret. 
+1. Navigate back to browser and open AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets you should be able to see the newly created secret. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
@@ -53,7 +54,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 > **Note**: The following tasks should be executed in command prompt.
 
-1. Open a new command prompt in your jump VM and login to azure with the below commands after updating the values in the command.
+1. Open a new command prompt in your jump VM and login to azure with the below commands after updating the values in the below command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
@@ -68,20 +69,20 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account show
    ```
 
-   - Ensure you are connected to the correct subscription. List your subscriptions and then set the subscription by its id with the following commands (like what you did in cloud shell before the lab):
+   - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
 
    ```bash
    az account list
    az account set --subscription {id}
    ```
 
-1. Configure kubectl to connect to the Kubernetes cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Setup the Kubernetes cluster connection using kubectl. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
    ```bash
    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
    ```
 
-1. Test that the configuration is correct by running a simple kubectl command to produce a list of nodes:
+1. Run a quick kubectl command to generate a list of nodes to verify that the setup is correct.
 
    ```bash
    kubectl get nodes
@@ -94,7 +95,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Define a new Namespace for our API deployment. Select the **Namespaces** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal. In the Namespaces tab, select **+ Create** and then select **Create with YAML** button.
+1. Define a new Namespace for your API deployment. Select the **Namespaces** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal. In the Namespaces tab, select **+ Create** and then select **Create with YAML** button.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace2.png "Add a Namespace")
     
@@ -321,7 +322,7 @@ In this task, you will deploy the web service using kubectl.
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
     
-1. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
