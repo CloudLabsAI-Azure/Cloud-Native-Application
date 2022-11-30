@@ -12,9 +12,9 @@ Kubernetes services can discover the ports assigned to each pod, allowing you to
  
 In this task, you will edit the web application source code to add Application Insights and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change.
 
->**Note**: Please perform this task using a new windows command prompt which should be not connected to build agent VM but should be logged into azure.
+>**Note**: Please perform this task using a new Windows command prompt which should be not connected to build agent VM but should be logged into azure.
 
-1. Execute this command in windows command prompt to retrieve the instrumentation key for the `content-web` Application Insights resource. Replace the `SUFFIX` placeholder with **<inject key="DeploymentID" />**.
+1. Execute this command in Windows command prompt to retrieve the instrumentation key for the `content-web` Application Insights resource. Replace the `SUFFIX` placeholder with **<inject key="DeploymentID" />**.
 
    ```bash
    az resource show -g contosotraders-[SUFFIX] -n content-web --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey -o tsv
@@ -24,7 +24,7 @@ In this task, you will edit the web application source code to add Application I
 
    >**Note**: If you have a blank result check that the command you issued refers to the right resource.
 
-2. From an windows command terminal, update your development files by pulling the latest changes from the azure and then updating deployment YAML files.
+2. In Windows command prompt, update your development files by pulling the latest changes from the Azure and then update deployment YAML files.
 
     ```bash
     cd C:\lab-files\Cloud-Native-Application\labfiles\src\ContosoTraders.Ui.Website\src\
@@ -35,7 +35,7 @@ In this task, you will edit the web application source code to add Application I
 
     > **Note**: The calls to `kubectl` are necessary to fetch recent changes to the port and CPU resource configurations made in previous steps for the `web` and `api` deployments.
 
-3. Install support for Application Insights.
+3. Run the below command to install support for Application Insights.
 
     ```bash
     npm install applicationinsights --force --save
@@ -43,7 +43,7 @@ In this task, you will edit the web application source code to add Application I
 
     > **Note**: Make sure to include the `--save` argument. Without this, a reference to the `applicationinsights` npm package will not get added to the `package.json` file of the `content-web` nodejs project, resulting in a deployment failure in later steps. Also, this can take up to 5 minutes to complete the installation.
 
-4. Edit the `app.js` file using the command ```code configservice.js``` Visual Studio Code remote and and add the following lines immediately after `B2cScopes` is instantiated on line 14. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
+4. Edit the `app.js` file using the command ```code configservice.js``` Visual Studio Code remote and add the following lines immediately after `B2cScopes` is instantiated on line 14. Replace `YOUR APPINSIGHTS KEY` placeholder with the app insights key which you had copied earlier in the task.
 
     ```javascript
     const appInsights = require("applicationinsights");
@@ -60,7 +60,8 @@ In this task, you will edit the web application source code to add Application I
     ```bash   
     kubectl delete deployment contoso-traders-web -n contoso-traders
     ```
-7. Now run the below commands to create and pusht the new image to ACR and AKS. 
+7. Now run the below commands to create and push the new image to ACR and AKS. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+ 
 
     ```bash
     docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest
@@ -70,16 +71,16 @@ In this task, you will edit the web application source code to add Application I
     docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
     ```
     
-8. Once the build and push is completed, run the below command to create the workload in AKS.
+8. Once the build and push is completed, run the below command to create the workload in Azure Kubernetes service.
 
      ```bash
      cd C:/lab-files
      kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
      ```
 
-9. From the navigation menu, select **Replica Sets** (2) under **Workloads** (1). From this view, you will see a new replica set for the **contoso-traders-web** (3), which may still be in the process of deploying (as shown below) or already fully deployed.
+9. Naviaget to **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service, select **Workloads** from left side menu. Select **Replica Sets** from top menu, you will see a new replica set for the **contoso-traders-web** which may still be in the process of deploying (as shown below) or already fully deployed.
 
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/rollingupdate.png "Pod deployment is in progress")
+    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/ex5-rollingupdate.png "Pod deployment is in progress")
 
 10. While the deployment is in progress, you can navigate to the web application and observe that the service is running normally, and tasks continue to be load balanced.
 
