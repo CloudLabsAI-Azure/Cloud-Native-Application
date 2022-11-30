@@ -90,7 +90,7 @@ In this task, you will edit the web application source code to add Application I
 
 This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.
 
-1. Run the following command from an windows command terminal to add the Nginx stable Helm repository:
+1. Run the following command from an Windows command terminal to add the Nginx stable Helm repository:
 
     ```bash
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -114,7 +114,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=2 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
    ```
 
-4. In the Azure Portal under **Services and ingresses**, copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
+4. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
 
     > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
     >
@@ -124,13 +124,13 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     >
    ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
 
-5. Within the Azure Cloud Shell, create a script to update the public DNS name for the external ingress IP.
+5. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
 
    ```bash
    code update-ip.sh
    ```
    
-   Paste the following as the contents. Be sure to replace the following placeholders in the script:
+   Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
    - `[INGRESS PUBLIC IP]`: Replace this with the IP Address copied from step 5.
    - `[ KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** and `REGION` with the region of your resource group: **<inject key="Region" />**.
@@ -162,10 +162,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    bash ./update-ip.sh
    ```
    
-    ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/updateip.png "Update the IP and SUFFIX values")
+   ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/updateip.png "Update the IP and SUFFIX values")
 
-
-8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** in the URL before browsing it.
+8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** in the below URL before browsing it.
 
     > **Note**: It is normal to receive a 404 message at this time.
 
@@ -189,7 +188,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
-10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates run the below command in windows prompt.
+10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates. Run the below command in Windows command prompt.
 
     ```bash
     cd C:\lab-files
@@ -336,7 +335,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from letsencrypt.
 
-22. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+22. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
