@@ -95,7 +95,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Define a new Namespace for your API deployment. Select the **Namespaces** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal. In the Namespaces tab, select **+ Create** and then select **Create with YAML** button.
+1. Define a new Namespace for your API deployment. Select the **Namespaces** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Namespaces tab, select **+ Create** and then select **Create with YAML** button.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/createnamespace2.png "Add a Namespace")
     
@@ -108,8 +108,9 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
       labels:
         name: contoso-traders
       name: contoso-traders
-    ```   
-1. Define a Service for our API so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page of the Azure Portal. In the Services tab, select **+ Create** and choose **Create with YAML**. 
+    ```
+    
+1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Create with YAML**. 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/nwservice1.png "Add a Service")
 
@@ -138,7 +139,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![Select workloads under Kubernetes resources.](media/wkrload.png "Select workloads under Kubernetes resources")
 
-1. In the Add with YAML screen that loads, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
 
     ```YAML
     apiVersion: apps/v1
@@ -179,7 +180,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     ```
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
-1. This can take a few minutes after which you will see the deployment listed and it should be in running state.
+1. After a few minutes, you will see the deployment listed and it should be in running state.
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
@@ -188,19 +189,18 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 In this task, you will deploy the web service using kubectl.
 
-1. Open a **new** windows command prompt.
+1. Open a **new** Windows command prompt.
 
-1. Create a text file called `web.deployment.yml` in the `~/LABFILES` folder using the windows command prompt using VS code.
-   Editor.
+1. Create a text called `web.deployment.yml` in the `~/LABFILES` folder using the Windows command prompt and VS code.
 
    ```bash
    cd C:/LABFILES
    code web.deployment.yml
    ```
 
-1. Copy and paste the following text into the editor:
+1. Copy and paste the following code into the editor:
 
-    > **Note**: Be sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
+    > **Note**: Make sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
 
     ```yaml
     apiVersion: apps/v1
@@ -264,17 +264,17 @@ In this task, you will deploy the web service using kubectl.
 
     ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/sfx.png "Close Azure Cloud Editor")
 
-1. Enter **CTRL + S** button to **Save**.
+1. Save the changes by **CTRL + S** button to **Save**.
 
-1. Now again, navigate back to window command shell and create a text file called `web.service.yml` in the `~/lab-files` folder using the Azure Cloud Shell Editor.
+1. Navigate back to Windows command prompt and create a file called `web.service.yml` in the `~/LABFILES` folder using the Windows command prompt and VS code.
 
     ```bash
     code web.service.yml
     ```
 
-1. Copy and paste the following text into the editor:
+1. Copy and paste the following code into the editor:
 
-    > **Note**: Be sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
+    > **Note**: Make sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
 
     ```yaml
     apiVersion: v1
@@ -297,9 +297,9 @@ In this task, you will deploy the web service using kubectl.
 
     ```
 
-1. Save changes with **CTRL+S** and close the VS Code.
+1. Save the changes by **CTRL + S** and close the VS Code.
 
-1. Login to azure with the below commands after updating the values in the command.
+1. Login to Azure with the below command after updating the values in the command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
@@ -308,7 +308,7 @@ In this task, you will deploy the web service using kubectl.
     az login -u [username] -p [Password]
     ```
 
-1. Execute the commands below to deploy the application described by the YAML files. You will receive a message indicating the items `kubectl` has created a web deployment and a web service.
+1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the items `kubectl` has created a web deployment and a web service.
 
     ```bash
     kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
@@ -316,7 +316,7 @@ In this task, you will deploy the web service using kubectl.
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/kubectlcreated.png "kubectl create application")
 
-1. Return to the AKS blade in the Azure Portal. From the navigation menu, under **Kubernetes resources**, select the **Services and ingresses** view. You should be able to access the website via an external endpoint.
+1. Return to the AKS blade in the Azure Portal. From the navigation menu, select the **Services and ingresses** under **Kubernetes resources**. You should be able to access the website via an **External endpoint**.
 
     ![AKS services and ingresses shown with External IP highlighted](media/website.png "AKS services and ingresses shown with External IP highlighted")
 
