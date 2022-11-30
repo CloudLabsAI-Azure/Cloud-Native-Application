@@ -44,7 +44,7 @@ In this task, you will be generating a secret in Key vault and creating the conn
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv6.png "Add a Namespace")
     
-1. Navigate back to browser and open AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets you should be able to see the newly created secret. 
+1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets you should be able to see the newly created secret. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
