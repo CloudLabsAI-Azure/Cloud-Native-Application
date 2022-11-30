@@ -4,27 +4,27 @@
 
 ## Overview
 
-At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front-end on the existing cluster.
+At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front-end in the existing cluster.
 
-### Task 1: Increase service instances from the Azure Portal
+### Task 1: Modify the Kubernetes resource deployments in Kubernetes service
 
 In this task, you will increase the number of instances for the API deployment in the AKS. While it is deploying, you will observe the changing status.
 
-1. In the AKS blade in the Azure Portal select **Workloads** and then select the **contoso-traders-products** deployment.
+1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads** under Kubernetes resources from left side menu and then select the **contoso-traders-products** deployment.
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA1.png "Setting replicas to 2")
 
-2. Select **YAML** in the window that loads and scroll down until you find **replicas** under spec section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
+2. Select **YAML** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA2.png "Setting replicas to 2")
 
    > **Note**: If the deployment completes quickly, you may not see the deployment Waiting states in the portal, as described in the following steps.
 
-3. You will see it is now deploying and that there is one healthy instance and one pending instance (3).
+3. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
 
    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/HS3.png "View replica details")
 
-5. Open the Contoso Traders web application. The application should still work without errors.
+5. Open the Contoso Traders web application, and you can see that the application should still work without errors.
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/website3.png "View replica details")
 
@@ -32,11 +32,11 @@ In this task, you will increase the number of instances for the API deployment i
 
 In this task, you will resolve the failed API replicas. These failures occur due to the clusters'inability to meet the requested resources.
 
-1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the ** contoso-traders-product ** (2) deployment. 
+1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-product** deployment. 
 
    ![In the Workload view with the API deployment highlighted.](media/productwkrlos.png "API deployment is now healthy")
 
-1. Select the **YAML** navigation item.
+1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
    ![In the Workload view with the API deployment highlighted.](media/yaml.png "API deployment is now healthy")
 
@@ -59,30 +59,33 @@ In this task, you will resolve the failed API replicas. These failures occur due
           memory: 128Mi
       ```
 
-   Select **Review + save** and, when prompted, confirm the changes, and select **Save**.
+   Select **Review + save**, and when prompted to confirm the changes, select **Save**.
 
    ![In the edit YAML dialog, showing two changes required.](media/hostport.png "Modify deployment manifest")
 
-1. Return to the **Workloads** main view on the AKS Azure Portal and you will now see that the Deployment is healthy with two Pods operating.
+1. Return to the **Workloads** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service and you will now see that the Deployment is healthy with two Pods operating.
 
    ![In the Workload view with the API deployment highlighted.](media/HS3.png "API deployment is now healthy")
    
-### Task 3: Configure Horizontal Autoscaling for AKS pods
+### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 
-In this task you will be configuring the Horizontal Autoscaling for your AKS pods.
+In this task you will be configuring the Horizontal Autoscaling for your Kubernetes service pods.
    
-1. Navigate back to your windows command shell.
+1. Navigate back to your Windows command prompt.
 
-1. Run the below command to configure the Horizontal autoscaling for you apiProducts pods
+1. Run the below command to configure the Horizontal autoscaling for your API Products pods.
 
-   ``` bash 
-   kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10 ```
+   ```bash 
+   kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10
+   ```
    
    ![In the Workload view with the API deployment highlighted.](media/HS11.png "API deployment is now healthy")
    
-1. Now run the below command to check the status of the newly made HorizontalPodAutoscaler
+1. Run the below command to check the status of the newly added Horizontal Pod Autoscaler.
 
-   ``` kubectl get hpa -n contoso-traders ```
+   ```
+   kubectl get hpa -n contoso-traders
+   ```
    
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
