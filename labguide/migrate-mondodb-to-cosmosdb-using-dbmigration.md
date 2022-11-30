@@ -8,31 +8,31 @@ In this exercise, you will be migrating your on-premises MongoDB database to Azu
 
 ### Task 1: Seed the data into the on-premises MongoDB
 
-1. While connected to you Linux VM, you will be setting up the docker network in the next steps.
+1. While connected to your Linux VM, you will be setting up the docker network in the next steps.
     
    >**Note**: Mongodb is already installed and configured in the Linux VM
 
-1. Run the following command to create the docker network and run it on port 27017
+1. Run the following command to create the docker network and run it on port 27017.
 
     ```bash 
     docker network create contosotraders
     docker container run --name mongo --net contosotraders -p 27017:27017 -d mongo:4.0
     ```
 
-1. Please make sure that you are in **content-init** directory before running the next steps.
+1. Please make sure that you are in **content-init** directory before running to the next steps.
 
     ```
     cd Cloud-Native-Application/labfiles/src/developer/content-init
     ```
     
-1. Now run the below command to run the seed the data into mongodb.
+1. Run the below command to seed the data into MongoDB.
 
     ```bash 
     npm ci
     nodejs server.js
     ```
 
-1. After running this command you should be able to see the results as below.
+1. After running the above command, you should be able to see the results as shown below.
 
    ![](media/dataimported.png)
 
@@ -40,7 +40,7 @@ In this exercise, you will be migrating your on-premises MongoDB database to Azu
 
 In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB.
 
-1. In the Azure Portal, navigate to your **contosotraders(Build Agent)** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group and copy the **Private IP address**. Paste the private Ip address into the notepad for later use.
+1. In the Azure Portal, navigate to your **contosotraders(Build Agent)** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Copy the **Private IP address** and paste the it into the notepad for later use.
 
    ![](media/privateip.png)
 
@@ -50,7 +50,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/newproject.png)
 
-1. On the **New migration project** pane, enter the following values, then select **Create and run activity**:
+1. On the **New migration project** pane, enter the following values and then select **Create and run activity**:
 
     - Project name: `contoso`
     - Source server type: `MongoDB`
@@ -99,7 +99,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Select **Next: Database setting >>**.
 
-1. On the **Database setting** tab, select the `contentdb` **Source Database** so this database from MongoDB will be migrated to Azure Cosmos DB.
+1. On the **Database setting** tab, select the `contentdb` **Source Database**, so this database from MongoDB will be migrated to Azure Cosmos DB.
 
    ![The screenshot shows the Database setting tab with the contentdb source database selected.](media/contentdb.png "Database setting tab")
 
@@ -111,17 +111,17 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Select **Next: Migration summary >>**.
 
-1. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
+1. On the **Migration summary** tab, enter `MigrateData` in the **Activity name** field, and then select **Start migration** to initiate the migration of the MongoDB data to Azure Cosmos DB.
 
    ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media/migratedata.png "Migration summary")
 
-1. The status for the migration activity will be shown. The migration will only take a few seconds to complete. Select **Refresh** to reload the status to ensure it shows a **Status** of **Complete**.
+1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **complete**. 
 
    ![The screenshot shows the MigrateData activity showing the status has completed.](media/completed.png "MigrateData activity completed")
 
-1. To verify the data was migrated, navigate to the **Cosmos DB Account** for the lab within the Azure Portal, then select the **Data Explorer**. You will see the `items` and `products` collections listed within the `contentdb` database and you will be able to explore the documents.
+1. To verify the migrated data, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB Account in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Data Explorer** from the left-menu. You will see the `items` and `products` collections listed within the `contentdb` database and you will be able to explore the documents.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrateditem.png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/ex2-migrateditem.png "Cosmos DB is open")
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
 
