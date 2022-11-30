@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will learn how to build Docker image of the Contoso traders application using Linux virtual machine. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker image to the Azure Container Registry.
+In this exercise, you will learn how to build Docker images of the Contoso traders application using Linux virtual machine. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
@@ -26,7 +26,7 @@ In this task, you will be connecting to Build agent VM using Command prompt.
    
    >**Note**: Please note that while typing the password you won’t be able to see it due to the security concerns.
     
-1. Once the VM is connected, run the below command to clone the GitHub repository that we are going to use for the lab.
+1. Once the VM is connected, run the below command to clone the GitHub repository that contains all the files related to Contoso traders application which you will be using for the lab.
 
     ``` 
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
@@ -80,7 +80,7 @@ In this task, you will be building the docker image and will be pushing them to 
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Now build the contosotraders-carts container image using the Dockerfile in the directory. Note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the command with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value.
+1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take a note how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the below command with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
@@ -88,7 +88,7 @@ In this task, you will be building the docker image and will be pushing them to 
     
     ![](media/ex1-apicarts.png)
     
-1. Repeat the steps to create the contosotraders-Products docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
@@ -120,7 +120,7 @@ In this task, you will be building the docker image and will be pushing them to 
     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
-1. Repeat the steps to create the contosotraders-UI-Website docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Now build the **contosotraders-UI-Website** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
@@ -135,7 +135,7 @@ In this task, you will be building the docker image and will be pushing them to 
     cd Cloud-Native-Application/labfiles/
     ```
 
-1. Observe the built Docker images by running command `docker image ls`. The images were tagged with latest, but it is possible to use other tag values for versioning.
+1. Observe the built Docker images by running command `docker image ls`. The images are tagged with latest, also it is possible to use other tag values for versioning.
 
     ```
     docker image ls
@@ -143,7 +143,7 @@ In this task, you will be building the docker image and will be pushing them to 
 
     ![](media/ex1-dockerimages.png)
     
-1. Now login to ACR using the below commands, please update the Suffix and ACR password value in the below command. You should be able to see that output as below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Now login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output as below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
@@ -165,7 +165,7 @@ In this task, you will be building the docker image and will be pushing them to 
    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
    ```
    
-1. You should be able to see the docker image getting pushed to ACR as per the below screenshots. 
+1. You should be able to see the docker image getting pushed to ACR as shown in the below screenshot. 
     
     ![](media/ex1-dockerpush.png "open cmd")
     
