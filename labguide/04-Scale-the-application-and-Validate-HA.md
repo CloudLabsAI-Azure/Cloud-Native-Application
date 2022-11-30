@@ -14,17 +14,16 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA1.png "Setting replicas to 2")
 
-2. Select **YAML** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
+1. Select **YAML** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA2.png "Setting replicas to 2")
 
    > **Note**: If the deployment completes quickly, you may not see the deployment Waiting states in the portal, as described in the following steps.
 
-3. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
+1. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
 
-   ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/HS3.png "View replica details")
 
-5. Open the Contoso Traders web application, and you can see that the application should still work without errors.
+1. Open the Contoso Traders web application, and you can see that the application should still work without errors.
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/website3.png "View replica details")
 
@@ -90,11 +89,11 @@ In this task you will be configuring the Horizontal Autoscaling for your Kuberne
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
 
-### Task 4: Restart containers and test HA
+### Task 4: Restart containers and testing HA
 
 In this task, you will restart containers and validate that the restart does not impact the running service.
 
-1. In the AKS blade in the Azure Portal select **Workloads** (1) and then select the **contoso-traders-product** (2) deployment. 
+1. In the Azure Kubernetes Service blade, select **Workloads** and then select the **contoso-traders-product** deployment. 
 
    ![In the Workload view with the API deployment highlighted.](media/productwkrlos.png "API deployment is now healthy")
 
@@ -102,7 +101,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/replica4.png "API pod deployments")
 
-1. After a few moments you will find that the contoso-traders-product deployment is now running 4 replicas successfully.
+1. After a few moments you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
 
    ![Viewing replica set in the Azure Portal.](media/4replica.png "Viewing replica set in the Azure Portal")
 
@@ -110,7 +109,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/website3.png "View web task hostname")
 
-1. Select two of the Pods at random and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
+1. Select two of the Pods randomly and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
 
    ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/nwcontainer.png "Delete running pod instance")
 
@@ -118,9 +117,9 @@ In this task, you will restart containers and validate that the restart does not
 
    ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/nwcontainer.png "API Pods changing state")
 
-1. Return to the API Deployment and scale it back to `1` replica. See Step 3 above for how to do this if you are unsure.
+1. Return to the **contoso-traders-product** API Deployment. Select **YAML** navigation item and scale it back to `1` replica.
 
-1. Return to the sample web site's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
+1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
 
@@ -130,11 +129,11 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
 1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" />** Azure Cosmos DB Account.
 
-2. Select **Data Explorer**.
+2. Select **Data Explorer** from the left side menu.
 
     ![](media/cosmosdata.png "View replica details")
 
-3. Within **Data Explorer**, expand the `contentdb` (1) database.
+3. Within **Data Explorer**, expand the `contentdb` database.
 
     ![](media/expnddb.png "View replica details")
 
@@ -142,9 +141,9 @@ In this task, you will setup Autoscale on Azure Cosmos DB.
 
     ![](media/scaleitem.png "View replica details")
 
-5. On the **Scale**, select **Autoscale** (1) for the **Throughput** setting under **Scale** and click on **Save** (2).
+5. On the **Scale**, select **Autoscale** for the **Throughput** setting under **Scale** and click on **Save**.
 
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autodbscale.png "CosmosDB collection scale and settings")
+    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/ex4-autodbscale.png "CosmosDB collection scale and settings")
 
 ### Task 6: Test CosmosDB Autoscale
 
@@ -156,15 +155,15 @@ In this task, you will run a performance test script that will test the Autoscal
 
    ![](media/cnctionstring.png "View replica details")
 
-3. On the **Connection String** pane, copy the **HOST**, **USERNAME**, and **PRIMARY PASSWORD** values. Save these for use later.
+3. On the **Connection String** pane, copy the **HOST**, **USERNAME**, and **PRIMARY PASSWORD** values. Save these in textfile for later use.
 
     ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/password.png "View CosmosDB connection string")
 
-4. Open the Command prompt, connect to build agent vm using the **Command to Connect to Build Agent VM**, which is given on lab environment details page.
+4. Open the Command prompt, connect to build agent vm using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
 5. When asked for the password, enter **Build Agent VM Password** given below.
 
-   * build agent Password: **<inject key="Build Agent VM Password"></inject>**
+   * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
 6. On the **Build agent VM**, navigate to the `~/lab-files` directory.
 
@@ -172,41 +171,41 @@ In this task, you will run a performance test script that will test the Autoscal
     cd ~/labfiles
     ```
 
-7. Run the following command to open the `perftest.sh` script for editing in Vim.
+7. Run the following command to open the `perftest.sh` script in editor window.
 
     ```bash
     vi perftest.sh
     ```
 
-8. There are several variables declared at the top of the `perftest.sh` script. Modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
+8. There are several variables declared at the top of the `perftest.sh` script. Press **_i_** to get into `insert` mode. Then modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
 
     ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/updatepreftest.png "Modify the connection information in Vim")
 
-9. Then press **_ESC_**, write **_:wq_** to save you changes and close the file.
+9. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
-    **Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save you changes and close the file.
+    **Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
 
-10. Run the following command to execute the `perftest.sh` script to run a small load test against Cosmos DB. This script will consume RU's in Cosmos DB by inserting many documents into the Sessions container.
+10. Run the following command to execute the `perftest.sh` script to run a small load test against CosmosDB. This script will consume RUs in CosmosDB by inserting many documents into the Sessions container.
 
     ```bash
     bash ./perftest.sh
     ```
 
-    > **Note:** The script will take a minute to complete executing.
+    > **Note:** The script will take a minute to complete it's execution.
 
-11. Once the script has completed, navigate back to the **Cosmos DB account** in the Azure portal.
+11. Once the script execution is completed, navigate back to the **CosmosDB account** in the Azure portal.
 
 12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
-    > **Note:** It may take 2 - 5 minutes for the activity on the Cosmos DB collection to appear in the activity log. Wait a couple minutes and then refresh the pane if the recent Request charge doesn't show up right now.
+    > **Note:** It may take 2 - 5 minutes for the activity on the CosmosDB collection to appear in the activity log. Wait a couple minutes and then refresh the pane if the recent Request charge doesn't show up right now.
 
-13. Notice that the **Request charge** now shows there was activity on the **Cosmos DB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
+13. Notice that the **Request charge** now shows there was activity on the **CosmosDB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
 
     ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/cosmos-request-charge.png "Recent CosmosDB activity graph")
     
     >**Note**: In case if you don't see data on the graph. Please set the time range to last 1 hour.
 
-14. Click on the Next button present in the bottom-right corner of this lab guide to continue with the next exercise.
+14. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
