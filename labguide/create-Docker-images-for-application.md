@@ -105,7 +105,9 @@ In this task, you will be building the docker image and will be pushing them to 
     
     ![](media/latest-ex1-cd-website.png)
     
-1. In the `vi` editor, press `i` to get in to the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Press `Esc` to exit from the `insert` mode and type `:wq` to exit from the `vi` editor.
+1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save you changes and close the file.
+    
+    >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
 
     ```
     const APIUrl = 'http://contoso-traders-productsXXXXX.eastus.cloudapp.azure.com';
