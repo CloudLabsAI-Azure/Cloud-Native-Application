@@ -19,69 +19,74 @@ In this task, you will edit the web application source code to update some confi
 
 1. Navigate back to the Windows command prompt where you have connected to your linux VM, and run the below command to navigate to the directory where you'll need to make the changes in web application source code.
 
-    ```bash
-    cd  Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/components/hero
-    
-    ```
+     ```bash
+     cd  Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/components/hero
+
+     ```
 1. Once you are in the correct directly, run the below command to make open **Corousel.js** file to make some text change in homepage of your web application.
 
-   ```bash
-   vim Corousel.js
-   ```
+     ```bash
+     vim Corousel.js
+     ```
+     
    ![A screenshot of the code editor showing updates in context of the app.js file](media/updatetext.png "AppInsights updates in app.js")
    
 1. Once the file is open, press "i" to enter the insert mode and update the existing value with mentioned below in **items** section and in **name** value.
 
-   ```
-   The latest, Fastest, Most Powerful Xbox Ever.
-   ```
+     ```
+     The latest, Fastest, Most Powerful Xbox Ever.
+     ```
  
-    ![A screenshot of the code editor showing updates in context of the app.js file](media/updatesource.png "AppInsights updates in app.js")
+   ![A screenshot of the code editor showing updates in context of the app.js file](media/updatesource.png "AppInsights updates in app.js")
 
 1. Once the changes are done, save the file pressing "ESC" and then type ":wq" and exit the editor.
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
 
-    ```bash
-    cd
-    cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
-    ```
+     ```bash
+     cd
+     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
+     ```
    
 1. Once you are in the correct directory, run the below command to create the new docker image that will be having all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+  
   >**Note**: Observe that this time we are using "V1" tag for the image
-    ```bash
-    docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
-    ```
+  
+     ```bash
+     docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+     ```
 
-    ```bash 
-    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
-    ```
+     ```bash 
+     docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
+     ```
     
 1. Once the docker build and push is completed, Navigate back to the other Command prompt that is not connected to the linux VM.
 
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web api to the latest image.Copy the name of the **contoso-traders-web###** to the notepad. 
 
-   ```bash
-   kubectl get deployments -n contoso-traders
-   kubectl get pods -n contoso-traders
-   ```
+    ```bash
+    kubectl get deployments -n contoso-traders
+    kubectl get pods -n contoso-traders
+    ```
+    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/deploymentss.png "Pod deployment is in progress")
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/ describe.png "Pod deployment is in progress")
 
 1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
-   ```bash
-   kubectl describe pods  -n contoso-traders
-   ```
+     ```bash
+     kubectl describe pods  -n contoso-traders
+     ```
    
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
 
 3. Now to set the new image on the pods, run the below command.
 
-   ```bash
-   kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
-   ```
+     ```bash
+     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+     ```
+     
     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates.png "Pod deployment is in progress")
 
 1. Now try describing the latest pods again and see which image is mapped with the pod.
