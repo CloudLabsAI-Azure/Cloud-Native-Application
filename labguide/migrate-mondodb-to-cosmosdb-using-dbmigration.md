@@ -130,7 +130,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
 
-1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure CosmosDB for MongoDB account. Select **Quick start** from the left-menu and **Copy** the **PRIMARY CONNECTION STRING** and paste it in text file for later use in the next exercise.
+1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure CosmosDB for MongoDB account. Select **Quick start** **(2)** from the left-menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it in text file for later use in the next exercise.
 
    ![](media/ex2-cdb-copycs.png)
 
