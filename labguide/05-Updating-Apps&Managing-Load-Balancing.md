@@ -52,14 +52,12 @@ In this task, you will edit the web application source code to update some confi
   
   >**Note**: Observe that this time we are using "V1" tag for the image
   
-     ```bash
-     docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
-     ```
+      ```bash
+      docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
 
-     ```bash 
-     docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
-     ```
-    
+      docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
+      ```
+
 1. Once the docker build and push is completed, Navigate back to the other Command prompt that is not connected to the linux VM.
 
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web api to the latest image.Copy the name of the **contoso-traders-web###** to the notepad. 
