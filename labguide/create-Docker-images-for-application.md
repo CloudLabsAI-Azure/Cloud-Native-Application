@@ -4,11 +4,11 @@
 
 ## Overview
 
-In this exercise, you will learn how to build Docker images of the Contoso traders application using Linux virtual machine. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+In this exercise, you will learn how to Containerize the Contoso traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
-In this task, you will be connecting to Build agent VM using Command prompt. 
+In this task, you will be connecting to Build agent VM using Command prompt and will be clonning the Contoso trader website GitHub repo.  
 
 1. Once you log into the VM, search for **cmd** **(1)** in the search bar and click on **Command Prompt** **(2)** to open.
 
@@ -42,9 +42,9 @@ In this task, you will be connecting to Build agent VM using Command prompt.
     
     ![](media/ex1-cd.png)
     
-### Task 2: Build Docker images and push them to the container registry
+### Task 2: Build Docker images to containerize the application and push them to the container registry
 
-In this task, you will be building the docker image and will be pushing them to the ACR to later use in AKS
+In this task, you will be building the docker images to containerize the application and will be pushing them to the ACR(Azure Container Registry) to later use in AKS.
 
 1. Run the below command to login to Azure, navigate to device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 
@@ -74,7 +74,7 @@ In this task, you will be building the docker image and will be pushing them to 
 
    ![](media/ex1-logincomplete.png)
 
-1. Please make sure that you are in **labfiles** directory before running the next steps.
+1. Please make sure that you are in **labfiles** directory before running the next steps as the docker build needs to find the DockerFile to create the image.
 
     ```
     cd Cloud-Native-Application/labfiles/
@@ -105,7 +105,7 @@ In this task, you will be building the docker image and will be pushing them to 
     
     ![](media/latest-ex1-cd-website.png)
     
-1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save you changes and close the file.
+1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save you changes and close the file. We need to update the API URL here so that Contoso Traders application can connect to product API once its pushed to AKS containers.
     
     >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
 
@@ -184,4 +184,4 @@ In this task, you will be building the docker image and will be pushing them to 
 
 ## Summary
 
-In this exercise, you have completed building Docker images and pushed them to the container registry.
+In this exercise, you have completly containerized you web application with the help of docker and pushed them to the container registry.
