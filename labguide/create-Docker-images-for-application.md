@@ -144,7 +144,15 @@ In this task, you will be building the docker image and will be pushing them to 
     ```
 
     ![](media/ex1-dockerimages.png)
-    
+
+1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+
+   ![](media/ex1-acr1.png)
+   
+1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** under Settings from left side menu. **Copy** the Password and paste it in text file for later use.
+
+   ![](media/ex1-acr2.png)    
+
 1. Now login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output as below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
