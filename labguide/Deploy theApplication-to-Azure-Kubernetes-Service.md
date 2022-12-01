@@ -189,76 +189,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 In this task, you will deploy the web service using kubectl.
 
-1. Open a **new** Windows command prompt.
+1. Open a **File Explorer** from your JumpVM.
 
-1. Create a text called `web.deployment.yml` in the `~/LABFILES` folder using the Windows command prompt and VS code.
+1. Navigate to `C:\LABFILES` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
 
-   ```bash
-   cd C:/LABFILES
-   code web.deployment.yml
-   ```
-
-1. Copy and paste the following code into the editor:
-
-    > **Note**: Make sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
-
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      labels:
-        app: contoso-traders-web
-      name: contoso-traders-web
-      namespace: contoso-traders
-    spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          app: contoso-traders-web
-      strategy:
-        rollingUpdate:
-          maxSurge: 1
-          maxUnavailable: 1
-        type: RollingUpdate
-      template:
-        metadata:
-          labels:
-            app: contoso-traders-web
-          name: contoso-traders-web
-        spec:
-          containers:
-          - image: contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest
-            env:
-              - name: contosotraderproduct
-                value: http://contoso-traders-products:3001
-            livenessProbe:
-              httpGet:
-                path: /
-                port: 3000
-              initialDelaySeconds: 30
-              periodSeconds: 20
-              timeoutSeconds: 10
-              failureThreshold: 3
-            imagePullPolicy: Always
-            name: contoso-traders-web
-            ports:
-              - containerPort: 3000
-                hostPort: 80
-                protocol: TCP
-            resources:
-              requests:
-                cpu: 1000m
-                memory: 128Mi
-            securityContext:
-              privileged: false
-            terminationMessagePath: /dev/termination-log
-            terminationMessagePolicy: File
-          dnsPolicy: ClusterFirst
-          restartPolicy: Always
-          schedulerName: default-scheduler
-          securityContext: {}
-          terminationGracePeriodSeconds: 30
-   ```
+   ![](media/ex3-webfile-update1.png)
 
 1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
 
@@ -266,38 +201,11 @@ In this task, you will deploy the web service using kubectl.
 
 1. Save the changes by **CTRL + S** button to **Save**.
 
-1. Navigate back to Windows command prompt and create a file called `web.service.yml` in the `~/LABFILES` folder using the Windows command prompt and VS code.
+1. Navigate back to Windows command prompt and run the below command to change the directory to `~/LABFILES` folder.
 
     ```bash
-    code web.service.yml
+    cd C:/LABFILES
     ```
-
-1. Copy and paste the following code into the editor:
-
-    > **Note**: Make sure to copy and paste only the contents of the code block carefully to avoid introducing any special characters.
-
-    ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      labels:
-        app: contoso-traders-web
-      name: contoso-traders-web
-      namespace: contoso-traders
-    spec:
-      ports:
-        - name: web-traffic
-          port: 80
-          protocol: TCP
-          targetPort: 3000
-      selector:
-        app: contoso-traders-web
-      sessionAffinity: None
-      type: LoadBalancer
-
-    ```
-
-1. Save the changes by **CTRL + S** and close the VS Code.
 
 1. Login to Azure with the below command after updating the values in the command.
 
