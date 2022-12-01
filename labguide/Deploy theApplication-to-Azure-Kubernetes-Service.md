@@ -27,7 +27,7 @@ In this task, you will be generating a secret in Key vault and creating the conn
 1. In the **Create a secret** pane, enter the following details:
 
     - Name: **mongodbconnetion**
-    - Secret Value: Paste the connection string you have copied in previous exercise
+    - Secret Value: Paste the connection string of Azure CosmosDB for MongoDB account which you have copied in previous exercise.
     
     Keep other values default and click on **Create**
     
