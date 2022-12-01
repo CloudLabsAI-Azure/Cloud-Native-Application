@@ -10,16 +10,11 @@ In this exercise, you will be migrating your on-premises MongoDB database to Azu
 
 In this task, you will be connecting to mongo and explore the databases and collections in it.
 
-1. While connected to your Linux VM, run the below commands for connecting to the source DB.
+1. While connected to your Linux VM, run the below command for connecting to mongo shell.
 
    ```
    mongo
-   show dbs
-   use contentdb
-   show collections
    ```
-   
-   ![](media/ex2-mongo1.png)
    
    >**Note**: If you face an issue while connecting to the source DB with error connection refused. Please run the following commands and reperform the step - 1 of the task.
 
@@ -33,6 +28,16 @@ In this task, you will be connecting to mongo and explore the databases and coll
    ```
    
    ![](media/ex2-mongo2.png)
+   
+1. Run the following commands to verify the database in mongo shell.
+
+   ```
+   show dbs
+   use contentdb
+   show collections
+   ```
+   
+   ![](media/ex2-mongo1.png)   
 
 ### Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
