@@ -10,7 +10,7 @@ Kubernetes services can discover the ports assigned to each pod, allowing you to
 
 ### Task 1: Perform a rolling update
  
-In this task, you will edit the web application source code to add Application Insights and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change.
+In this task, you will edit the web application source code to update some configuration and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change.
 
 >**Note**: Please perform this task using a new Windows command prompt which should be not connected to build agent VM but should be logged into azure.
 
