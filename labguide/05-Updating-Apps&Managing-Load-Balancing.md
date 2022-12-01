@@ -1,4 +1,4 @@
-## Exercise 5: Updating Apps & Managing Load Balancing
+## Exercise 5: Updating Apps & Managing kubernetes Ingress
 
 **Duration**: 40 minutes
 
