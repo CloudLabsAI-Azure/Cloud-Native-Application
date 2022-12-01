@@ -6,35 +6,33 @@
 
 In this exercise, you will be migrating your on-premises MongoDB database to Azure CosmosDB using Azure database migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure. 
 
-### Task 1: Seed the data into the on-premises MongoDB
+### Task 1: Explore the databases and collections in MongoDB
 
-1. While connected to your Linux VM, you will be setting up the docker network in the next steps.
-    
-   >**Note**: Mongodb is already installed and configured in the Linux VM
+In this task, you will be connecting to mongo and explore the databases and collections in it.
 
-1. Run the following command to create the docker network and run it on port 27017.
+1. While connected to your Linux VM, run the below commands for connecting to the source DB.
 
-    ```bash 
-    docker network create contosotraders
-    docker container run --name mongo --net contosotraders -p 27017:27017 -d mongo:4.0
-    ```
+   ```
+   mongo
+   show dbs
+   use contentdb
+   show collections
+   ```
+   
+   ![](media/ex2-mongo1.png)
+   
+   >**Note**: If you face an issue while connecting to the source DB with error connection refused. Please run the following commands and reperform the step - 1 of the task.
 
-1. Please make sure that you are in **content-init** directory before running to the next steps.
-
-    ```
-    cd Cloud-Native-Application/labfiles/src/developer/content-init
-    ```
-    
-1. Run the below command to seed the data into MongoDB.
-
-    ```bash 
-    npm ci
-    nodejs server.js
-    ```
-
-1. After running the above command, you should be able to see the results as shown below.
-
-   ![](media/dataimported.png)
+   ```
+   sudo apt install mongodb-server
+   cd /etc
+   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+   sudo service mongodb stop
+   sudo service mongodb start
+   ```
+   
+   ![](media/ex2-mongo2.png)
 
 ### Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
@@ -126,6 +124,10 @@ In this task, you will create a Migration project within Azure Database Migratio
 1. You will see the `items` and `products` collections listed within the `contentdb` database and you will be able to explore the documents.
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
+
+1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure CosmosDB for MongoDB account. Select **Quick start** from the left-menu and **Copy** the **PRIMARY CONNECTION STRING** and paste it in text file for later use in the next exercise.
+
+   ![](media/ex2-cdb-copycs.png)
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
