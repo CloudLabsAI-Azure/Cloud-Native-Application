@@ -107,7 +107,7 @@ In this task you will be enabling the cluster autoscaler for existing AKS cluste
     az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
     ```
     
-1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `null` . Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.   
+1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `null`. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.   
     
      ```
      az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
@@ -115,7 +115,7 @@ In this task you will be enabling the cluster autoscaler for existing AKS cluste
     
     ![](media/ex4-t3-scaling1.png)
 
-1. Run the below command to enable the cluster autoscale in existing cluster.
+1. Run the below command to enable the cluster autoscale in existing cluster. Verify that `enablingAutoScaling` is `true`.  Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
@@ -123,7 +123,7 @@ In this task you will be enabling the cluster autoscaler for existing AKS cluste
   
    ![](media/ex4-t3-scaling2.png)
    
-1. Run the below command to autoscale the node pools in existing cluster.
+1. Run the below command to autoscale the node pools in existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
