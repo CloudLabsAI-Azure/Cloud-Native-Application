@@ -50,7 +50,7 @@ In this task, you will edit the web application source code to update some confi
    
 1. Once you are in the correct directory, run the below command to create the new docker image that will be having all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
   
-  >**Note**: Observe that this time we are using "V1" tag for the image
+   >**Note**: Observe that this time we are using "V1" tag for the image
   
       ```bash
       docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
