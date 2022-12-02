@@ -18,10 +18,9 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA2.png "Setting replicas to 2")
 
-   > **Note**: If the deployment completes quickly, you may not see the deployment Waiting states in the portal, as described in the following steps.
+    >**Note**: If the deployment completes quickly, you may not see the deployment Waiting states in the portal, as described in the following steps.
 
 1. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
-
 
 1. Open the Contoso Traders web application, and you can see that the application should still work without errors.
 
