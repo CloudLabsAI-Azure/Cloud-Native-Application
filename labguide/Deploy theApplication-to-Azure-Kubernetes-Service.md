@@ -117,7 +117,6 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
     >**Info**: The below YAML script will create a AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Serviceis a abstract way to expose an application running on a set of Pods as a network service. 
 
-
     ```yaml
     apiVersion: v1
     kind: Service
@@ -133,7 +132,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
         - port: 80
       selector:
         app: contoso-traders-products
-    ``` 
+     ``` 
     
    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
