@@ -78,7 +78,17 @@ In this task you will be enabling the cluster autoscaler for existing AKS cluste
     ```
     az login -u [username] -p [Password]
     ```
+
+1. Setup the Kubernetes cluster connection and verify the count of node pools in the cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+
+    ```
+    az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
+    az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
+    ```
     
+    
+    
+
 1. Run the below command to enable the cluster autoscale in existing cluster.
 
    
