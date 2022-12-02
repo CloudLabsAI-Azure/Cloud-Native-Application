@@ -626,9 +626,8 @@
     },
     "Command to Connect to Build Agent VM ": {
       "type": "string",
-      "value": "[concat('ssh  adminfabmedical@', reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressNameLinux'))).dnsSettings.fqdn)]"
-    },
-   
+      "value": "[concat('ssh adminfabmedical@', reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressNameLinux'))).dnsSettings.fqdn)]"
+    },   
     "Trainer Password": {
       "value": "[parameters('trainerUserPassword')]",
       "type": "string"
