@@ -89,7 +89,7 @@ In this task you will be configuring the Horizontal Autoscaling for your Kuberne
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
 
-### Task 4: Restart containers and testing HA
+### Task 4: Restart containers and validate HA
 
 In this task, you will restart containers and validate that the restart does not impact the running service.
 
