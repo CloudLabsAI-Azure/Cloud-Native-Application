@@ -70,7 +70,18 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 In this task you will be enabling the cluster autoscaler for existing AKS cluster and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt.
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, login to azure with the below command after updating the values in the below command.
+
+   * Username: **<inject key="AzureAdUserEmail"></inject>**
+   * Password: **<inject key="AzureAdUserPassword"></inject>**
+
+    ```
+    az login -u [username] -p [Password]
+    ```
+    
+1. Run the below command to enable the cluster autoscale in existing cluster.
+
+   
 
 ### Task 4: Configure Horizontal Autoscaling for Kubernetes service pods
 
