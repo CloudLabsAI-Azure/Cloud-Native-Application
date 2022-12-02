@@ -1,4 +1,4 @@
-## Exercise 5: Updating Apps & Managing kubernetes Ingress
+## Exercise 5: Updating Apps & Managing Kubernetes Ingress
 
 **Duration**: 40 minutes
 
