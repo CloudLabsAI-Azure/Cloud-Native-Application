@@ -69,7 +69,7 @@ In this task, you will edit the web application source code to update some confi
     
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/deploymentss.png "Pod deployment is in progress")
 
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/ describe.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/describe.png "Pod deployment is in progress")
 
 1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
@@ -79,7 +79,7 @@ In this task, you will edit the web application source code to update some confi
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
 
-3. Now to set the new image on the pods, run the below command.
+1. Now to set the new image on the pods, run the below command.
 
      ```bash
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
