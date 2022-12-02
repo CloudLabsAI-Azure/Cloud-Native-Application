@@ -64,36 +64,9 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. Return to the **Workloads** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service and you will now see that the Deployment is healthy with two Pods operating.
 
-   ![In the Workload view with the API deployment highlighted.](media/HS3.png "API deployment is now healthy")
-      
-### Task 3: Autoscaling on Azure Kubernetes service cluster
+   ![In the Workload view with the API deployment highlighted.](media/HS3.png "API deployment is now healthy")       
 
-In this task you will be enabling the cluster autoscaler for existing AKS cluster and you will be autoscaling the cluster node pools.
-
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, login to azure with the below command after updating the values in the below command.
-
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
-
-    ```
-    az login -u [username] -p [Password]
-    ```
-
-1. Setup the Kubernetes cluster connection and verify the count of node pools in the cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
-
-    ```
-    az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
-    az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
-    ```
-    
-    
-    
-
-1. Run the below command to enable the cluster autoscale in existing cluster.
-
-   
-
-### Task 4: Configure Horizontal Autoscaling for Kubernetes service pods
+### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 
 In this task you will be configuring the Horizontal Autoscaling for your Kubernetes service pods.
    
@@ -115,6 +88,48 @@ In this task you will be configuring the Horizontal Autoscaling for your Kuberne
    
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
+### Task 4: Autoscaling on Azure Kubernetes service cluster
+
+In this task you will be enabling the cluster autoscaler for existing AKS cluster and you will be autoscaling the cluster node pools.
+
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, login to azure with the below command after updating the values in the below command.
+
+   * Username: **<inject key="AzureAdUserEmail"></inject>**
+   * Password: **<inject key="AzureAdUserPassword"></inject>**
+
+    ```
+    az login -u [username] -p [Password]
+    ```
+
+1. Setup the Kubernetes cluster connection. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+
+    ```
+    az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
+    ```
+    
+1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `null` . Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.   
+    
+     ```
+     az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
+     ```   
+    
+    ![](media/ex4-t3-scaling1.png)
+
+1. Run the below command to enable the cluster autoscale in existing cluster.
+
+    ```
+    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
+    ```
+  
+   ![](media/ex4-t3-scaling2.png)
+   
+1. Run the below command to autoscale the node pools in existing cluster.
+
+    ```
+    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
+    ```
+   
+   ![](media/ex4-t3-scaling3.png)
 
 ### Task 5: Restart containers and validate HA
 
