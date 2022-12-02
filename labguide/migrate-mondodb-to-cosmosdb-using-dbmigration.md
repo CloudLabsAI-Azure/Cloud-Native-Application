@@ -10,16 +10,18 @@ In this exercise you will be migrating you on-prem mongodb database to Azure cos
 
 1.  Run the following command to create the docker network and and run it on port 27017
 
-    ``` bash 
+    ```bash 
     docker network create contosotraders
-    docker container run --name mongo --net contosotraders -p 27017:27017 -d mongo:4.0 ```
+    docker container run --name mongo --net contosotraders -p 27017:27017 -d mongo:4.0
+    ```
 
 1. Now run the below command to run the seed the data into mongodb.
     >Note: You need to make sure the you are running this command from this directory: **/Cloud-Native-Application/labfiles/src/developer/content-init$**
 
-    ``` bash 
+    ```bash 
     npm ci
-    nodejs server.js ```
+    nodejs server.js
+    ```
 
 1. After running this command you should be able to see the results as below.
 
