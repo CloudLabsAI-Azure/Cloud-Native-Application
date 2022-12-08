@@ -34,7 +34,7 @@ Param (
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
 [Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
-$adminUsername = "demouser"
+$adminUsername = "admincontoso"
 [System.Environment]::SetEnvironmentVariable('DeploymentID', $DeploymentID,[System.EnvironmentVariableTarget]::Machine)
 
 
@@ -55,8 +55,8 @@ InstallChocolatey
 
 sleep 10
 
-Install-Module -Name VSTeam -Force
-Import-Module -Name VSTeam -Force
+
+
 
 #installing extensions to vscode
 code --install-extension ms-dotnettools.csharp 
@@ -113,24 +113,18 @@ sleep 5
 
 
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/new/main/labguide/labfiles/logontask01.ps1","C:\Packages\logontask.ps1")
+$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/labfiles/logontask01.ps1","C:\Packages\logontask.ps1")
 
 sleep 5
 
 Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
 
-#WSL 2 pacakage installation
-wsl --install
-(New-Object System.Net.WebClient).DownloadFile('https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi', 'C:\wsl_update_x64.msi')
 
-sleep 5
-$arguments = "/i `"C:\wsl_update_x64.msi`" /quiet"
-Start-Process msiexec.exe -ArgumentList $arguments -Wait
 
 #Enable Autologon
 $AutoLogonRegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 Set-ItemProperty -Path $AutoLogonRegPath -Name "AutoAdminLogon" -Value "1" -type String 
-Set-ItemProperty -Path $AutoLogonRegPath -Name "DefaultUsername" -Value "$($env:ComputerName)\demouser" -type String  
+Set-ItemProperty -Path $AutoLogonRegPath -Name "DefaultUsername" -Value "$($env:ComputerName)\admincontoso" -type String  
 Set-ItemProperty -Path $AutoLogonRegPath -Name "DefaultPassword" -Value "$vmAdminPassword" -type String
 Set-ItemProperty -Path $AutoLogonRegPath -Name "AutoLogonCount" -Value "1" -type DWord
 
