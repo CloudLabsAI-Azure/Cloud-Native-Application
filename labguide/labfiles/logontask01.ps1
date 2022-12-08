@@ -13,10 +13,6 @@ Write-Host "Docker-install"
 
 [Environment]::SetEnvironmentVariable("Path", $env:Path+";C:\Users\demouser\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin","User")
 
-#WSL 2 pacakage installation
-(New-Object System.Net.WebClient).DownloadFile('https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi', 'C:\wsl_update_x64.msi')
-Start-Process C:\wsl_update_x64.msi -ArgumentList "/quiet"
-
 . C:\LabFiles\AzureCreds.ps1
 
 $user = $AzureUserName
