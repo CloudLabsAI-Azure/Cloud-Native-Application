@@ -18,13 +18,11 @@ Param (
     $InstallCloudLabsShadow,
      
     [string]
-    $vmAdminUsername,
+    $adminusername,
 
     [string]
     $trainerUserName,
 
-    [string]
-    $vmAdminPassword,
 
     [string]
     $trainerUserPassword
@@ -37,6 +35,10 @@ Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -
 $adminUsername = "admincontoso"
 [System.Environment]::SetEnvironmentVariable('DeploymentID', $DeploymentID,[System.EnvironmentVariableTarget]::Machine)
 
+
+    $vmAdminUsername = "adminusername"
+  
+    $vmAdminPassword = $AzurePassword
 
 #Import Common Functions
 $path = pwd
