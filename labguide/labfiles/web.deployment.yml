@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contoso-traders-web
+  namespace: contoso-traders
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contoso-traders-web
+  template:
+    metadata:
+      labels:
+        app: contoso-traders-web
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+        - name: contoso-traders-web
+          #Note: Please replace the SUFFIX with the deploymentID
+          image: contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:latest
+          
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
