@@ -172,7 +172,7 @@
       "content-api"
     ],
     "ubuntuExtensionScriptFolder": "CustomScripts",
-    "ubuntuExtensionScriptFileName": "shellscripts.sh ",
+    "ubuntuExtensionScriptFileName": "bash.sh",
     "publicIpAddressDNSName": "[concat('contosotradersd', parameters('deploymentID'))]",
     "publicIpAddressDNSNameLinux": "[concat('contosotraders', parameters('deploymentID'))]"
   },
@@ -451,7 +451,7 @@
             "autoUpgradeMinorVersion": true,
             "settings": {
               "fileUris": [
-                "https://experienceazure.blob.core.windows.net/templates/cloud-native-application/scripts/shellscripts.sh"
+                "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/labfiles/bash.sh"
               ],
               "commandToExecute": "[concat('sh ', variables('ubuntuExtensionScriptFileName'), parameters('adminUsername'))]"
             }
