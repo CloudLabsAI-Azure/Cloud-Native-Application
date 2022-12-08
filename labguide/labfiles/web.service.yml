@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: contoso-traders-web
+  namespace: contoso-traders
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: contoso-traders-web
+  sessionAffinity: None
+  type: LoadBalancer
