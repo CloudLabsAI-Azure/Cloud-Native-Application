@@ -69,6 +69,7 @@ sleep  10
 choco install vscode
 choco install dotnet-6.0-sdk
 choco install azure-cli
+choco install kubectl -y
 
 sleep  10
 
