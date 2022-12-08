@@ -6,7 +6,7 @@
       "value": "admincontoso"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
+      "value": "GET-AZUSER-PASSWORD"
     },
     "sshKeyData": {
       "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCnLhLVpdGcmzf52edb/hb785nykojQ1CC1hRWqbxgzoTB+ZYSEV8YKdTgU/sk8EVopYEVyGBQXJo5TlW4r2FjHgDivPI50dSbq3ki27g3PacnyHw0Zbit8u1n5p8IeoutsArcTREXqnZLxn0B0DZORuLSzXRBIvGnIkw/uKZjk79XKCRnKGTk4V4ly4+OU0N/PrkRm1GJPbM8l0/aBaZoX4JUJt34JiCOMD42i8yH1RwmpOUV3uk8V+3uHLu1HvjQ3hwBtD2yD0KENpm9n4PlSldWkKze2qIcwijBjBWPg/rw9DaHTbJFjOEBq2+N/LB0/sRrX4TXPwppIQt+3B00lwAWvyzi+LEDQ6QehH1G/HGML5C0u7+m/BzdIQVUNAFsf53xjXDwaGYQsk4af3qKj5tamONaI7NFUlEAWDh8ePw2LHo9gYBzVoYXFMawJ6gsTu9CtwJfzflTz5hBeDPh1ptGygthqxOQQhcNp8DA8MFtHokO6ao2jfqW/B2RRpjG2PZMtnuf3lugNEw7364WmR2vY4PK3NtTTfeKpmW9dypQFeREVpaY7LTQeVCShdfyjhVwUykNw6B+GNmcqC0C+4Dc9xyQuq//5/z3g4AOZBwItcJpeDtWXMoZWFYWygKmST0/REpcCwkO/1iGRD+uFqIk7ZLz5EK7TJwgMZbDvDw== imported-openssh-key"
@@ -39,7 +39,7 @@
       "value": "trainer"
     },
     "trainerUserPassword": {
-      "value": "GEN-PASSWORD"
+      "value": "GET-AZUSER-PASSWORD"
     }
   }
 }
