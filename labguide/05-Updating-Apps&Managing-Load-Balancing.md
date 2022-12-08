@@ -236,7 +236,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 13. Now you can create a certificate object.
 
     > **Note**:
-    >
     > Cert-manager might have already created a certificate object for you using ingress-shim.
     >
     > To verify that the certificate was created successfully, use the `kubectl describe certificate tls-secret` command.
