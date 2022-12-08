@@ -200,7 +200,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates. Run the below command in Windows command prompt.
 
     ```bash
-    cd C:\lab-files
+    cd C:\LABFILES
     code clusterissuer.yml
     ```
 
