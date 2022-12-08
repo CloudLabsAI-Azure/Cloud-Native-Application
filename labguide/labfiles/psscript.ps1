@@ -111,9 +111,11 @@ Install-Module Sqlserver -SkipPublisherCheck -Force
 Import-Module Sqlserver
 sleep 5
 
-
+mkdir C:\LABFILES
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/labfiles/logontask01.ps1","C:\Packages\logontask.ps1")
+$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/labfiles/web.service.yml","C:\LABFILES\web.service.yml")
+$WebClient.DownloadFile("https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/labfiles/web.deployment.yml","C:\LABFILES\web.deployment.yml")
 
 sleep 5
 
