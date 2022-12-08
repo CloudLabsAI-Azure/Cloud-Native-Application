@@ -124,4 +124,3 @@ sleep 20
 
 sleep 5
 Unregister-ScheduledTask -TaskName "Installdocker" -Confirm:$false 
-Restart-Computer -Force 
