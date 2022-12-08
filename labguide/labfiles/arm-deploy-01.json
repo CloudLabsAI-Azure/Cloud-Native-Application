@@ -319,12 +319,12 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://experienceazure.blob.core.windows.net/templates/cloud-native-application/scripts/psscripts.ps1",
+            "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/labfiles/psscript.ps1",
             "https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/cloudlabs-windows-functions.ps1"
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('powershell -ExecutionPolicy Bypass -File cloud-native-application/scripts/psscripts.ps1',variables('cloudlabsCommon'),variables('Enable-CloudLabsEmbeddedShadow'))]"
+          "commandToExecute": "[concat('powershell -ExecutionPolicy Bypass -File Cloud-Native-Application/main/labguide/labfiles/psscript.ps1',variables('cloudlabsCommon'),variables('Enable-CloudLabsEmbeddedShadow'))]"
         }
       }
     },
