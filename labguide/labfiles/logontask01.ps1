@@ -90,7 +90,7 @@ $PRODUCT_DETAILS_CONTAINER_NAME = "product-details"
 $PRODUCT_IMAGES_STORAGE_ACCOUNT_NAME = "contosotradersimg"
 $PRODUCT_LIST_CONTAINER_NAME = "product-list"
 $PRODUCTS_CDN_ENDPOINT_NAME = "contoso-traders-images$deploymentid"
-$RESOURCE_GROUP_NAME = "contoso-traders-$deploymentid"
+$RESOURCE_GROUP_NAME = "contosotraders-$deploymentid"
 $STORAGE_ACCOUNT_NAME = "contosotradersimg$deploymentid"
 $server = "contoso-traders-products$deploymentid.database.windows.net"
 
