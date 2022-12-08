@@ -164,12 +164,8 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
             - name: contoso-traders-products
               #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT SUFFIX is
               image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
-              env:
-                - name: KeyVaultEndpoint
-                  valueFrom:
-                    secretKeyRef:
-                      name: contoso-traders-kv-endpoint
-                      key: contoso-traders-kv-endpoint
+              
+                
               resources:
                 requests:
                   cpu: 1000m
