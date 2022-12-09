@@ -66,7 +66,7 @@ Login-AzAccount -Credential $cred | Out-Null
 
 cd C:\Workspaces\lab\aiw-devops-with-github-lab-files\iac
 
-$RGname = "contoso-traders-$deploymentid"
+$RGname = "contosotraders-$deploymentid"
 
 New-AzResourceGroupDeployment -Name "createresources" -TemplateFile "createResources.bicep" -TemplateParameterFile "createResources.parameters.json" -ResourceGroup $RGname
 
