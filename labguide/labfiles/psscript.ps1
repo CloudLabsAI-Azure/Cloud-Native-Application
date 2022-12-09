@@ -81,6 +81,8 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 
 Install-Module -Name Az -Force -AllowClobber
+Import-Module -Name Az
+Import-Module Az.Accounts
 
 #Az Login
 
