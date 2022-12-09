@@ -8,10 +8,6 @@ Start-Process C:\Packages\extensions.bat
 Write-Host "Bypass-Execution-Policy"
 
 
-choco install docker-desktop --version=4.7.0
-Write-Host "Docker-install"
-
-[Environment]::SetEnvironmentVariable("Path", $env:Path+";C:\Users\demouser\AppData\Roaming\npm\node_modules\azure-functions-core-tools\bin","User")
 
 . C:\LabFiles\AzureCreds.ps1
 
@@ -65,7 +61,7 @@ $TenantID = $AzureTenantID
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
 
-Connect-AzAccount -Credential $cred | Out-Null
+Login-AzAccount -Credential $cred | Out-Null
 
 
 cd C:\Workspaces\lab\aiw-devops-with-github-lab-files\iac
