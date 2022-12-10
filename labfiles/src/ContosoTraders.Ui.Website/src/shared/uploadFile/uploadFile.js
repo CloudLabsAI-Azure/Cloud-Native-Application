@@ -62,6 +62,7 @@ class UploadFile extends Component {
                     id="searchByImage"
                     acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
                     onChange={this.uploadFile.bind(this)}
+                    filesLimit={1}
                 />
                 {/* <input
                     className="upload__input"

@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom';
 
 import { NamespacesConsumer } from 'react-i18next';
 
-import { UserService, ConfigService } from '../../services';
+import { ConfigService } from '../../services';
 import AuthB2CService from '../../services/authB2CService';
 import { withRouter } from "react-router-dom";
 
-import LoginContainer from './components/loginContainer';
-import LoginComponent from './components/loginComponent';
-import UserPortrait from './components/userPortrait';
+// import LoginContainer from './components/loginContainer';
+// import LoginComponent from './components/loginComponent';
+// import UserPortrait from './components/userPortrait';
 
 import { ReactComponent as Close } from '../../assets/images/icon-close.svg';
-import { ReactComponent as Hamburger } from '../../assets/images/icon-menu.svg';
-import { ReactComponent as Cart } from '../../assets/images/icon-cart.svg';
+// import { ReactComponent as Hamburger } from '../../assets/images/icon-menu.svg';
+// import { ReactComponent as Cart } from '../../assets/images/icon-cart.svg';
 
-import { clickAction } from "../../actions/actions";
+import { clickAction, submitAction } from "../../actions/actions";
 import { Categories } from '..';
 
-const Login = LoginContainer(LoginComponent);
+// const Login = LoginContainer(LoginComponent);
 
 class Header extends Component {
     constructor() {
@@ -38,8 +38,8 @@ class Header extends Component {
         this.loadSettings();
 
         if (this.props.userInfo.token) {
-            const profileData = await UserService.getProfileData(this.props.userInfo.token);
-            this.setState({ ...profileData });
+            // const profileData = await UserService.getProfileData(this.props.userInfo.token);
+            // this.setState({ ...profileData });
         }
 
         const setComponentVisibility = this.setComponentVisibility.bind(this);
@@ -94,17 +94,29 @@ class Header extends Component {
         this.props.history.push('/');
     }
 
+    onClickLogIn = async() => {
+        let user = await this.authService.login();
+        if(user)
+        {
+            user['loggedIn'] = true;
+            user['isB2c'] = true;
+            user['token'] = sessionStorage.getItem('msal.idtoken');
+            localStorage.setItem('state',JSON.stringify(user))
+            this.props.submitAction(user);
+        }
+    }
+
     render() {
-        const { profile } = this.state;
-        const { loggedIn } = this.props.userInfo;
+        // const { profile } = this.state;
+        // const { loggedIn } = this.props.userInfo;
         return (
             <NamespacesConsumer>
                 {t => (
                     <header className="header">
                         <Categories />
                         <nav className={this.state.isopened ? 'main-nav is-opened' : 'main-nav'}>
-                            <Link className={window.location.pathname === '/' ? "main-nav__item_active" : "main-nav__item"} to="/list/homeappliances">
-                                {t('shared.header.home')}
+                            <Link className={window.location.pathname === '/list/all-products' ? "main-nav__item_active" : "main-nav__item"} to="/list/all-products">
+                                All Products
                             </Link>
                             {/* <Link className={window.location.pathname === '/new-arrivals' ? "main-nav__item_active" : "main-nav__item"} to="/new-arrivals" >
                                 {t('shared.header.newArrivals')}
@@ -137,23 +149,22 @@ class Header extends Component {
                             </button>
                         </nav>
                         <nav className="secondary-nav">
-                            {/* <Search /> */}
-                            {loggedIn && <Link to="/profile"><UserPortrait {...profile} /></Link>}
+                            {/* {loggedIn && <Link to="/profile"><UserPortrait {...profile} /></Link>} */}
                             {/* {loggedIn ? <div className="secondary-nav__login" onClick={this.onClickLogout}>{t('shared.header.logout')}</div>
-                                : <div className="secondary-nav__login" onClick={this.toggleModalClass}>{t('shared.header.login')}</div>} */}
-                            {loggedIn && <Link className="secondary-nav__cart" to="/shopping-cart">
+                                : <div className="secondary-nav__login" onClick={this.onClickLogIn}>{t('shared.header.login')}</div>} */}
+                            {/* {loggedIn && <Link className="secondary-nav__cart" to="/shopping-cart">
                                 <Cart />
                                 <div className="secondary-nav__cart-number">
                                     {this.props.quantity}
                                 </div>
-                            </Link>}
-                            <button className="u-empty" onClick={this.toggleClass}>
+                            </Link>} */}
+                            {/* <button className="u-empty" onClick={this.toggleClass}>
                                 <Hamburger />
-                            </button>
+                            </button> */}
                         </nav>
-                        {this.state.ismodalopened ?
+                        {/* {this.state.ismodalopened ?
                             <Login UseB2C={this.state.UseB2C} toggleModalClass={this.state.ismodalopened} onClickClose={this.onClickClose} />
-                            : null}
+                            : null} */}
                     </header>
                 )}
             </NamespacesConsumer>
@@ -163,4 +174,4 @@ class Header extends Component {
 
 const mapStateToProps = state => state.login;
 
-export default withRouter(connect(mapStateToProps, { clickAction })(Header));
+export default withRouter(connect(mapStateToProps, { clickAction, submitAction })(Header));

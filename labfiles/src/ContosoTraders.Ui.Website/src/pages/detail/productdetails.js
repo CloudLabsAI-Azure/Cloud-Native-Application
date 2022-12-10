@@ -14,6 +14,9 @@ function ProductDetails(props) {
   // const relatedDetailProducts = props.relatedDetailProducts;
   // const hasRelatedDetailProducts = relatedDetailProducts && relatedDetailProducts.length;
   // const [sliderImg, setSliderImg] = React.useState(imageUrl)
+  const addToCart = () => {
+    props.addProductToCart();
+  };
   return (
     <div className="ProductDetailsSection">
       <Grid container>
@@ -48,7 +51,7 @@ function ProductDetails(props) {
                 InputProps={{
                     style: { maxHeight: 49 },
                     endAdornment: (
-                    <InputAdornment >
+                    <InputAdornment position='end'>
                         <Button className="pinsearchbtn">CHECK</Button>
                     </InputAdornment>
                     )
@@ -68,6 +71,7 @@ function ProductDetails(props) {
               color="primary"
               startIcon={<img src={add_to_bag_icon} alt=""/>}
               className="CartButton"
+              onClick={()=>addToCart()}
             >
               Add To Bag
             </Button>

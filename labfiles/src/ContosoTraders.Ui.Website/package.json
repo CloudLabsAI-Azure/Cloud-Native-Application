@@ -10,6 +10,7 @@
     "@azure/communication-signaling": "^1.0.0-beta.5",
     "@azure/cosmos": "^2.0.5",
     "@azure/logger": "^1.0.2",
+    "@azure/msal-browser": "^2.31.0",
     "@babel/helper-compilation-targets": "^7.13.16",
     "@babel/helper-regex": "^7.10.5",
     "@fluentui/react": "^7.170.0",
@@ -19,7 +20,9 @@
     "@microsoft/applicationinsights-react-js": "^2.5.4",
     "@microsoft/applicationinsights-web": "^2.6.2",
     "axios": "^0.18.1",
+    "date-fns": "^2.0.0-beta.5",
     "dotenv": "^8.6.0",
+    "formik": "^2.2.9",
     "history": "^4.9.0",
     "i18next": "^15.0.6",
     "izitoast": "^1.4.0",
@@ -43,7 +46,8 @@
     "redux": "^4.1.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=8000 start",

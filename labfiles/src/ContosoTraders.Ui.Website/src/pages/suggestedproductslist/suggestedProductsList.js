@@ -1,7 +1,7 @@
 import { Grid } from "@material-ui/core";
 import React from "react";
 import Breadcrump from "../../components/breadcrumb";
-import { ListAside, ListGrid } from "../list/components";
+import { ListGrid } from "../list/components";
 import { useHistory } from "react-router-dom";
 const SuggestedProductsList = (props) => {
     const [suggestedProductsList, setSuggestedProductsList] = React.useState(null);
@@ -17,10 +17,10 @@ const SuggestedProductsList = (props) => {
             <div className="list__content">
                 <h6 className="mainHeading">{currentCategory}</h6>
                 <Grid container>
-                    <Grid item xs={3}>
+                    {/* <Grid item xs={3}>
                         <ListAside/>
-                    </Grid>
-                    <Grid item xs={9}>
+                    </Grid> */}
+                    <Grid item xs={12}>
                         <ListGrid productsList={suggestedProductsList} />
                     </Grid>
                 </Grid>

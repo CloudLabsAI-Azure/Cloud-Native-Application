@@ -10,14 +10,16 @@ const RefundPolicy = (props) => {
                 <Breadcrump currentPath={currentCategory} />
                 <div className="refund-policy">
                     <p className="mainHeading">Refund Policy</p>
-                    <p className="subHeading">When will my order be processed?</p>
+                    <p className="subHeading">At Contoso Traders, we want our customers to be completely satisfied with their purchases.  </p>
                     <p className="paragraph">
-                        All orders are handled and shipped out from our warehouse in NCR. Please allow extra time for your order to be processed during holidays and sale seasons., <br/><br/>We process orders between Monday and Saturday. Orders will be processed within 1-2 business days from the order date and shipped the next day after the processing day.
-                    </p>
-                    <p className="subHeading">How long will it take to receive my order?</p>
-                    <p className="paragraph">
-                        Once you place your order, please allow 1-2 business days to process your orders. After that, it will take 5-7 business days for delivery in the India , and 15-25 business days for international orders (depending on location). <br/><br/>Will I be charged with customs and taxes?<br/> The prices displayed on our site are Tax Included in INR, which means you you have paid the taxes once you receive your order.<br/><br/> Payment of these charges and taxes are your responsibility and will not be covered by us. We are not responsible for delays caused by the Courier Company. For further details of the charges, please Contact Us on support@contosotraders.com
-                    </p>
+                        1. If for any reason you are not satisfied with your purchase, you may return it within 30 days of the original purchase date for a full refund.  
+                        <br/><br/>
+                        2. To be eligible for a refund, the item must be in its original condition, unused, and with all original packaging and tags.  
+                        <br/><br/>
+                        3. To initiate a refund, please contact our customer service team at <a href="mailto: support@contosotraders.com">support@contosotraders.com</a>.  
+                        <br/><br/>
+                        4. Please note that original shipping charges are non-refundable, and the customer is responsible for the cost of return shipping. 
+                        </p>
                 </div>
             </div>
             <hr/>

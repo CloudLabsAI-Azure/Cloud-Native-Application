@@ -6,7 +6,7 @@ import { LoadingSpinner } from "../../shared";
 import Alert from "react-s-alert";
 
 // import Detail from "./detail";
-import { CartService, ProductService, UserService } from '../../services';
+import { CartService, ProductService } from '../../services';
 import ProductDetails from "./productdetails";
 import Breadcrump from "../../components/breadcrumb";
 // import Slider from "../home/components/slider/slider";
@@ -45,11 +45,12 @@ class DetailContainer extends Component {
 
     async addProductToCart() {
 
-        const profile = await UserService.getProfileData(this.props.userInfo.token);
-        const { profile: { email } } = profile;
-        this.state.detailProduct.email = email
+        // const profile = await UserService.getProfileData(this.props.userInfo.token);
+        // const { profile: { email } } = profile;
+        const email = localStorage.getItem('state') ? JSON.parse(localStorage.getItem('state')).userName : null
+        this.state.detailProduct.email = email;
 
-        const productToCart = await CartService.postProductToCart(this.props.userInfo.token, this.state.detailProduct)
+        const productToCart = await CartService.addProduct(this.props.userInfo.token, this.state.detailProduct)
 
         if (productToCart.errMessage) {
             return this.showErrorMessage(productToCart)
@@ -59,16 +60,16 @@ class DetailContainer extends Component {
 
         this.setState({ loadingRelated: true });
 
-        setTimeout(async () => {
-            let relatedDetailProducts = await CartService
-                .getRelatedDetailProducts(this.props.userInfo.token, this.state.detailProduct.type.id);
+        // setTimeout(async () => {
+        //     let relatedDetailProducts = await CartService
+        //         .getRelatedDetailProducts(this.props.userInfo.token, this.state.detailProduct.type.id);
 
-            if (relatedDetailProducts) {
-                relatedDetailProducts = relatedDetailProducts.recommendations.slice(0, 3);
-            }
+        //     if (relatedDetailProducts) {
+        //         relatedDetailProducts = relatedDetailProducts.recommendations.slice(0, 3);
+        //     }
 
-            this.setState({ relatedDetailProducts, loadingRelated: false });
-        }, 2000);
+        //     this.setState({ relatedDetailProducts, loadingRelated: false });
+        // }, 2000);
 
         this.props.sumProductInState();
     }

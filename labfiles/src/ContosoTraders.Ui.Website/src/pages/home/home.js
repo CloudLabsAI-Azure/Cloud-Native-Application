@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Hero, Popular } from "./components";
+import { Hero } from "./components";
 import ChatBubble from './components/chatBubble/chatBubble';
 import { ConfigService } from './../../services'
 // import Slider from "./components/slider/slider";
@@ -25,7 +25,7 @@ const Home = ({ recommendedProducts, popularProducts, loggedIn }) => {
             <Finalsection />
             {/* <Recommended recommendedProductsData={recommendedProducts} loggedIn={loggedIn} /> */}
             {/* <Getapp /> */}
-            {loggedIn && <Popular popularProductsData={popularProducts} />} 
+            {/* {loggedIn && <Popular popularProductsData={popularProducts} />}  */}
             { customerSupportEnabled && <ChatBubble />}
         </div>
     );

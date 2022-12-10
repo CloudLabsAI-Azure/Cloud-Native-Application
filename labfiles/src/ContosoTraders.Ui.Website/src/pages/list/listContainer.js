@@ -57,24 +57,22 @@ class ListContainer extends Component {
     this.setState({ productsList, typesList, brandsList, loading: false });
   }
 
-  onFilterChecked = async (e, value) => {
-    const isChecked = e.target.checked;
-    const dataType = e.target.getAttribute('id');
-    this.setQueryStringState(isChecked, dataType, value);
+    onFilterChecked = async (e, value) => {
+        const isChecked = e.target.checked;
+        const dataType = e.target.getAttribute('id');
+        this.setQueryStringState(isChecked, dataType, value);
 
-    const apiCall = await ProductService.getFilteredProducts(this.queryString);
-    this.setState({ productsList: apiCall.data.products });
+        const apiCall = await ProductService.getFilteredProducts(this.queryString);
+        this.setState({ productsList: apiCall.data.products });
   };
 
   setQueryStringState(isChecked, dataType, value) {
     if (isChecked) {
-      if (value === 'type') {
-        this.type.push(dataType);
-        this.queryString.type = this.type;
-      } else {
-        this.brand.push(dataType);
-        this.queryString.brand = this.brand;
-      }
+      this.brand.push(dataType);
+      this.queryString.brand = this.brand;
+      this.queryString.type = this.queryString.type.type === undefined ?
+            this.queryString.type : this.queryString.type.type;
+
     } else {
       let index = this.queryString[value].indexOf(dataType);
       if (index !== -1) {

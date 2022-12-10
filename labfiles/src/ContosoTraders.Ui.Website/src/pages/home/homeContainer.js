@@ -46,10 +46,10 @@ class HomeContainer extends Component {
     }
 
     async componentDidMount() {
-        if (this.props.userInfo.loggedIn) {
-            await this.renderPopularProducts()
-        }
-        this.getRank()
+        // if (this.props.userInfo.loggedIn) {
+        //     await this.renderPopularProducts()
+        // }
+        // this.getRank()
     }
 
     async shouldComponentUpdate(nextProps) {
