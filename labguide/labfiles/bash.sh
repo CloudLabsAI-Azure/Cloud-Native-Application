@@ -67,6 +67,8 @@ nodejs server.js
 
 echo "Build agent setup complete!"
 sudo snap install powershell --classic
+cd /home/admincontoso/
+ sudo rm -r Cloud-Native-Application/
 #cd /home/$SUDOUSER/
 #wget -O labguide.pdf https://experienceazure.blob.core.windows.net/guides/Hands-on-lab-step-by-step-Containers-and-DevOps-Modified-v2.pdf
 #sudo chmod a+x labguide.pdf
