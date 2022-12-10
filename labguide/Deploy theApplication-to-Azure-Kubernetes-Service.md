@@ -105,49 +105,49 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     >**Info**: The below YAML script will create a AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Serviceis a abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
- name: contoso-traders-products
- namespace: contoso-traders
-spec:
- replicas: 1
- selector:
-   matchLabels:
-     app: contoso-traders-products
- template:
-   metadata:
-     labels:
-       app: contoso-traders-products
-   spec:
-     nodeSelector:
-       "kubernetes.io/os": linux
-     containers:
-       - name: contoso-traders-products
-         #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
-         image: contosotradersacr816634.azurecr.io/contosotradersapiproducts:latest
-         env:
-           - name: KeyVaultEndpoint
-             valueFrom:
-               secretKeyRef:
-                 name: contoso-traders-kv-endpoint
-                 key: contoso-traders-kv-endpoint
-           - name: ManagedIdentityClientId
-             valueFrom:
-               secretKeyRef:
-                 name: contoso-traders-mi-clientid
-                 key: contoso-traders-mi-clientid
-         resources:
-           requests:
-             cpu: 100m
-             memory: 128Mi
-           limits:
-             cpu: 250m
-             memory: 256Mi
-           ports:
-             - containerPort: 3001
-               hostPort: 3001
-               protocol: TCP
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+       name: contoso-traders-products
+       namespace: contoso-traders
+      spec:
+       replicas: 1
+       selector:
+         matchLabels:
+           app: contoso-traders-products
+       template:
+         metadata:
+           labels:
+             app: contoso-traders-products
+         spec:
+           nodeSelector:
+             "kubernetes.io/os": linux
+           containers:
+             - name: contoso-traders-products
+               #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
+               image: contosotradersacr816634.azurecr.io/contosotradersapiproducts:latest
+               env:
+                 - name: KeyVaultEndpoint
+                   valueFrom:
+                     secretKeyRef:
+                       name: contoso-traders-kv-endpoint
+                       key: contoso-traders-kv-endpoint
+                 - name: ManagedIdentityClientId
+                   valueFrom:
+                     secretKeyRef:
+                       name: contoso-traders-mi-clientid
+                       key: contoso-traders-mi-clientid
+               resources:
+                 requests:
+                   cpu: 100m
+                   memory: 128Mi
+                 limits:
+                   cpu: 250m
+                   memory: 256Mi
+                 ports:
+                   - containerPort: 3001
+                     hostPort: 3001
+                     protocol: TCP
     ```    
    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
