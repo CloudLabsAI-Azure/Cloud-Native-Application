@@ -21,6 +21,7 @@ $deploymentid = $env:DeploymentID
 choco install bicep
 Install-Module Sqlserver -SkipPublisherCheck -Force
 Import-Module Sqlserver
+choco install kubernetes-cli
 az config set extension.use_dynamic_install=yes_without_prompt
 
 #Download lab files
@@ -85,6 +86,9 @@ $PRODUCTS_CDN_ENDPOINT_NAME = "contoso-traders-images$deploymentid"
 $RESOURCE_GROUP_NAME = "contosotraders-$deploymentid"
 $STORAGE_ACCOUNT_NAME = "contosotradersimg$deploymentid"
 $server = "contoso-traders-products$deploymentid.database.windows.net"
+$USER_ASSIGNED_MANAGED_IDENTITY_NAME = contoso-traders-mi-kv-access
+$USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentID"
+
 
 
 
@@ -94,6 +98,27 @@ $server = "contoso-traders-products$deploymentid.database.windows.net"
 
 az login -u $userName -p  $password
 cd C:\Workspaces\lab\aiw-devops-with-github-lab-files
+
+
+
+az identity create -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME
+
+$objectID = "$(az identity show -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --query "clientId" -o tsv)"
+      
+      az vmss identity assign --identities $(az identity show -g $RESOURCE_GROUP_NAME  --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME  --query "id" -o tsv) --ids $(az vmss list -g $AKS_NODES_RESOURCE_GROUP_NAME  --query "[0].id" -o tsv) 
+      az keyvault set-policy -n $KV_NAME  --secret-permissions get list --object-id $objectID 
+
+kubectl create secret generic contoso-traders-kv-endpoint --from-literal=contoso-traders-kv-endpoint="https://$KV_NAME.vault.azure.net/" -n contoso-traders
+
+
+
+
+
+kubectl create secret generic contoso-traders-mi-clientid --from-literal=contoso-traders-mi-clientid=$objectID -n contoso-traders
+
+
+
+
   
 Invoke-Sqlcmd -InputFile ./src/ContosoTraders.Api.Products/Migration/productsdb.sql -Database productsdb -Username "localadmin" -Password $password -ServerInstance $server -ErrorAction 'Stop' -Verbose -QueryTimeout 1800 # 30min
 
