@@ -62,4 +62,18 @@ public class ProductsController : ContosoTradersControllerBase
 
         return await ProcessHttpRequestAsync(request);
     }
+
+    [HttpGet("search/{text}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Search(string text)
+    {
+        var request = new SearchTextRequest
+        {
+            Text = text
+        };
+
+        return await ProcessHttpRequestAsync(request);
+    }
 }

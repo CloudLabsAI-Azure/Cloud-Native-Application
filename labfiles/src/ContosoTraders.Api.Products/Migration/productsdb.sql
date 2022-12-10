@@ -168,7 +168,7 @@ VALUES
     (2, 'laptops' , 'Laptops'),
     (3, 'desktops' , 'Desktops'),
     (4, 'mobiles' , 'Mobiles'),
-    (5, 'monitor' , 'Monitor')  
+    (5, 'monitors' , 'Monitors')  
  
 
 DROP TABLE IF EXISTS Products
@@ -193,9 +193,9 @@ VALUES
     (4,'Xbox Wireless Controller 20th Anniversary Special Edition',89,'PID4-1.jpg',1,1,NULL),
     (5,'Xbox Elite Wireless Controller Series 2 Halo Infinite Limited Edition',139,'PID5-1.jpg',1,1,NULL),
     (6,'Microsoft Surface Pro 7 PUV-00028 12.3" Black',249,'PID6-1.jpg',1,2,NULL),
-    (7,'Xbox Elite Wireless Controller Series 2 Halo Infinite Limited Edition',299,'PID7-1.jpg',1,1,NULL),
+    (7,'Microsoft Surface Laptop 4 AMD Ryzen 5 4680U 13.5 inches',299,'PID7-1.jpg',1,2,NULL),
     (8,'Microsoft Surface Pro X 1876 13 Inches Laptop',699,'PID8-1.jpg',1,2,NULL),
-    (9,'Microsoft Surface GO 2 STQ-00013 10.1" (26.54 cms) Laptop',549,'PID9-1.jpg',1,1,NULL),
+    (9,'Microsoft Surface GO 2 STQ-00013 10.1" (26.54 cms) Laptop',549,'PID9-1.jpg',1,2,NULL),
     (10,'Microsoft Surface Laptop 3 Intel Core i5 10th Gen 13.5" (34.29 cms) Touchscreen Laptop',349,'PID10-1.jpg',1,2,NULL),
     (11,'ASUS VivoBook 15 (2021), 15.6-inch (39.62 cm) HD, Dual Core Intel Celeron N4020, Thin and Light Laptop',429,'PID11-1.jpg',2,2,NULL),
     (12,'ASUS Vivobook S15 OLED 2022, 15.6" 39.62 cm FHD OLED Laptop',899,'PID12-1.jpg',2,2,NULL),
@@ -214,7 +214,7 @@ VALUES
     (25,'OnePlus Nord CE 2 Lite',679,'PID25-1.jpg',5,4,NULL),
     (26,'OnePlus Nord 2T ',578,'PID26-1.jpg',5,4,NULL),
     (27,'OnePlus 10R',999,'PID27-1.jpg',5,4,NULL),
-    (28,'OnePlus 10T',999,'PID29-1.jpg',5,4,NULL),
+    (28,'OnePlus 10T',999,'PID28-1.jpg',5,4,NULL),
     (29,'Xbox Wireless Controller Forza Horizon 5 Limited Edition',299,'PID29-1.jpg',1,1,NULL),
     (30,'Xbox Wireless Controller Aqua Shift Special Edition',299,'PID30-1.jpg',1,1,NULL),
     (31,'Xbox Wireless Controller Daystrike Camo Special Edition',299,'PID31-1.jpg',1,1,NULL),
