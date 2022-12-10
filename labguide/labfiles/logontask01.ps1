@@ -86,7 +86,7 @@ $PRODUCTS_CDN_ENDPOINT_NAME = "contoso-traders-images$deploymentid"
 $RESOURCE_GROUP_NAME = "contosotraders-$deploymentid"
 $STORAGE_ACCOUNT_NAME = "contosotradersimg$deploymentid"
 $server = "contoso-traders-products$deploymentid.database.windows.net"
-$USER_ASSIGNED_MANAGED_IDENTITY_NAME = contoso-traders-mi-kv-access
+
 $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentID"
 
 
@@ -99,11 +99,12 @@ $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentI
 az login -u $userName -p  $password
 cd C:\Workspaces\lab\aiw-devops-with-github-lab-files
 
+az aks get-credentials -g $RESOURCE_GROUP_NAME -n $AKS_CLUSTER_NAME
 
 
 az identity create -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME
 
-$objectID = "$(az identity show -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --query "clientId" -o tsv)"
+$objectID = "$(az identity show -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --query "principalId" -o tsv)"
       
       az vmss identity assign --identities $(az identity show -g $RESOURCE_GROUP_NAME  --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME  --query "id" -o tsv) --ids $(az vmss list -g $AKS_NODES_RESOURCE_GROUP_NAME  --query "[0].id" -o tsv) 
       az keyvault set-policy -n $KV_NAME  --secret-permissions get list --object-id $objectID 
@@ -123,7 +124,6 @@ kubectl create secret generic contoso-traders-mi-clientid --from-literal=contoso
 Invoke-Sqlcmd -InputFile ./src/ContosoTraders.Api.Products/Migration/productsdb.sql -Database productsdb -Username "localadmin" -Password $password -ServerInstance $server -ErrorAction 'Stop' -Verbose -QueryTimeout 1800 # 30min
 
 
-az aks get-credentials -g $RESOURCE_GROUP_NAME -n $AKS_CLUSTER_NAME
 
 az aks update -n $AKS_CLUSTER_NAME -g $RESOURCE_GROUP_NAME --attach-acr /subscriptions/$subscriptionId/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.ContainerRegistry/registries/contosotradersacr$deploymentid
 
