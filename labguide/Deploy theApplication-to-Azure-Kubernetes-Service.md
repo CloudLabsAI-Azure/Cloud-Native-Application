@@ -109,6 +109,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    kind: Deployment
    metadata:
      name: contoso-traders-products
+     namespace: contoso-traders
    spec:
      replicas: 1
      selector:
