@@ -101,6 +101,7 @@ cd C:\Workspaces\lab\aiw-devops-with-github-lab-files
 
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $AKS_CLUSTER_NAME
 
+kubectl create namespace contoso-traders
 
 az identity create -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME
 
