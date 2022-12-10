@@ -93,24 +93,11 @@ In this task, you will be generating a secret in Key vault and creating the conn
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Define a new Namespace for your API deployment. Select the **Namespaces** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Namespaces tab, select **+ Create** and then select **Apply a YAML** button.
+1. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders** namespace only. 
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/CNV2-E3-T3-S1.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
     
-1. In the **Add with YAML** pane, paste the below YAML code which creates a namespace in AKS and click on **Add**. Once added you should be able to see a new namespace with **contoso-traders** name.
-    >**Info**: The below YAML file will create a new namespace named as contoso-traders, you will be using and deploying all the services and workloads to this namespace only in the next tasks. Namespaces can be used to organize pods and deployments in a groupd way. 
-   
-
-    ```yaml
-    apiVersion: v1
-    kind: Namespace
-    metadata:
-      labels:
-        name: contoso-traders
-      name: contoso-traders
-    ```
-    
-1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Apply a YAML**. 
+3. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Apply a YAML**. 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3.png "Add a Service")
 
