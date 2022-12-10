@@ -105,7 +105,7 @@ kubectl create namespace contoso-traders
 
 az identity create -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME
 
-$objectID = "$(az identity show -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --query "principalId" -o tsv)"
+$objectID = "$(az identity show -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --query "clientId" -o tsv)"
       
       az vmss identity assign --identities $(az identity show -g $RESOURCE_GROUP_NAME  --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME  --query "id" -o tsv) --ids $(az vmss list -g $AKS_NODES_RESOURCE_GROUP_NAME  --query "[0].id" -o tsv) 
       az keyvault set-policy -n $KV_NAME  --secret-permissions get list --object-id $objectID 
