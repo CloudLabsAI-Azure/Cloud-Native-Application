@@ -26,7 +26,15 @@ In this task, you will be connecting to Build agent VM using Command prompt and 
    
    >**Note**: Please note that while typing the password you won’t be able to see it due to the security concerns.
     
-1. Once the VM is connected, run the below command to change the directory to the labfiles.
+1. Once the VM is connected, run the below command to clone the Github repository that we are going to use for the lab.
+
+    ``` 
+    git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
+    ```
+    
+    ![](media/ex1-gitclone.png)
+    
+1. After the github cloning is completed, run the below command to change the directory to the labfiles.
     
     ```
     cd Cloud-Native-Application/labfiles/ 
