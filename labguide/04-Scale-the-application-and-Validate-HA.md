@@ -209,7 +209,7 @@ In this task, you will run a performance test script that will test the Autoscal
 6. On the **Build agent VM**, navigate to the `~/lab-files` directory.
 
     ```bash
-    cd ~/labfiles
+    cd Cloud-Native-Application/labfiles
     ```
 
 7. Run the following command to open the `perftest.sh` script in editor window.
