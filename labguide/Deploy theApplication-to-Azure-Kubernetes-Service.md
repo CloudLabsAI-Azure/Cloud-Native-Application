@@ -218,7 +218,7 @@ In this task, you will deploy the web service & its workload using kubectl.
     ```
 
 1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the items `kubectl` has created a web deployment and a web service.
-   >**Info**: The below kubectl command with create the Deployment workload and Service into the namespace that we have defined in to the YAML files. 
+   >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in to the YAML files. 
 
     ```bash
     kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
