@@ -155,7 +155,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
    # Name to associate with public IP address
-   DNSNAME="contosotrader-[SUFFIX]-ingress"
+   DNSNAME="contosotraders-[SUFFIX]-ingress"
 
    # Get the resource-id of the public ip
    PUBLICIPID=$(az network public-ip list --resource-group $KUBERNETES_NODE_RG --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
@@ -192,16 +192,15 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 9. Use helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
 
     ```bash
-    kubectl create namespace cert-manager
-    kubectl label namespace cert-manager cert-manager.io/disable-validation=true
+    
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
 10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates. Run the below command in Windows command prompt.
 
     ```bash
-    cd C:\LABFILES
-    code clusterissuer.yml
+    
+    vim clusterissuer.yml
     ```
 
     ```yaml
