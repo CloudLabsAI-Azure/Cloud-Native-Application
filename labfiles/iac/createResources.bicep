@@ -57,11 +57,7 @@ var productsDbName = 'productsdb'
 var productsDbServerAdminLogin = 'localadmin'
 var productsDbServerAdminPassword = sqlPassword
 
-// sql azure (profiles db)
-var profilesDbServerName = '${prefixHyphenated}-profiles${environment}'
-var profilesDbName = 'profilesdb'
-var profilesDbServerAdminLogin = 'localadmin'
-var profilesDbServerAdminPassword = sqlPassword
+
 
 // azure container app (carts api)
 var cartsApiAcaName = '${prefixHyphenated}-carts${environment}'
@@ -290,88 +286,14 @@ resource stocksdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = 
   }
 
   // cosmos db database
-  resource stocksdba_db 'sqlDatabases' = {
-    name: stocksDbName
-    location: resourceLocation
-    tags: resourceTags
-    properties: {
-      resource: {
-        id: stocksDbName
-      }
-    }
 
-    // cosmos db collection
-    resource stocksdba_db_c1 'containers' = {
-      name: stocksDbStocksContainerName
-      location: resourceLocation
-      tags: resourceTags
-      properties: {
-        resource: {
-          id: stocksDbStocksContainerName
-          partitionKey: {
-            paths: [
-              '/id'
-            ]
-          }
-        }
-      }
-    }
-  }
-}
+  
 
 //
 // carts db
 //
 
 // cosmos db account
-resource cartsdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
-  name: cartsDbAcctName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    databaseAccountOfferType: 'Standard'
-    enableFreeTier: false
-    capabilities: [
-      {
-        name: 'EnableServerless'
-      }
-    ]
-    locations: [
-      {
-        locationName: resourceLocation
-      }
-    ]
-  }
-
-  // cosmos db database
-  resource cartsdba_db 'sqlDatabases' = {
-    name: cartsDbName
-    location: resourceLocation
-    tags: resourceTags
-    properties: {
-      resource: {
-        id: cartsDbName
-      }
-    }
-
-    // cosmos db collection
-    resource cartsdba_db_c1 'containers' = {
-      name: cartsDbStocksContainerName
-      location: resourceLocation
-      tags: resourceTags
-      properties: {
-        resource: {
-          id: cartsDbStocksContainerName
-          partitionKey: {
-            paths: [
-              '/Email'
-            ]
-          }
-        }
-      }
-    }
-  }
-}
 
 //
 // products db
@@ -424,37 +346,7 @@ resource productsdbsrv 'Microsoft.Sql/servers@2022-05-01-preview' = {
 //
 
 // sql azure server
-resource profilesdbsrv 'Microsoft.Sql/servers@2022-05-01-preview' = {
-  name: profilesDbServerName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    administratorLogin: profilesDbServerAdminLogin
-    administratorLoginPassword: profilesDbServerAdminPassword
-    publicNetworkAccess: 'Enabled'
-  }
 
-  // sql azure database
-  resource profilesdbsrv_db 'databases' = {
-    name: profilesDbName
-    location: resourceLocation
-    tags: resourceTags
-    sku: {
-      capacity: 5
-      tier: 'Basic'
-      name: 'Basic'
-    }
-  }
-
-  // sql azure firewall rule (allow access from all azure resources/services)
-  resource profilesdbsrv_db_fwl 'firewallRules' = {
-    name: 'AllowAllWindowsAzureIps'
-    properties: {
-      endIpAddress: '0.0.0.0'
-      startIpAddress: '0.0.0.0'
-    }
-  }
-}
 
 //
 // carts api
@@ -473,83 +365,6 @@ resource cartsapiacaenv 'Microsoft.App/managedEnvironments@2022-06-01-preview' =
   }
 }
 
-// aca
-resource cartsapiaca 'Microsoft.App/containerApps@2022-06-01-preview' = {
-  name: cartsApiAcaName
-  location: resourceLocation
-  tags: resourceTags
-  identity: {
-    type: 'SystemAssigned'
-  }
-  properties: {
-    configuration: {
-      activeRevisionsMode: 'Single'
-      ingress: {
-        external: true
-        allowInsecure: false
-        targetPort: 80
-        traffic: [
-          {
-            latestRevision: true
-            weight: 100
-          }
-        ]
-      }
-      registries: [
-        {
-          passwordSecretRef: cartsApiAcaSecretAcrPassword
-          server: acr.properties.loginServer
-          username: acr.name
-        }
-      ]
-      secrets: [
-        {
-          name: cartsApiAcaSecretAcrPassword
-          value: acr.listCredentials().passwords[0].value
-        }
-      ]
-    }
-    environmentId: cartsapiacaenv.id
-    template: {
-      scale: {
-        minReplicas: 0
-        maxReplicas: 4
-        rules: [
-          {
-            name: 'http-scaling-rule'
-            http: {
-              metadata: {
-                concurrentRequests: '3'
-              }
-            }
-          }
-        ]
-      }
-      containers: [
-        {
-          env: [
-            {
-              name: 'KeyVaultEndpoint'
-              value: kv.properties.vaultUri
-            }
-          ]
-          // using a public image initially because no images have been pushed to our private ACR yet
-          // at this point. At a later point, our github workflow will update the ACA app to use the 
-          // images from our private ACR.
-          image: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
-          name: cartsApiAcaContainerDetailsName
-          resources: {
-            cpu: json('0.5')
-            memory: '1.0Gi'
-          }
-        }
-      ]
-    }
-  }
-}
-
-//
-// product images
 //
 
 // storage account (product images)
@@ -588,35 +403,6 @@ resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
 // main website / ui
 // new website / ui
 //
-
-// storage account (main website)
-resource uistgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
-  name: uiStgAccName
-  location: resourceLocation
-  tags: resourceTags
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'StorageV2'
-
-  // blob service
-  resource uistgacc_blobsvc 'blobServices' = {
-    name: 'default'
-  }
-}
-
-resource uistgacc_mi 'Microsoft.ManagedIdentity/userAssignedIdentities@2022-01-31-preview' = {
-  name: 'DeploymentScript'
-  location: resourceLocation
-  tags: resourceTags
-}
-
-resource uistgacc_roledefinition 'Microsoft.Authorization/roleDefinitions@2022-04-01' existing = {
-  scope: subscription()
-  // This is the Storage Account Contributor role, which is the minimum role permission we can give. 
-  // See https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#:~:text=17d1049b-9a84-46fb-8f53-869881c3d3ab
-  name: '17d1049b-9a84-46fb-8f53-869881c3d3ab'
-}
 
 // @TODO: Unfortunately, this requires the service principal to be in the owner role for the subscription.
 // This is just a temporary mitigation, and needs to be fixed using a custom role.
@@ -663,34 +449,6 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   }
 }
 
-// storage account (new website)
-resource ui2stgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
-  name: ui2StgAccName
-  location: resourceLocation
-  tags: resourceTags
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'StorageV2'
-
-  // blob service
-  resource ui2stgacc_blobsvc 'blobServices' = {
-    name: 'default'
-  }
-}
-
-resource ui2stgacc_mi 'Microsoft.ManagedIdentity/userAssignedIdentities@2022-01-31-preview' = {
-  name: 'DeploymentScript2'
-  location: resourceLocation
-  tags: resourceTags
-}
-
-resource ui2stgacc_roledefinition 'Microsoft.Authorization/roleDefinitions@2022-04-01' existing = {
-  scope: subscription()
-  // This is the Storage Account Contributor role, which is the minimum role permission we can give. 
-  // See https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#:~:text=17d1049b-9a84-46fb-8f53-869881c3d3ab
-  name: '17d1049b-9a84-46fb-8f53-869881c3d3ab'
-}
 
 // @TODO: Unfortunately, this requires the service principal to be in the owner role for the subscription.
 // This is just a temporary mitigation, and needs to be fixed using a custom role.
@@ -741,29 +499,6 @@ resource deploymentScript2 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
 // image classifier
 //
 
-// storage account (main website)
-resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
-  name: imageClassifierStgAccName
-  location: resourceLocation
-  tags: resourceTags
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'StorageV2'
-
-  // blob service
-  resource imageclassifierstgacc_blobsvc 'blobServices' = {
-    name: 'default'
-
-    // container
-    resource uistgacc_blobsvc_websiteuploadscontainer 'containers' = {
-      name: imageClassifierWebsiteUploadsContainerName
-      properties: {
-        publicAccess: 'Container'
-      }
-    }
-  }
-}
 
 //
 // cognitive services (image recognition)
@@ -772,269 +507,10 @@ resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = 
 //
 // cdn
 //
-
-resource cdnprofile 'Microsoft.Cdn/profiles@2022-05-01-preview' = {
-  name: cdnProfileName
-  location: 'global'
-  tags: resourceTags
-  sku: {
-    name: 'Standard_Microsoft'
-  }
-}
-
-// endpoint (product images)
-resource cdnprofile_imagesendpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-preview' = {
-  name: cdnImagesEndpointName
-  location: 'global'
-  tags: resourceTags
-  parent: cdnprofile
-  properties: {
-    isCompressionEnabled: true
-    contentTypesToCompress: [
-      'image/svg+xml'
-    ]
-    deliveryPolicy: {
-      rules: [
-        {
-          name: 'Global'
-          order: 0
-          actions: [
-            {
-              name: 'CacheExpiration'
-              parameters: {
-                typeName: 'DeliveryRuleCacheExpirationActionParameters'
-                cacheBehavior: 'SetIfMissing'
-                cacheType: 'All'
-                cacheDuration: '10:00:00'
-              }
-            }
-          ]
-        }
-      ]
-    }
-    originHostHeader: '${productImagesStgAccName}.blob.core.windows.net' // @TODO: Hack, fix later
-    origins: [
-      {
-        name: '${productImagesStgAccName}-blob-core-windows-net' // @TODO: Hack, fix later
-        properties: {
-          hostName: '${productImagesStgAccName}.blob.core.windows.net' // @TODO: Hack, fix later
-          originHostHeader: '${productImagesStgAccName}.blob.core.windows.net' // @TODO: Hack, fix later
-        }
-      }
-    ]
-  }
-}
-
-// endpoint (ui / old website)
-resource cdnprofile_uiendpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-preview' = {
-  name: cdnUiEndpointName
-  location: 'global'
-  tags: resourceTags
-  parent: cdnprofile
-  properties: {
-    isCompressionEnabled: true
-    contentTypesToCompress: [
-      'application/eot'
-      'application/font'
-      'application/font-sfnt'
-      'application/javascript'
-      'application/json'
-      'application/opentype'
-      'application/otf'
-      'application/pkcs7-mime'
-      'application/truetype'
-      'application/ttf'
-      'application/vnd.ms-fontobject'
-      'application/xhtml+xml'
-      'application/xml'
-      'application/xml+rss'
-      'application/x-font-opentype'
-      'application/x-font-truetype'
-      'application/x-font-ttf'
-      'application/x-httpd-cgi'
-      'application/x-javascript'
-      'application/x-mpegurl'
-      'application/x-opentype'
-      'application/x-otf'
-      'application/x-perl'
-      'application/x-ttf'
-      'font/eot'
-      'font/ttf'
-      'font/otf'
-      'font/opentype'
-      'image/svg+xml'
-      'text/css'
-      'text/csv'
-      'text/html'
-      'text/javascript'
-      'text/js'
-      'text/plain'
-      'text/richtext'
-      'text/tab-separated-values'
-      'text/xml'
-      'text/x-script'
-      'text/x-component'
-      'text/x-java-source'
-    ]
-    deliveryPolicy: {
-      rules: [
-        {
-          name: 'Global'
-          order: 0
-          actions: [
-            {
-              name: 'CacheExpiration'
-              parameters: {
-                typeName: 'DeliveryRuleCacheExpirationActionParameters'
-                cacheBehavior: 'SetIfMissing'
-                cacheType: 'All'
-                cacheDuration: '10:00:00'
-              }
-            }
-          ]
-        }
-      ]
-    }
-    originHostHeader: '${uiStgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-    origins: [
-      {
-        name: '${uiStgAccName}-z13-web-core-windows-net' // @TODO: Hack, fix later
-        properties: {
-          hostName: '${uiStgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-          originHostHeader: '${uiStgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-        }
-      }
-    ]
-  }
-}
-
-// endpoint (ui / new website)
-resource cdnprofile_ui2endpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-preview' = {
-  name: cdnUi2EndpointName
-  location: 'global'
-  tags: resourceTags
-  parent: cdnprofile
-  properties: {
-    isCompressionEnabled: true
-    contentTypesToCompress: [
-      'application/eot'
-      'application/font'
-      'application/font-sfnt'
-      'application/javascript'
-      'application/json'
-      'application/opentype'
-      'application/otf'
-      'application/pkcs7-mime'
-      'application/truetype'
-      'application/ttf'
-      'application/vnd.ms-fontobject'
-      'application/xhtml+xml'
-      'application/xml'
-      'application/xml+rss'
-      'application/x-font-opentype'
-      'application/x-font-truetype'
-      'application/x-font-ttf'
-      'application/x-httpd-cgi'
-      'application/x-javascript'
-      'application/x-mpegurl'
-      'application/x-opentype'
-      'application/x-otf'
-      'application/x-perl'
-      'application/x-ttf'
-      'font/eot'
-      'font/ttf'
-      'font/otf'
-      'font/opentype'
-      'image/svg+xml'
-      'text/css'
-      'text/csv'
-      'text/html'
-      'text/javascript'
-      'text/js'
-      'text/plain'
-      'text/richtext'
-      'text/tab-separated-values'
-      'text/xml'
-      'text/x-script'
-      'text/x-component'
-      'text/x-java-source'
-    ]
-    deliveryPolicy: {
-      rules: [
-        {
-          name: 'Global'
-          order: 0
-          actions: [
-            {
-              name: 'CacheExpiration'
-              parameters: {
-                typeName: 'DeliveryRuleCacheExpirationActionParameters'
-                cacheBehavior: 'SetIfMissing'
-                cacheType: 'All'
-                cacheDuration: '02:00:00'
-              }
-            }
-          ]
-        }
-        {
-          name: 'EnforceHttps'
-          order: 1
-          conditions: [
-            {
-              name: 'RequestScheme'
-              parameters: {
-                typeName: 'DeliveryRuleRequestSchemeConditionParameters'
-                matchValues: [
-                  'HTTP'
-                ]
-                operator: 'Equal'
-                negateCondition: false
-                transforms: []
-              }
-            }
-          ]
-          actions: [
-            {
-              name: 'UrlRedirect'
-              parameters: {
-                typeName: 'DeliveryRuleUrlRedirectActionParameters'
-                redirectType: 'Found'
-                destinationProtocol: 'Https'
-              }
-            }
-          ]
-        }
-      ]
-    }
-    originHostHeader: '${ui2StgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-    origins: [
-      {
-        name: '${ui2StgAccName}-z13-web-core-windows-net' // @TODO: Hack, fix later
-        properties: {
-          hostName: '${ui2StgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-          originHostHeader: '${ui2StgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-        }
-      }
-    ]
-  }
-}
-
 //
 // redis cache
 //
 
-resource rediscache 'Microsoft.Cache/redis@2022-06-01' = {
-  name: redisCacheName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    sku: {
-      capacity: 0
-      family: 'C'
-      name: 'Basic'
-    }
-  }
-}
 
 //
 // container registry
@@ -1056,15 +532,6 @@ resource acr 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
 //
 // load testing service
 //
-
-resource loadtestsvc 'Microsoft.LoadTestService/loadTests@2022-12-01' = {
-  name: loadTestSvcName
-  location: resourceLocation
-  tags: resourceTags
-  identity: {
-    type: 'SystemAssigned'
-  }
-}
 
 //
 // application insights
@@ -1099,29 +566,6 @@ resource appinsights 'Microsoft.Insights/components@2020-02-02' = {
 //
 // portal dashboard
 //
-
-resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
-  name: portalDashboardName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    lenses: [
-      {
-        order: 0
-        parts: [
-          {
-            position: {
-              x: 0
-              y: 0
-              rowSpan: 4
-              colSpan: 2
-            }
-          }
-        ]
-      }
-    ]
-  }
-}
 
 //
 // aks cluster
