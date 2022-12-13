@@ -38,8 +38,7 @@ var kvSecretNameStocksDbConnStr = 'stocksDbConnectionString'
 var kvSecretNameCartsApiEndpoint = 'cartsApiEndpoint'
 var kvSecretNameCartsDbConnStr = 'cartsDbConnectionString'
 var kvSecretNameImagesEndpoint = 'imagesEndpoint'
-var kvSecretNameCognitiveServicesEndpoint = 'cognitiveServicesEndpoint'
-var kvSecretNameCognitiveServicesAccountKey = 'cognitiveServicesAccountKey'
+
 var kvSecretNameAppInsightsConnStr = 'appInsightsConnectionString'
 
 // cosmos db (stocks db)
@@ -84,9 +83,6 @@ var ui2StgAccName = '${prefix}ui2${environment}'
 // storage account (image classifier)
 var imageClassifierStgAccName = '${prefix}ic${environment}'
 var imageClassifierWebsiteUploadsContainerName = 'website-uploads'
-
-// cognitive service (image recognition)
-var cognitiveServiceName = '${prefixHyphenated}-cs${environment}'
 
 // cdn
 var cdnProfileName = '${prefixHyphenated}-cdn${environment}'
@@ -230,25 +226,8 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     }
   }
 
-  // secret
-  resource kv_secretCognitiveServicesEndpoint 'secrets' = {
-    name: kvSecretNameCognitiveServicesEndpoint
-    tags: resourceTags
-    properties: {
-      contentType: 'endpoint url of the cognitive services'
-      value: cognitiveservice.properties.endpoint
-    }
-  }
 
-  // secret
-  resource kv_secretCognitiveServicesAccountKey 'secrets' = {
-    name: kvSecretNameCognitiveServicesAccountKey
-    tags: resourceTags
-    properties: {
-      contentType: 'account key of the cognitive services'
-      value: cognitiveservice.listKeys().key1
-    }
-  }
+ 
 
   // secret
   resource kv_secretAppInsightsConnStr 'secrets' = {
@@ -789,19 +768,6 @@ resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = 
 //
 // cognitive services (image recognition)
 // 
-
-resource cognitiveservice 'Microsoft.CognitiveServices/accounts@2022-10-01' = {
-  name: cognitiveServiceName
-  location: resourceLocation
-  tags: resourceTags
-  sku: {
-    name: 'S0'
-  }
-  kind: 'CognitiveServices'
-  properties: {
-    publicNetworkAccess: 'Enabled'
-  }
-}
 
 //
 // cdn
