@@ -34,11 +34,11 @@ cd C:\Workspaces
 mkdir lab
 cd lab
 
-git clone --branch main https://github.com/shivashant25/aiw-devops-with-github-lab-files.git
+git clone --branch main https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
 
 Sleep 5
 
-$path = "C:\Workspaces\lab\aiw-devops-with-github-lab-files\iac"
+$path = "C:\Workspaces\lab\Cloud-Native-Application\iac"
 (Get-Content -Path "$path\createResources.parameters.json") | ForEach-Object {$_ -Replace "802322", "$DeploymentID"} | Set-Content -Path "$path\createResources.parameters.json"
 
 $path = "C:\Workspaces\lab\aiw-devops-with-github-lab-files\src\ContosoTraders.Ui.Website\src\services"
