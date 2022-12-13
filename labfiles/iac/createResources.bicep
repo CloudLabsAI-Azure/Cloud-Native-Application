@@ -60,7 +60,6 @@ var productsDbServerAdminPassword = sqlPassword
 
 
 // azure container app (carts api)
-var cartsApiAcaName = '${prefixHyphenated}-carts${environment}'
 var cartsApiAcaEnvName = '${prefix}acaenv${environment}'
 var cartsApiAcaSecretAcrPassword = 'acr-password'
 var cartsApiAcaContainerDetailsName = '${prefixHyphenated}-carts${environment}'
@@ -71,10 +70,10 @@ var productImagesProductDetailsContainerName = 'product-details'
 var productImagesProductListContainerName = 'product-list'
 
 // storage account (old website)
-var uiStgAccName = '${prefix}ui${environment}'
+
 
 // storage account (new website)
-var ui2StgAccName = '${prefix}ui2${environment}'
+
 
 // storage account (image classifier)
 var imageClassifierStgAccName = '${prefix}ic${environment}'
@@ -129,7 +128,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     // @TODO: Hack to enable temporary access to devs during local development/debugging.
     accessPolicies: [
       {
-        objectId: 'dd8df57f-a1cd-4351-ab5e-7036331dca4c'
+        objectId: '31de563b-fc1a-43a2-9031-c47630038328'
         tenantId: tenantId
         permissions: {
           secrets: [
@@ -182,48 +181,9 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     }
   }
 
-  // secret 
-  resource kv_secretStocksDbConnStr 'secrets' = {
-    name: kvSecretNameStocksDbConnStr
-    tags: resourceTags
-    properties: {
-      contentType: 'connection string to the stocks db'
-      value: stocksdba.listConnectionStrings().connectionStrings[0].connectionString
-    }
-  }
-
-  // secret
-  resource kv_secretCartsApiEndpoint 'secrets' = {
-    name: kvSecretNameCartsApiEndpoint
-    tags: resourceTags
-    properties: {
-      contentType: 'endpoint url (fqdn) of the carts api'
-      value: cartsapiaca.properties.configuration.ingress.fqdn
-    }
-  }
-
-  // secret
-  resource kv_secretCartsDbConnStr 'secrets' = {
-    name: kvSecretNameCartsDbConnStr
-    tags: resourceTags
-    properties: {
-      contentType: 'connection string to the carts db'
-      value: cartsdba.listConnectionStrings().connectionStrings[0].connectionString
-    }
-  }
-
-  // secret
-  resource kv_secretImagesEndpoint 'secrets' = {
-    name: kvSecretNameImagesEndpoint
-    tags: resourceTags
-    properties: {
-      contentType: 'endpoint url of the images cdn'
-      value: 'https://${cdnprofile_imagesendpoint.properties.hostName}'
-    }
-  }
-
 
  
+  }
 
   // secret
   resource kv_secretAppInsightsConnStr 'secrets' = {
@@ -235,69 +195,8 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     }
   }
 
-  // access policies
-  resource kv_accesspolicies 'accessPolicies' = {
-    name: 'replace'
-    properties: {
-      // @TODO: I was unable to figure out how to assign an access policy to the AKS cluster's agent pool's managed identity.
-      // Hence, that specific access policy will be assigned from a github workflow (using AZ CLI).
-      accessPolicies: [
-        {
-          tenantId: tenantId
-          objectId: cartsapiaca.identity.principalId
-          permissions: {
-            secrets: [ 'get', 'list' ]
-          }
-        }
-        {
-          tenantId: tenantId
-          objectId: loadtestsvc.identity.principalId
-          permissions: {
-            secrets: [ 'get', 'list' ]
-          }
-        }
-      ]
-    }
-  }
-}
 
-//
-// stocks db
-//
 
-// cosmos db account
-resource stocksdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
-  name: stocksDbAcctName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    databaseAccountOfferType: 'Standard'
-    enableFreeTier: false
-    capabilities: [
-      {
-        name: 'EnableServerless'
-      }
-    ]
-    locations: [
-      {
-        locationName: resourceLocation
-      }
-    ]
-  }
-
-  // cosmos db database
-
-  
-
-//
-// carts db
-//
-
-// cosmos db account
-
-//
-// products db
-//
 
 // sql azure server
 resource productsdbsrv 'Microsoft.Sql/servers@2022-05-01-preview' = {
@@ -341,29 +240,7 @@ resource productsdbsrv 'Microsoft.Sql/servers@2022-05-01-preview' = {
   }
 }
 
-//
-// profiles db
-//
 
-// sql azure server
-
-
-//
-// carts api
-//
-
-// aca environment
-resource cartsapiacaenv 'Microsoft.App/managedEnvironments@2022-06-01-preview' = {
-  name: cartsApiAcaEnvName
-  location: resourceLocation
-  tags: resourceTags
-  sku: {
-    name: 'Consumption'
-  }
-  properties: {
-    zoneRedundant: false
-  }
-}
 
 //
 
@@ -399,122 +276,7 @@ resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   }
 }
 
-//
-// main website / ui
-// new website / ui
-//
 
-// @TODO: Unfortunately, this requires the service principal to be in the owner role for the subscription.
-// This is just a temporary mitigation, and needs to be fixed using a custom role.
-// Details: https://learn.microsoft.com/en-us/answers/questions/287573/authorization-failed-when-when-writing-a-roleassig.html
-resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  scope: uistgacc
-  name: guid(resourceGroup().id, uistgacc_mi.id, uistgacc_roledefinition.id)
-  properties: {
-    roleDefinitionId: uistgacc_roledefinition.id
-    principalId: uistgacc_mi.properties.principalId
-    principalType: 'ServicePrincipal'
-  }
-}
-
-resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
-  name: 'DeploymentScript'
-  location: resourceLocation
-  kind: 'AzurePowerShell'
-  identity: {
-    type: 'UserAssigned'
-    userAssignedIdentities: {
-      '${uistgacc_mi.id}': {
-      }
-    }
-  }
-  dependsOn: [
-    // we need to ensure we wait for the role assignment to be deployed before trying to access the storage account
-    roleAssignment
-  ]
-  properties: {
-    azPowerShellVersion: '3.0'
-    scriptContent: loadTextContent('./scripts/enable-static-website.ps1')
-    retentionInterval: 'PT4H'
-    environmentVariables: [
-      {
-        name: 'ResourceGroupName'
-        value: resourceGroup().name
-      }
-      {
-        name: 'StorageAccountName'
-        value: uistgacc.name
-      }
-    ]
-  }
-}
-
-
-// @TODO: Unfortunately, this requires the service principal to be in the owner role for the subscription.
-// This is just a temporary mitigation, and needs to be fixed using a custom role.
-// Details: https://learn.microsoft.com/en-us/answers/questions/287573/authorization-failed-when-when-writing-a-roleassig.html
-resource roleAssignment2 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  scope: ui2stgacc
-  name: guid(resourceGroup().id, ui2stgacc_mi.id, ui2stgacc_roledefinition.id)
-  properties: {
-    roleDefinitionId: ui2stgacc_roledefinition.id
-    principalId: ui2stgacc_mi.properties.principalId
-    principalType: 'ServicePrincipal'
-  }
-}
-
-resource deploymentScript2 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
-  name: 'DeploymentScript2'
-  location: resourceLocation
-  kind: 'AzurePowerShell'
-  identity: {
-    type: 'UserAssigned'
-    userAssignedIdentities: {
-      '${ui2stgacc_mi.id}': {
-      }
-    }
-  }
-  dependsOn: [
-    // we need to ensure we wait for the role assignment to be deployed before trying to access the storage account
-    roleAssignment
-  ]
-  properties: {
-    azPowerShellVersion: '3.0'
-    scriptContent: loadTextContent('./scripts/enable-static-website.ps1')
-    retentionInterval: 'PT4H'
-    environmentVariables: [
-      {
-        name: 'ResourceGroupName'
-        value: resourceGroup().name
-      }
-      {
-        name: 'StorageAccountName'
-        value: ui2stgacc.name
-      }
-    ]
-  }
-}
-
-//
-// image classifier
-//
-
-
-//
-// cognitive services (image recognition)
-// 
-
-//
-// cdn
-//
-//
-// redis cache
-//
-
-
-//
-// container registry
-//
 
 resource acr 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
   name: acrName
@@ -529,12 +291,6 @@ resource acr 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
   }
 }
 
-//
-// load testing service
-//
-
-//
-// application insights
 //
 
 // log analytics workspace
@@ -552,23 +308,9 @@ resource loganalyticsworkspace 'Microsoft.OperationalInsights/workspaces@2022-10
 }
 
 // app insights instance
-resource appinsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: appInsightsName
-  location: resourceLocation
-  tags: resourceTags
-  kind: 'web'
-  properties: {
-    Application_Type: 'web'
-    WorkspaceResourceId: loganalyticsworkspace.id
-  }
-}
 
-//
-// portal dashboard
-//
 
-//
-// aks cluster
+
 //
 
 resource aks 'Microsoft.ContainerService/managedClusters@2022-09-02-preview' = {
@@ -602,14 +344,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-09-02-preview' = {
       }
     }
     // Note: Commented out due to github issue #84: https://github.com/CloudLabs-AI/ContosoTraders/issues/84
-    // addonProfiles: {
-    //   omsagent: {
-    //     enabled: true
-    //     config: {
-    //       logAnalyticsWorkspaceResourceID: loganalyticsworkspace.id
-    //     }
-    //   }
-    // }
+    
   }
 }
 
