@@ -8,19 +8,19 @@
 1. **Exercise 1: Build Docker Images for the Application** covers how to set up a local infrastructure with the Linux VM. Also covers how to build Docker images to containerize the application and push them to the container registry
   
 
-2. **Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration** has been updated and optimized for better experience.Please find the details below:
+2. **Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration** has been updated and optimized for better experience. Please find the details below:
    
    - Explore the databases and collections in MongoDB
    - Create Migration Project and migrate data to Azure CosmosDB
 
-3. **Exercise 3: Deploy the application to the Azure Kubernetes Service** has been updated and optimized for better experience.Please find the details below:
+3. **Exercise 3: Deploy the application to the Azure Kubernetes Service** has been updated and optimized for better experience. Please find the details below:
 
    - Tunnel into the Azure Kubernetes Service cluster
    - Setup Key Vault & Secrets
    - Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    - Deploy a service & workload using kubectl
  
-4. **Exercise 4: Scale the application and validate HA** has been updated and optimized for better experience.Please find the details below:
+4. **Exercise 4: Scale the application and validate HA** has been updated and optimized for better experience. Please find the details below:
 
    - Modify the Kubernetes resource deployments in Kubernetes service
    - Resolve failed replica provisioning
