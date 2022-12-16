@@ -308,10 +308,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     spec:
       tls:
       - hosts:
-          - contosotrader-821551-ingress.eastus.cloudapp.azure.com
+          - contosotraders-821551-ingress.eastus.cloudapp.azure.com
         secretName: tls-secret
       rules:
-      - host: contosotrader-821551-ingress.eastus.cloudapp.azure.com
+      - host: contosotraders-821551-ingress.eastus.cloudapp.azure.com
         http:
           paths:
           - path: /(.*)
