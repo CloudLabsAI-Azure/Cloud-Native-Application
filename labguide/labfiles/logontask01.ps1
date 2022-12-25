@@ -35,7 +35,7 @@ cd C:\Workspaces
 mkdir lab
 cd lab
 
-git clone --branch fix-nginx https://github.com/CloudLabsAI-Azure/Cloud-Native-Application/
+git clone --branch https://github.com/CloudLabsAI-Azure/Cloud-Native-Application/
 
 Sleep 5
 
