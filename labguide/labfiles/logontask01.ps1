@@ -21,7 +21,6 @@ $deploymentid = $env:DeploymentID
 choco install bicep
 Install-Module Sqlserver -SkipPublisherCheck -Force
 Import-Module Sqlserver
-choco install kubernetes-cli 
 choco install kubernetes-helm
 az config set extension.use_dynamic_install=yes_without_prompt
 
@@ -70,7 +69,9 @@ $RGname = "contosotraders-$deploymentid"
 New-AzResourceGroupDeployment -Name "createresources" -TemplateFile "createResources.bicep" -TemplateParameterFile "createResources.parameters.json" -ResourceGroup $RGname
 
 $AKS_CLUSTER_NAME = "contoso-traders-aks$deploymentid"
-$AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg-801077"
+
+$AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg"
+
 $CDN_PROFILE_NAME = "contoso-traders-cdn$deploymentid"
 $SUB_DEPLOYMENT_REGION = "eastus"
 $KV_NAME = "contosotraderskv$deploymentid"
