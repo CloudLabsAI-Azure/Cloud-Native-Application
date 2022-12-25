@@ -22,6 +22,7 @@ choco install bicep
 Install-Module Sqlserver -SkipPublisherCheck -Force
 Import-Module Sqlserver
 choco install kubernetes-cli
+choco install kubernetes-helm
 az config set extension.use_dynamic_install=yes_without_prompt
 
 #Download lab files
