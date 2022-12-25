@@ -35,14 +35,13 @@ cd C:\Workspaces
 mkdir lab
 cd lab
 
-git clone  https://github.com/CloudLabsAI-Azure/Cloud-Native-Application/
+git clone  https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
 
 Sleep 5
-
 $path = "C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac"
 (Get-Content -Path "$path\createResources.parameters.json") | ForEach-Object {$_ -Replace "802322", "$DeploymentID"} | Set-Content -Path "$path\createResources.parameters.json"
 
-$path = "C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac"
+
 (Get-Content -Path "$path\createResources.parameters.json") | ForEach-Object {$_ -Replace "bicepsqlpass", "$password"} | Set-Content -Path "$path\createResources.parameters.json"
 
 Sleep 5
