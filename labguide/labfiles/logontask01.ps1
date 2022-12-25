@@ -21,7 +21,6 @@ $deploymentid = $env:DeploymentID
 choco install bicep
 Install-Module Sqlserver -SkipPublisherCheck -Force
 Import-Module Sqlserver
-choco install kubernetes-cli
 choco install kubernetes-helm
 az config set extension.use_dynamic_install=yes_without_prompt
 
@@ -35,17 +34,14 @@ cd C:\Workspaces
 mkdir lab
 cd lab
 
-git clone --branch main https://github.com/shivashant25/aiw-devops-with-github-lab-files.git
+git clone --branch fix-nginx https://github.com/CloudLabsAI-Azure/Cloud-Native-Application/
 
 Sleep 5
 
-$path = "C:\Workspaces\lab\aiw-devops-with-github-lab-files\iac"
+$path = "C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac"
 (Get-Content -Path "$path\createResources.parameters.json") | ForEach-Object {$_ -Replace "802322", "$DeploymentID"} | Set-Content -Path "$path\createResources.parameters.json"
 
-$path = "C:\Workspaces\lab\aiw-devops-with-github-lab-files\src\ContosoTraders.Ui.Website\src\services"
-(Get-Content -Path "$path\configService.js") | ForEach-Object {$_ -Replace "deploymentidvalue", "$DeploymentID"} | Set-Content -Path "$path\configService.js"
-
-$path = "C:\Workspaces\lab\aiw-devops-with-github-lab-files\iac"
+$path = "C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac"
 (Get-Content -Path "$path\createResources.parameters.json") | ForEach-Object {$_ -Replace "bicepsqlpass", "$password"} | Set-Content -Path "$path\createResources.parameters.json"
 
 Sleep 5
@@ -66,14 +62,16 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 Login-AzAccount -Credential $cred | Out-Null
 
 
-cd C:\Workspaces\lab\aiw-devops-with-github-lab-files\iac
+cd C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac
 
 $RGname = "contosotraders-$deploymentid"
 
 New-AzResourceGroupDeployment -Name "createresources" -TemplateFile "createResources.bicep" -TemplateParameterFile "createResources.parameters.json" -ResourceGroup $RGname
 
 $AKS_CLUSTER_NAME = "contoso-traders-aks$deploymentid"
-$AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg$deploymentid"
+
+$AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg"
+
 $CDN_PROFILE_NAME = "contoso-traders-cdn$deploymentid"
 $SUB_DEPLOYMENT_REGION = "eastus"
 $KV_NAME = "contosotraderskv$deploymentid"
@@ -98,7 +96,7 @@ $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentI
 
 
 az login -u $userName -p  $password
-cd C:\Workspaces\lab\aiw-devops-with-github-lab-files
+cd C:\Workspaces\lab\Cloud-Native-Application\labfiles
 
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $AKS_CLUSTER_NAME
 
@@ -107,9 +105,10 @@ kubectl create namespace contoso-traders
 az identity create -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME
 
 $objectID = "$(az identity show -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --query "clientId" -o tsv)"
-      
+      $obj2 = "$(az identity show -g $RESOURCE_GROUP_NAME --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --query "principalId" -o tsv)"
       az vmss identity assign --identities $(az identity show -g $RESOURCE_GROUP_NAME  --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME  --query "id" -o tsv) --ids $(az vmss list -g $AKS_NODES_RESOURCE_GROUP_NAME  --query "[0].id" -o tsv) 
       az keyvault set-policy -n $KV_NAME  --secret-permissions get list --object-id $objectID 
+            az keyvault set-policy -n $KV_NAME  --secret-permissions get list --object-id $obj2 
 
 kubectl create secret generic contoso-traders-kv-endpoint --from-literal=contoso-traders-kv-endpoint="https://$KV_NAME.vault.azure.net/" -n contoso-traders
 
@@ -138,7 +137,7 @@ az storage blob sync --account-name $STORAGE_ACCOUNT_NAME -c $PRODUCT_DETAILS_CO
 
 az storage blob sync --account-name $STORAGE_ACCOUNT_NAME -c $PRODUCT_LIST_CONTAINER_NAME -s 'src/ContosoTraders.Api.Images/product-list'
 
-az cdn endpoint purge --no-wait --content-paths '/*' -n $PRODUCTS_CDN_ENDPOINT_NAME -g $RESOURCE_GROUP_NAME --profile-name $CDN_PROFILE_NAME
+#az cdn endpoint purge --no-wait --content-paths '/*' -n $PRODUCTS_CDN_ENDPOINT_NAME -g $RESOURCE_GROUP_NAME --profile-name $CDN_PROFILE_NAME
 
 
 

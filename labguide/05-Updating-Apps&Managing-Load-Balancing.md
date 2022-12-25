@@ -136,7 +136,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 5. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
 
    ```bash
-   code update-ip.sh
+   code update-ip.ps1
    ```
    
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
@@ -149,16 +149,16 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    #!/bin/bash
 
    # Public IP address
-   IP="[INGRESS PUBLIC IP]"
+   $IP="INGRESS PUBLIC IP"
 
    # Resource Group that contains AKS Node Pool
-   KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+   $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
    # Name to associate with public IP address
-   DNSNAME="contosotraders-[SUFFIX]-ingress"
+   $DNSNAME="contosotraders-SUFFIX-ingress"
 
    # Get the resource-id of the public ip
-   PUBLICIPID=$(az network public-ip list --resource-group $KUBERNETES_NODE_RG --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
+   $PUBLICIPID=$(az network public-ip list --resource-group $KUBERNETES_NODE_RG --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
 
    # Update public ip address with dns name
    az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
@@ -168,7 +168,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 7. Run the update script.
 
    ```bash
-   bash ./update-ip.sh
+   powershell ./update-ip.ps1
    ```
    
    ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/updateip.png "Update the IP and SUFFIX values")
@@ -185,7 +185,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
    ```bash
    helm upgrade nginx-ingress ingress-nginx/ingress-nginx \
-    --namespace ingress-demo \
+    --namespace contoso-traders \
     --set controller.service.externalTrafficPolicy=Local
    ```
 
@@ -200,7 +200,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
     ```bash
     
-    vim clusterissuer.yml
+    code clusterissuer.yml
     ```
 
     ```yaml
@@ -208,6 +208,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kind: ClusterIssuer
     metadata:
       name: letsencrypt-prod
+      namespace: contoso-traders
     spec:
       acme:
         # The ACME server URL
@@ -252,10 +253,11 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kind: Certificate
     metadata:
       name: tls-secret
+      namespace: contoso-traders
     spec:
       secretName: tls-secret
       dnsNames:
-        - fabmedical-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
+        - contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
       issuerRef:
         name: letsencrypt-prod
         kind: ClusterIssuer
@@ -269,7 +271,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kubectl create --save-config=true -f certificate.yml
     ```
 
-    > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret` command and look for an _Events_ output similar to the following:
+    > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret -n contoso-traders` command and look for an _Events_ output similar to the following:
     >
     > ```text
     > Type    Reason         Age   From          Message
@@ -306,24 +308,24 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     spec:
       tls:
       - hosts:
-          - contosotrader-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
+          - contosotraders-821551-ingress.eastus.cloudapp.azure.com
         secretName: tls-secret
       rules:
-      - host: contosotrader-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
+      - host: contosotraders-821551-ingress.eastus.cloudapp.azure.com
         http:
           paths:
           - path: /(.*)
             pathType: Prefix
             backend:
               service:
-                name: web
+                name: contoso-traders-web
                 port:
                   number: 80
-          - path: /content-api/(.*)
+          - path: /(.*)
             pathType: Prefix
             backend:
               service:
-                 name: api
+                 name: contoso-traders-products
                  port:
                    number: 3001
     ```
