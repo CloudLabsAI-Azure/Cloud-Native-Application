@@ -12,7 +12,7 @@ Kubernetes services can discover the ports assigned to each pod, allowing you to
  
 In this task, you will edit the web application source code to update some configuration and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources
 
->**Note**: Please perform this task using a new Windows command prompt which should be not connected to build agent VM but should be logged into azure.
+>**Note**: Please perform this task using a new Windows command prompt which should be not connected to build agent VM but should be logged into Azure.
 
 
 1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
@@ -196,7 +196,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
-10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates. Run the below command in Windows command prompt.
+10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in Windows command prompt.
 
     ```bash
     
