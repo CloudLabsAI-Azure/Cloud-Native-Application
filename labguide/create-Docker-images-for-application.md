@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will learn how to Containerize the Contoso traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+In this exercise, you will learn how to Containerize the Contoso traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
@@ -161,7 +161,7 @@ In this task, you will be building the docker images to containerize the applica
 
     ![](media/ex1-dockerlogin.png "open cmd")
 
-1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry. Also, make sure to update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
+1. Once you logged in to the ACR, please run the below commands to push the Docker images to Azure container registry. Also, ensure that you update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
 
    ```
    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
@@ -184,4 +184,4 @@ In this task, you will be building the docker images to containerize the applica
 
 ## Summary
 
-In this exercise, you have completly containerized you web application with the help of docker and pushed them to the container registry.
+In this exercise, you have completly containerized your web application with the help of docker and pushed them to the container registry.
