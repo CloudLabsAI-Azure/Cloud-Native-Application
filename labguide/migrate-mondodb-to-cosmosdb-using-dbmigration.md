@@ -10,7 +10,7 @@ In this exercise, you will be migrating your on-premises MongoDB database hosted
 
 In this task, you will be connecting to mongo database hosted over Azure Linux VM and explore the databases and collections in it.
 
-1. While connected to your Linux VM, run the below command for connecting to mongo shell as you will be displaying the databases and collections in it using mongo shell.
+1. While connected to your Linux VM, run the below command for connecting to mongo shell to display the databases and collections in it using mongo shell.
 
    ```
    mongo
@@ -43,7 +43,7 @@ In this task, you will be connecting to mongo database hosted over Azure Linux V
 
 In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises you will be using the Azure CosmosDB to fetch the data for products page. 
 
-1. In the Azure Portal, navigate to your **contosotraders(Build Agent)** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Copy the **Private IP address** and paste the it into the notepad for later use.
+1. In the Azure Portal, navigate to your **contosotraders(Build Agent)** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Copy the **Private IP address** and paste it on the notepad for later use.
 
    ![](media/privateip.png)
 
