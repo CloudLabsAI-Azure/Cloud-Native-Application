@@ -18,7 +18,7 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA2.png "Setting replicas to 2")
 
-    >**Note**: If the deployment completes quickly, you may not see the deployment Waiting states in the portal, as described in the following steps.
+    >**Note**: If the deployment completes quickly, you may not see the deployment waiting states in the portal, as described in the following steps.
 
 1. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
 
@@ -244,7 +244,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
     ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/cosmos-request-charge.png "Recent CosmosDB activity graph")
     
-    >**Note**: In case if you don't see data on the graph. Please set the time range to last 1 hour.
+    >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
 
 14. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
