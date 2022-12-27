@@ -1,0 +1,241 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.App/containerApps/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.App/managedEnvironments/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Cache/Redis/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Cdn/profiles/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Cdn/profiles/endpoints/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Compute/disks/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Compute/virtualMachines/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Compute/virtualMachines/extensions/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.ContainerRegistry/registries/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.ContainerService/managedClusters/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.DataMigration/services/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.DataMigration/services/projects/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.DocumentDb/databaseAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "microsoft.insights/actiongroups/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Insights/components/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "microsoft.insights/metricalerts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.KeyVault/vaults/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.LoadTestService/loadtests/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.ManagedIdentity/userAssignedIdentities/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/networkInterfaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/networkSecurityGroups/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/publicIPAddresses/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/virtualNetworks/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.OperationalInsights/workspaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.OperationsManagement/solutions/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Portal/dashboards/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Sql/servers/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Sql/servers/databases/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Storage/storageAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.App/containerApps", "Microsoft.App/managedEnvironments", "Microsoft.Cache/Redis", "Microsoft.Cdn/profiles", "Microsoft.Cdn/profiles/endpoints", "Microsoft.Compute/disks", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.ContainerRegistry/registries", "Microsoft.ContainerService/managedClusters", "Microsoft.DataMigration/services", "Microsoft.DataMigration/services/projects", "Microsoft.DocumentDb/databaseAccounts", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "microsoft.insights/metricalerts", "Microsoft.KeyVault/vaults", "Microsoft.LoadTestService/loadtests", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions", "Microsoft.Portal/dashboards", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases", "Microsoft.Storage/storageAccounts"]
+				    }
+                ]
+			}
+		 },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.Compute/disks"
+			},
+			{
+			  "not": {
+				"field": "Microsoft.Compute/disks/Sku.Tier",
+				"in": ["Premium", "Standard"]
+				}
+			  }
+			]
+		  },
+          {
+		  "allOf": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.Compute/virtualMachines"
+			},
+			{
+			  "not": {
+				"allOf": [
+				  {
+                    "field": "Microsoft.Compute/virtualMachines/imageOffer",
+					"in": ["UbuntuServer", "visualstudio2022"]
+				  },
+				  {
+					"field": "Microsoft.Compute/virtualMachines/imagePublisher",
+					"in": ["Canonical", "microsoftvisualstudio"]
+				  },
+				  {
+					"field": "Microsoft.Compute/virtualMachines/imageSku",
+					 "in": ["16.04-LTS", "vs-2022-ent-latest-ws2022"]
+				  },
+				  {
+					"field": "Microsoft.Compute/virtualMachines/sku.name",
+					"in": ["Standard_D2s_v3", "Standard_DS2_v2"]
+				  }
+				]
+			  }
+			}
+		   ]
+		},
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.ContainerRegistry/registries"
+			},
+			{
+            "field": "Microsoft.ContainerRegistry/registries/sku.name",
+            "notIn": ["Basic"]
+            }
+			]
+		  },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.KeyVault/vaults"
+			},
+			{
+            "field": "Microsoft.KeyVault/vaults/sku.name",
+            "notIn": ["Standard"]
+            }
+			]
+		  },
+         {
+		  "allof":[
+			{
+			  "field": "type",
+			  "equals": "Microsoft.SQL/servers/databases"
+			},
+			{
+			  "not":{
+					"field": "Microsoft.Sql/servers/databases/requestedServiceObjectiveName",
+					"in": ["Basic"]
+			  }
+			}
+		  ]
+		},
+            {
+			"allOf": [
+			  {
+				"source": "action",
+				"equals": "Microsoft.Storage/storageAccounts/write"
+			  },
+			  {
+				"field": "type",
+				"equals": "Microsoft.Storage/storageAccounts"
+			  },
+			  {
+				"not": 
+				  {
+					"field": "Microsoft.Storage/storageAccounts/sku.name",
+					"in": ["StandardLRS"]
+				  }
+			   }
+			]
+		  },
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
