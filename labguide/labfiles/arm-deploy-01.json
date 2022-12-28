@@ -71,6 +71,12 @@
     },
     "trainerUserPassword": {
       "type": "string"
+    },
+       "AppID": {
+      "type": "string"
+    },
+    "AppSecret": {
+      "type": "string"
     }
   },
   "variables": {
