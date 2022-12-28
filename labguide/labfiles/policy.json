@@ -15,7 +15,7 @@
 					  "field": "type",
 					  "equals": "Microsoft.Web/serverfarms/*"
 					},
-				  "Microsoft.Web/sites"
+				
                     {
 				    "field": "type",
 				    "like": "Microsoft.App/containerApps/*"
