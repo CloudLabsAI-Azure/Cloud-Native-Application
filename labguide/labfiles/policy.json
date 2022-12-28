@@ -8,6 +8,11 @@
 				    "field": "type",
 				    "like": "Microsoft.Compute/virtualMachineScaleSets/*"
 				    },
+		         {
+				    "field": "type",
+				    "like":"Microsoft.Resources/deploymentScripts/*"
+				    },
+		
                     {
 				    "field": "type",
 				    "like": "Microsoft.ManagedIdentity/userAssignedIdentities/*"
@@ -164,7 +169,7 @@
                    },
                    {
                    "field": "type",
-                   "in": [  "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/routeTables", "Microsoft.Network/virtualNetworks" ,"Microsoft.Web/serverfarms", "Microsoft.Web/sites","microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.App/containerApps", "Microsoft.App/managedEnvironments", "Microsoft.Cache/Redis", "Microsoft.Cdn/profiles", "Microsoft.Cdn/profiles/endpoints", "Microsoft.Compute/disks", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.ContainerRegistry/registries", "Microsoft.ContainerService/managedClusters", "Microsoft.DataMigration/services", "Microsoft.DataMigration/services/projects", "Microsoft.DocumentDb/databaseAccounts", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "microsoft.insights/metricalerts", "Microsoft.KeyVault/vaults", "Microsoft.LoadTestService/loadtests", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions", "Microsoft.Portal/dashboards", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases", "Microsoft.Storage/storageAccounts"]
+                   "in": ["Microsoft.Resources/deploymentScripts",  "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/routeTables", "Microsoft.Network/virtualNetworks" ,"Microsoft.Web/serverfarms", "Microsoft.Web/sites","microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.App/containerApps", "Microsoft.App/managedEnvironments", "Microsoft.Cache/Redis", "Microsoft.Cdn/profiles", "Microsoft.Cdn/profiles/endpoints", "Microsoft.Compute/disks", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.ContainerRegistry/registries", "Microsoft.ContainerService/managedClusters", "Microsoft.DataMigration/services", "Microsoft.DataMigration/services/projects", "Microsoft.DocumentDb/databaseAccounts", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "microsoft.insights/metricalerts", "Microsoft.KeyVault/vaults", "Microsoft.LoadTestService/loadtests", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions", "Microsoft.Portal/dashboards", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases", "Microsoft.Storage/storageAccounts"]
                    }
                ]
            }
