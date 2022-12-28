@@ -16,7 +16,11 @@ Param (
     $azuserobjectid,
     [string]
     $InstallCloudLabsShadow,
-     
+     [string]
+    $AppID,
+
+    [string]
+    $AppSecret,
     [string]
     $adminusername,
 
@@ -34,7 +38,8 @@ Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
 $adminUsername = "admincontoso"
 [System.Environment]::SetEnvironmentVariable('DeploymentID', $DeploymentID,[System.EnvironmentVariableTarget]::Machine)
-
+[System.Environment]::SetEnvironmentVariable('AppID', $AppID,[System.EnvironmentVariableTarget]::Machine)
+[System.Environment]::SetEnvironmentVariable('AppSecret', $AppSecret,[System.EnvironmentVariableTarget]::Machine)
 
     $vmAdminUsername = "adminusername"
   
