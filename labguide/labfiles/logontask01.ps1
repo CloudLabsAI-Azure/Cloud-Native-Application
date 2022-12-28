@@ -26,9 +26,6 @@ Write-Host "Logon-task-started"
 
 $DeploymentID = $env:DeploymentID
 
-Start-Process C:\Packages\extensions.bat
-Write-Host "Bypass-Execution-Policy"
-
 
 
 . C:\LabFiles\AzureCreds.ps1
