@@ -4,6 +4,8 @@
     "IsCustom":  true,
     "Description":  "Spektra Training Custom Role.",
     "Actions":  [
+                    "Microsoft.Web/serverFarms/*",
+    "Microsoft.Web/sites/*",
                     "microsoft.alertsmanagement/smartDetectorAlertRules/*",
                     "Microsoft.App/containerApps/*",
                     "Microsoft.App/managedEnvironments/*",
