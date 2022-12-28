@@ -3,7 +3,7 @@
        "anyOf": [
         {
            "not": {
-             "anyOf": [Microsoft.ContainerInstance/containerGroups
+             "anyOf": [
                   {
 				    "field": "type",
 				    "like": "Microsoft.Compute/virtualMachineScaleSets/*"
