@@ -40,6 +40,12 @@
     },
     "trainerUserPassword": {
       "value": "GET-AZUSER-PASSWORD"
-    }
+    },
+     "AppID": {
+      "value": "GET-SERVICEPRINCIPAL-APPLICATION-ID"
+    },
+    "AppSecret": {
+      "value": "GET-SERVICEPRINCIPAL-SECRET"
+    },
   }
 }
