@@ -17,6 +17,27 @@ $password = $AzurePassword
 
 $deploymentid = $env:DeploymentID
 
+$AppID = $env:AppID
+
+$AppSecret = $env:AppSecret
+Set-ExecutionPolicy -ExecutionPolicy bypass -Force
+Start-Transcript -Path C:\WindowsAzure\Logs\extensionlog.txt -Append
+Write-Host "Logon-task-started" 
+
+$DeploymentID = $env:DeploymentID
+
+Start-Process C:\Packages\extensions.bat
+Write-Host "Bypass-Execution-Policy"
+
+
+
+. C:\LabFiles\AzureCreds.ps1
+
+$user = $AzureUserName
+
+$password = $AzurePassword
+
+$deploymentid = $env:DeploymentID
 
 choco install bicep
 Install-Module Sqlserver -SkipPublisherCheck -Force
@@ -56,10 +77,10 @@ $subscriptionId = $AzureSubscriptionID
 $TenantID = $AzureTenantID
 
 
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
+$securePassword = $AppSecret | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AppID, $SecurePassword
 
-Login-AzAccount -Credential $cred | Out-Null
+Login-AzAccount -ServicePrincipal -Credential $cred -Tenant $AzureTenantID | Out-Null
 
 
 cd C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac
@@ -95,7 +116,7 @@ $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentI
 
 
 
-az login -u $userName -p  $password
+az login --service-principal -u $AppID -p  $AppSecret -t $AzureTenantID
 cd C:\Workspaces\lab\Cloud-Native-Application\labfiles
 
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $AKS_CLUSTER_NAME
