@@ -166,4 +166,60 @@ az storage blob sync --account-name $STORAGE_ACCOUNT_NAME -c $PRODUCT_LIST_CONTA
 sleep 20
 
 sleep 5
+
+
+$commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.14\Downloads\0\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
+. C:\LabFiles\AzureCreds.ps1
+$TenantID = $AzureTenantID
+
+$securePassword = $AppSecret | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AppID, $SecurePassword
+
+Login-AzAccount -ServicePrincipal -Credential $cred -Tenant $AzureTenantID | Out-Null
+
+
+$RGname = "contosotraders-$deploymentid"
+
+$RG1 = Get-AzResourceGroupDeployment -Name "createresources" -ResourceGroupName $RGname
+
+$RG1 = $RG1.ProvisioningState
+
+$deploymentstatus = $RG1
+
+if($deploymentstatus -eq 'Succeeded')
+{
+    Write-Information "Validation Passed"
+    
+    $validstatus = "Successfull"
+}
+else {
+    Write-Warning "Validation Failed - see log output"
+    $validstatus = "Failed"
+      }
+
+Function SetDeploymentStatus($ManualStepStatus, $ManualStepMessage)
+{
+
+    (Get-Content -Path "C:\WindowsAzure\Logs\status-sample.txt") | ForEach-Object {$_ -Replace "ReplaceStatus", "$ManualStepStatus"} | Set-Content -Path "C:\WindowsAzure\Logs\validationstatus.txt"
+    (Get-Content -Path "C:\WindowsAzure\Logs\validationstatus.txt") | ForEach-Object {$_ -Replace "ReplaceMessage", "$ManualStepMessage"} | Set-Content -Path "C:\WindowsAzure\Logs\validationstatus.txt"
+}
+ if ($validstatus -eq "Successfull") {
+    $ValidStatus="Succeeded"
+    $ValidMessage="Environment is validated and the deployment is successful"
+
+
+      }
+else {
+    Write-Warning "Validation Failed - see log output"
+    $ValidStatus="Failed"
+    $ValidMessage="Environment Validation Failed and the deployment is Failed"
+      } 
+ SetDeploymentStatus $ValidStatus $ValidMessage
+#Start the cloudlabs agent service 
+CloudlabsManualAgent Start     
+
 Unregister-ScheduledTask -TaskName "Installdocker" -Confirm:$false 
+
+Restart-Computer -Force 
