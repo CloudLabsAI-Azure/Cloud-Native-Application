@@ -153,7 +153,7 @@
         }
       }
     ],
-    "cloudlabsCommon": "[concat(' -AzureUserName ', parameters('AzureUserName'), ' -AzurePassword ', parameters('AzurePassword'), ' -AzureTenantID ', variables('AzureTenantID'), ' -AzureSubscriptionID ', variables('AzureSubscriptionID'), ' -ODLID ', parameters('ODLID'), ' -DeploymentID ', parameters('DeploymentID'), ' -InstallCloudLabsShadow ', parameters('InstallCloudLabsShadow'))]",
+    "cloudlabsCommon": "[concat(' -AzureUserName ', parameters('AzureUserName'), ' -AzurePassword ', parameters('AzurePassword'), ' -AzureTenantID ', variables('AzureTenantID'), ' -AzureSubscriptionID ', variables('AzureSubscriptionID'), ' -ODLID ', parameters('ODLID'), ' -DeploymentID ', parameters('DeploymentID'), ' -InstallCloudLabsShadow ', parameters('InstallCloudLabsShadow'), ' ', '-AppID', ' ',parameters('AppID'), ' ', '-AppSecret', ' ',parameters('AppSecret'))]",
     "Enable-CloudLabsEmbeddedShadow": "[concat(' -adminUsername ', parameters('adminUsername'), ' -trainerUserName ', parameters('trainerUserName'), ' -trainerUserPassword ', parameters('trainerUserPassword'))]",
     "publicIpAddressNameLinux": "[concat('contosotraders-', 'ip')]",
     "AzureSubscriptionID": "[subscription().subscriptionId]",
