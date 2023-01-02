@@ -88,7 +88,7 @@ New-AzResourceGroupDeployment -Name "createresources" -TemplateFile "createResou
 
 $AKS_CLUSTER_NAME = "contoso-traders-aks$deploymentid"
 
-$AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg$deploymentid"
+$AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg-$deploymentid"
 
 $CDN_PROFILE_NAME = "contoso-traders-cdn$deploymentid"
 $SUB_DEPLOYMENT_REGION = "eastus"
