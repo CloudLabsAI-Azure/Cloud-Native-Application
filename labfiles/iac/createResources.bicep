@@ -13,7 +13,7 @@ param environment string
 
 param sqlPassword string
 
-param resourceLocation string = resourceGroup().location
+param resourceLocation string = 'eastus'
 
 // tenant
 param tenantId string = subscription().tenantId
