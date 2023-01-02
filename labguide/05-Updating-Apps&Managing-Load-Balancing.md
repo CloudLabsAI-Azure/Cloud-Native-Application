@@ -23,7 +23,7 @@ In this task, you will edit the web application source code to update some confi
      cd  Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/components/hero
 
      ```
-1. Once you are in the correct directly, run the below command to make open **Corousel.js** file to make some text change in homepage of your web application.
+1. Once you are in the correct directory, run the below command to make open **Corousel.js** file to make some text change in homepage of your web application.
 
      ```bash
      vim Corousel.js
@@ -146,7 +146,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[SUFFIX]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
 
    ```bash
-   #!/bin/bash
+   
 
    # Public IP address
    $IP="INGRESS PUBLIC IP"
@@ -308,10 +308,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     spec:
       tls:
       - hosts:
-          - contosotraders-821551-ingress.eastus.cloudapp.azure.com
+          - contosotraders-SUFFIX-ingress.eastus.cloudapp.azure.com
         secretName: tls-secret
       rules:
-      - host: contosotraders-821551-ingress.eastus.cloudapp.azure.com
+      - host: contosotraders-SUFFIX-ingress.eastus.cloudapp.azure.com
         http:
           paths:
           - path: /(.*)
