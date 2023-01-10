@@ -98,6 +98,7 @@ In this task, you will be building the docker images to containerize the applica
 
 1. Run the below command to change the directory to `services` and open `configService.js` file.
 sudo chmod 777 filename
+    ```
     cd src/ContosoTraders.Ui.Website/src/services
     vi configService.js
     ```
@@ -107,6 +108,7 @@ sudo chmod 777 filename
 1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save you changes and close the file. We need to update the API URL here so that Contoso Traders application can connect to product API once its pushed to AKS containers.
     
     >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
+    
     >**Note**: If you face permission error while saving a file run the following command : `sudo chmod 777 configService.js`
 
     ```
