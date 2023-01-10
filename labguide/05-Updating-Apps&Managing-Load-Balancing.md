@@ -39,7 +39,11 @@ In this task, you will edit the web application source code to update some confi
  
    ![A screenshot of the code editor showing updates in context of the app.js file](media/updatesource.png "AppInsights updates in app.js")
 
-1. Once the changes are done, save the file pressing "ESC" and then type ":wq" and exit the editor.
+1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
+    
+    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
+    
+    >**Note**: If you face permission error while saving a file run the following command : `sudo chmod 777 Corousel.js`
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
 
