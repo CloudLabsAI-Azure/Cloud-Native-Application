@@ -224,7 +224,9 @@ In this task, you will run a performance test script that will test the Autoscal
 
 9. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
-    **Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
+    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
+    
+    >**Note**: If you face permission error while saving a file run the following command : `sudo chmod 777 perftest.sh`
 
 10. Run the following command to execute the `perftest.sh` script to run a small load test against CosmosDB. This script will consume RUs in CosmosDB by inserting many documents into the Sessions container.
 
