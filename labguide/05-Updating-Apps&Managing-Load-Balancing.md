@@ -26,6 +26,7 @@ In this task, you will edit the web application source code to update some confi
 1. Once you are in the correct directory, run the below command to make open **Corousel.js** file to make some text change in homepage of your web application.
 
      ```bash
+     sudo chmod 777 Corousel.js
      vim Corousel.js
      ```
      
@@ -43,7 +44,6 @@ In this task, you will edit the web application source code to update some confi
     
     >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
     
-    >**Note**: If you face permission error while saving a file run the following command : `sudo chmod 777 Corousel.js`
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
 
@@ -78,7 +78,7 @@ In this task, you will edit the web application source code to update some confi
 1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
      ```bash
-     kubectl describe pods  -n contoso-traders
+     kubectl describe pods [PODNAME] -n contoso-traders
      ```
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
