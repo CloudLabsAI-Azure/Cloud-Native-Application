@@ -151,22 +151,25 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
    ```bash
    
+  $ipaddress="INGRESS PUBLIC IP"
 
-   # Public IP address
-   $IP="INGRESS PUBLIC IP"
+  $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
-   # Resource Group that contains AKS Node Pool
-   $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+  $DNSNAME="contosotraders-SUFFIX-ingress"
 
-   # Name to associate with public IP address
-   $DNSNAME="contosotraders-SUFFIX-ingress"
+  $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
 
-   # Get the resource-id of the public ip
-   $PUBLICIPID=$(az network public-ip list --resource-group $KUBERNETES_NODE_RG --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
+  $results = @()
 
-   # Update public ip address with dns name
-   az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
-   ```
+ ForEach ($i in $PUBLICIP)
+ {
+ If($i.IpAddress -eq $ipaddress){
+ $PIPNAME=$i.name
+ $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+ Set-AzPublicIpAddress -PublicIpAddress $i
+ }
+ }
+ ```
 6. Save changes and close the editor.
 
 7. Run the update script.
