@@ -8,15 +8,15 @@ In this exercise, you will be migrating your on-premises MongoDB database hosted
 
 ### Task 1: Explore the databases and collections in MongoDB
 
-In this task, you will be connecting to mongo database hosted over Azure Linux VM and explore the databases and collections in it.
+In this task, you will be connecting to a mongo database hosted over Azure Linux VM and exploring the databases and collections in it.
 
-1. While connected to your Linux VM, run the below command for connecting to mongo shell to display the databases and collections in it using mongo shell.
+1. While connected to your Linux VM, run the below command for connecting to mongo shell to display the databases and collections in it using the mongo shell.
 
    ```
    mongo
    ```
    
-   >**Note**: If you face an issue while connecting to the source DB with error connection refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using ssh. Please run the following commands and reperform the step - 1 of the task.
+   >**Note**: If you face an issue while connecting to the source DB with an error connection is refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using ssh. Please run the following commands and reperform step - 1 of the task.
 
    ```
    sudo apt install mongodb-server
@@ -29,7 +29,7 @@ In this task, you will be connecting to mongo database hosted over Azure Linux V
    
    ![](media/ex2-mongo2.png)
    
-1. Run the following commands to verify the database in mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
+1. Run the following commands to verify the database in the mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
 
    ```
    show dbs
@@ -41,7 +41,7 @@ In this task, you will be connecting to mongo database hosted over Azure Linux V
 
 ### Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
-In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises you will be using the Azure CosmosDB to fetch the data for products page. 
+In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises, you will be using the Azure CosmosDB to fetch the data for the products page. 
 
 1. In the Azure Portal, navigate to your **contosotraders** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Copy the **Private IP address** and paste it on the notepad for later use.
 
@@ -75,7 +75,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
     ![Select source tab with values selected for the MongoDB server.](media/CNV2-E2-T2-S5.png "MongoDB to Azure Database for CosmosDB - Select source")
     
-    > **Note:** If you face an issue while connecting to the source DB with error connection refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on lab environment details page.
+    > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
 
     ```bash
     sudo apt install mongodb-server
@@ -118,11 +118,11 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media/migratedata.png "Migration summary")
 
-1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **complete**. 
+1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **complete**. 
 
    ![The screenshot shows the MigrateData activity showing the status has completed.](media/completed.png "MigrateData activity completed")
 
-1. To verify the migrated data, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure CosmosDB for MongoDB account in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Data Explorer** from the left-menu.
+1. To verify the migrated data, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure CosmosDB for MongoDB account in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Data Explorer** from the left menu.
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/ex2-migrateditem.png "Cosmos DB is open")
 
@@ -130,7 +130,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
 
-1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure CosmosDB for MongoDB account. Select **Quick start** **(2)** from the left-menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it in text file for later use in the next exercise.
+1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure CosmosDB for MongoDB account. Select **Quick start** **(2)** from the left menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it into the text file for later use in the next exercise.
 
    ![](media/ex2-cdb-copycs.png)
 
@@ -139,4 +139,4 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 ## Summary
 
-In this exercise, you have completed exploring yout on-prem Mongodb and migrating your on-premises MongoDB database to Azure CosmosDB using Azure database migration.
+In this exercise, you have completed exploring your on-prem Mongodb and migrating your on-premises MongoDB database to Azure CosmosDB using Azure database migration.
