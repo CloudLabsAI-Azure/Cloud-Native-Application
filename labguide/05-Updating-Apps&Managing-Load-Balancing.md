@@ -145,9 +145,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
-   - `[INGRESS PUBLIC IP]`: Replace this with the IP Address copied from step 5.
-   - `[ KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
-   - `[SUFFIX]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
+   - `[IP]`: Replace this with the IP Address copied from step 5.
+   - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
+   - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
 
    ```bash
    
@@ -177,7 +177,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
    ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/updateip.png "Update the IP and SUFFIX values")
 
-8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** in the below URL before browsing it.
+8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** in the below URL before browsing it.
 
     > **Note**: It is normal to receive a 404 message at this time.
 
@@ -250,7 +250,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     code certificate.yml
     ```
 
-    Use the following as the contents and update the `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** to match your ingress DNS name.
+    Use the following as the contents and update the `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** to match your ingress DNS name.
 
     ```yaml
     apiVersion: cert-manager.io/v1
