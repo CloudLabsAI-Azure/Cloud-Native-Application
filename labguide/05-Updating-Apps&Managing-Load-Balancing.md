@@ -150,26 +150,25 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
 
    ```bash
-   
-  $ipaddress="INGRESS PUBLIC IP"
+   $ipaddress="INGRESS PUBLIC IP"
 
-  $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+   $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
-  $DNSNAME="contosotraders-SUFFIX-ingress"
+   $DNSNAME="contosotraders-SUFFIX-ingress"
 
-  $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
+   $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
 
-  $results = @()
+   $results = @()
 
- ForEach ($i in $PUBLICIP)
- {
- If($i.IpAddress -eq $ipaddress){
- $PIPNAME=$i.name
- $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
- Set-AzPublicIpAddress -PublicIpAddress $i
- }
- }
- ```
+   ForEach ($i in $PUBLICIP)
+   {
+   If($i.IpAddress -eq $ipaddress){
+   $PIPNAME=$i.name
+   $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+   Set-AzPublicIpAddress -PublicIpAddress $i
+   }
+   }
+   ```
 6. Save changes and close the editor.
 
 7. Run the update script.
