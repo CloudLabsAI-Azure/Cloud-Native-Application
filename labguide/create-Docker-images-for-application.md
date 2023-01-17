@@ -97,9 +97,10 @@ In this task, you will be building the docker images to containerize the applica
     ![](media/ex1-apiproducts.png)
 
 1. Run the below command to change the directory to `services` and open `configService.js` file.
-sudo chmod 777 filename
+
     ```
     cd src/ContosoTraders.Ui.Website/src/services
+    sudo chmod 777 configService.js
     vi configService.js
     ```
     
@@ -109,7 +110,6 @@ sudo chmod 777 filename
     
     >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
     
-    >**Note**: If you face permission error while saving a file run the following command : `sudo chmod 777 configService.js`
 
     ```
     const APIUrl = 'http://contoso-traders-productsXXXXX.eastus.cloudapp.azure.com';
@@ -131,6 +131,9 @@ sudo chmod 777 filename
     ```    
     
     ![](media/latest-ex1-apiwebsite.png)
+    
+    
+    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it ran successfully.
     
 1. Redirect to the **labfiles** directory before running the next steps.
 
