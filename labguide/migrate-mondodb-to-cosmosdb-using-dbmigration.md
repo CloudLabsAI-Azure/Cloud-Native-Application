@@ -16,7 +16,7 @@ In this task, you will be connecting to mongo database hosted over Azure Linux V
    mongo
    ```
    
-   >**Note**: If you face an issue while connecting to the source DB with error connection refused. Please run the following commands and reperform the step - 1 of the task.
+   >**Note**: If you face an issue while connecting to the source DB with error connection refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using ssh. Please run the following commands and reperform the step - 1 of the task.
 
    ```
    sudo apt install mongodb-server
@@ -37,13 +37,13 @@ In this task, you will be connecting to mongo database hosted over Azure Linux V
    show collections
    ```
    
-   ![](media/explainddb.png)   
+   ![](media/mongo.png)   
 
 ### Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
 In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises you will be using the Azure CosmosDB to fetch the data for products page. 
 
-1. In the Azure Portal, navigate to your **contosotraders(Build Agent)** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Copy the **Private IP address** and paste it on the notepad for later use.
+1. In the Azure Portal, navigate to your **contosotraders** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Copy the **Private IP address** and paste it on the notepad for later use.
 
    ![](media/privateip.png)
 
