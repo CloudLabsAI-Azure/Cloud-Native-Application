@@ -22,7 +22,7 @@ In this task, you will be configuring Azure Monitor container insights for the U
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor.png "Add a Namespace")
      
-1. In the Overview page of Monitor, select **Container** from the left side menu.
+1. From the left navigation pane, select **Container** from under the Insights menu.
      
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/container1.png "Add a Namespace")
      
