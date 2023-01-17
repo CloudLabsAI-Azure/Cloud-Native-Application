@@ -10,7 +10,7 @@ In this exercise, you will learn how to Containerize the Contoso traders applica
 
 In this task, you will be connecting to Build agent VM using Command prompt and will be clonning the Contoso trader website GitHub repo.  
 
-1. Once you log into the VM, search for **cmd** **(1)** in the search bar and click on **Command Prompt** **(2)** to open.
+1. Once you log into the VM, search for **cmd** **(1)** in the windows search bar and click on **Command Prompt** **(2)** to open.
 
    ![](media/latest-ex1-opencmd.png "open cmd")
     
