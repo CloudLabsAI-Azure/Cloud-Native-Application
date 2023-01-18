@@ -4,18 +4,19 @@
 
 ## Overview
 
-In this exercise, you will deploying your containerized web application to AKS(Azure Kubernetes Service) with the help of Key Vault secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+In this exercise, you will be deploying your containerized web application to AKS(Azure Kubernetes Service) with the help of Key Vault secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
 
 ### Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
 
-> **Note**: The following tasks should be executed in command prompt.
+> **Note**: The following tasks should be executed in the command prompt.
 
 1. Open a new command prompt in your jump VM and login to azure with the below commands after updating the values in the below command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
+
 
     ```
     az login -u [username] -p [Password]
@@ -34,13 +35,13 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account set --subscription {id}
    ```
 
-1. Setup the Kubernetes cluster connection using kubectl. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to set up the Kubernetes cluster connection using kubectl. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
    ```bash
    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
    ```
 
-1. Run a quick kubectl command to generate a list of nodes to verify that the setup is correct.
+1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
 
    ```bash
    kubectl get nodes
@@ -50,9 +51,9 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 ### Task 2: Setup Key Vault & Secrets 
 
-In this task, you will be generating a secret in Key vault and creating the connection between AKS and Key vault.
+In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
 
-1. Navigate to Azure portal, search for **Key Vault** in the search bar and select **Key vaults** from the list.
+1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key vaults** from the list.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
 
@@ -69,7 +70,7 @@ In this task, you will be generating a secret in Key vault and creating the conn
 1. In the **Create a secret** pane, enter the following details:
 
     - Name: **mongodbconnetion**
-    - Secret Value: Paste the connection string of Azure CosmosDB for MongoDB account which you have copied in previous exercise.
+    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
     
     Keep other values default and click on **Create**
     
@@ -77,14 +78,14 @@ In this task, you will be generating a secret in Key vault and creating the conn
      
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
      
-1. Open a new **Command Prompt** and run the below command to create secret using kubectl. Ensure that you update your key vault secret in the below command which you created in the previous steps. 
+1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
 
     ```sh
-    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=[yourkeyvaultsecret] 
+    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnetion 
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv6.png "Add a Namespace")
     
-1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets you should be able to see the newly created secret. 
+1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets, you should be able to see the newly created secret. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
@@ -102,7 +103,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3.png "Add a Service")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
-    >**Info**: The below YAML script will create a AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
+    >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
        apiVersion: v1
@@ -111,7 +112,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
          name: contoso-traders-products
          namespace: contoso-traders
          annotations:
-           #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT github secret value is
+           #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
            service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
        spec:
          type: LoadBalancer
@@ -127,7 +128,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
-    >**Info**: The below YAML file will create a deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
+    >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
     ```YAML
       apiVersion: apps/v1
@@ -176,7 +177,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     ```
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
-1. After a few minutes, you will see the deployment listed and it should be in running state.
+1. After a few minutes, you will see the deployment listed and it should be in a running state.
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
@@ -187,7 +188,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Open a **File Explorer** from your JumpVM.
 
-1. Navigate to `C:\LABFILES` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
+1. Navigate to `C:\LabFiles` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
 
    ![](media/ex3-webfile-update1.png)
 
@@ -197,13 +198,13 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Save the changes by **CTRL + S** button to **Save**.
 
-1. Navigate back to Windows command prompt and run the below command to change the directory to `~/LABFILES` folder.
+1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
 
     ```bash
-    cd C:/LABFILES
+    cd C:/LabFiles
     ```
 
-1. Login to Azure if not already done with the below command after updating the values in the command.
+1. Log in to Azure if not already done with the below command after updating the values in the command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
@@ -212,8 +213,8 @@ In this task, you will deploy the web service & its workload using kubectl.
     az login -u [username] -p [Password]
     ```
 
-1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the items `kubectl` has created a web deployment and a web service.
-   >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in to the YAML files. 
+1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
+   >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in the YAML files. 
 
     ```bash
     kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
@@ -231,4 +232,4 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 ## Summary
 
-In this exercise, you have deployed your containerized web application to AKS that contains, namespace, service, and workload in the Azure Kubernetes. Also, you have created a service to AKS and accessed website using external endpoint. Also, you have setup the key vaults secret to access the mongodb from AKS. 
+In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS. 

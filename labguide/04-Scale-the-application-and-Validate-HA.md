@@ -4,13 +4,13 @@
 
 ## Overview
 
-At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front-end in the existing cluster.
+At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front end in the existing cluster.
 
-### Task 1: Modify the Kubernetes resource deployments in Kubernetes service
+### Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
 
 In this task, you will increase the number of instances for the API deployment in the AKS. While it is deploying, you will observe the changing status.
 
-1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads** under Kubernetes resources from left side menu and then select the **contoso-traders-products** deployment.
+1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads** under Kubernetes resources from the left side menu and then select the **contoso-traders-products** deployment.
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA1.png "Setting replicas to 2")
 
@@ -18,7 +18,7 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA2.png "Setting replicas to 2")
 
-    >**Note**: If the deployment completes quickly, you may not see the deployment waiting states in the portal, as described in the following steps.
+    >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.
 
 1. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
 
@@ -67,7 +67,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 ### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 
-In this task you will be configuring the Horizontal Autoscaling for your Kubernetes service pods.
+In this task, you will be configuring the Horizontal Autoscaling for your Kubernetes service pods.
    
 1. Navigate back to your Windows command prompt.
 
@@ -87,11 +87,11 @@ In this task you will be configuring the Horizontal Autoscaling for your Kuberne
    
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
-### Task 4: Autoscaling on Azure Kubernetes service cluster
+### Task 4: Autoscaling on Azure Kubernetes Service cluster
 
-In this task you will be enabling the cluster autoscaler for existing AKS cluster and you will be autoscaling the cluster node pools.
+In this task, you will be enabling the cluster autoscaler for the existing AKS cluster and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, login to azure with the below command after updating the values in the below command.
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to azure with the below command after updating the values in the below command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
@@ -100,7 +100,7 @@ In this task you will be enabling the cluster autoscaler for existing AKS cluste
     az login -u [username] -p [Password]
     ```
 
-1. Setup the Kubernetes cluster connection. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. In order to set up the Kubernetes cluster connection, make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
@@ -114,7 +114,7 @@ In this task you will be enabling the cluster autoscaler for existing AKS cluste
     
     ![](media/ex4-t3-scaling1.png)
 
-1. Run the below command to enable the cluster autoscale in existing cluster. Verify that `enablingAutoScaling` is `true`.  Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`.  Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
@@ -122,13 +122,17 @@ In this task you will be enabling the cluster autoscaler for existing AKS cluste
   
    ![](media/ex4-t3-scaling2.png)
    
-1. Run the below command to autoscale the node pools in existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it ran successfully.
+   
+1. Run the below command to autoscale the node pools in the existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
     ```
    
    ![](media/ex4-t3-scaling3.png)
+   
+   >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it ran successfully.
 
 ### Task 5: Restart containers and validate HA
 
@@ -158,17 +162,17 @@ In this task, you will restart containers and validate that the restart does not
 
    ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/nwcontainer.png "API Pods changing state")
 
-1. Return to the **contoso-traders-product** API Deployment. Select **YAML** navigation item and scale it back to `1` replica.
+1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to `1` replica.
 
 1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API host name, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
+    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
 
 ### Task 6: Configure CosmosDB Autoscale
 
-In this task, you will setup Autoscale on Azure Cosmos DB.
+In this task, you will set up Autoscale on Azure Cosmos DB.
 
-1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" />** Azure Cosmos DB Account.
+1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
 
 2. Select **Data Explorer** from the left side menu.
 
@@ -200,7 +204,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
     ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/password.png "View CosmosDB connection string")
 
-4. Open the Command prompt, connect to build agent vm using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
+4. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
 5. When asked for the password, enter **Build Agent VM Password** given below.
 
@@ -215,6 +219,7 @@ In this task, you will run a performance test script that will test the Autoscal
 7. Run the following command to open the `perftest.sh` script in editor window.
 
     ```bash
+    sudo chmod 777 perftest.sh
     vi perftest.sh
     ```
 
@@ -226,21 +231,19 @@ In this task, you will run a performance test script that will test the Autoscal
     
     >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
     
-    >**Note**: If you face permission error while saving a file run the following command : `sudo chmod 777 perftest.sh`
-
 10. Run the following command to execute the `perftest.sh` script to run a small load test against CosmosDB. This script will consume RUs in CosmosDB by inserting many documents into the Sessions container.
 
     ```bash
     bash ./perftest.sh
     ```
 
-    > **Note:** The script will take a minute to complete it's execution.
+    > **Note:** The script will take a few minutes to complete its execution.
 
 11. Once the script execution is completed, navigate back to the **CosmosDB account** in the Azure portal.
 
 12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
-    > **Note:** It may take 2 - 5 minutes for the activity on the CosmosDB collection to appear in the activity log. Wait a couple minutes and then refresh the pane if the recent Request charge doesn't show up right now.
+    > **Note:** It may take 2 - 5 minutes for the activity on the CosmosDB collection to appear in the activity log. Wait a couple of minutes and then refresh the page if the recent Request charge doesn't show up right now.
 
 13. Notice that the **Request charge** now shows there was activity on the **CosmosDB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
 
@@ -252,5 +255,5 @@ In this task, you will run a performance test script that will test the Autoscal
 
 ## Summary
 
-In this exercise, you have increased service instnace and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
+In this exercise, you have increased service instances and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
 

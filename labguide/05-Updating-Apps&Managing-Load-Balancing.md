@@ -26,6 +26,7 @@ In this task, you will edit the web application source code to update some confi
 1. Once you are in the correct directory, run the below command to make open **Corousel.js** file to make some text change in homepage of your web application.
 
      ```bash
+     sudo chmod 777 Corousel.js
      vim Corousel.js
      ```
      
@@ -43,7 +44,6 @@ In this task, you will edit the web application source code to update some confi
     
     >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
     
-    >**Note**: If you face permission error while saving a file run the following command : `sudo chmod 777 Corousel.js`
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
 
@@ -78,7 +78,7 @@ In this task, you will edit the web application source code to update some confi
 1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
      ```bash
-     kubectl describe pods  -n contoso-traders
+     kubectl describe pods [PODNAME] -n contoso-traders
      ```
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
@@ -145,27 +145,29 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
-   - `[INGRESS PUBLIC IP]`: Replace this with the IP Address copied from step 5.
-   - `[ KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
-   - `[SUFFIX]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
+   - `[IP]`: Replace this with the IP Address copied from step 5.
+   - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
+   - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
 
    ```bash
-   
+   $ipaddress="INGRESS PUBLIC IP"
 
-   # Public IP address
-   $IP="INGRESS PUBLIC IP"
-
-   # Resource Group that contains AKS Node Pool
    $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
-   # Name to associate with public IP address
    $DNSNAME="contosotraders-SUFFIX-ingress"
 
-   # Get the resource-id of the public ip
-   $PUBLICIPID=$(az network public-ip list --resource-group $KUBERNETES_NODE_RG --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
+   $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
 
-   # Update public ip address with dns name
-   az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
+   $results = @()
+
+   ForEach ($i in $PUBLICIP)
+   {
+   If($i.IpAddress -eq $ipaddress){
+   $PIPNAME=$i.name
+   $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+   Set-AzPublicIpAddress -PublicIpAddress $i
+   }
+   }
    ```
 6. Save changes and close the editor.
 
@@ -177,7 +179,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
    ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/updateip.png "Update the IP and SUFFIX values")
 
-8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** in the below URL before browsing it.
+8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** in the below URL before browsing it.
 
     > **Note**: It is normal to receive a 404 message at this time.
 
@@ -250,7 +252,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     code certificate.yml
     ```
 
-    Use the following as the contents and update the `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** to match your ingress DNS name.
+    Use the following as the contents and update the `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** to match your ingress DNS name.
 
     ```yaml
     apiVersion: cert-manager.io/v1
