@@ -151,9 +151,6 @@ kubectl create secret generic contoso-traders-mi-clientid --from-literal=contoso
 
 
 
-  
-Invoke-Sqlcmd -InputFile ./src/ContosoTraders.Api.Products/Migration/productsdb.sql -Database productsdb -Username "localadmin" -Password $password -ServerInstance $server -ErrorAction 'Stop' -Verbose -QueryTimeout 1800 # 30min
-
 
 
 az aks update -n $AKS_CLUSTER_NAME -g $RESOURCE_GROUP_NAME --attach-acr /subscriptions/$subscriptionId/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.ContainerRegistry/registries/contosotradersacr$deploymentid
@@ -170,6 +167,9 @@ az storage blob sync --account-name $STORAGE_ACCOUNT_NAME -c $PRODUCT_LIST_CONTA
 #az cdn endpoint purge --no-wait --content-paths '/*' -n $PRODUCTS_CDN_ENDPOINT_NAME -g $RESOURCE_GROUP_NAME --profile-name $CDN_PROFILE_NAME
 
 
+
+  
+Invoke-Sqlcmd -InputFile ./src/ContosoTraders.Api.Products/Migration/productsdb.sql -Database productsdb -Username "localadmin" -Password $password -ServerInstance $server -ErrorAction 'Stop' -Verbose -QueryTimeout 1800 # 30min
 
 
 sleep 20
