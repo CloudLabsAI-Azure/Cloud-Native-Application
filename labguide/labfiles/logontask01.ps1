@@ -109,7 +109,19 @@ $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentI
 
 
 
+$userName = $AzureUserName
+$password = $AzurePassword
+$subscriptionId = $AzureSubscriptionID
+$TenantID = $AzureTenantID
 
+
+az login  -u $userName -p  $password -t $AzureTenantID
+
+
+
+az keyvault set-policy -n $KV_NAME --key-permissions get list create --secret-permissions set get list  --object-id $(az ad user show --id $(az account show --query "user.name" -o tsv) --query "id" -o tsv)
+
+        az logout
 
 
 
