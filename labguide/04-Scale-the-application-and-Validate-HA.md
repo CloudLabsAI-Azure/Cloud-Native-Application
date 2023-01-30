@@ -36,7 +36,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
-   ![In the Workload view with the API deployment highlighted.](media/yaml.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/CNA-Ex4-task2-step2.png "API deployment is now healthy")
 
 1. In the **YAML** screen scroll down and change the following items:
 
