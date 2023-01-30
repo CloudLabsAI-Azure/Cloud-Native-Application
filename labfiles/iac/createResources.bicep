@@ -13,7 +13,7 @@ param environment string
 
 param sqlPassword string
 
-param resourceLocation string = 'eastus'
+param resourceLocation string = resourceGroup().location
 
 // tenant
 param tenantId string = subscription().tenantId
@@ -391,57 +391,6 @@ resource cartsdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
           }
         }
       }
-    }
-  }
-}
-
-//
-// products api
-//
-
-// app service plan (linux)
-resource productsapiappsvcplan 'Microsoft.Web/serverfarms@2022-03-01' = {
-  name: productsApiAppSvcPlanName
-  location: resourceLocation
-  tags: resourceTags
-  sku: {
-    name: 'B1'
-  }
-  properties: {
-    reserved: true
-  }
-  kind: 'linux'
-}
-
-// app service
-resource productsapiappsvc 'Microsoft.Web/sites@2022-03-01' = {
-  name: productsApiAppSvcName
-  location: resourceLocation
-  tags: resourceTags
-  identity: {
-    type: 'UserAssigned'
-    userAssignedIdentities: {
-      '${userassignedmiforkvaccess.id}': {
-      }
-    }
-  }
-  properties: {
-    clientAffinityEnabled: false
-    httpsOnly: true
-    serverFarmId: productsapiappsvcplan.id
-    siteConfig: {
-      linuxFxVersion: 'DOTNETCORE|6.0'
-      alwaysOn: true
-      appSettings: [
-        {
-          name: productsApiSettingNameKeyVaultEndpoint
-          value: kv.properties.vaultUri
-        }
-        {
-          name: productsApiSettingNameManagedIdentityClientId
-          value: userassignedmiforkvaccess.properties.clientId
-        }
-      ]
     }
   }
 }
@@ -1097,23 +1046,6 @@ resource cdnprofile_ui2endpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-pre
         }
       }
     ]
-  }
-}
-
-//
-// redis cache
-//
-
-resource rediscache 'Microsoft.Cache/redis@2022-06-01' = {
-  name: redisCacheName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    sku: {
-      capacity: 0
-      family: 'C'
-      name: 'Basic'
-    }
   }
 }
 
