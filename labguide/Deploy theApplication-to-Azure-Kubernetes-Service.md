@@ -18,7 +18,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
 
-    ```
+    ```bash
     az login -u [username] -p [Password]
     ```
 
