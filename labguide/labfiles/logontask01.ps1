@@ -193,8 +193,11 @@ $RGname = "contosotraders-$deploymentid"
 
 $RG1 = Get-AzResourceGroupDeployment -Name "createresources" -ResourceGroupName $RGname
 
-$RG1 = $RG1.ProvisioningState
+$cluster = Get-AzAksCluster
 
+$cluster.ProvisioningState
+
+$RG1 = $cluster.ProvisioningState
 $deploymentstatus = $RG1
 
 if($deploymentstatus -eq 'Succeeded')
