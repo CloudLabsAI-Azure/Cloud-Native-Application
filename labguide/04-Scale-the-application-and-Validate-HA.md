@@ -16,7 +16,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 1. Select **YAML** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA2.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/3..2.png "Setting replicas to 2")
 
     >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.
 
@@ -40,7 +40,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **YAML** screen scroll down and change the following items:
 
-   - Modify **ports** and remove the **hostPort**. Two Pods cannot map to the same host port.
+   - Under the **spec**, add the following **ports**.
 
       ```yaml
       ports:
@@ -59,7 +59,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
    Select **Review + save**, and when prompted to confirm the changes, select **Save**.
 
-   ![In the edit YAML dialog, showing two changes required.](media/hostport.png "Modify deployment manifest")
+   ![In the edit YAML dialog, showing two changes required.](media/3..3.png "Modify deployment manifest")
 
 1. Return to the **Workloads** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service and you will now see that the Deployment is healthy with two Pods operating.
 
