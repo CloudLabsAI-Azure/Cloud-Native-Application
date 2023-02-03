@@ -148,6 +148,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[IP]`: Replace this with the IP Address copied from step 5.
    - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
+   - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
 
    ```bash
    $ipaddress="INGRESS PUBLIC IP"
