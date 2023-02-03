@@ -83,7 +83,7 @@ In this task, you will edit the web application source code to update some confi
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
 
-1. Now to set the new image on the pods, run the below command.
+1. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
 
      ```bash
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
