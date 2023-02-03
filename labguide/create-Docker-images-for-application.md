@@ -44,7 +44,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
 ### Task 2: Build Docker images to containerize the application and push them to the container registry
 
-In this task, you will be building the docker images to containerize the application and will be pushing them to the ACR(Azure Container Registry) to later use in AKS.
+In this task, you will be building the docker images to containerize the application and will be pushing them to the ACR (Azure Container Registry) to later use in AKS.
 
 1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 

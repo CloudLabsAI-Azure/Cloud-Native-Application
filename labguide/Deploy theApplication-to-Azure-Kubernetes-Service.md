@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will be deploying your containerized web application to AKS(Azure Kubernetes Service) with the help of Key Vault secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
 
 ### Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
@@ -16,8 +16,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
-
-
+   
     ```bash
     az login -u [username] -p [Password]
     ```
@@ -83,7 +82,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
     ```sh
     kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnetion 
     ```
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv6.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
     
 1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets, you should be able to see the newly created secret. 
 

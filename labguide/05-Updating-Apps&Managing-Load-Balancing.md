@@ -83,7 +83,7 @@ In this task, you will edit the web application source code to update some confi
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
 
-1. Now to set the new image on the pods, run the below command.
+1. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
 
      ```bash
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
@@ -148,6 +148,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[IP]`: Replace this with the IP Address copied from step 5.
    - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
+   - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
 
    ```bash
    $ipaddress="INGRESS PUBLIC IP"
