@@ -40,7 +40,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **YAML** screen scroll down and change the following items:
 
-   - Under the **spec**, add the following **ports**.
+   - Under the **spec** section add the following **ports**.
 
       ```yaml
       ports:
