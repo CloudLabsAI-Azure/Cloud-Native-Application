@@ -8,7 +8,7 @@
 
    ![](media/gs-2.png "Lab Environment")
  
-    > You will see DeplymentID value on **Environment Details** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+    > You will see the DeploymentID value on **Environment Details** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
 
 
 ## Login to Azure Portal
