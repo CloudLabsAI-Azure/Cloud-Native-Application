@@ -177,7 +177,7 @@ sleep 20
 sleep 5
 
 
-$commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.14\Downloads\0\cloudlabs-common\cloudlabs-windows-functions.ps1"
+$commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.*\Downloads\0\cloudlabs-common\cloudlabs-windows-functions.ps1"
 . $commonscriptpath
 
 . C:\LabFiles\AzureCreds.ps1
