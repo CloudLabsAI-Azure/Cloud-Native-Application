@@ -30,6 +30,7 @@
                     "Microsoft.DocumentDB/databaseAccounts/*",
                     "microsoft.insights/actiongroups/*",
                     "Microsoft.Insights/components/*",
+                    "Microsoft.Insights/metricalerts/*",
                     "Microsoft.KeyVault/vaults/*",
                     "Microsoft.LoadTestService/loadtests/*",
                     "Microsoft.ManagedIdentity/userAssignedIdentities/*",
