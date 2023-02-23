@@ -1,0 +1,92 @@
+[
+  {
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Parameter": [
+      {
+        "Name": "max-cpu-cores",
+        "Value": "2"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.Storage/storageAccounts",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "4"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.KeyVault/vaults",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "1"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.DocumentDb/databaseAccounts",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "2"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.App/containerApps",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "1"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "1"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.LoadTestService/loadTests",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "1"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.Sql/servers",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "2"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.Network/virtualNetworks",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "2"
+      }
+    ]
+  },
+  {
+    "ResourceType": "Microsoft.ContainerRegistry/registries",
+    "Parameter": [
+      {
+        "Name": "max-count",
+        "Value": "1"
+      }
+    ]
+  }
+]
