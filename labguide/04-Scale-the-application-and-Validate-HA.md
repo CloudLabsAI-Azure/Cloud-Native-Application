@@ -32,7 +32,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-product** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/upd-upd-productwkrlos.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/rgdn1.1.jpg "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
