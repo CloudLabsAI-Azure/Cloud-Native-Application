@@ -30,7 +30,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 In this task, you will resolve the failed API replicas. These failures occur due to the clusters'inability to meet the requested resources.
 
-1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-product** deployment. 
+1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-products** deployment. 
 
    ![In the Workload view with the API deployment highlighted.](media/rgdn1.1.jpg "API deployment is now healthy")
 
