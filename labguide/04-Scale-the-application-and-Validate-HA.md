@@ -32,7 +32,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-product** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/productwkrlos.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/upd-upd-productwkrlos.png "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
@@ -140,7 +140,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. In the Azure Kubernetes Service blade, select **Workloads** and then select the **contoso-traders-product** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/productwkrlos.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/upd-upd-productwkrlos.png "API deployment is now healthy")
 
 1. Select the **YAML** navigation item and increase the required replica count to `4`. 
 
@@ -148,7 +148,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. After a few moments you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
 
-   ![Viewing replica set in the Azure Portal.](media/4replica.png "Viewing replica set in the Azure Portal")
+   ![Viewing replica set in the Azure Portal.](media/upd-4replica.png "Viewing replica set in the Azure Portal")
 
 1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 

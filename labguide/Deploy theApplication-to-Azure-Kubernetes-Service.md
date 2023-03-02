@@ -12,13 +12,19 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 > **Note**: The following tasks should be executed in the command prompt.
 
-1. Open a new command prompt in your jump VM and login to azure with the below commands after updating the values in the below command.
+1. Open a new command prompt as Administrator in your jump VM and login to azure with the below commands after updating the values in the below command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
    
     ```bash
     az login -u [username] -p [Password]
+    ```
+    
+    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform the step-1 in a new command prompt as Administrator.
+
+    ```bash
+    choco install azure-cli
     ```
 
 1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
