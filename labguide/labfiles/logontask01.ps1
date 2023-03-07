@@ -41,7 +41,6 @@ Install-Module Sqlserver -SkipPublisherCheck -Force
 Import-Module Sqlserver
 choco install kubernetes-cli
 choco install kubernetes-helm
-choco install azure-cli --force
 az config set extension.use_dynamic_install=yes_without_prompt
 
 #Download lab files
@@ -108,7 +107,7 @@ $server = "contoso-traders-products$deploymentid.database.windows.net"
 $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentID"
 
 
-. C:\LabFiles\AzureCreds.ps1
+
 
 $userName = $AzureUserName
 $password = $AzurePassword
