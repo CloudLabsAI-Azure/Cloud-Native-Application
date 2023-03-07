@@ -191,9 +191,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    >**Note**: If the URL doesn't work or you don't receive 404 error. Please run the below mentioned command and try accessing the URL again.
 
    ```bash
-   helm upgrade nginx-ingress ingress-nginx/ingress-nginx \
-    --namespace contoso-traders \
-    --set controller.service.externalTrafficPolicy=Local
+   helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
    ```
 
 9. Use helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
