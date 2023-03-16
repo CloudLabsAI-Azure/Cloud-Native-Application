@@ -34,6 +34,14 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
     ![](media/ex1-gitclone.png)
     
+    > **Note:** If you recieve a output message stating that 'Cloud-Native-Application' already exists or is an empty directory. Please run the following commands and reperform step - 4 of the task.
+
+     ```sudo su
+        rm -rf Cloud-Native-Application
+        exit
+     ```   
+   
+    
 1. After the GitHub cloning is completed, run the below command to change the directory to the lab files.
     
     ```
