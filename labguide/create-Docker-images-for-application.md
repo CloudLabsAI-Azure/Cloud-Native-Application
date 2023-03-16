@@ -34,7 +34,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
     ![](media/ex1-gitclone.png)
     
-    > **Note:** If you recieve a output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and reperform step - 4 of the task.
+    > **Note:** If you recieve a output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
 
      ```
         sudo su
