@@ -41,7 +41,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
         rm -rf Cloud-Native-Application
         exit
      ```   
-   
+     ![](media/cloudn.png)
     
 1. After the GitHub cloning is completed, run the below command to change the directory to the lab files.
     
