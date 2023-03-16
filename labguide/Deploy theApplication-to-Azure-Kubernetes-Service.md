@@ -86,7 +86,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
 
     ```sh
-    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnetion 
+    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnetion --namespace=contoso-traders
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
     
