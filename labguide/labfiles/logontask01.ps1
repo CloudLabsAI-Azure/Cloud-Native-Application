@@ -92,7 +92,7 @@ cd C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac
 
 $RGname = "contosotraders-$deploymentid"
 
-az deployment group create --name "createresources" --template-file "createResources.bicep" --resource-group $RGname --parameters "createResources.parameters.json" 
+#az deployment group create --name "createresources" --template-file "createResources.bicep" --resource-group $RGname --parameters "createResources.parameters.json" 
 
 
 
