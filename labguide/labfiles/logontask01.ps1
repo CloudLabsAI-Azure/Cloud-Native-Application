@@ -75,17 +75,32 @@ $subscriptionId = $AzureSubscriptionID
 $TenantID = $AzureTenantID
 
 
+#$securePassword = $AppSecret | ConvertTo-SecureString -AsPlainText -Force
+#$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AppID, $SecurePassword
+
+#Login-AzAccount -ServicePrincipal -Credential $cred -Tenant $AzureTenantID | Out-Null
+
+
 $securePassword = $AppSecret | ConvertTo-SecureString -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AppID, $SecurePassword
 
-Login-AzAccount -ServicePrincipal -Credential $cred -Tenant $AzureTenantID | Out-Null
+#Login-AzAccount -ServicePrincipal -Credential $cred -Tenant $AzureTenantID -SkipContextPopulation
+az login --service-principal -u $AppID -p  $AppSecret -t $AzureTenantID
 
 
 cd C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac
 
 $RGname = "contosotraders-$deploymentid"
 
-New-AzResourceGroupDeployment -Name "createresources" -TemplateFile "createResources.bicep" -TemplateParameterFile "createResources.parameters.json" -ResourceGroup $RGname
+az deployment group create --name "createresources" --template-file "createResources.bicep" --resource-group $RGname --parameters "createResources.parameters.json" 
+
+
+
+#cd C:\Workspaces\lab\Cloud-Native-Application\labfiles\iac
+
+#$RGname = "contosotraders-$deploymentid"
+
+#New-AzResourceGroupDeployment -Name "createresources" -TemplateFile "createResources.bicep" -TemplateParameterFile "createResources.parameters.json" -ResourceGroup $RGname
 
 $AKS_CLUSTER_NAME = "contoso-traders-aks$deploymentid"
 
@@ -184,19 +199,29 @@ $commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension
 . C:\LabFiles\AzureCreds.ps1
 $TenantID = $AzureTenantID
 
-$securePassword = $AppSecret | ConvertTo-SecureString -AsPlainText -Force
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AppID, $SecurePassword
-
-Login-AzAccount -ServicePrincipal -Credential $cred -Tenant $AzureTenantID | Out-Null
 
 
 $RGname = "contosotraders-$deploymentid"
 
-$RG1 = Get-AzResourceGroupDeployment -Name "createresources" -ResourceGroupName $RGname
+$securePassword = $AzurePassword | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $user, $securePassword
 
-$RG1 = $RG1.ProvisioningState
+az login -u $user -p $password
 
-$deploymentstatus = $RG1
+#Login-AzAccount -Credential $cred -Tenant $AzureTenantID | Out-Null
+
+$RGname = "contosotraders-$deploymentid"
+
+#$RG1 = Get-AzResourceGroupDeployment -Name "createresources" -ResourceGroupName $RGname
+
+#$RG1 = $RG1.ProvisioningState
+
+#$deploymentstatus = $RG1
+#az deployment group show --resource-group $RGname -n 'createresources'  --query properties.outputs #--query "[?properties.provisioningState=='Succeeded'].properties.provisioningState"
+
+$out =  az deployment group show -g $RGname -n 'createresources'  | convertfrom-json 
+
+$deploymentstatus = $out.properties.provisioningState
 
 if($deploymentstatus -eq 'Succeeded')
 {
