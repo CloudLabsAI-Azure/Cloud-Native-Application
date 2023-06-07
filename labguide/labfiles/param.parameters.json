@@ -23,6 +23,16 @@
     "deploymentID": {
       "value": "GET-DEPLOYMENT-ID"
     },
+    "environment": {
+      "value": "GET-DEPLOYMENT-ID"
+    },
+    "sqlPassword": {
+      "value": "GET-AZUSER-PASSWORD"
+    },
+    "aksLinuxAdminUsername": {
+      "value": "localadmin"
+    },
+  
     "AzureUserName": {
       "value": "GET-AZUSER-UPN"
     },
@@ -46,6 +56,6 @@
     },
     "AppSecret": {
       "value": "GET-SERVICEPRINCIPAL-SECRET"
-    },
+    }
   }
 }
