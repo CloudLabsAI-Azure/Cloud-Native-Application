@@ -761,38 +761,6 @@
       "tags": "[variables('resourceTags')]"
     },
     {
-      "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2020-10-01",
-      "name": "DeploymentScript",
-      "location": "[parameters('resourceLocation')]",
-      "kind": "AzurePowerShell",
-      "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-          "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'DeploymentScript'))]": {}
-        }
-      },
-      "properties": {
-        "azPowerShellVersion": "3.0",
-        "scriptContent": "[variables('$fxv#0')]",
-        "retentionInterval": "PT4H",
-        "environmentVariables": [
-          {
-            "name": "ResourceGroupName",
-            "value": "[resourceGroup().name]"
-          },
-          {
-            "name": "StorageAccountName",
-            "value": "[variables('uiStgAccName')]"
-          }
-        ]
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('uiStgAccName'))]",
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'DeploymentScript')]"
-      ]
-    },
-    {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2022-05-01",
       "name": "[variables('ui2StgAccName')]",
@@ -811,38 +779,6 @@
       "tags": "[variables('resourceTags')]"
     },
    
-    {
-      "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2020-10-01",
-      "name": "DeploymentScript2",
-      "location": "[parameters('resourceLocation')]",
-      "kind": "AzurePowerShell",
-      "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-          "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'DeploymentScript2'))]": {}
-        }
-      },
-      "properties": {
-        "azPowerShellVersion": "3.0",
-        "scriptContent": "[variables('$fxv#1')]",
-        "retentionInterval": "PT4H",
-        "environmentVariables": [
-          {
-            "name": "ResourceGroupName",
-            "value": "[resourceGroup().name]"
-          },
-          {
-            "name": "StorageAccountName",
-            "value": "[variables('ui2StgAccName')]"
-          }
-        ]
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('ui2StgAccName'))]",
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'DeploymentScript2')]"
-      ]
-    },
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2022-05-01",
@@ -1383,7 +1319,7 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('powershell -ExecutionPolicy Bypass -File sumit-fix/labguide/labfiles/psscript-5.ps1',variables('cloudlabsCommon'),variables('Enable-CloudLabsEmbeddedShadow'))]"
+          "commandToExecute": "[concat('powershell -ExecutionPolicy Bypass -File psscript-5.ps1',variables('cloudlabsCommon'),variables('Enable-CloudLabsEmbeddedShadow'))]"
         }
       }
     },
