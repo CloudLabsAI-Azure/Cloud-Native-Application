@@ -39,7 +39,11 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
    
    ![](media/mongo.png) 
 
-   >**Note**: In case if you don't see the data inside the mongo. Please run the below mentioned commands in the command prompt and perform step 2 again.
+   >**Note**: In case if you don't see the data inside the mongo. Please follow the steps mentioned below.
+
+   - Enter `exit` to exit from mongo.
+
+   - Please run the below mentioned commands in the command prompt and perform step 1 and 2 again.
 
    ```
    cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
