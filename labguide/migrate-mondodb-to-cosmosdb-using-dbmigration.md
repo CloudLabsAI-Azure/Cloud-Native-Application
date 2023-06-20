@@ -37,7 +37,15 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
    show collections
    ```
    
-   ![](media/mongo.png)   
+   ![](media/mongo.png) 
+
+   >**Note**: In case if you don't see the data inside the mongo. Please run the below mentioned commands in the command prompt and perform step 2 again.
+
+   ```
+   cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
+   npm ci
+   nodejs server.js
+   ```     
 
 ### Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
