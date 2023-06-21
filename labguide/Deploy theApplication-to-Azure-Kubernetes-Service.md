@@ -170,8 +170,8 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                        key: contoso-traders-mi-clientid
                resources:
                  requests:
-                   cpu: 100m
-                   memory: 128Mi
+                   cpu: 50m
+                   memory: 64Mi
                  limits:
                    cpu: 250m
                    memory: 256Mi
