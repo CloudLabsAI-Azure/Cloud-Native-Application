@@ -151,6 +151,16 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
 
    ```bash
+   . C:\LabFiles\AzureCreds.ps1
+
+   $userName = $AzureUserName
+   $password = $AzurePassword
+
+   $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+   $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
+
+   Connect-AzAccount -Credential $cred | Out-Null
+
    $ipaddress="INGRESS PUBLIC IP"
 
    $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
@@ -178,7 +188,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    powershell ./update-ip.ps1
    ```
    
-   ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/updateip.png "Update the IP and SUFFIX values")
+   ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/2dg125.jpg "Update the IP and SUFFIX values")
 
 8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** in the below URL before browsing it.
 
@@ -313,10 +323,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     spec:
       tls:
       - hosts:
-          - contosotraders-SUFFIX-ingress.eastus.cloudapp.azure.com
+          - contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
         secretName: tls-secret
       rules:
-      - host: contosotraders-SUFFIX-ingress.eastus.cloudapp.azure.com
+      - host: contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
         http:
           paths:
           - path: /(.*)
