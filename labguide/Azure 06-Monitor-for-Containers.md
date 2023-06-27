@@ -28,7 +28,7 @@ In this task, you will be configuring Azure Monitor container insights for the U
      
 1. On the Getting Started page, click on **Onboard unmonitored clusters** to onboard your container and cluster
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/onboardcluster.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/onboardingunmonitored.png "Add a Namespace")
     
 1. You will be redirected to the **Unmonitored Cluster** section, here click on your AKS cluster to onboard it to Azure Monitor.
 
