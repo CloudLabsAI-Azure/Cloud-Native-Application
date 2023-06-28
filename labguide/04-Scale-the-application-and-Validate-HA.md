@@ -198,11 +198,11 @@ In this task, you will run a performance test script that will test the Autoscal
 
 2. Select **Connection String** under **Settings**.
 
-   ![](media/cnctionstring.png "View replica details")
+   ![](media/cnctionstring1.png "View replica details")
 
 3. On the **Connection String** pane, copy the **HOST**, **USERNAME**, and **PRIMARY PASSWORD** values. Save these in textfile for later use.
 
-    ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/password.png "View CosmosDB connection string")
+    ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
 
 4. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
