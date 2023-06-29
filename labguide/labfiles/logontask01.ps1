@@ -251,9 +251,9 @@ else {
     $ValidStatus="Failed"
     $ValidMessage="Environment Validation Failed and the deployment is Failed"
       } 
- SetDeploymentStatus $ValidStatus $ValidMessage
+ #SetDeploymentStatus $ValidStatus $ValidMessage
 #Start the cloudlabs agent service 
-CloudlabsManualAgent Start     
+#CloudlabsManualAgent Start     
 
 Unregister-ScheduledTask -TaskName "Installdocker" -Confirm:$false 
 
