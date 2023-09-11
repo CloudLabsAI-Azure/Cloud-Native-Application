@@ -120,9 +120,10 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
     ```
   
-   ![](media/ex4-t3-scaling2.png)
+   ![](media/Exe4T4S4.png)
    
     >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it ran successfully.
+      In case, you get a warning stating **Could not create a role assignment for Monitoring addon. Are you an Owner on this subscription?** then ignore it.
    
 1. Run the below command to autoscale the node pools in the existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
@@ -130,10 +131,11 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
     ```
    
-   ![](media/Exe4T4S4.png)
+   ![](media/Exe4T4S5.png)
    
    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it ran successfully.
     In case, you get a warning stating **Could not create a role assignment for Monitoring addon. Are you an Owner on this subscription?** then ignore it.
+  
 
 ### Task 5: Restart containers and validate HA
 
