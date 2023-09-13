@@ -115,13 +115,14 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/latest-ex1-cd-website.png)
     
-1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Also, Replace **REGION** with **<inject key="Region" enableCopy="true"/>** in APIUrl and APIUrlShoppingCart. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
     
     >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
     
 
     ```
-    const APIUrl = 'http://contoso-traders-productsXXXXX.eastus.cloudapp.azure.com';
+    const APIUrl = 'http://contoso-traders-productsdeploymentid.REGION.cloudapp.azure.com/v1';
+    const APIUrlShoppingCart = 'https://contoso-traders-cartstest.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
     ```
 
     ![](media/latest-ex1-didconfig.png)
