@@ -6,8 +6,8 @@ const settingsUrl = "/api/settings";
 // const APIUrl = process.env.REACT_APP_DEV_API_URL;
 // const APIUrlShoppingCart = process.env.REACT_APP_API_URL_SHOPPINGCART;
 // @TODO: Replace 'deploymentid' in the next two lines with whatever your ENVIRONMENT github secret value is
-const APIUrl = 'http://contoso-traders-productsdeploymentid.eastus.cloudapp.azure.com/v1';
-const APIUrlShoppingCart = 'https://contoso-traders-cartstest.orangeflower-95b09b9d.eastus.azurecontainerapps.io/v1';
+const APIUrl = 'http://contoso-traders-productsdeploymentid.REGION.cloudapp.azure.com/v1';
+const APIUrlShoppingCart = 'https://contoso-traders-cartstest.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
 const UseB2C = process.env.REACT_APP_USEB2C;
 const B2cAuthority = process.env.REACT_APP_B2CAUTHORITY;
 const B2cClientId = process.env.REACT_APP_B2CCLIENTID;
