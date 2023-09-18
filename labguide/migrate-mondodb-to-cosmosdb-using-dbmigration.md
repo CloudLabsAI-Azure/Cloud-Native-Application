@@ -8,9 +8,9 @@ In this exercise, you will be migrating your on-premises MongoDB database hosted
 
 ### Task 1: Explore the databases and collections in MongoDB
 
-In this task, you will be connecting to a mongo database hosted over Azure Linux VM and exploring the databases and collections in it.
+In this task, you will be connecting to a Mongo database hosted over an Azure Linux VM and exploring the databases and collections in it.
 
-1. While connected to your Linux VM, run the below command for connecting to mongo shell to display the databases and collections in it using the mongo shell.
+1. While connected to your Linux VM, run the below command for connecting to Mongo shell to display the databases and collections in it using the Mongo shell.
 
    ```
    mongo
@@ -29,7 +29,7 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
    
    ![](media/ex2-mongo2.png)
    
-1. Run the following commands to verify the database in the mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
+1. Run the following commands to verify the database in the Mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
 
    ```
    show dbs
@@ -39,11 +39,11 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
    
    ![](media/mongo.png) 
 
-   >**Note**: In case if you don't see the data inside the mongo. Please follow the steps mentioned below.
+   >**Note**: In case you don't see the data inside the Mongo. Please follow the steps mentioned below.
 
-   - Enter `exit` to exit from mongo.
+   - Enter `exit` to exit from Mongo.
 
-   - Please run the below mentioned commands in the command prompt and perform step 1 and 2 again.
+   - Please run the below-mentioned commands in the command prompt and perform steps 1 and 2 again.
 
    ```
    cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
@@ -51,7 +51,7 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
    nodejs server.js
    ```     
 
-### Task 2: Create Migration Project and migrate data to Azure CosmosDB
+### Task 2: Create a Migration Project and migrate data to Azure CosmosDB
 
 In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises, you will be using the Azure CosmosDB to fetch the data for the products page. 
 
@@ -110,7 +110,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![The Select target tab with values selected.](media/targetmongo.png "MongoDB to Azure Database for CosmosDB - Select target")
 
-   Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
+   Notice, that the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
 1. Select **Next: Database setting >>**.
 
