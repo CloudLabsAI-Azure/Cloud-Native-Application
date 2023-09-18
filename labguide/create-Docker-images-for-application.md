@@ -4,13 +4,13 @@
 
 ## Overview
 
-In this exercise, you will learn how to Containerize the Contoso traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+In this exercise, you will learn how to Containerize the Contoso Traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
 In this task, you will be connecting to the Build agent VM using the Command prompt and will be cloning the Contoso trader website GitHub repo.  
 
-1. Once you log into the VM, search for **cmd** **(1)** in the windows search bar and click on **Command Prompt** **(2)** to open.
+1. Once you log into the VM, search for **cmd** **(1)** in the Windows search bar and click on **Command Prompt** **(2)** to open.
 
    ![](media/latest-ex1-opencmd.png "open cmd")
     
@@ -18,7 +18,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    
    >**Note**: In the command prompt, type **yes** and press **Enter** for `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
    
-1. Once the ssh is getting connected to the VM, please enter the VM password given below:
+1. Once the SSH is connected to the VM, please enter the VM password given below:
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
@@ -34,7 +34,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
     ![](media/ex1-gitclone.png)
     
-    > **Note:** If you recieve a output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
+    > **Note:** If you receive an output message stating - the destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
 
      ```
         sudo su
@@ -143,7 +143,7 @@ In this task, you will be building the docker images to containerize the applica
     ![](media/latest-ex1-apiwebsite.png)
     
     
-    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it ran successfully.
+    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully.
     
 1. Redirect to the **labfiles** directory before running the next steps.
 
@@ -199,4 +199,4 @@ In this task, you will be building the docker images to containerize the applica
 
 ## Summary
 
-In this exercise, you have completely containerized your web application with the help of docker and pushed them to the container registry.
+In this exercise, you have completely containerized your web application with the help of docker and pushed it to the container registry.
