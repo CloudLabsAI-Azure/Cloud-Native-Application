@@ -28,7 +28,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 ### Task 2: Resolve failed replica provisioning 
 
-In this task, you will resolve the failed API replicas. These failures occur due to the clusters'inability to meet the requested resources.
+In this task, you will resolve the failed API replicas. These failures occur due to the inability to meet the requested resources.
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-products** deployment. 
 
@@ -91,7 +91,7 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
 
 In this task, you will be enabling the cluster autoscaler for the existing AKS cluster and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to azure with the below command after updating the values in the below command.
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the below command after updating the values in the below command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
@@ -122,7 +122,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
   
    ![](media/ex4-t3-scaling2.png)
    
-    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it ran successfully.
+    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
    
 1. Run the below command to autoscale the node pools in the existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
@@ -132,7 +132,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
    
    ![](media/ex4-t3-scaling3.png)
    
-   >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it ran successfully.
+   >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
 
 ### Task 5: Restart containers and validate HA
 
@@ -162,7 +162,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/nwcontainer.png "API Pods changing state")
 
-1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to `1` replica.
+1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
 
 1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
@@ -216,7 +216,7 @@ In this task, you will run a performance test script that will test the Autoscal
     cd Cloud-Native-Application/labfiles/src
     ```
 
-7. Run the following command to open the `perftest.sh` script in editor window.
+7. Run the following command to open the `perftest.sh` script in the editor window.
 
     ```bash
     sudo chmod 777 perftest.sh

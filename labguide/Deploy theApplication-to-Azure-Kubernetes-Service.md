@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault Secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
 
 ### Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
@@ -12,7 +12,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 > **Note**: The following tasks should be executed in the command prompt.
 
-1. Open a new command prompt as Administrator in your jump VM and login to azure with the below commands after updating the values in the below command.
+1. Open a new command prompt as Administrator in your jump VM and login to Azure with the below commands after updating the values in the below command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
@@ -21,7 +21,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
     az login -u [username] -p [Password]
     ```
     
-    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform the step-1 in a new command prompt as Administrator.
+    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform step-1 in a new command prompt as Administrator.
 
     ```bash
     choco install azure-cli
@@ -58,7 +58,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
 
-1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key vaults** from the list.
+1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key Vaults** from the list.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
 

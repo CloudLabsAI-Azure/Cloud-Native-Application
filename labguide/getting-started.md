@@ -1,6 +1,6 @@
 # Getting Started with Lab
 
-1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of lab guide to switch to different exercises of the lab guide.
+1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises of the lab guide.
 
    ![](media/gs-1.png "Lab Environment")
 
@@ -8,16 +8,16 @@
 
    ![](media/gs-2.png "Lab Environment")
  
-    > You will see the DeploymentID value on **Environment Details** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+    > You will see the DeploymentID value on the **Environment Details** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
 
 
 ## Login to Azure Portal
 
-1. In the JumpVM, click on Azure portal shortcut of Microsoft Edge browser which is created on desktop.
+1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser which is created on the desktop.
 
    ![](media/gs-3.png "Lab Environment")
    
-1. On **Sign into Microsoft Azure** tab you will see login screen, in that enter following email/username and then click on **Next**. 
+1. On the **Sign into Microsoft Azure** tab you will see the login screen, in that enter the following email/username and then click on **Next**. 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
      ![](media/gs-4.png "Enter Email")
@@ -27,7 +27,7 @@
    
      ![](media/gs-5.png "Enter Password")
      
-   > If you see the **Help us protect your account** dialog box, then select **Skip for now** option.
+   > If you see the **Help us protect your account** dialog box, then select the **Skip for now** option.
 
      ![](media/gs-6.png "Enter Password")
   
@@ -37,8 +37,8 @@
 
 1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
    
-1. Now you will see Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
+1. Now you will see the Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
 
     ![](media/gs-7.png "Resource groups")
    
-1. Now, click on the **Next** from lower right corner to move on next page.
+1. Now, click on the **Next** from the lower right corner to move to the next page.
