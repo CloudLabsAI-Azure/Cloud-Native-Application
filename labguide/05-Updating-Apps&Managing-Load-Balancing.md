@@ -4,26 +4,26 @@
 
 ## Overview
 
-In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the api deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
+In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the API deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
 
 Kubernetes services can discover the ports assigned to each pod, allowing you to run multiple instances of the pod on the same agent node --- something that is not possible when you configure a specific static port (such as 3001 for the API service).
 
 ### Task 1: Perform a rolling update
  
-In this task, you will edit the web application source code to update some configuration and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources
+In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources
 
->**Note**: Please perform this task using a new Windows command prompt which should be not connected to build agent VM but should be logged into Azure.
+>**Note**: Please perform this task using a new Windows command prompt which should be not connected to the build agent VM but should be logged into Azure.
 
 
 1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
 
-1. Navigate back to the Windows command prompt where you have connected to your linux VM, and run the below command to navigate to the directory where you'll need to make the changes in web application source code.
+1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
 
      ```bash
      cd  Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/components/hero
 
      ```
-1. Once you are in the correct directory, run the below command to make open **Corousel.js** file to make some text change in homepage of your web application.
+1. Once you are in the correct directory, run the below command to open the **Corousel.js** file to make some text changes to the homepage of your web application.
 
      ```bash
      sudo chmod 777 Corousel.js
@@ -32,7 +32,7 @@ In this task, you will edit the web application source code to update some confi
      
    ![A screenshot of the code editor showing updates in context of the app.js file](media/updatetext.png "AppInsights updates in app.js")
    
-1. Once the file is open, press "i" to enter the insert mode and update the existing value with mentioned below in **items** section and in **name** value.
+1. Once the file is open, press "i" to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
 
      ```
      The latest, Fastest, Most Powerful Xbox Ever.
@@ -52,7 +52,7 @@ In this task, you will edit the web application source code to update some confi
      cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
      ```
    
-1. Once you are in the correct directory, run the below command to create the new docker image that will be having all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
   
    >**Note**: Observe that this time we are using "V1" tag for the image
   
@@ -62,9 +62,9 @@ In this task, you will edit the web application source code to update some confi
       docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
       ```
 
-1. Once the docker build and push is completed, Navigate back to the other Command prompt that is not connected to the linux VM.
+1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
-1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web api to the latest image.Copy the name of the **contoso-traders-web###** to the notepad. 
+1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
 
     ```bash
     kubectl get deployments -n contoso-traders
@@ -95,7 +95,7 @@ In this task, you will edit the web application source code to update some confi
 
     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
     
-1. Once the image update to the pod is done, navigate back to azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
+1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
     
@@ -103,7 +103,7 @@ In this task, you will edit the web application source code to update some confi
 
 This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.
 
-1. Run the following command from an Windows command terminal to add the Nginx stable Helm repository:
+1. Run the following command from a Windows command terminal to add the Nginx stable Helm repository:
 
     ```bash
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -115,7 +115,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    helm repo update
    ```
 
-   > **Note**: If you get a "no repositories found." error, then run the following command. This will add back the official Helm "stable" repository.
+   > **Note**: If you get a "no repositories found." error, then run the following command. This will be added back to the official Helm "stable" repository.
    >
    > ```bash
    > helm repo add stable https://charts.helm.sh/stable 
@@ -198,7 +198,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
     ```
    
-   >**Note**: If the URL doesn't work or you don't receive 404 error. Please run the below mentioned command and try accessing the URL again.
+   >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below mentioned command and try accessing the URL again.
 
    ```bash
    helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
@@ -211,7 +211,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
-10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in Windows command prompt.
+10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
 
     ```bash
     
@@ -298,7 +298,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
     > ```
 
-    It can take between 5 and 30 minutes before the tls-secret becomes available. This is due to the delay involved with provisioning a TLS cert from letsencrypt.
+    It can take between 5 and 30 minutes before the tls-secret becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
 
 16. Now you can create an ingress resource for the content applications.
 
@@ -357,7 +357,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 21. Test TLS termination by visiting services again using `https`.
 
-    > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from letsencrypt.
+    > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
 
 22. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
