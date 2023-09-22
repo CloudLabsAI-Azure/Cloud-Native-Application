@@ -27,7 +27,7 @@ In this task, you will be connecting to a Mongo database hosted over an Azure Li
    sudo service mongodb start
    ```
    
-   ![](media/ex2-mongo2.png)
+   ![](media/EX2-T1-S1.png)
    
 1. Run the following commands to verify the database in the Mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
 

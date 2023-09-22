@@ -71,9 +71,9 @@ In this task, you will edit the web application source code to update some confi
     kubectl get pods -n contoso-traders
     ```
     
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/deploymentss.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9.png "Pod deployment is in progress")
 
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/describe.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9-1.png "Pod deployment is in progress")
 
 1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
@@ -81,7 +81,7 @@ In this task, you will edit the web application source code to update some confi
      kubectl describe pods [PODNAME] -n contoso-traders
      ```
    
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/image.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S10.png "Pod deployment is in progress")
 
 1. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
 
@@ -89,7 +89,7 @@ In this task, you will edit the web application source code to update some confi
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
      ```
      
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates.png "Pod deployment is in progress")
+    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
 
 1. Now try describing the latest pods again and see which image is mapped with the pod.
 
