@@ -22,7 +22,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-   ![](media/ex1-connecttolinuxvm.png "open cmd")
+   ![](media/EX1-T1-S3.png "open cmd")
    
    >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
     
@@ -32,7 +32,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
     ```
     
-    ![](media/ex1-gitclone.png)
+    ![](media/EX1-T1-S4.png)
     
     > **Note:** If you receive an output message stating - the destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
 
@@ -41,7 +41,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
         rm -rf Cloud-Native-Application
         exit
      ```   
-     ![](media/cloudn.png)
+     ![](media/EX1-T1-S4-1.png)
     
 1. After the GitHub cloning is completed, run the below command to change the directory to the lab files.
     
@@ -49,7 +49,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     cd Cloud-Native-Application/labfiles/ 
     ```
     
-    ![](media/ex1-cd.png)
+    ![](media/EX1-T1-S5.png)
     
 ### Task 2: Build Docker images to containerize the application and push them to the container registry
 
@@ -61,7 +61,7 @@ In this task, you will be building the docker images to containerize the applica
    az login
    ```
     
-   ![](media/ex-azlogincode.png)
+   ![](media/EX1-T2-S1.png)
     
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
@@ -81,7 +81,7 @@ In this task, you will be building the docker images to containerize the applica
 
 1. Once you logged in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
-   ![](media/ex1-logincomplete.png)
+   ![](media/EX1-T2-S6.png)
 
 1. Please make sure that you are in the **labfiles** directory before running the next steps as the docker build needs to find the DockerFile to create the image.
 
@@ -95,7 +95,7 @@ In this task, you will be building the docker images to containerize the applica
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
     ```
     
-    ![](media/ex1-apicarts.png)
+    ![](media/EX1-T2-S8.png)
     
 1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
@@ -103,7 +103,7 @@ In this task, you will be building the docker images to containerize the applica
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
     ```
 
-    ![](media/ex1-apiproducts.png)
+    ![](media/EX1-T2-S9.png)
 
 1. Run the below command to change the directory to `services` and open the `configService.js` file.
 
@@ -113,7 +113,7 @@ In this task, you will be building the docker images to containerize the applica
     vi configService.js
     ```
     
-    ![](media/latest-ex1-cd-website.png)
+    ![](media/EX1-T2-S10.png)
     
 1. In the `vi` editor, press **_i_** to get into the `insert` mode. In the APIUrl and APIUrlShoppingCart, replace **deploymentid** with **<inject key="DeploymentID" enableCopy="true"/>** value and **REGION** with **<inject key="Region" enableCopy="true"/>** value. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
     
@@ -125,7 +125,7 @@ In this task, you will be building the docker images to containerize the applica
     const APIUrlShoppingCart = 'https://contoso-traders-cartsdeploymentid.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
     ```
 
-    ![](media/latest-ex1-didconfig.png)
+    ![](media/EX1-T2-S11.png)
 
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
@@ -140,7 +140,7 @@ In this task, you will be building the docker images to containerize the applica
     docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
     ```    
     
-    ![](media/latest-ex1-apiwebsite.png)
+    ![](media/EX1-T2-S13.png)
     
     
     >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully.
@@ -158,7 +158,7 @@ In this task, you will be building the docker images to containerize the applica
     docker image ls
     ```
 
-    ![](media/ex1-dockerimages.png)
+    ![](media/EX1-T2-S15.png)
 
 1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
@@ -174,7 +174,7 @@ In this task, you will be building the docker images to containerize the applica
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
     ```
 
-    ![](media/ex1-dockerlogin.png "open cmd")
+    ![](media/EX1-T2-S18.png "open cmd")
 
 1. Once you logged in to the ACR, please run the below commands to push the Docker images to the Azure container registry. Also, ensure that you update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
 
@@ -192,7 +192,7 @@ In this task, you will be building the docker images to containerize the applica
    
 1. You should be able to see the docker image getting pushed to ACR as shown in the below screenshot. 
     
-    ![](media/ex1-dockerpush.png "open cmd")
+    ![](media/EX1-T2-S20.png "open cmd")
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
