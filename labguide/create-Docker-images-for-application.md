@@ -125,7 +125,7 @@ In this task, you will be building the docker images to containerize the applica
     const APIUrlShoppingCart = 'https://contoso-traders-cartsdeploymentid.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
     ```
 
-    ![](media/EX1-T2-S11.png)
+    ![](media/cdnfix1.png)
 
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
