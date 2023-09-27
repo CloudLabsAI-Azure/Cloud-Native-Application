@@ -47,7 +47,7 @@ In this task, you will be connecting to a Mongo database hosted over an Azure Li
 
    ```
    cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
-   npm ci
+   sudo npm ci
    nodejs server.js
    ```     
 
