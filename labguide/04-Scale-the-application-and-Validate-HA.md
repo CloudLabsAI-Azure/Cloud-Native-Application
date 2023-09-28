@@ -32,7 +32,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-products** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/rgdn1.1.jpg "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/cloudnative1.png "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
@@ -210,7 +210,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-6. On the **Build agent VM**, navigate to the `~/lab-files` directory.
+6. On the **Build agent VM**, navigate to the `~/labfiles` directory.
 
     ```bash
     cd Cloud-Native-Application/labfiles/src

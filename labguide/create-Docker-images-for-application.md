@@ -79,7 +79,7 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-logincontinue.png)
 
-1. Once you logged in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
+1. Once you log in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
    ![](media/EX1-T2-S6.png)
 
@@ -176,7 +176,7 @@ In this task, you will be building the docker images to containerize the applica
 
     ![](media/EX1-T2-S18.png "open cmd")
 
-1. Once you logged in to the ACR, please run the below commands to push the Docker images to the Azure container registry. Also, ensure that you update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
+1. Once you log in to the ACR, please run the below commands to push the Docker images to the Azure container registry. Also, ensure that you update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
 
    ```
    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
