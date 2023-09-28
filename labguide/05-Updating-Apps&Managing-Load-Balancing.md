@@ -207,7 +207,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 9. Use helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
 
     ```bash
-    
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
