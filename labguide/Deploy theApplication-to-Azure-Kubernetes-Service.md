@@ -62,7 +62,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
 1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key Vaults** from the list.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cloudnative9.png "Add a Namespace")
 
 1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vaults** from the list.
 
