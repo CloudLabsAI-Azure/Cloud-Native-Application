@@ -13,9 +13,9 @@ A few examples of what you can do with Azure Monitor include:
 - Collect data from monitored resources by using Azure Monitor Metrics.
   
 
-### Task 1: Review Azure Monitor metrics & Setup Alerts
+### Task 1: Review Azure Monitor metrics
 
-In this task, you will be reviewing the monitored AKS cluster  and setting up the alerts.
+In this task, you will be reviewing the monitored AKS cluster
 
 1. Navigate back to the Azure portal in the browser and search for **Monitor**. 
     
@@ -37,18 +37,8 @@ In this task, you will be reviewing the monitored AKS cluster  and setting up th
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/logscontainer.png "Add a Namespace")
 
-1. Now set up the alerts, Click on **Recommended alerts** on the same insight page.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/setalerts.png "Add a Namespace")
-
-1. A new window will open for **Recommended alerts**, on the page enable the **Restarting container count** to set up the alert for this
-  
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/enablealert.png "Add a Namespace")
-     
-1. So far, we have enabled the alerts and you can see these alerts using Log Analytic Workspace and Azure Monitor, to read more about this:  https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview
-
 ## Summary
 
-In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster. Also, you have set up the alerts for the recommendations.
+In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster.
 
 ## Lab ends
