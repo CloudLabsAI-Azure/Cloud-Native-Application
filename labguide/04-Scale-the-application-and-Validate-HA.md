@@ -154,14 +154,6 @@ In this task, you will restart containers and validate that the restart does not
 
    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/website3.png "View web task hostname")
 
-1. Select two of the Pods randomly and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
-
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/nwcontainer.png "Delete running pod instance")
-
-1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
-
-   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/nwcontainer.png "API Pods changing state")
-
 1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
 
 1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
