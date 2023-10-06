@@ -45,6 +45,8 @@ This task will gather the information you need about your Azure Kubernetes Servi
    ```bash
    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
    ```
+   
+   ![](media/cloudnative4.png "open cmd")
 
 1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
 
@@ -52,7 +54,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    kubectl get nodes
    ```
 
-   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/newnodes.png "kubectl get nodes")   
+   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/cloudnative5.png "kubectl get nodes")   
 
 ### Task 2: Setup Key Vault & Secrets 
 
@@ -135,7 +137,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
-```yaml
+ ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -155,7 +157,7 @@ spec:
         kubernetes.io/os: linux
       containers:
         - name: contoso-traders-products
-          #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
+          #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by GitHub workflow.
           image: 'contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest'
           env:
             - name: KeyVaultEndpoint
@@ -179,10 +181,11 @@ spec:
               - containerPort: 3001
                 hostPort: 3001
                 protocol: TCP       
-```  
+  ```  
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
-1. After a few minutes, you will see the deployment listed and it should be in a running state.
+
+1. After a few minutes, you will see the deployment listed, which should be running.
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
