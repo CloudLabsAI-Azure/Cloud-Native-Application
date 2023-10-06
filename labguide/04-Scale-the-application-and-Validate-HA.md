@@ -59,7 +59,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
    Select **Review + save**, and when prompted to confirm the changes, select **Save**.
 
-   ![In the edit YAML dialog, showing two changes required.](media/3..3.png "Modify deployment manifest")
+   ![In the edit YAML dialog, showing two changes required.](media/cloudnative10.png "Modify deployment manifest")
 
 1. Return to the **Workloads** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service and you will now see that the Deployment is healthy with two Pods operating.
 

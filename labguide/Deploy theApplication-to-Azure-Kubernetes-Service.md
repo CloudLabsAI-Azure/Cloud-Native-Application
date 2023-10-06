@@ -45,6 +45,8 @@ This task will gather the information you need about your Azure Kubernetes Servi
    ```bash
    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
    ```
+   
+   ![](media/cloudnative4.png "open cmd")
 
 1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
 
@@ -52,7 +54,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    kubectl get nodes
    ```
 
-   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/newnodes.png "kubectl get nodes")   
+   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/cloudnative5.png "kubectl get nodes")   
 
 ### Task 2: Setup Key Vault & Secrets 
 
@@ -60,7 +62,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
 1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key Vaults** from the list.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cloudnative9.png "Add a Namespace")
 
 1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vaults** from the list.
 
@@ -76,8 +78,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
     - Name: **mongodbconnection**
     - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
-    
-    Keep other values default and click on **Create**
+    -  Keep other values default and click on **Create**
     
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
      
@@ -111,20 +112,20 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
-       apiVersion: v1
-       kind: Service
-       metadata:
-         name: contoso-traders-products
-         namespace: contoso-traders
-         annotations:
-           #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
-           service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-       spec:
-         type: LoadBalancer
-         ports:
-           - port: 80
-         selector:
-           app: contoso-traders-products
+   apiVersion: v1
+   kind: Service
+   metadata:
+     name: contoso-traders-products
+     namespace: contoso-traders
+     annotations:
+       #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+       service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+   spec:
+     type: LoadBalancer
+     ports:
+       - port: 80
+     selector:
+       app: contoso-traders-products
     ```    
    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
@@ -182,7 +183,8 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     ```
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
-1. After a few minutes, you will see the deployment listed and it should be in a running state.
+
+1. After a few minutes, you will see the deployment listed, which should be running.
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
@@ -195,11 +197,11 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Navigate to `C:\LabFiles` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
 
-   ![](media/ex3-webfile-update1.png)
+   ![](media/cloudnative8.png)
 
 1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
 
-    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/sfx.png "Close Azure Cloud Editor")
+    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/cloudnative7.png "Close Azure Cloud Editor")
 
 1. Save the changes by **CTRL + S** button to **Save**.
 
