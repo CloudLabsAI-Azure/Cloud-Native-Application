@@ -192,7 +192,7 @@ In this task, you will be building the docker images to containerize the applica
    
 1. You should be able to see the docker image getting pushed to ACR as shown in the below screenshot. 
     
-    ![](media/EX1-T2-S20.png "open cmd")
+    ![](media/cloudnative2.png "open cmd")
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
