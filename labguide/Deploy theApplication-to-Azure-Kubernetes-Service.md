@@ -78,8 +78,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
     - Name: **mongodbconnection**
     - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
-    
-    Keep other values default and click on **Create**
+    -  Keep other values default and click on **Create**
     
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
      
