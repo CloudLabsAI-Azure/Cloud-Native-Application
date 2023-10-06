@@ -1,5 +1,12 @@
 # Release Notes
 
+### 06 October 2023
+
+- Major updates in the Lab Guide.
+
+**Exercise 6: Azure Monitor for Containers**: We have removed the steps due to an update from the Azure end where the restarting container count option has been disabled.
+
+----------------------
 ### 15 December 2022
 
 - Major updates in the Lab Guide.
