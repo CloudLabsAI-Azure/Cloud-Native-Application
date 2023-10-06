@@ -137,7 +137,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
- ```yaml
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -157,7 +157,7 @@ spec:
         kubernetes.io/os: linux
       containers:
         - name: contoso-traders-products
-          #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by GitHub workflow.
+         #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by GitHub workflow.
           image: 'contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest'
           env:
             - name: KeyVaultEndpoint
@@ -180,10 +180,9 @@ spec:
             ports:
               - containerPort: 3001
                 hostPort: 3001
-                protocol: TCP       
-  ```  
+                protocol: TCP
+```  
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
-
 
 1. After a few minutes, you will see the deployment listed, which should be running.
 
