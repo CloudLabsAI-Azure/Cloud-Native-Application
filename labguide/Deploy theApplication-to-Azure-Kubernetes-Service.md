@@ -137,52 +137,53 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: contoso-traders-products
-  namespace: contoso-traders
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: contoso-traders-products
-  template:
-    metadata:
-      labels:
-        app: contoso-traders-products
-    spec:
-      nodeSelector:
-        kubernetes.io/os: linux
-      containers:
-        - name: contoso-traders-products
-         #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by GitHub workflow.
-          image: 'contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest'
-          env:
-            - name: KeyVaultEndpoint
-              valueFrom:
-                secretKeyRef:
-                  name: contoso-traders-kv-endpoint
-                  key: contoso-traders-kv-endpoint
-            - name: ManagedIdentityClientId
-              valueFrom:
-                secretKeyRef:
-                  name: contoso-traders-mi-clientid
-                  key: contoso-traders-mi-clientid
-          resources:
-            requests:
-              cpu: 50m
-              memory: 64Mi
-            limits:
-              cpu: 250m
-              memory: 256Mi
-            ports:
-              - containerPort: 3001
-                hostPort: 3001
-                protocol: TCP
-```  
+    ```YAML
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+       name: contoso-traders-products
+       namespace: contoso-traders
+      spec:
+       replicas: 1
+       selector:
+         matchLabels:
+           app: contoso-traders-products
+       template:
+         metadata:
+           labels:
+             app: contoso-traders-products
+         spec:
+           nodeSelector:
+             "kubernetes.io/os": linux
+           containers:
+             - name: contoso-traders-products
+               #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
+               image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
+               env:
+                 - name: KeyVaultEndpoint
+                   valueFrom:
+                     secretKeyRef:
+                       name: contoso-traders-kv-endpoint
+                       key: contoso-traders-kv-endpoint
+                 - name: ManagedIdentityClientId
+                   valueFrom:
+                     secretKeyRef:
+                       name: contoso-traders-mi-clientid
+                       key: contoso-traders-mi-clientid
+               resources:
+                 requests:
+                   cpu: 50m
+                   memory: 64Mi
+                 limits:
+                   cpu: 250m
+                   memory: 256Mi
+                 ports:
+                   - containerPort: 3001
+                     hostPort: 3001
+                     protocol: TCP
+    ```
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
+
 
 1. After a few minutes, you will see the deployment listed, which should be running.
 
