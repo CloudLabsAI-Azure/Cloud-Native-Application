@@ -184,7 +184,7 @@ spec:
 ```  
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
-6. After a few minutes, you will see the deployment listed, which should be running.
+1. After a few minutes, you will see the deployment listed, which should be running.
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
