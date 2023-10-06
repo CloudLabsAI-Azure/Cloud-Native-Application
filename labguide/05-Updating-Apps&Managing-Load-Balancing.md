@@ -14,7 +14,6 @@ In this task, you will edit the web application source code to update some confi
 
 >**Note**: Please perform this task using a new Windows command prompt which should be not connected to the build agent VM but should be logged into Azure.
 
-
 1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
 
 1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
