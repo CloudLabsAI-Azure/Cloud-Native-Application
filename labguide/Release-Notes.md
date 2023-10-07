@@ -4,6 +4,7 @@
 
  - Minor updates in the lab.   
    - Enhanced lab guide instructions and updated screenshots with latest UI from Microsoft Azure for better user experience.
+   - Updated npm pacakage installtion.
 
 ### 15 December 2022
 
