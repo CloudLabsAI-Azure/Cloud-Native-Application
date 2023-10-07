@@ -2,10 +2,48 @@
 
 ### 06 October 2023
 
- - Minor updates in the lab.   
-   - Enhanced lab guide instructions and updated screenshots with latest UI from Microsoft Azure for better user experience.
-   - Updated npm pacakage installtion.
+ - Major updates in the lab.   
+   - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft Azure for better user experience.
+   - Updated npm package installation.
+   - Exercise 6: Azure Monitor for Containers**: We have removed the steps due to an update from the Azure end where the restarting container count option has been disabled.
+------------------
+### 16 September 2023
 
+ - Minor updates in the lab.   
+   - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft Azure for better user experience.
+------------------
+### 11 July 2023
+
+ - Minor updates in the lab.   
+   - Enhanced lab guide instructions related to Azure Monitor with the latest update from Microsot Azure.
+------------------
+### 28 June 2023
+
+ - Minor updates in the lab.   
+   - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft Azure for better user experience.
+------------------
+### 16 March 2023
+
+ - Minor updates in the lab.   
+   - Updated and validated the lab
+   - Enhanced the lab guide instruction and screenshots with the latest updates.
+------------------
+### 22 February 2023
+
+ - Minor updates in the lab.   
+   - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft Azure for better user experience.
+   - Updated the lab with the latest Rbac and Policies.
+------------------
+### 30 January 2023
+
+ - Minor updates in the lab.   
+   - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft.
+------------------
+### 27 December 2022
+
+ - Minor updates in the lab.   
+   - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft Azure for better user experience.
+------------------
 ### 15 December 2022
 
 - Major updates in the Lab Guide.
