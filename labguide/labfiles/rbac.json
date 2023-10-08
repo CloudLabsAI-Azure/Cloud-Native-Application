@@ -6,6 +6,7 @@
     "Actions":  [
                     "Microsoft.Web/serverFarms/*",
     "Microsoft.Web/sites/*",
+        "Microsoft.Authorization/roleAssignments/write",
                     "microsoft.alertsmanagement/smartDetectorAlertRules/*",
                     "Microsoft.App/containerApps/*",
                     "Microsoft.App/managedEnvironments/*",
