@@ -8,7 +8,7 @@ EXPOSE 443
 
 
 COPY . .
-RUN npm install
+RUN npm install --loglevel=error
 #RUN npm ci 
 
 RUN npm run build
