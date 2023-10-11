@@ -1,4 +1,4 @@
-import { FORM_EMAIL, SAVE_USER, REMOVE_USER } from '../types/types';
+import { FORM_EMAIL, SAVE_USER, REMOVE_USER, THEME_CHANGE, GET_QUANTITY } from '../types/types';
 
 export const textAction = email => ({
     type: FORM_EMAIL,
@@ -12,4 +12,15 @@ export const submitAction = userInfo => ({
 
 export const clickAction = () => ({
     type: REMOVE_USER,
+});
+
+export const handleThemeChange = (value) => ({
+    type  : THEME_CHANGE,
+    value : value,
+    field : 'theme'
+});
+
+export const getCartQuantity = (quantity) => ({
+    type : GET_QUANTITY,
+    quantity : quantity
 });

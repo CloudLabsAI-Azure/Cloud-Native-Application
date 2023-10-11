@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import { Hero } from "./components";
-import ChatBubble from './components/chatBubble/chatBubble';
+import Hero from "./sections/hero";
 import { ConfigService } from './../../services'
 // import Slider from "./components/slider/slider";
-import Banner from "./components/Banner/banner";
-import Gridsection from "./components/Banner/gridsection";
-import Finalsection from "./components/Banner/finalsection";
+// import Banner from "./components/Banner/banner";
+import Gridsection from "./sections/gridSection";
+import Finalsection from "./sections/finalSection";
 const Home = ({ recommendedProducts, popularProducts, loggedIn }) => {
-    const [customerSupportEnabled, setCustomerSupportEnabled] = useState(false);
+    // const [customerSupportEnabled, setCustomerSupportEnabled] = useState(false);
     useEffect(() => {
         async function loadSettings() {
             await ConfigService.loadSettings();
-            setCustomerSupportEnabled(ConfigService._customerSupportEnabled);
+            // setCustomerSupportEnabled(ConfigService._customerSupportEnabled);
         }
         loadSettings();
     },[])
@@ -20,13 +19,11 @@ const Home = ({ recommendedProducts, popularProducts, loggedIn }) => {
         <div className="home">
             <Hero />
             {/* <Slider firstHeading="Explore Awesome Products" secondHeading="RECOMMENDED FOR YOU"/> */}
-            <Banner firstHeading="Xbox Wireless Controller – Mineral Camo Special Edition" secondHeading="Textured triggers and bumpers | Hybrid D-pad | Button mapping | Bluetooth® technology"/>
+            {/* <Banner firstHeading="Xbox Wireless Controller – Mineral Camo Special Edition" secondHeading="Textured triggers and bumpers | Hybrid D-pad | Button mapping | Bluetooth® technology"/> */}
             <Gridsection />
             <Finalsection />
             {/* <Recommended recommendedProductsData={recommendedProducts} loggedIn={loggedIn} /> */}
-            {/* <Getapp /> */}
             {/* {loggedIn && <Popular popularProductsData={popularProducts} />}  */}
-            { customerSupportEnabled && <ChatBubble />}
         </div>
     );
 };
