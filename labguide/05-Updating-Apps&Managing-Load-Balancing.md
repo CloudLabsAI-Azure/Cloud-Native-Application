@@ -19,14 +19,14 @@ In this task, you will edit the web application source code to update some confi
 1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
 
      ```bash
-     cd  Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/components/hero
+     cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
 
      ```
 1. Once you are in the correct directory, run the below command to open the **Corousel.js** file to make some text changes to the homepage of your web application.
 
      ```bash
-     sudo chmod 777 Corousel.js
-     vim Corousel.js
+     sudo chmod 777 hero.js
+     vim hero.js
      ```
      
    ![A screenshot of the code editor showing updates in context of the app.js file](media/updatetext.png "AppInsights updates in app.js")
