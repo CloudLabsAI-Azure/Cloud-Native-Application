@@ -3,7 +3,7 @@ import axios from "axios";
 // require("dotenv").config();
 const settingsUrl = "/api/settings";
 
-// @TODO: Replace 'deploymentid' in the next two lines with Deplployment ID which is specific to the environment
+// @TODO: Replace 'deploymentid' and 'REGION' in the next two lines with Deplployment ID and Region which is specific to the environment
 const APIUrl = 'http://contoso-traders-productsdeploymentid.REGION.cloudapp.azure.com/v1';
 const APIUrlShoppingCart = 'https://contoso-traders-cartsdeploymentid.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
 const UseB2C = process.env.REACT_APP_USEB2C;
