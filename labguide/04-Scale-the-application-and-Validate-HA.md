@@ -10,13 +10,13 @@ At this point, you have deployed a single instance of the Web and Products API s
 
 In this task, you will increase the number of instances for the API deployment in the AKS. While it is deploying, you will observe the changing status.
 
-1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads** under Kubernetes resources from the left side menu and then select the **contoso-traders-products** deployment.
+1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads (1)** under Kubernetes resources from the left side menu and then select the **contoso-traders-products (2)** deployment.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/HA1.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/1.png "Setting replicas to 2")
 
-1. Select **YAML** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2**, and then select **Review + save**. When prompted, check **Confirm manifest change** and select **Save**.
+1. Select **YAML (1)** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/3..2.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/3.png "Setting replicas to 2")
 
     >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.
 
@@ -24,15 +24,15 @@ In this task, you will increase the number of instances for the API deployment i
 
 1. Open the Contoso Traders web application, and you can see that the application should still work without errors.
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/website3.png "View replica details")
+    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
 
 ### Task 2: Resolve failed replica provisioning 
 
 In this task, you will resolve the failed API replicas. These failures occur due to the inability to meet the requested resources.
 
-1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads** and then select the **contoso-traders-products** deployment. 
+1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/cloudnative1.png "API deployment is now healthy")
+    ![In the Workload view with the API deployment highlighted.](media/1.png "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
@@ -40,7 +40,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **YAML** screen scroll down and change the following items:
 
-   - Under the **spec** section add the following **ports**.
+   - Under the **spec** section add the following **ports (1)**.
 
       ```yaml
       ports:
@@ -48,7 +48,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
           protocol: TCP
       ```
 
-   - Modify the **cpu** and set it to **100m**. CPU is divided between all Pods on a Node.
+   - Modify the **cpu** and set it to **100m (2)**. CPU is divided between all Pods on a Node.
 
       ```yaml
       resources:
@@ -57,13 +57,13 @@ In this task, you will resolve the failed API replicas. These failures occur due
           memory: 128Mi
       ```
 
-   Select **Review + save**, and when prompted to confirm the changes, select **Save**.
+      ![In the edit YAML dialog, showing two changes required.](media/cloudnative10.png "Modify deployment manifest")
 
-   ![In the edit YAML dialog, showing two changes required.](media/cloudnative10.png "Modify deployment manifest")
+1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
-1. Return to the **Workloads** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service and you will now see that the Deployment is healthy with two Pods operating.
+1. Return to the **Workloads** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, refresh the page and you will now see that the Deployment is healthy with **two** Pods operating.
 
-   ![In the Workload view with the API deployment highlighted.](media/HS3.png "API deployment is now healthy")       
+   ![In the Workload view with the API deployment highlighted.](media/2.png "API deployment is now healthy")       
 
 ### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 
@@ -138,25 +138,30 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
 
 In this task, you will restart containers and validate that the restart does not impact the running service.
 
-1. In the Azure Kubernetes Service blade, select **Workloads** and then select the **contoso-traders-product** deployment. 
+1. In the Azure Kubernetes Service blade, select **Workloads (1)** and then select the **contoso-traders-product (2)** deployment. 
 
    ![In the Workload view with the API deployment highlighted.](media/upd-upd-productwkrlos.png "API deployment is now healthy")
 
-1. Select the **YAML** navigation item and increase the required replica count to `4`. 
-
-   ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/replica4.png "API pod deployments")
+1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+ 
+   ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/4.png "API pod deployments")
 
 1. After a few moments you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
 
-   ![Viewing replica set in the Azure Portal.](media/upd-4replica.png "Viewing replica set in the Azure Portal")
+   ![Viewing replica set in the Azure Portal.](media/5.png "Viewing replica set in the Azure Portal")
 
 1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
-   ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/website3.png "View web task hostname")
+   ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/11.png "View web task hostname")
 
-1. Select two of the Pods randomly and choose **Delete**. Select **Confirm delete**, and press **Delete** again.
+1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/nwcontainer.png "Delete running pod instance")
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/6.png "Delete running pod instance")
+
+
+1. On the **Delete** page, Select **Confirm delete (1)**, and click on **Delete (2)** again.
+
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/7.png "Delete running pod instance")
 
 1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
 
@@ -164,9 +169,11 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
 
+   ![Viewing replica set in the Azure Portal.](media/8.png "Viewing replica set in the Azure Portal")
+
 1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/website3.png "View replica details")
+    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/11.png "View replica details")
 
 ### Task 6: Configure CosmosDB Autoscale
 
@@ -174,33 +181,29 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
 
-2. Select **Data Explorer** from the left side menu.
+2. Select **Data Explorer (1)** from the left side menu. Within **Data Explorer**, expand the `contentdb` **(2)** database.
 
-    ![](media/cosmosdata.png "View replica details")
+    ![](media/9.png "View replica details")
 
-3. Within **Data Explorer**, expand the `contentdb` database.
+4. Under the `contentdb` database, expand **Items (1)** collection, select **Scale & Settings (2)**.
 
-    ![](media/expnddb.png "View replica details")
+    ![](media/10.png "View replica details")
 
-4. Under the `contentdb` database, expand **Items** collection, select **Scale & Settings**.
+5. On the **Scale**, select **Autoscale (1)** for the **Throughput** setting under **Scale** and click on **Save (2)**.
 
-    ![](media/scaleitem.png "View replica details")
-
-5. On the **Scale**, select **Autoscale** for the **Throughput** setting under **Scale** and click on **Save**.
-
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/ex4-autodbscale.png "CosmosDB collection scale and settings")
+    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/17.png "CosmosDB collection scale and settings")
 
 ### Task 7: Test CosmosDB Autoscale
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
-1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" />** Azure Cosmos DB Account.
+1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID"enableCopy="false" />** Azure Cosmos DB Account.
 
 2. Select **Connection String** under **Settings**.
 
    ![](media/cnctionstring1.png "View replica details")
 
-3. On the **Connection String** pane, copy the **HOST**, **USERNAME**, and **PRIMARY PASSWORD** values. Save these in textfile for later use.
+3. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in textfile for later use.
 
     ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
 

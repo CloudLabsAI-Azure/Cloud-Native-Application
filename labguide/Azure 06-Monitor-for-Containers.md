@@ -17,25 +17,19 @@ A few examples of what you can do with Azure Monitor include:
 
 In this task, you will be reviewing the monitored AKS cluster
 
-1. Navigate back to the Azure portal in the browser and search for **Monitor**. 
-    
-1. Select **Monitor** from the list.
+1. Navigate back to the Azure portal in the browser and search for **Monitor (1)**, Select **Monitor (2)** from the result.
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14.png "Add a Namespace")
      
-1. From the left navigation pane, select **Container** from under the Insights menu.
-     
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/container1.png "Add a Namespace")
+1. From the left navigation pane, select **Container (1)** from under the Insights menu, navigate to the **Monitored clusters (2)** section to review logs and select your **Kubernetes service (3)**.
 
-1. To review the logs, navigate to the **Monitored clusters** section and select your Kubernetes service.
-
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitoredclster.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/13.png "Add a Namespace")
    
 1. You will be redirected to the Insight section in your Kubernetes service resource blade and you should be able to see some logs.
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in the insight blade.
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/logscontainer.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/12.png "Add a Namespace")
 
 ## Summary
 
