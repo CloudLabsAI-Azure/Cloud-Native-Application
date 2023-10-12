@@ -1,16 +1,18 @@
 import React from 'react';
-import Breadcrump from '../../components/breadcrumb.js'
-import { useHistory } from 'react-router-dom';
+import Breadcrump from '../../components/breadcrumb/breadcrumb'
+import { useLocation } from 'react-router-dom';
+import './legals.scss'
+
 const AboutUs = (props) => {
-    const history = useHistory();
-    const currentCategory = history.location.pathname.split("/").pop().replaceAll('-',' ');
+    const location = useLocation();
+    const currentCategory = location.pathname.split("/").pop().replaceAll('-',' ');
     return (
         <>
             <div className='refund-policy-section'>
                 <Breadcrump currentPath={currentCategory} />
                 <div className="refund-policy">
                     <p className="mainHeading">About Us</p>
-                    <p className="subHeading">Our Mission</p>
+                    {/* <p className="subHeading">Our Mission</p> */}
                     <p className="paragraph">
                         Contoso Traders is an e-commerce platform that specializes in electronic items. Our website offers a wide range of electronics, including smartphones, laptops, and other popular gadgets.
                         <br/><br/>

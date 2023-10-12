@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import Electrical from "../../assets/images/home_electrical.jpg";
 import Garden from "../../assets/images/home_gardencenter.jpg";
@@ -7,7 +7,7 @@ import Plumbing from "../../assets/images/home_plumbing.jpg";
 import Powertools from "../../assets/images/home_powertools.jpg";
 import { ProductService } from "../../services";
 import Home from "./home";
-
+import './home.scss'
 class HomeContainer extends Component {
     constructor() {
         super();
@@ -131,4 +131,4 @@ class HomeContainer extends Component {
 
 const mapStateToProps = state => state.login;
 
-export default withRouter(connect(mapStateToProps)(HomeContainer));
+export default connect(mapStateToProps)(HomeContainer);

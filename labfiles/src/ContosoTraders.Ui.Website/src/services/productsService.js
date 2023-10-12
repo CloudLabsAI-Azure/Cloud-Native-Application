@@ -25,19 +25,16 @@ const ProductService = {
 
         const params = {
             'params': filters,
-            'paramsSerializer': function (params) {
-                return qs.stringify(params, { arrayFormat: 'repeat' })
-            }
+            'paramsSerializer': qs.stringify(filters, { arrayFormat: 'repeat' })
         }
-
-        const response = await axios.get(`${ConfigService._apiUrl}/products/?`, params, ConfigService.HeadersConfig(), { errorHandle: false });
+        const response = await axios.get(`${ConfigService._apiUrl}/products/?`+params.paramsSerializer, ConfigService.HeadersConfig(), { errorHandle: false });
         return response;
     },
 
     async getDetailProductData(productId) {
         await ConfigService.loadSettings();
         const response = await axios.get(`${ConfigService._apiUrl}/products/${productId}`, ConfigService.HeadersConfig(), { errorHandle: false });
-        return response.data;
+        return response && response.data ? response.data : null;
     },
 
     async getRelatedProducts(formData, token) {
