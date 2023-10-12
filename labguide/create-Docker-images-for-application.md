@@ -143,7 +143,7 @@ In this task, you will be building the docker images to containerize the applica
     ![](media/EX1-T2-S13.png)
     
     
-    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully.
+    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you many notice few warnings related to npm version update which is expected and doesn't affect the lab's functionality.
     
 1. Redirect to the **labfiles** directory before running the next steps.
 
