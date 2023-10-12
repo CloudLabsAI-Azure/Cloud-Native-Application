@@ -12,6 +12,6 @@ RUN npm install --loglevel=error
 #RUN npm ci 
 
 RUN npm run build
-RUN npm run start
+#RUN npm run start
 
 CMD [ "npx", "serve", "build" ]
