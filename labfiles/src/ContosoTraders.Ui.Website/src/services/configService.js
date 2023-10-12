@@ -3,9 +3,9 @@ import axios from "axios";
 // require("dotenv").config();
 const settingsUrl = "/api/settings";
 
-// Note: The '{PRODUCTS_API_ENDPOINT}', '{CARTS_API_ENDPOINT}' tokens will be substituted by github workflow.
-const APIUrl = process.env.REACT_APP_APIURL;
-const APIUrlShoppingCart = process.env.REACT_APP_APIURLSHOPPINGCART;
+// @TODO: Replace 'deploymentid' in the next two lines with whatever your ENVIRONMENT github secret value is
+const APIUrl = 'http://contoso-traders-productsdeploymentid.REGION.cloudapp.azure.com/v1';
+const APIUrlShoppingCart = 'https://contoso-traders-cartsdeploymentid.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
 const UseB2C = process.env.REACT_APP_USEB2C;
 const B2cAuthority = process.env.REACT_APP_B2CAUTHORITY;
 const B2cClientId =  process.env.REACT_APP_B2CCLIENTID;
