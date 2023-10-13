@@ -1,5 +1,13 @@
 # Release Notes
 
+### 12 October 2023
+
+ - Minor updates in the lab.   
+   - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft Azure for better user experience.
+   - The UI code files of the ContosoTraders application used in the lab have been changed to use the node 16 version in order to resolve npm conflicts and warnings.
+------------------
+
+
 ### 06 October 2023
 
  - Major updates in the lab.   
