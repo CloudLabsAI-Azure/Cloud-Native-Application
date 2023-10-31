@@ -789,7 +789,7 @@ resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = 
     resource uistgacc_blobsvc_websiteuploadscontainer 'containers' = {
       name: imageClassifierWebsiteUploadsContainerName
       properties: {
-        publicAccess: 'Container'
+        
       }
     }
   }
