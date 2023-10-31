@@ -377,13 +377,13 @@ resource cartsdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
     }
 
     // cosmos db collection
-    resource cartsdba_db_c1 's' = {
-      name: cartsDbStocksName
+    resource cartsdba_db_c1 'containers' = {
+      name: cartsDbStocksContainerName
       location: resourceLocation
       tags: resourceTags
       properties: {
         resource: {
-          id: cartsDbStocksName
+          id: cartsDbStocksContainerName
           partitionKey: {
             paths: [
               '/Email'
@@ -496,7 +496,7 @@ resource cartsapiacaenv 'Microsoft.App/managedEnvironments@2022-06-01-preview' =
 }
 
 // aca
-resource cartsapiaca 'Microsoft.App/Apps@2022-06-01-preview' = {
+resource cartsapiaca 'Microsoft.App/containerApps@2022-06-01-preview' = {
   name: cartsApiAcaName
   location: resourceLocation
   tags: resourceTags
@@ -551,7 +551,7 @@ resource cartsapiaca 'Microsoft.App/Apps@2022-06-01-preview' = {
           }
         ]
       }
-      s: [
+      containers: [
         {
           env: [
             {
@@ -566,8 +566,8 @@ resource cartsapiaca 'Microsoft.App/Apps@2022-06-01-preview' = {
           // using a public image initially because no images have been pushed to our private ACR yet
           // at this point. At a later point, our github workflow will update the ACA app to use the 
           // images from our private ACR.
-          image: 'mcr.microsoft.com/azuredocs/apps-helloworld:latest'
-          name: cartsApiAcaDetailsName
+          image: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
+          name: cartsApiAcaContainerDetailsName
           resources: {
             cpu: json('0.5')
             memory: '1.0Gi'
@@ -608,7 +608,7 @@ resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     resource productimagesstgacc_blobsvc_productlistcontainer 'containers' = {
       name: productImagesProductListContainerName
       properties: {
-        
+       
       }
     }
   }
@@ -789,7 +789,7 @@ resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = 
     resource uistgacc_blobsvc_websiteuploadscontainer 'containers' = {
       name: imageClassifierWebsiteUploadsContainerName
       properties: {
-        
+      
       }
     }
   }
