@@ -264,18 +264,18 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 
     ```yaml
-      apiVersion: cert-manager.io/v1
-      kind: Certificate
-      metadata:
-        name: tls-secret
-        namespace: contoso-traders
-      spec:
-        secretName: tls-secret
-        dnsNames:
-          - contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+    apiVersion: cert-manager.io/v1
+    kind: Certificate
+    metadata:
+      name: tls-secret
+      namespace: contoso-traders
+    spec:
+      secretName: tls-secret
+      dnsNames:
+        - contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
+      issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
     ```
   1. Use the following as the contents and update the `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** to match your ingress DNS name.
 
