@@ -262,7 +262,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
   1. Inside the **certificate.yml** file copy and paste the following content:
 
-
      ```yaml
      apiVersion: cert-manager.io/v1
      kind: Certificate
