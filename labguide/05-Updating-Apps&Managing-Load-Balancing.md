@@ -263,7 +263,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
   1. Inside the **certificate.yml** file copy and paste the following content:
 
 
-      ```yaml
+    ```yaml
       apiVersion: cert-manager.io/v1
       kind: Certificate
       metadata:
@@ -276,7 +276,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
         issuerRef:
           name: letsencrypt-prod
           kind: ClusterIssuer
-      ```
+    ```
   1. Use the following as the contents and update the `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** to match your ingress DNS name.
 
 14. Save changes and close the editor.
