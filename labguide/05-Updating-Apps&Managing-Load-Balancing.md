@@ -215,7 +215,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     ```bash 
     code clusterissuer.yml
     ```
-1. Inside the **clusterissuer.yml** file copy and paste the following content:
+11. Inside the **clusterissuer.yml** file copy and paste the following content:
 
     ```yaml
     apiVersion: cert-manager.io/v1
@@ -239,15 +239,15 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
               class: nginx
     ```
 
-11. Save changes and close the editor.
+12. Save changes and close the editor.
 
-12. Create the issuer using `kubectl`.
+13. Create the issuer using `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f clusterissuer.yml
     ```
 
-13. Now you can create a certificate object.
+14. Now you can create a certificate object.
 
     > **Note**:
     > Cert-manager might have already created a certificate object for you using ingress-shim.
@@ -260,8 +260,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     code certificate.yml
     ```
 
-  1. Inside the **certificate.yml** file copy and paste the following content:
-
+15. Inside the **certificate.yml** file copy and paste the following content:
 
      ```yaml
      apiVersion: cert-manager.io/v1
@@ -277,7 +276,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
          name: letsencrypt-prod
          kind: ClusterIssuer
      ```
-  1. Use the following as the contents and update the `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** to match your ingress DNS name.
+16. Use the following as the contents and update the `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** to match your ingress DNS name.
 
 14. Save changes and close the editor.
 
@@ -307,7 +306,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     code content.ingress.yml
     ```
 
-1. Inside the **content.ingress.yml** file copy and paste the following content:
+17. Inside the **content.ingress.yml** file copy and paste the following content:
 
     ```yaml
     apiVersion: networking.k8s.io/v1
@@ -346,25 +345,25 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
                    number: 3001
     ```
 
-1. Use the following as the contents and update the `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** to match your ingress DNS name.
+18. Use the following as the contents and update the `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** to match your ingress DNS name.
 
-17. Save changes and close the editor.
+19. Save changes and close the editor.
 
-18. Create the ingress using `kubectl`.
+20. Create the ingress using `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f content.ingress.yml
     ```
 
-19. Refresh the ingress endpoint in your browser. You should be able to visit the website and see all the content.
+21. Refresh the ingress endpoint in your browser. You should be able to visit the website and see all the content.
 
     ![](media/16.png )
    
-21. Test TLS termination by visiting services again using `https`.
+22. Test TLS termination by visiting services again using `https`.
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
 
-22. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+23. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
