@@ -187,7 +187,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 4. Under the `contentdb` database, expand **Items (1)** collection, select **Scale & Settings (2)**.
 
-    ![](media/10.png "View replica details")
+    ![](media/exe4-task6-step3-select-settings.png "View replica details")
 
 5. On the **Scale**, select **Autoscale (1)** for the **Throughput** setting under **Scale** and click on **Save (2)**.
 
