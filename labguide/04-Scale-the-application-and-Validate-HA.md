@@ -197,7 +197,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
-1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID"enableCopy="false" />** Azure Cosmos DB Account.
+1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
 
 2. Select **Connection String** under **Settings**.
 
