@@ -172,7 +172,7 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-acr1.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** under Settings from left side menu. **Copy** the Password and paste it into a text file for later use.
+1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** **(2)** under Settings from left side menu. **Copy** **(3)** the Password and paste it into a text file for later use.
 
    ![](media/ex1-acr2.png)    
 
