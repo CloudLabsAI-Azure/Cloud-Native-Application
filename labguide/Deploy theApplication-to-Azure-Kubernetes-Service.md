@@ -10,7 +10,7 @@ In this exercise, you will be deploying your containerized web application to AK
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
 
-> **Note**: The following tasks should be executed in the command prompt.
+> **Note**: The following tasks should be executed in the **Command Prompt**.
 
 1. Open a new command prompt as Administrator in your jump VM and login to Azure with the below commands after updating the values in the below command.
 
