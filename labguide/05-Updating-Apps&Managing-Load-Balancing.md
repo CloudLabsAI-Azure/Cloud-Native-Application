@@ -61,6 +61,8 @@ In this task, you will edit the web application source code to update some confi
       docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
       ```
 
+   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you many notice few warnings related to npm version update which is expected and doesn't affect the lab's functionality.
+
 1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
