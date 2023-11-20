@@ -22,7 +22,7 @@ In this task, you will edit the web application source code to update some confi
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
 
      ```
-1. Once you are in the correct directory, run the below command to open the **Corousel.js** file to make some text changes to the homepage of your web application.
+1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
 
      ```bash
      sudo chmod 777 hero.js
