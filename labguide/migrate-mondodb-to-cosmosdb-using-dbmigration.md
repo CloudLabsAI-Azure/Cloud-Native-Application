@@ -80,7 +80,7 @@ In this task, you will create a Migration project within Azure Database Migratio
     - Project name: `contoso`
     - Source server type: `MongoDB`
     - Target server type: `CosmosDB (MongoDB API)`
-    - Choose type of activity: `Offline data migration`
+    - Migration activity type: `Offline data migration`
 
     ![The screenshot shows the New migration project pane with values entered.](media/ex2-newmigrationproject.png  "New migration project pane")
 
