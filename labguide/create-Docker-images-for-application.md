@@ -83,6 +83,10 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-logincontinue.png)
 
+1. After signing-in, you will see a confirmation popop **You have signed in to the Microsoft Azure Cross-platform Command Line Interface application on your device**. Close the browser tab and open the previous Command Prompt session.   
+
+   ![](media/ex1-t2-step6-signin-confirm.png)
+
 1. Once you log in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
    ![](media/EX1-T2-S6.png)
