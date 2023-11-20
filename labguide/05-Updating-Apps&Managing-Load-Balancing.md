@@ -37,7 +37,7 @@ In this task, you will edit the web application source code to update some confi
      The latest, Fastest, Most Powerful Xbox Ever.
      ```
  
-   ![A screenshot of the code editor showing updates in context of the app.js file](media/updatesource.png "AppInsights updates in app.js")
+   ![A screenshot of the code editor showing updates in context of the app.js file](media/exe5-task1-step4-update-herojs-file.png "AppInsights updates in app.js")
 
 1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
