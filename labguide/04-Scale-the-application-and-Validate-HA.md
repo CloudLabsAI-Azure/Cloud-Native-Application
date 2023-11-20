@@ -38,7 +38,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
    ![In the Workload view with the API deployment highlighted.](media/CNA-Ex4-task2-step2.png "API deployment is now healthy")
 
-1. In the **YAML** screen scroll down and change the following items:
+1. In the **YAML** screen, scroll down and change the following items:
 
    - Under the **spec** section add the following **ports (1)**.
 
