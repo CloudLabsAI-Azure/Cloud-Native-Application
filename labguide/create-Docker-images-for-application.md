@@ -67,13 +67,17 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-codelogin.png)
    
-1. On the **Sign in to Microsoft Azure** tab you will see a login screen, in that enter the following email/username and then click on **Next**.
+1. On the **Sign in to your account** tab you will see a login screen, in that enter the following email/username and then click on **Next**.
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
+
+    > **Note:** If you get a **Pick an account** popup, select the above Email ID.
 
 1. Now enter the following password and click on **Sign in**.
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
+
+    > **Note:** You will not get the popup to enter the password if you had got the **Pick an account** popup where you choose the account.
 
 1. In a pop-up to confirm the sign-into Microsoft Azure CLI, click on **Continue**.
 
