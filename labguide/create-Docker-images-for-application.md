@@ -77,7 +77,7 @@ In this task, you will be building the docker images to containerize the applica
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
-    > **Note:** You will not get the popup to enter the password if you had got the **Pick an account** popup where you choose the account.
+    > **Note:** You will not get the popup to enter the password if you had got the **Pick an account** popup where you had chosen the account.
 
 1. In a pop-up to confirm the sign-into Microsoft Azure CLI, click on **Continue**.
 
