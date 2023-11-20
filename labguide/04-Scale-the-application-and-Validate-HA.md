@@ -185,7 +185,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
     ![](media/9.png "View replica details")
 
-4. Under the `contentdb` database, expand **Items (1)** collection, select **Scale & Settings (2)**.
+4. Under the `contentdb` database, expand **Items (1)** collection, select **Settings (2)**.
 
     ![](media/exe4-task6-step3-select-settings.png "View replica details")
 
