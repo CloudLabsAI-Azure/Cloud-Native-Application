@@ -233,6 +233,8 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/website.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
+
+> **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
