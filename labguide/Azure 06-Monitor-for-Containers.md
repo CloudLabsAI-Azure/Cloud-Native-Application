@@ -21,7 +21,7 @@ In this task, you will be reviewing the monitored AKS cluster
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14.png "Add a Namespace")
      
-1. From the left navigation pane, select **Container (1)** from under the Insights menu, navigate to the **Monitored clusters (2)** section to review logs and select your **Kubernetes service (3)**.
+1. From the left navigation pane, select **Containers (1)** from under the Insights menu, navigate to the **Monitored clusters (2)** section to review logs and select your **Kubernetes service (3)**.
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/13.png "Add a Namespace")
    
