@@ -19,4 +19,4 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 The proposed containers deployed to the cluster are illustrated below with Cosmos DB as a managed service.
 
-  ![Selecting Add to create a deployment.](media/newoverview.png "Selecing + Add to create a deployment")
+  ![Selecting Add to create a deployment.](media/newoverview.png "Selecting + Add to create a deployment")
