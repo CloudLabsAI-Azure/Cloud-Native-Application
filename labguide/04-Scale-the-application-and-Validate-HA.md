@@ -32,13 +32,13 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
 
-    ![In the Workload view with the API deployment highlighted.](media/1.png "API deployment is now healthy")
+    ![In the Workload view with the API deployment highlighted.](media/exe4-task2-step1-select-workload.png "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
    ![In the Workload view with the API deployment highlighted.](media/CNA-Ex4-task2-step2.png "API deployment is now healthy")
 
-1. In the **YAML** screen scroll down and change the following items:
+1. In the **YAML** screen, scroll down and change the following items:
 
    - Under the **spec** section add the following **ports (1)**.
 
@@ -185,19 +185,19 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
     ![](media/9.png "View replica details")
 
-4. Under the `contentdb` database, expand **Items (1)** collection, select **Scale & Settings (2)**.
+4. Under the `contentdb` database, expand **Items (1)** collection, select **Settings (2)**.
 
-    ![](media/10.png "View replica details")
+    ![](media/exe4-task6-step3-select-settings.png "View replica details")
 
-5. On the **Scale**, select **Autoscale (1)** for the **Throughput** setting under **Scale** and click on **Save (2)**.
+5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
 
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/17.png "CosmosDB collection scale and settings")
+    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/exe4-task6-step4-autoscale.png "CosmosDB collection scale and settings")
 
 ### Task 7: Test CosmosDB Autoscale
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
-1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID"enableCopy="false" />** Azure Cosmos DB Account.
+1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
 
 2. Select **Connection String** under **Settings**.
 

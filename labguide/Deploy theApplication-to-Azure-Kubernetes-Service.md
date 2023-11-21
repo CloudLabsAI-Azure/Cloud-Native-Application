@@ -10,7 +10,7 @@ In this exercise, you will be deploying your containerized web application to AK
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
 
-> **Note**: The following tasks should be executed in the command prompt.
+> **Note**: The following tasks should be executed in the **Command Prompt**.
 
 1. Open a new command prompt as Administrator in your jump VM and login to Azure with the below commands after updating the values in the below command.
 
@@ -64,7 +64,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cloudnative9.png "Add a Namespace")
 
-1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vaults** from the list.
+1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vault** from the list.
 
 1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **secrets** under Objects from the left side menu.
 
@@ -91,7 +91,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
     
-1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets, you should be able to see the newly created secret. 
+1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under **Secrets**, you should be able to see the newly created secret. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
@@ -233,6 +233,8 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/website.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
+
+> **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 

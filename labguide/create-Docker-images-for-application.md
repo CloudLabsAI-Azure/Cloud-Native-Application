@@ -67,17 +67,25 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-codelogin.png)
    
-1. On the **Sign in to Microsoft Azure** tab you will see a login screen, in that enter the following email/username and then click on **Next**.
+1. On the **Sign in to your account** tab you will see a login screen, in that enter the following email/username and then click on **Next**.
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
+
+    > **Note:** If you get a **Pick an account** popup, select the above Email ID.
 
 1. Now enter the following password and click on **Sign in**.
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
+    > **Note:** You will not get the popup to enter the password if you had got the **Pick an account** popup where you had chosen the account.
+
 1. In a pop-up to confirm the sign-into Microsoft Azure CLI, click on **Continue**.
 
    ![](media/ex1-logincontinue.png)
+
+1. After signing-in, you will see a confirmation popop **You have signed in to the Microsoft Azure Cross-platform Command Line Interface application on your device**. Close the browser tab and open the previous Command Prompt session.   
+
+   ![](media/ex1-t2-step6-signin-confirm.png)
 
 1. Once you log in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
@@ -164,11 +172,11 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-acr1.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** under Settings from left side menu. **Copy** the Password and paste it into a text file for later use.
+1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** **(2)** under Settings from left side menu. **Copy** **(3)** the Password and paste it into a text file for later use.
 
    ![](media/ex1-acr2.png)    
 
-1. Now login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value and password with the copied container registry password which you have copied in the previous step in the below command.
+1. Now switch back to **Command Prompt** and login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value and password with the copied container registry password which you have copied in the previous step in the below command.
 
     ```
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]

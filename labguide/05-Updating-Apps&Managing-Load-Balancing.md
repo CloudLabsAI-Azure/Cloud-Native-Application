@@ -22,7 +22,7 @@ In this task, you will edit the web application source code to update some confi
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
 
      ```
-1. Once you are in the correct directory, run the below command to open the **Corousel.js** file to make some text changes to the homepage of your web application.
+1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
 
      ```bash
      sudo chmod 777 hero.js
@@ -37,7 +37,7 @@ In this task, you will edit the web application source code to update some confi
      The latest, Fastest, Most Powerful Xbox Ever.
      ```
  
-   ![A screenshot of the code editor showing updates in context of the app.js file](media/updatesource.png "AppInsights updates in app.js")
+   ![A screenshot of the code editor showing updates in context of the app.js file](media/exe5-task1-step4-update-herojs-file.png "AppInsights updates in app.js")
 
 1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
@@ -60,6 +60,8 @@ In this task, you will edit the web application source code to update some confi
 
       docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
       ```
+
+   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you many notice few warnings related to npm version update which is expected and doesn't affect the lab's functionality.
 
 1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
