@@ -10,7 +10,7 @@ Kubernetes services can discover the ports assigned to each pod, allowing you to
 
 ### Task 1: Perform a rolling update
  
-In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources
+In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
 
 >**Note**: Please perform this task using a new Windows command prompt which should be not connected to the build agent VM but should be logged into Azure.
 

@@ -26,7 +26,7 @@ In this task, you will increase the number of instances for the API deployment i
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
 
-### Task 2: Resolve failed replica provisioning 
+### Task 2: Resolve failed replica provisioning 
 
 In this task, you will resolve the failed API replicas. These failures occur due to the inability to meet the requested resources.
 
@@ -203,7 +203,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
    ![](media/cnctionstring1.png "View replica details")
 
-3. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in textfile for later use.
+3. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in a text file for later use.
 
     ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
 
@@ -259,4 +259,3 @@ In this task, you will run a performance test script that will test the Autoscal
 ## Summary
 
 In this exercise, you have increased service instances and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
-

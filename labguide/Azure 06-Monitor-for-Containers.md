@@ -15,7 +15,7 @@ A few examples of what you can do with Azure Monitor include:
 
 ### Task 1: Review Azure Monitor metrics
 
-In this task, you will be reviewing the monitored AKS cluster
+In this task, you will be reviewing the monitored AKS cluster.
 
 1. Navigate back to the Azure portal in the browser and search for **Monitor (1)**, Select **Monitor (2)** from the result.
 
