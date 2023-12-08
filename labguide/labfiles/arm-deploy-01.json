@@ -362,20 +362,7 @@
         "[resourceId('Microsoft.KeyVault/vaults', variables('kvName'))]"
       ]
     },
-    {
-      "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2022-07-01",
-      "name": "[format('{0}/{1}', variables('kvName'), variables('kvSecretNameImagesEndpoint'))]",
-      "tags": "[variables('resourceTags')]",
-      "properties": {
-        "contentType": "endpoint url of the images cdn",
-        "value": "[format('https://{0}', reference(resourceId('Microsoft.Cdn/profiles/endpoints', variables('cdnProfileName'), variables('cdnImagesEndpointName'))).hostName)]"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Cdn/profiles/endpoints', variables('cdnProfileName'), variables('cdnImagesEndpointName'))]",
-        "[resourceId('Microsoft.KeyVault/vaults', variables('kvName'))]"
-      ]
-    },
+   
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
       "apiVersion": "2022-07-01",
