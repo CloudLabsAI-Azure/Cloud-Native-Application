@@ -552,7 +552,7 @@
       "apiVersion": "2022-05-01",
       "name": "[format('{0}/{1}/{2}', variables('productImagesStgAccName'), 'default', variables('productImagesProductDetailsContainerName'))]",
       "properties": {
-        "publicAccess": "Container"
+       
       },
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('productImagesStgAccName'), 'default')]"
@@ -563,7 +563,7 @@
       "apiVersion": "2022-05-01",
       "name": "[format('{0}/{1}/{2}', variables('productImagesStgAccName'), 'default', variables('productImagesProductListContainerName'))]",
       "properties": {
-        "publicAccess": "Container"
+      
       },
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('productImagesStgAccName'), 'default')]"
@@ -598,7 +598,7 @@
       "apiVersion": "2022-05-01",
       "name": "[format('{0}/{1}/{2}', variables('imageClassifierStgAccName'), 'default', variables('imageClassifierWebsiteUploadsContainerName'))]",
       "properties": {
-        "publicAccess": "Container"
+        
       },
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/blobServices', variables('imageClassifierStgAccName'), 'default')]"
