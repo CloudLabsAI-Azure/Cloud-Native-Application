@@ -214,7 +214,7 @@ In this exercise, you have deployed your containerized web application to AKS th
 
 ### Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
   
-**Duration**: 90 Minutes
+**Duration**: 60 Minutes
 
 ### Overview
 
