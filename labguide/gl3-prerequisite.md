@@ -208,6 +208,10 @@ In this task, you will be building the docker images to containerize the applica
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
+## Summary
+
+In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS.
+
 ### Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
   
 **Duration**: 90 Minutes
