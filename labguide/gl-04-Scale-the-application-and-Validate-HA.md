@@ -1,4 +1,4 @@
-## Exercise 2: Scale the application and validate HA
+## Exercise 4: Scale the application and validate HA
 
 **Duration**: 150 minutes
 
