@@ -26,8 +26,12 @@
           "Order": 5
         },
         {
+            "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-05-Updating-Apps%26Managing-Load-Balancing.md",
+            "Order": 6
+          },
+        {
           "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-Azure%2006-Monitor-for-Containers.md",
-          "Order": 6
+          "Order": 7
         }     
       ]
     }

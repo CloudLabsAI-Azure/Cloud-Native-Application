@@ -1,4 +1,4 @@
-## Exercise 5: Azure Monitor for Containers
+## Exercise 6: Azure Monitor for Containers
    
 **Duration**: 30 Minutes
 
