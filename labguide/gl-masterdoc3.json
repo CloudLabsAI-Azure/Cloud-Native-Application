@@ -1,0 +1,39 @@
+[
+    {
+      "Name": "Cloud Native Apps with Azure Services",
+      "Language": "English",
+      "BaseURL": "https://github.com/CloudLabsAI-Azure/Cloud-Native-Application",
+      "Files": [
+                
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/getting-started.md",
+          "Order": 1
+        },
+          {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-overview.md",
+          "Order": 2
+        },
+
+           {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/migrate-mondodb-to-cosmosdb-using-dbmigration.md",
+          "Order": 4
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-Deploy%20theApplication-to-Azure-Kubernetes-Service.md",
+          "Order": 5
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-04-Scale-the-application-and-Validate-HA.md",
+          "Order": 6
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/05-Updating-Apps%26Managing-Load-Balancing.md",
+          "Order": 7
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-Azure%2006-Monitor-for-Containers.md",
+          "Order": 8
+        }     
+      ]
+    }
+  ]
