@@ -63,7 +63,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/Ex2T2S2.png)
 
-> **Note:** If you get **Welcome! What is Cosmos DB?** popup, close it by click on **X**.
+   > **Note:** If you get **Welcome! What is Cosmos DB?** popup, close it by click on **X**.
 
 1. Provide name as `contentdb` **(1)** for **Database id** and select **Databse throughput** as **Manual** **(2)**,  provide the RU/s value to `400` **(3)** and click on **OK(4)**.
 
