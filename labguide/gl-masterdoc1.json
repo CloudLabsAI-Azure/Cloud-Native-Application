@@ -10,7 +10,7 @@
           "Order": 1
         },
           {
-          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/create-Docker-images-for-application.md",
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-create-Docker-images-for-application.md",
           "Order": 3
         }   
       ]
