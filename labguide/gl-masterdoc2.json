@@ -9,9 +9,9 @@
           "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/getting-started.md",
           "Order": 1
         },
-          {
-          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/create-Docker-images-for-application.md",
-          "Order": 3
+           {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-migrate-mondodb-to-cosmosdb-using-dbmigration.md",
+          "Order": 2
         }   
       ]
     }
