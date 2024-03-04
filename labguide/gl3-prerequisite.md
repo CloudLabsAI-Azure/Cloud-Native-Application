@@ -206,7 +206,6 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/cloudnative2.png "open cmd")
     
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
