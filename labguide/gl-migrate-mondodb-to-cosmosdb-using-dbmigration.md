@@ -10,6 +10,22 @@ In this exercise, you will be migrating your on-premises MongoDB database hosted
 
 In this task, you will be connecting to a Mongo database hosted over an Azure Linux VM and exploring the databases and collections in it.
 
+1. Once you log into the VM, search for **cmd** **(1)** in the Windows search bar and click on **Command Prompt** **(2)** to open.
+
+   ![](media/latest-ex1-opencmd.png "open cmd")
+    
+1. Run the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
+   
+   >**Note**: In the command prompt, type **yes** and press **Enter** for `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
+   
+1. Once the SSH is connected to the VM, please enter the VM password given below:
+   
+    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+
+   ![](media/EX1-T1-S3.png "open cmd")
+   
+   >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
+
 1. While connected to your Linux VM, run the below command for connecting to Mongo shell to display the databases and collections in it using the Mongo shell.
 
    ```
