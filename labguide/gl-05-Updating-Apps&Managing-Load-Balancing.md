@@ -41,7 +41,7 @@ In this task, you will edit the web application source code to update some confi
 
 1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
-    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
+    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still if there are any issues, connect to the LabVM via RDP using credentials provided in the Environment details tab.
     
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
