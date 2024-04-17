@@ -10,7 +10,32 @@
  
     > You will see the DeploymentID value on the **Environment Details** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
 
+## Lab Validation
 
+1. After completing the task, hit the **Validate** button under Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+
+   ![Inline Validation](/media/inline-validation.png)
+
+1. You can also validate the task by navigating to the **Lab Validation** tab, from the upper right corner in the lab guide section.
+
+   ![Lab Validation](/media/lab-validation.png)
+
+1. If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
+## Lab Duration Extension
+
+1. To extend the duration of the lab, kindly click the **Hourglass** icon in the top right corner of the lab environment. 
+
+   ![Manage Your Virtual Machine](media/gext.png)
+
+   >**Note:** You will get the **Hourglass** icon when 10 minutes are remaining in the lab.
+
+2. Click **OK** to extend your lab duration.
+ 
+   ![Manage Your Virtual Machine](media/gext2.png)
+
+3. If you have not extended the duration prior to when the lab is about to end, a pop-up will appear, giving you the option to extend. Click **OK** to proceed.
+     
 ## Login to Azure Portal
 
 1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser which is created on the desktop.
