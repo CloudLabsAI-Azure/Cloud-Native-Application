@@ -367,6 +367,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 23. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
+#### Validation
+
+<validation step="bc6d953d-e84f-4454-b736-b54ecf2ef76c" />
+
 ## Summary
 
 In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
