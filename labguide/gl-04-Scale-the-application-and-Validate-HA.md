@@ -18,13 +18,13 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/3.png "Setting replicas to 2")
 
-    >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.
+   >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.
 
 1. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
 
 1. Open the Contoso Traders web application, and you can see that the application should still work without errors.
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
+   ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
 
 #### Validation
 
@@ -36,7 +36,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
 
-    ![In the Workload view with the API deployment highlighted.](media/exe4-task2-step1-select-workload.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/exe4-task2-step1-select-workload.png "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
@@ -100,39 +100,39 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
-    ```
-    az login -u [username] -p [Password]
-    ```
+   ```
+   az login -u [username] -p [Password]
+   ```
 
 1. In order to set up the Kubernetes cluster connection, make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command and run.
 
-    ```
-    az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
-    ```
+   ```
+   az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
+   ```
     
 1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `null`. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.   
     
-     ```
-     az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
-     ```   
+    ```
+    az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
+    ```   
     
     ![](media/ex4-t3-scaling1.png)
 
 1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`.  Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
-    ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
-    ```
+   ```
+   az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
+   ```
   
    ![](media/ex4-t3-scaling2.png)
    
-    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
+   >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
    
 1. Run the below command to autoscale the node pools in the existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
-    ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
-    ```
+   ```
+   az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
+   ```
    
    ![](media/ex4-t3-scaling3.png)
    
@@ -191,15 +191,15 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 2. Select **Data Explorer (1)** from the left side menu. Within **Data Explorer**, expand the `contentdb` **(2)** database.
 
-    ![](media/9.png "View replica details")
+   ![](media/9.png "View replica details")
 
 4. Under the `contentdb` database, expand **Items (1)** collection, select **Settings (2)**.
 
-    ![](media/exe4-task6-step3-select-settings.png "View replica details")
+   ![](media/exe4-task6-step3-select-settings.png "View replica details")
 
 5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
 
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/exe4-task6-step4-autoscale.png "CosmosDB collection scale and settings")
+   ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/exe4-task6-step4-autoscale.png "CosmosDB collection scale and settings")
 
 #### Validation
 
@@ -217,7 +217,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 3. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in a text file for later use.
 
-    ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
+   ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
 
 4. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
@@ -227,24 +227,24 @@ In this task, you will run a performance test script that will test the Autoscal
 
 6. On the **Build agent VM**, navigate to the `~/labfiles` directory.
 
-    ```bash
-    cd Cloud-Native-Application/labfiles/src
-    ```
+   ```bash
+   cd Cloud-Native-Application/labfiles/src
+   ```
 
 7. Run the following command to open the `perftest.sh` script in the editor window.
 
-    ```bash
-    sudo chmod 777 perftest.sh
-    vi perftest.sh
-    ```
+   ```bash
+   sudo chmod 777 perftest.sh
+   vi perftest.sh
+   ```
 
 8. There are several variables declared at the top of the `perftest.sh` script. Press **_i_** to get into `insert` mode. Then modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
 
-    ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/updatepreftest.png "Modify the connection information in Vim")
+   ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/updatepreftest.png "Modify the connection information in Vim")
 
 9. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
-    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still if there any issues while saving the file, connect to the LabVM via RDP using the credentials provided in the Environment details.
+   >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still if there any issues while saving the file, connect to the LabVM via RDP using the credentials provided in the Environment details.
     
 10. Run the following command to execute the `perftest.sh` script to run a small load test against CosmosDB. This script will consume RUs in CosmosDB by inserting many documents into the Sessions container.
 
