@@ -29,7 +29,7 @@ In this task, you will be reviewing the monitored AKS cluster.
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in the insight blade.
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/12.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/12.png "Add a Namespace")
 
 #### Validation
 
