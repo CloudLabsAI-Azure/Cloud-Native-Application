@@ -18,48 +18,47 @@ In this task, you will edit the web application source code to update some confi
 
 1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
 
-     ```bash
-     cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
-
-     ```
+   ```bash
+   cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
+   ```
 1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
 
-     ```bash
-     sudo chmod 777 hero.js
-     vim hero.js
-     ```
+   ```bash
+   sudo chmod 777 hero.js
+   vim hero.js
+   ```
      
    ![A screenshot of the code editor showing updates in context of the app.js file](media/updatetext.png "AppInsights updates in app.js")
    
 1. Once the file is open, press "i" to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
 
-     ```
-     The latest, Fastest, Most Powerful Xbox Ever.
-     ```
+   ```
+   The latest, Fastest, Most Powerful Xbox Ever.
+   ```
  
    ![A screenshot of the code editor showing updates in context of the app.js file](media/exe5-task1-step4-update-herojs-file.png "AppInsights updates in app.js")
 
 1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
-    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still if there are any issues, connect to the LabVM via RDP using credentials provided in the Environment details tab.
+   >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still if there are any issues, connect to the LabVM via RDP using credentials provided in the Environment details tab.
     
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
 
-     ```bash
-     cd
-     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
-     ```
+   ```bash
+   cd
+   cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
+   ```
    
 1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
   
    >**Note**: Observe that this time we are using "V1" tag for the image
   
-      ```bash
-      docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+   ```bash
+   docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
 
-      docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
-      ```
+   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
+   ```
 
    > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you many notice few warnings related to npm version update which is expected and doesn't affect the lab's functionality.
 
@@ -67,10 +66,10 @@ In this task, you will edit the web application source code to update some confi
 
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
 
-    ```bash
-    kubectl get deployments -n contoso-traders
-    kubectl get pods -n contoso-traders
-    ```
+   ```bash
+   kubectl get deployments -n contoso-traders
+   kubectl get pods -n contoso-traders
+   ```
     
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9.png "Pod deployment is in progress")
 
@@ -78,23 +77,23 @@ In this task, you will edit the web application source code to update some confi
 
 1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
-     ```bash
-     kubectl describe pods [PODNAME] -n contoso-traders
-     ```
+   ```bash
+   kubectl describe pods [PODNAME] -n contoso-traders
+   ```
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S10.png "Pod deployment is in progress")
 
 1. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
 
-     ```bash
-     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
-     ```
+   ```bash
+   kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+   ```
      
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
 
 1. Now try describing the latest pods again and see which image is mapped with the pod.
 
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
     
 1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
 
@@ -110,9 +109,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 1. Run the following command from a Windows command terminal to add the Nginx stable Helm repository:
 
-    ```bash
-    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-    ```
+   ```bash
+   helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+   ```
 
 2. Update your helm package list.
 
@@ -121,10 +120,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```
 
    > **Note**: If you get a "no repositories found." error, then run the following command. This will be added back to the official Helm "stable" repository.
-   >
-   > ```bash
-   > helm repo add stable https://charts.helm.sh/stable 
-   > ```
+   
+   ```bash
+   helm repo add stable https://charts.helm.sh/stable 
+   ```
 
 3. Install the Ingress Controller resource to handle ingress requests as they come in. The Ingress Controller will receive a public IP of its own on the Azure Load Balancer and handle requests for multiple services over ports 80 and 443.
 
@@ -134,12 +133,12 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 4. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
 
-    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
-    >
-    > ```bash
-    > kubectl get svc --namespace contoso-traders
-    > ```
-    >
+   > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
+   
+   ```bash
+   kubectl get svc --namespace contoso-traders
+   ```
+   
    ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
 
 5. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
@@ -197,11 +196,11 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** in the below URL before browsing it.
 
-    > **Note**: It is normal to receive a 404 message at this time.
+   > **Note**: It is normal to receive a 404 message at this time.
 
-    ```text
-    http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
-    ```
+   ```text
+   http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
+   ```
    ![](media/15.png )
 
    >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below mentioned command and try accessing the URL again.
@@ -212,9 +211,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 9. Use helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
 
-    ```bash
-    kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
-    ```
+   ```bash
+   kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
+   ```
 
 10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
 
