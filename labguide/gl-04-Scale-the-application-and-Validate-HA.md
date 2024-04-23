@@ -26,6 +26,10 @@ In this task, you will increase the number of instances for the API deployment i
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
 
+#### Validation
+
+<validation step="c807a0d7-9f5f-468f-b947-7ca77fdddb13" />
+
 ### Task 2: Resolve failed replica provisioning 
 
 In this task, you will resolve the failed API replicas. These failures occur due to the inability to meet the requested resources.
@@ -175,6 +179,10 @@ In this task, you will restart containers and validate that the restart does not
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/11.png "View replica details")
 
+#### Validation
+
+<validation step="1574f3ff-1798-4d16-bc2d-3ae482089bf4" />
+
 ### Task 6: Configure CosmosDB Autoscale
 
 In this task, you will set up Autoscale on Azure Cosmos DB.
@@ -192,6 +200,10 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
 
     ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/exe4-task6-step4-autoscale.png "CosmosDB collection scale and settings")
+
+#### Validation
+
+<validation step="51e9726a-fbc5-4a4b-96f7-58cdb266dde1" />
 
 ### Task 7: Test CosmosDB Autoscale
 

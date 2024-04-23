@@ -371,6 +371,9 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
+#### Validation
+
+<validation step="ee0ef7bb-5d78-4a69-8e01-f3df1020fb41" />
 
 ## Summary
 

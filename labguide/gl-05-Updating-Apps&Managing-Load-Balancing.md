@@ -99,7 +99,11 @@ In this task, you will edit the web application source code to update some confi
 1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
-    
+
+#### Validation
+
+<validation step="bc6d953d-e84f-4454-b736-b54ecf2ef76c" />
+
 ### Task 2: Configure Kubernetes Ingress
 
 This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.

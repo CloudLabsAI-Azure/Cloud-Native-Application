@@ -95,6 +95,9 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
+#### Validation
+
+<validation step="82002c3d-9752-46a4-aa50-92046ba685de" />
 
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
@@ -187,6 +190,9 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
+#### Validation
+
+<validation step="b5e74d42-1932-4a01-b1dd-65b27583fdda" />
 
 ### Task 4: Deploy a service & workload using kubectl
 
@@ -237,6 +243,10 @@ In this task, you will deploy the web service & its workload using kubectl.
 > **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+
+#### Validation
+
+<validation step="be8d94ad-c9e2-4a96-8d29-e675fb17dbea" />
 
 ## Summary
 
