@@ -172,6 +172,13 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 <validation step="6d62857f-8d3a-4e0f-ba85-472c8fcacdbe" />
 
+> **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.  
+
 ## Summary
 
 In this exercise, you have completed exploring your on-prem Mongodb and migrating your on-premises MongoDB database to Azure CosmosDB using Azure database migration.
