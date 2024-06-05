@@ -101,18 +101,18 @@ In this task, you will be building the docker images to containerize the applica
    cd Cloud-Native-Application/labfiles/
    ```
     
-1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the below command with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value.
+1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced.
 
    ```
-   docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
+   docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest
    ```
     
    ![](media/EX1-T2-S8.png)
     
-1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Repeat the steps to create the **contosotraders-Products** docker image with the below command.
 
    ```
-   docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+   docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
    ```
 
    ![](media/EX1-T2-S9.png)
@@ -146,10 +146,10 @@ In this task, you will be building the docker images to containerize the applica
    cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
    ```
 
-1. Now build the **contosotraders-UI-Website** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Now build the **contosotraders-UI-Website** docker image with the below command.
 
    ```
-   docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+   docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersuiweb:latest
    ```    
     
    ![](media/EX1-T2-S13.png)
@@ -180,26 +180,26 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-acr2.png)    
 
-1. Now switch back to **Command Prompt** and login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value and password with the copied container registry password which you have copied in the previous step in the below command.
+1. Now switch back to **Command Prompt** and login to ACR using the below command, please update the ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the password with the copied container registry password which you have copied in the previous step in the below command.
 
    ```
-   docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
+   docker login contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="false"/> -p [password]
    ```
 
    ![](media/EX1-T2-S18.png "open cmd")
 
-1. Once you log in to the ACR, please run the below commands to push the Docker images to the Azure container registry. Also, ensure that you update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
+1. Once you log in to the ACR, please run the below commands to push the Docker images to the Azure container registry.
 
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest 
    ```
    
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
    ```
    
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersuiweb:latest
    ```
    
 1. You should be able to see the docker image getting pushed to ACR as shown in the below screenshot. 
