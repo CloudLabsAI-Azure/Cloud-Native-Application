@@ -207,6 +207,13 @@ In this task, you will be building the docker images to containerize the applica
 
 <validation step="40147393-0fa6-4453-a6eb-a1a7bc43f387" />
 
+> **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.  
+
 ## Summary
 
 In this exercise, you have completely containerized your web application with the help of docker and pushed it to the container registry.
