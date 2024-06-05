@@ -168,6 +168,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
 
+
 <validation step="6d62857f-8d3a-4e0f-ba85-472c8fcacdbe" />
 
 > **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
