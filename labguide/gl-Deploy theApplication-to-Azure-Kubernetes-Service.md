@@ -17,15 +17,15 @@ This task will gather the information you need about your Azure Kubernetes Servi
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
    
-   ```bash
-   az login -u [username] -p [Password]
-   ```
+      ```bash
+      az login -u [username] -p [Password]
+      ```
     
-   > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform step-1 in a new command prompt as Administrator.
+      > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform step-1 in a new command prompt as Administrator.
 
-   ```bash
-   choco install azure-cli
-   ```
+      ```bash
+      choco install azure-cli
+      ```
 
 1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
 
@@ -35,15 +35,15 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
    - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
 
-   ```bash
-   az account list
-   az account set --subscription {id}
-   ```
+      ```bash
+      az account list
+      az account set --subscription {id}
+      ```
 
-1. Run the below command to set up the Kubernetes cluster connection using kubectl. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to set up the Kubernetes cluster connection using kubectl.
 
    ```bash
-   az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
+   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
    ```
    
    ![](media/cloudnative4.png "open cmd")
@@ -80,9 +80,9 @@ In this task, you will be generating a secret in the Key vault and creating the 
    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
    -  Keep other values default and click on **Create**
     
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
-     
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
+      
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
      
 1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
 
@@ -97,6 +97,11 @@ In this task, you will be generating a secret in the Key vault and creating the 
      
 #### Validation
 
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
+
 <validation step="82002c3d-9752-46a4-aa50-92046ba685de" />
 
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
@@ -105,13 +110,14 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    
 1. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders** namespace only. 
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
     
 1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Apply a YAML**. 
     
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
 
-1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
+1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**.
+   
    >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
    ```yaml
@@ -130,13 +136,14 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
      selector:
        app: contoso-traders-products
    ```    
-   ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
+      ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
 1. Select **Workloads** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create** and then choose **Apply a YAML**.
 
-   ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
+      ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
 
-1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**.
+   
    >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
     ```YAML
@@ -160,7 +167,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
          containers:
            - name: contoso-traders-products
              #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
-             image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
+             image: contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
              env:
                - name: KeyVaultEndpoint
                  valueFrom:
@@ -184,13 +191,18 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                    hostPort: 3001
                    protocol: TCP
     ```
-   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
+      ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
 1. After a few minutes, you will see the deployment listed, which should be running.
 
-   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
+      ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
 #### Validation
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 <validation step="b5e74d42-1932-4a01-b1dd-65b27583fdda" />
 
@@ -212,20 +224,21 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
 
-   ```bash
-   cd C:/LabFiles
-   ```
+      ```bash
+      cd C:/LabFiles
+      ```
 
 1. Log in to Azure if not already done with the below command after updating the values in the command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
-   ```
-   az login -u [username] -p [Password]
-   ```
+      ```
+      az login -u [username] -p [Password]
+      ```
 
 1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
+   
    >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in the YAML files. 
 
    ```bash
@@ -245,6 +258,11 @@ In this task, you will deploy the web service & its workload using kubectl.
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 #### Validation
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 <validation step="be8d94ad-c9e2-4a96-8d29-e675fb17dbea" />
 
