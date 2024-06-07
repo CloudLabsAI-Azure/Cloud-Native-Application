@@ -228,9 +228,9 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
 
-   ```bash
-   cd C:/LabFiles
-   ```
+      ```bash
+      cd C:/LabFiles
+      ```
    
 1. Log in to Azure if not already done with the below command after updating the values in the command.
 
@@ -245,9 +245,9 @@ In this task, you will deploy the web service & its workload using kubectl.
    
      >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in the YAML files. 
 
-   ```bash
-   kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
-   ```
+      ```bash
+      kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
+      ```
 
      ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/kubectlcreated.png "kubectl create application")
 
