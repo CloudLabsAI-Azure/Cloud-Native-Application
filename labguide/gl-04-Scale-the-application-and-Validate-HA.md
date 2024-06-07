@@ -1,10 +1,10 @@
-## Exercise 4: Scale the application and validate HA
-
-**Duration**: 90 minutes
-
 ## Overview
 
 At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front end in the existing cluster.
+
+## Exercise 4: Scale the application and validate HA
+
+**Duration**: 90 minutes
 
 ### Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
 
