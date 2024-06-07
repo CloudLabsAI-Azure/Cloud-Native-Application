@@ -2,13 +2,13 @@
 
 Before you move to the next exercise, please make sure to complete the pre-requisite exercises as upcoming exercises are dependent on it.
 
-### Exercise 1: Build Docker Images for the Application 
-  
-**Duration**: 60 Minutes
-
 ### Overview
 
 In this exercise, you will learn how to Containerize the Contoso Traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+
+### Exercise 1: Build Docker Images for the Application 
+  
+**Duration**: 60 Minutes
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
