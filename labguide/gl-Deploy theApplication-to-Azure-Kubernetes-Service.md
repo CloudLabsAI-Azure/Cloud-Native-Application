@@ -33,12 +33,12 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account show
    ```
 
-   - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
+- Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
 
-      ```bash
-      az account list
-      az account set --subscription {id}
-      ```
+   ```bash
+   az account list
+   az account set --subscription {id}
+   ```
 
 1. Run the below command to set up the Kubernetes cluster connection using kubectl.
 
@@ -77,7 +77,9 @@ In this task, you will be generating a secret in the Key vault and creating the 
 1. In the **Create a secret** pane, enter the following details:
 
    - Name: **mongodbconnection**
+
    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
+
    -  Keep other values default and click on **Create**
     
       ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
