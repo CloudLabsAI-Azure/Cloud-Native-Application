@@ -368,8 +368,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
 
-23. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
-
 ## Summary
 
 In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
