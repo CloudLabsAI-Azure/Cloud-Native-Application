@@ -139,11 +139,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
           app: contoso-traders-products
       ```   
  
-      ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
+   ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
 1. Select **Workloads** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create** and then choose **Apply a YAML**.
 
-      ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
+   ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**.
    
