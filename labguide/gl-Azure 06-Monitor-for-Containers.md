@@ -1,7 +1,3 @@
-## Exercise 6: Azure Monitor for Containers
-   
-**Duration**: 30 Minutes
-
 ## Overview
 
 In this exercise, you will be reviewing the Azure Monitor container insights for the AKS cluster. Azure Monitor helps you maximize the availability and performance of your applications and services. It delivers a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments.
@@ -12,6 +8,9 @@ A few examples of what you can do with Azure Monitor include:
 - Correlate infrastructure issues with VM insights and Container insights.
 - Collect data from monitored resources by using Azure Monitor Metrics.
   
+## Exercise 6: Azure Monitor for Containers
+   
+**Duration**: 30 Minutes
 
 ### Task 1: Review Azure Monitor metrics
 
