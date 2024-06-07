@@ -1,10 +1,10 @@
-## Exercise 3: Deploy the application to the Azure Kubernetes Service
-   
-**Duration**: 90 Minutes
-
 ## Overview
 
-In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault Secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault Secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS.
+
+## Exercise 3: Deploy the application to the Azure Kubernetes Service
+   
+**Duration**: 90 Minutes 
 
 ### Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
