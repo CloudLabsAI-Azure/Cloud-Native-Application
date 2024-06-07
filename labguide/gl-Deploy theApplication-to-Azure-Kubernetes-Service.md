@@ -120,7 +120,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**.
    
-    >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
+     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
    ```yaml
    apiVersion: v1
@@ -147,7 +147,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**.
    
-   >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
+    >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
     ```YAML
     apiVersion: apps/v1
@@ -194,6 +194,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                    hostPort: 3001
                    protocol: TCP
     ```
+
       ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
 1. After a few minutes, you will see the deployment listed, which should be running.
