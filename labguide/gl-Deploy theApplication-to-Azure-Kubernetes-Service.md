@@ -120,24 +120,24 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**.
    
-     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
+      >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
-   ```yaml
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: contoso-traders-products
-     namespace: contoso-traders
-     annotations:
-       #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
-       service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-   spec:
-     type: LoadBalancer
-     ports:
-       - port: 80
-     selector:
-       app: contoso-traders-products
-   ```   
+      ```yaml
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: contoso-traders-products
+        namespace: contoso-traders
+        annotations:
+          #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+          service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+      spec:
+        type: LoadBalancer
+        ports:
+          - port: 80
+        selector:
+          app: contoso-traders-products
+      ```   
  
       ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
@@ -195,11 +195,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                    protocol: TCP
     ```
 
-      ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
 1. After a few minutes, you will see the deployment listed, which should be running.
 
-      ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
 #### Validation
 
