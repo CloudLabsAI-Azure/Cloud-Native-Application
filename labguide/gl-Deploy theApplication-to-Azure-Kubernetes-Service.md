@@ -234,8 +234,8 @@ In this task, you will deploy the web service & its workload using kubectl.
    
 1. Log in to Azure if not already done with the below command after updating the values in the command.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
+- Username: **<inject key="AzureAdUserEmail"></inject>**
+- Password: **<inject key="AzureAdUserPassword"></inject>**
 
       ```
       az login -u [username] -p [Password]
