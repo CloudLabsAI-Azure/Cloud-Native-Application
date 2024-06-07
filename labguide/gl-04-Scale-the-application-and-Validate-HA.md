@@ -266,8 +266,6 @@ In this task, you will run a performance test script that will test the Autoscal
     
     >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
 
-14. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
-
 ## Summary
 
 In this exercise, you have increased service instances and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
