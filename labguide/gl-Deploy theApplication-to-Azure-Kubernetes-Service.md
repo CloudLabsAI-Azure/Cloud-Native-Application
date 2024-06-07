@@ -112,11 +112,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    
 1. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders** namespace only. 
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
+  ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
     
 1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Apply a YAML**. 
     
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
+  ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**.
    
