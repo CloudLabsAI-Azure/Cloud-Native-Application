@@ -258,8 +258,6 @@ In this task, you will deploy the web service & its workload using kubectl.
      ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
 
      > **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
-    
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 #### Validation
 
@@ -273,3 +271,5 @@ In this task, you will deploy the web service & its workload using kubectl.
 ## Summary
 
 In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS. 
+
+### You have successfully completed the lab. Click on the Next button.
