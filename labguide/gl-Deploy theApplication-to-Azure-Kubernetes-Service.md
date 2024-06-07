@@ -80,7 +80,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
 
-   -  Keep other values default and click on **Create**
+   - Keep other values default and click on **Create**
     
       ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
       
@@ -112,11 +112,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    
 1. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders** namespace only. 
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
     
 1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Apply a YAML**. 
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**.
    
@@ -140,16 +140,15 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
        app: contoso-traders-products
    ```
 
-
-    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
+   ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
 1. Select **Workloads** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create** and then choose **Apply a YAML**.
 
-    ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
+   ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**.
    
-    >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
+   >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
     ```YAML
     apiVersion: apps/v1
@@ -197,11 +196,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                    protocol: TCP
     ```
 
-    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
 1. After a few minutes, you will see the deployment listed, which should be running.
 
-    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
 #### Validation
 
@@ -230,10 +229,10 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
 
-      ```bash
-      cd C:/LabFiles
-      ```
-
+   ```bash
+   cd C:/LabFiles
+   ```
+   
 1. Log in to Azure if not already done with the below command after updating the values in the command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
