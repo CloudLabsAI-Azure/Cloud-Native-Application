@@ -383,3 +383,4 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 In this exercise, you have completed exploring your on-prem Mongodb and migrating your on-premises MongoDB database to Azure CosmosDB using Azure database migration.
 
+### You have successfully completed the lab. Click on the Next button.
