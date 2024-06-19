@@ -61,7 +61,7 @@ In this task, you will edit the web application source code to update some confi
       docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
       ```
 
-   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you many notice few warnings related to npm version update which is expected and doesn't affect the lab's functionality.
+   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
 
 1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
@@ -152,15 +152,14 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
 
    ```bash
-   . C:\LabFiles\AzureCreds.ps1
-
-   $userName = $AzureUserName
-   $password = $AzurePassword
-
-   $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-   $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
-
-   Connect-AzAccount -Credential $cred | Out-Null
+   # Create a SecureString from the client's secret
+   $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
+   
+   # Create a PSCredential object using the client ID and secure password
+   $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
+   
+   # Authenticate using the PSCredential object
+   Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
 
    $ipaddress="INGRESS PUBLIC IP"
 
@@ -200,7 +199,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     ```
    ![](media/15.png )
 
-   >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below mentioned command and try accessing the URL again.
+   >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below-mentioned command and try accessing the URL again.
 
    ```bash
    helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
