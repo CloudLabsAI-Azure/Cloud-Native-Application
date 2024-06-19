@@ -93,8 +93,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
     
 1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under **Secrets**, you should be able to see the newly created secret. 
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
-     
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")     
 
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
@@ -187,7 +186,6 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
-
 ### Task 4: Deploy a service & workload using kubectl
 
 In this task, you will deploy the web service & its workload using kubectl.
@@ -234,7 +232,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
 
-> **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
+   > **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
