@@ -170,6 +170,8 @@ In this task, you will restart containers and validate that the restart does not
 
    ![Viewing replica set in the Azure Portal.](media/8.png "Viewing replica set in the Azure Portal")
 
+1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+
 1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/11.png "View replica details")
