@@ -77,13 +77,13 @@ In this task, you will be building the docker images to containerize the applica
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
-    > **Note:** You will not get the popup to enter the password if you had got the **Pick an account** popup where you had chosen the account.
+    > **Note:** You will not get the popup to enter the password if you have the **Pick an account** popup where you had chosen the account.
 
 1. In a pop-up to confirm the sign-into Microsoft Azure CLI, click on **Continue**.
 
    ![](media/ex1-logincontinue.png)
 
-1. After signing-in, you will see a confirmation popup **You have signed in to the Microsoft Azure Cross-platform Command Line Interface application on your device**. Close the browser tab and open the previous Command Prompt session.   
+1. After signing in, you will see a confirmation popup **You have signed in to the Microsoft Azure Cross-platform Command Line Interface application on your device**. Close the browser tab and open the previous Command Prompt session.   
 
    ![](media/ex1-t2-step6-signin-confirm.png)
 
@@ -151,7 +151,7 @@ In this task, you will be building the docker images to containerize the applica
     ![](media/EX1-T2-S13.png)
     
     
-    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you many notice few warnings related to npm version update which is expected and doesn't affect the lab's functionality.
+    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
     
 1. Redirect to the **labfiles** directory before running the next steps.
 
@@ -176,7 +176,7 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-acr2.png)    
 
-1. Now switch back to **Command Prompt** and login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value and password with the copied container registry password which you have copied in the previous step in the below command.
+1. Now switch back to **Command Prompt** and log in to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value and password with the copied container registry password which you have copied in the previous step in the below command.
 
     ```
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
@@ -203,7 +203,6 @@ In this task, you will be building the docker images to containerize the applica
     ![](media/cloudnative2.png "open cmd")
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
-
 
 ## Summary
 
