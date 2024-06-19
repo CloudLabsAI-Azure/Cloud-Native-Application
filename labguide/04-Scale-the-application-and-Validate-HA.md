@@ -14,7 +14,7 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/1.png "Setting replicas to 2")
 
-1. Select **YAML (1)** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Select **YAML (1)** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/3.png "Setting replicas to 2")
 
@@ -157,7 +157,6 @@ In this task, you will restart containers and validate that the restart does not
 1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
    ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/6.png "Delete running pod instance")
-
 
 1. On the **Delete** page, Select **Confirm delete (1)**, and click on **Delete (2)** again.
 
