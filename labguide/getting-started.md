@@ -12,15 +12,15 @@
 
 ## Lab Validation
 
-3. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+1. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
 
    ![Inline Validation](media/inline-validation.png)
 
-4. You can also validate the task by navigating to the **Lab Validation** tab, from the upper right corner in the lab guide section.
+2. You can also validate the task by navigating to the **Lab Validation** tab, from the upper right corner in the lab guide section.
 
    ![Lab Validation](media/lab-validation.png)
 
-5. If you need any assistance, please contact us at labs-support@spektrasystems.com.
+3. If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 ## Lab Duration Extension
 
