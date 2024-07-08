@@ -14,14 +14,14 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 1. Open a new command prompt as Administrator in your jump VM and login to Azure with the below commands after updating the values in the below command.
 
-- Username: **<inject key="AzureAdUserEmail"></inject>**
-- Password: **<inject key="AzureAdUserPassword"></inject>**
+   - Username: **<inject key="AzureAdUserEmail"></inject>**
+   - Password: **<inject key="AzureAdUserPassword"></inject>**
 
    ```bash
    az login -u [username] -p [Password]
    ```   
     
-  > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform step-1 in a new command prompt as Administrator.
+   > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform step-1 in a new command prompt as Administrator.
 
    ```bash
    choco install azure-cli
@@ -33,7 +33,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account show
    ```
 
-- Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
+   - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
 
    ```bash
    az account list
@@ -76,11 +76,11 @@ In this task, you will be generating a secret in the Key vault and creating the 
     
 1. In the **Create a secret** pane, enter the following details:
 
-- Name: **mongodbconnection**
+   - Name: **mongodbconnection**
 
-- Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
+   - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
 
-- Keep other values default and click on **Create**
+   - Keep other values default and click on **Create**
     
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
       
