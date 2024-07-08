@@ -16,12 +16,12 @@ In this task, you will edit the web application source code to update some confi
 
 1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
 
-1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
+2. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
 
    ```bash
    cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
    ```
-1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
+3. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
 
    ```bash
    sudo chmod 777 hero.js
@@ -30,7 +30,7 @@ In this task, you will edit the web application source code to update some confi
      
    ![A screenshot of the code editor showing updates in context of the app.js file](media/updatetext.png "AppInsights updates in app.js")
    
-1. Once the file is open, press "i" to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
+4. Once the file is open, press "i" to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
 
    ```
    The latest, Fastest, Most Powerful Xbox Ever.
@@ -38,19 +38,19 @@ In this task, you will edit the web application source code to update some confi
  
    ![A screenshot of the code editor showing updates in context of the app.js file](media/exe5-task1-step4-update-herojs-file.png "AppInsights updates in app.js")
 
-1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
+5. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still if there are any issues, connect to the LabVM via RDP using credentials provided in the Environment details tab.
     
 
-1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
+6. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
 
    ```bash
    cd
    cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
    ```
    
-1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+7. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
   
    >**Note**: Observe that this time we are using "V1" tag for the image
   
@@ -62,9 +62,9 @@ In this task, you will edit the web application source code to update some confi
 
    > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you many notice few warnings related to npm version update which is expected and doesn't affect the lab's functionality.
 
-1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
+8. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
-1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
+9. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
 
    ```bash
    kubectl get deployments -n contoso-traders
@@ -75,7 +75,7 @@ In this task, you will edit the web application source code to update some confi
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9-1.png "Pod deployment is in progress")
 
-1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
+10. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
    ```bash
    kubectl describe pods [PODNAME] -n contoso-traders
@@ -83,7 +83,7 @@ In this task, you will edit the web application source code to update some confi
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S10.png "Pod deployment is in progress")
 
-1. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
+11. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
 
    ```bash
    kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
@@ -91,11 +91,11 @@ In this task, you will edit the web application source code to update some confi
      
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
 
-1. Now try describing the latest pods again and see which image is mapped with the pod.
+12. Now try describing the latest pods again and see which image is mapped with the pod.
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
     
-1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
+13. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
 
