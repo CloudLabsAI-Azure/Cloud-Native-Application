@@ -4,7 +4,7 @@
 
    ![](media/gs01.png "Lab Environment")
 
-1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide on a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
+2. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide on a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
 
    ![](media/gs02.png "Lab Environment")
  
@@ -12,15 +12,15 @@
 
 ## Lab Validation
 
-1. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+3. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
 
    ![Inline Validation](media/inline-validation.png)
 
-1. You can also validate the task by navigating to the **Lab Validation** tab, from the upper right corner in the lab guide section.
+4. You can also validate the task by navigating to the **Lab Validation** tab, from the upper right corner in the lab guide section.
 
    ![Lab Validation](media/lab-validation.png)
 
-1. If you need any assistance, please contact us at labs-support@spektrasystems.com.
+5. If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 ## Lab Duration Extension
 
@@ -42,12 +42,12 @@
 
    ![](media/gs-3.png "Lab Environment")
    
-1. On the **Sign into Microsoft Azure** tab you will see the login screen, in that enter the following email/username and then click on **Next**. 
+2. On the **Sign into Microsoft Azure** tab you will see the login screen, in that enter the following email/username and then click on **Next**. 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
      ![](media/gs-4.png "Enter Email")
      
-1. Now enter the following password and click on **Sign in**.
+3. Now enter the following password and click on **Sign in**.
    * Password: <inject key="AzureAdUserPassword"></inject>
    
      ![](media/gs-5.png "Enter Password")
@@ -56,14 +56,14 @@
 
      ![](media/gs-6.png "Enter Password")
   
-1. If you see the pop-up **Stay Signed in?**, click No
+4. If you see the pop-up **Stay Signed in?**, click No
 
-1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
+5. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
-1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
+6. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
    
-1. Now you will see the Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
+7. Now you will see the Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
 
     ![](media/gs-7.png "Resource groups")
    
-1. Now, click on the **Next** from the lower right corner to move to the next page.
+8. Now, click on the **Next** from the lower right corner to move to the next page.
