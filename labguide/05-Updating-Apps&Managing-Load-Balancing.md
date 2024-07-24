@@ -1,59 +1,59 @@
-## Exercise 5: Updating Apps & Managing Kubernetes Ingress
+## Ejercicio 5: Actualización de Aplicaciones y Gestión de Kubernetes Ingress
 
-**Duration**: 40 minutes
+**Duración**: 40 minutos
 
-## Overview
+## Descripción general
 
-In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the API deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
+En el ejercicio anterior, introdujimos una restricción a las propiedades de escalado del servicio. En este ejercicio, configurará las implementaciones de API para crear pods que utilicen asignaciones de puertos dinámicas para eliminar la restricción de recursos del puerto durante las actividades de escalado.
 
-Kubernetes services can discover the ports assigned to each pod, allowing you to run multiple instances of the pod on the same agent node --- something that is not possible when you configure a specific static port (such as 3001 for the API service).
+Los servicios de Kubernetes pueden descubrir los puertos asignados a cada pod, lo que le permite ejecutar varias instancias del pod en el mismo nodo del agente --- algo que no es posible cuando configura un puerto estático específico (como 3001 para el servicio API).
 
-### Task 1: Perform a rolling update
+### Tarea 1: Realizar una actualización continua
  
-In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
+En esta tarea, editará el código fuente de la aplicación web para actualizar algunas configuraciones y actualizar la imagen de Docker utilizada por la implementación. Luego, realizará una actualización continua para demostrar cómo desplegar un cambio de código. Las actualizaciones continuas permiten que las actualizaciones de despliegue se realicen sin tiempo de inactividad mediante la actualización incremental de las instancias de Pods con otras nuevas. Los nuevos Pods se programarán en Nodos con recursos disponibles.
 
->**Note**: Please perform this task using a new Windows command prompt which should be not connected to the build agent VM but should be logged into Azure.
+>**Nota**: Por favor realice esta tarea utilizando un nuevo Símbolo del sistema de Windows que no debe estar conectado a la MV del Agente de Compilación, sino que debe estar conectado a Azure.
 
-1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
+1. Primero, realizará algunos cambios en el código fuente de su aplicación web y creará una nueva imagen de Docker basada en los últimos cambios.
 
-1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
+1. Vuelva al Símbolo del sistema de Windows donde se conectó a su MV de Linux y ejecute el siguiente comando para navegar hasta el directorio donde deberá realizar los cambios en el código fuente de la aplicación web.
 
      ```bash
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
 
      ```
-1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
+1. Una vez que esté en el directorio correcto, ejecute el siguiente comando para abrir el archivo **hero.js** y realizar algunos cambios de texto en la página de inicio de su aplicación web.
 
      ```bash
      sudo chmod 777 hero.js
      vim hero.js
      ```
      
-   ![A screenshot of the code editor showing updates in context of the app.js file](media/updatetext.png "AppInsights updates in app.js")
+   ![Una captura de pantalla del editor de código que muestra las actualizaciones en el contexto del archivo hero.js](media/updatetext.png "Cambio en hero.js")
    
-1. Once the file is open, press "i" to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
+1. Una vez que el archivo esté abierto, presione "i" para ingresar al modo de inserción y actualizar el valor existente mencionado a continuación en la sección **items** y en el valor de **name**.
 
      ```
      The latest, Fastest, Most Powerful Xbox Ever.
      ```
  
-   ![A screenshot of the code editor showing updates in context of the app.js file](media/exe5-task1-step4-update-herojs-file.png "AppInsights updates in app.js")
+   ![Una captura de pantalla del editor de código que muestra las actualizaciones en el contexto del archivo hero.js](media/exe5-task1-step4-update-herojs-file.png "Cambio en hero.js")
 
-1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
+1. Luego presione **_ESC_**, escriba **_:wq_** para guardar los cambios y cerrar el archivo.
     
-    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
+    >**Nota**: Si **_ESC_** no funciona, presione `ctrl+[` y luego escriba **_:wq_** para guardar los cambios y cerrar el archivo.
     
 
-1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
+1. Ejecute el siguiente comando para cambiar el directorio a la carpeta ContosoTraders.Ui.Website.
 
      ```bash
      cd
      cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
      ```
    
-1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Una vez que esté en el directorio correcto, ejecute el siguiente comando para crear la nueva imagen de Docker que tendrá los últimos cambios de la aplicación web, y enviar la nueva imagen a ACR. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
   
-   >**Note**: Observe that this time we are using "V1" tag for the image
+   >**Nota**: Observe que esta vez estamos usando la etiqueta "V1" para la imagen.
   
       ```bash
       docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
@@ -61,95 +61,95 @@ In this task, you will edit the web application source code to update some confi
       docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
       ```
 
-   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
+   > **Nota:** Por favor tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la compilación. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente. Además, es posible que observe algunas advertencias relacionadas con la actualización de la versión de npm, lo cual es esperado, y no afecta la funcionalidad del laboratorio.
 
-1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
+1. Una vez que se completen los comandos docker build y push, regrese al otro símbolo del sistema que no está conectado a la MV de Linux.
 
-1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
+1. Ejecute el siguiente comando kubectl para obtener la implementación actual en su AKS, ya que ahora actualizaremos la API web a la imagen más reciente. Copie el nombre de **contoso-traders-web###** en el Bloc de notas.
 
     ```bash
     kubectl get deployments -n contoso-traders
     kubectl get pods -n contoso-traders
     ```
     
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9.png "Pod deployment is in progress")
+   ![Obteniendo las implementaciones.](media/EX5-T1-S9.png "get deployments")
 
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9-1.png "Pod deployment is in progress")
+   ![Obteniendo los pods.](media/EX5-T1-S9-1.png "get pods")
 
-1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
+1. Ahora ejecute el siguiente comando para ver la versión de imagen actual de la aplicación. Asegúrese de actualizar el valor **PODNAME** con el valor que copió en el último paso.
 
      ```bash
      kubectl describe pods [PODNAME] -n contoso-traders
      ```
    
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S10.png "Pod deployment is in progress")
+   ![Visualizando la versión de imagen actual de la app.](media/EX5-T1-S10.png "kubectl describe pods")
 
-1. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
+1. Ahora, para configurar la nueva imagen en los pods, ejecute el siguiente comando. Asegúrese de actualizar los valores `[SUFFIX]` con **<inject key="DeploymentID" />**
 
      ```bash
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
      ```
      
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
+    ![Configurando la nueva imagen de los pods.](media/EX5-T1-S11.png "kubectl set image deployments")
 
-1. Now try describing the latest pods again and see which image is mapped with the pod.
+1. Ahora intente describir los pods más recientes nuevamente y vea qué imagen está asignada al pod.
 
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
+    ![Descripción de los pods más recientes.](media/imageupdates2.png "Descripción de los pods más recientes")
     
-1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
+1. Una vez realizada la actualización de la imagen en el pod, regrese al portal de Azure y explore/actualice la página de la aplicación web nuevamente y debería poder ver los cambios en la página de inicio.
 
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
+   ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
     
-### Task 2: Configure Kubernetes Ingress
+### Tarea 2: Configurar Kubernetes Ingress
 
-This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.
+Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Nginx](https://nginx.org/en/) para aprovechar el enrutamiento basado en rutas y la terminación TLS.
 
-1. Run the following command from a Windows command terminal to add the Nginx stable Helm repository:
+1. Ejecute el siguiente comando desde una terminal de comandos de Windows para agregar el repositorio estable Helm de Nginx:
 
     ```bash
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
     ```
 
-2. Update your helm package list.
+2. Actualice su lista de paquetes de helm.
 
    ```bash
    helm repo update
    ```
 
-   > **Note**: If you get a "no repositories found." error, then run the following command. This will be added back to the official Helm "stable" repository.
+   > **Nota**: Si aparece el mensaje de error "no se encontraron repositorios", ejecute el siguiente comando. Esto agregará nuevamente el repositorio "estable" oficial de Helm.
    >
    > ```bash
    > helm repo add stable https://charts.helm.sh/stable 
    > ```
 
-3. Install the Ingress Controller resource to handle ingress requests as they come in. The Ingress Controller will receive a public IP of its own on the Azure Load Balancer and handle requests for multiple services over ports 80 and 443.
+3. Instale el recurso de Controlador Ingress para manejar las solicitudes de ingreso a medida que llegan. El Controlador Ingress recibirá una dirección IP pública propia en Azure Load Balancer y manejará las solicitudes para múltiples servicios a través de los puertos 80 y 443.
 
    ```bash
    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
    ```
 
-4. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
+4. Navegue al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**. Seleccione **Services and ingresses** en los recursos de Kubernetes y copie la Dirección IP en **External IP** para el servicio `nginx-ingress-RANDOM-nginx-ingress`.
 
-    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
+    > **Nota**: La actualización podría tardar unos minutos; alternativamente, puede encontrar la IP usando el siguiente comando en Azure Cloud Shell.
     >
     > ```bash
     > kubectl get svc --namespace contoso-traders
     > ```
     >
-   ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
+   ![Una captura de pantalla de Azure Cloud Shell que muestra el resultado del comando.](media/controller.png "Viendo la dirección IP del Controlador de Ingress")
 
-5. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
+5. Dentro de la terminal de comandos de Windows, cree un script para actualizar el nombre DNS público para la IP externa de ingress.
 
    ```bash
    code update-ip.ps1
    ```
    
-   Paste the following as the contents. Make sure to replace the following placeholders in the script:
+   Pegue lo siguiente como contenido del script. Asegúrese de reemplazar los siguientes marcadores de posición en el script:
 
-   - `[IP]`: Replace this with the IP Address copied from step 5.
-   - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
-   - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
-   - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
+   - `[IP]`: Reemplace esto con la Dirección IP copiada del paso 5.
+   - `[KUBERNETES_NODE_RG]`: Reemplace `SUFFIX` con este valor: **<inject key="DeploymentID" />**.
+   - `[DNSNAME]`: Reemplace esto con el mismo valor SUFFIX **<inject key="DeploymentID" />** que utilizó anteriormente para esta práctica de laboratorio.
+   - `[PUBLICIP]`: Reemplace `SUFFIX` con este valor: **<inject key="DeploymentID" />**.
 
    ```bash
    # Create a SecureString from the client's secret
@@ -180,43 +180,43 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    }
    }
    ```
-6. Save changes and close the editor.
+6. Guarde los cambios y cierre el editor.
 
-7. Run the update script.
+7. Ejecute el script de actualización.
 
    ```bash
    powershell ./update-ip.ps1
    ```
    
-   ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/2dg125.jpg "Update the IP and SUFFIX values")
+   ![Resultado de la ejecución del script.](media/2dg125.jpg "Resultado de la ejecución del script")
 
-8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** in the below URL before browsing it.
+8. Verifique la actualización de IP visitando la URL en su navegador. Asegúrese de actualizar estos valores: `[SUFFIX]` con **<inject key="DeploymentID" />** y `[AZURE-REGION]` con **<inject key="Region" />** en la siguiente URL antes de navegar por ella.
 
-    > **Note**: It is normal to receive a 404 message at this time.
+    > **Nota**: Es normal recibir un mensaje 404 en este momento.
 
     ```text
     http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
     ```
    ![](media/15.png )
 
-   >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below-mentioned command and try accessing the URL again.
+   >**Nota**: Si la URL no funciona o no recibe un error 404. Ejecute el comando que se menciona a continuación e intente acceder a la URL nuevamente.
 
    ```bash
    helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
    ```
 
-9. Use helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
+9. Utilice helm para instalar `cert-manager`, una herramienta que puede proporcionar certificados SSL automáticamente desde letsencrypt.org.
 
     ```bash
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
-10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
+10. Para crear un recurso `ClusterIssuer` personalizado para que el servicio `cert-manager` lo utilice al manejar solicitudes de certificados SSL, ejecute el siguiente comando en el Símbolo del sistema de Windows.
 
     ```bash 
     code clusterissuer.yml
     ```
-11. Inside the **clusterissuer.yml** file copy and paste the following content:
+11. Dentro del archivo **clusterissuer.yml** copie y pegue el siguiente contenido:
 
     ```yaml
     apiVersion: cert-manager.io/v1
@@ -240,28 +240,28 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
               class: nginx
     ```
 
-12. Save changes and close the editor.
+12. Guarde los cambios y cierre el editor.
 
-13. Create the issuer using `kubectl`.
+13. Cree el emisor usando `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f clusterissuer.yml
     ```
 
-14. Now you can create a certificate object.
+14. Ahora puede crear un objeto de certificado.
 
-    > **Note**:
-    > Cert-manager might have already created a certificate object for you using ingress-shim.
+    > **Nota**:
+    > Es posible que Cert-manager ya haya creado un objeto de certificado para usted usando ingress-shim.
     >
-    > To verify that the certificate was created successfully, use the `kubectl describe certificate tls-secret` command.
+    > Para verificar que el certificado se creó correctamente, utilice el comando `kubectl describe certificado tls-secret`.
     >
-    > If a certificate is already available, skip to step 16.
+    > Si ya hay un certificado disponible, vaya al paso 16.
 
     ```bash
     code certificate.yml
     ```
 
-15. Inside the **certificate.yml** file copy and paste the following content:
+15. Dentro del archivo **certificate.yml** copie y pegue el siguiente contenido:
 
      ```yaml
      apiVersion: cert-manager.io/v1
@@ -277,17 +277,17 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
          name: letsencrypt-prod
          kind: ClusterIssuer
      ```
-16. Use the following as the contents and update the `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** to match your ingress DNS name.
+16. Actualice el valor `[SUFFIX]` con **<inject key="DeploymentID" />** y `[AZURE-REGION]` con **<inject key="Region" />** para que coincida con su nombre DNS de Ingress.
 
-14. Save changes and close the editor.
+14. Guarde los cambios y cierre el editor.
 
-15. Create the certificate using `kubectl`.
+15. Cree el certificado usando `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f certificate.yml
     ```
 
-    > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret -n contoso-traders` command and look for an _Events_ output similar to the following:
+    > **Nota**: Para verificar el estado de la emisión del certificado, use el comando `kubectl describe certificate tls-secret -n contoso-traders` y busque en la salida una sección _Events_ similar a la siguiente:
     >
     > ```text
     > Type    Reason         Age   From          Message
@@ -299,15 +299,15 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
     > ```
 
-    It can take between 5 and 30 minutes before the tls-secret becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
+    Pueden pasar entre 5 y 30 minutos antes de que tls-secret esté disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt.
 
-16. Now you can create an ingress resource for the content applications.
+16. Ahora puede crear un recurso de Ingress para las aplicaciones de contenido.
 
     ```bash
     code content.ingress.yml
     ```
 
-17. Inside the **content.ingress.yml** file copy and paste the following content:
+17. Dentro del archivo **content.ingress.yml** copie y pegue el siguiente contenido:
 
     ```yaml
     apiVersion: networking.k8s.io/v1
@@ -346,26 +346,26 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
                    number: 3001
     ```
 
-18. Use the following as the contents and update the `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** to match your ingress DNS name.
+18. Actualice el valor `[SUFFIX]`: **<inject key="DeploymentID" />** y `[AZURE-REGION]`: **<inject key="Region" />** para que coincidan con su nombre DNS de Ingress.
 
-19. Save changes and close the editor.
+19. Guarde los cambios y cierre el editor.
 
-20. Create the ingress using `kubectl`.
+20. Cree el ingress usando `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f content.ingress.yml
     ```
 
-21. Refresh the ingress endpoint in your browser. You should be able to visit the website and see all the content.
+21. Actualice el punto de conexión de Ingress en su navegador. Debería poder visitar el sitio web y ver todo el contenido.
 
     ![](media/16.png )
    
-22. Test TLS termination by visiting services again using `https`.
+22. Pruebe la terminación TLS visitando los servicios nuevamente usando `https`.
 
-    > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
+    > **Nota**: El sitio SSL puede tardar entre 5 y 30 minutos en estar disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt.
 
-23. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+23. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-## Summary
+## Resumen
 
-In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
+En este ejercicio, realizó una actualización continua y configuró Kubernetes Ingress.

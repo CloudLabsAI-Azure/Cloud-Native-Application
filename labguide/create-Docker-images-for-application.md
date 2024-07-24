@@ -1,32 +1,32 @@
-## Exercise 1: Build Docker Images for the Application
+## Ejercicio 1: Crear Imágenes de Docker para la Aplicación
   
-**Duration**: 30 Minutes
+**Duración**: 30 Minutos
 
-## Overview
+## Descripción General
 
-In this exercise, you will learn how to Containerize the Contoso Traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+En este ejercicio, aprenderá a containerizar la aplicación Contoso Traders utilizando imágenes de Docker. Las aplicaciones en contenedores son aplicaciones que se ejecutan en entornos de ejecución aislados llamados contenedores. Una imagen de Docker es un archivo que se utiliza para ejecutar código en un contenedor de Docker. Las imágenes de Docker actúan como un conjunto de instrucciones para crear un contenedor Docker, como una plantilla. Además, enviará las imágenes de Docker creadas a Azure Container Registry.
    
-### Task 1: Set up a local infrastructure with the Linux VM
+### Tarea 1: Configurar una infraestructura local con la Máquina Virtual Linux
 
-In this task, you will be connecting to the Build agent VM using the Command prompt and will be cloning the Contoso trader website GitHub repo.  
+En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilación mediante el Símbolo del sistema y clonará el repositorio de GitHub del sitio web de Contoso Traders.
 
-1. Once you log into the VM, search for **cmd** **(1)** in the Windows search bar and click on **Command Prompt** **(2)** to open.
+1. Una vez que inicie sesión en la Máquina Virtual, busque **cmd** **(1)** en la barra de búsqueda de Windows y haga clic en **Símbolo del sistema** **(2)** para abrirla.
 
-   ![](media/latest-ex1-opencmd.png "open cmd")
+   ![](media/latest-ex1-opencmd.png "abrir cmd")
     
-1. Run the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
+1. Ejecute el comando proporcionado **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para conectarse a la MV de Linux usando ssh.
    
-   >**Note**: In the command prompt, type **yes** and press **Enter** for `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
+   >**Nota**: En el símbolo del sistema, escriba **yes** y presione **Enter** para `¿Seguro que quiere seguir conectándote (yes/no/[fingerprint])?`
    
-1. Once the SSH is connected to the VM, please enter the VM password given below:
+1. Una vez que SSH esté conectado a la VM, ingrese la contraseña de la VM que se proporciona a continuación:
    
-    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+    * Contraseña: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-   ![](media/EX1-T1-S3.png "open cmd")
+   ![](media/EX1-T1-S3.png "abrir cmd")
    
-   >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
+   >**Nota**: Tenga en cuenta que mientras escribe la contraseña no podrá verla por motivos de seguridad.
     
-1. Once the VM is connected, run the below command to clone the GitHub repository that we are going to use for the lab.
+1. Una vez que la VM esté conectada, ejecute el siguiente comando para clonar el repositorio de GitHub que usaremos para la práctica de laboratorio.
 
     ``` 
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
@@ -34,7 +34,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
     ![](media/EX1-T1-S4.png)
     
-    > **Note:** If you receive an output message stating - the destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
+    > **Nota:** Si recibe un mensaje de salida que indica: - la ruta de destino 'Cloud-Native-Application' ya existe y no es un directorio vacío, por favor ejecute los siguientes comandos y luego vuelva a realizar el paso 4 de la tarea.
 
      ```
         sudo su
@@ -43,7 +43,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
      ```   
      ![](media/EX1-T1-S4-1.png)
     
-1. After the GitHub cloning is completed, run the below command to change the directory to the lab files.
+1. Una vez completada la clonación de GitHub, ejecute el siguiente comando para cambiar el directorio a los archivos de laboratorio.
     
     ```
     cd Cloud-Native-Application/labfiles/ 
@@ -51,11 +51,11 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
     ![](media/EX1-T1-S5.png)
     
-### Task 2: Build Docker images to containerize the application and push them to the container registry
+### Tarea 2: Crear Imágenes de Docker para contenerizar la aplicación y empujarlas al registro del contenedor
 
-In this task, you will be building the docker images to containerize the application and will be pushing them to the ACR (Azure Container Registry) to later use in AKS.
+En esta tarea, creará las imágenes de Docker para contenerizar la aplicación y las enviará a ACR (Azure Container Registry) para usarlas más adelante en AKS.
 
-1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
+1. Ejecute el siguiente comando para iniciar sesión en Azure, navegue hasta la URL de inicio de sesión del dispositivo `https://microsoft.com/devicelogin` en el navegador y copie el código de autenticación.
 
    ``` 
    az login
@@ -63,41 +63,41 @@ In this task, you will be building the docker images to containerize the applica
     
    ![](media/EX1-T2-S1.png)
     
-1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
+1. Ingrese el código de autenticación copiado **(1)** y haga clic en **Siguiente** **(2)**.
 
    ![](media/ex1-codelogin.png)
    
-1. On the **Sign in to your account** tab you will see a login screen, in that enter the following email/username and then click on **Next**.
+1. En la pestaña **Inicie sesión en su cuenta** verá una pantalla de inicio de sesión, en ella ingrese el siguiente correo electrónico/nombre de usuario y luego haga clic en **Siguiente**.
 
-   * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
+   * Correo electrónico/Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
 
-    > **Note:** If you get a **Pick an account** popup, select the above Email ID.
+    > **Nota:** Si aparece una ventana emergente **Elige una cuenta**, seleccione el ID de Correo electrónico anterior.
 
-1. Now enter the following password and click on **Sign in**.
+1. Ahora ingrese la siguiente contraseña y haga clic en **Iniciar sesión**.
 
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
+   * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
 
-    > **Note:** You will not get the popup to enter the password if you have the **Pick an account** popup where you had chosen the account.
+    > **Nota:** No aparecerá la ventana emergente para ingresar la contraseña si apareció la ventana emergente **Elija una cuenta** donde seleccionó la cuenta.
 
-1. In a pop-up to confirm the sign-into Microsoft Azure CLI, click on **Continue**.
+1. En la ventana emergente para confirmar el inicio de sesión en la CLI de Microsoft Azure, haga clic en **Continuar**.
 
    ![](media/ex1-logincontinue.png)
 
-1. After signing in, you will see a confirmation popup **You have signed in to the Microsoft Azure Cross-platform Command Line Interface application on your device**. Close the browser tab and open the previous Command Prompt session.
+1. Después de iniciar sesión, verá una ventana emergente de confirmación **Ha iniciado sesión en la Aplicación Multiplataforma de la Interfaz de Línea de Comandos de Microsoft Azure en su dispositivo**. Cierre la pestaña del navegador y abra la sesión anterior del Símbolo del sistema.
 
    ![](media/ex1-t2-step6-signin-confirm.png)
 
-1. Once you log in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
+1. Una vez que inicie sesión en Azure, creará las imágenes de Docker en los siguientes pasos y las enviará a ACR.
 
    ![](media/EX1-T2-S6.png)
 
-1. Please make sure that you are in the **labfiles** directory before running the next steps as the docker build needs to find the DockerFile to create the image.
+1. Por favor asegúrese de estar en el directorio **labfiles** antes de ejecutar los siguientes pasos, ya que el comando docker build necesita encontrar el archivo DockerFile para crear la imagen.
 
     ```
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the below command with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value.
+1. Ahora construya la imagen docker **contosotraders-carts** usando el Dockerfile que se encuentra en el directorio. Observe cómo se hace referencia al Azure Container Registry implementado. Reemplace el marcador de posición SUFFIX en el siguiente comando con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
@@ -105,7 +105,7 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/EX1-T2-S8.png)
     
-1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Repita los pasos para crear la imagen docker **contosotraders-Products** con el siguiente comando. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
@@ -113,7 +113,7 @@ In this task, you will be building the docker images to containerize the applica
 
     ![](media/EX1-T2-S9.png)
 
-1. Run the below command to change the directory to `services` and open the `configService.js` file.
+1. Ejecute el siguiente comando para cambiar el directorio a `services` y abra el archivo `configService.js`.
 
     ```
     cd src/ContosoTraders.Ui.Website/src/services
@@ -123,9 +123,9 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/EX1-T2-S10.png)
     
-1. In the `vi` editor, press **_i_** to get into the `insert` mode. In the APIUrl and APIUrlShoppingCart, replace **deploymentid** with **<inject key="DeploymentID" enableCopy="true"/>** value and **REGION** with **<inject key="Region" enableCopy="true"/>** value. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+1. En el editor `vi`, presione **_i_** para ingresar al modo `insertar`. En APIUrl y APIUrlShoppingCart, reemplace **deploymentid** con el valor **<inject key="DeploymentID" enableCopy="true"/>** y **REGION** con el valor **<inject key="Region" enableCopy="true"/>**. Luego presione **_ESC_**, escriba **_:wq_** para guardar los cambios y cierre el archivo. Necesitamos actualizar la URL de la API aquí para que la aplicación Contoso Traders pueda conectarse a la API del producto una vez que se envíe a los contenedores de AKS.
     
-    >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
+    >**Nota**: Si **_ESC_** no funciona, presione `ctrl + [` y luego escriba **_:wq_** para guardar los cambios y cerrar el archivo.
     
 
     ```
@@ -135,14 +135,14 @@ In this task, you will be building the docker images to containerize the applica
 
     ![](media/cdnfix1.png)
 
-1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
+1. Ejecute el siguiente comando para cambiar el directorio a la carpeta `ContosoTraders.Ui.Website`.
 
     ```
     cd
     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
-1. Now build the **contosotraders-UI-Website** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Ahora construya la imagen docker **contosotraders-UI-Website** con el siguiente comando. Asegúrese de reemplazar el SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
 
     ```
     docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
@@ -151,16 +151,16 @@ In this task, you will be building the docker images to containerize the applica
     ![](media/EX1-T2-S13.png)
     
     
-    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
+    >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la compilación. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente. Además, es posible que observe algunas advertencias relacionadas con la actualización de la versión de npm, lo cual es esperado y no afecta la funcionalidad del laboratorio.
     
-1. Redirect to the **labfiles** directory before running the next steps.
+1. Rediríjase al directorio **labfiles** antes de ejecutar los siguientes pasos.
 
     ```
     cd
     cd Cloud-Native-Application/labfiles/
     ```
 
-1. Observe the built Docker images by running the command `docker image ls`. The images are tagged with the latest, also it is possible to use other tag values for versioning.
+1. Observe las imágenes de Docker creadas ejecutando el comando `docker image ls`. Las imágenes están etiquetadas con latest, la última versión, aunque también es posible utilizar otros valores de etiqueta para el control de versiones.
 
     ```
     docker image ls
@@ -168,23 +168,23 @@ In this task, you will be building the docker images to containerize the applica
 
     ![](media/EX1-T2-S15.png)
 
-1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Navegue al Portal de Azure, abra el Registro de contenedor **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** desde el Grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
    ![](media/ex1-acr1.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** **(2)** under Settings from left side menu. **Copy** **(3)** the Password and paste it into a text file for later use.
+1. Desde el Registro de Contenedor **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** seleccione **Claves de acceso** **(2)** en Configuración del menú lateral de la izquierda. **Copie** **(3)** la Contraseña y péguela en un archivo de texto para usarla más adelante.
 
    ![](media/ex1-acr2.png)    
 
-1. Now switch back to **Command Prompt** and log in to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value and password with the copied container registry password which you have copied in the previous step in the below command.
+1. Ahora vuelva a **Símbolo del sistema** e inicie sesión en ACR usando el siguiente comando; actualice el valor SUFFIX y la contraseña de ACR en el siguiente comando.  Debería poder ver la salida mostrada en la captura de pantalla. Asegúrese de reemplazar el SUFFIX con el valor de DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionados y password con la contraseña del registro del contenedor, que copió en el paso anterior, en el siguiente comando.
 
     ```
     docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
     ```
 
-    ![](media/EX1-T2-S18.png "open cmd")
+    ![](media/EX1-T2-S18.png "abrir cmd")
 
-1. Once you log in to the ACR, please run the below commands to push the Docker images to the Azure container registry. Also, ensure that you update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
+1. Una vez que inicie sesión en ACR, ejecute los siguientes comandos para enviar las imágenes de Docker al registro del contenedor de Azure. Además, asegúrese de actualizar el valor SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en los siguientes comandos.
 
    ```
    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
@@ -198,12 +198,12 @@ In this task, you will be building the docker images to containerize the applica
    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
    ```
    
-1. You should be able to see the docker image getting pushed to ACR as shown in the below screenshot. 
+1. Debería poder ver la imagen de docker enviada al ACR como se muestra en la siguiente captura de pantalla.
     
-    ![](media/cloudnative2.png "open cmd")
+    ![](media/cloudnative2.png "abrir cmd")
     
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-## Summary
+## Resumen
 
-In this exercise, you have completely containerized your web application with the help of docker and pushed it to the container registry.
+En este ejercicio, ha contenedorizado completamente su aplicación web con la ayuda de Docker y la ha empujado al registro de contenedores.

@@ -1,46 +1,46 @@
-## Exercise 4: Scale the application and validate HA
+## Ejercicio 4: Escale la aplicación y valide HA
 
-**Duration**: 40 minutes
+**Duración**: 40 minutos
 
-## Overview
+## Descripción general
 
-At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front end in the existing cluster.
+En este punto, ha desplegado una sola instancia de los contenedores de servicios Web y API Productos. En este ejercicio, aumentará el número de instancias de contenedor para el servicio web y escalará el front-end en el clúster existente.
 
-### Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
+### Tarea 1: Modificar las implementaciones de recursos de Kubernetes en el servicio de Kubernetes
 
-In this task, you will increase the number of instances for the API deployment in the AKS. While it is deploying, you will observe the changing status.
+En esta tarea, aumentará el número de instancias para la implementación del API en AKS. Mientras se está implementando, observará el estado cambiante.
 
-1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads (1)** under Kubernetes resources from the left side menu and then select the **contoso-traders-products (2)** deployment.
+1. Vaya al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** del grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Seleccione **Cargas de trabajo (1)** en recursos de Kubernetes en el menú del lado izquierdo y luego seleccione la implementación **contoso-traders-products (2)**.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/1.png "Setting replicas to 2")
+   ![Seleccionando la carga de trabajo en AKS.](media/1.png "Seleccionando la carga de trabajo en AKS")
 
-1. Select **YAML (1)** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Seleccione **YAML (1)** en el menú de la izquierda en la Descripción general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar + guardar (3)**. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/3.png "Setting replicas to 2")
+   ![En el cuadro de diálogo de edición de YAML, se ingresa 2 en el número deseado de réplicas.](media/3.png "Configurando las réplicas en 2")
 
-    >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.
+    >**Nota**: Si la implementación se completa rápidamente, es posible que no vea la implementación en estados de espera en el portal, como se describe en los siguientes pasos.
 
-1. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
+1. Actualmente se está implementando y puede ver que hay una instancia en estado sana y otra en espera.
 
-1. Open the Contoso Traders web application, and you can see that the application should still work without errors.
+1. Abra la aplicación web Contoso Traders y podrá comprobar que la aplicación sigue funcionando sin errores.
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
+    ![Aplicación web funcionando correctamente.](media/11.png "Aplicación web funcionando correctamente")
 
-### Task 2: Resolve failed replica provisioning 
+### Tarea 2: Resolver el aprovisionamiento de réplicas fallido
 
-In this task, you will resolve the failed API replicas. These failures occur due to the inability to meet the requested resources.
+En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se producen por la imposibilidad de satisfacer los recursos solicitados.
 
-1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
+1. En el servicio Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, seleccione **Cargas de trabajo (1)** y luego elija la implementación **contoso-traders-products (2)**. 
 
-    ![In the Workload view with the API deployment highlighted.](media/exe4-task2-step1-select-workload.png "API deployment is now healthy")
+    ![Seleccionando la carga de trabajo.](media/exe4-task2-step1-select-workload.png "Seleccionando la carga de trabajo")
 
-1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
+1. Seleccione **YAML** en el menú de la izquierda en la Descripción general de **contoso-traders-products**.
 
-   ![In the Workload view with the API deployment highlighted.](media/CNA-Ex4-task2-step2.png "API deployment is now healthy")
+   ![Seleccionando YAML.](media/CNA-Ex4-task2-step2.png "Seleccionando YAML")
 
-1. In the **YAML** screen, scroll down and change the following items:
+1. En la pantalla **YAML**, desplácese hacia abajo y cambie los siguientes elementos:
 
-   - Under the **spec** section add the following **ports (1)**.
+   - En la sección **especificaciones** agregue los siguientes **puertos (1)**.
 
       ```yaml
       ports:
@@ -48,7 +48,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
           protocol: TCP
       ```
 
-   - Modify the **cpu** and set it to **100m (2)**. CPU is divided between all Pods on a Node.
+   - Modifique la **cpu** y configúrela en **100m (2)**. La CPU se divide entre todos los Pods de un Nodo.
 
       ```yaml
       resources:
@@ -57,56 +57,56 @@ In this task, you will resolve the failed API replicas. These failures occur due
           memory: 128Mi
       ```
 
-      ![In the edit YAML dialog, showing two changes required.](media/cloudnative10.png "Modify deployment manifest")
+      ![Modificando el manifiesto de implementación.](media/cloudnative10.png "Modificando el manifiesto de implementación.")
 
-1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Seleccione **Revisar + guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
-1. Return to the **Workloads** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, refresh the page and you will now see that the Deployment is healthy with **two** Pods operating.
+1. Regrese a la vista principal **Cargas de trabajo** del servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, refresque la página y ahora verá que la implementación está sana con **dos** Pods en funcionamiento.
 
-   ![In the Workload view with the API deployment highlighted.](media/2.png "API deployment is now healthy")       
+   ![Despliegue del API en estado sano.](media/2.png "Despliegue del API en estado sano.")       
 
-### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
+### Tarea 3: Configurar el Autoescalado Horizontal para pods del servicio de Kubernetes
 
-In this task, you will be configuring the Horizontal Autoscaling for your Kubernetes service pods.
+En esta tarea, configurará el autoescalado horizontal para sus pods del servicio de Kubernetes.
    
-1. Navigate back to your Windows command prompt.
+1. Vuelva al Símbolo del sistema de Windows.
 
-1. Run the below command to configure the Horizontal autoscaling for your API Products pods.
+1. Ejecute el siguiente comando para configurar el autoescalado horizontal para sus pods del API de Productos.
 
    ```bash 
    kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10
    ```
    
-   ![In the Workload view with the API deployment highlighted.](media/HS11.png "API deployment is now healthy")
+   ![Configurando el autoescalado horizontal.](media/HS11.png "kubectl autoscale deployment")
    
-1. Run the below command to check the status of the newly added Horizontal Pod Autoscaler.
+1. Ejecute el siguiente comando para comprobar el estado del Autoescalador Horizontal de Pods recién añadido.
 
    ```
    kubectl get hpa -n contoso-traders
    ```
    
-   ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
+   ![Verificando el estado del autoscaler horizontal.](media/HS12.png "kubectl get hpa")
 
-### Task 4: Autoscaling on Azure Kubernetes Service cluster
+### Tarea 4: Autoescalado en el clúster de Azure Kubernetes Service
 
-In this task, you will be enabling the cluster autoscaler for the existing AKS cluster and you will be autoscaling the cluster node pools.
+En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS existente y escalará automáticamente los grupos de nodos del clúster.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the below command after updating the values in the below command.
+1. Vuelva al símbolo del sistema de Windows. Si no ha iniciado sesión en Azure, hágalo con el siguiente comando después de actualizar los valores en el comando.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
+   * Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
+   * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
 
     ```
     az login -u [username] -p [Password]
     ```
 
-1. In order to set up the Kubernetes cluster connection, make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command and run.
+1. Para configurar la conexión del clúster de Kubernetes, asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando y ejecútelo.
 
     ```
     az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
     ```
     
-1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `null`. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.   
+1.  Verifique el `recuento` de grupos de nodos en el clúster y asegúrese de que `enableblingAutoScaling` sea `null`. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.   
     
      ```
      az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
@@ -114,7 +114,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
     
     ![](media/ex4-t3-scaling1.png)
 
-1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`.  Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` sea `true`. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
 
     ```
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
@@ -122,9 +122,9 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
   
    ![](media/ex4-t3-scaling2.png)
    
-    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
+    >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la actualización. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente.
    
-1. Run the below command to autoscale the node pools in the existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Ejecute el siguiente comando para escalar automáticamente los grupos de nodos en el clúster existente. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
 
     ```
     az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
@@ -132,131 +132,131 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
    
    ![](media/ex4-t3-scaling3.png)
    
-   >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
+   >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la actualización. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente.
 
-### Task 5: Restart containers and validate HA
+### Tarea 5: Reiniciar contenedores y validar HA
 
-In this task, you will restart containers and validate that the restart does not impact the running service.
+En esta tarea, reiniciará los contenedores y validará que el reinicio no afecte al servicio en ejecución.
 
-1. In the Azure Kubernetes Service blade, select **Workloads (1)** and then select the **contoso-traders-product (2)** deployment. 
+1. En la hoja Azure Kubernetes Service, seleccione **Cargas de trabajo (1)** y luego seleccione la implementación **contoso-traders-product (2)**.
 
-   ![In the Workload view with the API deployment highlighted.](media/upd-upd-productwkrlos.png "API deployment is now healthy")
+   ![En la vista Carga de trabajo con la implementación de API resaltada.](media/upd-upd-productwkrlos.png "La implementación de API ahora está en estado sano")
 
-1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Seleccione el elemento de navegación **YAML (1)** y aumente el contador de réplicas requeridas a `4` **(2)**, luego haga clic en **Revisar + guardar (3)** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
  
-   ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/4.png "API pod deployments")
+   ![Editando el número de replicas.](media/4.png "Editando el número de replicas")
 
-1. After a few moments you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
+1. Después de unos momentos, encontrará que el despliegue de **contoso-traders-product** ahora está ejecutando `4` réplicas exitosamente.
 
-   ![Viewing replica set in the Azure Portal.](media/5.png "Viewing replica set in the Azure Portal")
+   ![Viendo el conjunto de réplicas en el Portal de Azure.](media/5.png "Viendo el conjunto de réplicas en el Portal de Azure")
 
-1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
+1. Regrese a la pestaña del navegador con la página de la aplicación web cargada. Actualice la página una y otra vez. No verá ningún error.
 
-   ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/11.png "View web task hostname")
+   ![Página web de Contoso Traders.](media/11.png "Página web de Contoso Traders")
 
-1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
+1. Regrese a la página **contoso-traders-products| Descripción general**, seleccione **dos de los Pods (1)** al azar y elija **Eliminar (2)**.
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/6.png "Delete running pod instance")
+   ![Eliminando dos pods en ejecución.](media/6.png "Eliminando dos pods en ejecución")
 
-1. On the **Delete** page, Select **Confirm delete (1)**, and click on **Delete (2)** again.
+1. En la página **Eliminar**, seleccione **Confirmar eliminación (1)** y haga clic en **Eliminar (2)** nuevamente.
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/7.png "Delete running pod instance")
+   ![Confirmando la eliminación de pods.](media/7.png "Confirmando la eliminación de pods")
 
-1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
+1. Kubernetes lanzará nuevos Pods para cumplir con el número de réplicas requerido. Dependiendo de su vista, es posible que vea las instancias antiguas con el estado Finalizando y nuevas instancias con el estado Creado.
 
-   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/nwcontainer.png "API Pods changing state")
+   ![API Pods cambiando de estado".](media/nwcontainer.png "API Pods cambiando de estado")
 
-1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
+1. Regrese a la implementación de API de **contoso-traders-product**. Seleccione el elemento de navegación **YAML** y escale nuevamente a la réplica `1`.
 
-   ![Viewing replica set in the Azure Portal.](media/8.png "Viewing replica set in the Azure Portal")
+   ![Editando YAML.](media/8.png "Editando YAML")
 
-1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Seleccione **Revisar + guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
-1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
+1. Regrese a la página web de ContosoTraders en el navegador y actualice mientras Kubernetes reduce la cantidad de Pods. Debería poder ver el sitio web ejecutándose sin ningún problema.
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/11.png "View replica details")
+    ![Sitio web ContosoTraders.](media/11.png "Sitio web ContosoTraders")
 
-### Task 6: Configure CosmosDB Autoscale
+### Tarea 6: Configurar Autoscale en CosmosDB
 
-In this task, you will set up Autoscale on Azure Cosmos DB.
+En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
-1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
+1. En el Portal de Azure, navegue hasta la cuenta Azure CosmosDB **Contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-2. Select **Data Explorer (1)** from the left side menu. Within **Data Explorer**, expand the `contentdb` **(2)** database.
+2. Seleccione **Explorador de datos (1)** del menú del lado izquierdo. En **Explorador de datos**, expanda la base de datos `contentdb` **(2)**.
 
-    ![](media/9.png "View replica details")
+    ![](media/9.png "MongoDB contentdb")
 
-4. Under the `contentdb` database, expand **Items (1)** collection, select **Settings (2)**.
+4. En la base de datos `contentdb`, expanda la colección **Items (1)**, seleccione **Settings (2)**.
 
-    ![](media/exe4-task6-step3-select-settings.png "View replica details")
+    ![](media/exe4-task6-step3-select-settings.png "MogoDB contentdb")
 
-5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
+5. En la pestaña **Scale & Settings (1)**, seleccione **Autoscale (2)** para la configuración **Throughput** en **Scale** y haga clic en **Save (3)**.
 
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/exe4-task6-step4-autoscale.png "CosmosDB collection scale and settings")
+    ![La captura de pantalla muestra la pestaña Escala y configuración de Cosmos DB con Autoscale seleccionada](media/exe4-task6-step4-autoscale.png "Escala y configuración de la colección CosmosDB")
 
-### Task 7: Test CosmosDB Autoscale
+### Tarea 7: Probar Autoscale de CosmosDB
 
-In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
+En esta tarea, ejecutará un script de prueba de rendimiento que probará la característica Autoscale de Azure Cosmos DB para que pueda ver que ahora escalará a más de 400 RU/s.
 
-1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
+1. En el Portal de Azure, navegue hasta la cuenta de Azure CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-2. Select **Connection String** under **Settings**.
+2. Seleccione **Cadena de conexión** en **Configuración**.
 
-   ![](media/cnctionstring1.png "View replica details")
+   ![](media/cnctionstring1.png "Ver cadena de conexión")
 
-3. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in a text file for later use.
+3. En el panel **Cadena de conexión**, copie los valores **HOST (1)**, **NOMBRE DE USUARIO (2)** y **CONTRASEÑA PRINCIPAL (3)**. Guárdelos en un archivo de texto para usarlos más adelante.
 
-    ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
+    ![El panel Cadena de conexión de la cuenta de Cosmos DB con los campos para copiar resaltados.](media/cnctionstringnew.png "Ver Cadena de conexión de CosmosDB")
 
-4. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
+4. Abra el símbolo del sistema y conéctese a la MV del Agente de Compilación usando el comando  **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** proporcionado.
 
-5. When asked for the password, enter **Build Agent VM Password** given below.
+5. Cuando se le solicite la contraseña, ingrese la **Contraseña de la MV del Agente de Compilación** que se proporciona a continuación.
 
-   * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+   * Contraseña: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-6. On the **Build agent VM**, navigate to the `~/labfiles` directory.
+6. En la **MV del Agente de Compilación**, mavegue hasta el directorio `~/labfiles`.
 
     ```bash
     cd Cloud-Native-Application/labfiles/src
     ```
 
-7. Run the following command to open the `perftest.sh` script in the editor window.
+7. Ejecute el siguiente comando para abrir el script `perftest.sh` en la ventana del editor.
 
     ```bash
     sudo chmod 777 perftest.sh
     vi perftest.sh
     ```
 
-8. There are several variables declared at the top of the `perftest.sh` script. Press **_i_** to get into `insert` mode. Then modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
+8. Hay varias variables declaradas en la parte superior del script `perftest.sh`. Presione **_i_** para ingresar al modo `insert`. Luego modifique las variables **host**, **username** y **password** estableciendo sus valores en los valores correspondientes de la Cadena de Conexión de Cosmos DB que se copiaron anteriormente.
 
-    ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/updatepreftest.png "Modify the connection information in Vim")
+    ![La captura de pantalla muestra Vim con el archivo perftest.sh abierto y las variables configuradas en valores de cadena de conexión de Cosmos DB.](media/updatepreftest.png "Modificar la información de conexión en Vim")
 
-9. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
+9. Luego presione **_ESC_**, escriba **_:wq_** para guardar los cambios y cerrar el archivo.
     
-    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
+    >**Nota**: Si **_ESC_** no funciona, presione `ctrl+[` y luego escriba **_:wq_** para guardar los cambios y cerrar el archivo.
     
-10. Run the following command to execute the `perftest.sh` script to run a small load test against CosmosDB. This script will consume RUs in CosmosDB by inserting many documents into the Sessions container.
+10. Ejecute el siguiente comando para ejecutar el script `perftest.sh` para ejecutar una pequeña prueba de carga en CosmosDB. Este script consumirá RUs en CosmosDB al insertar muchos documentos en el contenedor Sessions.
 
     ```bash
     bash ./perftest.sh
     ```
 
-    > **Note:** The script will take a few minutes to complete its execution.
+    > **Nota:** El script tardará unos minutos en completar su ejecución.
 
-11. Once the script execution is completed, navigate back to the **CosmosDB account** in the Azure portal.
+11. Una vez que se complete la ejecución del script, regrese a la **Cuenta de CosmosDB** en el Portal de Azure.
 
-12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
+12. Desplácese hacia abajo en el panel **Descripción general** de la hoja **Cuenta de Cosmos DB** y busque el gráfico **Cargo de la solicitud**.
 
-    > **Note:** It may take 2 - 5 minutes for the activity on the CosmosDB collection to appear in the activity log. Wait a couple of minutes and then refresh the page if the recent Request charge doesn't show up right now.
+    > **Nota:** La actividad en la colección CosmosDB puede tardar de 2 a 5 minutos en aparecer en el registro de actividad. Espere un par de minutos y luego actualice la página si la carga de las solicitudes recientes no aparece en este momento.
 
-13. Notice that the **Request charge** now shows there was activity on the **CosmosDB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
+13. Observe que el **Cargo de la solicitud** ahora muestra que hubo actividad en la **cuenta de CosmosDB** que superó el límite de 400 RU/s que se estableció previamente antes de activar Autoscale.
 
-    ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/cosmos-request-charge.png "Recent CosmosDB activity graph")
+    ![La captura de pantalla muestra el gráfico de cargos de la solicitud de Cosmos DB que muestra la actividad reciente de la prueba de rendimiento](media/cosmos-request-charge.png "Gráfico de actividad reciente de CosmosDB")
     
-    >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
+    >**Nota**: En caso de que no vea datos en el gráfico, configure el rango de tiempo para que dure 1 hora.
 
-14. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+14. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-## Summary
+## Resumen
 
-In this exercise, you have increased service instances and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
+En este ejercicio, ha aumentado las instancias de servicio y configurado el autoescalado horizontal para los pods de AKS. Además, ha configurado y probado CosmosDB Autoscale.

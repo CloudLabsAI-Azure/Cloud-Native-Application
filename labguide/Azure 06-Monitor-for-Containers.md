@@ -1,38 +1,38 @@
-## Exercise 6: Azure Monitor for Containers - Optional
-   
-**Duration**: 10 Minutes
+## Ejercicio 6: Azure Monitor para contenedores - Opcional
 
-## Overview
+**Duración**: 10 Minutos
 
-In this exercise, you will be reviewing the Azure Monitor container insights for the AKS cluster. Azure Monitor helps you maximize the availability and performance of your applications and services. It delivers a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments.
+## Descripción general
 
-A few examples of what you can do with Azure Monitor include:
+En este ejercicio, revisará la información del contenedor de Azure Monitor para el clúster de AKS. Azure Monitor le ayuda a maximizar la disponibilidad y el rendimiento de sus aplicaciones y servicios. Ofrece una solución integral para recopilar, analizar y actuar sobre la telemetría desde su nube y entornos on-premise (locales).
 
-- Detect and diagnose issues across applications and dependencies with Application Insights.
-- Correlate infrastructure issues with VM insights and Container insights.
-- Collect data from monitored resources by using Azure Monitor Metrics.
+Algunos ejemplos de lo que puede hacer con Azure Monitor incluyen:
+
+- Detectar y diagnosticar problemas entre aplicaciones y dependencias con Application Insights.
+- Correlacionar problemas de infraestructura con información de MV y de contenedores.
+- Recopile datos de recursos monitoreados mediante Azure Monitor Metrics.
   
 
-### Task 1: Review Azure Monitor metrics
+### Tarea 1: Revisar las métricas de Azure Monitor
 
-In this task, you will be reviewing the monitored AKS cluster.
+En esta tarea, revisará el clúster de AKS monitoreado.
 
-1. Navigate back to the Azure portal in the browser and search for **Monitor (1)**, Select **Monitor (2)** from the result.
+1. Vuelva al Portal de Azure en el navegador y busque **Monitor (1)**. Seleccione **Monitor (2)** en el resultado.
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14.png "Add a Namespace")
+   ![Esta es una captura de pantalla mostrando cómo acceder a Azure Monitor.](media/14.png "Accediendo a Azure Monitor")
      
-1. From the left navigation pane, select **Containers (1)** from under the Insights menu, navigate to the **Monitored clusters (2)** section to review logs and select your **Kubernetes service (3)**.
+1. En el panel de navegación izquierdo, seleccione **Contenedores (1)** en el menú Información, navegue hasta la sección **Clústeres supervisados (2)** para revisar los registros y seleccione su **servicio Kubernetes (3)**.
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/13.png "Add a Namespace")
+   ![Accediendo a clusteres monitoreados.](media/13.png "Accediendo a clusteres monitoreados")
    
-1. You will be redirected to the Insight section in your Kubernetes service resource blade and you should be able to see some logs.
+1. Será redirigido a la sección Información en su hoja de recursos del servicio Kubernetes y debería poder ver algunos registros.
 
-   > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in the insight blade.
+   > **Nota**: Azure Monitor puede tardar hasta 15 minutos en mostrar datos en la hoja de información.
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/12.png "Add a Namespace")
+    ![Esta es una captura de pantalla que muestra datos monitoreados en el servicio Kubernetes.](media/12.png "Datos monitoreados del servicio Kubernetes")
 
-## Summary
+## Resumen
 
-In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster.
+En este ejercicio, revisó la información sobre contenedores de Azure Monitor para el clúster de AKS.
 
-## Lab ends
+## Fin del laboratorio

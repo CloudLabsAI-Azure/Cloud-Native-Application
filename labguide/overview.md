@@ -1,22 +1,22 @@
-# Cloud Native Applications
+# Aplicaciones Nativas de la Nube
 
-## Abstract and learning objectives
+## Resumen y objetivos de aprendizaje
 
-This hands-on lab will guide the student through deploying a web application and API microservice to a Kubernetes platform hosted on Azure Kubernetes Services (AKS). In addition, the lab will instruct the student on configuring the behaviour of these services through dynamic service discovery, service scale-out, and high availability in the context of AKS-hosted services. By demonstrating crucial Kubernetes concepts, the student will gain experience with the Kubernetes deployment and service resource types. The student will create them manually through the Azure Portal and manipulate their configurations to scale the associated microservice instances up and down and manage their CPU and memory resource allocations with the Kubernetes cluster.
+Esta práctica de laboratorio guiará al estudiante a través de la implementación de una aplicación web y un microservicio API en una plataforma Kubernetes alojada en Azure Kubernetes Services (AKS). Además, el laboratorio instruirá al estudiante sobre cómo configurar el comportamiento de estos servicios mediante el descubrimiento dinámico de servicios, la escalabilidad horizontal de servicios y la alta disponibilidad en el contexto de los servicios alojados en AKS. Al demostrar conceptos cruciales de Kubernetes, el estudiante obtendrá experiencia con la implementación de Kubernetes y los tipos de recursos de servicio. El estudiante los creará manualmente a través del Portal de Azure y manipulará sus configuraciones para escalar las instancias de microservicio asociadas hacia arriba y hacia abajo y gestionar sus asignaciones de recursos de CPU y memoria con el clúster de Kubernetes.
 
-At the conclusion of this lab, you have a solid understanding of how to build and deploy containerized applications to Azure Kubernetes Service and perform common tasks and procedures.
+Al finalizar esta práctica de laboratorio, tendrá un conocimiento sólido de cómo crear y desplegar aplicaciones en contenedores en Azure Kubernetes Service y realizar tareas y procedimientos comunes.
 
 
-## Overview
+## Descripción General
 
-Contoso Traders (ContosoTraders) provides online retail website services tailored to the electronics community. They are refactoring their application to run as a Docker application. They want to implement a proof of concept that will help them get familiar with the development process, lifecycle of deployment, and critical aspects of the hosting environment. They will be deploying their applications to Azure Kubernetes Service and want to learn how to deploy containers in a dynamically load-balanced manner, discover containers, and scale them on demand.
+Contoso Traders (ContosoTraders) proporciona servicios de sitios web minoristas en línea adaptados a la comunidad electrónica. Están refactorizando su aplicación para que se ejecute como una aplicación Docker. Quieren implementar una prueba de concepto que les ayude a familiarizarse con el proceso de desarrollo, el ciclo de vida de la implementación y los aspectos críticos del entorno de alojamiento. Desplegarán sus aplicaciones en Azure Kubernetes Service y quieren aprender a desplegar contenedores de forma dinámica con equilibrio de carga, descubrir contenedores y escalarlos bajo demanda.
 
-In this hands-on lab, you will assist with completing this POC with a subset of the application codebase. You will use a pre-created build agent based on Linux and an Azure Kubernetes Service cluster for running deployed applications. You will be helping them to complete the Docker setup for their application, test locally, push to an image repository, deploy to the cluster, test load-balancing and scale and use Azure Monitor and view the insights.
+En esta práctica de laboratorio, ayudará a completar esta POC con un subconjunto del código base de la aplicación. Utilizará un agente de compilación creado previamente basado en Linux y un clúster de Azure Kubernetes Service para ejecutar aplicaciones desplegadas. Les ayudará a completar la configuración de Docker para su aplicación, probar localmente, empujar a un repositorio de imágenes, desplegar en el clúster, probar el equilibrio de carga y la escala, usar Azure Monitor y ver la información.
 
-## Solution Architecture
+## Arquitectura de Solución
 
-Below is a diagram of the solution architecture you will build in this lab. Please study this carefully to understand the whole of the solution as you are working on the various components.
+A continuación se muestra un diagrama de la arquitectura de la solución que creará en esta práctica de laboratorio. Estudie esto detenidamente para comprender la solución completa mientras trabaja en los distintos componentes.
 
-The proposed containers deployed to the cluster are illustrated below with Cosmos DB as a managed service.
+Los contenedores propuestos desplegados en el clúster se ilustran a continuación con Cosmos DB como servicio administrado.
 
-  ![Selecting Add to create a deployment.](media/newoverview.png "Selecting + Add to create a deployment")
+  ![Seleccionando Agregar para crear un despliegue.](media/newoverview.png "Seleccionando + Agregar para crear un despliegue")

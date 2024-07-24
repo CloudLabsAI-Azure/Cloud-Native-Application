@@ -1,114 +1,114 @@
-## Exercise 3: Deploy the application to the Azure Kubernetes Service
-   
-**Duration**: 40 Minutes
+## Ejercicio 3: Implementar la aplicación en Azure Kubernetes Service
 
-## Overview
+**Duración**: 40 Minutos
 
-In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault Secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+## Descripción general
 
-### Task 1: Tunnel into the Azure Kubernetes Service cluster  
+En este ejercicio, desplegará su aplicación web en contenedores hacia AKS (Azure Kubernetes Service) con la ayuda de Key Vault Secrets y ACR, donde almacenó las imágenes de su aplicación web en contenedores. Además, explorará dos formas de desplegar la aplicación en AKS.
 
-This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
+### Tarea 1: Túnel hacia el clúster de Azure Kubernetes Service 
 
-> **Note**: The following tasks should be executed in the **Command Prompt**.
+Esta tarea recopilará la información que necesita sobre su clúster de Azure Kubernetes Service para conectarse al clúster y ejecutar comandos para conectarse al panel de administración de Kubernetes desde Cloud Shell.
 
-1. Open a new command prompt as Administrator in your jump VM and login to Azure with the below commands after updating the values in the below command.
+> **Nota**: Las siguientes tareas deben ejecutarse en el **Símbolo del sistema**.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
+1. Abra un nuevo símbolo del sistema como Administrador en su JumpVM e inicie sesión en Azure con los siguientes comandos después de actualizar los valores en el siguiente comando.
+
+   * Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
+   * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
    
     ```bash
     az login -u [username] -p [Password]
     ```
     
-    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform step-1 in a new command prompt as Administrator.
+    > **Nota:** Si encuentra algún error al ejecutar el comando 'az', ejecute el siguiente comando para instalar Azure CLI y cierre el símbolo del sistema. Vuelva a realizar el paso 1 en un nuevo símbolo del sistema como Administrador.
 
     ```bash
     choco install azure-cli
     ```
 
-1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
+1. Verifique que esté conectado a la suscripción correcta con el siguiente comando para mostrar su suscripción predeterminada:
 
    ```bash
    az account show
    ```
 
-   - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
+   - Asegúrese de estar conectado a la suscripción correcta. De lo contrario, enumere sus suscripciones y luego configure la suscripción por su ID con los siguientes comandos:
 
    ```bash
    az account list
    az account set --subscription {id}
    ```
 
-1. Run the below command to set up the Kubernetes cluster connection using kubectl. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Ejecute el siguiente comando para configurar la conexión del clúster de Kubernetes utilizando kubectl. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
 
    ```bash
    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
    ```
    
-   ![](media/cloudnative4.png "open cmd")
+   ![](media/cloudnative4.png "abrir cmd")
 
-1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
+1. Rápidamente ejecute un comando kubectl para generar una lista de nodos y verificar si la configuración es correcta.
 
    ```bash
    kubectl get nodes
    ```
 
-   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/cloudnative5.png "kubectl get nodes")   
+   ![En esta captura de pantalla de la consola, kubectl get nodes se escribió y ejecutó en el símbolo del sistema, lo que produce una lista de nodos.](media/cloudnative5.png "kubectl get nodes")   
 
-### Task 2: Setup Key Vault & Secrets 
+### Tarea 2: Configurar Key Vault & Secretos
 
-In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
+En esta tarea, generará un secreto en Key vault y creará la conexión entre AKS y Key Vault.
 
-1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key Vaults** from the list.
+1. Navegue al Portal de Azure, busque **Key Vault** en la barra de búsqueda, y seleccione **Almacenes de claves** de la lista.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cloudnative9.png "Add a Namespace")
+    ![Esta es una captura de pantalla del Portal de Azure para buscar Key Vault.](media/cloudnative9.png "Buscar Key Vault")
 
-1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vault** from the list.
+1. A continuación seleccione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vault** de la lista.
 
-1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **secrets** under Objects from the left side menu.
+1. Una vez que esté en la página del Almacén de claves **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** , seleccione **Secretos** debajo de Objetos en el menú lateral izquierdo.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv2.png "Add a Namespace")
+    ![Esta es una captura de pantalla del Portal de Azure accediendo a los secretos del key vault.](media/kv2.png "Select Key Vault secrets")
     
-1. Now click on the **Generate/Import** button to create the new secret.
+1. Ahora haga clic en el botón **Generar o importar** para crear el nuevo secreto.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv3.png "Add a Namespace")
+    ![Esta es una captura de pantalla del portal de Azure para generar un nuevo secreto.](media/kv3.png "Generar un secreto")
     
-1. In the **Create a secret** pane, enter the following details:
+1. En el panel **Crear un secreto**, ingrese los siguientes detalles:
 
-    - Name: **mongodbconnection**
-    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
-    -  Keep other values default and click on **Create**
+    - Nombre: **mongodbconnection**
+    - Valor secreto: Pegue la cadena de conexión de la cuenta de Azure CosmosDB for MongoDB que copió en el ejercicio anterior. 
+    - Mantenga los demás valores con la información por defecto y haga clic en **Crear**.
     
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
+     ![Esta es una captura de pantalla con los valores a colocar al crear un secreto.](media/mongodbconnection.jpg "Crear un secreto")
      
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
+     ![Esta es una captura de pantalla con el secreto mongodbconnection creado.](media/kv5.png "Secreto mongodbconnection creado")
      
-1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
+1. Abra un nuevo **Símbolo del sistema** y ejecute el siguiente comando para crear un secreto usando kubectl. 
 
     ```sh
     kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnection --namespace=contoso-traders
     ```
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
+    ![Esta es una captura de pantalla para crear un secreto usando kubectl.](media/3..1.png "kubectl create secret")
     
-1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under **Secrets**, you should be able to see the newly created secret. 
+1. Vuelva al navegador y abra el AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure, seleccione **Configuración** del menú del lado izquierdo y haga clic en la sección **Secretos**. En **Secretos**, debería poder ver el secreto recién creado. 
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")     
+     ![Esta es una captura de pantalla del Portal de Azure para visualizar los secretos de AKS.](media/aksfinal.png "Visualizando los secretos de AKS")     
 
-### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
+### Tarea 3: Desplegar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service utilizando el Portal de Azure
    
-In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
+En esta tarea, implementará la aplicación API Carts en el clúster de Azure Kubernetes Service utilizando el Portal de Azure.
    
-1. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders** namespace only. 
+1. Ya hemos definido un nuevo Espacio de nombres para el despliegue de su API. En el futuro, utilizará únicamente el espacio de nombres **contoso-traders**. 
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
+    ![Esta es una captura de pantalla del Portal de Azure mostrando cómo acceder a los espacios de nombres en AKS.](media/newnamespaces.png "Espacios de nombres en AKS")
     
-3. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Apply a YAML**. 
+2. Defina un Servicio para su API, de modo que se pueda acceder a la aplicación dentro del clúster Seleccione la hoja **Servicios y entradas** de la página de detalles del recurso AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure. En la pestaña Servicios, seleccione **+ Crear** y elija **Aplicar un YAML**. 
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
+    ![Esta es una captura de pantalla del Portal de Azure para AKS que muestra cómo agregar un servicio.](media/CNV2-E3-T3-S3new.png "Agregando un Servicio")
 
-1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
-    >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
+3. En el panel **Agregar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Agregar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML.
+    >**Información**: El siguiente script YAML creará un servicio AKS dentro del espacio de nombres contoso-traders que creó en los pasos anteriores. El servicio AKS es una forma abstracta de exponer una aplicación que se ejecuta en un conjunto de Pods como un servicio de red. 
 
     ```yaml
    apiVersion: v1
@@ -126,14 +126,14 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
      selector:
        app: contoso-traders-products
     ```    
-   ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
+   ![Agregando con YAML.](media/ex3-t3-servicecreate.png "Agregando con YAML") 
 
-1. Select **Workloads** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create** and then choose **Apply a YAML**.
+1. Seleccione **Cargas de trabajo** en la sección de recursos Kubernetes en el menú a la izquierda. Con **Implementaciones** seleccionado por defecto, elija **+ Crear** y luego seleccione **Aplicar un YAML**.
 
-    ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
+    ![Seleccione cargas de trabajo en los recursos de Kubernetes.](media/CNV2-E3-T3-S5.png "SSeleccione cargas de trabajo en los recursos de Kubernetes")
 
-1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
-    >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
+1. En el panel **Agregar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Agregar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
+    >**Información**: El siguiente archivo YAML creará pods de despliegue en el espacio de nombres contoso-traders. Una implementación de Kubernetes le dice a Kubernetes cómo crear o modificar instancias de los pods que contienen una aplicación en contenedores. Las implementaciones pueden ayudar a escalar de manera eficiente el número de réplicas de pods, permitir el despliegue de código actualizado de una manera controlada o volver a una versión de implementación anterior si es necesario.
 
     ```YAML
     apiVersion: apps/v1
@@ -180,62 +180,62 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                    hostPort: 3001
                    protocol: TCP
     ```
-   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
+   ![Agregando con YAML.](media/ex3-t3-workloadsadd.png "Agregando con YAML")
 
-1. After a few minutes, you will see the deployment listed, which should be running.
+1. Después de unos minutos, verá la implementación en la lista, que debería estar ejecutándose.
 
-   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
+   ![Implementación en ejecución.](media/conrunning.png "Implementación en ejecución")
 
-### Task 4: Deploy a service & workload using kubectl
+### Tarea 4: Implementar un servicio y una carga de trabajo usando kubectl
 
-In this task, you will deploy the web service & its workload using kubectl.
+En esta tarea, implementará el servicio web y su carga de trabajo utilizando kubectl.
 
-1. Open a **File Explorer** from your JumpVM.
+1. Abra un **Explorador de archivos** desde su JumpVM.
 
-1. Navigate to `C:\LabFiles` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
+1. Navegue hasta el directorio `C:\LabFiles` **(1)** y seleccione el archivo `web.deployment.yml` **(2)**. Haga clic derecho y seleccione **Abrir** **(3)** para abrir el archivo en VS Code.
 
    ![](media/cloudnative8.png)
 
-1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
+1. Asegúrese de actualizar el SUFIJO con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML para que coincida con el nombre de su Login Server de ACR.
 
-    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/cloudnative7.png "Close Azure Cloud Editor")
+    ![En esta captura de pantalla se observa el nombre de la imagen.](media/cloudnative7.png "Nombre de imagen")
 
-1. Save the changes by **CTRL + S** button to **Save**.
+1. Guarde los cambios presionando **CTRL + S** para **Guardar**.
 
-1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
+1. Vuelva al símbolo del sistema de Windows y ejecute el siguiente comando para cambiar el directorio a la carpeta `~/LabFiles`.
 
     ```bash
     cd C:/LabFiles
     ```
 
-1. Log in to Azure if not already done with the below command after updating the values in the command.
+1. Inicie sesión en Azure si aún no lo ha hecho con el siguiente comando después de actualizar los valores en el comando.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
+   * Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
+   * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
 
     ```
     az login -u [username] -p [Password]
     ```
 
-1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
-   >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in the YAML files. 
+1. Ejecute el siguiente comando para desplegar la aplicación descrita en los archivos YAML. Recibirá un mensaje indicando que el elemento `kubectl` ha creado una implementación web y un servicio web.
+   >**Información**: El siguiente comando kubectl creará la carga de trabajo de implementación y el servicio en el espacio de nombres que hemos definido en los archivos YAML. 
 
     ```bash
     kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
     ```
 
-    ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/kubectlcreated.png "kubectl create application")
+    ![En esta captura de pantalla de la consola, kubectl create ha sido tecleado y ejecutado en el símbolo del sistema.](media/kubectlcreated.png "Comando kubectl create")
 
-1. Return to the AKS blade in the Azure Portal. From the navigation menu, select the **Services and ingresses** under **Kubernetes resources**. You should be able to access the website via an **External endpoint**.
+1. Regrese a la hoja de AKS en el Portal de Azure. En el menú de navegación, seleccione **Servicios y entradas** en **Recursos de Kubernetes**. Debería poder acceder al sitio web a través de un **Punto de conexión externo**.
 
-    ![AKS services and ingresses shown with External IP highlighted](media/website.png "AKS services and ingresses shown with External IP highlighted")
+    ![Servicios y entradas de AKS mostrados con la IP externa resaltada](media/website.png "Servicios y entradas de AKS mostrados con la IP externa resaltada")
 
-    ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
+    ![Accediendo a la aplicación web](media/website2.png "Accediendo a la aplicación web")
 
-   > **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
+   > **Nota:** Si el sitio web no se carga, intente actualizar la página varias veces, ya que AKS puede tardar un poco en completar el sitio web.
     
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-## Summary
+## Resumen
 
-In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS. 
+En este ejercicio, implementó su aplicación web en contenedores en AKS que contiene el espacio de nombres, el servicio y la carga de trabajo en Azure Kubernetes. Además, creó un servicio para AKS y accedió al sitio web mediante un punto de conexión externo. Además, ha configurado el secreto del almacén de claves para acceder a MongoDB desde AKS.

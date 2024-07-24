@@ -1,69 +1,70 @@
-# Getting Started with Lab
+# Comenzando con el Laboratorio
 
-1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises of the lab guide.
+1. Una vez que se haya aprovisionado el entorno, se cargarán una máquina virtual (JumpVM) y una guía de laboratorio en su navegador. Utilice esta máquina virtual en todo el taller para realizar la práctica de laboratorio. Puede ver el número en la parte inferior de la guía de laboratorio para cambiar a diferentes ejercicios de la guía de laboratorio.
 
-   ![](media/gs01.png "Lab Environment")
+   ![](media/gs01.png "Ambiente de Laboratorio")
 
-1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide on a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
+1. Para obtener los detalles del entorno del laboratorio, puede seleccionar la pestaña **Ambiente**. Además, las credenciales también se enviarán por correo electrónico a su dirección de correo electrónico registrada. También puede abrir la Guía de laboratorio en una ventana completa e independiente seleccionando **Ventana separada** en la esquina superior derecha. Además, puede iniciar, detener y reiniciar máquinas virtuales desde la pestaña **Recursos**.
 
-   ![](media/gs02.png "Lab Environment")
+
+   ![](media/gs02.png "Ambiente de Laboratorio")
  
-   > You will see the DeploymentID value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+   > Verá el valor de DeploymentID en la pestaña **Ambiente**; úselo dondequiera que vea SUFFIX o DeploymentID en los pasos del laboratorio.
 
-## Lab Validation
+## Validación de Laboratorio
 
-1. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+1. Después de completar la tarea, presione el botón **Validar** en la pestaña Validación que se encuentra integrada en su guía de laboratorio. Si recibe un mensaje de éxito, puede continuar con la siguiente tarea; de lo contrario, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 
-   ![Inline Validation](media/inline-validation.png)
+   ![Validación en línea](media/inline-validation.png)
 
-1. You can also validate the task by navigating to the **Lab Validation** tab, from the upper right corner in the lab guide section.
+1. También puede validar la tarea navegando a la pestaña **Validación de laboratorio**, en la esquina superior derecha de la sección de la guía de laboratorio.
 
-   ![Lab Validation](media/lab-validation.png)
+   ![Validación de Laboratorio](media/lab-validation.png)
 
-1. If you need any assistance, please contact us at labs-support@spektrasystems.com.
+1. Si necesita ayuda, póngase en contacto con nostros en labs-support@spektrasystems.com.
 
-## Lab Duration Extension
+## Extensión de la Duración del Laboratorio
 
-1. To extend the duration of the lab, kindly click the **Hourglass** icon in the top right corner of the lab environment. 
+1. Para extender la duración del laboratorio, haga clic en el ícono **Reloj de arena** en la esquina superior derecha del ambiente del laboratorio.
 
-   ![Manage Your Virtual Machine](media/gext.png)
+   ![Administrando su Máquina Virtual](media/gext.png)
 
-   >**Note:** You will get the **Hourglass** icon when 10 minutes are remaining in the lab.
+   >**Nota:** Aparecerá el ícono **Reloj de arena** cuando queden 10 minutos en el laboratorio.
 
-2. Click **OK** to extend your lab duration.
+2. Haga clic en **OK** para ampliar la duración de la práctica de laboratorio.
  
-   ![Manage Your Virtual Machine](media/gext2.png)
+   ![Administrando su Máquina Virtual](media/gext2.png)
 
-3. If you have not extended the duration prior to when the lab is about to end, a pop-up will appear, giving you the option to extend. Click **OK** to proceed.
+3. Si no ha extendido la duración antes de que la práctica de laboratorio esté a punto de finalizar, aparecerá una ventana emergente que le dará la opción de extenderla. Haga clic en **OK** para continuar.
      
-## Login to Azure Portal
+## Inicie sesión en el Portal de Azure
 
-1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser which is created on the desktop.
+1. En JumpVM, haga clic en el acceso directo de Azure Portal del navegador Microsoft Edge que se crea en el escritorio.
 
-   ![](media/gs-3.png "Lab Environment")
+   ![](media/gs-3.png "Ambiente de Laboratorio")
    
-1. On the **Sign into Microsoft Azure** tab you will see the login screen, in that enter the following email/username and then click on **Next**. 
-   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+1. En la pestaña **Iniciar sesión en Microsoft Azure** verá la pantalla de inicio de sesión, en ella introduzca el siguiente correo electrónico/nombre de usuario y, a continuación, haga clic en **Siguiente**.  
+   * Correo electrónico/Nombre de usuario: <inject key="AzureAdUserEmail"></inject>
    
-     ![](media/gs-4.png "Enter Email")
+     ![](media/gs-4.png "Ingrese Correo Electrónico")
      
-1. Now enter the following password and click on **Sign in**.
-   * Password: <inject key="AzureAdUserPassword"></inject>
+1. Ahora ingrese la siguiente contraseña y haga clic en **Iniciar sesión**.
+   * Contraseña: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/gs-5.png "Enter Password")
+     ![](media/gs-5.png "Ingrese Contraseña")
      
-   > If you see the **Help us protect your account** dialog box, then select the **Skip for now** option.
+   > Si ve el cuadro de diálogo **Ayúdenos a proteger su cuenta**, seleccione la opción **Omitir por ahora**.
 
-     ![](media/gs-6.png "Enter Password")
+     ![](media/gs-6.png "Ingrese Contraseña")
   
-1. If you see the pop-up **Stay Signed in?**, click No
+1. Si ve la ventana emergente **¿Permanecer conectado?**, haga clic en No
 
-1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
+1. Si ve la ventana emergente **¡Tiene recomendaciones gratuitas de Azure Advisor!**, cierre la ventana para continuar con la práctica de laboratorio.
 
-1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
+1. Si aparece una ventana emergente **Bienvenido a Microsoft Azure**, haga clic en **Quizás más tarde** para omitir el recorrido.
    
-1. Now you will see the Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
+1. Ahora verá el Panel de Azure Portal, haga clic en **Grupos de recursos** en el panel Navegar para ver los grupos de recursos.
 
-    ![](media/gs-7.png "Resource groups")
+    ![](media/gs-7.png "Grupos de recursos")
    
-1. Now, click on the **Next** from the lower right corner to move to the next page.
+1. Ahora, haga clic en **Siguiente** en la esquina inferior derecha para pasar a la página siguiente.
