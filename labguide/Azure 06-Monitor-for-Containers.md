@@ -1,6 +1,6 @@
-## Exercise 6: Azure Monitor for Containers - Optional
+# Exercise 6: Azure Monitor for Containers
    
-**Duration**: 10 Minutes
+### Estimated Duration: 20 minutes
 
 ## Overview
 
@@ -11,7 +11,12 @@ A few examples of what you can do with Azure Monitor include:
 - Detect and diagnose issues across applications and dependencies with Application Insights.
 - Correlate infrastructure issues with VM insights and Container insights.
 - Collect data from monitored resources by using Azure Monitor Metrics.
-  
+
+## Lab Objectives
+
+You will be able to complete the following tasks:
+
+- Task 1: Review Azure Monitor metrics
 
 ### Task 1: Review Azure Monitor metrics
 
@@ -35,4 +40,4 @@ In this task, you will be reviewing the monitored AKS cluster.
 
 In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster.
 
-## Lab ends
+### You have successfully completed the lab
