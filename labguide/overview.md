@@ -4,10 +4,9 @@
 
 ## Abstract and learning objectives
 
-This hands-on lab will guide the student through deploying a web application and API microservice to a Kubernetes platform hosted on Azure Kubernetes Services (AKS). In addition, the lab will instruct the student on configuring the behaviour of these services through dynamic service discovery, service scale-out, and high availability in the context of AKS-hosted services. By demonstrating crucial Kubernetes concepts, the student will gain experience with the Kubernetes deployment and service resource types. The student will create them manually through the Azure Portal and manipulate their configurations to scale the associated microservice instances up and down and manage their CPU and memory resource allocations with the Kubernetes cluster.
+This hands-on lab will guide participants through deploying a web application and an API microservice on a Kubernetes platform hosted on Azure Kubernetes Services (AKS). Additionally, the lab will teach attendees how to configure these services using dynamic service discovery, service scale-out, and high availability within the context of AKS. By covering essential Kubernetes concepts, participants will gain practical experience with Kubernetes deployment and service resource types. They will manually create and configure these resources through the Azure Portal, scaling microservice instances up and down and managing CPU and memory resource allocations within the Kubernetes cluster.
 
-At the conclusion of this lab, you have a solid understanding of how to build and deploy containerized applications to Azure Kubernetes Service and perform common tasks and procedures.
-
+By the end of this lab, attendees will have a solid understanding of how to build and deploy containerized applications on Azure Kubernetes Services and perform common tasks and procedures.
 
 ## Overview
 
