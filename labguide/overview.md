@@ -2,12 +2,6 @@
 
 ### Overall Estimated Duration: 8 hours
 
-## Abstract and learning objectives
-
-This hands-on lab will guide participants through deploying a web application and an API microservice on a Kubernetes platform hosted on Azure Kubernetes Services (AKS). Additionally, the lab will teach attendees how to configure these services using dynamic service discovery, service scale-out, and high availability within the context of AKS. By covering essential Kubernetes concepts, participants will gain practical experience with Kubernetes deployment and service resource types. They will manually create and configure these resources through the Azure Portal, scaling microservice instances up and down and managing CPU and memory resource allocations within the Kubernetes cluster.
-
-By the end of this lab, attendees will have a solid understanding of how to build and deploy containerized applications on Azure Kubernetes Services and perform common tasks and procedures.
-
 ## Overview
 
 Contoso Traders (ContosoTraders) provides online retail website services tailored to the electronics community. They are refactoring their application to run as a Docker application. They want to implement a proof of concept that will help them get familiar with the development process, lifecycle of deployment, and critical aspects of the hosting environment. They will be deploying their applications to Azure Kubernetes Service and want to learn how to deploy containers in a dynamically load-balanced manner, discover containers, and scale them on demand.
