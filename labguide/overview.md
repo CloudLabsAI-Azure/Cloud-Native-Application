@@ -41,6 +41,23 @@ Participants should have:
 - Proficiency in using command-line tools and interfaces, such as Azure CLI and Docker CLI.
 - Familiarity with Continuous Integration and Continuous Deployment practices, as they may be relevant for managing updates and deployments.
 
+## Architecture
+
+The exercises utilize several Azure services to build, deploy, and manage applications effectively. Azure Container Registry (ACR) is used for storing and managing Docker container images, while Azure Cosmos DB provides a scalable, multi-model database solution for data migration. Azure Kubernetes Service (AKS) enables the deployment and management of containerized applications within a managed Kubernetes environment. For scaling and high availability, Azure Load Balancer distributes traffic across servers, and Azure Application Gateway offers advanced load balancing and routing for web applications. Finally, Azure Monitor tracks the performance and health of applications and infrastructure, including containerized environments, ensuring comprehensive monitoring and insights.
+
 ## Architecture Diagram
 
 ![Selecting Add to create a deployment.](media/newoverview.png "Selecting + Add to create a deployment")
+
+## Explanation of Components
+
+The architecture for this lab involves several key components:
+
+- **Azure Container Registry (ACR):** A managed Docker container registry for storing and managing Docker container images.
+- **Azure Cosmos DB:** A globally distributed, multi-model database service for managing and scaling NoSQL data.
+- **Azure Kubernetes Service (AKS):** A managed Kubernetes container orchestration service for deploying, scaling, and managing containerized applications.
+- **Azure Load Balancer (Part of AKS):** A high-performance load balancer that distributes network traffic across multiple servers to ensure high availability.
+- **Azure Application Gateway (Part of AKS):** A web traffic load balancer that enables you to manage traffic to your web applications and provides URL-based routing and SSL termination.
+- **Azure Monitor:** A comprehensive monitoring service that provides insights into the performance and health of applications and infrastructure, including containerized workloads.
+
+
