@@ -1,12 +1,19 @@
-## Exercise 5: Updating Apps & Managing Kubernetes Ingress
+# Exercise 5: Updating Apps & Managing Kubernetes Ingress
 
-**Duration**: 40 minutes
+### Estimated Duration: 60 minutes
 
 ## Overview
 
 In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the API deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
 
 Kubernetes services can discover the ports assigned to each pod, allowing you to run multiple instances of the pod on the same agent node --- something that is not possible when you configure a specific static port (such as 3001 for the API service).
+
+## Lab Objectives
+
+You will be able to complete the following tasks:
+
+- Task 1: Perform a rolling update
+- Task 2: Configure Kubernetes Ingress
 
 ### Task 1: Perform a rolling update
  
@@ -369,3 +376,5 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 ## Summary
 
 In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
+
+### You have successfully completed the lab
