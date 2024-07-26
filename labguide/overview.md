@@ -29,6 +29,18 @@ In this hands-on lab, you will assist with completing this POC with a subset of 
 
 1. **Azure Monitor for Containers:** This hands-on exercise aims to utilize Azure Monitor for Containers to track and analyze the performance and health of your containerized applications in AKS. Participants will enable monitoring of containerize applications with Azure Monitor, providing insights into performance and operational health.
 
+## Prerequisites
+
+Participants should have:
+
+- Understanding Docker concepts such as containers, images, and Dockerfiles.
+- Knowledge of MongoDB data structures and Azure Cosmos DB capabilities for effective migration.
+- Basic understanding of Kubernetes concepts including pods, deployments, and services, as well as Azure Kubernetes Service (AKS).
+- An active Azure subscription with appropriate permissions to create and manage resources.
+- General understanding of cloud services, container orchestration, and scaling strategies.
+- Proficiency in using command-line tools and interfaces, such as Azure CLI and Docker CLI.
+- Familiarity with Continuous Integration and Continuous Deployment practices, as they may be relevant for managing updates and deployments.
+
 ## Architecture Diagram
 
 ![Selecting Add to create a deployment.](media/newoverview.png "Selecting + Add to create a deployment")
