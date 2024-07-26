@@ -1,10 +1,19 @@
-## Exercise 3: Deploy the application to the Azure Kubernetes Service
+# Exercise 3: Deploy the application to the Azure Kubernetes Service
    
-**Duration**: 40 Minutes
+### Estimated Duration: 90 minutes
 
 ## Overview
 
 In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault Secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+
+## Lab Objectives
+
+You will be able to complete the following tasks:
+
+- Task 1: Tunnel into the Azure Kubernetes Service cluster
+- Task 2: Setup Key Vault & Secrets
+- Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
+- Task 4: Deploy a service & workload using kubectl
 
 ### Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
@@ -239,3 +248,5 @@ In this task, you will deploy the web service & its workload using kubectl.
 ## Summary
 
 In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS. 
+
+### You have successfully completed the lab
