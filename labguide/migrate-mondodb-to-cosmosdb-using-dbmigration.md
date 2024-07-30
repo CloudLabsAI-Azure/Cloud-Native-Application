@@ -56,7 +56,7 @@ In this task, you will be connecting to a Mongo database hosted over an Azure Li
    ```
    cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
    sudo npm ci
-   nodejs server.js
+   node server.js
    ```     
 
 ### Task 2: Create a Migration Project and migrate data to Azure CosmosDB
