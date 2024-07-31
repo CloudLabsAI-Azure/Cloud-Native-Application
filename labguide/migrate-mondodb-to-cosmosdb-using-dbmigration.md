@@ -12,8 +12,7 @@ You will be able to complete the following tasks:
 
 - Task 1: Explore the databases and collections in MongoDB
 - Task 2: Create a Migration Project and migrate data to Azure CosmosDB
-- 
-
+  
 ### Task 1: Explore the databases and collections in MongoDB
 
 In this task, you will be connecting to a Mongo database hosted over an Azure Linux VM and exploring the databases and collections in it.
@@ -166,6 +165,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
+     <validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
 
 ## Summary
 

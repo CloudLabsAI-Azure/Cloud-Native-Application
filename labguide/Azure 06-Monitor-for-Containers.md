@@ -36,6 +36,8 @@ In this task, you will be reviewing the monitored AKS cluster.
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/12.png "Add a Namespace")
 
+      <validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
+
 ## Summary
 
 In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster.
