@@ -1,4 +1,4 @@
-## Ejercicio 4: Escale la aplicación y valide HA
+## Ejercicio 4: Escalar la aplicación y validar la Alta Disponibilidad
 
 **Duración**: 40 minutos
 
