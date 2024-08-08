@@ -10,7 +10,7 @@ Kubernetes services can discover the ports assigned to each pod, allowing you to
 
 In this lab, you will complete the following tasks:
 - Task 1: Perform a rolling update
-- Task 1: Configure Kubernetes Ingress
+- Task 2: Configure Kubernetes Ingress
 
 ## Estimated timing: 60 minutes
 
