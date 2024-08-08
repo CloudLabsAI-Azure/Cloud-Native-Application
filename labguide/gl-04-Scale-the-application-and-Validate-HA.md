@@ -1,10 +1,19 @@
-## Overview
+# Exercise 4: Scale the application and validate HA
 
 At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front end in the existing cluster.
 
-## Exercise 4: Scale the application and validate HA
+## Lab objectives
 
-**Duration**: 90 minutes
+In this lab, you will complete the following exercise:
+- Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
+- Task 2: Resolve failed replica provisioning 
+- Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
+- Task 4: Autoscaling on Azure Kubernetes Service cluster
+- Task 5: Restart containers and validate HA
+- Task 6: Configure CosmosDB Autoscale
+- Task 7: Test CosmosDB Autoscale
+
+## Estimated timing: 90 minutes
 
 ### Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
 

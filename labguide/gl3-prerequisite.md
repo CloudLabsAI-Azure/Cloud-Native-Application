@@ -1,15 +1,21 @@
+# Exercise 1: Build Docker Images for the Application 
+
 ## Pre-requisites 
 
 Before you move to the next exercise, please make sure to complete the pre-requisite exercises as upcoming exercises are dependent on it.
 
-### Overview
+## Lab scenario
 
 In this exercise, you will learn how to Containerize the Contoso Traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
 
-### Exercise 1: Build Docker Images for the Application 
-  
-**Duration**: 60 Minutes
-   
+## Lab objectives
+
+In this lab, you will complete the following tasks:
+- Task 1: Set up a local infrastructure with the Linux VM
+- Task 2: Build Docker images to containerize the application and push them to the container registry
+
+## Estimated timing: 60 minutes
+
 ### Task 1: Set up a local infrastructure with the Linux VM
 
 In this task, you will be connecting to the Build agent VM using the Command prompt and will be cloning the Contoso trader website GitHub repo.  
@@ -211,13 +217,19 @@ In this task, you will be building the docker images to containerize the applica
 
 In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS.
 
-### Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
-  
-**Duration**: 60 Minutes
+# Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
 
-### Overview
+## Lab scenario
 
 In this exercise, you will be migrating your on-premises MongoDB database hosted over Azure Linux VM to Azure CosmosDB using Azure database migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure.
+
+## Lab objectives
+
+In this lab, you will complete the following tasks:
+- Task 1: Explore the databases and collections in MongoDB
+- Task 2: Create a Migration Project and migrate data to Azure CosmosDB
+
+## Estimated timing: 60 minutes
 
 ### Task 1: Explore the databases and collections in MongoDB
 
