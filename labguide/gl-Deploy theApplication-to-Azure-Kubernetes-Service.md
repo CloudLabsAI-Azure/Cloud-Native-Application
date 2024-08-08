@@ -6,7 +6,7 @@ In this exercise, you will be deploying your containerized web application to AK
 
 ## Lab objectives
 
-In this lab, you will complete the following exercise:
+In this lab, you will complete the following tasks:
 - Task 1: Tunnel into the Azure Kubernetes Service cluster
 - Task 2: Setup Key Vault & Secrets
 - Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
