@@ -9,21 +9,17 @@
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/getting-started.md",
           "Order": 1
         },
-          {
-          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/overview.md",
-          "Order": 2
-        },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/MS-SPL-Build Docker Images for the Application.md",
-          "Order": 3
+          "Order": 2
         },
            {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/MS-SPL-Migrate MongoDB to Cosmos DB using Azure Database Migration.md",
-          "Order": 4
+          "Order": 3
         },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/MS-SPL-Deploy the application to the Azure Kubernetes Service.md",
-          "Order": 5
+          "Order": 4
         }
       ]
   }
