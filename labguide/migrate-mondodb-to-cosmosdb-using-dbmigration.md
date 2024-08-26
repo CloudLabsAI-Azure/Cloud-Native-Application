@@ -19,7 +19,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    >**Nota:** Si se encuentra con un problema al conectarse a la base de datos de origen tal como error: conexión denegada, ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** e ingrese el comando de la MV **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la MV de Linux usando ssh. Por favor ejecute los siguientes comandos y vuelva a realizar el paso 1 de la tarea. 
 
    ```
-   sudo apt install mongodb-server
+   
    cd /etc
    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
@@ -101,7 +101,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
     
 
     ```bash
-    sudo apt install mongodb-server
+    
     cd /etc
     sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
     sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
