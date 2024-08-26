@@ -21,10 +21,10 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
    ```
    sudo apt install mongodb-server
    cd /etc
-   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
-   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
-   sudo service mongodb stop
-   sudo service mongodb start
+   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
+   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
+   sudo service mongod stop
+   sudo service mongod start
    ```
    
    ![](media/ex2-mongo2.png)
@@ -98,10 +98,10 @@ In this task, you will create a Migration project within Azure Database Migratio
     > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
 
     ```bash
-    sudo apt install mongodb-server
+    
     cd /etc
-    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
-    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
+    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
     sudo service mongodb stop
     sudo service mongodb start
     ```
