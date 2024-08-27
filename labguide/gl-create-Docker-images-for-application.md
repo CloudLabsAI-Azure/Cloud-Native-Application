@@ -28,7 +28,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-   ![](media/EX1-T1-S3.png "open cmd")
+        ![](media/EX1-T1-S3.png "open cmd")
    
    >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
     
@@ -209,16 +209,9 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/cloudnative2.png "open cmd")
     
-#### Validation
 
+>**Congratulations** on completing the task! Now, it's time to validate it.
 <validation step="40147393-0fa6-4453-a6eb-a1a7bc43f387" />
-
-> **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
-
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.  
 
 ## Summary
 
