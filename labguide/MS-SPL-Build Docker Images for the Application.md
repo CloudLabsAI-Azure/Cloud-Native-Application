@@ -137,7 +137,9 @@ In this task, you will be building the docker images to containerize the applica
 1. Now build the **contosotraders-UI-Website** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
 
     ```
+    sudo su
     docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+    exit
     ```    
     
     ![](media/latest-ex1-apiwebsite.png)
