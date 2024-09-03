@@ -217,3 +217,4 @@ In this task, you will be building the docker images to containerize the applica
 
 In this exercise, you have completely containerized your web application with the help of docker and pushed them to the container registry.
 
+### You have successfully completed the lab
