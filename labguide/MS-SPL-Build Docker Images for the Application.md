@@ -55,9 +55,23 @@ In this task, you will be connecting to the Build agent VM using the Command pro
 
 In this task, you will be building the docker images to containerize the application and will be pushing them to the ACR (Azure Container Registry) to later use in AKS.
 
+
+1. Please make sure that you are in the **labfiles** directory before running the next steps as the docker build needs to find the DockerFile to create the image.
+
+    ```
+    cd Cloud-Native-Application/labfiles/
+    ```
+ 
+1. Run the below command to install docker.io 
+
+    ```
+    sudo apt install docker.io
+    ```
+    
 1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 
    ``` 
+   sudo su
    az login
    ```
     
@@ -84,17 +98,11 @@ In this task, you will be building the docker images to containerize the applica
 1. Once you logged in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
    ![](media/ex1-logincomplete.png)
-
-1. Please make sure that you are in the **labfiles** directory before running the next steps as the docker build needs to find the DockerFile to create the image.
-
-    ```
-    cd Cloud-Native-Application/labfiles/
-    ```
-    
+   
 1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the below command with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value.
 
     ```
-     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
+    docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
     ```
     
     ![](media/ex1-apicarts.png)
