@@ -62,6 +62,8 @@ In this task, you will be building the docker images to containerize the applica
    ```
     
    ![](media/ex-azlogincode.png)
+   
+   > **Note:** If you recieve an error command az not found, then run the command _'sudo apt install azure-cli'_ to install az cli. 
     
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
@@ -115,7 +117,7 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/latest-ex1-cd-website.png)
     
-1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** and Region **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
     
     >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
     
@@ -157,7 +159,7 @@ In this task, you will be building the docker images to containerize the applica
     docker image ls
     ```
 
-    ![](media/ex1-dockerimages.png)
+    ![](media/T2S15.png)
 
 1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
