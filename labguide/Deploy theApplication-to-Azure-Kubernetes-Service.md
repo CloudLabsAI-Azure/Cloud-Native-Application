@@ -19,9 +19,9 @@ You will be able to complete the following tasks:
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
 
-> **Note**: The following tasks should be executed in the **Command Prompt**.
+> **Note**: The following tasks should be executed in the command prompt.
 
-1. Open a new command prompt as Administrator in your jump VM and login to Azure with the below commands after updating the values in the below command.
+1. Open a new command prompt as Administrator in your jump VM and login to azure with the below commands after updating the values in the below command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
@@ -30,7 +30,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
     az login -u [username] -p [Password]
     ```
     
-    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform step-1 in a new command prompt as Administrator.
+    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform the step-1 in a new command prompt as Administrator.
 
     ```bash
     choco install azure-cli
@@ -54,8 +54,6 @@ This task will gather the information you need about your Azure Kubernetes Servi
    ```bash
    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
    ```
-   
-   ![](media/cloudnative4.png "open cmd")
 
 1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
 
@@ -63,19 +61,19 @@ This task will gather the information you need about your Azure Kubernetes Servi
    kubectl get nodes
    ```
 
-   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/cloudnative5.png "kubectl get nodes")   
+   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/newnodes.png "kubectl get nodes")   
 
 ### Task 2: Setup Key Vault & Secrets 
 
 In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
 
-1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key Vaults** from the list.
+1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key vaults** from the list.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cloudnative9.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
 
-1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vault** from the list.
+1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vaults** from the list.
 
-1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **secrets** under Objects from the left side menu.
+1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **Secrets** under **Objects** from the left side menu.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv2.png "Add a Namespace")
     
@@ -87,7 +85,8 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
     - Name: **mongodbconnection**
     - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
-    -  Keep other values default and click on **Create**
+    
+    Keep other values default and click on **Create**
     
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
      
@@ -100,11 +99,10 @@ In this task, you will be generating a secret in the Key vault and creating the 
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
     
-1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under **Secrets**, you should be able to see the newly created secret. 
+1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets, you should be able to see the newly created secret. 
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")     
-
-      <validation step="106806cb-79ab-406a-b481-f125954d286e" />
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
+     
 
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
@@ -122,20 +120,20 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: contoso-traders-products
-     namespace: contoso-traders
-     annotations:
-       #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
-       service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-   spec:
-     type: LoadBalancer
-     ports:
-       - port: 80
-     selector:
-       app: contoso-traders-products
+       apiVersion: v1
+       kind: Service
+       metadata:
+         name: contoso-traders-products
+         namespace: contoso-traders
+         annotations:
+           #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+           service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+       spec:
+         type: LoadBalancer
+         ports:
+           - port: 80
+         selector:
+           app: contoso-traders-products
     ```    
    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
@@ -147,57 +145,56 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
     ```YAML
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-     name: contoso-traders-products
-     namespace: contoso-traders
-    spec:
-     replicas: 1
-     selector:
-       matchLabels:
-         app: contoso-traders-products
-     template:
-       metadata:
-         labels:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+       name: contoso-traders-products
+       namespace: contoso-traders
+      spec:
+       replicas: 1
+       selector:
+         matchLabels:
            app: contoso-traders-products
-       spec:
-         nodeSelector:
-           "kubernetes.io/os": linux
-         containers:
-           - name: contoso-traders-products
-             #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
-             image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
-             env:
-               - name: KeyVaultEndpoint
-                 valueFrom:
-                   secretKeyRef:
-                     name: contoso-traders-kv-endpoint
-                     key: contoso-traders-kv-endpoint
-               - name: ManagedIdentityClientId
-                 valueFrom:
-                   secretKeyRef:
-                     name: contoso-traders-mi-clientid
-                     key: contoso-traders-mi-clientid
-             resources:
-               requests:
-                 cpu: 50m
-                 memory: 64Mi
-               limits:
-                 cpu: 250m
-                 memory: 256Mi
-               ports:
-                 - containerPort: 3001
-                   hostPort: 3001
-                   protocol: TCP
+       template:
+         metadata:
+           labels:
+             app: contoso-traders-products
+         spec:
+           nodeSelector:
+             "kubernetes.io/os": linux
+           containers:
+             - name: contoso-traders-products
+               #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
+               image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
+               env:
+                 - name: KeyVaultEndpoint
+                   valueFrom:
+                     secretKeyRef:
+                       name: contoso-traders-kv-endpoint
+                       key: contoso-traders-kv-endpoint
+                 - name: ManagedIdentityClientId
+                   valueFrom:
+                     secretKeyRef:
+                       name: contoso-traders-mi-clientid
+                       key: contoso-traders-mi-clientid
+               resources:
+                 requests:
+                   cpu: 50m
+                   memory: 64Mi
+                 limits:
+                   cpu: 250m
+                   memory: 256Mi
+                 ports:
+                   - containerPort: 3001
+                     hostPort: 3001
+                     protocol: TCP
     ```
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
-1. After a few minutes, you will see the deployment listed, which should be running.
+1. After a few minutes, you will see the deployment listed and it should be in a running state.
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
-      <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 
 ### Task 4: Deploy a service & workload using kubectl
 
@@ -207,11 +204,11 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Navigate to `C:\LabFiles` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
 
-   ![](media/cloudnative8.png)
+   ![](media/ex3-webfile-update1.png)
 
 1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
 
-    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/cloudnative7.png "Close Azure Cloud Editor")
+    ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/sfx.png "Close Azure Cloud Editor")
 
 1. Save the changes by **CTRL + S** button to **Save**.
 
@@ -244,15 +241,12 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/website.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
-
-   > **Note:** If the website doesn't load, try refreshing the page several times as it might take a while for AKS to populate the website.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-      <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
-
 ## Summary
 
-In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS. 
+In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS.
+
 
 ### You have successfully completed the lab
