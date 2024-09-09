@@ -31,6 +31,8 @@ En esta tarea, revisará el clúster de AKS monitoreado.
     
     ![Esta es una captura de pantalla que muestra datos monitoreados en el servicio Kubernetes.](media/12.png "Datos monitoreados del servicio Kubernetes")
 
+      <validation step="cfa0366b-4e75-49b9-8d47-ec6d7e50c3b2" />
+
 ## Resumen
 
 En este ejercicio, revisó la información sobre contenedores de Azure Monitor para el clúster de AKS.
