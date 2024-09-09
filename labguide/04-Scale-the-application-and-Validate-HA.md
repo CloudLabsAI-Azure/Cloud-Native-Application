@@ -26,6 +26,8 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
     ![Aplicación web funcionando correctamente.](media/11.png "Aplicación web funcionando correctamente")
 
+    <validation step="39567d0b-df57-4e1b-a388-c7e0c82f4bc6" />
+
 ### Tarea 2: Resolver el aprovisionamiento de réplicas fallido
 
 En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se producen por la imposibilidad de satisfacer los recursos solicitados.
@@ -176,6 +178,8 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
     ![Sitio web ContosoTraders.](media/11.png "Sitio web ContosoTraders")
 
+   <validation step="010994f7-b80b-4ba5-a807-e1d6ac030ea7" />
+
 ### Tarea 6: Configurar Autoscale en CosmosDB
 
 En esta tarea, configurará Autoscale en Azure Cosmos DB.
@@ -193,6 +197,8 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 5. En la pestaña **Scale & Settings (1)**, seleccione **Autoscale (2)** para la configuración **Throughput** en **Scale** y haga clic en **Save (3)**.
 
     ![La captura de pantalla muestra la pestaña Escala y configuración de Cosmos DB con Autoscale seleccionada](media/exe4-task6-step4-autoscale.png "Escala y configuración de la colección CosmosDB")
+
+      <validation step="56f38190-cea0-441f-ba7d-717395a4a622" />
 
 ### Tarea 7: Probar Autoscale de CosmosDB
 
@@ -256,6 +262,8 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
     >**Nota**: En caso de que no vea datos en el gráfico, configure el rango de tiempo para que dure 1 hora.
 
 14. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
+
+      
 
 ## Resumen
 
