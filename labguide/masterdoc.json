@@ -33,5 +33,40 @@
           "Order": 7
         }     
       ]
+    },
+    {
+      "Name": "Cloud Native Application",
+      "Language": "Spanish",
+      "BaseURL": "https://github.com/CloudLabsAI-Azure/Cloud-Native-Application/tree/Spanish-Content",
+      "Files": [
+          {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/Spanish-Content/labguide/overview.md",
+          "Order": 1
+        },
+          {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/Spanish-Content/labguide/create-Docker-images-for-application.md",
+          "Order": 2
+        },
+           {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/Spanish-Content/labguide/migrate-mondodb-to-cosmosdb-using-dbmigration.md",
+          "Order": 3
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/Spanish-Content/labguide/Deploy%20theApplication-to-Azure-Kubernetes-Service.md",
+          "Order": 4
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/Spanish-Content/labguide/04-Scale-the-application-and-Validate-HA.md",
+          "Order": 5
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/Spanish-Content/labguide/05-Updating-Apps%26Managing-Load-Balancing.md",
+          "Order": 6
+        },
+        {
+          "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/Spanish-Content/labguide/Azure%2006-Monitor-for-Containers.md",
+          "Order": 7
+        }     
+      ]
     }
   ]
