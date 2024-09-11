@@ -95,7 +95,7 @@ En esta tarea, generará un secreto en Key vault y creará la conexión entre AK
 
      ![Esta es una captura de pantalla del Portal de Azure para visualizar los secretos de AKS.](media/aksfinal.png "Visualizando los secretos de AKS")     
 
-      <validation step="90140152-1f25-4761-805f-6ecb42cd0f5b" />
+      <validation step="106806cb-79ab-406a-b481-f125954d286e" />
 
 ### Tarea 3: Desplegar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service utilizando el Portal de Azure
    
@@ -188,7 +188,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 
    ![Implementación en ejecución.](media/conrunning.png "Implementación en ejecución")
 
-     <validation step="5027ff24-34ab-49f1-9fa2-72e214db0831" />
+     <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 
 ### Tarea 4: Implementar un servicio y una carga de trabajo usando kubectl
 
@@ -240,7 +240,7 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
     
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-     <validation step="bf5a46a2-1e97-41f7-a010-d514c5e91636" />  
+     <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
 
 ## Resumen
 
