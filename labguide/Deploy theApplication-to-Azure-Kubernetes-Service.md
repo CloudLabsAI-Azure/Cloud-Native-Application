@@ -103,6 +103,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
+      <validation step="106806cb-79ab-406a-b481-f125954d286e" />
 
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
@@ -195,6 +196,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
+     <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 
 ### Task 4: Deploy a service & workload using kubectl
 
@@ -244,6 +246,8 @@ In this task, you will deploy the web service & its workload using kubectl.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
+     <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+     
 ## Summary
 
 In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS.
