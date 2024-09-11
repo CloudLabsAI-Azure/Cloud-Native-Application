@@ -100,8 +100,8 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
    ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
 
-   <validation step="2ff92949-6873-481f-9805-f362697ba094" />
-
+     <validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+     
 ### Tarea 2: Configurar Kubernetes Ingress
 
 Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Nginx](https://nginx.org/en/) para aprovechar el enrutamiento basado en rutas y la terminación TLS.
