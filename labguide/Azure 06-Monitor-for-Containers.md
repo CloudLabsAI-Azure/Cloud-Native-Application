@@ -31,7 +31,7 @@ En esta tarea, revisará el clúster de AKS monitoreado.
     
     ![Esta es una captura de pantalla que muestra datos monitoreados en el servicio Kubernetes.](media/12.png "Datos monitoreados del servicio Kubernetes")
 
-      <validation step="cfa0366b-4e75-49b9-8d47-ec6d7e50c3b2" />
+      <validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
 
 ## Resumen
 
