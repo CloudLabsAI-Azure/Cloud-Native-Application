@@ -1,32 +1,32 @@
 # Aplicações nativas da nuvem
 
-### Duração geral estimada: 8 horas
+### Duração estimada: 8 horas
 
 ## Visão geral
 
-A Contoso Traders (ContosoTraders) fornece serviços de sites de retalho online personalizados para a comunidade de eletrónica. Estão a refatorar o seu aplicativo para ser executado como um aplicativo Docker. Pretendem implementar uma prova de conceito que os ajude a familiarizarem-se com o processo de desenvolvimento, o ciclo de vida da implementação e os aspetos críticos do ambiente de alojamento. Irão implementar as suas aplicações no Serviço Azure Kubernetes e quererão aprender como implementar contentores de forma dinâmica com balanceamento de carga, descobrir contentores e escalá-los sob demanda.
+A Contoso Traders (ContosoTraders) fornece serviços de sites de retalho online personalizados para a comunidade de eletrónica. Estão a refatorar o seu aplicativo para ser executado como um container de Docker. Pretendem implementar uma prova de conceito que os ajude a familiarizarem-se com o processo de desenvolvimento, o ciclo de vida da implementação e os aspetos críticos do ambiente de alojamento. Irão implementar as suas aplicações no Serviço Azure Kubernetes (AKS) e quererão aprender como implementar contentores de forma dinâmica com balanceamento de carga, descobrir contentores e escalá-los sob demanda.
 
 Neste laboratório prático, ajudará a completar este POC com um subconjunto da base de código da aplicação. Utilizará um agente de build pré-criado baseado em Linux e um cluster do Azure Kubernetes Service para executar aplicações implantadas. Irá ajudá-los a concluir a configuração do Docker para a sua aplicação, testar localmente, enviar por push para um repositório de imagens, implementar no cluster, testar o balanceamento de carga e a escala e utilizar o Azure Monitor e visualizar os insights.
 
 ## Objetivo
 
-Este laboratório foi concebido para equipar os participantes com experiência prática na construção de imagens Docker, migrar o MongoDB para o Cosmos DB, implementar e escalar aplicações no Azure Kubernetes Service, gerir atualizações e encaminhamento de tráfego e monitorizar o desempenho do contentor com o Azure Monitor .
+Este laboratório foi concebido para equipar os participantes com experiência prática na construção de imagens Docker, migrar bancos de dados MongoDB para Cosmos DB, implementar e escalar aplicações no Azure Kubernetes Service (AKS), gerir atualizações, encaminhamento de tráfego e monitorizar o desempenho do containers com o Azure Monitor .
 
-1. **Crie imagens Docker para a aplicação:** Este exercício prático tem como objetivo criar imagens Docker para contentorizar a sua aplicação para implementações consistentes e portáteis. Os participantes irão contentorizar a aplicação com sucesso, permitindo uma implementação consistente em vários ambientes.
+1. **Criar imagens Docker para a aplicação:** Este exercício prático tem como objetivo criar imagens Docker para containerizar a sua aplicação para implementações consistentes e portáteis. Os participantes irão containerizar a aplicação, permitindo uma implementação consistente em vários ambientes.
 
-1. **Migrar o MongoDB para o Cosmos DB utilizando a Migração de Base de Dados do Azure:** Este exercício prático tem como objetivo transferir os seus dados do MongoDB para o Azure Cosmos DB para tirar partido dos seus serviços de base de dados escaláveis ​​​​e geridos. Os participantes migrarão perfeitamente os dados do MongoDB para o Azure Cosmos DB, garantindo a disponibilidade dos dados e a compatibilidade com os serviços do Azure.
+1. **Migrar o MongoDB para o Cosmos DB utilizando a Migração de Base de Dados do Azure:** Este exercício prático tem como objetivo transferir os seus dados do MongoDB para o Azure Cosmos DB para tirar partido dos seus serviços de banco de dados escaláveis ​​​​e geridos. Os participantes migrarão os dados do MongoDB para o Azure Cosmos DB, garantindo a disponibilidade dos dados e a compatibilidade com os serviços do Azure.
 
-1. **Implantar a aplicação no Serviço Azure Kubernetes:** Este exercício prático tem como objetivo implementar e gerir a sua aplicação contentorizada utilizando o Serviço Azure Kubernetes para orquestração e escalabilidade. Os participantes irão implementar a aplicação em contentor no Azure Kubernetes Service, fornecendo um ambiente escalonável e gerido para operação.
+1. **Implantar a aplicação no Serviço Azure Kubernetes:** Este exercício prático tem como objetivo implementar e gerir a sua aplicação containerizada utilizando o Serviço Azure Kubernetes para orquestração e escalabilidade. Os participantes irão implementar a aplicação em contentor no Azure Kubernetes Service, fornecendo um ambiente escalonável e gerido para operação.
 
 1. **Escale a aplicação e valide o HA:** Este exercício prático tem como objetivo ajustar o dimensionamento da aplicação e confirmar a sua alta disponibilidade para garantir que tem um bom desempenho sob cargas variadas. Os participantes irão escalar a aplicação para lidar com cargas variadas e confirmar a sua alta disponibilidade para manter o desempenho e a fiabilidade.
 
 1. **Atualização de aplicações e gestão do Kubernetes Ingress:** Este exercício prático tem como objetivo aplicar atualizações à sua aplicação e configurar o Kubernetes Ingress para gerir e encaminhar o tráfego externo de forma eficaz. Os participantes irão atualizar a aplicação com sucesso e configurar o Kubernetes Ingress para gerir e encaminhar eficazmente o tráfego externo.
 
-1. **Azure Monitor para Contentores:** Este exercício prático tem como objetivo utilizar o Azure Monitor para Contentores para rastrear e analisar o desempenho e a integridade das suas aplicações contentorizadas no AKS. Os participantes permitirão a monitorização de aplicações em contentores com o Azure Monitor, fornecendo insights sobre o desempenho e a integridade operacional.
+1. **Azure Monitor para Contentores:** Este exercício prático tem como objetivo utilizar o Azure Monitor para Contentores para rastrear e analisar o desempenho e a integridade das suas aplicações containerizadas no AKS. Os participantes configurarão a monitorização de aplicações em contentores com o Azure Monitor, fornecendo insights sobre o desempenho e a integridade operacional.
 
 ## Pré-requisitos
 
-Os participantes deverão ter:
+Os participantes deverão:
 
 - Compreender conceitos Docker, como containers, imagens e Dockerfiles.
 - Conhecimento das estruturas de dados do MongoDB e das capacidades do Azure Cosmos DB para uma migração eficaz.
@@ -38,11 +38,11 @@ Os participantes deverão ter:
 
 ## Arquitetura
 
-Os exercícios utilizam vários serviços do Azure para criar, implementar e gerir aplicações de forma eficaz. O Azure Container Registry (ACR) é utilizado para armazenar e gerir imagens de contentores Docker, enquanto o Azure Cosmos DB fornece uma solução de base de dados escalável e multimodelo para migração de dados. O Azure Kubernetes Service (AKS) permite a implantação e gestão de aplicações contentorizadas num ambiente Kubernetes gerido. Para escalabilidade e alta disponibilidade, o Azure Load Balancer distribui o tráfego entre servidores, e o Azure Application Gateway oferece balanceamento de carga e encaminhamento avançados para aplicações Web. Por fim, o Azure Monitor monitoriza o desempenho e a saúde das aplicações e da infraestrutura, incluindo ambientes contentorizados, garantindo monitorização e insights abrangentes.
+Os exercícios utilizam vários serviços do Azure para criar, implementar e gerir aplicações de forma eficaz. O Azure Container Registry (ACR) é utilizado para armazenar e gerir imagens de contentores Docker, enquanto o Azure Cosmos DB fornece uma solução de banco de dados escalável e multimodelo para migração de dados. O Azure Kubernetes Service (AKS) permite a implantação e gestão de aplicações containerizada num ambiente Kubernetes gerido. Para escalabilidade e alta disponibilidade, o Azure Load Balancer distribui o tráfego entre servidores, e o Azure Application Gateway oferece balanceamento de carga e encaminhamento avançados para aplicações Web. Por fim, o Azure Monitor monitoriza o desempenho e a saúde das aplicações e da infraestrutura, incluindo ambientes containerizados, garantindo monitorização e insights abrangentes.
 
 ## Diagrama de Arquitetura
 
-![Selecionando anúnciod para criar uma implantação.](../media/newoverview.png "Selecionar + Adicionar para criar uma implantação")
+![Selecionando anúncio para criar uma implantação.](../media/newoverview.png "Selecionar + Adicionar para criar uma implantação")
 
 ## Explicação dos Componentes
 
@@ -61,21 +61,21 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
    ![](../media/gs01.png "Ambiente de laboratório")
 
-1. Para obter os detalhes do ambiente de laboratório, pode selecionar o separador **Ambiente**. Além disso, as credenciais também serão enviadas para o seu endereço de e-mail registado. Também pode abrir o Guia do laboratório numa janela completa e separada, selecionando **Janela dividida** no canto superior direito. Além disso, pode iniciar, parar e reiniciar máquinas virtuais no separador **Recursos**.
+1. Para obter os detalhes do ambiente de laboratório, pode selecionar o separador **Environment**. Além disso, as credenciais também serão enviadas para o seu endereço de e-mail registado. Também pode abrir o Guia do laboratório numa janela completa e separada, selecionando **Split Window** no canto superior direito. Além disso, pode iniciar, parar e reiniciar máquinas virtuais no separador **Resources**.
 
    ![](../media/gs02.png "Ambiente de laboratório")
 
    > Verá o valor DeploymentID no separador **Environment**.
 
-## Validação laboratorial
+## Validação do Lab
 
 1. Depois de concluir a tarefa, clique no botão **Validar** no separador Validação integrado no seu guia de laboratório. Se receber uma mensagem de sucesso, poderá avançar para a tarefa seguinte;
 
    ![Validação Inline](../media/inline-validation.png)
 
-1. Também pode validar a tarefa navegando até ao separador **Validação de laboratório**, no canto superior direito da secção do guia de laboratório.
+1. Também pode validar a tarefa navegando até ao separador **Lab Validation**, no canto superior direito da secção do guia de laboratório.
 
-   ![Validação laboratorial](../media/lab-validation.png)
+   ![Lab Validation](../media/lab-validation.png)
 
 1. Se precisar de ajuda, contacte-nos através do e-mail labs-support@spektrasystems.com.
 
@@ -97,33 +97,33 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
 1. No JumpVM, clique no atalho do portal Azure do navegador Microsoft Edge que é criado no ambiente de trabalho.
 
-   ![](../media/gs-3.png "Ambiente de Laboratório")
+   ![](../media/gs-3.png "Lab Environment")
 
-1. No separador **Entrar no Microsoft Azure** verá o ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Seguinte**.
+1. No separador **Sign into Microsoft Azure** verá o ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Next**.
 
     * E-mail/Nome de utilizador: <inject key="AzureAdUserEmail"></inject>
 
-      ![](../media/gs-4.png "Introduza o e-mail")
+      ![](../media/gs-4.png "Enter Email")
 
-1. Agora digite a seguinte palavra-passe e clique em **Entrar**.
+1. Agora digite a seguinte palavra-passe e clique em **Sign in**.
 
     * Palavra-passe: <inject key="AzureAdUserPassword"></inject>
 
-      ![](../media/gs-5.png "Introduza a palavra-passe")
+      ![](../media/gs-5.png "Enter Password")
 
-    > Se vir a caixa de diálogo **Ajude-nos a proteger a sua conta**, selecione a opção **Saltar por enquanto**.
+    > Se vir a caixa de diálogo **Help us protect your account**, selecione a opção **Skip for now**.
 
-   ![](../media/gs-6.png "Introduza a palavra-passe")
+   ![](../media/gs-6.png "Enter Password")
 
-1. Se vir o pop-up **Permanecer ligado?**, clique em Não
+1. Se vir o pop-up **Stay Signed in?**, clique em Não
 
-1. Se vir o pop-up **Tem recomendações gratuitas do Azure Advisor!**, feche a janela para continuar o laboratório.
+1. Se vir o pop-up **You have free Azure Advisor recommendations!**, feche a janela para continuar o laboratório.
 
-1. Se for apresentada uma janela pop-up **Bem-vindo ao Microsoft Azure**, clique em **Talvez mais tarde** para ignorar o tour.
+1. Se for apresentada uma janela pop-up **Welcome to Microsoft Azure**, clique em **Maybe Later** para ignorar o tour.
 
-1. Agora verá o Painel do Portal do Azure, clique em **Grupos de recursos** no painel Navegar para ver os grupos de recursos.
+1. Agora verá o Painel do Portal do Azure, clique em **Resource Groups** no painel Navegar para ver os grupos de recursos.
 
-   ![](../media/gs-7.png "Grupos de recursos")
+   ![](../media/gs-7.png "Resource Groups")
 
 No final deste laboratório, os participantes aprenderão a criar imagens Docker para aplicações em contentores, a migrar dados do MongoDB para o Azure Cosmos DB e a implementar aplicações no Azure Kubernetes Service (AKS) para orquestração. Também irão escalar aplicações e garantir alta disponibilidade, gerir atualizações e encaminhamento de tráfego e utilizar o Azure Monitor para monitorizar o desempenho e a integridade das suas aplicações em contentores.
 
