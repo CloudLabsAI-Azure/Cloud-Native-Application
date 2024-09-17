@@ -1,4 +1,4 @@
-# Exercício 5: atualização de aplicações e gestão de entrada do Kubernetes
+# Exercício 5: Atualização de aplicações e gestão de Ingress do Kubernetes
 
 ### Duração estimada: 60 minutos
 
@@ -12,14 +12,14 @@ Os serviços Kubernetes podem descobrir as portas atribuídas a cada pod, permit
 
 Poderá completar as seguintes tarefas:
 
-- Tarefa 1: Execute uma atualização contínua
-- Tarefa 2: configurar o bilhete Kubernetes
+- Tarefa 1: Executar uma atualização contínua
+- Tarefa 2: Configurar Ingress em Kubernetes
 
-### Tarefa 1: Execute uma atualização contínua
+### Tarefa 1: Executar uma atualização contínua
 
 Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algumas definições e atualizar a imagem do Docker utilizada pela implementação. Em seguida, irá executar uma atualização contínua para demonstrar como implementar uma alteração de código. As atualizações contínuas permitem que as atualizações de implementação ocorram sem tempo de inatividade, atualizando incrementalmente as instâncias de pods com novas. Os novos Pods serão agendados em Nodes com as funcionalidades disponíveis.
 
->**Nota**: execute esta tarefa utilizando um novo comando de linha do Windows que não deve estar ligado à VM do agente de build, mas que deve estar ligado ao Azure.
+>**Nota**: Execute esta tarefa utilizando um novo comando de linha do Windows que não deve estar ligado à VM do agente de build, mas que deve estar ligado ao Azure.
 
 1. Em primeiro lugar, fará algumas alterações no código-fonte da sua aplicação web e criará uma nova imagem do Docker com base nas alterações mais recentes.
 
@@ -38,7 +38,7 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
    ![Uma captura de ecrã do editor de código que mostra as atualizações no contexto do ficheiro app.js](../media/updatetext.png "Atualizações do AppInsights no app.js")
 
-1. Uma vez aberto o ficheiro, prima "i" para entrar no modo de inserção e atualizar o valor existente mencionado abaixo na secção **items** e no valor **nome**.
+1. Uma vez aberto o ficheiro, prima "i" para entrar no modo de inserção e atualizar o valor existente mencionado abaixo na secção **items** e no valor **name**.
 
     ```
     The latest, Fastest, Most Powerful Xbox Ever.
@@ -106,7 +106,7 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
    ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/webupdates.png "A implementação do pod está em curso")
 
-### Tarefa 2: configurar a entrada do Kubernetes
+### Tarefa 2: Configurar Ingress em Kubernetes
 
 Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy Nginx](https://nginx.org/en/) para tirar partido do encaminhamento baseado em caminhos e da terminação TLS.
 
@@ -128,13 +128,13 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     > helm repo add stable https://charts.helm.sh/stable
     > ```
 
-3. Instale a funcionalidade Controlador de Entrada para lidar com pedidos de entrada à medida que estes chegam.
+3. Instale a funcionalidade Controlador de Ingress para lidar com pedidos de entrada à medida que estes chegam. O Controlador de Ingresso receberá um IP público próprio no Balanceador de Carga do Azure e processará solicitações de vários serviços nas portas 80 e 443.
 
     ```bash
     helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
     ```
 
-4. Navegue até ao Portal Azure, abra o serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes. Selecione **Serviços e entradas** nos recursos do Kubernetes e copie o endereço IP para o **IP externo** para o serviço `nginx-ingress-RANDOM-nginx-ingress`.
+4. Navegue até ao Portal Azure, abra o serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes. Selecione **Services and ingresses** nos recursos do Kubernetes e copie o endereço IP para o **External IP** para o serviço `nginx-ingress-RANDOM-nginx-ingress`.
 
     > **Nota**: A atualização pode demorar alguns minutos.
     >
@@ -250,7 +250,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
 12. Guarde as alterações e feche o editor.
 
-13. Crie o emissor usando `kubectl`.
+13. Crie o emissor (issuer) usando `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f clusterissuer.yml
@@ -373,7 +373,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
     > **Nota**: Pode demorar 5 a 30 minutos para que o site SSL fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt.
 
-23. Clique no botão **Seguinte** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
+23. Clique no botão **Next** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
 ## Resumo
 
