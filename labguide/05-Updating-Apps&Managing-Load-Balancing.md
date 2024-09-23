@@ -27,7 +27,6 @@ In this task, you will edit the web application source code to update some confi
 
      ```bash
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
-
      ```
 1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
 
@@ -160,35 +159,35 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
 
-   ```bash
-   # Create a SecureString from the client's secret
-   $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
-   
-   # Create a PSCredential object using the client ID and secure password
-   $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
-   
-   # Authenticate using the PSCredential object
-   Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
+      ```bash
+      # Create a SecureString from the client's secret
+      $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
+      
+      # Create a PSCredential object using the client ID and secure password
+      $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
+      
+      # Authenticate using the PSCredential object
+      Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
 
-   $ipaddress="INGRESS PUBLIC IP"
+      $ipaddress="INGRESS PUBLIC IP"
 
-   $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+      $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
-   $DNSNAME="contosotraders-SUFFIX-ingress"
+      $DNSNAME="contosotraders-SUFFIX-ingress"
 
-   $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
+      $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
 
-   $results = @()
+      $results = @()
 
-   ForEach ($i in $PUBLICIP)
-   {
-   If($i.IpAddress -eq $ipaddress){
-   $PIPNAME=$i.name
-   $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
-   Set-AzPublicIpAddress -PublicIpAddress $i
-   }
-   }
-   ```
+      ForEach ($i in $PUBLICIP)
+      {
+      If($i.IpAddress -eq $ipaddress){
+      $PIPNAME=$i.name
+      $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+      Set-AzPublicIpAddress -PublicIpAddress $i
+      }
+      }
+      ```
 6. Save changes and close the editor.
 
 7. Run the update script.
