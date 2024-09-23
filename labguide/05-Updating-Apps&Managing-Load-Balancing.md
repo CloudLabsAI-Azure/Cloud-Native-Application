@@ -114,9 +114,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 1. Run the following command from a Windows command terminal to add the Nginx stable Helm repository:
 
-    ```bash
-    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-    ```
+   ```bash
+   helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+   ```
 
 2. Update your helm package list.
 
@@ -138,12 +138,12 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 4. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
 
-    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
-    >
-    > ```bash
-    > kubectl get svc --namespace contoso-traders
-    > ```
-    >
+   > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
+   >
+   > ```bash
+   > kubectl get svc --namespace contoso-traders
+   > ```
+   >
    ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
 
 5. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
@@ -151,7 +151,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```bash
    code update-ip.ps1
    ```
-   
+
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
    - `[IP]`: Replace this with the IP Address copied from step 5.
@@ -159,35 +159,35 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
 
-      ```bash
-      # Create a SecureString from the client's secret
-      $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
+     ```bash
+     # Create a SecureString from the client's secret
+     $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
       
-      # Create a PSCredential object using the client ID and secure password
-      $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
+     # Create a PSCredential object using the client ID and secure password
+     $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
       
-      # Authenticate using the PSCredential object
-      Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
+     # Authenticate using the PSCredential object
+     Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
 
-      $ipaddress="INGRESS PUBLIC IP"
+     $ipaddress="INGRESS PUBLIC IP"
 
-      $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+     $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
-      $DNSNAME="contosotraders-SUFFIX-ingress"
+     $DNSNAME="contosotraders-SUFFIX-ingress"
 
-      $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
+     $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
 
-      $results = @()
+     $results = @()
 
-      ForEach ($i in $PUBLICIP)
-      {
-      If($i.IpAddress -eq $ipaddress){
-      $PIPNAME=$i.name
-      $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
-      Set-AzPublicIpAddress -PublicIpAddress $i
-      }
-      }
-      ```
+     ForEach ($i in $PUBLICIP)
+     {
+     If($i.IpAddress -eq $ipaddress){
+     $PIPNAME=$i.name
+     $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+     Set-AzPublicIpAddress -PublicIpAddress $i
+     }
+     }
+     ```
 6. Save changes and close the editor.
 
 7. Run the update script.
@@ -200,11 +200,11 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** in the below URL before browsing it.
 
-    > **Note**: It is normal to receive a 404 message at this time.
+   > **Note**: It is normal to receive a 404 message at this time.
 
-    ```text
-    http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
-    ```
+   ```text
+   http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
+   ```
    ![](media/15.png )
 
    >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below-mentioned command and try accessing the URL again.
@@ -215,15 +215,15 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 9. Use helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
 
-    ```bash
-    kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
-    ```
+   ```bash
+   kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
+   ```
 
 10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
 
-    ```bash 
-    code clusterissuer.yml
-    ```
+   ```bash 
+   code clusterissuer.yml
+   ```
 11. Inside the **clusterissuer.yml** file copy and paste the following content:
 
     ```yaml
@@ -295,19 +295,19 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     kubectl create --save-config=true -f certificate.yml
     ```
     
-     > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret -n contoso-traders` command and look for an _Events_ output similar to the following:
-    >
-    > ```text
-    > Type    Reason         Age   From          Message
-    > ----    ------         ----  ----          -------
-    > Normal  Generated           38s   cert-manager  Generated new private key
-    > Normal  GenerateSelfSigned  38s   cert-manager  Generated temporary self signed certificate
-    > Normal  OrderCreated        38s   cert-manager  Created Order resource "tls-secret-3254248695"
-    > Normal  OrderComplete       12s   cert-manager  Order "tls-secret-3254248695" completed successfully
-    > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
-    > ```
+      > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret -n contoso-traders` command and look for an _Events_ output similar to the following:
+      >
+      > ```text
+      > Type    Reason         Age   From          Message
+      > ----    ------         ----  ----          -------
+      > Normal  Generated           38s   cert-manager  Generated new private key
+      > Normal  GenerateSelfSigned  38s   cert-manager  Generated temporary self signed certificate
+      > Normal  OrderCreated        38s   cert-manager  Created Order resource "tls-secret-3254248695"
+      > Normal  OrderComplete       12s   cert-manager  Order "tls-secret-3254248695" completed successfully
+      > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
+      > ```
 
-    It can take between 5 and 30 minutes before the tls-secret becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
+      It can take between 5 and 30 minutes before the tls-secret becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
 
 16. Now you can create an ingress resource for the content applications.
 
