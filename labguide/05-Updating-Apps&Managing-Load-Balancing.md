@@ -295,8 +295,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     ```bash
     kubectl create --save-config=true -f certificate.yml
     ```
-
-    > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret -n contoso-traders` command and look for an _Events_ output similar to the following:
+    
+     > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret -n contoso-traders` command and look for an _Events_ output similar to the following:
     >
     > ```text
     > Type    Reason         Age   From          Message
