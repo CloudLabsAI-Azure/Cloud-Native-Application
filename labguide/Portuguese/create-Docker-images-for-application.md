@@ -175,7 +175,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/EX1-T2-S15.png)
 
-1. Navegue até ao portal Azure, abra o Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** no Grupo de Recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" / >**.
+1. Navegue até ao portal Azure, abra o Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** no Grupo de Recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
    ![](../media/ex1-acr1.png)
 
