@@ -62,11 +62,11 @@ Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do A
 
 Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de Base de Dados do Azure e, em seguida, migrar os dados do MongoDB para o Azure Cosmos DB. Nos exercícios posteriores, irá utilizar o Azure CosmosDB para pesquisar os dados da página de produtos.
 
-1. No Portal Azure, navegue até à sua máquina virtual **contosotraders** no grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Copie o **Endereço IP privado** e cole-o no bloco de notas para utilização posterior.
+1. No Portal Azure, navegue até à sua máquina virtual **contosotraders** no grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Copie o **Private IP address** e cole-o no bloco de notas para utilização posterior.
 
    ![](../media/privateip.png)
 
-1. Navegue até ao grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" /> (1)** e abra o recurso de CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2 )** e clique em **Data Explorer (3)**. Clique agora na seta suspensa, adjacente a **New Collection (4)** e selecione **New Database (5)**.
+1. Navegue até ao grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" /> (1)** e abra o recurso de CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** e clique em **Data Explorer (3)**. Clique agora na seta suspensa, adjacente a **New Collection (4)** e selecione **New Database (5)**.
 
    ![](../media/Ex2T2S2.png)
 
