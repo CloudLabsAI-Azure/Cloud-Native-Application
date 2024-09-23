@@ -106,7 +106,7 @@ In this task, you will edit the web application source code to update some confi
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
 
-     <validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+   <validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
     
 ### Task 2: Configure Kubernetes Ingress
 
