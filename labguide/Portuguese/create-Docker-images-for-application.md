@@ -157,7 +157,6 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/EX1-T2-S13.png)
 
-
     >**Nota**: Tenha em atenção que o comando acima pode demorar até 5 minutos para completar a compilação. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso. Além disso, poderá notar alguns avisos relacionados com a atualização da versão do npm que é esperada e não afeta a funcionalidade do laboratório.
 
 1. Redirecione para o diretório **labfiles** antes de executar os próximos passos.
