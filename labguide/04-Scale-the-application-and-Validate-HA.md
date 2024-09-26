@@ -38,7 +38,12 @@ In this task, you will increase the number of instances for the API deployment i
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
 
-      <validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
+<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 ### Task 2: Resolve failed replica provisioning 
 
@@ -65,10 +70,9 @@ In this task, you will resolve the failed API replicas. These failures occur due
    - Modify the **cpu** and set it to **100m (2)**. CPU is divided between all Pods on a Node.
 
       ```yaml
-      resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
+      requests:
+         cpu: 100m
+         memory: 128Mi
       ```
 
       ![In the edit YAML dialog, showing two changes required.](media/cloudnative10.png "Modify deployment manifest")
@@ -101,47 +105,46 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
    
    ![In the Workload view with the API deployment highlighted.](media/HS12.png "API deployment is now healthy")
 
+   >**Note:** If you do not get the expected output, please wait for a few minutes as it may take some time to reflect.
+
 ### Task 4: Autoscaling on Azure Kubernetes Service cluster
 
 In this task, you will be enabling the cluster autoscaler for the existing AKS cluster and you will be autoscaling the cluster node pools.
 
 1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the below command after updating the values in the below command.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
-
     ```
-    az login -u [username] -p [Password]
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
-1. In order to set up the Kubernetes cluster connection, make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command and run.
+1. In order to set up the Kubernetes cluster connection, run the below command.
 
     ```
-    az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
+    az aks get-credentials --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
     ```
     
-1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `null`. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.   
+1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `null`.
     
      ```
-     az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
+     az aks nodepool list --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
      ```   
     
     ![](media/ex4-t3-scaling1.png)
 
-1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`.  Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`.
 
     ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
+    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
     ```
   
    ![](media/ex4-t3-scaling2.png)
    
     >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
    
-1. Run the below command to autoscale the node pools in the existing cluster. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to autoscale the node pools in the existing cluster.
 
     ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
+    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
     ```
    
    ![](media/ex4-t3-scaling3.png)
@@ -190,7 +193,12 @@ In this task, you will restart containers and validate that the restart does not
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/11.png "View replica details")
 
-      <validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
+<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 ### Task 6: Configure CosmosDB Autoscale
 

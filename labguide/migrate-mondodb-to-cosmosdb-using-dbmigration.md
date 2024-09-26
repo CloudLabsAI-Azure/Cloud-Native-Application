@@ -52,11 +52,11 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
 
    - Please run the below mentioned commands in the command prompt and perform step 1 and 2 again.
 
-   ```
-   cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
-   npm ci
-   nodejs server.js
-   ```     
+      ```
+      cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
+      npm ci
+      nodejs server.js
+      ```     
 
 ### Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
@@ -66,11 +66,11 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/privateip.png)
 
-1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** resource group and open **contosotraders<inject key="DeploymentID" enableCopy="false" />(2)** CosmosDB resource and click on **Data Explorer(3)**. Now click on drop down arrow, adjacent to **New Collection(4)** and then select **New Database(5)**.
+1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" /> (1)** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** CosmosDB resource and click on **Data Explorer (3)**. Now click on drop down arrow, adjacent to **New Collection (4)** and then select **New Database (5)**.
 
    ![](media/cosmosdb_newcollection1.png)
 
-1. Provide name as `contentdb` **(1)** for **Database id** and select **Databse throughput** as **Manual** **(2)**,  provide the RU/s value to `400` **(3)** and click on **OK(4)**.
+1. Provide name as `contentdb` **(1)** for **Database id** and select **Databse throughput** as **Manual** **(2)**,  provide the RU/s value to `400` **(3)** and click on **OK (4)**.
 
    ![](media/Ex2T2S3.png)
 
@@ -80,16 +80,16 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/newproject.png)
 
-1. On the **New migration project** pane, enter the following values and then select **Create and run activity**:
+1. On the **New migration project** pane, enter the following values and then select **Create and run activity (5)**:
 
-    - Project name: `contoso`
-    - Source server type: `MongoDB`
-    - Target server type: `CosmosDB (MongoDB API)`
-    - Choose type of activity: `Offline data migration`
+    - Project name: `contoso` (1)
+    - Source server type: `MongoDB` (2)
+    - Target server type: `CosmosDB (MongoDB API)` (3)
+    - Choose type of activity: `Offline data migration` (4)
 
-    ![The screenshot shows the New migration project pane with values entered.](media/ex2-newmigrationproject.png  "New migration project pane")
+      ![The screenshot shows the New migration project pane with values entered.](media/ex2-newmigrationproject.png  "New migration project pane")
 
-    >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
+      >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
 
 1. On the **MongoDB to Azure Database for CosmosDB Offline Migration Wizard** pane, enter the following values for the **Select source** tab:
 
@@ -98,20 +98,20 @@ In this task, you will create a Migration project within Azure Database Migratio
     - Server port: `27017`
     - Require SSL: Unchecked
 
-    > **Note:** Leave the **User Name** and **Password** blank as the MongoDB instance on the Build Agent VM for this lab does not have authentication turned on. The Azure Database Migration Service is connected to the same VNet as the Build Agent VM, so it's able to communicate within the VNet directly to the VM without exposing the MongoDB service to the Internet. In production scenarios, you should always have authentication enabled on MongoDB.
+      > **Note:** Leave the **User Name** and **Password** blank as the MongoDB instance on the Build Agent VM for this lab does not have authentication turned on. The Azure Database Migration Service is connected to the same VNet as the Build Agent VM, so it's able to communicate within the VNet directly to the VM without exposing the MongoDB service to the Internet. In production scenarios, you should always have authentication enabled on MongoDB.
 
-    ![Select source tab with values selected for the MongoDB server.](media/CNV2-E2-T2-S5.png "MongoDB to Azure Database for CosmosDB - Select source")
+      ![Select source tab with values selected for the MongoDB server.](media/CNV2-E2-T2-S5.png "MongoDB to Azure Database for CosmosDB - Select source")
     
-    > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
+      > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
 
-    ```bash
-    
-    cd /etc
-    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
-    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
-    sudo service mongodb stop
-    sudo service mongodb start
-    ```
+      ```bash
+      
+      cd /etc
+      sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
+      sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
+      sudo service mongodb stop
+      sudo service mongodb start
+      ```
     
 1. Select **Next: Select target >>**.
 
@@ -123,9 +123,9 @@ In this task, you will create a Migration project within Azure Database Migratio
 
     - Select Cosmos DB name: Select the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB instance.
 
-   ![The Select target tab with values selected.](media/targetmongo.png "MongoDB to Azure Database for CosmosDB - Select target")
+      ![The Select target tab with values selected.](media/targetmongo.png "MongoDB to Azure Database for CosmosDB - Select target")
 
-   Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
+      >**Note:** Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
 1. Select **Next: Database setting >>**.
 
@@ -163,7 +163,12 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-   <validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
+<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 ## Summary
 

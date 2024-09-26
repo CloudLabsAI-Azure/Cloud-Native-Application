@@ -57,17 +57,23 @@ In this task, you will edit the web application source code to update some confi
      cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
      ```
    
-1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application. and push the new image to ACR. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application.
   
    >**Note**: Observe that this time we are using "V1" tag for the image
   
       ```bash
-      docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+      docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1 -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
 
-      docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
+      docker push contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
       ```
 
    > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
+
+   >**Note:** If it throws error, run the below command:
+
+   ```
+   az acr login -n contosotradersacr<inject key="DeploymentID" enableCopy="false" />
+   ```
 
 1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
@@ -90,10 +96,10 @@ In this task, you will edit the web application source code to update some confi
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S10.png "Pod deployment is in progress")
 
-1. Now to set the new image on the pods, run the below command. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />**
+1. Now to set the new image on the pods, run the below command.
 
      ```bash
-     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
      ```
      
     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
@@ -106,7 +112,12 @@ In this task, you will edit the web application source code to update some confi
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
 
-   <validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+<validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
     
 ### Task 2: Configure Kubernetes Ingress
 
@@ -154,7 +165,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
-   - `[IP]`: Replace this with the IP Address copied from step 5.
+   - `[ipaddress]`: Replace this with the IP Address copied from step 5.
    - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
@@ -198,12 +209,14 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
    ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/2dg125.jpg "Update the IP and SUFFIX values")
 
-8. Verify the IP update by visiting the URL in your browser. Make sure to update these values `[SUFFIX]` with **<inject key="DeploymentID" />** and `[AZURE-REGION]` with **<inject key="Region" />** in the below URL before browsing it.
+   >**Note:** If you encounter any errors, ignore them and proceed to the next step.
+
+8. Verify the IP update by visiting the URL in your browser.
 
    > **Note**: It is normal to receive a 404 message at this time.
 
    ```text
-   http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
+   http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
    ```
    ![](media/15.png )
 
@@ -221,9 +234,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
 
-   ```bash 
-   code clusterissuer.yml
-   ```
+    ```bash 
+    code clusterissuer.yml
+    ```
 11. Inside the **clusterissuer.yml** file copy and paste the following content:
 
     ```yaml
@@ -368,7 +381,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
     ![](media/16.png )
    
-22. Test TLS termination by visiting services again using `https`.
+22. Test TLS termination by visiting services again using `https://`.
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
 
