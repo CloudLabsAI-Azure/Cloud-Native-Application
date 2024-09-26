@@ -22,12 +22,9 @@ This task will gather the information you need about your Azure Kubernetes Servi
 > **Note**: The following tasks should be executed in the command prompt.
 
 1. Open a new command prompt as Administrator in your jump VM and login to azure with the below commands after updating the values in the below command.
-
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
    
     ```bash
-    az login -u [username] -p [Password]
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
     
     > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform the step-1 in a new command prompt as Administrator.
@@ -49,10 +46,10 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account set --subscription {id}
    ```
 
-1. Run the below command to set up the Kubernetes cluster connection using kubectl. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to set up the Kubernetes cluster connection using kubectl.
 
    ```bash
-   az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
+   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
    ```
 
 1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
@@ -71,7 +68,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
 
-1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vaults** from the list.
+1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />**, Key vaults from the list.
 
 1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **Secrets** under **Objects** from the left side menu.
 
@@ -86,11 +83,11 @@ In this task, you will be generating a secret in the Key vault and creating the 
     - Name: **mongodbconnection**
     - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
     
-    Keep other values default and click on **Create**
+    - Keep other values default and click on **Create**
     
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
      
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
      
 1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
 
@@ -99,11 +96,16 @@ In this task, you will be generating a secret in the Key vault and creating the 
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
     
-1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration** from the left side menu and click on **Secrets** section. Under secrets, you should be able to see the newly created secret. 
+1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration (1)** from the left side menu and click on **Secrets (2)** section. Under secrets, you should be able to see the **newly created secret (3)**. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
      
-      <validation step="106806cb-79ab-406a-b481-f125954d286e" />
+<validation step="106806cb-79ab-406a-b481-f125954d286e" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
@@ -121,24 +123,25 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: contoso-traders-products
-          namespace: contoso-traders
-          annotations:
-            #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
-            service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-        spec:
-          type: LoadBalancer
-          ports:
-            - port: 80
-          selector:
-            app: contoso-traders-products
-    ```    
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: contoso-traders-products
+        namespace: contoso-traders
+        annotations:
+          # TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+          service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+      spec:
+        type: LoadBalancer
+        ports:
+          - port: 80
+      selector:
+        app: contoso-traders-products
+
+      ```    
    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
-1. Select **Workloads** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create** and then choose **Apply a YAML**.
+1. Select **Workloads (1)** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
     ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
 
@@ -146,49 +149,49 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
     ```YAML
-       apiVersion: apps/v1
-       kind: Deployment
-       metadata:
-        name: contoso-traders-products
-        namespace: contoso-traders
-       spec:
-        replicas: 1
-        selector:
-          matchLabels:
-            app: contoso-traders-products
-        template:
-          metadata:
-            labels:
-              app: contoso-traders-products
-          spec:
-            nodeSelector:
-              "kubernetes.io/os": linux
-            containers:
-              - name: contoso-traders-products
-                #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
-                image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
-                env:
-                  - name: KeyVaultEndpoint
-                    valueFrom:
-                      secretKeyRef:
-                        name: contoso-traders-kv-endpoint
-                        key: contoso-traders-kv-endpoint
-                  - name: ManagedIdentityClientId
-                    valueFrom:
-                      secretKeyRef:
-                        name: contoso-traders-mi-clientid
-                        key: contoso-traders-mi-clientid
-                resources:
-                  requests:
-                    cpu: 50m
-                    memory: 64Mi
-                  limits:
-                    cpu: 250m
-                    memory: 256Mi
-                  ports:
-                    - containerPort: 3001
-                      hostPort: 3001
-                      protocol: TCP
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+    name: contoso-traders-products
+    namespace: contoso-traders
+    spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: contoso-traders-products
+    template:
+      metadata:
+        labels:
+          app: contoso-traders-products
+      spec:
+        nodeSelector:
+          "kubernetes.io/os": linux
+        containers:
+          - name: contoso-traders-products
+            #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
+            image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
+            env:
+              - name: KeyVaultEndpoint
+                valueFrom:
+                  secretKeyRef:
+                    name: contoso-traders-kv-endpoint
+                    key: contoso-traders-kv-endpoint
+              - name: ManagedIdentityClientId
+                valueFrom:
+                  secretKeyRef:
+                    name: contoso-traders-mi-clientid
+                    key: contoso-traders-mi-clientid
+            resources:
+              requests:
+                cpu: 50m
+                memory: 64Mi
+              limits:
+                cpu: 250m
+                memory: 256Mi
+              ports:
+                - containerPort: 3001
+                  hostPort: 3001
+                  protocol: TCP
     ```
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
@@ -196,7 +199,12 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
 
-     <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
+<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 ### Task 4: Deploy a service & workload using kubectl
 
@@ -222,11 +230,8 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Log in to Azure if not already done with the below command after updating the values in the command.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
-
     ```
-    az login -u [username] -p [Password]
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
 1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
@@ -246,7 +251,12 @@ In this task, you will deploy the web service & its workload using kubectl.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-     <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+<validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
      
 ## Summary
 

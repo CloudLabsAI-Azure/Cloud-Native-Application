@@ -36,7 +36,12 @@ In this task, you will be reviewing the monitored AKS cluster.
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/12.png "Add a Namespace")
 
-      <validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
+<validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 ## Summary
 
