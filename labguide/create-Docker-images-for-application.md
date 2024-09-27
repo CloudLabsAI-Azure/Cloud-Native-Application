@@ -37,9 +37,9 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
     > **Nota:** Si recibe un mensaje de salida que indica: - la ruta de destino 'Cloud-Native-Application' ya existe y no es un directorio vacío, por favor ejecute los siguientes comandos y luego vuelva a realizar el paso 4 de la tarea.
 
      ```
-        sudo su
-        rm -rf Cloud-Native-Application
-        exit
+    sudo su
+    rm -rf Cloud-Native-Application
+    exit
      ```   
      ![](media/EX1-T1-S4-1.png)
     
@@ -97,18 +97,18 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     cd Cloud-Native-Application/labfiles/
     ```
     
-1. Ahora construya la imagen docker **contosotraders-carts** usando el Dockerfile que se encuentra en el directorio. Observe cómo se hace referencia al Azure Container Registry implementado. Reemplace el marcador de posición SUFFIX en el siguiente comando con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado.
+1. Ahora construya la imagen docker **contosotraders-carts** usando el Dockerfile que se encuentra en el directorio. Observe cómo se hace referencia al Azure Container Registry implementado.
 
     ```
-     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
+     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest
     ```
     
     ![](media/EX1-T2-S8.png)
     
-1. Repita los pasos para crear la imagen docker **contosotraders-Products** con el siguiente comando. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
+1. Repita los pasos para crear la imagen docker **contosotraders-Products** con el siguiente comando. 
 
     ```
-     docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+     docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
     ```
 
     ![](media/EX1-T2-S9.png)
@@ -142,10 +142,10 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
-1. Ahora construya la imagen docker **contosotraders-UI-Website** con el siguiente comando. Asegúrese de reemplazar el SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
+1. Ahora construya la imagen docker **contosotraders-UI-Website** con el siguiente comando.
 
     ```
-    docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+    docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```    
     
     ![](media/EX1-T2-S13.png)
@@ -176,26 +176,26 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 
    ![](media/ex1-acr2.png)    
 
-1. Ahora vuelva a **Símbolo del sistema** e inicie sesión en ACR usando el siguiente comando; actualice el valor SUFFIX y la contraseña de ACR en el siguiente comando.  Debería poder ver la salida mostrada en la captura de pantalla. Asegúrese de reemplazar el SUFFIX con el valor de DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionados y password con la contraseña del registro del contenedor, que copió en el paso anterior, en el siguiente comando.
+1. Ahora inicie sesión en ACR usando el siguiente comando, actualice el valor del sufijo y la contraseña de ACR en el siguiente comando. Debería poder ver el resultado a continuación en la captura de pantalla. Asegúrese de reemplazar la contraseña con la contraseña de registro del contenedor copiada que copió en el paso anterior en el siguiente comando.
 
     ```
-    docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
+    docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
     ![](media/EX1-T2-S18.png "abrir cmd")
 
-1. Una vez que inicie sesión en ACR, ejecute los siguientes comandos para enviar las imágenes de Docker al registro del contenedor de Azure. Además, asegúrese de actualizar el valor SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en los siguientes comandos.
+1. Una vez que inicie sesión en ACR, ejecute los siguientes comandos para enviar las imágenes de Docker al registro del contenedor de Azure.
 
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest 
    ```
    
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
    ```
    
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
    ```
    
 1. Debería poder ver la imagen de docker enviada al ACR como se muestra en la siguiente captura de pantalla.

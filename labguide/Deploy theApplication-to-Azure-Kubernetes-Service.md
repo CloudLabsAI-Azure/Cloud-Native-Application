@@ -13,12 +13,9 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
 > **Nota**: Las siguientes tareas deben ejecutarse en el **Símbolo del sistema**.
 
 1. Abra un nuevo símbolo del sistema como Administrador en su JumpVM e inicie sesión en Azure con los siguientes comandos después de actualizar los valores en el siguiente comando.
-
-   * Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
-   * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
    
     ```bash
-    az login -u [username] -p [Password]
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
     
     > **Nota:** Si encuentra algún error al ejecutar el comando 'az', ejecute el siguiente comando para instalar Azure CLI y cierre el símbolo del sistema. Vuelva a realizar el paso 1 en un nuevo símbolo del sistema como Administrador.
@@ -40,10 +37,10 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
    az account set --subscription {id}
    ```
 
-1. Ejecute el siguiente comando para configurar la conexión del clúster de Kubernetes utilizando kubectl. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
+1. Ejecute el siguiente comando para configurar la conexión del clúster de Kubernetes utilizando kubectl.
 
    ```bash
-   az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
+   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
    ```
    
    ![](media/cloudnative4.png "abrir cmd")
@@ -64,7 +61,7 @@ En esta tarea, generará un secreto en Key vault y creará la conexión entre AK
 
     ![Esta es una captura de pantalla del Portal de Azure para buscar Key Vault.](media/cloudnative9.png "Buscar Key Vault")
 
-1. A continuación seleccione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vault** de la lista.
+1. A continuación seleccione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />**, key vault de la lista.
 
 1. Una vez que esté en la página del Almacén de claves **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** , seleccione **Secretos** debajo de Objetos en el menú lateral izquierdo.
 
@@ -80,9 +77,9 @@ En esta tarea, generará un secreto en Key vault y creará la conexión entre AK
     - Valor secreto: Pegue la cadena de conexión de la cuenta de Azure CosmosDB for MongoDB que copió en el ejercicio anterior. 
     - Mantenga los demás valores con la información por defecto y haga clic en **Crear**.
     
-     ![Esta es una captura de pantalla con los valores a colocar al crear un secreto.](media/mongodbconnection.jpg "Crear un secreto")
+      ![Esta es una captura de pantalla con los valores a colocar al crear un secreto.](media/mongodbconnection.jpg "Crear un secreto")
      
-     ![Esta es una captura de pantalla con el secreto mongodbconnection creado.](media/kv5.png "Secreto mongodbconnection creado")
+      ![Esta es una captura de pantalla con el secreto mongodbconnection creado.](media/kv5.png "Secreto mongodbconnection creado")
      
 1. Abra un nuevo **Símbolo del sistema** y ejecute el siguiente comando para crear un secreto usando kubectl. 
 
@@ -91,11 +88,16 @@ En esta tarea, generará un secreto en Key vault y creará la conexión entre AK
     ```
     ![Esta es una captura de pantalla para crear un secreto usando kubectl.](media/3..1.png "kubectl create secret")
     
-1. Vuelva al navegador y abra el AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure, seleccione **Configuración** del menú del lado izquierdo y haga clic en la sección **Secretos**. En **Secretos**, debería poder ver el secreto recién creado. 
+1. Vuelva al navegador y abra el AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure, seleccione **Configuración (1)** del menú del lado izquierdo y haga clic en la sección **Secretos (2)**. En **Secretos (3)**, debería poder ver el secreto recién creado. 
 
      ![Esta es una captura de pantalla del Portal de Azure para visualizar los secretos de AKS.](media/aksfinal.png "Visualizando los secretos de AKS")     
 
-      <validation step="106806cb-79ab-406a-b481-f125954d286e" />
+<validation step="106806cb-79ab-406a-b481-f125954d286e" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ### Tarea 3: Desplegar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service utilizando el Portal de Azure
    
@@ -130,7 +132,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
     ```    
    ![Agregando con YAML.](media/ex3-t3-servicecreate.png "Agregando con YAML") 
 
-1. Seleccione **Cargas de trabajo** en la sección de recursos Kubernetes en el menú a la izquierda. Con **Implementaciones** seleccionado por defecto, elija **+ Crear** y luego seleccione **Aplicar un YAML**.
+1. Seleccione **Cargas de trabajo (1)** en la sección de recursos Kubernetes en el menú a la izquierda. Con **Implementaciones** seleccionado por defecto, elija **+ Crear (2)** y luego seleccione **Aplicar un YAML (3)**.
 
     ![Seleccione cargas de trabajo en los recursos de Kubernetes.](media/CNV2-E3-T3-S5.png "SSeleccione cargas de trabajo en los recursos de Kubernetes")
 
@@ -188,7 +190,12 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 
    ![Implementación en ejecución.](media/conrunning.png "Implementación en ejecución")
 
-     <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
+<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ### Tarea 4: Implementar un servicio y una carga de trabajo usando kubectl
 
@@ -214,14 +221,12 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
 
 1. Inicie sesión en Azure si aún no lo ha hecho con el siguiente comando después de actualizar los valores en el comando.
 
-   * Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
-   * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
-
     ```
-    az login -u [username] -p [Password]
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
 1. Ejecute el siguiente comando para desplegar la aplicación descrita en los archivos YAML. Recibirá un mensaje indicando que el elemento `kubectl` ha creado una implementación web y un servicio web.
+   
    >**Información**: El siguiente comando kubectl creará la carga de trabajo de implementación y el servicio en el espacio de nombres que hemos definido en los archivos YAML. 
 
     ```bash
@@ -240,7 +245,12 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
     
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-     <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+<validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ## Resumen
 

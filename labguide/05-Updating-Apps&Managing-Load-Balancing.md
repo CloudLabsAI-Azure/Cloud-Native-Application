@@ -51,17 +51,23 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
      cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
      ```
    
-1. Una vez que esté en el directorio correcto, ejecute el siguiente comando para crear la nueva imagen de Docker que tendrá los últimos cambios de la aplicación web, y enviar la nueva imagen a ACR. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
+1. Una vez que esté en el directorio correcto, ejecute el siguiente comando para crear la nueva imagen de la ventana acoplable que tendrá los últimos cambios de la aplicación web.
   
    >**Nota**: Observe que esta vez estamos usando la etiqueta "V1" para la imagen.
   
       ```bash
-      docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+      docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:V1 -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:V1
 
-      docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
+      docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:V1
       ```
 
    > **Nota:** Por favor tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la compilación. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente. Además, es posible que observe algunas advertencias relacionadas con la actualización de la versión de npm, lo cual es esperado, y no afecta la funcionalidad del laboratorio.
+
+   >**Nota:** Si arroja un error, ejecute el siguiente comando:
+
+   ```
+   az acr login -n contosotradersacr<inject key="DeploymentID" enableCopy="false" />
+   ```
 
 1. Una vez que se completen los comandos docker build y push, regrese al otro símbolo del sistema que no está conectado a la MV de Linux.
 
@@ -84,10 +90,10 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
    
    ![Visualizando la versión de imagen actual de la app.](media/EX5-T1-S10.png "kubectl describe pods")
 
-1. Ahora, para configurar la nueva imagen en los pods, ejecute el siguiente comando. Asegúrese de actualizar los valores `[SUFFIX]` con **<inject key="DeploymentID" />**
+1. Ahora, para configurar la nueva imagen en los pods, ejecute el siguiente comando.
 
      ```bash
-     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
      ```
      
     ![Configurando la nueva imagen de los pods.](media/EX5-T1-S11.png "kubectl set image deployments")
@@ -100,7 +106,12 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
    ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
 
-     <validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+<validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
      
 ### Tarea 2: Configurar Kubernetes Ingress
 
@@ -148,7 +159,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    
    Pegue lo siguiente como contenido del script. Asegúrese de reemplazar los siguientes marcadores de posición en el script:
 
-   - `[IP]`: Reemplace esto con la Dirección IP copiada del paso 5.
+   - `[ipaddress]`: Reemplace esto con la Dirección IP copiada del paso 5.
    - `[KUBERNETES_NODE_RG]`: Reemplace `SUFFIX` con este valor: **<inject key="DeploymentID" />**.
    - `[DNSNAME]`: Reemplace esto con el mismo valor SUFFIX **<inject key="DeploymentID" />** que utilizó anteriormente para esta práctica de laboratorio.
    - `[PUBLICIP]`: Reemplace `SUFFIX` con este valor: **<inject key="DeploymentID" />**.
@@ -192,12 +203,14 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    
    ![Resultado de la ejecución del script.](media/2dg125.jpg "Resultado de la ejecución del script")
 
-8. Verifique la actualización de IP visitando la URL en su navegador. Asegúrese de actualizar estos valores: `[SUFFIX]` con **<inject key="DeploymentID" />** y `[AZURE-REGION]` con **<inject key="Region" />** en la siguiente URL antes de navegar por ella.
+   >**Nota:** Si encuentra algún error, ignórelo y continúe con el siguiente paso.
+
+8. Verifique la actualización de IP visitando la URL en su navegador.
 
     > **Nota**: Es normal recibir un mensaje 404 en este momento.
 
     ```text
-    http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
+    http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
     ```
    ![](media/15.png )
 
@@ -362,7 +375,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
     ![](media/16.png )
    
-22. Pruebe la terminación TLS visitando los servicios nuevamente usando `https`.
+22. Pruebe la terminación TLS visitando los servicios nuevamente usando `https://`.
 
     > **Nota**: El sitio SSL puede tardar entre 5 y 30 minutos en estar disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt.
 
