@@ -28,6 +28,11 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
     <validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
 
+    > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+    > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+    > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+    > - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
+
 ### Tarea 2: Resolver el aprovisionamiento de réplicas fallido
 
 En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se producen por la imposibilidad de satisfacer los recursos solicitados.
@@ -53,10 +58,9 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
    - Modifique la **cpu** y configúrela en **100m (2)**. La CPU se divide entre todos los Pods de un Nodo.
 
       ```yaml
-      resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
+      requests:
+         cpu: 100m
+         memory: 128Mi
       ```
 
       ![Modificando el manifiesto de implementación.](media/cloudnative10.png "Modificando el manifiesto de implementación.")
@@ -89,6 +93,8 @@ En esta tarea, configurará el autoescalado horizontal para sus pods del servici
    
    ![Verificando el estado del autoscaler horizontal.](media/HS12.png "kubectl get hpa")
 
+   >**Nota:** Si no obtiene el resultado esperado, espere unos minutos ya que puede tardar un tiempo en reflejarse.
+
 ### Tarea 4: Autoescalado en el clúster de Azure Kubernetes Service
 
 En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS existente y escalará automáticamente los grupos de nodos del clúster.
@@ -99,7 +105,7 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
    * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
 
     ```
-    az login -u [username] -p [Password]
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
 1. Para configurar la conexión del clúster de Kubernetes, asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando y ejecútelo.
