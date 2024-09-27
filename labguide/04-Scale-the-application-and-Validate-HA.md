@@ -26,12 +26,12 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
     ![Aplicación web funcionando correctamente.](media/11.png "Aplicación web funcionando correctamente")
 
-    <validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
+<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
 
-    > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
-    > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
-    > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
-    > - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ### Tarea 2: Resolver el aprovisionamiento de réplicas fallido
 
@@ -101,41 +101,38 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
 
 1. Vuelva al símbolo del sistema de Windows. Si no ha iniciado sesión en Azure, hágalo con el siguiente comando después de actualizar los valores en el comando.
 
-   * Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
-   * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
-
     ```
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
-1. Para configurar la conexión del clúster de Kubernetes, asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando y ejecútelo.
+1. Para configurar la conexión del clúster de Kubernetes, proporcione el siguiente comando y ejecútelo.
 
     ```
-    az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
+    az aks get-credentials --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
     ```
     
-1.  Verifique el `recuento` de grupos de nodos en el clúster y asegúrese de que `enableblingAutoScaling` sea `null`. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.   
+1.  Verifique el `recuento` de grupos de nodos en el clúster y asegúrese de que `enableblingAutoScaling` sea `null`. Proporcione el siguiente comando y ejecútelo.   
     
      ```
-     az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
+     az aks nodepool list --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
      ```   
     
     ![](media/ex4-t3-scaling1.png)
 
-1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` sea `true`. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
+1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` sea `true`. Proporcione el siguiente comando y ejecútelo.
 
     ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
+    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
     ```
   
    ![](media/ex4-t3-scaling2.png)
    
     >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la actualización. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente.
    
-1. Ejecute el siguiente comando para escalar automáticamente los grupos de nodos en el clúster existente. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el siguiente comando.
+1. Ejecute el siguiente comando para escalar automáticamente los grupos de nodos en el clúster existente. Proporcione el siguiente comando y ejecútelo.
 
     ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
+    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
     ```
    
    ![](media/ex4-t3-scaling3.png)
@@ -184,7 +181,12 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
     ![Sitio web ContosoTraders.](media/11.png "Sitio web ContosoTraders")
 
-      <validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
+<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ### Tarea 6: Configurar Autoscale en CosmosDB
 
@@ -204,7 +206,12 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
     ![La captura de pantalla muestra la pestaña Escala y configuración de Cosmos DB con Autoscale seleccionada](media/exe4-task6-step4-autoscale.png "Escala y configuración de la colección CosmosDB")
 
-   <validation step="772e22fb-588f-41b1-b761-428e48c79279" />
+<validation step="772e22fb-588f-41b1-b761-428e48c79279" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ### Tarea 7: Probar Autoscale de CosmosDB
 

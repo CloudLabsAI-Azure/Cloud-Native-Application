@@ -31,7 +31,12 @@ En esta tarea, revisará el clúster de AKS monitoreado.
     
     ![Esta es una captura de pantalla que muestra datos monitoreados en el servicio Kubernetes.](media/12.png "Datos monitoreados del servicio Kubernetes")
 
-      <validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
+<validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a labs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ## Resumen
 
