@@ -68,17 +68,10 @@ In this task, you will be building the docker images to containerize the applica
     ```
     cd Cloud-Native-Application/labfiles/
     ```
- 
-1. Run the below command to install docker.io 
-
-    ```
-    sudo apt install docker.io
-    ```
     
 1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 
    ``` 
-   sudo su
    az login
    ```
     
