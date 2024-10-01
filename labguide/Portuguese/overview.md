@@ -57,73 +57,55 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
 ## Introdução ao laboratório
 
-1. Depois de o ambiente ser provisionado, uma máquina virtual (JumpVM) e um guia de laboratório serão carregados no seu browser. Utilize esta máquina virtual durante todo o workshop para realizar o laboratório. Pode ver o número na parte inferior do guia de laboratório para alternar para os diferentes exercícios do guia de laboratório.
+1. Depois de o ambiente ser provisionado, uma máquina virtual (JumpVM) e um guia de laboratório serão carregados no seu browser. Utilize esta máquina virtual durante todo o workshop para realizar o laboratório. Pode ver o número na parte inferior do guia de laboratório para alternar para os diferentes exercícios do **Guia do laboratório**.
 
-   ![](../media/gs01.png "Ambiente de laboratório")
+   ![](../media/1-10-24(1).png "Ambiente de laboratório")
 
-1. Para obter os detalhes do ambiente de laboratório, pode selecionar o separador **Environment**. Além disso, as credenciais também serão enviadas para o seu endereço de e-mail registado. Também pode abrir o Guia do laboratório numa janela completa e separada, selecionando **Split Window** no canto superior direito. Além disso, pode iniciar, parar e reiniciar máquinas virtuais no separador **Resources**.
+1. Para obter os detalhes do ambiente de laboratório, pode selecionar o separador **Ambiente**. Além disso, as credenciais também serão enviadas para o seu endereço de e-mail registado. Também pode abrir o Guia do laboratório numa janela completa e separada, selecionando **Janela dividida** no canto superior direito. Além disso, pode iniciar, parar e reiniciar máquinas virtuais no separador **Recursos**.
 
-   ![](../media/gs02.png "Ambiente de laboratório")
+   ![](../media/1-10-24(2).png "Ambiente de laboratório")
 
    > Verá o valor DeploymentID no separador **Environment**.
 
 ## Validação do Lab
 
-1. Depois de concluir a tarefa, clique no botão **Validar** no separador Validação integrado no seu guia de laboratório. Se receber uma mensagem de sucesso, poderá avançar para a tarefa seguinte;
+1. Também pode validar a tarefa navegando até ao separador **Validação de laboratório**, no canto superior direito da secção do guia de laboratório.
 
-   ![Validação Inline](../media/inline-validation.png)
+   ![Lab Validation](../media/1-10-24(3).png)
 
-1. Também pode validar a tarefa navegando até ao separador **Lab Validation**, no canto superior direito da secção do guia de laboratório.
-
-   ![Lab Validation](../media/lab-validation.png)
-
-1. Se precisar de ajuda, contacte-nos através do e-mail labs-support@spektrasystems.com.
-
-## Extensão da duração do laboratório
-
-1. Para prolongar a duração do laboratório, clique no ícone **Ampulheta** no canto superior direito do ambiente do laboratório.
-
-   ![Gerencie a sua máquina virtual](../media/gext.png)
-
-   >**Nota:** Receberá o ícone **Ampulheta** quando restarem 10 minutos no laboratório.
-
-2. Clique em **OK** para prolongar a duração do laboratório.
-
-   ![Gerencie a sua máquina virtual](../media/gext2.png)
-
-3. Se não tiver prolongado a duração antes do fim do laboratório, será apresentado um pop-up, oferecendo a opção de prolongar. Clique em **OK** para prosseguir.
+1. Se precisar de ajuda, contacte-nos através do e-mail cloudlabs-support@spektrasystems.com.
 
 ## Faça login no Portal Azure
 
 1. No JumpVM, clique no atalho do portal Azure do navegador Microsoft Edge que é criado no ambiente de trabalho.
 
-   ![](../media/gs-3.png "Lab Environment")
+   ![](../media/1-10-24(4).png "Lab Environment")
 
-1. No separador **Sign into Microsoft Azure** verá o ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Next**.
+1. No separador **Entrar no Microsoft Azure** verá o ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Seguinte**.
 
     * E-mail/Nome de utilizador: <inject key="AzureAdUserEmail"></inject>
 
-      ![](../media/gs-4.png "Enter Email")
+      ![](../media/1-10-24(5).png "Enter Email")
 
-1. Agora digite a seguinte palavra-passe e clique em **Sign in**.
+1. Agora digite a seguinte palavra-passe e clique em **Entrar**.
 
     * Palavra-passe: <inject key="AzureAdUserPassword"></inject>
 
-      ![](../media/gs-5.png "Enter Password")
+      ![](../media/1-10-24(6).png "Enter Password")
 
-    > Se vir a caixa de diálogo **Help us protect your account**, selecione a opção **Skip for now**.
+    > Se vir a caixa de diálogo **Ajude-nos a proteger a sua conta**, selecione a opção **Saltar por enquanto**.
 
-   ![](../media/gs-6.png "Enter Password")
+1. Se vir o pop-up **Continuar ligado?**, clique em Não
 
-1. Se vir o pop-up **Stay Signed in?**, clique em Não
+   ![](../media/1-10-24(7).png "Enter Password")
 
-1. Se vir o pop-up **You have free Azure Advisor recommendations!**, feche a janela para continuar o laboratório.
+1. Se vir o pop-up **Tem recomendações gratuitas do Azure Advisor!**, feche a janela para continuar o laboratório.
 
-1. Se for apresentada uma janela pop-up **Welcome to Microsoft Azure**, clique em **Maybe Later** para ignorar o tour.
+1. Se for apresentada uma janela pop-up **Bem-vindo ao Microsoft Azure**, clique em **Talvez mais tarde** para ignorar o tour.
 
-1. Agora verá o Painel do Portal do Azure, clique em **Resource Groups** no painel Navegar para ver os grupos de recursos.
+1. Agora verá o Painel do Portal do Azure, clique em **Grupos de recursos** no painel Navegar para ver os grupos de recursos.
 
-   ![](../media/gs-7.png "Resource Groups")
+   ![](../media/1-10-24(8).png "Resource Groups")
 
 No final deste laboratório, os participantes aprenderão a criar imagens Docker para aplicações em contentores, a migrar dados do MongoDB para o Azure Cosmos DB e a implementar aplicações no Azure Kubernetes Service (AKS) para orquestração. Também irão escalar aplicações e garantir alta disponibilidade, gerir atualizações e encaminhamento de tráfego e utilizar o Azure Monitor para monitorizar o desempenho e a integridade das suas aplicações em contentores.
 
