@@ -17,9 +17,9 @@ Irá completar as seguintes tarefas:
 
 Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos e clonar o repositório GitHub onde está o código fonte do site da Contoso Trader.
 
-1. Depois de iniciar sessão na VM, pesquise **cmd** **(1)** na barra de pesquisa do Windows e clique em **Command Prompt** **(2)** para abrir.
+1. Depois de iniciar sessão na VM, pesquise **Linha de comandos** **(1)** na barra de pesquisa do Windows e clique em **Linha de comandos** **(2)** para abrir.
 
-   ![](../media/latest-ex1-opencmd.png "abrir cmd")
+   ![](../media/1-10-24(9).png "abrir cmd")
 
 1. Execute o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para se ligar à VM Linux utilizando o ssh.
 
@@ -71,29 +71,29 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/EX1-T2-S1.png)
 
-1. Introduza o código de autenticação copiado **(1)** e clique em **Next** **(2)**.
+1. Introduza o código de autenticação copiado **(1)** e clique em **Seguinte** **(2)**.
 
-   ![](../media/ex1-codelogin.png)
+   ![](../media/1-10-24(10).png)
 
-1. No separador **Sign in to your account** verá um ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Next**.
+1. No separador **Faça login na sua conta** verá um ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Seguinte**.
 
     * E-mail/Nome de utilizador: **<inject key="AzureAdUserEmail"></inject>**
 
-      > **Nota:** Se receber um pop-up **Pick an account**, selecione o ID de e-mail acima.
+      > **Nota:** Se receber um pop-up **Escolha uma conta**, selecione o ID de e-mail acima.
 
-1. Agora digite a seguinte palavra-passe e clique em **Sign in**.
+1. Agora digite a seguinte palavra-passe e clique em **Entrar**.
 
     * Palavra-passe: **<inject key="AzureAdUserPassword"></inject>**
 
-      > **Nota:** Não verá o pop-up para introduzir a palavra-passe se tiver o pop-up **Pick an account** onde escolheu a conta.
+      > **Nota:** Não verá o pop-up para introduzir a palavra-passe se tiver o pop-up **Escolha uma conta** onde escolheu a conta.
 
-1. Num pop-up para confirmar o início de sessão na CLI do Microsoft Azure, clique em **Continue**.
+1. Num pop-up para confirmar o início de sessão na CLI do Microsoft Azure, clique em **Continuar**.
 
-   ![](../media/ex1-logincontinue.png)
+   ![](../media/1-10-24(11).png)
 
-1. Depois de entrar, verá um pop-up de confirmação **You have signed in to the Microsoft Azure Cross-platform Command Line Interface application on your device**. Feche o separador do navegador e abra a sessão anterior do comando de linha.
+1. Depois de entrar, verá um pop-up de confirmação **Entrou na aplicação Interface de linha de comando multiplataforma do Microsoft Azure no seu dispositivo**. Feche o separador do navegador e abra a sessão anterior do comando de linha.
 
-   ![](../media/ex1-t2-step6-signin-confirm.png)
+   ![](../media/1-10-24(17).png)
 
 1. Depois de fazer login no Azure, irá construir as imagens do Docker nos próximos passos e enviá-las para o ACR.
 
@@ -111,7 +111,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
     ```
 
-   ![](../media/EX1-T2-S8.png)
+   ![](../media/1-10-24(14).png)
 
 1. Repita os passos para criar a imagem docker **contosotraders-Products** com o comando abaixo. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
 
@@ -119,7 +119,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
     ```
 
-   ![](../media/EX1-T2-S9.png)
+   ![](../media/1-10-24(14).png)
 
 1. Execute o comando abaixo para alterar o directório para `services` e abra o ficheiro `configService.js`.
 
@@ -176,11 +176,11 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
 1. Navegue até ao portal Azure, abra o Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** no Grupo de Recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-   ![](../media/ex1-acr1.png)
+   ![](../media/1-10-24(15).png)
 
-1. No Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)**, selecione **Access key** **(2)** em Settings à esquerda menu lateral. **Copy** **(3)** a palavra-passe e cole-a num ficheiro de texto para utilização posterior.
+1. No Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)**, selecione **Chave de acesso** **(2)** em Settings à esquerda menu lateral. **Cópia** **(3)** a palavra-passe e cole-a num ficheiro de texto para utilização posterior.
 
-   ![](../media/ex1-acr2.png)
+   ![](../media/1-10-24(16).png)
 
 1. Agora volte ao **Comando Prompt** e inicie sessão no ACR utilizando o comando abaixo. Deve conseguir ver a saída abaixo na captura de ecrã. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido e a palavra-passe pela palavra-passe de registo do contentor copiada que copiou no passo anterior do comando abaixo.
 
