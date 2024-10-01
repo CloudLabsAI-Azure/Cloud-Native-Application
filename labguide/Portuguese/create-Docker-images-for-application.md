@@ -149,10 +149,10 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
-1. Crie agora a imagem docker **contosotraders-UI-Website** com o comando abaixo. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
+1. Crie agora a imagem docker **contosotraders-UI-Website** com o comando abaixo.
 
     ```
-    docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+    docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```
 
    ![](../media/EX1-T2-S13.png)
@@ -182,33 +182,33 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/1-10-24(16).png)
 
-1. Agora volte ao **Comando Prompt** e inicie sessão no ACR utilizando o comando abaixo. Deve conseguir ver a saída abaixo na captura de ecrã. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido e a palavra-passe pela palavra-passe de registo do contentor copiada que copiou no passo anterior do comando abaixo.
+1. Agora inicie sessão no ACR utilizando o comando abaixo, atualize o valor do sufixo e da palavra-passe do ACR no comando abaixo. Deve conseguir ver a saída abaixo na captura de ecrã. Certifique-se de substituir a palavra-passe pela palavra-passe copiada do registo do contentor que copiou no passo anterior no comando abaixo.
 
     ```
-    docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
+    docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
    ![](../media/EX1-T2-S18.png "abrir cmd")
 
-1. Depois de iniciar sessão no ACR, execute os comandos abaixo para enviar as imagens do Docker para o registo de contentores do Azure. Além disso, certifique-se de que atualiza o valor SUFFIX com o valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido nos comandos abaixo.
+1. Depois de iniciar sessão no ACR, execute os comandos abaixo para enviar as imagens do Docker para o registo de contentores do Azure.
 
     ```
-    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
-    ```
-
-    ```
-    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+    docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest 
     ```
 
     ```
-    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+    docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
+    ```
+
+    ```
+    docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```
 
 1. Deverá conseguir ver a imagem do docker a ser enviada para o ACR, como mostra a captura de ecrã abaixo.
 
    ![](../media/cloudnative2.png "abrir cmd")
 
-1. Clique no botão **Next** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
+1. Clique no botão **próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
 ## Resumo
 
