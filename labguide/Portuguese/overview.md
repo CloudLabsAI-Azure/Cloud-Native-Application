@@ -65,7 +65,7 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
    ![](../media/1-10-24(2).png "Ambiente de laboratório")
 
-   > Verá o valor DeploymentID no separador **Environment**.
+   > Verá o valor DeploymentID no separador **Ambiente**.
 
 ## Validação do Lab
 
