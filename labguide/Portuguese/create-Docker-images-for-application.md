@@ -105,18 +105,18 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     cd Cloud-Native-Application/labfiles/
     ```
 
-1. Agora crie a imagem docker **contosotraders-carts** utilizando o Dockerfile no diretório. Observe como o Registo de Contentor do Azure implantado é referenciado. Substitua o espaço reservado SUFFIX no comando abaixo pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido.
+1. Agora crie a imagem docker **contosotraders-carts** utilizando o Dockerfile no diretório. Observe como o Registo de Contentor do Azure implantado é referenciado.
 
     ```
-    docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest
+    docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest
     ```
 
    ![](../media/1-10-24(14).png)
 
-1. Repita os passos para criar a imagem docker **contosotraders-Products** com o comando abaixo. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
+1. Repita os passos para criar a imagem docker **contosotraders-Products** com o comando abaixo.
 
     ```
-    docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+    docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
     ```
 
    ![](../media/1-10-24(14).png)
