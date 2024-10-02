@@ -41,10 +41,10 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
    - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
 
-   ```bash
-   az account list
-   az account set --subscription {id}
-   ```
+      ```bash
+      az account list
+      az account set --subscription {id}
+      ```
 
 1. Run the below command to set up the Kubernetes cluster connection using kubectl.
 
@@ -64,30 +64,30 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
 
-1. Navigate to the Azure portal, search for **Key Vault** in the search bar, and select **Key vaults** from the list.
+1. Navigate to the Azure portal, search for **Key Vault (1)** in the search bar, and select **Key vaults (2)** from the list.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/keyvaults.png "Add a Namespace")
 
 1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />**, Key vaults from the list.
 
-1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **Secrets** under **Objects** from the left side menu.
+1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" /> (1)** Key vault page, select **Secrets (2)** under **Objects** from the left side menu.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv2.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/contosokv.png "Add a Namespace")
     
 1. Now click on the **Generate/Import** button to create the new secret.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv3.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/genreate.png "Add a Namespace")
     
 1. In the **Create a secret** pane, enter the following details:
 
-    - Name: **mongodbconnection**
-    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise.
+    - Name: **mongodbconnection (1)**
+    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise. (2)
     
-    - Keep other values default and click on **Create**
+    - Keep other values default and click on **Create (3)**
     
-      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.jpg "Add a Namespace")
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/secret1.png "Add a Namespace")
      
-      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/kv5.png "Add a Namespace")
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.png "Add a Namespace")
      
 1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
 
@@ -98,7 +98,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
     
 1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration (1)** from the left side menu and click on **Secrets (2)** section. Under secrets, you should be able to see the **newly created secret (3)**. 
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/contosotradersaks.png "Add a Namespace")
      
 <validation step="106806cb-79ab-406a-b481-f125954d286e" />
 
@@ -113,13 +113,14 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    
 1. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders** namespace only. 
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/newnamespaces.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/contoso-traders.png "Add a Service")
     
-1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create** and choose **Apply a YAML**. 
+1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses (1)** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create (2)** and choose **Apply a YAML (3)**. 
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/applyayaml.png "Add a Service")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
+    
     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
@@ -143,7 +144,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. Select **Workloads (1)** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
-    ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
+    ![Select workloads under Kubernetes resources.](media/clusteraks.png "Select workloads under Kubernetes resources")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
@@ -197,7 +198,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. After a few minutes, you will see the deployment listed and it should be in a running state.
 
-   ![Selecting + Add to create a deployment.](media/conrunning.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/workloads.png "Selecting + Add to create a deployment")
 
 <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 

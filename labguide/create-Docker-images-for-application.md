@@ -56,7 +56,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     cd Cloud-Native-Application/labfiles/ 
     ```
     
-    ![](media/ex1-cd.png)
+    ![](media/admincontoso.png)
     
 ### Task 2: Build Docker images to containerize the application and push them to the container registry
 
@@ -68,14 +68,21 @@ In this task, you will be building the docker images to containerize the applica
     ```
     cd Cloud-Native-Application/labfiles/
     ```
-    
+
+1. Run the below command to dowload the Azure CLI,
+
+    ```
+    sudo apt install azure-cli
+    ```
+    >**Note:** In the command prompt type **Y**, and press **Enter** for **Do you want to continue? [Y/n]**.
+
 1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 
    ``` 
    az login
    ```
     
-   ![](media/ex-azlogincode.png)
+   ![](media/aiwshared.png)
    
    > **Note:** If you recieve an error command az not found, then run the command _'sudo apt install azure-cli'_ to install az cli. 
     
@@ -97,7 +104,7 @@ In this task, you will be building the docker images to containerize the applica
 
 1. Once you logged in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
-   ![](media/ex1-logincomplete.png)
+   ![](media/aiwshared3.png)
    
 1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced.
 
@@ -105,7 +112,7 @@ In this task, you will be building the docker images to containerize the applica
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest
     ```
     
-    ![](media/ex1-apicarts.png)
+    ![](media/screenshot1.png)
     
 1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. 
 
@@ -113,7 +120,7 @@ In this task, you will be building the docker images to containerize the applica
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
     ```
 
-    ![](media/ex1-apiproducts.png)
+    ![](media/api-products.png)
 
 1. Run the below command to change the directory to `services` and open the `configService.js` file.
 
@@ -131,10 +138,12 @@ In this task, you will be building the docker images to containerize the applica
     
 
     ```
-    const APIUrl = 'http://contoso-traders-productsXXXXX.eastus.cloudapp.azure.com';
+    const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
+
+    const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
-    ![](media/latest-ex1-didconfig.png)
+    ![](media/constapi.png)
 
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
@@ -149,7 +158,7 @@ In this task, you will be building the docker images to containerize the applica
     docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```    
     
-    ![](media/latest-ex1-apiwebsite.png)
+    ![](media/contosobuild.png)
     
     
     >**Note**: Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it ran successfully.
@@ -171,11 +180,11 @@ In this task, you will be building the docker images to containerize the applica
 
 1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
-   ![](media/ex1-acr1.png)
+   ![](media/contosotraders.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** under Settings from left side menu. **Copy** the Password and paste it into a text file for later use.
+1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys (2)** under Settings from left side menu. **Copy (3)** the Password and paste it into a text file for later use.
 
-   ![](media/ex1-acr2.png)    
+   ![](media/aceeskeys.png)    
 
 1. Now login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the password with the copied container registry password which you have copied in the previous step in the below command.
 
@@ -183,7 +192,7 @@ In this task, you will be building the docker images to containerize the applica
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
-    ![](media/ex1-dockerlogin.png "open cmd")
+    ![](media/loginsucceded.png "open cmd")
 
 1. Once you logged in to the ACR, please run the below commands to push the Docker images to the Azure container registry.
 
@@ -201,7 +210,7 @@ In this task, you will be building the docker images to containerize the applica
    
 1. You should be able to see the docker image getting pushed to ACR as shown in the below screenshot. 
     
-    ![](media/ex1-dockerpush.png "open cmd")
+    ![](media/pushlatest.png "open cmd")
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 

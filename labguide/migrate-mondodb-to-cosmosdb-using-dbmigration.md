@@ -103,9 +103,8 @@ In this task, you will create a Migration project within Azure Database Migratio
       ![Select source tab with values selected for the MongoDB server.](media/CNV2-E2-T2-S5.png "MongoDB to Azure Database for CosmosDB - Select source")
     
       > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
-
-      ```bash
       
+      ```bash
       cd /etc
       sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
       sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
@@ -155,11 +154,11 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. You will see the `items` and `products` collections listed within the `contentdb` database and you will be able to explore the documents.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/T2S18.png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/itemsproducts.png "Cosmos DB is open")
 
 1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure CosmosDB for MongoDB account. Select **Quick start** **(2)** from the left menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it into the text file for later use in the next exercise.
 
-   ![](media/ex2-cdb-copycs.png)
+   ![](media/primaryconnectionstring.png)
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
