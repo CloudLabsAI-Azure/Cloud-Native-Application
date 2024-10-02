@@ -24,7 +24,7 @@ In this task, you will be reviewing the monitored AKS cluster.
 
 1. Navigate back to the Azure portal in the browser and search for **Monitor (1)**, Select **Monitor (2)** from the result.
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/monitor1.png "Add a Namespace")
      
 1. From the left navigation pane, select **Containers (1)** from under the Insights menu, navigate to the **Monitored clusters (2)** section to review logs and select your **Kubernetes service (3)**.
 

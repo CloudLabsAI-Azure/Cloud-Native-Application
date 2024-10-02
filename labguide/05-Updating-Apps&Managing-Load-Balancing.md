@@ -129,7 +129,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
    ```
 
-2. Update your helm package list.
+1. Update your helm package list.
 
    ```bash
    helm repo update
@@ -141,13 +141,13 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    > helm repo add stable https://charts.helm.sh/stable 
    > ```
 
-3. Install the Ingress Controller resource to handle ingress requests as they come in. The Ingress Controller will receive a public IP of its own on the Azure Load Balancer and handle requests for multiple services over ports 80 and 443.
+1. Install the Ingress Controller resource to handle ingress requests as they come in. The Ingress Controller will receive a public IP of its own on the Azure Load Balancer and handle requests for multiple services over ports 80 and 443.
 
    ```bash
    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
    ```
 
-4. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-RANDOM-nginx-ingress` service.
+1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-ingress-nginx-controller` service.
 
    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
    >
@@ -157,7 +157,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    >
    ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
 
-5. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
+1. In **Azure Portal**, search and open the **Microsoft Entra ID**, and copy **Tenant ID**.
+
+1. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
 
    ```bash
    code update-ip.ps1
@@ -169,6 +171,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
+   - `$env:tenantId`" Enter the tenant ID which you copied in previous step. 
 
      ```bash
      # Create a SecureString from the client's secret
