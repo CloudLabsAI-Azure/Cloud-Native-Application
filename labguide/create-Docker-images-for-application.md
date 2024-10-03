@@ -55,6 +55,14 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
 
 En esta tarea, creará las imágenes de Docker para contenerizar la aplicación y las enviará a ACR (Azure Container Registry) para usarlas más adelante en AKS.
 
+1. Ejecute el siguiente comando para descargar la CLI de Azure:
+
+    ```
+    sudo apt install azure-cli
+    ```
+
+    >**Nota:** En el símbolo del sistema, escriba **Y** y presione **Entrar** para **¿Quieres continuar? [T/n]**.
+
 1. Ejecute el siguiente comando para iniciar sesión en Azure, navegue hasta la URL de inicio de sesión del dispositivo `https://microsoft.com/devicelogin` en el navegador y copie el código de autenticación.
 
    ``` 
@@ -103,7 +111,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
      docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest
     ```
     
-    ![](media/EX1-T2-S8.png)
+    ![](media/screenshot1.png)
     
 1. Repita los pasos para crear la imagen docker **contosotraders-Products** con el siguiente comando. 
 
@@ -111,7 +119,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
     ```
 
-    ![](media/EX1-T2-S9.png)
+    ![](media/api-products.png)
 
 1. Ejecute el siguiente comando para cambiar el directorio a `services` y abra el archivo `configService.js`.
 
@@ -123,14 +131,15 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     
     ![](media/EX1-T2-S10.png)
     
-1. En el editor `vi`, presione **_i_** para ingresar al modo `insertar`. En APIUrl y APIUrlShoppingCart, reemplace **deploymentid** con el valor **<inject key="DeploymentID" enableCopy="true"/>** y **REGION** con el valor **<inject key="Region" enableCopy="true"/>**. Luego presione **_ESC_**, escriba **_:wq_** para guardar los cambios y cierre el archivo. Necesitamos actualizar la URL de la API aquí para que la aplicación Contoso Traders pueda conectarse a la API del producto una vez que se envíe a los contenedores de AKS.
-    
-    >**Nota**: Si **_ESC_** no funciona, presione `ctrl + [` y luego escriba **_:wq_** para guardar los cambios y cerrar el archivo.
+1. En el editor `vi`, presione **_i_** para ingresar al modo `insertar`. Reemplace el ID de implementación y el valor de Región proporcionados en APIUrl. Luego presione **ESC**, escriba **:wq** para guardar los cambios y cierre el archivo. Necesitamos actualizar la URL de la API aquí para que la aplicación Contoso Traders pueda conectarse a la API del producto una vez que se envíe a los contenedores de AKS.
+
+    > **Nota**: Si **ESC** no funciona, presione `ctrl + [` y luego escriba **:wq** para guardar los cambios y cerrar el archivo.
     
 
     ```
-    const APIUrl = 'http://contoso-traders-productsdeploymentid.REGION.cloudapp.azure.com/v1';
-    const APIUrlShoppingCart = 'https://contoso-traders-cartsdeploymentid.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
+    const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
+
+    const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
     ![](media/cdnfix1.png)
@@ -148,7 +157,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```    
     
-    ![](media/EX1-T2-S13.png)
+    ![](media/contosobuild.png)
     
     
     >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la compilación. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente. Además, es posible que observe algunas advertencias relacionadas con la actualización de la versión de npm, lo cual es esperado y no afecta la funcionalidad del laboratorio.
@@ -182,7 +191,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
-    ![](media/EX1-T2-S18.png "abrir cmd")
+    ![](media/contosobuild.png "abrir cmd")
 
 1. Una vez que inicie sesión en ACR, ejecute los siguientes comandos para enviar las imágenes de Docker al registro del contenedor de Azure.
 
@@ -200,7 +209,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
    
 1. Debería poder ver la imagen de docker enviada al ACR como se muestra en la siguiente captura de pantalla.
     
-    ![](media/cloudnative2.png "abrir cmd")
+    ![](media/pushlatest.png "abrir cmd")
     
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 

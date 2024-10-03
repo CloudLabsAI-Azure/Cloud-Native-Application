@@ -107,7 +107,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 
     ![Esta es una captura de pantalla del Portal de Azure mostrando cómo acceder a los espacios de nombres en AKS.](media/newnamespaces.png "Espacios de nombres en AKS")
     
-2. Defina un Servicio para su API, de modo que se pueda acceder a la aplicación dentro del clúster Seleccione la hoja **Servicios y entradas** de la página de detalles del recurso AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure. En la pestaña Servicios, seleccione **+ Crear** y elija **Aplicar un YAML**. 
+2. Defina un Servicio para su API, de modo que se pueda acceder a la aplicación dentro del clúster Seleccione la hoja **Servicios y entradas (1)** de la página de detalles del recurso AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure. En la pestaña Servicios, seleccione **+ Crear (2)** y elija **Aplicar un YAML (3)**. 
     
     ![Esta es una captura de pantalla del Portal de Azure para AKS que muestra cómo agregar un servicio.](media/CNV2-E3-T3-S3new.png "Agregando un Servicio")
 
