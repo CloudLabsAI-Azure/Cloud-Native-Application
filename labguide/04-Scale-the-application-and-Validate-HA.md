@@ -67,7 +67,7 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
 
 1. Seleccione **Revisar + guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
-1. Regrese a la vista principal **Cargas de trabajo** del servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, refresque la página y ahora verá que la implementación está sana con **dos** Pods en funcionamiento.
+1. Regrese a la vista principal **Cargas de trabajo (1)** del servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, refresque la página y ahora verá que la implementación está sana con **dos (2)** Pods en funcionamiento.
 
    ![Despliegue del API en estado sano.](media/2.png "Despliegue del API en estado sano.")       
 
@@ -111,13 +111,13 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
     az aks get-credentials --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
     ```
     
-1.  Verifique el `recuento` de grupos de nodos en el clúster y asegúrese de que `enableblingAutoScaling` sea `null`. Proporcione el siguiente comando y ejecútelo.   
+1.  Verifique el `recuento` de grupos de nodos en el clúster y asegúrese de que `enableblingAutoScaling` sea `false`. Proporcione el siguiente comando y ejecútelo.   
     
      ```
      az aks nodepool list --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
      ```   
     
-    ![](media/ex4-t3-scaling1.png)
+    ![](media/countenableautoscailing.png)
 
 1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` sea `true`. Proporcione el siguiente comando y ejecútelo.
 
