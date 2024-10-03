@@ -171,7 +171,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
-   - `$env:tenantId`" Enter the tenant ID which you copied in previous step. 
+   - `$env:tenantId`: Enter the tenant ID which you copied in previous step. 
 
      ```bash
      # Create a SecureString from the client's secret
