@@ -69,7 +69,7 @@ In this task, you will be building the docker images to containerize the applica
     cd Cloud-Native-Application/labfiles/
     ```
 
-1. Run the below command to dowload the Azure CLI,
+1. Run the below command to download the Azure CLI,
 
     ```
     sudo apt install azure-cli
