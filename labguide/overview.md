@@ -77,7 +77,7 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
    ![Validación de Laboratorio](media/lab-validation.png)
 
-1. Si necesita ayuda, póngase en contacto con nosotros en labs-support@spektrasystems.com.
+1. Si necesita ayuda, póngase en contacto con nosotros en cloudlabs-support@spektrasystems.com
 
 ## Extensión de la Duración del Laboratorio
 
