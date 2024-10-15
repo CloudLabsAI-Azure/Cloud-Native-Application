@@ -21,7 +21,7 @@
 
    ![Validación de Laboratorio](media/lab-validation.png)
 
-1. Si necesita ayuda, póngase en contacto con nostros en labs-support@spektrasystems.com.
+1. Si necesita ayuda, póngase en contacto con nostros en cloudlabs-support@spektrasystems.com.
 
 ## Extensión de la Duración del Laboratorio
 

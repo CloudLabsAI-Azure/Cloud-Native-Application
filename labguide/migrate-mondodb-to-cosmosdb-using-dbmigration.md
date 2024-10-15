@@ -160,7 +160,12 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-   <validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
+<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
+
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
+> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+> - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
 ## Resumen
 
