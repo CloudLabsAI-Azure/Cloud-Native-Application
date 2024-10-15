@@ -20,7 +20,7 @@
 
    ![Lab Validation](media/lab-validation.png)
 
-1. If you need any assistance, please contact us at labs-support@spektrasystems.com.
+1. If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
 
 ## Lab Duration Extension
 
