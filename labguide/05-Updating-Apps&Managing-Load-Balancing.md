@@ -20,7 +20,6 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
      ```bash
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
-
      ```
 1. Una vez que esté en el directorio correcto, ejecute el siguiente comando para abrir el archivo **hero.js** y realizar algunos cambios de texto en la página de inicio de su aplicación web.
 
@@ -151,7 +150,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
     >
    ![Una captura de pantalla de Azure Cloud Shell que muestra el resultado del comando.](media/controller.png "Viendo la dirección IP del Controlador de Ingress")
 
-1. 1. En **Azure Portal**, busque y abra **Microsoft Entra ID** y copie **Tenant ID**.
+1. En **Azure Portal**, busque y abra **Microsoft Entra ID** y copie **Tenant ID**.
 
 1. Dentro de la terminal de comandos de Windows, cree un script para actualizar el nombre DNS público para la IP externa de ingress.
 

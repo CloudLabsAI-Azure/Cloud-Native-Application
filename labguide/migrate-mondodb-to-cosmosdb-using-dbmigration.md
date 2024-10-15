@@ -59,13 +59,13 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![](media/privateip.png)
 
-1. Navegue al grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra el recurso CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)** , haga clic en **Explorador de datos(3)**. Ahora haga clic en la flecha desplegable, junto a **New Collection (4)** y luego seleccione **New Database (5)**.
+1. Navegue al grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra el recurso CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)** , haga clic en **Explorador de datos (3)**. Ahora haga clic en la flecha desplegable, junto a **New Collection (4)** y luego seleccione **New Database (5)**.
 
    ![](media/Ex2T2S2.png)
 
    > **Nota:** Si recibe una ventana emergente **¡Bienvenido! ¿Qué es Cosmos DB?** ventana emergente, ciérrela haciendo clic en **X**.
 
-1. Proporcione el nombre `contentdb` **(1)** para **Database id** y establezca el **Database throughput** como **Manual** **(2)**, asigne el valor `400` para los RU/s **(3)** y haga clic en **OK(4)**.
+1. Proporcione el nombre `contentdb` **(1)** para **Database id** y establezca el **Database throughput** como **Manual** **(2)**, asigne el valor `400` para los RU/s **(3)** y haga clic en **OK (4)**.
 
    ![](media/Ex2T2S3.png)
 
@@ -82,9 +82,9 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
     - Tipo de servidor de destino: `CosmosDB (MongoDB API)`
     - Tipo de actividad de migración: `Offline data migration`
 
-    ![La captura de pantalla muestra el panel Nuevo proyecto de migración con los valores ingresados.](media/ex2-newmigrationproject.png  "Panel Nuevo proyecto de migración")
+      ![La captura de pantalla muestra el panel Nuevo proyecto de migración con los valores ingresados.](media/ex2-newmigrationproject.png  "Panel Nuevo proyecto de migración")
 
-    >**Nota**: El tipo de actividad **Migración de datos sin conexión** está seleccionado ya que realizará una migración única de MongoDB a Cosmos DB. Además, los datos de la base de datos no se actualizarán durante la migración. En un escenario de producción, deberá elegir el tipo de actividad del proyecto de migración que mejor se adapte a los requisitos de su solución.
+      >**Nota**: El tipo de actividad **Migración de datos sin conexión** está seleccionado ya que realizará una migración única de MongoDB a Cosmos DB. Además, los datos de la base de datos no se actualizarán durante la migración. En un escenario de producción, deberá elegir el tipo de actividad del proyecto de migración que mejor se adapte a los requisitos de su solución.
 
 1. En el panel **Asistente para la Migración Sin Conexión (Offline) de MongoDB a Azure Database for CosmosDB**, ingrese los siguientes valores para la pestaña **Seleccionar origen**:
 
@@ -101,7 +101,6 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
     
 
     ```bash
-    
     cd /etc
     sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
     sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
@@ -119,10 +118,9 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
     - Seleccionar el nombre de Cosmos DB: Seleccione la instancia de CosmosDB  **contosotraders-<inject key="DeploymentID" enableCopy="false" />** .
 
-   ![La pestaña Seleccionar destino con los valores seleccionados.](media/targetmongo.png "MongoDB a Azure Database for CosmosDB - Seleccionar destino")
+      ![La pestaña Seleccionar destino con los valores seleccionados.](media/targetmongo.png "MongoDB a Azure Database for CosmosDB - Seleccionar destino")
 
-   Tenga en cuenta que la **Cadena de conexión** se completará automáticamente con la clave de su instancia de Azure Cosmos DB.
-
+      Tenga en cuenta que la **Cadena de conexión** se completará automáticamente con la clave de su instancia de Azure Cosmos DB.
 
 1. Seleccione **Siguiente: Configuración de base de datos >>**.
 
