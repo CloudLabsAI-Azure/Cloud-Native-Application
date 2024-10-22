@@ -57,14 +57,14 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
-1. Quando estiver no diretório correto, execute o comando abaixo para criar a nova imagem docker que terá todas as alterações mais recentes da aplicação web. e envie a nova imagem para o ACR. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
+1. Quando estiver no diretório correto, execute o comando abaixo para criar a nova imagem docker que terá todas as alterações mais recentes da aplicação web.
 
     >**Nota**: Note que desta vez estamos a utilizar a tag "V1" para a imagem
 
     ```bash
-    docker build . -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1 -t contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+    docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1 -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
 
-    docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:V1
+    docker push contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
     ```
 
     > **Nota:** Tenha em atenção que o comando acima pode demorar até 5 minutos para completar a compilação. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso. Além disso, poderá notar alguns avisos relacionados com a atualização da versão do npm que é esperada e não afeta a funcionalidade do laboratório.
@@ -90,10 +90,10 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
    ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/EX5-T1-S10.png "A implementação do pod está em curso")
 
-1. Agora para definir a nova imagem nos pods, execute o comando abaixo. Certifique-se de que actualiza estes valores `[SUFFIX]` com **<inject key="DeploymentID" />**
+1. Agora para definir a nova imagem nos pods, execute o comando abaixo.
 
     ```bash
-    kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacrSUFFIX.azurecr.io/contosotradersuiweb:V1
+    kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
     ```
 
    ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/EX5-T1-S11.png "A implementação do pod está em curso")
@@ -157,35 +157,35 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     - `[DNSNAME]`: substitua pelo mesmo valor de SUFFIX **<inject key="DeploymentID" />** que utilizou anteriormente neste laboratório.
     - `[PUBLICIP]`: Substitua o `SUFFIX` por este valor **<inject key="DeploymentID" />**.
 
-   ```bash
-   # Create a SecureString from the client's secret
-   $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
-   
-   # Create a PSCredential object using the client ID and secure password
-   $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
-   
-   # Authenticate using the PSCredential object
-   Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
+      ```bash
+      # Create a SecureString from the client's secret
+      $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
+      
+      # Create a PSCredential object using the client ID and secure password
+      $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
+      
+      # Authenticate using the PSCredential object
+      Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
 
-   $ipaddress="INGRESS PUBLIC IP"
+      $ipaddress="INGRESS PUBLIC IP"
 
-   $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+      $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
-   $DNSNAME="contosotraders-SUFFIX-ingress"
+      $DNSNAME="contosotraders-SUFFIX-ingress"
 
-   $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
+      $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
 
-   $results = @()
+      $results = @()
 
-   ForEach ($i in $PUBLICIP)
-   {
-   If($i.IpAddress -eq $ipaddress){
-   $PIPNAME=$i.name
-   $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
-   Set-AzPublicIpAddress -PublicIpAddress $i
-   }
-   }
-   ```
+      ForEach ($i in $PUBLICIP)
+      {
+      If($i.IpAddress -eq $ipaddress){
+      $PIPNAME=$i.name
+      $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+      Set-AzPublicIpAddress -PublicIpAddress $i
+      }
+      }
+      ```
 
 6. Guarde as alterações e feche o editor.
 
@@ -197,13 +197,14 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
    ![Uma captura de ecrã do editor Cloud Shell mostrando os valores actualizados de IP e SUFFIX.](../media/2dg125.jpg "Actualizar os valores de IP e SUFFIX")
 
-8. Verifique a atualização do IP visitando o URL no seu browser. Certifique-se de que actualiza estes valores `[SUFFIX]` com **<inject key="DeploymentID" />** e `[AZURE-REGION]` com **<inject key="Region" />** abaixo do URL antes de navegar nele.
+8. Verifique a atualização do IP visitando a URL no seu navegador.
 
-    > **Nota**: É normal receber uma mensagem 404 neste momento.
+   > **Observação**: É normal receber uma mensagem 404 neste momento.
 
-    ```texto
-    http://contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com/
+    ```text
+    http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
     ```
+
     ![](../media/15.png )
 
     >**Nota**: Se o URL não funcionar ou não receber um erro 404. Execute o comando mencionado abaixo e tente aceder novamente ao URL.
@@ -286,7 +287,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
          kind: ClusterIssuer
      ```
 
-16. Utilize o seguinte como conteúdo e actualize o `[SUFFIX]` com **<inject key="DeploymentID" />** e `[AZURE-REGION]` com **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
+16. Use o seguinte como conteúdo e atualize `[SUFFIX]` com **<inject key="DeploymentID" />** e `[AZURE-REGION]` com **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
 
 14. Guarde as alterações e feche o editor.
 
@@ -355,7 +356,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
                    number: 3001
     ```
 
-18. Utilize o seguinte como conteúdo e actualize o `[SUFFIX]`: **<inject key="DeploymentID" />** e `[AZURE-REGION]`: **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
+18. Use o seguinte como conteúdo e atualize `[SUFFIX]`: **<inject key="DeploymentID" />** e `[AZURE-REGION]`: **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
 
 19. Guarde as alterações e feche o editor.
 
@@ -373,7 +374,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
     > **Nota**: Pode demorar 5 a 30 minutos para que o site SSL fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt.
 
-23. Clique no botão **Next** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
+23. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
 ## Resumo
 

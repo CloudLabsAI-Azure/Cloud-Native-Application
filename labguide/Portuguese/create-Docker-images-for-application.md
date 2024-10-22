@@ -222,7 +222,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cloudnative2.png "abrir cmd")
 
-1. Clique no botão **próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
+1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
 ## Resumo
 
