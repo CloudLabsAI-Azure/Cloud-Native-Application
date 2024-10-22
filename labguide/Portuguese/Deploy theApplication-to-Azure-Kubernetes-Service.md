@@ -121,23 +121,23 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
    >**Info**: O script YAML abaixo irá criar um serviço AKS dentro do namespace contoso-traders que criou nos passos anteriores. O Serviço AKS é uma forma abstracta de expor uma aplicação em execução num conjunto de Pods como um serviço de rede.
 
     ```yaml
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: contoso-traders-products
-     namespace: contoso-traders
-     annotations:
-       #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
-       service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-   spec:
-     type: LoadBalancer
-     ports:
-       - port: 80
-     selector:
-       app: contoso-traders-products
-    ```
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: contoso-traders-products
+      namespace: contoso-traders
+      annotations:
+        #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+        service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+    spec:
+      type: LoadBalancer
+      ports:
+        - port: 80
+      selector:
+        app: contoso-traders-products
+    ```    
 
-   ![Selecione cargas de trabalho nos recursos do Kubernetes.](../media/ex3-t3-servicecreate.png "Selecione cargas de trabalho nos recursos do Kubernetes")
+    ![Selecione cargas de trabalho nos recursos do Kubernetes.](../media/ex3-t3-servicecreate.png "Selecione cargas de trabalho nos recursos do Kubernetes")
 
 1. Selecione **Workloads** na secção Recursos do Kubernetes na navegação esquerda. Com **Deployments** selecionadas por defeito, selecione **+ Create** e escolha **Apply a YAML**.
 
