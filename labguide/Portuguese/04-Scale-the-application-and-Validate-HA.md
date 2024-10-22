@@ -167,7 +167,7 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
    ![Na página Estatísticas da aplicação Web Contoso Neuro, são destacados dois valores de nome de host de API diferentes.](../media/11.png "Ver nome de host de tarefa Web")
 
-1. Voltar para **contoso-traders-products| Na página Visão geral**, selecione **dois dos pods (1)** aleatoriamente e escolha **Excluir (2)**.
+1. Voltar para **contoso-traders-products | Na página Visão geral**, selecione **dois dos pods (1)** aleatoriamente e escolha **Excluir (2)**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(27).png "A implementação da API está agora íntegra")
 
