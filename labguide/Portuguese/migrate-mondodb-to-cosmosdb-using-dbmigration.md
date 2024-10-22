@@ -72,7 +72,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
     > **Nota:** Se receber **Bem-vindo! O que é Cosmos DB?**, feche-o clicando em **X**.
 
-1. Forneça o nome como `contentdb` **(1)** para **Database id** e selecione **Databse throughput** como **Manual** **(2)**, forneça o valor RU/s para `400` **(3)** e clique em **OK (4)**.
+1. Forneça o nome como `contentdb` **(1)** para **Database id** e selecione **Provision throughput** como **Manual** **(2)**, forneça o valor RU/s para `400` **(3)** e clique em **OK (4)**.
 
    ![](../media/Ex2T2S3.png)
 
@@ -89,7 +89,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
     - Tipo de servidor de destino: `Cosmos DB (API do MongoDB)`
     - Tipo de atividade de migração: `Migração de dados offline`
 
-      ![A captura de ecrã mostra o painel Novo projeto de migração com os valores introduzidos.]![](../media/1-10-24(21).png)
+      ![](../media/1-10-24(21).png)
 
       >**Nota**: O tipo de atividade **Migração de dados offline** está selecionado, uma vez que irá realizar uma migração única do MongoDB para o Cosmos DB. Além disso, os dados da base de dados não serão atualizados durante a migração. Num cenário de produção, irá querer escolher o tipo de atividade de projeto de migração que melhor se adapta aos requisitos da sua solução.
 
