@@ -21,16 +21,13 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
 
 > **Nota**: As tarefas seguintes devem ser executadas no **Linha de comandos**.
 
-1. Abra um novo Terminal como Administrador na JumpVM  e inicie sessão no Azure com os comandos abaixo após atualizar os valores.
-
-    * Nome de utilizador: **<inject key="AzureAdUserEmail"></inject>**
-    * Palavra-passe: **<inject key="AzureAdUserPassword"></inject>**
+1. Abra um novo prompt de comando como Administrador em sua VM de salto e faça login no azure com os comandos abaixo após atualizar os valores no comando abaixo.
 
     ```bash
-    az login -u [username] -p [Password]
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
-    > **Nota:** Se deparar com algum erro ao executar o comando 'az', execute o comando abaixo para instalar o Azure CLI e feche a linha de comandos. Execute novamente o passo 1 num novo terminal como Administrador.
+    > **Observação:** Se você enfrentar algum erro ao executar o comando 'az', execute o comando abaixo para instalar o azure cli e feche o prompt de comando. Execute novamente a etapa 1 em um novo prompt de comando como Administrador.
 
     ```bash
     choco install azure-cli
@@ -49,15 +46,15 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
         az account set --subscription {id}
         ```
 
-1. Execute o comando abaixo para configurar a ligação do cluster Kubernetes utilizando o kubectl. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
+1. Execute o comando abaixo para configurar a conexão do cluster Kubernetes usando kubectl.
 
     ```bash
-    az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
+    az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
     ```
 
     ![](../media/cloudnative4.png "abrir cmd")
 
-1. Execute um comando rápido kubectl para gerar uma lista de nodes para verificar se a configuração está correta.
+1. Execute um comando kubectl rápido para gerar uma lista de nós para verificar se a configuração está correta.
 
     ```bash
     kubectl get nodes
@@ -69,31 +66,33 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
 
 Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS e o Key Vault.
 
-1. Navegue até ao Portal do Azure, pesquise **Key Vault** na barra de pesquisa e selecione **Key Vaults** na lista.
+1. Navegue até ao Portal do Azure, pesquise **Cofres de chaves** na barra de pesquisa e selecione **Cofres de chaves** na lista.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cloudnative9.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(1).png "Adicionar um Namespace")
 
-1. De seguida, selecione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key Vault** na lista.
+1. De seguida, selecione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Cofres de chaves na lista.
 
-1. Quando estiver na página **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key Vault, seleccione **secrets** em Objects no menu do lado esquerdo.
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(2).png "Adicionar um Namespace")
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/kv2.png "Adicionar um Namespace")
+1. Quando estiver na página **contosotraderskv<inject key="DeploymentID" enableCopy="false" /> (1)** Cofres de chaves, selecione **Segredos (2)** em **Objetos** no menu à esquerda.
 
-1. Clique agora no botão **Generate/Import** para criar o novo segredo.
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(3).png "Adicionar um Namespace")
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/kv3.png "Adicionar um Namespace")
+1. Clique agora no botão **+ Gerar/Importar** para criar o novo segredo.
 
-1. No painel **Create a secret**, introduza os seguintes detalhes:
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(4).png "Adicionar um Namespace")
 
-    - Name: **mongodbconnection**
-    - Secret Value: cole a cadeia de ligação do Azure CosmosDB para a conta MongoDB que copiou no exercício anterior.
-    - Mantenha os outros valores por defeito e clique em **Create**
+1. No painel **Crie um segredo**, introduza os seguintes detalhes:
 
-      ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/mongodbconnection.jpg "Adicionar um Namespace")
+    - Nome: **mongodbconnection (1)**
+    - Valor Secreto: cole a cadeia de ligação do Azure CosmosDB para a conta MongoDB que copiou no exercício anterior **(2)**.
+    - Mantenha os outros valores por defeito e clique em **Criar (3)**
 
-      ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/kv5.png "Adicionar um Namespace")
+      ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(5).png "Adicionar um Namespace")
 
-1. Abra um novo **Command Prompt** e execute o comando abaixo para criar um segredo utilizando o kubectl.
+      ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(7).png "Adicionar um Namespace")
+
+1. Abra um novo **Prompt de comando** e execute o comando abaixo para criar um segredo utilizando o kubectl.
 
     ```sh
     kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnection --namespace=contoso-traders
@@ -101,9 +100,9 @@ Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/3..1.png "Adicionar um Namespace")
 
-1. Navegue de volta para o browser e abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no portal do Azure, seleccione **Configuration** no menu do lado esquerdo e clique em Secção **Secrets**. Em **Secrets**, poderá ver os novos segredos criados
+1. Navegue de volta para o browser e abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no portal do Azure, seleccione **Configuração (1)** em **Recursos do Kubernetes** no menu do lado esquerdo e clique em Secção **Segredos (2)**. Em **segredo recém-criado**, poderá ver os novos segredos criados
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/aksfinal.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(8).png "Adicionar um Namespace")
 
 ### Tarefa 3: Implementar um namespace, serviço e workload no Serviço Azure Kubernetes utilizando o Portal do Azure
 
