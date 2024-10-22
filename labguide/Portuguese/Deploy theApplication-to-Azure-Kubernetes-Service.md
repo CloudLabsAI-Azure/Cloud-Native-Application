@@ -19,7 +19,7 @@ Poderá completar as seguintes tarefas:
 
 Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviço Azure Kubernetes para se ligar ao cluster e executar comandos para se ligar ao painel de gestão do Kubernetes a partir da shell da cloud.
 
-> **Nota**: As tarefas seguintes devem ser executadas no **Command Prompt**.
+> **Nota**: As tarefas seguintes devem ser executadas no **Linha de comandos**.
 
 1. Abra um novo Terminal como Administrador na JumpVM  e inicie sessão no Azure com os comandos abaixo após atualizar os valores.
 
