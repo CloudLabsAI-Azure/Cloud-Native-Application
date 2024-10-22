@@ -16,25 +16,25 @@ Alguns exemplos do que pode fazer com o Azure Monitor incluem:
 
 Poderá completar as seguintes tarefas:
 
-- Tarefa 1: rever as métricas do Azure Monitor
+- Tarefa 1: Rever as métricas do Azure Monitorar
 
-### Tarefa 1: rever as métricas do Azure Monitor
+### Tarefa 1: Rever as métricas do Azure Monitorar
 
 Nesta tarefa, irá rever o cluster AKS monitorizado.
 
-1. Navegue de volta para o portal do Azure e procure **Monitor (1)**, selecione **Monitor (2)** no resultado.
+1. Navegue de volta para o portal do Azure e procure **Monitorar (1)**, selecione **Monitorar (2)** no resultado.
 
-    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/14.png "Adicionar um Namespace")
+    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(38).png "Definir réplicas para 2")
 
-1. No painel de navegação esquerdo, selecione **Containers (1)** no menu Insights, navegue até à secção **Monitored clusters (2)** para rever os registos e selecione o seu **Kubernetes service (3)** .
+1. No painel de navegação esquerdo, selecione **Contêineres (1)** no menu Insights, navegue até à secção **Clusters monitorados (2)** para rever os registos e selecione o seu **Serviço Kubernetes (3)** .
 
-    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/13.png "Adicionar um Namespace")
+    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(39).png "Definir réplicas para 2")
 
 1. Será redirecionado para a secção Insight na folha de recursos do serviço Kubernetes e deverá conseguir ver alguns registos.
 
     > **Nota**: O Monitor do Azure pode demorar até 15 minutos a preencher os dados na folha de insights.
 
-    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/12.png "Adicionar um Namespace")
+    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(40).png "Definir réplicas para 2")
 
 ## Sumário
 

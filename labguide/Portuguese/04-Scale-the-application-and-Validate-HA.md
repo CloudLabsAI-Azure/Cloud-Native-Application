@@ -22,7 +22,7 @@ Poderá completar as seguintes tarefas:
 
 Nesta tarefa, irá aumentar o número de instâncias para a implementação da API no AKS. Durante a implementação, observará a mudança de estado.
 
-1. Navegue até ao portal do Azure, abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** serviço Kubernetes de **ContosoTraders-<inject key="DeploymentID" enableCopy=" false" />** grupo de recursos. Selecione **Cargas de trabalho (1)** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
+1. Navegue até ao portal do Azure, abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** serviço Kubernetes de **ContosoTraders-<inject key="DeploymentID" enableCopy=" false" />** grupo de recursos. Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(18).png "Definir réplicas para 2")
 
@@ -44,13 +44,13 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
 Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem devido à incapacidade de atender aos recursos solicitados.
 
-1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, seleccione **Cargas de trabalho (1)** e, em seguida, seleccione **contoso- traders-products (2)** implantação.
+1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products (2)** implantação.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/exe4-task2-step1-select-workload.png "A implementação da API está agora íntegra")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(18).png "Definir réplicas para 2")
 
 1. Selecione **YAML** no menu esquerdo na vista geral de **contoso-traders-products**.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/CNA-Ex4-task2-step2.png "A implementação da API está agora íntegra")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(21).png "Definir réplicas para 2")
 
 1. No ecrã **YAML**, desça e altere os seguintes itens:
 
@@ -71,13 +71,13 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
           memory: 128Mi
       ```
 
-   ![Na caixa de diálogo de edição YAML, mostrando duas alterações necessárias.](../media/cloudnative10.png "Modificar manifesto de implementação")
+      ![Na caixa de diálogo de edição YAML, mostrando duas alterações necessárias.](../media/cloudnative10.png "Modificar manifesto de implementação")
 
-1. Selecione **Review + save** e, quando solicitado, Confirmar alteração do manifesto, assinale **Confirm manifest change** e selecione **Save**.
+1. Selecione **Revisar + salvar** e, quando solicitado, Confirmar alteração do manifesto, assinale **Confirmar alteração de manifesto** e selecione **Salvar**.
 
-1. Volte à vista principal **Workloads** do serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, actualize a página e verá agora que o A a implantação está íntegra com **dois** pods em funcionamento.
+1. Volte à vista principal **Cargas de trabalho** do serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, actualize a página e verá agora que o A a implantação está íntegra com **two** pods em funcionamento.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/2.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(23).png "A implementação da API está agora íntegra")
 
 ### Tarefa 3: configurar o escalonamento automático horizontal para os pods de serviço Kubernetes
 
@@ -105,43 +105,40 @@ Nesta tarefa, irá configurar o escalonamento automático horizontal para os seu
 
 Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AKS existente e dimensionará automaticamente os pools de nós do cluster.
 
-1. Navegue de volta para o prompt de comando do Windows. Se não estiver ligado ao Azure, inicie sessão no Azure com o comando abaixo após atualizar os valores no comando abaixo.
+1. Navegue de volta para o prompt de comando do Windows. Se você não estiver conectado ao Azure, faça login no Azure com o comando abaixo após atualizar os valores no comando abaixo.
 
-    * Nome de utilizador: **<inject key="AzureAdUserEmail"></inject>**
-    * Palavra-passe: **<inject key="AzureAdUserPassword"></inject>**
+   ```
+   az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
+   ```
 
-    ```
-    az login -u [username] -p [Password]
-    ```
+1. Para configurar a conexão do cluster Kubernetes, execute o comando abaixo.
 
-1. Para configurar a ligação do cluster Kubernetes, certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo e execute.
+   ```
+   az aks get-credentials --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
+   ```
 
-    ```
-    az aks get-credentials --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX
-    ```
-
-1. Verifique o `count` de pools de nós no cluster e certifique-se de que `enablingAutoScaling` é `null`. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
+1. Verifique o `count` de pools de nós no cluster e certifique-se de que `enablingAutoScaling` é `null/false`.
 
     ```
-    az aks nodepool list --resource-group ContosoTraders-SUFFIX --cluster-name contoso-traders-aksSUFFIX
+    az aks nodepool list --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
     ```
 
    ![](../media/ex4-t3-scaling1.png)
 
-1. Execute o comando abaixo para ativar o dimensionamento automático do cluster no cluster existente. Verifique se `enablingAutoScaling` é `true`. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
+1. Execute o comando abaixo para ativar o dimensionamento automático do cluster no cluster existente. Verifique se `enablingAutoScaling` é `true`.
 
     ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --enable-cluster-autoscaler --min-count 1 --max-count 3
+    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
     ```
 
    ![](../media/ex4-t3-scaling2.png)
 
    >**Nota**: Tenha em atenção que o comando acima pode demorar até 5 minutos para concluir a atualização. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso.
 
-1. Execute o comando abaixo para dimensionar automaticamente os pools de nós no cluster existente. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no comando abaixo.
+1. Execute o comando abaixo para dimensionar automaticamente os pools de nós no cluster existente.
 
     ```
-    az aks update --resource-group ContosoTraders-SUFFIX --name contoso-traders-aksSUFFIX --update-cluster-autoscaler --min-count 1 --max-count 5
+    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
     ```
 
    ![](../media/ex4-t3-scaling3.png)
@@ -152,39 +149,43 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
 Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização não afeta o serviço em execução.
 
-1. Na folha Serviço Azure Kubernetes, selecione **Cargas de trabalho (1)** e, em seguida, selecione a implementação **contoso-traders-product (2)**.
+1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products (2)** implantação.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/upd-upd-productwkrlos.png "A implementação da API está agora íntegra")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(18).png "Definir réplicas para 2")
 
-1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessária para `4` **(2)** e clique em **Review + save (3)** e, quando solicitado , Confirmar alteração do manifesto, assinale **Confirm manifest change** e selecione **Save**.
+1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessária para `4` **(2)** e clique em **Revisar + salvar (3)** e, quando solicitado , Confirmar alteração do manifesto, assinale **Confirmar alterações de manifesto (4)** e selecione **Salvar (5)**.
 
-   ![No menu esquerdo está seleccionado o item Deployments. A implementação da API é realçada na caixa de listagem Implementações.](../media/4.png "API pod implementações")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(24).png "A implementação da API está agora íntegra")
 
-1. Após alguns momentos, irá descobrir que a implementação do **contoso-traders-product** está agora a executar `4` réplicas com êxito.
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(25).png "A implementação da API está agora íntegra")
 
-   ![Visualizar o conjunto de réplicas no Portal Azure.](../media/5.png "Visualizar o conjunto de réplicas no Portal Azure")
+1. Após alguns momentos, irá descobrir que a implementação do **contoso-traders-products** está agora a executar `4` réplicas com êxito.
+
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(26).png "A implementação da API está agora íntegra")
 
 1. Volte ao separador do navegador com a página de estatísticas da aplicação web carregada. Atualize a página repetidamente. Não verá nenhum erro.
 
    ![Na página Estatísticas da aplicação Web Contoso Neuro, são destacados dois valores de nome de host de API diferentes.](../media/11.png "Ver nome de host de tarefa Web")
 
-1. Volte para **contoso-traders-products| Na página Visão geral**, selecione **dois dos pods (1)** aleatoriamente e escolha **Delete (2)**.
+1. Voltar para **contoso-traders-products| Na página Visão geral**, selecione **dois dos pods (1)** aleatoriamente e escolha **Excluir (2)**.
 
-   ![O menu de contexto de um pod na lista de pods é expandido com o item Apagar seleccionado.](../media/6.png "Apagar instância do pod em execução")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(27).png "A implementação da API está agora íntegra")
 
-1. Na página **Delete**, selecione **Confirm delete (1)** e clique novamente em **Delete (2)**.
+1. Na página **Excluir**, selecione **Confirmar exclusão (1)** e clique novamente em **Excluir (2)**.
 
-   ![O menu de contexto de um pod na lista de pods é expandido com o item Apagar seleccionado.](../media/7.png "Apagar instância do pod em execução")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(28).png "A implementação da API está agora íntegra")
 
 1. O Kubernetes lançará novos pods para satisfazer a contagem de réplicas necessária. Dependendo da sua visão, poderá ver as instâncias antigas a serem encerradas e novas instâncias a serem criadas.
 
-   ![A primeira linha da caixa Pods é realçada e o pod tem um visto verde e está a ser executado.](../media/nwcontainer.png "API Pods alterando o estado")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(29).png "A implementação da API está agora íntegra")
 
-1. Volte à implementação da API **contoso-traders-product**. Selecione o item de navegação **YAML** e reduza-o para a réplica `1`.
+1. Volte à implementação da API **contoso-traders-products**. Selecione o item de navegação **YAML** e reduza-o para a réplica `1`.
 
-    ![Visualizar o conjunto de réplicas no Portal Azure.](../media/8.png "Visualizar o conjunto de réplicas no Portal Azure")
+    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(30).png "A implementação da API está agora íntegra")
 
-1. Selecione **Review + save** e, quando solicitado, Confirmar alteração do manifesto, assinale **Confirm manifest change** e selecione **Save**.
+    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(31).png "A implementação da API está agora íntegra")
+
+1. Selecione **Revisar + salvar** e, quando solicitado, Confirmar alteração do manifesto, assinale **Confirmar alteração de manifesto** e selecione **Salvar**.
 
 1. Volte à página de estatísticas do site ContosoTarders no browser e atualize enquanto o Kubernetes reduz o número de pods. Deve conseguir ver o site a funcionar sem problemas
 
@@ -198,29 +199,29 @@ Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
 2. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
 
-   ![](../media/9.png "Ver detalhes da réplica")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(32).png "A implementação da API está agora íntegra")
 
 4. Na base de dados `contentdb`, expanda a coleção **Items (1)**, selecione **Settings (2)**.
 
-   ![](../media/exe4-task6-step3-select-settings.png "Ver detalhes da réplica")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(33).png "A implementação da API está agora íntegra")
 
 5. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
 
-   ![A captura de ecrã apresenta o separador Escala e definições do Cosmos DB com escala automática selecionada](../media/exe4-task6-step4-autoscale.png "Escala e definições da coleção CosmosDB")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(34).png "A implementação da API está agora íntegra")
 
-### Tarefa 7: testar a escala automática do CosmosDB
+### Tarefa 7: Testar a escala automática do CosmosDB
 
 Nesta tarefa, irá executar um script de teste de desempenho que testará a funcionalidade Autoscale do Azure Cosmos DB para que possa ver que agora será dimensionado para mais de 400 RU/s.
 
 1. No Portal do Azure, navegue até **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Conta do Azure Cosmos DB.
 
-2. Selecione **Connection String** em **Settings**.
+2. Selecione **Cadeia de conexão** em **Configurações**.
 
-   ![](../media/cnctionstring1.png "Ver detalhes da réplica")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(35).png "A implementação da API está agora íntegra")
 
-3. No painel **Connection String**, copie os valores **HOST (1)**, **USERNAME (2)** e **PRIMARY PASSWORD (3)**. Guarde-os num ficheiro de texto para uso posterior.
+3. No painel **Cadeia de conexão**, copie os valores **HOST (1)**, **NOME DE USUÁRIO (2)** e **SENHA PRIMÁRIA (3)**. Guarde-os num ficheiro de texto para uso posterior.
 
-   ![O painel String de ligação da conta Cosmos DB com os campos a copiar destacados.](../media/cnctionstringnew.png "Ver string de ligação do CosmosDB")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(36).png "A implementação da API está agora íntegra")
 
 4. Abra o comando de linha e ligue-se à VM do agente de construção utilizando o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
@@ -241,7 +242,7 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
     vi perftest.sh
     ```
 
-8. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Prima **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**host**, **username** e **password** definindo os seus valores para os valores correspondentes da cadeia de ligação do Cosmos DB que foram copiados anteriormente.
+8. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Prima **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**host**, **NOME DE USUÁRIO** e **SENHA PRIMÁRIA** definindo os seus valores para os valores correspondentes da cadeia de ligação do Cosmos DB que foram copiados anteriormente.
 
    ![A captura de ecrã mostra o Vim com o ficheiro perftest.sh aberto e as variáveis ​​definidas para os valores da cadeia de ligação do Cosmos DB.](../media/updatepreftest.png "Modificar as informações de ligação no Vim")
 
@@ -259,17 +260,17 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 11. Assim que a execução do script estiver concluída, navegue de volta para a **Cosmos DB account** no portal Azure.
 
-12. Desça no painel **Overview** da folha **Cosmos DB account** e localize o gráfico **Request Charge**.
+12. Desça no painel **Visão geral** da folha **Cosmos DB account** e localize o gráfico **Solicitar taxa**.
 
     > **Nota:** Pode demorar 2 a 5 minutos para que a atividade na coleção do CosmosDB apareça no registo de atividades. Aguarde alguns minutos e atualize a página se a cobrança de pedidos recentes não aparecer agora.
 
-13. Note que a **Request charge** mostra agora que houve atividade na **Cosmos DB account** que excedeu o limite de 400 RU/s definido anteriormente antes da ativação do dimensionamento automático.
+13. Note que a **Solicitar taxa** mostra agora que houve atividade na **Cosmos DB account** que excedeu o limite de 400 RU/s definido anteriormente antes da ativação do dimensionamento automático.
 
-    ![A captura de ecrã mostra o gráfico de faturação de pedidos do Cosmos DB que mostra a atividade recente do teste de desempenho](../media/cosmos-request-charge.png "Gráfico de atividades recentes do CosmosDB")
+    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(37).png "A implementação da API está agora íntegra")
 
     >**Nota**: Caso não veja os dados no gráfico, defina o intervalo de tempo para durar 1 hora.
 
-14. Clique no botão **Next** localizado no canto inferior direito deste guia de laboratório para continuare com o exercício seguinte.
+14. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuare com o exercício seguinte.
 
 ## Resumo
 

@@ -17,9 +17,9 @@ Irá completar as seguintes tarefas:
 
 Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos e clonar o repositório GitHub onde está o código fonte do site da Contoso Trader.
 
-1. Depois de iniciar sessão na VM, pesquise **Linha de comandos** **(1)** na barra de pesquisa do Windows e clique em **Linha de comandos** **(2)** para abrir.
+1. Depois de iniciar sessão na VM, pesquise **prompt de Comando** **(1)** na barra de pesquisa do Windows e clique em **prompt de Comando** **(2)** para abrir.
 
-   ![](../media/1-10-24(9).png "abrir cmd")
+   ![](../media/22-10-24(22).png "abrir cmd")
 
 1. Execute o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para se ligar à VM Linux utilizando o ssh.
 
