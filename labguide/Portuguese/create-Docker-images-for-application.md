@@ -63,6 +63,20 @@ Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos
 
 Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e enviá-las usando um comando push para o ACR (Azure Container Registry) para utilização posterior no AKS.
 
+1. Certifique-se de estar no diretório **labfiles** antes de executar as próximas etapas, pois o docker build precisa encontrar o DockerFile para criar a imagem.
+
+   ```
+   cd Cloud-Native-Application/labfiles/
+   ```
+
+1. Execute o comando abaixo para baixar o Azure CLI,
+
+   ```
+   sudo apt install azure-cli
+   ```
+
+   >**Nota:** no prompt de comando, digite **Y** e pressione **Enter** para **Você quer continuar? [S/n]**.
+
 1. Execute o comando abaixo para iniciar sessão no Azure, navegue até ao URL de início de sessão do dispositivo `https://microsoft.com/devicelogin` no browser e copie o código de autenticação.
 
     ```
@@ -136,8 +150,8 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     >**Nota**: Se **_ESC_** não funcionar pressione `ctrl + [` e depois escreva **_:wq_** para guardar as suas alterações e fechar o ficheiro.
 
     ```
-    const APIUrl = 'http://contoso-traders-productsdeploymentid.REGION.cloudapp.azure.com/v1';
-    const APIUrlShoppingCart = 'https://contoso-traders-cartsdeploymentid.orangeflower-95b09b9d.REGION.azurecontainerapps.io/v1';
+    const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
+    const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
    ![](../media/cdnfix1.png)
