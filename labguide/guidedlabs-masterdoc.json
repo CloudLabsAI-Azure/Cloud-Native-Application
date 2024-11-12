@@ -1,0 +1,53 @@
+[
+  {
+    "Name": "Cloud Native Apps with Azure Services",
+    "Language": "English",
+    "BaseURL": "https://github.com/CloudLabs-MOC/AZ500-AzureSecurityTechnologies",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AZ500-AzureSecurityTechnologies/guided-labs/Instructions/Labs/LabIntroV2.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-overview.md",
+        "Order": 2
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl3-prerequisite.md",
+        "Order": 3
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AZ500-AzureSecurityTechnologies/guided-labs/Instructions/Labs/Deploy-Azure-Kubernetes-Cluster.md",
+        "Order": 4
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AZ500-AzureSecurityTechnologies/lab-wise-modules/Instructions/Labs/guidedlab_LAB_09_ConfiguringandSecuringACRandAKS.md",
+        "Order": 5
+      },
+      {
+        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-create-Docker-images-for-application.md",
+        "Order": 6
+      },
+      {
+        "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-migrate-mondodb-to-cosmosdb-using-dbmigration.md",
+        "Order": 7
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-Deploy%20theApplication-to-Azure-Kubernetes-Service.md",
+        "Order": 8
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-04-Scale-the-application-and-Validate-HA.md",
+        "Order": 9
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-05-Updating-Apps%26Managing-Load-Balancing.md",
+        "Order": 10
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-Azure%2006-Monitor-for-Containers.md",
+        "Order": 11
+      }     
+    ]
+  }
+]
