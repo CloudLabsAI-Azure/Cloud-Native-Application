@@ -59,7 +59,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **YAML** screen, scroll down and update the following items:
 
-   - Under the **spec** section add the following **ports (1)**.
+   - Under the **spec** section, make sure the following ports are provided:
 
       ```yaml
       ports:
@@ -67,7 +67,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
           protocol: TCP
       ```
 
-   - Modify the **cpu** and set it to **100m (2)**. CPU is divided between all Pods on a Node.
+   - Modify the **cpu** and set it to **100m**. CPU is divided between all Pods on a Node.
 
       ```yaml
       requests:
@@ -75,7 +75,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
          memory: 128Mi
       ```
 
-      ![In the edit YAML dialog, showing two changes required.](media/cloudnative10.png "Modify deployment manifest")
+      ![In the edit YAML dialog, showing two changes required.](media/cloudnative102.png "Modify deployment manifest")
 
 1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
