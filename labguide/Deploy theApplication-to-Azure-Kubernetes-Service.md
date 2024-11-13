@@ -139,13 +139,13 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 1. En el panel **Agregar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Agregar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
     >**Información**: El siguiente archivo YAML creará pods de despliegue en el espacio de nombres contoso-traders. Una implementación de Kubernetes le dice a Kubernetes cómo crear o modificar instancias de los pods que contienen una aplicación en contenedores. Las implementaciones pueden ayudar a escalar de manera eficiente el número de réplicas de pods, permitir el despliegue de código actualizado de una manera controlada o volver a una versión de implementación anterior si es necesario.
 
-    ```YAML
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
+   ```YAML
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
      name: contoso-traders-products
      namespace: contoso-traders
-    spec:
+   spec:
      replicas: 1
      selector:
        matchLabels:
@@ -159,8 +159,8 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
            "kubernetes.io/os": linux
          containers:
            - name: contoso-traders-products
-             #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
-             image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
+             # Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by the GitHub workflow.
+             image: contosotradersacr1510216.azurecr.io/contosotradersapiproducts:latest
              env:
                - name: KeyVaultEndpoint
                  valueFrom:
@@ -179,11 +179,11 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
                limits:
                  cpu: 250m
                  memory: 256Mi
-               ports:
-                 - containerPort: 3001
-                   hostPort: 3001
-                   protocol: TCP
-    ```
+             ports:
+               - containerPort: 3001
+                 hostPort: 3001
+                 protocol: TCP
+   ```
    ![Agregando con YAML.](media/ex3-t3-workloadsadd.png "Agregando con YAML")
 
 1. Después de unos minutos, verá la implementación en la lista, que debería estar ejecutándose.

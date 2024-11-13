@@ -47,7 +47,7 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
 
 1. En la pantalla **YAML**, desplácese hacia abajo y cambie los siguientes elementos:
 
-   - En la sección **especificaciones** agregue los siguientes **puertos (1)**.
+   - En la sección **especificaciones**, asegúrese de que se proporcionen los siguientes **ports (1)** :
 
       ```yaml
       ports:
