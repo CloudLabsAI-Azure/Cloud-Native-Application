@@ -12,17 +12,17 @@ En este laboratorio práctico, ayudará a completar esta prueba de concepto con 
 
 Este laboratorio está diseñado para brindar a los participantes experiencia práctica en la creación de imágenes de Docker, la migración de MongoDB a Cosmos DB, la implementación y el escalado de aplicaciones en Azure Kubernetes Service, la administración de actualizaciones y el enrutamiento del tráfico, y el monitoreo del rendimiento de los contenedores con Azure Monitor.
 
-1. **Crear imágenes de Docker para la Aplicación:** Este ejercicio práctico tiene como objetivo crear imágenes de Docker para contenerizar su aplicación para despliegues consistentes y portátiles. Los participantes podrán contenerizar la aplicación con éxito, permitiendo una implementación consistente en varios entornos.
+- **Crear imágenes de Docker para la Aplicación:** Este ejercicio práctico tiene como objetivo crear imágenes de Docker para contenerizar su aplicación para despliegues consistentes y portátiles. Los participantes podrán contenerizar la aplicación con éxito, permitiendo una implementación consistente en varios entornos.
 
-1. **Migrar MongoDB a Cosmos DB mediante Azure Database Migration:** Este ejercicio práctico tiene como objetivo transferir sus datos de MongoDB a Azure Cosmos DB para aprovechar sus servicios de base de datos escalables y administrados. Los participantes migrarán sin problemas los datos de MongoDB a Azure Cosmos DB, garantizando la disponibilidad de los datos y la compatibilidad con los servicios de Azure.
+- **Migrar MongoDB a Cosmos DB mediante Azure Database Migration:** Este ejercicio práctico tiene como objetivo transferir sus datos de MongoDB a Azure Cosmos DB para aprovechar sus servicios de base de datos escalables y administrados. Los participantes migrarán sin problemas los datos de MongoDB a Azure Cosmos DB, garantizando la disponibilidad de los datos y la compatibilidad con los servicios de Azure.
 
-1. **Implementar la aplicación en Azure Kubernetes Service:** Este ejercicio práctico tiene como objetivo implementar y administrar su aplicación en contenedores mediante Azure Kubernetes Service para la orquestación y la escalabilidad. Los participantes desplegarán la aplicación en contenedores en Azure Kubernetes Service, proporcionando un entorno escalable y administrado para su funcionamiento.
+- **Implementar la aplicación en Azure Kubernetes Service:** Este ejercicio práctico tiene como objetivo implementar y administrar su aplicación en contenedores mediante Azure Kubernetes Service para la orquestación y la escalabilidad. Los participantes desplegarán la aplicación en contenedores en Azure Kubernetes Service, proporcionando un entorno escalable y administrado para su funcionamiento.
 
-1. **Escalar la aplicación y validar la Alta Disponibilidad:** Este ejercicio práctico tiene como objetivo ajustar la escala de la aplicación y confirmar su alta disponibilidad para asegurarse de que funcione bien bajo cargas variables. Los participantes escalarán la aplicación para manejar cargas variables y confirmarán su alta disponibilidad para mantener el rendimiento y la confiabilidad.
+- **Escalar la aplicación y validar la Alta Disponibilidad:** Este ejercicio práctico tiene como objetivo ajustar la escala de la aplicación y confirmar su alta disponibilidad para asegurarse de que funcione bien bajo cargas variables. Los participantes escalarán la aplicación para manejar cargas variables y confirmarán su alta disponibilidad para mantener el rendimiento y la confiabilidad.
 
-1. **Actualización de Aplicaciones y Gestión de Kubernetes Ingress:** Este ejercicio práctico tiene como objetivo aplicar actualizaciones a su aplicación y configurar Kubernetes Ingress para administrar y enrutar el tráfico externo de manera eficaz. Los participantes actualizarán la aplicación con éxito y configurarán Kubernetes Ingress para administrar y enrutar el tráfico externo de manera eficaz.
+- **Actualización de Aplicaciones y Gestión de Kubernetes Ingress:** Este ejercicio práctico tiene como objetivo aplicar actualizaciones a su aplicación y configurar Kubernetes Ingress para administrar y enrutar el tráfico externo de manera eficaz. Los participantes actualizarán la aplicación con éxito y configurarán Kubernetes Ingress para administrar y enrutar el tráfico externo de manera eficaz.
 
-1. **Azure Monitor para Contenedores:** Este ejercicio práctico tiene como objetivo utilizar Azure Monitor para Containers a fin de realizar un seguimiento y analizar el rendimiento y el estado de sus aplicaciones en contenedores en AKS. Los participantes habilitarán la supervisión de aplicaciones en contenedores con Azure Monitor, proporcionando información sobre el rendimiento y el estado operativo.
+- **Azure Monitor para Contenedores:** Este ejercicio práctico tiene como objetivo utilizar Azure Monitor para Containers a fin de realizar un seguimiento y analizar el rendimiento y el estado de sus aplicaciones en contenedores en AKS. Los participantes habilitarán la supervisión de aplicaciones en contenedores con Azure Monitor, proporcionando información sobre el rendimiento y el estado operativo.
 
 ## Requisitos previos
 
@@ -109,7 +109,7 @@ La arquitectura de este laboratorio incluye varios componentes clave:
    
      ![](media/gs-5.png "Ingrese Contraseña")
      
-   > Si ve el cuadro de diálogo **Ayúdenos a proteger su cuenta**, seleccione la opción **Omitir por ahora**.
+     > Si ve el cuadro de diálogo **Ayúdenos a proteger su cuenta**, seleccione la opción **Omitir por ahora**.
 
      ![](media/gs-6.png "Ingrese Contraseña")
   
@@ -134,5 +134,7 @@ Contactos de Soporte para Estudiantes:
 - Soporte por Chat En Vivo: https://cloudlabs.ai/labs-support
 
 Ahora, haga clic en **Siguiente** en la esquina inferior derecha para pasar a la página siguiente.
+
+![](media/image1.png)
 
 ### ¡Feliz Aprendizaje!!
