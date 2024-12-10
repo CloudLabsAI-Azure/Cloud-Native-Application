@@ -12,17 +12,17 @@ Neste laboratório prático, ajudará a completar este POC com um subconjunto da
 
 Este laboratório foi concebido para equipar os participantes com experiência prática na construção de imagens Docker, migrar bancos de dados MongoDB para Cosmos DB, implementar e escalar aplicações no Azure Kubernetes Service (AKS), gerir atualizações, encaminhamento de tráfego e monitorizar o desempenho do containers com o Azure Monitor .
 
-1. **Criar imagens Docker para a aplicação:** Este exercício prático tem como objetivo criar imagens Docker para containerizar a sua aplicação para implementações consistentes e portáteis. Os participantes irão containerizar a aplicação, permitindo uma implementação consistente em vários ambientes.
+- **Criar imagens Docker para a aplicação:** Este exercício prático tem como objetivo criar imagens Docker para containerizar a sua aplicação para implementações consistentes e portáteis. Os participantes irão containerizar a aplicação, permitindo uma implementação consistente em vários ambientes.
 
-1. **Migrar o MongoDB para o Cosmos DB utilizando a Migração de Base de Dados do Azure:** Este exercício prático tem como objetivo transferir os seus dados do MongoDB para o Azure Cosmos DB para tirar partido dos seus serviços de banco de dados escaláveis ​​​​e geridos. Os participantes migrarão os dados do MongoDB para o Azure Cosmos DB, garantindo a disponibilidade dos dados e a compatibilidade com os serviços do Azure.
+- **Migrar o MongoDB para o Cosmos DB utilizando a Migração de Base de Dados do Azure:** Este exercício prático tem como objetivo transferir os seus dados do MongoDB para o Azure Cosmos DB para tirar partido dos seus serviços de banco de dados escaláveis ​​​​e geridos. Os participantes migrarão os dados do MongoDB para o Azure Cosmos DB, garantindo a disponibilidade dos dados e a compatibilidade com os serviços do Azure.
 
-1. **Implantar a aplicação no Serviço Azure Kubernetes:** Este exercício prático tem como objetivo implementar e gerir a sua aplicação containerizada utilizando o Serviço Azure Kubernetes para orquestração e escalabilidade. Os participantes irão implementar a aplicação em contentor no Azure Kubernetes Service, fornecendo um ambiente escalonável e gerido para operação.
+- **Implantar a aplicação no Serviço Azure Kubernetes:** Este exercício prático tem como objetivo implementar e gerir a sua aplicação containerizada utilizando o Serviço Azure Kubernetes para orquestração e escalabilidade. Os participantes irão implementar a aplicação em contentor no Azure Kubernetes Service, fornecendo um ambiente escalonável e gerido para operação.
 
-1. **Escale a aplicação e valide o HA:** Este exercício prático tem como objetivo ajustar o dimensionamento da aplicação e confirmar a sua alta disponibilidade para garantir que tem um bom desempenho sob cargas variadas. Os participantes irão escalar a aplicação para lidar com cargas variadas e confirmar a sua alta disponibilidade para manter o desempenho e a fiabilidade.
+- **Escale a aplicação e valide o HA:** Este exercício prático tem como objetivo ajustar o dimensionamento da aplicação e confirmar a sua alta disponibilidade para garantir que tem um bom desempenho sob cargas variadas. Os participantes irão escalar a aplicação para lidar com cargas variadas e confirmar a sua alta disponibilidade para manter o desempenho e a fiabilidade.
 
-1. **Atualização de aplicações e gestão do Kubernetes Ingress:** Este exercício prático tem como objetivo aplicar atualizações à sua aplicação e configurar o Kubernetes Ingress para gerir e encaminhar o tráfego externo de forma eficaz. Os participantes irão atualizar a aplicação com sucesso e configurar o Kubernetes Ingress para gerir e encaminhar eficazmente o tráfego externo.
+- **Atualização de aplicações e gestão do Kubernetes Ingress:** Este exercício prático tem como objetivo aplicar atualizações à sua aplicação e configurar o Kubernetes Ingress para gerir e encaminhar o tráfego externo de forma eficaz. Os participantes irão atualizar a aplicação com sucesso e configurar o Kubernetes Ingress para gerir e encaminhar eficazmente o tráfego externo.
 
-1. **Azure Monitor para Contentores:** Este exercício prático tem como objetivo utilizar o Azure Monitor para Contentores para rastrear e analisar o desempenho e a integridade das suas aplicações containerizadas no AKS. Os participantes configurarão a monitorização de aplicações em contentores com o Azure Monitor, fornecendo insights sobre o desempenho e a integridade operacional.
+- **Azure Monitor para Contentores:** Este exercício prático tem como objetivo utilizar o Azure Monitor para Contentores para rastrear e analisar o desempenho e a integridade das suas aplicações containerizadas no AKS. Os participantes configurarão a monitorização de aplicações em contentores com o Azure Monitor, fornecendo insights sobre o desempenho e a integridade operacional.
 
 ## Pré-requisitos
 
@@ -108,5 +108,17 @@ A arquitetura deste laboratório envolve vários componentes principais:
    ![](../media/1-10-24(8).png "Resource Groups")
 
 No final deste laboratório, os participantes aprenderão a criar imagens Docker para aplicações em contentores, a migrar dados do MongoDB para o Azure Cosmos DB e a implementar aplicações no Azure Kubernetes Service (AKS) para orquestração. Também irão escalar aplicações e garantir alta disponibilidade, gerir atualizações e encaminhamento de tráfego e utilizar o Azure Monitor para monitorizar o desempenho e a integridade das suas aplicações em contentores.
+
+## Contato de suporte
+
+A equipe de suporte da CloudLabs está disponível 24 horas por dia, 7 dias por semana, 365 dias por ano, por e-mail e chat ao vivo para garantir assistência contínua a qualquer momento. Oferecemos canais de suporte dedicados, adaptados especificamente para alunos e instrutores, garantindo que todas as suas necessidades sejam atendidas de forma rápida e eficiente.
+
+Contatos de suporte ao aluno:
+- Suporte por e-mail: cloudlabs-support@spektrasystems.com
+- Suporte por chat ao vivo: https://cloudlabs.ai/labs-support
+
+Agora, clique em **próximo** no canto inferior direito para passar para a próxima página.
+
+![](../media/imag1.png)
 
 ### Boa aprendizagem!!
