@@ -28,10 +28,10 @@ Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do A
    ```
    sudo apt install mongodb-server
    cd /etc
-   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
-   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
-   sudo service mongod stop
-   sudo service mongod start
+   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+   sudo service mongodb stop
+   sudo service mongodb start
    ```
 
    ![](../media/EX2-T1-S1.png)
@@ -46,7 +46,7 @@ Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do A
 
     ![](../media/mongo.png)
 
-    >**Nota**: Caso não veja os dados dentro do ficheiro Mongo. Siga os passos mencionados abaixo.
+    >**Observação**: Caso não veja os dados dentro do ficheiro Mongo. Siga os passos mencionados abaixo.
 
     - Introduza `exit` para sair do Mongo.
 
@@ -70,11 +70,13 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
    ![](../media/1-10-24(19).png)
 
-    > **Nota:** Se receber **Bem-vindo! O que é Cosmos DB?**, feche-o clicando em **X**.
+    > **Observação:** Se receber **Bem-vindo! O que é Cosmos DB?**, feche-o clicando em **X**.
 
 1. Forneça o nome como `contentdb` **(1)** para **Database id** e selecione **Provision throughput** como **Manual** **(2)**, forneça o valor RU/s para `400` **(3)** e clique em **OK (4)**.
 
    ![](../media/Ex2T2S3.png)
+
+   **Observação:** Para visualizar as configurações, certifique-se de que a opção **Provision throughput** esteja **marcada**.
 
 1. Navegue até ao serviço de migração de base de dados do Azure **contosotraders<inject key="DeploymentID" enableCopy="false" />** no grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy= "false" />**.
 
@@ -91,7 +93,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
       ![](../media/1-10-24(21).png)
 
-      >**Nota**: O tipo de atividade **Migração de dados offline** está selecionado, uma vez que irá realizar uma migração única do MongoDB para o Cosmos DB. Além disso, os dados da base de dados não serão atualizados durante a migração. Num cenário de produção, irá querer escolher o tipo de atividade de projeto de migração que melhor se adapta aos requisitos da sua solução.
+      >**Observação**: O tipo de atividade **Migração de dados offline** está selecionado, uma vez que irá realizar uma migração única do MongoDB para o Cosmos DB. Além disso, os dados da base de dados não serão atualizados durante a migração. Num cenário de produção, irá querer escolher o tipo de atividade de projeto de migração que melhor se adapta aos requisitos da sua solução.
 
 1. No painel **MongoDB para Banco de Dados do Azure para Assistente de Migração Offline CosmosDB**, introduza os seguintes valores para o separador **Selecionar fonte**:
 
@@ -104,13 +106,13 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
     ![](../media/1-10-24(22).png)
 
-    > **Nota:** Se enfrentar um problema ao ligar-se à base de dados de origem com um erro, a ligação será recusada. Execute os seguintes comandos em **construir VM do agente conectado no CloudShell**. Pode utilizar o **Comando para ligar à VM do agente de compilação**, que é fornecido na página de detalhes do ambiente de laboratório.
+    > **Observação:** Se enfrentar um problema ao ligar-se à base de dados de origem com um erro, a ligação será recusada. Execute os seguintes comandos em **construir VM do agente conectado no CloudShell**. Pode utilizar o **Comando para ligar à VM do agente de compilação**, que é fornecido na página de detalhes do ambiente de laboratório.
 
     ```bash
     sudo apt install mongodb-server
     cd /etc
-    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
-    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
+    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
     sudo service mongodb stop
     sudo service mongodb start
     ```
