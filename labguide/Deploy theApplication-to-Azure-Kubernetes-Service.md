@@ -115,21 +115,23 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
     >**Información**: El siguiente script YAML creará un servicio AKS dentro del espacio de nombres contoso-traders que creó en los pasos anteriores. El servicio AKS es una forma abstracta de exponer una aplicación que se ejecuta en un conjunto de Pods como un servicio de red. 
 
     ```yaml
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: contoso-traders-products
-     namespace: contoso-traders
-     annotations:
-       #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
-       service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-   spec:
-     type: LoadBalancer
-     ports:
-       - port: 80
-     selector:
-       app: contoso-traders-products
-    ```    
+      #YAML Script
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: contoso-traders-products
+        namespace: contoso-traders
+        annotations:
+          # TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+          service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+      spec:
+        type: LoadBalancer
+        ports:
+          - port: 80
+        selector:
+          app: contoso-traders-products
+
+      ```       
    ![Agregando con YAML.](media/ex3-t3-servicecreate.png "Agregando con YAML") 
 
 1. Seleccione **Cargas de trabajo (1)** en la sección de recursos Kubernetes en el menú a la izquierda. Con **Implementaciones** seleccionado por defecto, elija **+ Crear (2)** y luego seleccione **Aplicar un YAML (3)**.
@@ -160,7 +162,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
          containers:
            - name: contoso-traders-products
              # Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by the GitHub workflow.
-             image: contosotradersacr1510216.azurecr.io/contosotradersapiproducts:latest
+             image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
              env:
                - name: KeyVaultEndpoint
                  valueFrom:
