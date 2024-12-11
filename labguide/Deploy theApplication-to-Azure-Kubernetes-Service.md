@@ -124,6 +124,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
+      #YAML Script
       apiVersion: v1
       kind: Service
       metadata:
@@ -170,7 +171,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
          containers:
            - name: contoso-traders-products
              # Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by the GitHub workflow.
-             image: contosotradersacr1510216.azurecr.io/contosotradersapiproducts:latest
+             image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
              env:
                - name: KeyVaultEndpoint
                  valueFrom:
