@@ -23,7 +23,7 @@ Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do A
     mongo
     ```
 
-    >**Nota**: Se enfrentar um problema ao ligar-se à base de dados de origem com um erro, a ligação será recusada. Execute o comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** e introduza a password da VM **<inject key="Build Agent VM Password" enableCopy="true" />** para ligar à VM Linux utilizando ssh. Execute os seguintes comandos e execute novamente o passo 1 da tarefa.
+    >**Observação**: Se você enfrentar um problema ao se conectar ao banco de dados de origem com um erro de conexão recusada. Execute o comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, digite **yes** quando ele disser **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e insira a senha da VM **<inject key="Build Agent VM Password" enableCopy="true" />** para se conectar à VM Linux usando ssh. Execute os seguintes comandos e repita a etapa - 1 da tarefa.
 
    ```
    sudo apt install mongodb-server
