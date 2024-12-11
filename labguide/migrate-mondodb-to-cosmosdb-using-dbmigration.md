@@ -74,6 +74,8 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/Ex2T2S3.png)
 
+   **Note:** To see the configurations ensure that Provision throughput is **Checked**.
+
 1. Navigate to the Azure Database Migration Service **contosotraders<inject key="DeploymentID" enableCopy="false" />** resource blade in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
 1. On the Azure Database Migration Service blade, select **+ New Migration Project** on the **Overview** pane.
