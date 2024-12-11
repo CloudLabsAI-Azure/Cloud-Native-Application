@@ -16,7 +16,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    mongosh
    ```
    
-   >**Nota:** Si se encuentra con un problema al conectarse a la base de datos de origen tal como error: conexión denegada, ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** e ingrese el comando de la MV **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la MV de Linux usando ssh. Por favor ejecute los siguientes comandos y vuelva a realizar el paso 1 de la tarea. 
+   >**Nota**: Si tiene un problema al conectarse a la base de datos de origen con un error de conexión rechazada, ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, escriba **yes** cuando diga **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e ingrese la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante ssh. Ejecute los siguientes comandos y vuelva a realizar el paso 1 de la tarea. 
 
    ```
    sudo apt install mongodb-server
