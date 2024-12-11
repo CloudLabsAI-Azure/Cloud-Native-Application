@@ -13,7 +13,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
 1. Mientras está conectado a su MV Linux, ejecute el siguiente comando para conectarse a Mongo shell y mostrar las bases de datos y colecciones que contiene usando Mongo shell.
 
    ```
-   mongosh
+   mongo
    ```
    
    >**Nota**: Si tiene un problema al conectarse a la base de datos de origen con un error de conexión rechazada, ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, escriba **yes** cuando diga **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e ingrese la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante ssh. Ejecute los siguientes comandos y vuelva a realizar el paso 1 de la tarea. 
@@ -21,10 +21,10 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    ```
    sudo apt install mongodb-server
    cd /etc
-   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
-   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
-   sudo service mongod stop
-   sudo service mongod start
+   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+   sudo service mongodb stop
+   sudo service mongodb start
    ```
    
    ![](media/EX2-T1-S1.png)
@@ -69,6 +69,8 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![](media/Ex2T2S3.png)
 
+   **Nota:** Para visualizar las configuraciones, asegúrate de que la opción Provision throughput esté **marcada**.
+
 1. Navegue a la hoja de recursos **contosotraders<inject key="DeploymentID" enableCopy="false" />** de Azure Database Migration Service en el grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
 1. En la hoja Azure Database Migration Service, seleccione **+ Nuevo Proyecto de Migración** en el panel **Descripción general**.
@@ -102,10 +104,10 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
     ```bash
     cd /etc
-    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
-    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
-    sudo service mongod stop
-    sudo service mongod start
+    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+    sudo service mongodb stop
+    sudo service mongodb start
     ```
     
 1. Seleccione **Siguiente: Seleccionar destino >>**.
