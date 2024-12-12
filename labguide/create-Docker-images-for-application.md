@@ -22,9 +22,9 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
    
     * Contraseña: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-   ![](media/EX1-T1-S3.png "abrir cmd")
+      ![](media/EX1-T1-S3.png "abrir cmd")
    
-   >**Nota**: Tenga en cuenta que mientras escribe la contraseña no podrá verla por motivos de seguridad.
+      >**Nota**: Tenga en cuenta que mientras escribe la contraseña no podrá verla por motivos de seguridad.
     
 1. Una vez que la VM esté conectada, ejecute el siguiente comando para clonar el repositorio de GitHub que usaremos para la práctica de laboratorio.
 
@@ -75,17 +75,18 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 
    ![](media/ex1-codelogin.png)
    
+   
 1. En la pestaña **Inicie sesión en su cuenta** verá una pantalla de inicio de sesión, en ella ingrese el siguiente correo electrónico/nombre de usuario y luego haga clic en **Siguiente**.
 
    * Correo electrónico/Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
 
-    > **Nota:** Si aparece una ventana emergente **Elige una cuenta**, seleccione el ID de Correo electrónico anterior.
+     > **Nota:** Si aparece una ventana emergente **Elige una cuenta**, seleccione el ID de Correo electrónico anterior.
 
 1. Ahora ingrese la siguiente contraseña y haga clic en **Iniciar sesión**.
 
    * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
 
-    > **Nota:** No aparecerá la ventana emergente para ingresar la contraseña si apareció la ventana emergente **Elija una cuenta** donde seleccionó la cuenta.
+     > **Nota:** No aparecerá la ventana emergente para ingresar la contraseña si apareció la ventana emergente **Elija una cuenta** donde seleccionó la cuenta.
 
 1. En la ventana emergente para confirmar el inicio de sesión en la CLI de Microsoft Azure, haga clic en **Continuar**.
 

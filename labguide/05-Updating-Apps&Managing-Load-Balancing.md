@@ -160,7 +160,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    
    Pegue lo siguiente como contenido del script. Asegúrese de reemplazar los siguientes marcadores de posición en el script:
 
-   - `[ipaddress]`: Reemplace esto con la Dirección IP copiada del paso 5.
+   - `[ipaddress]`: Reemplace esto con la Dirección IP copiada del paso 4.
    - `[KUBERNETES_NODE_RG]`: Reemplace `SUFFIX` con este valor: **<inject key="DeploymentID" />**.
    - `[DNSNAME]`: Reemplace esto con el mismo valor SUFFIX **<inject key="DeploymentID" />** que utilizó anteriormente para esta práctica de laboratorio.
    - `[PUBLICIP]`: Reemplace `SUFFIX` con este valor: **<inject key="DeploymentID" />**.
