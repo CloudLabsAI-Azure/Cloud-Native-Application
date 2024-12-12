@@ -132,7 +132,9 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
           app: contoso-traders-products
 
       ```       
-   ![Agregando con YAML.](media/ex3-t3-servicecreate.png "Agregando con YAML") 
+   ![Agregando con YAML.](media/ex3-t3-servicecreate.png "Agregando con YAML")
+
+   **Nota:** Asegúrese de que la sangría en su script YAML coincida con el formato que se muestra en la imagen para evitar errores.
 
 1. Seleccione **Cargas de trabajo (1)** en la sección de recursos Kubernetes en el menú a la izquierda. Con **Implementaciones** seleccionado por defecto, elija **+ Crear (2)** y luego seleccione **Aplicar un YAML (3)**.
 
