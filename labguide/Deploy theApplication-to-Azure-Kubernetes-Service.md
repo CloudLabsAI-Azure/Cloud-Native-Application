@@ -141,7 +141,9 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
           app: contoso-traders-products
 
       ```    
-   ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
+    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources")
+
+    **Note:** Ensure that the indentation in your YAML script matches the format shown in the image to avoid errors.
 
 1. Select **Workloads (1)** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
