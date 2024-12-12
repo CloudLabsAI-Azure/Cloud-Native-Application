@@ -29,9 +29,9 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-   ![](media/ex1-connecttolinuxvm.png "open cmd")
+     ![](media/ex1-connecttolinuxvm.png "open cmd")
    
-   >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
+     >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
     
 1. Once the VM is connected, run the below command to clone the GitHub repository that we are going to use for the lab.
 
