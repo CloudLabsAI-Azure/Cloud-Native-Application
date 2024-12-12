@@ -152,7 +152,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
     Cole o seguinte como conteúdo. Certifique-se de que substitui os seguintes espaços reservados no script:
 
-    - `[IP]`: Substitua pelo endereço IP copiado do passo 5.
+    - `[IP]`: Substitua pelo endereço IP copiado do passo 4.
     - `[KUBERNETES_NODE_RG]`: Substitua o `SUFFIX` por este valor **<inject key="DeploymentID" />**.
     - `[DNSNAME]`: substitua pelo mesmo valor de SUFFIX **<inject key="DeploymentID" />** que utilizou anteriormente neste laboratório.
     - `[PUBLICIP]`: Substitua o `SUFFIX` por este valor **<inject key="DeploymentID" />**.
