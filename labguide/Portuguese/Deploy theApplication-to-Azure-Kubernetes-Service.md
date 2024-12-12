@@ -141,6 +141,8 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
     ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(11).png "Adicionar um Namespace")
 
+    **Observação:** certifique-se de que o recuo no seu script YAML corresponda ao formato mostrado na imagem para evitar erros.
+
 1. Selecione **Cargas de trabalho (1)** na secção Recursos do Kubernetes na navegação esquerda. Com **Implantações** selecionadas por defeito, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(12).png "Adicionar um Namespace")
