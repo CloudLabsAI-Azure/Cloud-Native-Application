@@ -1,24 +1,22 @@
-# Cloud Native Apps with Azure Services - Build Docker Images for the Application
+# Cloud Native Apps with Azure Services - Migrate MongoDB to Cosmos DB using Azure Database Migration
 
 ### Overall Estimated Duration: 60 Minutes
 
 ## Overview
 
-In this lab, you'll learn to containerize an application using Docker and deploy it to Azure Container Registry (ACR). You'll start by creating a Dockerfile to define your application's environment. Next, you'll build a Docker image from this Dockerfile and test it locally to ensure it functions correctly. After verifying, you'll create an ACR instance in your Azure subscription to securely store your Docker images. You'll then tag your Docker image appropriately and push it to ACR. Finally, you'll configure authentication and permissions to manage access to your containerized application. This process provides a comprehensive understanding of containerizing applications and managing them using Azure services.
+In this lab, you will learn how to migrate an on-premises MongoDB database, hosted on an Azure Linux VM, to Azure Cosmos DB using Azure Database Migration Service. This service simplifies and automates the migration process, allowing for a seamless transition of your MongoDB data to the cloud. You will walk through the process of setting up and configuring the Azure Database Migration Service, ensuring compatibility with Cosmos DB, and performing the migration with minimal downtime and data loss.
 
 ## Objective
 
-The objective of the Containerization Lab is to equip participants with the skills to seamlessly containerize applications using Docker and deploy them to Azure Container Registry (ACR). By the end of this lab, you will be able to:
+Equip participants with the skills to seamlessly migrate an on-premises MongoDB database, hosted on an Azure Linux VM, to Azure Cosmos DB using Azure Database Migration Service. By the end of this lab, you will be able to:
 
-- **Build Docker Images for the Application:** The objective is to gain an understanding of the process of containerizing the Contoso Traders application using Docker, testing it locally, and deploying the Docker image to Azure Container Registry for centralized management and secure access.
+- **Migrate MongoDB to Cosmos DB using Azure Database Migration:** The objective of this lab is to enable participants to migrate an on-premises MongoDB database, hosted on an Azure Linux VM, to Azure Cosmos DB using Azure Database Migration Service.
 
 ## Prerequisites
 
 Participants should have:
 
 - **Azure Platform Understanding:** Basic knowledge of Azure services, including Azure Database for PostgreSQL.
-
-- **Basic Docker Knowledge:** Familiarity with Docker concepts, including images, containers, and Dockerfiles.
 
 ## Architechture
 
