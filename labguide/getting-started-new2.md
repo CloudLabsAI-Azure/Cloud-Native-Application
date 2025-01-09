@@ -20,19 +20,21 @@ Participants should have:
 
 ## Architechture
 
-This architecture illustrates the deployment process for containerizing an application using Docker and pushing the created images to Azure Container Registry. In this lab, the user will walk through the process of building a Docker image on a Linux VM, configuring Docker to containerize the application, and then pushing the Docker image to Azure Container Registry for secure storage and management. This lab provides a foundational understanding of working with Docker and Azure Container Registry to manage containerized applications in a cloud environment.
+This architecture illustrates the migration process for transferring a MongoDB database to Azure Cosmos DB using Azure Database Migration Service. In this lab, the user will walk through the process of setting up a VM with MongoDB preloaded with tables and data, configuring Azure Database Migration Service to facilitate the migration, and transferring the database to Azure Cosmos DB. This lab provides a foundational understanding of using Azure tools to migrate on-premises databases to the cloud securely and efficiently.
 
 ## Architechture Diagram
 
-![](./media/module3arch.png)
+![](./media/module4arch.png)
 
 ## Explanation of Components
 
-- **Azure Virtual Machine:** A virtual machine running a Linux operating system, used to create and test the Docker image. The Linux VM serves as the environment where Docker is installed and configured to build containerized applications.
+- **Azure Virtual Machine (VM):** A virtual machine hosting a MongoDB database, preloaded with tables and data. The VM serves as the on-premises environment for the MongoDB database, which will be migrated to Azure Cosmos DB.
 
-- **Docker:** A platform used to build, ship, and run applications in isolated containers. Docker allows the creation of images, which are executable snapshots of an application’s environment, including dependencies, code, and runtime configurations. In this lab, Docker is used to create the containerized version of the application.
+- **MongoDB:** A popular open-source NoSQL database designed for flexibility and scalability. It stores data in a document-oriented format (JSON-like) and is widely used for modern application development. In this lab, MongoDB is the source database hosted on the virtual machine, and its data will be migrated to Azure Cosmos DB.
 
-- **Azure Container Registry (ACR):** A managed Docker registry service provided by Azure, where Docker images can be securely stored, managed, and accessed. After building the Docker image on the Linux VM, it is pushed to ACR for centralized storage. Azure Container Registry ensures the images are readily available for deployment across different Azure services or environments.
+- **Azure Database Migration Service (DMS):** A fully managed migration service that simplifies and automates the migration of databases to Azure. In this lab, DMS is used to assess compatibility and migrate the MongoDB database from the virtual machine to Azure Cosmos DB while ensuring minimal downtime and data consistency.
+
+- **Azure Cosmos DB:** A globally distributed, multi-model database service that supports MongoDB API for seamless integration. Cosmos DB provides scalability, high availability, and low latency. In this lab, Cosmos DB is the target database where the migrated MongoDB data will be stored, offering enhanced performance and global distribution capabilities.
 
 ## Getting Started with the lab
  
