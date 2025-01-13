@@ -100,7 +100,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 1. No painel **MongoDB para Banco de Dados do Azure para Assistente de Migração Offline CosmosDB**, introduza os seguintes valores para o separador **Selecionar fonte**:
 
     - Modo: **Modo padrão**
-    - Nome do servidor de origem: introduza o endereço IP privado do Build Agent VM utilizada neste laboratório.
+    - Nome do servidor de origem: Insira o endereço IP **Privado** da VM **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** que você copiou anteriormente nesta tarefa.
     - Porta do servidor: `27017`
     - Exigir SSL: desmarcado
 
