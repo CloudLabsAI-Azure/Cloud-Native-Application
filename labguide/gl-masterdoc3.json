@@ -5,33 +5,29 @@
       "BaseURL": "https://github.com/CloudLabsAI-Azure/Cloud-Native-Application",
       "Files": [
                 
-        {
-          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/getting-started.md",
-          "Order": 1
-        },
           {
-          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-overview.md",
-          "Order": 2
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/getting-started-combined.md",
+          "Order": 1
         },
            {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl3-prerequisite.md",
-          "Order": 3
+          "Order": 2
         },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-Deploy%20theApplication-to-Azure-Kubernetes-Service.md",
-          "Order": 4
+          "Order": 3
         },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-04-Scale-the-application-and-Validate-HA.md",
-          "Order": 5
+          "Order": 4
         },
         {
             "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-05-Updating-Apps%26Managing-Load-Balancing.md",
-            "Order": 6
+            "Order": 5
           },
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Cloud-Native-Application/main/labguide/gl-Azure%2006-Monitor-for-Containers.md",
-          "Order": 7
+          "Order": 6
         }     
       ]
     }
