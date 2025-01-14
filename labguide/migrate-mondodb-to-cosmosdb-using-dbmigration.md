@@ -159,7 +159,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. You will see the `items` and `products` collections listed within the `contentdb` database and you will be able to explore the documents.
 
-   ![](media/T2-S20.png)
+   ![](media/T2-S18.png)
 
 1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure CosmosDB for MongoDB account. Select **Quick start** **(2)** from the left menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it into the text file for later use in the next exercise.
 
