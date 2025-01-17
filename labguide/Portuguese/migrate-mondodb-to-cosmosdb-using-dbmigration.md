@@ -23,7 +23,9 @@ Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do A
     mongo
     ```
 
-    >**Observação**: Se você enfrentar um problema ao se conectar ao banco de dados de origem com um erro de conexão recusada. Execute o comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, digite **yes** quando ele disser **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e insira a senha da VM **<inject key="Build Agent VM Password" enableCopy="true" />** para se conectar à VM Linux usando ssh. Execute os seguintes comandos e repita a etapa - 1 da tarefa.
+    > **Observação**: Os avisos mostrados após a execução do comando podem ser ignorados.
+
+    > **Observação**: Se você enfrentar um problema ao se conectar ao banco de dados de origem com um erro de conexão recusada. Execute o comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, digite **yes** quando ele disser **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e insira a senha da VM **<inject key="Build Agent VM Password" enableCopy="true" />** para se conectar à VM Linux usando ssh. Execute os seguintes comandos e repita a etapa - 1 da tarefa.
 
    ```
    sudo apt install mongodb-server
@@ -98,7 +100,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 1. No painel **MongoDB para Banco de Dados do Azure para Assistente de Migração Offline CosmosDB**, introduza os seguintes valores para o separador **Selecionar fonte**:
 
     - Modo: **Modo padrão**
-    - Nome do servidor de origem: introduza o endereço IP privado do Build Agent VM utilizada neste laboratório.
+    - Nome do servidor de origem: Insira o endereço IP **Privado** da VM **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** que você copiou anteriormente nesta tarefa.
     - Porta do servidor: `27017`
     - Exigir SSL: desmarcado
 
