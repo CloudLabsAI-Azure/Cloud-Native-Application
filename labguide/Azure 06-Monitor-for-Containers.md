@@ -26,11 +26,9 @@ In this task, you will be reviewing the monitored AKS cluster.
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/a7.png "Add a Namespace")
      
-1. From the left navigation pane, select **Containers (1)** from under the Insights menu, navigate to the **Monitored clusters (2)** section to review logs and select your **Kubernetes service (3)**.
-
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/13.png "Add a Namespace")
+1. On the Kubernetes Services page, select contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>
    
-1. You will be redirected to the Insight section in your Kubernetes service resource blade and you should be able to see some logs.
+1. In the Insights section, under monitoring in your Kubernetes service resource blade and you should be able to see some logs.
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in the insight blade.
     
