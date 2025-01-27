@@ -1,12 +1,12 @@
-## Ejercicio 4: Escalar la aplicación y validar la Alta Disponibilidad
+# Ejercicio 4: Escalar la aplicación y validar la Alta Disponibilidad
 
-**Duración**: 40 minutos
+## Duración : 40 minutos
 
 ## Descripción general
 
 En este punto, ha desplegado una sola instancia de los contenedores de servicios Web y API Productos. En este ejercicio, aumentará el número de instancias de contenedor para el servicio web y escalará el front-end en el clúster existente.
 
-### Tarea 1: Modificar las implementaciones de recursos de Kubernetes en el servicio de Kubernetes
+## Tarea 1: Modificar las implementaciones de recursos de Kubernetes en el servicio de Kubernetes
 
 En esta tarea, aumentará el número de instancias para la implementación del API en AKS. Mientras se está implementando, observará el estado cambiante.
 
@@ -14,7 +14,7 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
    ![Seleccionando la carga de trabajo en AKS.](media/1.png "Seleccionando la carga de trabajo en AKS")
 
-1. Seleccione **YAML (1)** en el menú de la izquierda en la Descripción general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar + guardar (3)**. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
+1. Seleccione **YAML (1)** en el menú de la izquierda en la Descripción general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar y guardar (3)**. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
    ![En el cuadro de diálogo de edición de YAML, se ingresa 2 en el número deseado de réplicas.](media/3.png "Configurando las réplicas en 2")
 
@@ -26,14 +26,14 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
     ![Aplicación web funcionando correctamente.](media/11.png "Aplicación web funcionando correctamente")
 
-<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
-
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-### Tarea 2: Resolver el aprovisionamiento de réplicas fallido
+<validation step="	39567d0b-df57-4e1b-a388-c7e0c82f4bc6" />
+
+## Tarea 2: Resolver el aprovisionamiento de réplicas fallido
 
 En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se producen por la imposibilidad de satisfacer los recursos solicitados.
 
@@ -65,13 +65,13 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
 
       ![Modificando el manifiesto de implementación.](media/cloudnative10.png "Modificando el manifiesto de implementación.")
 
-1. Seleccione **Revisar + guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
+1. Seleccione **Revisar y guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
 1. Regrese a la vista principal **Cargas de trabajo (1)** del servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, refresque la página y ahora verá que la implementación está sana con **dos (2)** Pods en funcionamiento.
 
    ![Despliegue del API en estado sano.](media/2.png "Despliegue del API en estado sano.")       
 
-### Tarea 3: Configurar el Autoescalado Horizontal para pods del servicio de Kubernetes
+## Tarea 3: Configurar el Autoescalado Horizontal para pods del servicio de Kubernetes
 
 En esta tarea, configurará el autoescalado horizontal para sus pods del servicio de Kubernetes.
    
@@ -95,7 +95,7 @@ En esta tarea, configurará el autoescalado horizontal para sus pods del servici
 
    >**Nota:** Si no obtiene el resultado esperado, espere unos minutos ya que puede tardar un tiempo en reflejarse.
 
-### Tarea 4: Autoescalado en el clúster de Azure Kubernetes Service
+## Tarea 4: Autoescalado en el clúster de Azure Kubernetes Service
 
 En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS existente y escalará automáticamente los grupos de nodos del clúster.
 
@@ -139,7 +139,7 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
    
    >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la actualización. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente.
 
-### Tarea 5: Reiniciar contenedores y validar HA
+## Tarea 5: Reiniciar contenedores y validar HA
 
 En esta tarea, reiniciará los contenedores y validará que el reinicio no afecte al servicio en ejecución.
 
@@ -147,7 +147,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
    ![En la vista Carga de trabajo con la implementación de API resaltada.](media/upd-upd-productwkrlos.png "La implementación de API ahora está en estado sano")
 
-1. Seleccione el elemento de navegación **YAML (1)** y aumente el contador de réplicas requeridas a `4` **(2)**, luego haga clic en **Revisar + guardar (3)** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
+1. Seleccione el elemento de navegación **YAML (1)** y aumente el contador de réplicas requeridas a `4` **(2)**, luego haga clic en **Revisar y guardar (3)** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
  
    ![Editando el número de replicas.](media/4.png "Editando el número de replicas")
 
@@ -175,20 +175,20 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
    ![Editando YAML.](media/8.png "Editando YAML")
 
-1. Seleccione **Revisar + guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
+1. Seleccione **Revisar y guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
 1. Regrese a la página web de ContosoTraders en el navegador y actualice mientras Kubernetes reduce la cantidad de Pods. Debería poder ver el sitio web ejecutándose sin ningún problema.
 
     ![Sitio web ContosoTraders.](media/11.png "Sitio web ContosoTraders")
-
-<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-### Tarea 6: Configurar Autoscale en CosmosDB
+<validation step="	010994f7-b80b-4ba5-a807-e1d6ac030ea7" />
+
+## Tarea 6: Configurar Autoscale en CosmosDB
 
 En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
@@ -206,14 +206,14 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
     ![La captura de pantalla muestra la pestaña Escala y configuración de Cosmos DB con Autoscale seleccionada](media/exe4-task6-step4-autoscale.png "Escala y configuración de la colección CosmosDB")
 
-<validation step="772e22fb-588f-41b1-b761-428e48c79279" />
-
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-### Tarea 7: Probar Autoscale de CosmosDB
+<validation step="56f38190-cea0-441f-ba7d-717395a4a622" />
+
+## Tarea 7: Probar Autoscale de CosmosDB
 
 En esta tarea, ejecutará un script de prueba de rendimiento que probará la característica Autoscale de Azure Cosmos DB para que pueda ver que ahora escalará a más de 400 RU/s.
 

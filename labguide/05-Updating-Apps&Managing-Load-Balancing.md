@@ -1,4 +1,4 @@
-## Ejercicio 5: Actualización de Aplicaciones y Gestión de Kubernetes Ingress
+# Ejercicio 5: Actualización de Aplicaciones y Gestión de Kubernetes Ingress
 
 **Duración**: 40 minutos
 
@@ -8,7 +8,7 @@ En el ejercicio anterior, introdujimos una restricción a las propiedades de esc
 
 Los servicios de Kubernetes pueden descubrir los puertos asignados a cada pod, lo que le permite ejecutar varias instancias del pod en el mismo nodo del agente --- algo que no es posible cuando configura un puerto estático específico (como 3001 para el servicio API).
 
-### Tarea 1: Realizar una actualización continua
+## Tarea 1: Realizar una actualización continua
  
 En esta tarea, editará el código fuente de la aplicación web para actualizar algunas configuraciones y actualizar la imagen de Docker utilizada por la implementación. Luego, realizará una actualización continua para demostrar cómo desplegar un cambio de código. Las actualizaciones continuas permiten que las actualizaciones de despliegue se realicen sin tiempo de inactividad mediante la actualización incremental de las instancias de Pods con otras nuevas. Los nuevos Pods se programarán en Nodos con recursos disponibles.
 
@@ -105,14 +105,14 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
    ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
 
-<validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
-
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
+
+<validation step="2ff92949-6873-481f-9805-f362697ba094" />
      
-### Tarea 2: Configurar Kubernetes Ingress
+## Tarea 2: Configurar Kubernetes Ingress
 
 Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Nginx](https://nginx.org/en/) para aprovechar el enrutamiento basado en rutas y la terminación TLS.
 
@@ -140,7 +140,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
    ```
 
-1. Navegue al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**. Seleccione **Services and ingresses** en los recursos de Kubernetes y copie la Dirección IP en **External IP** para el servicio `nginx-ingress-ingress-nginx-controller`.
+1. Navegue al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**. Seleccione **Servicios y entradas** en los recursos de Kubernetes y copie la Dirección IP en **External IP** para el servicio `nginx-ingress-ingress-nginx-controller`.
 
     > **Nota**: La actualización podría tardar unos minutos; alternativamente, puede encontrar la IP usando el siguiente comando en Azure Cloud Shell.
     >

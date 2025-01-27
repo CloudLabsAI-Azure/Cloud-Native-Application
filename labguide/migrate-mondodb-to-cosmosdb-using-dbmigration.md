@@ -1,4 +1,4 @@
-## Ejercicio 2: Migrar MongoDB a Cosmos DB mediante Azure Database Migration
+# Ejercicio 2: Migrar MongoDB a Cosmos DB mediante Azure Database Migration
   
 **Duración**: 30 Minutos
 
@@ -6,7 +6,7 @@
 
 En este ejercicio, migrará su base de datos MongoDB on-premises (local) hospedada en una Máquina Virtual (MV) Linux de Azure a Azure CosmosDB utilizando la Azure Database Migration. Azure Database Migration Service es una herramienta que le ayuda a simplificar, guiar y automatizar la migración de su base de datos a Azure.
 
-### Tarea 1: Explorar las bases de datos y colecciones en MongoDB
+## Tarea 1: Explorar las bases de datos y colecciones en MongoDB
 
 En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina Virtual Linux de Azure y explorará las bases de datos y colecciones que contiene.
 
@@ -15,6 +15,8 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    ```
    mongo
    ```
+
+   >**Nota:** Las advertencias que se muestran después de ejecutar el comando se pueden ignorar.
    
    >**Nota**: Si tiene un problema al conectarse a la base de datos de origen con un error de conexión rechazada, ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, escriba **yes** cuando diga **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e ingrese la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante ssh. Ejecute los siguientes comandos y vuelva a realizar el paso 1 de la tarea. 
 
@@ -51,7 +53,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
       nodejs server.js
       ```     
 
-### Tarea 2: Crear un Proyecto de Migración y migrar datos a Azure CosmosDB
+## Tarea 2: Crear un Proyecto de Migración y migrar datos a Azure CosmosDB
 
 En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migration Service, y luego migrará los datos de MongoDB a Azure Cosmos DB. En los ejercicios posteriores, utilizará Azure CosmosDB para recuperar los datos de la página de productos. 
 
@@ -61,7 +63,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. Navegue al grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra el recurso CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)** , haga clic en **Explorador de datos (3)**. Ahora haga clic en la flecha desplegable, junto a **New Collection (4)** y luego seleccione **New Database (5)**.
 
-   ![](media/Ex2T2S2.png)
+   ![](media/a3.png)
 
    > **Nota:** Si recibe una ventana emergente **¡Bienvenido! ¿Qué es Cosmos DB?** ventana emergente, ciérrela haciendo clic en **X**.
 
@@ -73,22 +75,22 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. Navegue a la hoja de recursos **contosotraders<inject key="DeploymentID" enableCopy="false" />** de Azure Database Migration Service en el grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-1. En la hoja Azure Database Migration Service, seleccione **+ Nuevo Proyecto de Migración** en el panel **Descripción general**.
+1. En la hoja Azure Database Migration Service, seleccione **+ Nuevo Proyecto de Migración** en el panel **información general**.
 
    ![](media/newproject.png)
 
-1. En el panel **Nuevo proyecto de migración**, ingrese los siguientes valores y luego seleccione **Crear y ejecutar actividad**:
+1. En el panel **Nuevo proyecto de migración**, ingrese los siguientes valores y luego seleccione **Crear y ejecutar una actividad**:
 
     - Nombre de proyecto: `contoso`
     - Tipo de servidor de origen: `MongoDB`
-    - Tipo de servidor de destino: `CosmosDB (MongoDB API)`
-    - Tipo de actividad de migración: `Offline data migration`
+    - Tipo de servidor de destino: `CosmosDB (API de MongoDB)`
+    - Tipo de actividad de migración: `Migración de datos sin conexión`
 
       ![La captura de pantalla muestra el panel Nuevo proyecto de migración con los valores ingresados.](media/ex2-newmigrationproject.png  "Panel Nuevo proyecto de migración")
 
       >**Nota**: El tipo de actividad **Migración de datos sin conexión** está seleccionado ya que realizará una migración única de MongoDB a Cosmos DB. Además, los datos de la base de datos no se actualizarán durante la migración. En un escenario de producción, deberá elegir el tipo de actividad del proyecto de migración que mejor se adapte a los requisitos de su solución.
 
-1. En el panel **Asistente para la Migración Sin Conexión (Offline) de MongoDB a Azure Database for CosmosDB**, ingrese los siguientes valores para la pestaña **Seleccionar origen**:
+1. En el panel **Asistente de migración sin conexión de MongoDB a Azure Database for CosmosDB**, ingrese los siguientes valores para la pestaña **Seleccionar origen**:
 
     - Modo: **Modo estándar**
     - Nombre del servidor de origen: ingrese la Dirección IP Privada de la MV del Agente de Compilación (Build Agent VM) utilizada en esta práctica de laboratorio.
@@ -114,7 +116,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. En el panel **Seleccionar destino**, elija los siguientes valores: 
 
-    - Modo: **Seleccionar el destino de Cosmos DB**
+    - Modo: **Seleccionar destino de la base de datos de Cosmos DB**
 
     - Suscripción: seleccione la suscripción de Azure que está usando para esta práctica de laboratorio.
 
@@ -130,7 +132,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![La captura de pantalla muestra la pestaña Configuración de la base de datos con la base de datos de origen contentdb seleccionada.](media/contentdb.png "Pestaña Configuración de la base de datos")
 
-1. Seleccione **Siguiente: Configuración de colección >>**.
+1. Seleccione **Siguiente: Configuración de colecciónes >>**.
 
 1. En la pestaña **Configuración de colección**, expanda la base de datos **contentdb** y asegúrese de que tanto las colecciones **products** como **items** estén seleccionadas para la migración. Además, actualice el **Rendimiento (RU/s)** a `400` para ambas colecciones.
 
@@ -138,13 +140,13 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. Seleccione **Siguiente: Resumen de migración >>**.
 
-1. En la pestaña **Resumen de migración**, ingrese `MigrateData` en el campo **Nombre de actividad** y luego seleccione **Iniciar migración** para iniciar la migración de los datos de MongoDB a Azure Cosmos DB.
+1. En la pestaña **Resumen de migración**, ingrese `MigrateData` en el campo **Nombre de actividad** y luego seleccione **Iniciar la migración** para iniciar la migración de los datos de MongoDB a Azure Cosmos DB.
 
    ![La captura de pantalla muestra el resumen de migración con MigrateData ingresado en el campo Nombre de Actividad.](media/cloudnative3.png "Resumen de migración")
 
 1. Se mostrará el estado de la actividad de migración. La migración finalizará en cuestión de segundos. Seleccione **Actualizar** para recargar el estado y asegurarse de que sea **completo**.
 
-   ![La captura de pantalla muestra la actividad de MigrateData mostrando el estado completado.](media/completed.png "Actividad MigrateData completada")
+   ![La captura de pantalla muestra la actividad de MigrateData mostrando el estado completado.](media/a4.png "Actividad MigrateData completada")
 
 1. Para verificar los datos migrados, navegue hasta la cuenta Azure CosmosDB for MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />** en el Grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Seleccione **Explorador de datos** del menú izquierdo.
 
@@ -160,12 +162,12 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
-
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
+
+<validation step="c6c50372-1483-47b0-8708-a17700f724c0" />
 
 ## Resumen
 
