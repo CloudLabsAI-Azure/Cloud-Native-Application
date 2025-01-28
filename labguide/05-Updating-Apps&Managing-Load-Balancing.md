@@ -1,6 +1,6 @@
 # Ejercicio 5: Actualización de Aplicaciones y Gestión de Kubernetes Ingress
 
-**Duración**: 40 minutos
+### Duración : 40 minutos
 
 ## Descripción general
 
