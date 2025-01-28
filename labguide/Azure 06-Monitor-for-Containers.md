@@ -1,6 +1,6 @@
 # Ejercicio 6: Azure Monitor para contenedores - Opcional
 
-**Duración**: 10 Minutos
+### Duración : 10 Minutos
 
 ## Descripción general
 
