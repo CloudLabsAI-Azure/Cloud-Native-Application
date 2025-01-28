@@ -22,16 +22,14 @@ Poderá completar as seguintes tarefas:
 
 Nesta tarefa, irá rever o cluster AKS monitorizado.
 
-1. Navegue de volta para o portal do Azure e procure **Monitorar (1)**, selecione **Monitorar (2)** no resultado.
+1. Navegue de volta para o portal do Azure e procure **aks (1)**, selecione **Serviços do Kubernetes (2)** no resultado.
 
-    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(38).png "Definir réplicas para 2")
+    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/a8.png "Definir réplicas para 2")
 
-1. No painel de navegação esquerdo, selecione **Contêineres (1)** no menu Insights, navegue até à secção **Clusters monitorados (2)** para rever os registos e selecione o seu **Serviço Kubernetes (3)** .
-
-    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(39).png "Definir réplicas para 2")
-
-1. Será redirecionado para a secção Insight na folha de recursos do serviço Kubernetes e deverá conseguir ver alguns registos.
-
+1. Na página Serviços Kubernetes, selecione contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>
+   
+1. Na seção Insights, em monitoramento na folha de recursos do serviço Kubernetes, você poderá ver alguns logs.
+   
     > **Nota**: O Monitor do Azure pode demorar até 15 minutos a preencher os dados na folha de insights.
 
     ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(40).png "Definir réplicas para 2")
