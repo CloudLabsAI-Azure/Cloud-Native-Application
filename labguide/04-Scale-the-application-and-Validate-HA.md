@@ -1,6 +1,6 @@
 # Ejercicio 4: Escalar la aplicación y validar la Alta Disponibilidad
 
-## Duración : 40 minutos
+### Duración : 40 minutos
 
 ## Descripción general
 
