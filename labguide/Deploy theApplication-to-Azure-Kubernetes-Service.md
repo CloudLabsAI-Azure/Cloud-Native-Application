@@ -1,6 +1,6 @@
 # Ejercicio 3: Implementar la aplicación en Azure Kubernetes Service
 
-**Duración**: 40 Minutos
+### Duración : 40 Minutos
 
 ## Descripción general
 
