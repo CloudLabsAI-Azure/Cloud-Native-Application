@@ -1,6 +1,6 @@
 # Ejercicio 1: Crear Imágenes de Docker para la Aplicación
   
-## Duración: 30 Minutos
+### Duración: 30 Minutos
 
 ## Descripción General
 
