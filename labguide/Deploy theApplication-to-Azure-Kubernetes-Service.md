@@ -1,12 +1,12 @@
-## Ejercicio 3: Implementar la aplicación en Azure Kubernetes Service
+# Ejercicio 3: Implementar la aplicación en Azure Kubernetes Service
 
-**Duración**: 40 Minutos
+### Duración : 40 Minutos
 
 ## Descripción general
 
 En este ejercicio, desplegará su aplicación web en contenedores hacia AKS (Azure Kubernetes Service) con la ayuda de Key Vault Secrets y ACR, donde almacenó las imágenes de su aplicación web en contenedores. Además, explorará dos formas de desplegar la aplicación en AKS.
 
-### Tarea 1: Túnel hacia el clúster de Azure Kubernetes Service 
+## Tarea 1: Túnel hacia el clúster de Azure Kubernetes Service 
 
 Esta tarea recopilará la información que necesita sobre su clúster de Azure Kubernetes Service para conectarse al clúster y ejecutar comandos para conectarse al panel de administración de Kubernetes desde Cloud Shell.
 
@@ -53,7 +53,7 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
 
    ![En esta captura de pantalla de la consola, kubectl get nodes se escribió y ejecutó en el símbolo del sistema, lo que produce una lista de nodos.](media/cloudnative5.png "kubectl get nodes")   
 
-### Tarea 2: Configurar Key Vault & Secretos
+## Tarea 2: Configurar Key Vault & Secretos
 
 En esta tarea, generará un secreto en Key vault y creará la conexión entre AKS y Key Vault.
 
@@ -92,14 +92,14 @@ En esta tarea, generará un secreto en Key vault y creará la conexión entre AK
 
      ![Esta es una captura de pantalla del Portal de Azure para visualizar los secretos de AKS.](media/aksfinal.png "Visualizando los secretos de AKS")     
 
-<validation step="106806cb-79ab-406a-b481-f125954d286e" />
-
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-### Tarea 3: Desplegar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service utilizando el Portal de Azure
+<validation step="90140152-1f25-4761-805f-6ecb42cd0f5b" />
+
+## Tarea 3: Desplegar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service utilizando el Portal de Azure
    
 En esta tarea, implementará la aplicación API Carts en el clúster de Azure Kubernetes Service utilizando el Portal de Azure.
    
@@ -194,14 +194,14 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 
    ![Implementación en ejecución.](media/conrunning.png "Implementación en ejecución")
 
-<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
-
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-### Tarea 4: Implementar un servicio y una carga de trabajo usando kubectl
+<validation step="5027ff24-34ab-49f1-9fa2-72e214db0831" />
+
+## Tarea 4: Implementar un servicio y una carga de trabajo usando kubectl
 
 En esta tarea, implementará el servicio web y su carga de trabajo utilizando kubectl.
 
@@ -249,12 +249,12 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
     
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
-<validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
-
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
+
+<validation step="bf5a46a2-1e97-41f7-a010-d514c5e91636" />
 
 ## Resumen
 

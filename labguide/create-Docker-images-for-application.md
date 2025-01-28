@@ -1,18 +1,18 @@
-## Ejercicio 1: Crear Imágenes de Docker para la Aplicación
+# Ejercicio 1: Crear Imágenes de Docker para la Aplicación
   
-**Duración**: 30 Minutos
+### Duración: 30 Minutos
 
 ## Descripción General
 
 En este ejercicio, aprenderá a containerizar la aplicación Contoso Traders utilizando imágenes de Docker. Las aplicaciones en contenedores son aplicaciones que se ejecutan en entornos de ejecución aislados llamados contenedores. Una imagen de Docker es un archivo que se utiliza para ejecutar código en un contenedor de Docker. Las imágenes de Docker actúan como un conjunto de instrucciones para crear un contenedor Docker, como una plantilla. Además, enviará las imágenes de Docker creadas a Azure Container Registry.
    
-### Tarea 1: Configurar una infraestructura local con la Máquina Virtual Linux
+## Tarea 1: Configurar una infraestructura local con la Máquina Virtual Linux
 
 En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilación mediante el Símbolo del sistema y clonará el repositorio de GitHub del sitio web de Contoso Traders.
 
 1. Una vez que inicie sesión en la Máquina Virtual, busque **cmd** **(1)** en la barra de búsqueda de Windows y haga clic en **Símbolo del sistema** **(2)** para abrirla.
 
-   ![](media/latest-ex1-opencmd.png "abrir cmd")
+   ![](media/a5.png "abrir cmd")
     
 1. Ejecute el comando proporcionado **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para conectarse a la MV de Linux usando ssh.
    
@@ -22,7 +22,7 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
    
     * Contraseña: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-      ![](media/EX1-T1-S3.png "abrir cmd")
+      ![](media/a2.png "abrir cmd")
    
       >**Nota**: Tenga en cuenta que mientras escribe la contraseña no podrá verla por motivos de seguridad.
     
@@ -51,9 +51,15 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
     
     ![](media/EX1-T1-S5.png)
     
-### Tarea 2: Crear Imágenes de Docker para contenerizar la aplicación y empujarlas al registro del contenedor
+## Tarea 2: Crear Imágenes de Docker para contenerizar la aplicación y empujarlas al registro del contenedor
 
 En esta tarea, creará las imágenes de Docker para contenerizar la aplicación y las enviará a ACR (Azure Container Registry) para usarlas más adelante en AKS.
+
+1. Asegúrese de estar en el directorio **labfiles** antes de ejecutar los siguientes pasos, ya que la compilación de Docker necesita encontrar DockerFile para crear la imagen.
+
+    ```
+    cd Cloud-Native-Application/labfiles/ 
+    ```
 
 1. Ejecute el siguiente comando para descargar la CLI de Azure:
 
@@ -99,12 +105,6 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 1. Una vez que inicie sesión en Azure, creará las imágenes de Docker en los siguientes pasos y las enviará a ACR.
 
    ![](media/EX1-T2-S6.png)
-
-1. Por favor asegúrese de estar en el directorio **labfiles** antes de ejecutar los siguientes pasos, ya que el comando docker build necesita encontrar el archivo DockerFile para crear la imagen.
-
-    ```
-    cd Cloud-Native-Application/labfiles/
-    ```
     
 1. Ahora construya la imagen docker **contosotraders-carts** usando el Dockerfile que se encuentra en el directorio. Observe cómo se hace referencia al Azure Container Registry implementado.
 
@@ -190,7 +190,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
-    ![](media/contosobuild.png "abrir cmd")
+    ![](media/loginsucceded.png "abrir cmd")
 
 1. Una vez que inicie sesión en ACR, ejecute los siguientes comandos para enviar las imágenes de Docker al registro del contenedor de Azure.
 
