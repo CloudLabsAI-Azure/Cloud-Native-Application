@@ -105,10 +105,12 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
      ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
 
-> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
-     - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
-     - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
-     - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
+
+
+    > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos::
+   - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
+   - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
+   - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
    <validation step="2ff92949-6873-481f-9805-f362697ba094" />
      
@@ -118,9 +120,9 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
 1. Ejecute el siguiente comando desde una terminal de comandos de Windows para agregar el repositorio estable Helm de Nginx:
 
-     ```bash
-     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-     ```
+      ```bash
+      helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+      ```
 
 1. Actualice su lista de paquetes de helm.
 
@@ -128,7 +130,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
      helm repo update
      ```
 
-   > **Nota**: Si aparece el mensaje de error "no se encontraron repositorios", ejecute el siguiente comando. Esto agregará nuevamente el repositorio "estable" oficial de Helm.
+      > **Nota**: Si aparece el mensaje de error "no se encontraron repositorios", ejecute el siguiente comando. Esto agregará nuevamente el repositorio "estable" oficial de Helm.
    
       ```bash
       helm repo add stable https://charts.helm.sh/stable 
