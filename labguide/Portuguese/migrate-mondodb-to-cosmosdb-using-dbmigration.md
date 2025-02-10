@@ -169,6 +169,13 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o exercício seguinte.
 
+<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
+
 ## Resumo
 
 Neste exercício, concluiu a exploração do Mongodb local e a migração da base de dados MongoDB local para o Azure CosmosDB utilizando a migração da base de dados do Azure.
