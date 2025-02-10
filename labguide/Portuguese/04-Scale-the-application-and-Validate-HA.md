@@ -22,15 +22,19 @@ Poderá completar as seguintes tarefas:
 
 Nesta tarefa, irá aumentar o número de instâncias para a implementação da API no AKS. Durante a implementação, observará a mudança de estado.
 
-1. Navegue até ao portal do Azure, abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** serviço Kubernetes de **ContosoTraders-<inject key="DeploymentID" enableCopy=" false" />** grupo de recursos. Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
+1. Navegue até ao portal do Azure, abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** serviço Kubernetes de **ContosoTraders-<inject key="DeploymentID" enableCopy=" false" />** grupo de recursos. 
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(18).png "Definir réplicas para 2")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn48.png "Definir réplicas para 2")
 
-1. Selecione **YAML (1)** no menu esquerdo na vista geral de **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e selecione **Revisar + salvar (3)**. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração de manifesto (4)** e selecione **Salvar (5)**.
+1. Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(19).png "Definir réplicas para 2")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(20).png "Definir réplicas para 2")
+1. Selecione **YAML (1)** no menu esquerdo na vista geral de **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e selecione **Rever + guardar (3)**. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (4)** e selecione **Guardar (5)**.
+
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn50.png "Definir réplicas para 2")
+
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn51.png "Definir réplicas para 2")
 
     >**Nota**: Se a implementação for concluída rapidamente, poderá não ver a implementação no estado em espera no portal, conforme descrito nos passos seguintes.
 
@@ -53,11 +57,11 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
 
 1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products (2)** implantação.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(18).png "Definir réplicas para 2")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
 1. Selecione **YAML** no menu esquerdo na vista geral de **contoso-traders-products**.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(21).png "Definir réplicas para 2")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn52.png "Definir réplicas para 2")
 
 1. No ecrã **YAML**, desça e altere os seguintes itens:
 
@@ -78,9 +82,11 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
           memory: 128Mi
       ```
 
-      ![Na caixa de diálogo de edição YAML, mostrando duas alterações necessárias.](../media/cloudnative10.png "Modificar manifesto de implementação")
+    - Selecione **Rever + guardar (3)**.
 
-1. Selecione **Revisar + salvar** e, quando solicitado, Confirmar alteração do manifesto, assinale **Confirmar alteração de manifesto** e selecione **Salvar**.
+      ![Na caixa de diálogo de edição YAML, mostrando duas alterações necessárias.](../media/cn53.png "Modificar manifesto de implementação")
+
+1. Confirmar alteração do manifesto, assinale **Confirmar alteração ao manifesto** e selecione **Guardar**.
 
 1. Volte à vista principal **Cargas de trabalho** do serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, actualize a página e verá agora que o A a implantação está íntegra com **two** pods em funcionamento.
 
