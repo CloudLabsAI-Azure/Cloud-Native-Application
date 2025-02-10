@@ -104,6 +104,13 @@ Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(8).png "Adicionar um Namespace")
 
+<validation step="106806cb-79ab-406a-b481-f125954d286e" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.   
+
 ### Tarefa 3: Implementar um namespace, serviço e workload no Serviço Azure Kubernetes utilizando o Portal do Azure
 
 Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kubernetes Service utilizando o Portal do Azure.
@@ -202,6 +209,13 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(14).png "Adicionar um Namespace")
 
+<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+
 ### Tarefa 4: Implementar um serviço e workload usando a linha de comandos kubectl
 
 Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizando o kubectl.
@@ -249,6 +263,13 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
     > **Nota:** Se o site não carregar, tente atualizar a página várias vezes, pois pode demorar um pouco até que o AKS preencha o site.
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o exercício seguinte.
+
+ <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.   
 
 ## Resumo
 
