@@ -167,7 +167,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
    ![](../media/1-10-24(28).png)
 
-1. Verá as coleções de `itens` **(1)** e `products` **(2)** listadas na base de dados `contentdb` e poderá explorar os documentos **(3)**.
+1. Verá as coleções de `items` **(1)** e `products` **(2)** listadas na base de dados `contentdb` e poderá explorar os documentos **(3)**.
 
    ![](../media/cn31.png)
 
