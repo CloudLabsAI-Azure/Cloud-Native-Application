@@ -40,6 +40,13 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
    ![Os conjuntos de réplicas são selecionados em Cargas de trabalho no menu de navegação à esquerda e, à direita, o estado dos pods: 1 pendente, 1 em execução é realçado. Abaixo disto, uma seta vermelha aponta para a implementação da API na caixa Pods.](../media/11.png "Ver detalhes da réplica")
 
+<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+
 ### Tarefa 2: Resolver falha no aprovisionamento de réplicas
 
 Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem devido à incapacidade de atender aos recursos solicitados.
@@ -191,6 +198,13 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
    ![Os conjuntos de réplicas estão seleccionados em Cargas de trabalho no menu de navegação à esquerda. À direita estão as caixas Detalhes e Pods. Apenas um nome de host da API, que tem uma marca de verificação verde e está listado como em execução, aparece na caixa Pods.](../media/11.png "Ver detalhes da réplica")
 
+<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+
 ### Tarefa 6: Configurar a escala automática do CosmosDB
 
 Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
@@ -208,6 +222,13 @@ Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 5. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(34).png "A implementação da API está agora íntegra")
+
+<validation step="772e22fb-588f-41b1-b761-428e48c79279" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
 
 ### Tarefa 7: Testar a escala automática do CosmosDB
 

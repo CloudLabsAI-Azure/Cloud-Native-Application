@@ -34,6 +34,13 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.
 
     ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/22-10-24(40).png "Definir réplicas para 2")
 
+<validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.        
+
 ## Sumário
 
 Neste exercício, reviu os insights do contentor do Azure Monitor para o cluster AKS.

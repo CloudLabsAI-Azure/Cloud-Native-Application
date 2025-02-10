@@ -19,7 +19,7 @@ Poderá completar as seguintes tarefas:
 
 Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviço Azure Kubernetes para se ligar ao cluster e executar comandos para se ligar ao painel de gestão do Kubernetes a partir da shell da cloud.
 
-> **Nota**: As tarefas seguintes devem ser executadas no **Linha de comandos**.
+> **Nota**: As tarefas seguintes devem ser executadas no **Prompt de comando**.
 
 1. Abra um novo prompt de comando como Administrador em sua VM de salto e faça login no azure com os comandos abaixo após atualizar os valores no comando abaixo.
 
@@ -27,17 +27,21 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
-    > **Observação:** Se você enfrentar algum erro ao executar o comando 'az', execute o comando abaixo para instalar o azure cli e feche o prompt de comando. Execute novamente a etapa 1 em um novo prompt de comando como Administrador.
+    ![](../media/cn33.png "abrir cmd")
 
-    ```bash
-    choco install azure-cli
-    ```
+     > **Observação:** Se você enfrentar algum erro ao executar o comando 'az', execute o comando abaixo para instalar o azure cli e feche o prompt de comando. Execute novamente a etapa 1 em um novo prompt de comando como Administrador.
+
+     ```bash
+     choco install azure-cli
+     ```
 
 1. Verifique se está ligado à assinatura correta com o seguinte comando para mostrar a sua assinatura predefinida:
 
     ```bash
     az account show
     ```
+
+    ![](../media/c34.png "abrir cmd")    
 
    - Certifique-se de que está ligado à assinatura correta. Caso contrário, liste as suas assinaturas e defina-as pelo seu ID com os seguintes comandos:
 
@@ -52,7 +56,7 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
     az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
     ```
 
-    ![](../media/cloudnative4.png "abrir cmd")
+    ![](../media/cn34.png "abrir cmd")
 
 1. Execute um comando kubectl rápido para gerar uma lista de nós para verificar se a configuração está correta.
 
@@ -60,13 +64,13 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
     kubectl get nodes
     ```
 
-    ![Nesta captura de ecrã da consola, o kubectl get nodes foi digitado e executado no prompt de comando, que produz uma lista de nós.](../media/cloudnative5.png "kubectl get nodes")
+    ![Nesta captura de ecrã da consola, o kubectl get nodes foi digitado e executado no prompt de comando, que produz uma lista de nós.](../media/cn36.png "kubectl get nodes")
 
 ### Tarefa 2: Configurar Key Vault e segredos
 
 Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS e o Key Vault.
 
-1. Navegue até ao Portal do Azure, pesquise **Cofres de chaves** na barra de pesquisa e selecione **Cofres de chaves** na lista.
+1. Navegue até ao Portal do Azure, pesquise **Cofres de chaves (1)** na barra de pesquisa e selecione **Cofres de chaves (2)** na lista.
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(1).png "Adicionar um Namespace")
 
@@ -98,25 +102,36 @@ Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS
     kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnection --namespace=contoso-traders
     ```
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/3..1.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn-37.png "Adicionar um Namespace")
 
-1. Navegue de volta para o browser e abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no portal do Azure, seleccione **Configuração (1)** em **Recursos do Kubernetes** no menu do lado esquerdo e clique em Secção **Segredos (2)**. Em **segredo recém-criado**, poderá ver os novos segredos criados
+1. Navegue de volta para o browser e abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no portal do Azure.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(8).png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn38.png "Adicionar um Namespace")
+
+1. Seleccione **Configuração (1)** em **Recursos do Kubernetes** no menu do lado esquerdo e clique em Secção **Segredos (2)**. Em **segredo recém-criado**, poderá ver os novos segredos criados. **(3)**
+
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn45.png "Adicionar um Namespace")
+
+<validation step="106806cb-79ab-406a-b481-f125954d286e" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.   
 
 ### Tarefa 3: Implementar um namespace, serviço e workload no Serviço Azure Kubernetes utilizando o Portal do Azure
 
 Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kubernetes Service utilizando o Portal do Azure.
 
-1. Já definimos um novo **Namespaces** para a sua implementação de API. Indo mais além, apenas utilizará o namespace **contoso-traders**.
+1. Já definimos um novo **Espaços de nomes (1)** para a sua implementação de API. Indo mais além, apenas utilizará o namespace **contoso-traders (2)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(9).png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn39.png "Adicionar um Namespace")
 
 3. Defina um serviço para a sua API, para que a aplicação fique acessível dentro do cluster. Selecione o blade **Serviços e entradas (1)** da página de detalhes do recurso **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no Portal Azure. No separador **Serviços**, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(10).png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn46.png "Adicionar um Namespace")
 
-1. No painel **Aplicar um YAML**, cole o código YAML abaixo que cria um serviço no AKS e clique em **Adicionar**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML.
+1. No painel **Aplicar um YAML**, cole o código YAML abaixo que cria um serviço no AKS **(1)** e clique em **Aplicar (2)**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML.
 
    >**Info**: O script YAML abaixo irá criar um serviço AKS dentro do namespace contoso-traders que criou nos passos anteriores. O Serviço AKS é uma forma abstracta de expor uma aplicação em execução num conjunto de Pods como um serviço de rede.
 
@@ -139,15 +154,15 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
       ```   
 
-    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(11).png "Adicionar um Namespace")
+    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn40.png "Adicionar um Namespace")
 
     **Observação:** certifique-se de que o recuo no seu script YAML corresponda ao formato mostrado na imagem para evitar erros.
 
 1. Selecione **Cargas de trabalho (1)** na secção Recursos do Kubernetes na navegação esquerda. Com **Implantações** selecionadas por defeito, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(12).png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn47.png "Adicionar um Namespace")
 
-1. No painel **Adicionar com YAML**, cole o código YAML abaixo que cria uma carga de trabalho no AKS e clique em **Adicionar**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML para atualizar o nome LOGINSERVER da instância ACR.
+1. No painel **Adicionar com YAML**, cole o código YAML abaixo que cria uma carga de trabalho no AKS **(1)** e clique em **Aplicar (2)**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML para atualizar o nome LOGINSERVER da instância ACR.
 
     >**Info**: O ficheiro YAML abaixo irá criar pods de implantação no namespace contoso-traders. Uma implementação do Kubernetes indica ao Kubernetes como criar ou modificar instâncias dos pods que contêm uma aplicação em contentor. As implementações podem ajudar a escalar eficientemente o número de pods de réplica, permitir a implementação de código atualizado de forma controlada ou reverter para uma versão de implementação anterior, se necessário.
 
@@ -196,11 +211,18 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
                  protocol: TCP
     ```
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(13).png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn41.png "Adicionar um Namespace")
 
 1. Após alguns minutos, verá a implementação listada, que deverá estar a ser executada.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(14).png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn-42.png "Adicionar um Namespace")
+
+<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
 
 ### Tarefa 4: Implementar um serviço e workload usando a linha de comandos kubectl
 
@@ -224,6 +246,8 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
     cd C:/LabFiles
     ```
 
+    ![](../media/cn43.png)    
+
 1. Faça login no Azure se ainda não tiver feito com o comando abaixo após atualizar os valores no comando.
 
     ```
@@ -240,15 +264,22 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
    ![Nesta captura de ecrã da consola, o kubectl apply -f kubernetes-web.yaml foi introduzido e executado no prompt de comando. As mensagens sobre a implementação web e a criação de serviços web aparecem abaixo.](../media/kubectlcreated.png "kubectl create application")
 
-1. Volte à folha AKS no Portal Azure. No menu de navegação, selecione **Serviços e entradas** em **Recursos do Kubernetes**. Deverá conseguir aceder ao site através de um **IP Externo**.
+1. Volte à folha AKS no Portal Azure. No menu de navegação, selecione **Serviços e entradas (1)** em **Recursos do Kubernetes**. Deverá conseguir aceder ao site através de um **IP Externo (2)**.
 
-   ![](../media/22-10-24(17).png)
+   ![](../media/cn44.png)
 
    ![Serviços e entradas AKS mostrados com IP externo destacado](../media/website2.png "Serviços e entradas AKS mostrados com IP externo destacado")
 
     > **Nota:** Se o site não carregar, tente atualizar a página várias vezes, pois pode demorar um pouco até que o AKS preencha o site.
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o exercício seguinte.
+
+ <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+
+> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
+> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.   
 
 ## Resumo
 
