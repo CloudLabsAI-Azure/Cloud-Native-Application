@@ -65,9 +65,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
 1. Certifique-se de estar no diretório **labfiles** antes de executar as próximas etapas, pois o docker build precisa encontrar o DockerFile para criar a imagem.
 
-   ```
-   cd Cloud-Native-Application/labfiles/
-   ```
+   ![](../media/cn9.png "abrir cmd")
 
 1. Execute o comando abaixo para baixar o Azure CLI,
 
@@ -87,7 +85,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
 1. Introduza o código de autenticação copiado **(1)** e clique em **Seguinte** **(2)**.
 
-   ![](../media/1-10-24(10).png)
+   ![](../media/cn-1.png)
 
 1. No separador **Faça login na sua conta** verá um ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Seguinte**.
 
@@ -103,21 +101,15 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
 1. Num pop-up para confirmar o início de sessão na CLI do Microsoft Azure, clique em **Continuar**.
 
-   ![](../media/1-10-24(11).png)
+   ![](../media/cn2.png)
 
 1. Depois de entrar, verá um pop-up de confirmação **Entrou na aplicação Interface de linha de comando multiplataforma do Microsoft Azure no seu dispositivo**. Feche o separador do navegador e abra a sessão anterior do comando de linha.
 
-   ![](../media/1-10-24(17).png)
+   ![](../media/cn3.png)
 
 1. Depois de fazer login no Azure, irá construir as imagens do Docker nos próximos passos e enviá-las para o ACR.
 
-   ![](../media/EX1-T2-S6.png)
-
-1. Certifique-se de que está no diretório **labfiles** antes de executar os próximos passos, pois a construção do docker precisa de encontrar o DockerFile para criar a imagem.
-
-    ```
-    cd Cloud-Native-Application/labfiles/
-    ```
+   ![](../media/cn4.png)
 
 1. Agora crie a imagem docker **contosotraders-carts** utilizando o Dockerfile no diretório. Observe como o Registo de Contentor do Azure implantado é referenciado.
 
@@ -125,7 +117,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest
     ```
 
-   ![](../media/1-10-24(14).png)
+   ![](../media/cn5.png)
 
 1. Repita os passos para criar a imagem docker **contosotraders-Products** com o comando abaixo.
 
@@ -133,7 +125,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
     ```
 
-   ![](../media/1-10-24(14).png)
+   ![](../media/cn6.png)
 
 1. Execute o comando abaixo para alterar o directório para `services` e abra o ficheiro `configService.js`.
 
@@ -154,7 +146,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
-   ![](../media/cdnfix1.png)
+   ![](../media/cn7.png)
 
 1. Execute o comando abaixo para alterar o directório para a pasta `ContosoTraders.Ui.Website`.
 
@@ -169,7 +161,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```
 
-   ![](../media/EX1-T2-S13.png)
+   ![](../media/cn8.png)
 
    >**Nota**: Tenha em atenção que o comando acima pode demorar até 5 minutos para completar a compilação. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso. Além disso, poderá notar alguns avisos relacionados com a atualização da versão do npm que é esperada e não afeta a funcionalidade do laboratório.
 
@@ -186,23 +178,23 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     docker image ls
     ```
 
-   ![](../media/EX1-T2-S15.png)
+   ![](../media/cn10.png)
 
 1. Navegue até ao portal Azure, abra o Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** no Grupo de Recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-   ![](../media/1-10-24(15).png)
+   ![](../media/cn11.png)
 
 1. No Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)**, selecione **Chave de acesso** **(2)** em Settings à esquerda menu lateral. **Cópia** **(3)** a palavra-passe e cole-a num ficheiro de texto para utilização posterior.
 
-   ![](../media/1-10-24(16).png)
+   ![](../media/cn12.png)
 
-1. Agora inicie sessão no ACR utilizando o comando abaixo, atualize o valor do sufixo e da palavra-passe do ACR no comando abaixo. Deve conseguir ver a saída abaixo na captura de ecrã. Certifique-se de substituir a palavra-passe pela palavra-passe copiada do registo do contentor que copiou no passo anterior no comando abaixo.
+1. Agora inicie sessão no ACR utilizando o comando abaixo, atualize o valor do sufixo e da **palavra-passe** do ACR no comando abaixo. Deve conseguir ver a saída abaixo na captura de ecrã. Certifique-se de substituir a **palavra-passe** pela **palavra-passe** copiada do registo do contentor que copiou no passo anterior no comando abaixo.
 
     ```
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
-   ![](../media/EX1-T2-S18.png "abrir cmd")
+   ![](../media/cn13.png "abrir cmd")
 
 1. Depois de iniciar sessão no ACR, execute os comandos abaixo para enviar as imagens do Docker para o registo de contentores do Azure.
 
@@ -220,7 +212,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
 1. Deverá conseguir ver a imagem do docker a ser enviada para o ACR, como mostra a captura de ecrã abaixo.
 
-   ![](../media/cloudnative2.png "abrir cmd")
+   ![](../media/cn14.png "abrir cmd")
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
