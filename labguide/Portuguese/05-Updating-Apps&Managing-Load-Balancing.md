@@ -23,11 +23,13 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
 1. Em primeiro lugar, fará algumas alterações no código-fonte da sua aplicação web e criará uma nova imagem do Docker com base nas alterações mais recentes.
 
-1. Navegue de volta para a linha de comandos do Windows onde se ligou à sua VM Linux e execute o comando abaixo para navegar até ao diretório onde terá de fazer as alterações no código-fonte da aplicação web.
+1. Navegue de volta para a **Prompt de comando** do Windows onde se ligou à sua VM Linux e execute o comando abaixo para navegar até ao diretório onde terá de fazer as alterações no código-fonte da aplicação web.
 
     ```bash
     cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
     ```
+
+    ![](../media/cn74.png)
 
 1. Quando estiver no diretório correto, execute o comando abaixo para abrir o ficheiro **hero.js** para fazer algumas alterações de texto na página inicial da sua aplicação web.
 
@@ -44,7 +46,7 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
     The latest, Fastest, Most Powerful Xbox Ever.
     ```
 
-   ![Uma captura de ecrã do editor de código que mostra as atualizações no contexto do ficheiro app.js](../media/exe5-task1-step4-update-herojs-file.png "Atualizações do AppInsights no app.js")
+   ![Uma captura de ecrã do editor de código que mostra as atualizações no contexto do ficheiro app.js](../media/cn75.png "Atualizações do AppInsights no app.js")
 
 1. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e fechar o ficheiro.
 
@@ -67,20 +69,22 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
     docker push contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
     ```
 
-    > **Nota:** Tenha em atenção que o comando acima pode demorar até 5 minutos para completar a compilação. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso. Além disso, poderá notar alguns avisos relacionados com a atualização da versão do npm que é esperada e não afeta a funcionalidade do laboratório.
+    ![](../media/cn76.png)    
+
+     > **Nota:** Tenha em atenção que o comando acima pode demorar até 5 minutos para completar a compilação. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso. Além disso, poderá notar alguns avisos relacionados com a atualização da versão do npm que é esperada e não afeta a funcionalidade do laboratório.
 
 1. Assim que a construção e o push do docker estiverem concluídos, navegue de volta para o outro comando de linha que não está ligado à VM Linux.
 
-1. Execute o comando kubectl abaixo para obter a implementação atual no seu AKS, pois agora iremos atualizar a API web para a imagem mais recente. Copie o nome de **contoso-traders-web###** para o bloco de notas.
+1. Execute o comando kubectl abaixo para obter a implementação atual no seu AKS, pois agora iremos atualizar a API web para a imagem mais recente. **Copie** o nome de **contoso-traders-web###** para o bloco de notas.
 
     ```bash
     kubectl get deployments -n contoso-traders
     kubectl get pods -n contoso-traders
     ```
 
-   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implantação pendente na caixa Conjunto de réplicas.](../media/EX5-T1-S9.png "A implantação do pod está em curso")
+   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implantação pendente na caixa Conjunto de réplicas.](../media/cn77.png "A implantação do pod está em curso")
 
-   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/EX5-T1-S9-1.png "A implementação do pod está em curso")
+   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/cn78.png "A implementação do pod está em curso")
 
 1. Agora execute o comando abaixo para visualizar a versão da imagem atual da aplicação. Certifique-se de que atualiza o valor **PODNAME** com o valor que copiou no último passo.
 
@@ -88,7 +92,7 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
     kubectl describe pods [PODNAME] -n contoso-traders
     ```
 
-   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/EX5-T1-S10.png "A implementação do pod está em curso")
+   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/cn79.png "A implementação do pod está em curso")
 
 1. Agora para definir a nova imagem nos pods, execute o comando abaixo.
 
@@ -96,11 +100,11 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
     ```
 
-   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/EX5-T1-S11.png "A implementação do pod está em curso")
+   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/cn80.png "A implementação do pod está em curso")
 
 1. Agora tente descrever novamente os pods mais recentes e veja qual a imagem que está mapeada com o pod.
 
-   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/imageupdates2.png "A implementação do pod está em curso")
+   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/cn81.png "A implementação do pod está em curso")
 
 1. Assim que a atualização da imagem para o pod estiver concluída, navegue de volta para o portal Azure e navegue/atualize novamente a página da aplicação Web e poderá ver as alterações na página inicial.
 
@@ -123,11 +127,15 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
     ```
 
+    ![](../media/cn82.png)    
+
 2. Atualize a sua lista de pacotes do helm.
 
     ```bash
     helm repo update
     ```
+
+    ![](../media/cn83.png)
 
     > **Nota**: Se receber a mensagem "nenhum repositório encontrado." erro e execute o seguinte comando. Este será adicionado de volta ao repositório "estável" oficial do Helm.
     >
@@ -141,6 +149,8 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
     ```
 
+    ![](../media/cn84.png)
+
 4. Navegue até ao Portal Azure, abra o serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes. Selecione **Services and ingresses** nos recursos do Kubernetes e copie o endereço IP para o **External IP** para o serviço `nginx-ingress-RANDOM-nginx-ingress`.
 
     > **Nota**: A atualização pode demorar alguns minutos.
@@ -149,7 +159,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     > kubectl get svc --namespace contoso-traders
     > ```
     >
-   ![Uma captura de ecrã do Azure Cloud Shell mostrando a saída do comando.](../media/controller.png "Ver o controlador de entrada LoadBalancer")
+   ![Uma captura de ecrã do Azure Cloud Shell mostrando a saída do comando.](../media/cn85.png "Ver o controlador de entrada LoadBalancer")
 
 5. No terminal de comandos do Windows, crie um script para atualizar o nome DNS público do IP de entrada externo.
 
@@ -159,7 +169,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
     Cole o seguinte como conteúdo. Certifique-se de que substitui os seguintes espaços reservados no script:
 
-    - `[IP]`: Substitua pelo endereço IP copiado do passo 4.
+    - `[ipaddress]`: Substitua pelo endereço IP copiado do passo 4.
     - `[KUBERNETES_NODE_RG]`: Substitua o `SUFFIX` por este valor **<inject key="DeploymentID" />**.
     - `[DNSNAME]`: substitua pelo mesmo valor de SUFFIX **<inject key="DeploymentID" />** que utilizou anteriormente neste laboratório.
     - `[PUBLICIP]`: Substitua o `SUFFIX` por este valor **<inject key="DeploymentID" />**.
@@ -194,7 +204,9 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       }
       ```
 
-6. Guarde as alterações e feche o editor.
+      ![](../media/cn86.png)      
+
+6. **Guarde** as alterações e feche o editor.
 
 7. Execute o script de atualização.
 
@@ -212,7 +224,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
     ```
 
-    ![](../media/15.png )
+    ![](../media/cn87.png )
 
     >**Nota**: Se o URL não funcionar ou não receber um erro 404. Execute o comando mencionado abaixo e tente aceder novamente ao URL.
 
@@ -256,7 +268,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
               class: nginx
     ```
 
-12. Guarde as alterações e feche o editor.
+12. **Guarde** as alterações e feche o editor.
 
 13. Crie o emissor (issuer) usando `kubectl`.
 
@@ -333,12 +345,11 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       name: contoso-ingress
       namespace: contoso-traders
       annotations:
-        kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/rewrite-target: /$1
-        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/rewrite-target: /
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
         cert-manager.io/cluster-issuer: letsencrypt-prod
     spec:
+      ingressClassName: nginx  # Fixed ingress class definition
       tls:
       - hosts:
           - contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
@@ -347,14 +358,14 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       - host: contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
         http:
           paths:
-          - path: /(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: contoso-traders-web
                 port:
                   number: 80
-          - path: /(.*)
+          - path: /products  # Fixed path without regex
             pathType: Prefix
             backend:
               service:
@@ -365,7 +376,9 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
 18. Use o seguinte como conteúdo e atualize `[SUFFIX]`: **<inject key="DeploymentID" />** e `[AZURE-REGION]`: **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
 
-19. Guarde as alterações e feche o editor.
+    ![](../media/cn88.png)
+
+19. **Guarde** as alterações e feche o editor.
 
 20. Crie a entrada utilizando `kubectl`.
 
@@ -373,13 +386,15 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     kubectl create --save-config=true -f content.ingress.yml
     ```
 
+    ![](../media/cn89.png)    
+
 21. Atualize o endpoint de entrada no seu browser. Deverá poder visitar o site e ver todo o conteúdo.
 
     ![](../media/16.png)
 
 22. Teste a terminação do TLS visitando novamente os serviços utilizando `https`.
 
-    > **Nota**: Pode demorar 5 a 30 minutos para que o site SSL fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt.
+     > **Nota**: Pode demorar 5 a 30 minutos para que o site SSL fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt.
 
 23. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
