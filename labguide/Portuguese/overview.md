@@ -61,17 +61,33 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
    ![](../media/1-10-24(1).png "Ambiente de laboratório")
 
-1. Para obter os detalhes do ambiente de laboratório, pode selecionar o separador **Ambiente**. Além disso, as credenciais também serão enviadas para o seu endereço de e-mail registado. Também pode abrir o Guia do laboratório numa janela completa e separada, selecionando **Janela dividida** no canto superior direito. Além disso, pode iniciar, parar e reiniciar máquinas virtuais no separador **Recursos**.
+## Utilizando o recurso de aumentar/diminuir zoom   
 
-   ![](../media/1-10-24(2).png "Ambiente de laboratório")
+Para ajustar o nível de zoom da página do ambiente, clique no ícone **A↕ : 100%** localizado próximo ao cronômetro no ambiente de laboratório.
+
+![](../media/cn96.png "Ambiente de laboratório")
+
+## Máquina Virtual e Guia de Laboratório
+
+Sua máquina virtual é seu carro-chefe durante todo o workshop. O guia de laboratório é o seu roteiro para o sucesso
+
+1. Para obter os detalhes do ambiente de laboratório, pode selecionar o separador **Ambiente (1)**. Além disso, as credenciais também serão enviadas para o seu endereço de e-mail registado. Também pode abrir o Guia do laboratório numa janela completa e separada, selecionando **Janela dividida (2)** no canto superior direito. 
+
+   ![](../media/cn94.png "Ambiente de laboratório")
 
    > Verá o valor DeploymentID no separador **Ambiente**.
 
+## Gerenciando sua máquina virtual
+
+Além disso, pode **iniciar, parar e reiniciar (2)** máquinas virtuais no separador **Recursos (1)**.
+
+   ![](../media/cn95.png "Ambiente de laboratório")
+
 ## Validação do Lab
 
-1. Também pode validar a tarefa navegando até ao separador **Validação de laboratório**, no canto superior direito da secção do guia de laboratório.
+1. Depois de concluir a tarefa, clique no botão **Validar** na guia Validação integrada ao seu guia de laboratório. Se receber uma mensagem de sucesso, você poderá prosseguir para a próxima tarefa; caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
 
-   ![Lab Validation](../media/1-10-24(3).png)
+   ![Lab Validation](../media/cn97.png)
 
 1. Se precisar de ajuda, contacte-nos através do e-mail cloudlabs-support@spektrasystems.com.
 
@@ -79,25 +95,25 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
 1. No JumpVM, clique no atalho do portal Azure do navegador Microsoft Edge que é criado no ambiente de trabalho.
 
-   ![](../media/1-10-24(4).png "Lab Environment")
+   ![](../media/cn98.png "Lab Environment")
 
-1. No separador **Entrar no Microsoft Azure** verá o ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Seguinte**.
+1. No separador **Entrar no Microsoft Azure** verá o ecrã de login, nele digite o seguinte e-mail/nome de utilizador **(1)** e clique em **Seguinte (2)**.
 
     * E-mail/Nome de utilizador: <inject key="AzureAdUserEmail"></inject>
 
-      ![](../media/1-10-24(5).png "Enter Email")
+      ![](../media/cn71.png "Enter Email")
 
-1. Agora digite a seguinte palavra-passe e clique em **Entrar**.
+1. Agora digite a seguinte palavra-passe e clique em **Iniciar sessão**.
 
     * Palavra-passe: <inject key="AzureAdUserPassword"></inject>
 
-      ![](../media/1-10-24(6).png "Enter Password")
+      ![](../media/cn72.png "Enter Password")
 
     > Se vir a caixa de diálogo **Ajude-nos a proteger a sua conta**, selecione a opção **Saltar por enquanto**.
 
-1. Se vir o pop-up **Continuar ligado?**, clique em Não
+1. Se vir o pop-up **Manter a sessão iniciada?**, clique em **Não**.
 
-   ![](../media/1-10-24(7).png "Enter Password")
+   ![](../media/cn-73.png "Enter Password")
 
 1. Se vir o pop-up **Tem recomendações gratuitas do Azure Advisor!**, feche a janela para continuar o laboratório.
 
