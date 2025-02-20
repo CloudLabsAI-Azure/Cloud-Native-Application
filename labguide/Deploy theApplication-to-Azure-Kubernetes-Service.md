@@ -58,7 +58,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    kubectl get nodes
    ```
 
-   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/newnodes.png "kubectl get nodes")   
+   ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/new-cloud-native-eng-ex3-1.png "kubectl get nodes")   
 
 ### Task 2: Setup Key Vault & Secrets 
 
@@ -141,7 +141,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
           app: contoso-traders-products
 
       ```    
-    ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources")
+    ![Select workloads under Kubernetes resources.](media/new-cloud-native-eng-ex3-2.png "Select workloads under Kubernetes resources")
 
     **Note:** Ensure that the indentation in your YAML script matches the format shown in the image to avoid errors.
 
@@ -198,7 +198,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                  protocol: TCP
    ```
      
-   ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/new-cloud-native-eng-ex3-3.png "Selecting + Add to create a deployment")
 
 1. After a few minutes, you will see the deployment listed and it should be in a running state.
 
@@ -219,7 +219,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Navigate to `C:\LabFiles` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
 
-   ![](media/ex3-webfile-update1.png)
+   ![](media/new-cloud-native-eng-ex3-4.png)
 
 1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
 
