@@ -26,7 +26,7 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/contosotraders(1).png "Setting replicas to 2")
 
-1. Select **YAML (1)** from the left menu in the **contoso-traders-products** Overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/reviewandsafe.png "Setting replicas to 2")
 
@@ -111,7 +111,7 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
 
 In this task, you will be enabling the cluster autoscaler for the existing AKS cluster and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the below command after updating the values in the below command.
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the below command.
 
     ```
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
@@ -210,7 +210,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
     ![](media/contosodb.png "View replica details")
 
-4. Under the `contentdb` database, expand **Items (1)** collection, select **Settings (2)**.
+4. Under the `contentdb` database, expand **items (1)** collection, select **Settings (2)**.
 
     ![](media/exe4-task6-step3-select-settings.png "View replica details")
 

@@ -59,7 +59,7 @@ In this task, you will edit the web application source code to update some confi
    
 1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application.
   
-   >**Note**: Observe that this time we are using "V1" tag for the image
+   >**Note**: Observe that this time we are using "V1" tag for the image.
   
       ```bash
       docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1 -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1

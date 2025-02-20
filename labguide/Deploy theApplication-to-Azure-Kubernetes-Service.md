@@ -21,7 +21,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 > **Note**: The following tasks should be executed in the command prompt.
 
-1. Open a new command prompt as Administrator in your jump VM and login to azure with the below commands after updating the values in the below command.
+1. Open a new command prompt as Administrator in your jump VM and login to azure with the below command.
    
     ```bash
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
@@ -64,7 +64,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
 
-1. Navigate to the Azure portal, search for **Key Vault (1)** in the search bar, and select **Key vaults (2)** from the list.
+1. Navigate to the Azure portal, search for **Key Vaults (1)** in the search bar, and select **Key vaults (2)** from the list.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/keyvaults.png "Add a Namespace")
 
@@ -74,7 +74,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/contosokv.png "Add a Namespace")
     
-1. Now click on the **Generate/Import** button to create the new secret.
+1. Now click on the **+ Generate/Import** button to create the new secret.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/genreate.png "Add a Namespace")
     
@@ -96,7 +96,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
     ```
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
     
-1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration (1)** from the left side menu and click on **Secrets (2)** section. Under secrets, you should be able to see the **newly created secret (3)**. 
+1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration (1)** under **Kubernetes resources** from the left side menu and click on **Secrets (2)** section. Under secrets, you should be able to see the **newly created secret (3)**. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/contosotradersaks.png "Add a Namespace")
      
@@ -119,7 +119,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/applyayaml.png "Add a Service")
 
-1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
+1. In the **Apply with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Apply**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
     
     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
@@ -149,7 +149,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![Select workloads under Kubernetes resources.](media/clusteraks.png "Select workloads under Kubernetes resources")
 
-1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+1. In the **Apply with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Apply**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
    ```YAML
