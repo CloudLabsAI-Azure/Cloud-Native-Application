@@ -12,11 +12,11 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
 1. Vaya al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** del grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Seleccione **Cargas de trabajo (1)** en recursos de Kubernetes en el menú del lado izquierdo y luego seleccione la implementación **contoso-traders-products (2)**.
 
-   ![Seleccionando la carga de trabajo en AKS.](media/1.png "Seleccionando la carga de trabajo en AKS")
+   ![Seleccionando la carga de trabajo en AKS.](media/new-cloud-native-spn-ex4-3.png "Seleccionando la carga de trabajo en AKS")
 
 1. Seleccione **YAML (1)** en el menú de la izquierda en la Descripción general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar y guardar (3)**. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
-   ![En el cuadro de diálogo de edición de YAML, se ingresa 2 en el número deseado de réplicas.](media/3.png "Configurando las réplicas en 2")
+   ![En el cuadro de diálogo de edición de YAML, se ingresa 2 en el número deseado de réplicas.](media/new-cloud-native-spn-ex4-1.png "Configurando las réplicas en 2")
 
     >**Nota**: Si la implementación se completa rápidamente, es posible que no vea la implementación en estados de espera en el portal, como se describe en los siguientes pasos.
 
@@ -39,11 +39,11 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
 
 1. En el servicio Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, seleccione **Cargas de trabajo (1)** y luego elija la implementación **contoso-traders-products (2)**. 
 
-    ![Seleccionando la carga de trabajo.](media/exe4-task2-step1-select-workload.png "Seleccionando la carga de trabajo")
+    ![Seleccionando la carga de trabajo.](media/new-cloud-native-spn-ex4-3.png "Seleccionando la carga de trabajo")
 
 1. Seleccione **YAML** en el menú de la izquierda en la Descripción general de **contoso-traders-products**.
 
-   ![Seleccionando YAML.](media/CNA-Ex4-task2-step2.png "Seleccionando YAML")
+   ![Seleccionando YAML.](media/new-cloud-native-spn-ex4-2.png "Seleccionando YAML")
 
 1. En la pantalla **YAML**, desplácese hacia abajo y cambie los siguientes elementos:
 
@@ -149,7 +149,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 1. Seleccione el elemento de navegación **YAML (1)** y aumente el contador de réplicas requeridas a `4` **(2)**, luego haga clic en **Revisar y guardar (3)** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
  
-   ![Editando el número de replicas.](media/4.png "Editando el número de replicas")
+   ![Editando el número de replicas.](media/new-cloud-native-spn-ex4-5.png "Editando el número de replicas")
 
 1. Después de unos momentos, encontrará que el despliegue de **contoso-traders-product** ahora está ejecutando `4` réplicas exitosamente.
 
@@ -173,7 +173,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 1. Regrese a la implementación de API de **contoso-traders-product**. Seleccione el elemento de navegación **YAML** y escale nuevamente a la réplica `1`.
 
-   ![Editando YAML.](media/8.png "Editando YAML")
+   ![Editando YAML.](media/new-cloud-native-spn-ex4-6.png "Editando YAML")
 
 1. Seleccione **Revisar y guardar** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
@@ -221,7 +221,7 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
 
 2. Seleccione **Cadena de conexión** en **Configuración**.
 
-   ![](media/cnctionstring1.png "Ver cadena de conexión")
+   ![](media/new-cloud-native-spn-ex4-7.png "Ver cadena de conexión")
 
 3. En el panel **Cadena de conexión**, copie los valores **HOST (1)**, **NOMBRE DE USUARIO (2)** y **CONTRASEÑA PRINCIPAL (3)**. Guárdelos en un archivo de texto para usarlos más adelante.
 

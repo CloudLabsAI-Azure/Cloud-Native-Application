@@ -111,7 +111,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
     
     ![Esta es una captura de pantalla del Portal de Azure para AKS que muestra cómo agregar un servicio.](media/CNV2-E3-T3-S3new.png "Agregando un Servicio")
 
-3. En el panel **Agregar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Agregar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML.
+3. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Aplicar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML.
     >**Información**: El siguiente script YAML creará un servicio AKS dentro del espacio de nombres contoso-traders que creó en los pasos anteriores. El servicio AKS es una forma abstracta de exponer una aplicación que se ejecuta en un conjunto de Pods como un servicio de red. 
 
     ```yaml
@@ -132,7 +132,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
           app: contoso-traders-products
 
       ```       
-   ![Agregando con YAML.](media/ex3-t3-servicecreate.png "Agregando con YAML")
+   ![Agregando con YAML.](media/new-cloud-native-spn-ex3-1.png "Agregando con YAML")
 
    **Nota:** Asegúrese de que la sangría en su script YAML coincida con el formato que se muestra en la imagen para evitar errores.
 
@@ -140,7 +140,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 
     ![Seleccione cargas de trabajo en los recursos de Kubernetes.](media/CNV2-E3-T3-S5.png "SSeleccione cargas de trabajo en los recursos de Kubernetes")
 
-1. En el panel **Agregar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Agregar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
+1. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Aplicar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
     >**Información**: El siguiente archivo YAML creará pods de despliegue en el espacio de nombres contoso-traders. Una implementación de Kubernetes le dice a Kubernetes cómo crear o modificar instancias de los pods que contienen una aplicación en contenedores. Las implementaciones pueden ayudar a escalar de manera eficiente el número de réplicas de pods, permitir el despliegue de código actualizado de una manera controlada o volver a una versión de implementación anterior si es necesario.
 
    ```YAML
@@ -188,7 +188,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
                  hostPort: 3001
                  protocol: TCP
    ```
-   ![Agregando con YAML.](media/ex3-t3-workloadsadd.png "Agregando con YAML")
+   ![Agregando con YAML.](media/new-cloud-native-spn-ex3-2.png "Agregando con YAML")
 
 1. Después de unos minutos, verá la implementación en la lista, que debería estar ejecutándose.
 
