@@ -45,4 +45,4 @@ In this task, you will be reviewing the monitored AKS cluster.
 
 In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster.
 
-### You have successfully completed the lab
+### You have successfully completed the lab!
