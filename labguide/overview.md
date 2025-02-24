@@ -59,11 +59,11 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. Una vez que se haya aprovisionado el ambiente, se cargarán una máquina virtual (JumpVM) y una guía de laboratorio en su navegador. Utilice esta máquina virtual durante todo el taller para realizar el laboratorio. Puede ver el número en la parte inferior de la guía de laboratorio para cambiar a los diferentes ejercicios de la guía de laboratorio.
 
-   ![](media/gs01.png "Ambiente de Laboratorio")
+   ![](media/new-cloud-native-feb-1.png "Ambiente de Laboratorio")
 
 1. Para obtener los detalles del ambiente de laboratorio, puede seleccionar la pestaña **Ambiente**. Además, las credenciales también se enviarán por correo electrónico a su dirección de correo electrónico registrada. También puede abrir la Guía de Laboratorio en una ventana separada y completa seleccionando **Ventana Dividida** en la esquina superior derecha. Además, puede iniciar, detener y reiniciar máquinas virtuales desde la pestaña **Recursos**.
 
-   ![](media/gs02.png "Ambiente de Laboratorio")
+   ![](media/new-cloud-native-feb-2.png "Ambiente de Laboratorio")
  
    > Verá el valor de DeploymentID en la pestaña **Ambiente**, úselo donde vea SUFFIX o DeploymentID en los pasos del laboratorio.
 
@@ -71,11 +71,7 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. Después de completar la tarea, presione el botón **Validar** en la pestaña Validación integrada en la guía de laboratorio. Si recibe un mensaje de éxito, puede continuar con la siguiente tarea; de lo contrario, lea cuidadosamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 
-   ![Validación En Línea](media/inline-validation.png)
-
-1. También puede validar la tarea navegando a la pestaña **Validación de Laboratorio**, desde la esquina superior derecha en la sección de la guía de laboratorio.
-
-   ![Validación de Laboratorio](media/lab-validation.png)
+   ![Validación En Línea](media/new-cloud-native-feb-5.png)
 
 1. Si necesita ayuda, póngase en contacto con nosotros en cloudlabs-support@spektrasystems.com
 
@@ -97,7 +93,7 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. En JumpVM, haga clic en el acceso directo del portal de Azure del navegador Microsoft Edge que se crea en el escritorio.
 
-   ![](media/gs-3.png "Ambiente de Laboratorio")
+   ![](media/new-cloud-native-feb-4.png "Ambiente de Laboratorio")
    
 1. En la pestaña **Iniciar sesión en Microsoft Azure** verá la pantalla de inicio de sesión, en ella ingrese el siguiente correo electrónico/nombre de usuario y luego haga clic en **Siguiente**.
    * Correo electrónico/Nombre de usuario: <inject key="AzureAdUserEmail"></inject>
