@@ -59,7 +59,7 @@ In this task, you will edit the web application source code to update some confi
    
 1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application.
   
-   >**Note**: Observe that this time we are using "V1" tag for the image
+   >**Note**: Observe that this time we are using "V1" tag for the image.
   
       ```bash
       docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1 -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
@@ -340,12 +340,11 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
       name: contoso-ingress
       namespace: contoso-traders
       annotations:
-        kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/rewrite-target: /$1
-        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/rewrite-target: /
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
         cert-manager.io/cluster-issuer: letsencrypt-prod
     spec:
+      ingressClassName: nginx  # Fixed ingress class definition
       tls:
       - hosts:
           - contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
@@ -354,20 +353,20 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
       - host: contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
         http:
           paths:
-          - path: /(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: contoso-traders-web
                 port:
                   number: 80
-          - path: /(.*)
+          - path: /products  # Fixed path without regex
             pathType: Prefix
             backend:
               service:
-                 name: contoso-traders-products
-                 port:
-                   number: 3001
+                name: contoso-traders-products
+                port:
+                  number: 3001
     ```
 
 18. Use the following as the contents and update the `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** to match your ingress DNS name.
@@ -394,4 +393,4 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
 
-### You have successfully completed the lab
+### You have successfully completed the lab. Click on **Next >>** to procced with next exercise.
