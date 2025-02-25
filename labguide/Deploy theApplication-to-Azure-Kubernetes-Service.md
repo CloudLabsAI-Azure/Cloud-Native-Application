@@ -76,11 +76,11 @@ En esta tarea, generará un secreto en Key vault y creará la conexión entre AK
     - Nombre: **mongodbconnection**
     - Valor secreto: Pegue la cadena de conexión de la cuenta de Azure CosmosDB for MongoDB que copió en el ejercicio anterior. 
     - Mantenga los demás valores con la información por defecto y haga clic en **Crear**.
-    
+
       ![Esta es una captura de pantalla con los valores a colocar al crear un secreto.](media/mongodbconnection.jpg "Crear un secreto")
-     
+
       ![Esta es una captura de pantalla con el secreto mongodbconnection creado.](media/kv5.png "Secreto mongodbconnection creado")
-     
+
 1. Abra un nuevo **Símbolo del sistema** y ejecute el siguiente comando para crear un secreto usando kubectl. 
 
     ```sh

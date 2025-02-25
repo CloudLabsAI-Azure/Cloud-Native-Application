@@ -120,45 +120,48 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
 1. Ejecute el siguiente comando desde una terminal de comandos de Windows para agregar el repositorio estable Helm de Nginx:
 
-      ```bash
-      helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-      ```
+   ```bash
+   helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+   ```
 
 1. Actualice su lista de paquetes de helm.
 
-     ```bash
-     helm repo update
-     ```
+   ```bash
+   helm repo update
+   ```
 
-      > **Nota**: Si aparece el mensaje de error "no se encontraron repositorios", ejecute el siguiente comando. Esto agregará nuevamente el repositorio "estable" oficial de Helm.
+   > **Nota**: Si aparece el mensaje de error "no se encontraron repositorios", ejecute el siguiente comando. Esto agregará nuevamente el repositorio "estable" oficial de Helm.
    
-      ```bash
-      helm repo add stable https://charts.helm.sh/stable 
-      ```
+   >
+   > ```bash
+   > helm repo add stable https://charts.helm.sh/stable 
+   > ```
 
 1. Instale el recurso de Controlador Ingress para manejar las solicitudes de ingreso a medida que llegan. El Controlador Ingress recibirá una dirección IP pública propia en Azure Load Balancer y manejará las solicitudes para múltiples servicios a través de los puertos 80 y 443.
 
-     ```bash
-     helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
-     ```
+   ```bash
+   helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
+   ```
 
 1. Navegue al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**. Seleccione **Servicios y entradas** en los recursos de Kubernetes y copie la Dirección IP en **External IP** para el servicio `nginx-ingress-ingress-nginx-controller`.
 
-    > **Nota**: La actualización podría tardar unos minutos; alternativamente, puede encontrar la IP usando el siguiente comando en Azure Cloud Shell.
+   > **Nota**: La actualización podría tardar unos minutos; alternativamente, puede encontrar la IP usando el siguiente comando en Azure Cloud Shell.
     
-      ```bash
-      kubectl get svc --namespace contoso-traders
-      ```
-      
-      ![Una captura de pantalla de Azure Cloud Shell que muestra el resultado del comando.](media/controller.png "Viendo la dirección IP del Controlador de Ingress")
+   >
+   > ```bash
+   > kubectl get svc --namespace contoso-traders
+   > ```
+   >
+
+   ![Una captura de pantalla de Azure Cloud Shell que muestra el resultado del comando.](media/controller.png "Viendo la dirección IP del Controlador de Ingress")
 
 1. En **Azure Portal**, busque y abra **Microsoft Entra ID** y copie **Tenant ID**.
 
 1. Dentro de la terminal de comandos de Windows, cree un script para actualizar el nombre DNS público para la IP externa de ingress.
 
-     ```bash
-     code update-ip.ps1
-     ```
+   ```bash
+   code update-ip.ps1
+   ```
    
    Pegue lo siguiente como contenido del script. Asegúrese de reemplazar los siguientes marcadores de posición en el script:
 
@@ -168,104 +171,106 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    - `[PUBLICIP]`: Reemplace `SUFFIX` con este valor: **<inject key="DeploymentID" />**.
    - `$env:tenantId`: Ingrese la identificación del inquilino que copió en el paso anterior. 
   
-        ```bash
-        # Create a SecureString from the client's secret
-        $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
-        
-        # Create a PSCredential object using the client ID and secure password
-        $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
-        
-        # Authenticate using the PSCredential object
-        Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
-  
-        $ipaddress="INGRESS PUBLIC IP"
-  
-        $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
-  
-        $DNSNAME="contosotraders-SUFFIX-ingress"
-  
-        $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
-  
-        $results = @()
-  
-        ForEach ($i in $PUBLICIP)
-        {
-        If($i.IpAddress -eq $ipaddress){
-        $PIPNAME=$i.name
-        $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
-        Set-AzPublicIpAddress -PublicIpAddress $i
-        }
-        }
-        ```
+     ```bash
+     # Create a SecureString from the client's secret
+     $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
+      
+     # Create a PSCredential object using the client ID and secure password
+     $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
+      
+     # Authenticate using the PSCredential object
+     Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
+
+     $ipaddress="INGRESS PUBLIC IP"
+
+     $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+
+     $DNSNAME="contosotraders-SUFFIX-ingress"
+
+     $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
+
+     $results = @()
+
+     ForEach ($i in $PUBLICIP)
+     {
+     If($i.IpAddress -eq $ipaddress){
+     $PIPNAME=$i.name
+     $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+     Set-AzPublicIpAddress -PublicIpAddress $i
+     }
+     }
+     ```
 1. Guarde los cambios y cierre el editor.
 
 1. Ejecute el script de actualización.
 
-     ```bash
-     powershell ./update-ip.ps1
-     ```
+   ```bash
+   powershell ./update-ip.ps1
+   ```
    
-     ![Resultado de la ejecución del script.](media/2dg125.jpg "Resultado de la ejecución del script")
+   ![Resultado de la ejecución del script.](media/2dg125.jpg "Resultado de la ejecución del script")
 
    > **Nota:** Si encuentra algún error, ignórelo y continúe con el siguiente paso.
 
 1. Verifique la actualización de IP visitando la URL en su navegador.
 
-    > **Nota**: Es normal recibir un mensaje 404 en este momento.
+   > **Nota**: Es normal recibir un mensaje 404 en este momento.
 
-      ```text
-      http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
-      ```
-      ![](media/15.png )
+   ```text
+   http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
+   ```
 
-      > **Nota**: Si la URL no funciona o no recibe un error 404. Ejecute el comando que se menciona a continuación e intente acceder a la URL nuevamente.
+   ![](media/15.png )
 
-      ```bash
-      helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
-      ```
+   > **Nota**: Si la URL no funciona o no recibe un error 404. Ejecute el comando que se menciona a continuación e intente acceder a la URL nuevamente.
+
+   ```bash
+   helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
+   ```
 
 1. Utilice helm para instalar `cert-manager`, una herramienta que puede proporcionar certificados SSL automáticamente desde letsencrypt.org.
 
-      ```bash
-      kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
-      ```
+   ```bash
+   kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
+   ```
 
 1. Para crear un recurso `ClusterIssuer` personalizado para que el servicio `cert-manager` lo utilice al manejar solicitudes de certificados SSL, ejecute el siguiente comando en el Símbolo del sistema de Windows.
 
-      ```bash 
-      code clusterissuer.yml
-      ```
+    ```bash 
+    code clusterissuer.yml
+    ```
+
 1. Dentro del archivo **clusterissuer.yml** copie y pegue el siguiente contenido:
 
-     ```yaml
-     apiVersion: cert-manager.io/v1
-     kind: ClusterIssuer
-     metadata:
-       name: letsencrypt-prod
-       namespace: contoso-traders
-     spec:
-       acme:
-         # The ACME server URL
-         server: https://acme-v02.api.letsencrypt.org/directory
-         # Email address used for ACME registration
-         email: user@contosotraders.com
-         # Name of a secret used to store the ACME account private key
-         privateKeySecretRef:
-           name: letsencrypt-prod
-         # Enable HTTP01 validations
-         solvers:
-         - http01:
-             ingress:
-               class: nginx
-     ```
+    ```yaml
+    apiVersion: cert-manager.io/v1
+    kind: ClusterIssuer
+    metadata:
+      name: letsencrypt-prod
+      namespace: contoso-traders
+    spec:
+      acme:
+        # The ACME server URL
+        server: https://acme-v02.api.letsencrypt.org/directory
+        # Email address used for ACME registration
+        email: user@contosotraders.com
+        # Name of a secret used to store the ACME account private key
+        privateKeySecretRef:
+          name: letsencrypt-prod
+        # Enable HTTP01 validations
+        solvers:
+        - http01:
+            ingress:
+              class: nginx
+    ```
 
 1. Guarde los cambios y cierre el editor.
 
 1. Cree el emisor usando `kubectl`.
 
-     ```bash
-     kubectl create --save-config=true -f clusterissuer.yml
-     ```
+    ```bash
+    kubectl create --save-config=true -f clusterissuer.yml
+    ```
 
 1. Ahora puede crear un objeto de certificado.
 
@@ -276,26 +281,27 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
     >
     > Si ya hay un certificado disponible, vaya al paso 16.
 
-      ```bash
-      code certificate.yml
-      ```
+    ```bash
+    code certificate.yml
+    ```
 
 1. Dentro del archivo **certificate.yml** copie y pegue el siguiente contenido:
 
-      ```yaml
-      apiVersion: cert-manager.io/v1
-      kind: Certificate
-      metadata:
-        name: tls-secret
-        namespace: contoso-traders
-      spec:
-        secretName: tls-secret
-        dnsNames:
-          - contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
-      ```
+     ```yaml
+     apiVersion: cert-manager.io/v1
+     kind: Certificate
+     metadata:
+       name: tls-secret
+       namespace: contoso-traders
+     spec:
+       secretName: tls-secret
+       dnsNames:
+         - contosotraders-[SUFFIX]-ingress.[AZURE-REGION].cloudapp.azure.com
+       issuerRef:
+         name: letsencrypt-prod
+         kind: ClusterIssuer
+     ```
+
 1. Actualice el valor `[SUFFIX]` con **<inject key="DeploymentID" />** y `[AZURE-REGION]` con **<inject key="Region" />** para que coincida con su nombre DNS de Ingress.
 
 1. Guarde los cambios y cierre el editor.
@@ -322,13 +328,13 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
 1. Ahora puede crear un recurso de Ingress para las aplicaciones de contenido.
  
-     ```bash
-     code content.ingress.yml
-     ```
+    ```bash
+    code content.ingress.yml
+    ```
 
 1. Dentro del archivo **content.ingress.yml** copie y pegue el siguiente contenido:
 
-     ```yaml
+    ```yaml
     apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
@@ -362,7 +368,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
                 name: contoso-traders-products
                 port:
                   number: 3001
-     ```
+    ```
 
 1. Actualice el valor `[SUFFIX]`: **<inject key="DeploymentID" />** y `[AZURE-REGION]`: **<inject key="Region" />** para que coincidan con su nombre DNS de Ingress.
 
@@ -370,9 +376,9 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
 1. Cree el ingress usando `kubectl`.
 
-     ```bash
-     kubectl create --save-config=true -f content.ingress.yml
-     ```
+    ```bash
+    kubectl create --save-config=true -f content.ingress.yml
+    ```
 
 1. Actualice el punto de conexión de Ingress en su navegador. Debería poder visitar el sitio web y ver todo el contenido.
 
