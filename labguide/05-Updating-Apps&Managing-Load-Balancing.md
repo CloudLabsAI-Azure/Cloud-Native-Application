@@ -103,17 +103,15 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
     
 1. Una vez realizada la actualización de la imagen en el pod, regrese al portal de Azure y explore/actualice la página de la aplicación web nuevamente y debería poder ver los cambios en la página de inicio.
 
-     ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
+   ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
 
+<validation step="2ff92949-6873-481f-9805-f362697ba094" />
 
-
-> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos::
+> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="2ff92949-6873-481f-9805-f362697ba094" />
-     
 ## Tarea 2: Configurar Kubernetes Ingress
 
 Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Nginx](https://nginx.org/en/) para aprovechar el enrutamiento basado en rutas y la terminación TLS.
