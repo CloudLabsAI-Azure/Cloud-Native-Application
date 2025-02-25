@@ -329,40 +329,39 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 1. Dentro del archivo **content.ingress.yml** copie y pegue el siguiente contenido:
 
      ```yaml
-     apiVersion: networking.k8s.io/v1
-     kind: Ingress
-     metadata:
-       name: contoso-ingress
-       namespace: contoso-traders
-       annotations:
-         kubernetes.io/ingress.class: nginx
-         nginx.ingress.kubernetes.io/rewrite-target: /$1
-         nginx.ingress.kubernetes.io/use-regex: "true"
-         nginx.ingress.kubernetes.io/ssl-redirect: "false"
-         cert-manager.io/cluster-issuer: letsencrypt-prod
-     spec:
-       tls:
-       - hosts:
-           - contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
-         secretName: tls-secret
-       rules:
-       - host: contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
-         http:
-           paths:
-           - path: /(.*)
-             pathType: Prefix
-             backend:
-               service:
-                 name: contoso-traders-web
-                 port:
-                   number: 80
-           - path: /(.*)
-             pathType: Prefix
-             backend:
-               service:
-                  name: contoso-traders-products
-                  port:
-                    number: 3001
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: contoso-ingress
+      namespace: contoso-traders
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+    spec:
+      ingressClassName: nginx  # Fixed ingress class definition
+      tls:
+      - hosts:
+          - contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
+        secretName: tls-secret
+      rules:
+      - host: contosotraders-SUFFIX-ingress.[AZURE-REGION].cloudapp.azure.com
+        http:
+          paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: contoso-traders-web
+                port:
+                  number: 80
+          - path: /products  # Fixed path without regex
+            pathType: Prefix
+            backend:
+              service:
+                name: contoso-traders-products
+                port:
+                  number: 3001
      ```
 
 1. Actualice el valor `[SUFFIX]`: **<inject key="DeploymentID" />** y `[AZURE-REGION]`: **<inject key="Region" />** para que coincidan con su nombre DNS de Ingress.
