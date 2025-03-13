@@ -40,8 +40,10 @@ $adminUsername = "admincontoso"
 [System.Environment]::SetEnvironmentVariable('DeploymentID', $DeploymentID,[System.EnvironmentVariableTarget]::Machine)
 [System.Environment]::SetEnvironmentVariable('AppID', $AppID,[System.EnvironmentVariableTarget]::Machine)
 [System.Environment]::SetEnvironmentVariable('AppSecret', $AppSecret,[System.EnvironmentVariableTarget]::Machine)
+[System.Environment]::SetEnvironmentVariable('AzureTenantID', $AzureTenantID,[System.EnvironmentVariableTarget]::Machine)
 
-    $vmAdminUsername = "adminusername"
+
+    $vmAdminUsername = $adminusername
   
     $vmAdminPassword = $AzurePassword
 
