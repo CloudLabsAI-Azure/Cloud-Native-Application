@@ -213,7 +213,7 @@
       }
     ],
     "publicIpAddressName": "[concat('labvm', '-ip')]",
-    "publicIpAddressType": "Dynamic",
+    "publicIpAddressType": "Static",
     "publicIpAddressSku": "Standard",
     "networkInterfaceName": "[concat('labvm-', 'nic')]",
     "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]",
