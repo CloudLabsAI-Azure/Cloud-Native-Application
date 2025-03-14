@@ -131,7 +131,7 @@ In this task, you will be building the docker images to containerize the applica
     
 
     ```
-    const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.eastus.cloudapp.azure.com';
+    const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com';
     const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
