@@ -40,10 +40,10 @@ This task will gather the information you need about your Azure Kubernetes Servi
    az account set --subscription {id}
    ```
 
-1. Run the below command to set up the Kubernetes cluster connection using kubectl. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Run the below command to set up the Kubernetes cluster connection using kubectl. 
 
    ```bash
-   az aks get-credentials -a --name contoso-traders-aksSUFFIX --resource-group ContosoTraders-SUFFIX
+   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
    ```
 
 1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
@@ -115,78 +115,83 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/CNV2-E3-T3-S3new.png "Add a Service")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
+
     >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: contoso-traders-products
-          namespace: contoso-traders
-          annotations:
-            #@TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
-            service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
-        spec:
-          type: LoadBalancer
-          ports:
-            - port: 80
-          selector:
-            app: contoso-traders-products
-    ```    
-   ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
+      #YAML Script
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: contoso-traders-products
+        namespace: contoso-traders
+        annotations:
+          # TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+          service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
+      spec:
+        type: LoadBalancer
+        ports:
+          - port: 80
+        selector:
+          app: contoso-traders-products
+
+      ```     
+      ![Select workloads under Kubernetes resources.](media/ex3-t3-servicecreate.png "Select workloads under Kubernetes resources") 
 
 1. Select **Workloads** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create** and then choose **Apply a YAML**.
 
     ![Select workloads under Kubernetes resources.](media/CNV2-E3-T3-S5.png "Select workloads under Kubernetes resources")
 
 1. In the **Add with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Add**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
-    ```YAML
-       apiVersion: apps/v1
-       kind: Deployment
+   ```YAML
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: contoso-traders-products
+     namespace: contoso-traders
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: contoso-traders-products
+     template:
        metadata:
-        name: contoso-traders-products
-        namespace: contoso-traders
+         labels:
+           app: contoso-traders-products
        spec:
-        replicas: 1
-        selector:
-          matchLabels:
-            app: contoso-traders-products
-        template:
-          metadata:
-            labels:
-              app: contoso-traders-products
-          spec:
-            nodeSelector:
-              "kubernetes.io/os": linux
-            containers:
-              - name: contoso-traders-products
-                #Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT github secret by github workflow.
-                image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
-                env:
-                  - name: KeyVaultEndpoint
-                    valueFrom:
-                      secretKeyRef:
-                        name: contoso-traders-kv-endpoint
-                        key: contoso-traders-kv-endpoint
-                  - name: ManagedIdentityClientId
-                    valueFrom:
-                      secretKeyRef:
-                        name: contoso-traders-mi-clientid
-                        key: contoso-traders-mi-clientid
-                resources:
-                  requests:
-                    cpu: 50m
-                    memory: 64Mi
-                  limits:
-                    cpu: 250m
-                    memory: 256Mi
-                  ports:
-                    - containerPort: 3001
-                      hostPort: 3001
-                      protocol: TCP
-    ```
+         nodeSelector:
+           "kubernetes.io/os": linux
+         containers:
+           - name: contoso-traders-products
+             # Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by the GitHub workflow.
+             image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
+             env:
+               - name: KeyVaultEndpoint
+                 valueFrom:
+                   secretKeyRef:
+                     name: contoso-traders-kv-endpoint
+                     key: contoso-traders-kv-endpoint
+               - name: ManagedIdentityClientId
+                 valueFrom:
+                   secretKeyRef:
+                     name: contoso-traders-mi-clientid
+                     key: contoso-traders-mi-clientid
+             resources:
+               requests:
+                 cpu: 50m
+                 memory: 64Mi
+               limits:
+                 cpu: 250m
+                 memory: 256Mi
+             ports:
+               - containerPort: 3001
+                 hostPort: 3001
+                 protocol: TCP
+   ```
+
    ![Selecting + Add to create a deployment.](media/ex3-t3-workloadsadd.png "Selecting + Add to create a deployment")
 
 1. After a few minutes, you will see the deployment listed and it should be in a running state.
@@ -236,7 +241,7 @@ In this task, you will deploy the web service & its workload using kubectl.
    >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in the YAML files. 
 
     ```bash
-    kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
+    kubectl create --save-config=true -f web.deployment.yaml -f web.service.yaml 
     ```
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/kubectlcreated.png "kubectl create application")
