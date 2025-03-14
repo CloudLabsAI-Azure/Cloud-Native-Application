@@ -10,7 +10,7 @@ In this hands-on lab, you will assist in containerizing their application by bui
 
 ## Objectives
 
-This lab is designed to equip participants with hands-on experience in building Docker images, migrate MongoDB to Cosmos DB, deploy and scale applications on Azure Kubernetes Service, manage updates and traffic routing, and monitor container performance with Azure Monitor.
+By the end of this lab, you will be able to:
 
 - **Build Docker Images for the Application:** This hands-on exercise aims to create Docker images to containerize your application for consistent and portable deployments. Participants will successfully containerize the application, enabling consistent deployment across various environments.
 
