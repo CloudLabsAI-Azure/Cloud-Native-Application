@@ -8,7 +8,7 @@ Contoso Traders (ContosoTraders) provides online retail website services tailore
 
 In this hands-on lab, you will assist in containerizing their application by building Docker images and pushing them to Azure Container Registry (ACR) for secure access. You will also migrate an on-premises MongoDB database from an Azure Linux VM to Azure Cosmos DB using Azure Database Migration Service. Finally, you will deploy the application to Azure Kubernetes Service (AKS), integrating Key Vault Secrets and exploring different deployment strategies. By the end of this lab, you will gain practical experience in containerization, database migration, and Kubernetes-based deployment.
 
-## Objective
+## Objectives
 
 This lab is designed to equip participants with hands-on experience in building Docker images, migrate MongoDB to Cosmos DB, deploy and scale applications on Azure Kubernetes Service, manage updates and traffic routing, and monitor container performance with Azure Monitor.
 
@@ -18,9 +18,40 @@ This lab is designed to equip participants with hands-on experience in building 
 
 - **Deploy the application to the Azure Kubernetes Service:** This hands-on exercise aims to deploy and manage your containerized application using Azure Kubernetes Service for orchestration and scalability. Participants will deploy the containerized application to Azure Kubernetes Service, providing a scalable and managed environment for operation.
 
+## Prerequisites
+
+Participants should have:
+
+- Understanding Docker concepts such as containers, images, and Dockerfiles.
+- Knowledge of MongoDB data structures and Azure Cosmos DB capabilities for effective migration.
+- Basic understanding of Kubernetes concepts including pods, deployments, and services, as well as Azure Kubernetes Service (AKS).
+- An active Azure subscription with appropriate permissions to create and manage resources.
+- General understanding of cloud services, container orchestration, and scaling strategies.
+- Proficiency in using command-line tools and interfaces, such as Azure CLI and Docker CLI.
+
+## Architecture
+
+The lab utilize several Azure services to build, deploy, and manage applications effectively. Azure Container Registry (ACR) is used for storing and managing Docker container images, while Azure Cosmos DB provides a scalable, multi-model database solution for data migration. Azure Kubernetes Service (AKS) enables the deployment and management of containerized applications within a managed Kubernetes environment
+
+## Architecture Diagram
+
+![Selecting Add to create a deployment.](media/arc.png "Selecting + Add to create a deployment")
+
+## Explanation of Components
+
+The architecture for this lab involves several key components:
+
+- **Azure Container Registry (ACR):** A managed Docker container registry for storing and managing Docker container images.
+- **Azure Cosmos DB:** A globally distributed, multi-model database service for managing and scaling NoSQL data.
+- **Azure Kubernetes Service (AKS):** A managed Kubernetes container orchestration service for deploying, scaling, and managing containerized applications.
+- **Azure Database Migration Service (DMS):** A fully managed service designed to streamline and automate the migration of databases to Azure with minimal downtime. It supports migrations from various database sources, including SQL Server, MySQL, PostgreSQL, MongoDB, and Oracle, to Azure SQL Database, Azure Cosmos DB, and other Azure data platforms.
+- **Azure Key Vault:** A cloud service that securely stores and manages sensitive information like secrets, encryption keys, and certificates used by applications and services
+
 1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises of the lab guide.
 
    ![](media/gs01.png "Lab Environment")
+
+   
 
 1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide on a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
 
