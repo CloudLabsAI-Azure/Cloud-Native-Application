@@ -115,7 +115,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
     
 1. Select **Configuration (1)** from the left side menu under **Kubernate resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created secret. **(3)** 
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/aksfinal.png "Add a Namespace")
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn50.png "Add a Namespace")
 
 <validation step="1b891637-68ff-4196-9cf4-bda153c619e8" />
 
