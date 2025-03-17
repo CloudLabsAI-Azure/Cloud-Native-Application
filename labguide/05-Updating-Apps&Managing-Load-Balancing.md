@@ -19,11 +19,25 @@ You will be able to complete the following tasks:
  
 In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
 
->**Note**: Please perform this task using a new Windows command prompt which should be not connected to the build agent VM but should be logged into Azure.
+>**Note**: Please perform this task using a new command prompt which should be not connected to the build agent VM but should be logged into Azure.
 
 1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
 
-1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
+1. Open a new Command Prompt.
+
+1. Run the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** to connect to the Linux VM using ssh.
+   
+   >**Note**: In the command prompt, type **yes** and press **Enter** for `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
+   
+1. Once the ssh is getting connected to the VM, please enter the VM password given below:
+   
+    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+
+     ![](media/ex1-connecttolinuxvm.png "open cmd")
+   
+     >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
+
+1. Run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
 
      ```bash
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
@@ -76,6 +90,12 @@ In this task, you will edit the web application source code to update some confi
    ```
 
 1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
+
+1. Open a new Command Prompt and log in using the following command:
+
+   ``` 
+   az login
+   ```
 
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
 
