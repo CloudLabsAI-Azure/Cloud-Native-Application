@@ -6,6 +6,13 @@
 
 In this exercise, you will be migrating your on-premises MongoDB database hosted over Azure Linux VM to Azure CosmosDB using Azure database migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure.
 
+## Objectives
+
+In this Exercise, you will be able to complete the following tasks:
+
+- Task 1: Explore the databases and collections in MongoDB
+- Task 2: Create a Migration Project and migrate data to Azure CosmosDB
+
 ### Task 1: Explore the databases and collections in MongoDB
 
 In this task, you will be connecting to a mongo database hosted over Azure Linux VM and exploring the databases and collections in it.

@@ -5,6 +5,13 @@
 ## Overview
 
 In this exercise, you will learn how to Containerize the Contoso traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+
+## Objectives
+
+In this exercise, you will be able to complete the following tasks:
+
+- Task 1: Set up a local infrastructure with the Linux VM
+- Task 2: Build Docker images to containerize the application and push them to the container registry
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 

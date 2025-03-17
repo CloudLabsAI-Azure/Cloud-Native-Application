@@ -6,6 +6,15 @@
 
 In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
 
+## Objectives
+
+In this Exercise, you will be able to complete the following tasks:
+
+- Task 1: Tunnel into the Azure Kubernetes Service cluster
+- Task 2: Setup Key Vault & Secrets
+- Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
+- Task 4: Deploy a service & workload using kubectl
+
 ### Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
