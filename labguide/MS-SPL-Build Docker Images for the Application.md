@@ -77,13 +77,15 @@ In this task, you will be building the docker images to containerize the applica
     
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
-   ![](media/ex1-codelogin.png)
+   ![](media/cn1.png)
    
-1. On the **Sign in to Microsoft Azure** tab you will see a login screen, in that enter the following email/username and then click on **Next**.
+1. On the **Sign in to Microsoft Azure** tab you will see a login screen, in that select or enter the following email/username and then click on **Next**.
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
 
-1. Now enter the following password and click on **Sign in**.
+     ![](media/cn2.png)   
+
+1. If prompted, enter the following password and click on **Sign in**.
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
@@ -101,7 +103,7 @@ In this task, you will be building the docker images to containerize the applica
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest
     ```
     
-    ![](media/ex1-apicarts.png)
+    ![](media/cn3.png)
     
 1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. 
 
@@ -109,7 +111,7 @@ In this task, you will be building the docker images to containerize the applica
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
     ```
 
-    ![](media/ex1-apiproducts.png)
+    ![](media/cn4.png)
 
 1. Run the below command to change the directory to `services` and open the `configService.js` file.
 
@@ -121,7 +123,9 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/latest-ex1-cd-website.png)
     
-1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** and Region **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given `DeploymentID` with **<inject key="DeploymentID" enableCopy="true"/>** and `Region` with  **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+
+    ![](media/cn5.png)
     
     >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
     
@@ -131,7 +135,7 @@ In this task, you will be building the docker images to containerize the applica
     const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
-    ![](media/latest-ex1-didconfig.png)
+    ![](media/cn6.png)
 
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
@@ -164,13 +168,21 @@ In this task, you will be building the docker images to containerize the applica
     docker image ls
     ```
 
-    ![](media/T2S15.png)
+    ![](media/cn7.png)
 
-1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Navigate to Azure portal, search for **Resource group (1)** and select **Resource group (2)** from the services.      
 
-   ![](media/ex1-acr1.png)
+   ![](media/cn8.png)
+
+1. Select the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+
+   ![](media/cn9.png)
+
+1. Open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+
+   ![](media/cn10.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** under Settings from left side menu. **Copy** the Password and paste it into a text file for later use.
+1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys (2)** under Settings from left side menu. **Copy** the **Password (3)** and paste it into a text file for later use.
 
    ![](media/ex1-acr2.png)    
 
