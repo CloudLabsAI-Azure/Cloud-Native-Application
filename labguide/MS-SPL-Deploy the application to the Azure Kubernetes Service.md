@@ -111,13 +111,14 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn50.png "Add a Namespace")
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:    
-   - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+<validation step="1b891637-68ff-4196-9cf4-bda153c619e8" />
 
-   <validation step="1b891637-68ff-4196-9cf4-bda153c619e8" />
-     
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+
+
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
@@ -213,12 +214,12 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/cn-46.png "Selecting + Add to create a deployment")
 
-   > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:    
-   - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-   - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+<validation step="2c2f2fd6-1915-41f8-967b-002771fded11" />
 
-   <validation step="2c2f2fd6-1915-41f8-967b-002771fded11" />   
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 ### Task 4: Deploy a service & workload using kubectl
 
@@ -267,12 +268,12 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
     
 
+<validation step="dc9360a0-566b-4238-99c7-4ef2fbc66bd1" />
+
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-<validation step="dc9360a0-566b-4238-99c7-4ef2fbc66bd1" />  
 
 ## Review
 
