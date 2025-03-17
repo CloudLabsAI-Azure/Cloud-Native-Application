@@ -47,72 +47,93 @@ The architecture for this lab involves several key components:
 - **Azure Database Migration Service (DMS):** A fully managed service designed to streamline and automate the migration of databases to Azure with minimal downtime. It supports migrations from various database sources, including SQL Server, MySQL, PostgreSQL, MongoDB, and Oracle, to Azure SQL Database, Azure Cosmos DB, and other Azure data platforms.
 - **Azure Key Vault:** A cloud service that securely stores and manages sensitive information like secrets, encryption keys, and certificates used by applications and services
 
-1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises of the lab guide.
-
-   ![](media/gs01.png "Lab Environment")
-
-   
-
-1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide on a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
-
-   ![](media/gs02.png "Lab Environment")
+## Getting Started with the Lab
  
-   > You will see the DeploymentID value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+## Accessing Your Lab Environment
+ 
+Once you're ready to dive in, your virtual machine and **Lab guide** will be right at your fingertips within your web browser.
+
+   ![](media/cng1.png "Lab Environment")
+
+## Lab Guide Zoom In/Zoom Out
+
+To adjust the zoom level for the environment page, click the **A↕ : 100%** icon located next to the timer in the lab environment.
+
+![Manage Your Virtual Machine](media/cng2.png)   
+
+## Virtual Machine & Lab Guide
+ 
+Your virtual machine is your workhorse throughout the workshop. The lab guide is your roadmap to success.
+ 
+## Exploring Your Lab Resources
+ 
+To get a better understanding of your lab resources and credentials, navigate to the **Environment (1)** tab.
+ 
+![Explore Lab Resources](media/cng-9.png)
+ 
+   > You will see the **DeploymentID (2)** value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+
+## Utilizing the Split Window Feature
+ 
+For convenience, you can open the lab guide in a separate window by selecting the **Split Window** button from the Top right corner.
+ 
+ ![Use the Split Window Feature](media/cng10.png)
+
+## Managing Your Virtual Machine
+ 
+Feel free to **start, stop, or restart (2)** your virtual machine as needed from the **Resources (1)** tab. Your experience is in your hands!
+ 
+![Manage Your Virtual Machine](media/cng3.png)    
 
 ## Lab Validation
 
-1. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
 
-   ![Inline Validation](media/inline-validation.png)
-
-1. You can also validate the task by navigating to the **Lab Validation** tab, from the upper right corner in the lab guide section.
-
-   ![Lab Validation](media/lab-validation.png)
+   ![Inline Validation](media/cng11.png)
 
 1. If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
 
-## Lab Duration Extension
-
-1. To extend the duration of the lab, kindly click the **Hourglass** icon in the top right corner of the lab environment. 
-
-   ![Manage Your Virtual Machine](media/gext.png)
-
-   >**Note:** You will get the **Hourglass** icon when 10 minutes are remaining in the lab.
-
-2. Click **OK** to extend your lab duration.
- 
-   ![Manage Your Virtual Machine](media/gext2.png)
-
-3. If you have not extended the duration prior to when the lab is about to end, a pop-up will appear, giving you the option to extend. Click **OK** to proceed.
      
 ## Login to Azure Portal
 
-1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser which is created on the desktop.
+1. In the JumpVM, click on the **Azure portal** shortcut of the Microsoft Edge browser which is created on the desktop.
 
-   ![](media/gs-3.png "Lab Environment")
+   ![](media/cng12.png "Lab Environment")
    
 1. On the **Sign into Microsoft Azure** tab you will see the login screen, in that enter the following email/username and then click on **Next**. 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
-     ![](media/gs-4.png "Enter Email")
+     ![](media/cng6.png "Enter Email")
      
 1. Now enter the following password and click on **Sign in**.
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/gs-5.png "Enter Password")
+     ![](media/cng7.png "Enter Password")
      
-   > If you see the **Help us protect your account** dialog box, then select the **Skip for now** option.
+1. If **Action required** pop-up window appears, click on **Ask later**.
 
-     ![](media/gs-6.png "Enter Password")
+   ![](media/cng8.png "Enter Password")
   
-1. If you see the pop-up **Stay Signed in?**, click No
+1. If you see the pop-up **Stay Signed in?**, click **No**.
 
 1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
 1. If a **Welcome to Microsoft Azure** popup window appears, click **Cancel** to skip the tour.
-   
-1. Now you will see the Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
+  
+This hands-on-lab will help you to gain insights on how Azure OpenAI’s content filtering mechanisms contribute to responsible AI deployment, and how you can leverage these filters to ensure that your AI models adhere to appropriate content standards.
 
-    ![](media/gs-7.png "Resource groups")
-   
-1. Now, click on the **Next** from the lower right corner to move to the next page.
+## Support Contact
+
+The CloudLabs support team is available 24/7, 365 days a year, via email and live chat to ensure seamless assistance at any time. We offer dedicated support channels tailored specifically for both learners and instructors, ensuring that all your needs are promptly and efficiently addressed.
+
+Learner Support Contacts:
+
+- Email Support: cloudlabs-support@spektrasystems.com
+- Live Chat Support: https://cloudlabs.ai/labs-support
+
+Now, click on **Next** from the lower right corner to move on to the next page.
+
+![Launch Azure Portal](media/cng4.png)
+
+## Happy Learning!!
+

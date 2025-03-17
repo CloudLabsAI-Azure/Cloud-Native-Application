@@ -5,6 +5,13 @@
 ## Overview
 
 In this exercise, you will learn how to Containerize the Contoso traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+
+## Objectives
+
+In this exercise, you will be able to complete the following tasks:
+
+- Task 1: Set up a local infrastructure with the Linux VM
+- Task 2: Build Docker images to containerize the application and push them to the container registry
    
 ### Task 1: Set up a local infrastructure with the Linux VM
 
@@ -58,20 +65,16 @@ In this task, you will be building the docker images to containerize the applica
 
 1. Please make sure that you are in the **labfiles** directory before running the next steps as the docker build needs to find the DockerFile to create the image.
 
-    ```
-    cd Cloud-Native-Application/labfiles/
-    ```
- 
-1. Run the below command to install docker.io 
+1. Run the below command to download the Azure CLI,
 
     ```
-    sudo apt install docker.io
+    sudo apt install azure-cli
     ```
+    >**Note:** In the command prompt type **Y**, and press **Enter** for **Do you want to continue? [Y/n]**.
     
 1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 
    ``` 
-   sudo su
    az login
    ```
     
@@ -81,13 +84,15 @@ In this task, you will be building the docker images to containerize the applica
     
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
-   ![](media/ex1-codelogin.png)
+   ![](media/cn1.png)
    
-1. On the **Sign in to Microsoft Azure** tab you will see a login screen, in that enter the following email/username and then click on **Next**.
+1. On the **Sign in to Microsoft Azure** tab you will see a login screen, in that select or enter the following email/username and then click on **Next**.
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
 
-1. Now enter the following password and click on **Sign in**.
+     ![](media/cn2.png)   
+
+1. If prompted, enter the following password and click on **Sign in**.
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
@@ -99,21 +104,21 @@ In this task, you will be building the docker images to containerize the applica
 
    ![](media/ex1-logincomplete.png)
    
-1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced. Replace the SUFFIX placeholder in the below command with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value.
+1. Run the below command to build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced. 
 
     ```
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest
     ```
     
-    ![](media/ex1-apicarts.png)
+    ![](media/cn3.png)
     
-1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. 
 
     ```
-     docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+     docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
     ```
 
-    ![](media/ex1-apiproducts.png)
+    ![](media/cn4.png)
 
 1. Run the below command to change the directory to `services` and open the `configService.js` file.
 
@@ -125,16 +130,19 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/latest-ex1-cd-website.png)
     
-1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** and Region **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given `DeploymentID` with **<inject key="DeploymentID" enableCopy="true"/>** and `Region` with  **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+
+    ![](media/cn5.png)
     
     >**Note**: If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
     
 
     ```
-    const APIUrl = 'http://contoso-traders-productsXXXXX.eastus.cloudapp.azure.com';
+    const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com';
+    const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
-    ![](media/latest-ex1-didconfig.png)
+    ![](media/cn6.png)
 
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
@@ -143,10 +151,10 @@ In this task, you will be building the docker images to containerize the applica
     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
-1. Now build the **contosotraders-UI-Website** docker image with the below command. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below command.
+1. Now build the **contosotraders-UI-Website** docker image with the below command. 
 
     ```
-    docker build . -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest -t contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+    docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```    
     
     ![](media/latest-ex1-apiwebsite.png)
@@ -167,45 +175,54 @@ In this task, you will be building the docker images to containerize the applica
     docker image ls
     ```
 
-    ![](media/T2S15.png)
+    ![](media/cn7.png)
 
-1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Navigate to Azure portal, search for **Resource group (1)** and select **Resource group (2)** from the services.      
 
-   ![](media/ex1-acr1.png)
+   ![](media/cn8.png)
+
+1. Select the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+
+   ![](media/cn9.png)
+
+1. Open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+
+   ![](media/cn10.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** under Settings from left side menu. **Copy** the Password and paste it into a text file for later use.
+1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys (2)** under Settings from left side menu. **Copy** the **Password (3)** and paste it into a text file for later use.
 
    ![](media/ex1-acr2.png)    
 
-1. Now login to ACR using the below command, please update the Suffix and ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value and password with the copied container registry password which you have copied in the previous step in the below command.
+1. Now login to ACR using the below command, please update ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the `[password]` with the copied container registry password which you have copied in the previous step in the below command.
 
     ```
-    docker login contosotradersacr[SUFFIX].azurecr.io -u contosotradersacr[SUFFIX] -p [password]
+    docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
     ![](media/ex1-dockerlogin.png "open cmd")
 
-1. Once you logged in to the ACR, please run the below commands to push the Docker images to the Azure container registry. Also, ensure that you update the SUFFIX value with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the below commands.
+1. Once you logged in to the ACR, please run the below commands to push the Docker images to the Azure container registry. 
 
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapicarts:latest 
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest 
    ```
    
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersapiproducts:latest
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
    ```
    
    ```
-   docker push contosotradersacr[SUFFIX].azurecr.io/contosotradersuiweb:latest
+   docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
    ```
    
 1. You should be able to see the docker image getting pushed to ACR as shown in the below screenshot. 
     
     ![](media/ex1-dockerpush.png "open cmd")
     
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+## Review
 
+In this exercise, you have accomplished the following:
+- Task 1: Set up a local infrastructure with the Linux VM
+- Task 2: Built Docker images to containerize the application and pushed them to the container registry
 
-## Summary
-
-In this exercise, you have completely containerized your web application with the help of docker and pushed them to the container registry.
+Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
