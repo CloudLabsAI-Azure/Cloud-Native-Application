@@ -111,7 +111,7 @@ In this task, you will be generating a secret in the Key vault and creating the 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn50.png "Add a Namespace")
 
-<validation step="1b891637-68ff-4196-9cf4-bda153c619e8" />
+<validation step="c33258ca-4b95-48b4-9483-25b150719d00" />
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
@@ -214,7 +214,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/cn-46.png "Selecting + Add to create a deployment")
 
-<validation step="2c2f2fd6-1915-41f8-967b-002771fded11" />
+<validation step="9975e483-b432-47bf-99bf-eca3572721f1" />
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
@@ -268,7 +268,7 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
     
 
-<validation step="dc9360a0-566b-4238-99c7-4ef2fbc66bd1" />
+<validation step="d838945d-f950-452c-b5c4-9c516a60b595" />
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
