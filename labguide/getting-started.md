@@ -67,11 +67,11 @@ Your virtual machine is your workhorse throughout the workshop. The lab guide is
  
 ## Exploring Your Lab Resources
  
-To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
+To get a better understanding of your lab resources and credentials, navigate to the **Environment (1)** tab.
  
-![Explore Lab Resources](media/cng9.png)
+![Explore Lab Resources](media/cng-9.png)
  
-   > You will see the DeploymentID value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+   > You will see the **DeploymentID (2)** value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
 
 ## Utilizing the Split Window Feature
  
