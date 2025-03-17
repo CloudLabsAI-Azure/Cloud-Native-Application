@@ -219,9 +219,10 @@ In this task, you will be building the docker images to containerize the applica
     
     ![](media/ex1-dockerpush.png "open cmd")
     
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+## Review
 
+In this exercise, you have accomplished the following:
+- Task 1: Set up a local infrastructure with the Linux VM
+- Task 2: Built Docker images to containerize the application and pushed them to the container registry
 
-## Summary
-
-In this exercise, you have completely containerized your web application with the help of docker and pushed them to the container registry.
+Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
