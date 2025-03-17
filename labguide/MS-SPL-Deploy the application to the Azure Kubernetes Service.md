@@ -36,12 +36,6 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn29.png "Add a Namespace")    
     
-    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform the step-1 in a new command prompt as Administrator.
-
-    ```bash
-    choco install azure-cli
-    ```
-
 1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
 
    ```bash
@@ -164,8 +158,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![Select workloads under Kubernetes resources.](media/cn44.png "Select workloads under Kubernetes resources")
 
-1. In the **Apply with YAML** pane, paste the below YAML code which creates a workload in AKS **(1)** and click on **Add (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
-
+1. In the **Apply with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Apply**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
    ```YAML

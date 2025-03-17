@@ -32,24 +32,25 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    ![](media/ex1-connecttolinuxvm.png "open cmd")
    
    >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
+
+1. Once the VM is connected, please run the following commands to delete `Cloud-Native-Application` if it is already exists.    
+
+    ```
+    sudo su
+    rm -rf Cloud-Native-Application
+    exit
+    ```   
+
+    ![](media/cloud-n.png)
     
-1. Once the VM is connected, run the below command to clone the GitHub repository that we are going to use for the lab.
+1. Then run the below command to clone the GitHub repository that we are going to use for the lab.
 
     ``` 
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
     ```
     
     ![](media/ex1-gitclone.png)
-    
-    > **Note:** If you recieve a output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
-
-     ```
-        sudo su
-        rm -rf Cloud-Native-Application
-        exit
-     ```   
-     ![](media/cloudn.png)
-    
+  
 1. After the GitHub cloning is completed, run the below command to change the directory to the lab files.
     
     ```
@@ -79,9 +80,7 @@ In this task, you will be building the docker images to containerize the applica
    ```
     
    ![](media/ex-azlogincode.png)
-   
-   > **Note:** If you recieve an error command az not found, then run the command _'sudo apt install azure-cli'_ to install az cli. 
-    
+      
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
    ![](media/cn1.png)
