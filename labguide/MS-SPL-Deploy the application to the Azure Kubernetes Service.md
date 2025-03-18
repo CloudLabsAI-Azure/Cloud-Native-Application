@@ -65,36 +65,9 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
    ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/cn31.png "kubectl get nodes")   
 
-### Task 2: Setup Key Vault & Secrets 
+### Task 2: Setup MongoDB Secrets with AKS 
 
-In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
-
-1. Navigate to the Azure portal, search for **Key Vault (1)** in the search bar, and select **Key vaults (2)** from the list.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn32.png "Add a Namespace")
-
-1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** **Key vaults** from the list.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn33.png "Add a Namespace")
-
-1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Key vault page, select **Secrets** under **Objects** from the left side menu.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn35.png "Add a Namespace")
-    
-1. Now click on the **Generate/Import** button to create the new secret.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn36.png "Add a Namespace")
-    
-1. In the **Create a secret** pane, enter the following details:
-
-    - Option: **Manual (1)**
-    - Name: **mongodbconnection (2)**
-    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise **(3)**
-    - Keep other values default and click on **Create (4)**
-    
-      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn37.png "Add a Namespace")
-     
-      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn38.png "Add a Namespace")
+In this task, you will be creating a secret in the Kubernetes cluster to fetch the data from MongoDB.
      
 1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
 
