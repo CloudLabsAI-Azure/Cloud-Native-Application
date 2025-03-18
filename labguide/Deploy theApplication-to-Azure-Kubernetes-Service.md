@@ -11,9 +11,8 @@ In this exercise, you will be deploying your containerized web application to AK
 You will be able to complete the following tasks:
 
 - Task 1: Tunnel into the Azure Kubernetes Service cluster
-- Task 2: Setup Key Vault & Secrets
-- Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
-- Task 4: Deploy a service & workload using kubectl
+- Task 2: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
+- Task 3: Deploy a service & workload using kubectl
 
 ### Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
@@ -60,54 +59,8 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
    ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/new-cloud-native-eng-ex3-1.png "kubectl get nodes")   
 
-### Task 2: Setup Key Vault & Secrets 
 
-In this task, you will be generating a secret in the Key vault and creating the connection between AKS and the Key vault.
-
-1. Navigate to the Azure portal, search for **Key Vaults (1)** in the search bar, and select **Key vaults (2)** from the list.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/keyvaults.png "Add a Namespace")
-
-1. Then select **contosotraderskv<inject key="DeploymentID" enableCopy="false" />**, Key vaults from the list.
-
-1. Once you are in **contosotraderskv<inject key="DeploymentID" enableCopy="false" /> (1)** Key vault page, select **Secrets (2)** under **Objects** from the left side menu.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/contosokv.png "Add a Namespace")
-    
-1. Now click on the **+ Generate/Import** button to create the new secret.
-
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/genreate.png "Add a Namespace")
-    
-1. In the **Create a secret** pane, enter the following details:
-
-    - Name: **mongodbconnection (1)**
-    - Secret Value: Paste the connection string of Azure CosmosDB for the MongoDB account which you have copied in the previous exercise. (2)
-    
-    - Keep other values default and click on **Create (3)**
-    
-      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/secret1.png "Add a Namespace")
-     
-      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/mongodbconnection.png "Add a Namespace")
-     
-1. Open a new **Command Prompt** and run the below command to create a secret using kubectl. 
-
-    ```sh
-    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnection --namespace=contoso-traders
-    ```
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/3..1.png "Add a Namespace")
-    
-1. Navigate back to browser and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS in Azure portal, select **Configuration (1)** under **Kubernetes resources** from the left side menu and click on **Secrets (2)** section. Under secrets, you should be able to see the **newly created secret (3)**. 
-
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/contosotradersaks.png "Add a Namespace")
-     
-<validation step="106806cb-79ab-406a-b481-f125954d286e" />
-
-> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - If you receive a success message, you can proceed to the next task.
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
+### Task 2: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
@@ -211,7 +164,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-### Task 4: Deploy a service & workload using kubectl
+### Task 3: Deploy a service & workload using kubectl
 
 In this task, you will deploy the web service & its workload using kubectl.
 
@@ -265,7 +218,7 @@ In this task, you will deploy the web service & its workload using kubectl.
      
 ## Summary
 
-In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint. Also, you have set up the secret of the key vault to access the MongoDB from AKS.
+In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint.
 
 
 ### You have successfully completed the lab. Click on **Next >>** to procced with next exercise.
