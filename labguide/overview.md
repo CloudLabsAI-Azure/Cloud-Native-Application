@@ -57,6 +57,10 @@ The architecture for this lab involves several key components:
 
 ## Getting Started with Lab
 
+Welcome to your Cloud Native Applications Workshop! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
+
+## Accessing Your Lab Environment
+
 1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises of the lab guide.
 
    ![](media/new-cloud-native-eng-feb-1.png "Lab Environment")
@@ -66,6 +70,18 @@ The architecture for this lab involves several key components:
    ![](media/new-cloud-native-eng-feb-2.png "Lab Environment")
  
    > You will see the DeploymentID value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+
+## Managing Your Virtual Machine
+
+Feel free to start, stop, or restart your virtual machine as needed from the Resources tab. Your experience is in your hands!
+
+![](media/resources-vm-manage.png)
+
+## Lab Guide Zoom In/Zoom Out
+
+To adjust the zoom level for the environment page, click the **A↕ : 100%** icon located next to the timer in the lab environment.
+
+![](media/labzoom-2.png)
 
 ## Lab Validation
 
@@ -115,7 +131,7 @@ The architecture for this lab involves several key components:
 
 1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
-1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
+1. If the **Welcome to Microsoft Azure** popup window appears, click **Cancel** to skip the tour.
    
 1. Now you will see the Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
 
