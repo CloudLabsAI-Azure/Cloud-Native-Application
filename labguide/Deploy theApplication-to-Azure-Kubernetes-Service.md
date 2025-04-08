@@ -1,6 +1,6 @@
 # Exercise 3: Deploy the application to the Azure Kubernetes Service
    
-### Estimated Duration: 90 minutes
+### Estimated Duration: 120 minutes
 
 ## Overview
 

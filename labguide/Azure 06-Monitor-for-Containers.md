@@ -1,6 +1,6 @@
 # Exercise 6: Azure Monitor for Containers
    
-### Estimated Duration: 20 minutes
+### Estimated Duration: 40 minutes
 
 ## Overview
 
