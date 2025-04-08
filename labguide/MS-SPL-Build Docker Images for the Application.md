@@ -1,6 +1,6 @@
 ## Hands-On-Lab: Build Docker Images for the Application
   
-**Duration**: 30 Minutes
+### Estimated Duration: 75 minutes
 
 ## Overview
 

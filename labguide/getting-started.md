@@ -48,18 +48,14 @@ The architecture for this lab involves several key components:
 - **Azure Key Vault:** A cloud service that securely stores and manages sensitive information like secrets, encryption keys, and certificates used by applications and services
 
 ## Getting Started with the Lab
- 
+
+Welcome to your Cloud Native Application Architecture Workshop! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
+
 ## Accessing Your Lab Environment
  
 Once you're ready to dive in, your virtual machine and **Lab guide** will be right at your fingertips within your web browser.
 
    ![](media/cng1.png "Lab Environment")
-
-## Lab Guide Zoom In/Zoom Out
-
-To adjust the zoom level for the environment page, click the **A↕ : 100%** icon located next to the timer in the lab environment.
-
-![Manage Your Virtual Machine](media/cng2.png)   
 
 ## Virtual Machine & Lab Guide
  
@@ -85,13 +81,19 @@ Feel free to **start, stop, or restart (2)** your virtual machine as needed from
  
 ![Manage Your Virtual Machine](media/cng3.png)    
 
+## Lab Guide Zoom In/Zoom Out
+
+To adjust the zoom level for the environment page, click the **A↕ : 100%** icon located next to the timer in the lab environment.
+
+![Manage Your Virtual Machine](media/cng2.png)
+
 ## Lab Validation
 
 After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
 
    ![Inline Validation](media/cng13.png)
 
-1. If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
+If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
 
      
 ## Login to Azure Portal
