@@ -1,6 +1,6 @@
 ## Hands-On-Lab: Deploy the application to the Azure Kubernetes Service
    
-**Duration**: 40 Minutes
+### Estimated Duration: 90 minutes
 
 ## Overview
 

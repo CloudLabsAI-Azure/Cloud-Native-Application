@@ -1,6 +1,6 @@
 # Exercise 1: Build Docker Images for the Application
   
-### Estimated Duration: 60 minutes
+### Estimated Duration: 65 minutes
 
 ## Overview
 
