@@ -96,11 +96,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
       ```    
     ![Select workloads under Kubernetes resources.](media/new-cloud-native-eng-ex3-2.png "Select workloads under Kubernetes resources")
 
-    **Note:** Ensure that the indentation in your YAML script matches the format shown in the image to avoid errors.
+    >**Note:** Ensure that the indentation in your YAML script matches the format shown in the image to avoid errors.
 
 1. Select **Workloads (1)** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
-    ![Select workloads under Kubernetes resources.](media/clusteraks.png "Select workloads under Kubernetes resources")
+    ![Select workloads under Kubernetes resources.](media/applyayaml34567.png "Select workloads under Kubernetes resources")
 
 1. In the **Apply with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Apply**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
