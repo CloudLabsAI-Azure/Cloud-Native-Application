@@ -23,6 +23,20 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
 1. Em primeiro lugar, fará algumas alterações no código-fonte da sua aplicação web e criará uma nova imagem do Docker com base nas alterações mais recentes.
 
+1. Abra um novo Prompt de Comando.
+
+1. Execute o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para se conectar à VM Linux usando SSH.
+
+    >**Nota**: No prompt de comando, digite **yes** e pressione **Enter** quando aparecer a mensagem `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
+
+1. Depois que o SSH estiver conectado à VM, por favor, insira a senha da VM fornecida abaixo:
+
+    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+
+      ![](../media/ex1-connecttolinuxvm.png "open cmd")
+
+      >**Nota**: Por favor, note que, por motivos de segurança, ao digitar a senha, ela não será exibida na tela.
+
 1. Navegue de volta para a **Prompt de comando** do Windows onde se ligou à sua VM Linux e execute o comando abaixo para navegar até ao diretório onde terá de fazer as alterações no código-fonte da aplicação web.
 
     ```bash

@@ -77,7 +77,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
 1. Navegue até ao grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" /> (1)** e abra o recurso de CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** e clique em **Data Explorer (3)**. Clique agora na seta suspensa, adjacente a **+ New Collection (4)** e selecione **+ New Database (5)**.
 
-   ![](../media/1-10-24(19).png)
+   ![](../media/newdatabase-portugese.png)
 
     > **Observação:** Se receber **Bem-vindo! O que é Cosmos DB?**, feche-o clicando em **X**.
 
@@ -85,7 +85,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
    ![](../media/cn18.png)
 
-   **Observação:** Para visualizar as configurações, certifique-se de que a opção **Provision throughput** esteja **marcada**.
+   > **Observação:** Para visualizar as configurações, certifique-se de que a opção **Provision throughput** esteja **marcada**.
 
 1. Navegue até ao serviço de migração de base de dados do Azure **contosotraders<inject key="DeploymentID" enableCopy="false" />** no grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy= "false" />**.
 
