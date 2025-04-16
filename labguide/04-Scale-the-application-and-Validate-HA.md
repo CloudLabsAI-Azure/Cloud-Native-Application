@@ -24,7 +24,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads (1)** under Kubernetes resources from the left side menu and then select the **contoso-traders-products (2)** deployment.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/new-cloud-native-eng-ex4-3.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/english-05.png "Setting replicas to 2")
 
 1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
@@ -51,7 +51,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
 
-    ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")
+    ![In the Workload view with the API deployment highlighted.](media/english-05.png "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
@@ -75,13 +75,13 @@ In this task, you will resolve the failed API replicas. These failures occur due
          memory: 128Mi
       ```
 
-      ![In the edit YAML dialog, showing two changes required.](media/cloudnative102.png "Modify deployment manifest")
+      ![In the edit YAML dialog, showing two changes required.](media/english-06.png "Modify deployment manifest")
 
 1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
 1. Return to the **Workloads (1)** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, refresh the page and you will now see that the Deployment is healthy with **two (2)** Pods operating.
 
-   ![In the Workload view with the API deployment highlighted.](media/contosoproductscarts.png "API deployment is now healthy")       
+   ![In the Workload view with the API deployment highlighted.](media/english-05.png "API deployment is now healthy")       
 
 ### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 
@@ -157,7 +157,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. In the Azure Kubernetes Service blade, select **Workloads (1)** and then select the **contoso-traders-product (2)** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/english-05.png "API deployment is now healthy")
 
 1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
  
@@ -165,15 +165,13 @@ In this task, you will restart containers and validate that the restart does not
 
 1. After a few moments you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
 
-   ![Viewing replica set in the Azure Portal.](media/contosoproducts.png "Viewing replica set in the Azure Portal")
-
 1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/11.png "View web task hostname")
 
 1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/deletepods.png "Delete running pod instance")
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/english-07.png "Delete running pod instance")
 
 1. On the **Delete** page, Select **Confirm delete (1)**, and click on **Delete (2)** again.
 
@@ -181,7 +179,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
 
-   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/new-cloud-native-eng-ex4-6.png "API Pods changing state")
+   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/english-08.png "API Pods changing state")
 
 1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
 
@@ -226,7 +224,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
 
-2. Select **Connection String** under **Settings** tab.
+2. Select **Connection strings** under **Settings** tab.
 
    ![](media/new-cloud-native-eng-ex4-8.png "View replica details")
 
@@ -277,7 +275,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 13. Notice that the **Request charge** now shows there was activity on the **CosmosDB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
 
-    ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/cosmos-request-charge.png "Recent CosmosDB activity graph")
+    ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/english-09.png "Recent CosmosDB activity graph")
     
     >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
 
@@ -287,4 +285,4 @@ In this task, you will run a performance test script that will test the Autoscal
 
 In this exercise, you have increased service instances and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
 
-### You have successfully completed the lab. Click on **Next >>** to procced with next exercise.
+### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.

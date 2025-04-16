@@ -41,7 +41,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
     ![](media/ex1-gitclone.png)
     
-    > **Note:** If you recieve a output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
+    > **Note:** If you receive a output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step - 4 of the task.
 
      ```
     sudo su
@@ -84,7 +84,7 @@ In this task, you will be building the docker images to containerize the applica
     
    ![](media/aiwshared.png)
    
-   > **Note:** If you recieve an error command az not found, then run the command _'sudo apt install azure-cli'_ to install az cli. 
+   > **Note:** If you receive an error command az not found, then run the command _'sudo apt install azure-cli'_ to install az cli. 
     
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
@@ -219,4 +219,4 @@ In this task, you will be building the docker images to containerize the applica
 
 In this exercise, you have completely containerized your web application with the help of docker and pushed them to the container registry.
 
-### You have successfully completed the lab. Click on **Next >>** to procced with next exercise.
+### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.
