@@ -110,7 +110,7 @@ Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS
 
 1. Seleccione **Configuração (1)** em **Recursos do Kubernetes** no menu do lado esquerdo e clique em Secção **Segredos (2)**. Em **segredo recém-criado**, poderá ver os novos segredos criados. **(3)**
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn45.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-03.jpg "Adicionar um Namespace")
 
 <validation step="106806cb-79ab-406a-b481-f125954d286e" />
 
@@ -123,13 +123,13 @@ Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS
 
 Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kubernetes Service utilizando o Portal do Azure.
 
-1. Já definimos um novo **Espaços de nomes (1)** para a sua implementação de API. Indo mais além, apenas utilizará o namespace **contoso-traders (2)**.
+1. Já definimos um novo **Namespaces (1)** para a sua implementação de API. Indo mais além, apenas utilizará o namespace **contoso-traders (2)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn39.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-01.jpg "Adicionar um Namespace")
 
 3. Defina um serviço para a sua API, para que a aplicação fique acessível dentro do cluster. Selecione o blade **Serviços e entradas (1)** da página de detalhes do recurso **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no Portal Azure. No separador **Serviços**, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn46.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-022.jpg "Adicionar um Namespace")
 
 1. No painel **Aplicar um YAML**, cole o código YAML abaixo que cria um serviço no AKS **(1)** e clique em **Aplicar (2)**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML.
 
@@ -160,7 +160,7 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
 1. Selecione **Cargas de trabalho (1)** na secção Recursos do Kubernetes na navegação esquerda. Com **Implantações** selecionadas por defeito, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn47.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-04.png "Adicionar um Namespace")
 
 1. No painel **Adicionar com YAML**, cole o código YAML abaixo que cria uma carga de trabalho no AKS **(1)** e clique em **Aplicar (2)**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML para atualizar o nome LOGINSERVER da instância ACR.
 
@@ -215,7 +215,7 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
 1. Após alguns minutos, verá a implementação listada, que deverá estar a ser executada.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn-42.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-05.png "Adicionar um Namespace")
 
 <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 
@@ -266,7 +266,7 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
 1. Volte à folha AKS no Portal Azure. No menu de navegação, selecione **Serviços e entradas (1)** em **Recursos do Kubernetes**. Deverá conseguir aceder ao site através de um **IP Externo (2)**.
 
-   ![](../media/cn44.png)
+   ![](../media/portu-06.png)
 
    ![Serviços e entradas AKS mostrados com IP externo destacado](../media/website2.png "Serviços e entradas AKS mostrados com IP externo destacado")
 
