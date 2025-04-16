@@ -59,11 +59,11 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. Una vez que se haya aprovisionado el ambiente, se cargarán una máquina virtual (JumpVM) y una guía de laboratorio en su navegador. Utilice esta máquina virtual durante todo el taller para realizar el laboratorio. Puede ver el número en la parte inferior de la guía de laboratorio para cambiar a los diferentes ejercicios de la guía de laboratorio.
 
-   ![](media/new-cloud-native-feb-1.png "Ambiente de Laboratorio")
+   ![](media/spanish-22.png "Ambiente de Laboratorio")
 
 1. Para obtener los detalles del ambiente de laboratorio, puede seleccionar la pestaña **Ambiente**. Además, las credenciales también se enviarán por correo electrónico a su dirección de correo electrónico registrada. También puede abrir la Guía de Laboratorio en una ventana separada y completa seleccionando **Ventana Dividida** en la esquina superior derecha. Además, puede iniciar, detener y reiniciar máquinas virtuales desde la pestaña **Recursos**.
 
-   ![](media/new-cloud-native-feb-2.png "Ambiente de Laboratorio")
+   ![](media/spanish-23.png "Ambiente de Laboratorio")
  
    > Verá el valor de DeploymentID en la pestaña **Ambiente**, úselo donde vea SUFFIX o DeploymentID en los pasos del laboratorio.
 
@@ -71,29 +71,15 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. Después de completar la tarea, presione el botón **Validar** en la pestaña Validación integrada en la guía de laboratorio. Si recibe un mensaje de éxito, puede continuar con la siguiente tarea; de lo contrario, lea cuidadosamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 
-   ![Validación En Línea](media/new-cloud-native-feb-5.png)
+   ![Validación En Línea](media/spanish-24.png)
 
 1. Si necesita ayuda, póngase en contacto con nosotros en cloudlabs-support@spektrasystems.com
 
-## Extensión de la Duración del Laboratorio
-
-1. Para extender la duración del laboratorio, haga clic en el ícono **Reloj de Arena** situado en la esquina superior derecha del ambiente del laboratorio.
-
-   ![Administre su Máquina Virtual](media/gext.png)
-
-   >**Nota:** Aparecerá el icono **Reloj de Arena** cuando queden 10 minutos para finalizar el laboratorio.
-
-2. Haga clic en **OK** para extender la duración de su laboratorio.
- 
-   ![Administre su Máquina Virtual](media/gext2.png)
-
-3. Si no ha extendido la duración antes de que el laboratorio esté por terminar, aparecerá una ventana emergente que le dará la opción de extenderla. Haga clic en **OK** para continuar.
-     
 ## Iniciar Sesión en el Portal de Azure
 
 1. En JumpVM, haga clic en el acceso directo del portal de Azure del navegador Microsoft Edge que se crea en el escritorio.
 
-   ![](media/new-cloud-native-feb-4.png "Ambiente de Laboratorio")
+   ![](media/spanish-25.png "Ambiente de Laboratorio")
    
 1. En la pestaña **Iniciar sesión en Microsoft Azure** verá la pantalla de inicio de sesión, en ella ingrese el siguiente correo electrónico/nombre de usuario y luego haga clic en **Siguiente**.
    * Correo electrónico/Nombre de usuario: <inject key="AzureAdUserEmail"></inject>
