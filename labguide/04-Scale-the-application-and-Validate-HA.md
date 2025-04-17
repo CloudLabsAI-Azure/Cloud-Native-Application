@@ -15,7 +15,7 @@ You will be able to complete the following tasks:
 - Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 - Task 4: Autoscaling on Azure Kubernetes Service cluster
 - Task 5: Restart containers and validate HA
-- Task 6: Configure CosmosDB Autoscale
+- Task 6: Configure Cosmos DB Autoscale
 - Task 7: Test CosmosDB Autoscale
 
 ### Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
@@ -26,7 +26,7 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/english-05.png "Setting replicas to 2")
 
-1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to confirm manifest change, check **Confirm manifest change** and select **Save**.
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/new-cloud-native-eng-ex4-01.png "Setting replicas to 2")
 
@@ -67,7 +67,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
           protocol: TCP
       ```
 
-   - Modify the **cpu** and set it to **100m**. CPU is divided between all Pods on a Node.
+   - Modify the **cpu** and set it to **100m**. The CPU is divided between all Pods on a Node.
 
       ```yaml
       requests:
@@ -109,15 +109,15 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
 
 ### Task 4: Autoscaling on Azure Kubernetes Service cluster
 
-In this task, you will be enabling the cluster autoscaler for the existing AKS cluster and you will be autoscaling the cluster node pools.
+In this task, you will be enabling the cluster autoscaler for the existing AKS cluster, and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the below command.
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the command below.
 
     ```
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
-1. In order to set up the Kubernetes cluster connection, run the below command.
+1. In order to set up the Kubernetes cluster connection, run the following command.
 
     ```
     az aks get-credentials --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
@@ -159,11 +159,11 @@ In this task, you will restart containers and validate that the restart does not
 
    ![In the Workload view with the API deployment highlighted.](media/english-05.png "API deployment is now healthy")
 
-1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and when prompted, Confirm manifest change, check **Confirm manifest change** and select **Save**.
  
    ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/new-cloud-native-eng-ex4-5.png "API pod deployments")
 
-1. After a few moments you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
+1. After a few moments, you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
 
 1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
@@ -177,7 +177,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/7.png "Delete running pod instance")
 
-1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view you may see the old instances Terminating and new instances being Created.
+1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view, you may see the old instances terminating and new instances being created.
 
    ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/english-08.png "API Pods changing state")
 
@@ -198,7 +198,7 @@ In this task, you will restart containers and validate that the restart does not
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-### Task 6: Configure CosmosDB Autoscale
+### Task 6: Configure Cosmos DB Autoscale
 
 In this task, you will set up Autoscale on Azure Cosmos DB.
 
@@ -234,7 +234,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 4. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
-5. When asked for the password, enter **Build Agent VM Password** given below.
+5. When asked for the password, enter the **Build Agent VM Password** given below.
 
    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
@@ -259,7 +259,7 @@ In this task, you will run a performance test script that will test the Autoscal
     
     >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
     
-10. Run the following command to execute the `perftest.sh` script to run a small load test against CosmosDB. This script will consume RUs in CosmosDB by inserting many documents into the Sessions container.
+10. Run the following command to execute the `perftest.sh` script to run a small load test against Cosmos DB. This script will consume RUs in Cosmos DB by inserting many documents into the Sessions container.
 
     ```bash
     bash ./perftest.sh
@@ -267,13 +267,13 @@ In this task, you will run a performance test script that will test the Autoscal
 
     > **Note:** The script will take a few minutes to complete its execution.
 
-11. Once the script execution is completed, navigate back to the **CosmosDB account** in the Azure portal.
+11. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
 
 12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
-    > **Note:** It may take 2 - 5 minutes for the activity on the CosmosDB collection to appear in the activity log. Wait a couple of minutes and then refresh the page if the recent Request charge doesn't show up right now.
+    > **Note:** It may take 2 - 5 minutes for the activity on the Cosmos DB collection to appear in the activity log. Wait a couple of minutes and then refresh the page if the recent Request charge doesn't show up right now.
 
-13. Notice that the **Request charge** now shows there was activity on the **CosmosDB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
+13. Notice that the **Request charge** now shows there was activity on the **Cosmos DB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
 
     ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/english-09.png "Recent CosmosDB activity graph")
     
