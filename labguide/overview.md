@@ -6,7 +6,7 @@
 
 Contoso Traders (ContosoTraders) provides online retail website services tailored to the electronics community. They are refactoring their application to run as a Docker application. They want to implement a proof of concept that will help them get familiar with the development process, lifecycle of deployment, and critical aspects of the hosting environment. They will be deploying their applications to Azure Kubernetes Service and want to learn how to deploy containers in a dynamically load-balanced manner, discover containers, and scale them on demand.
 
-In this hands-on lab, you will assist with completing this POC with a subset of the application codebase. You will use a pre-created build agent based on Linux and an Azure Kubernetes Service cluster for running deployed applications. You will be helping them to complete the Docker setup for their application, test locally, push to an image repository, deploy to the cluster, test load-balancing and scale and use Azure Monitor and view the insights.
+In this hands-on lab, you will assist with completing this POC with a subset of the application codebase. You will use a pre-created build agent based on Linux and an Azure Kubernetes Service cluster to run deployed applications. You will be helping them to complete the Docker setup for their application, test locally, push to an image repository, deploy to the cluster, test load-balancing and scale and use Azure Monitor and view the insights.
 
 ## Objective
 
@@ -18,9 +18,9 @@ This lab is designed to equip participants with hands-on experience in building 
 
 - **Deploy the application to the Azure Kubernetes Service:** This hands-on exercise aims to deploy and manage your containerized application using Azure Kubernetes Service for orchestration and scalability. Participants will deploy the containerized application to Azure Kubernetes Service, providing a scalable and managed environment for operation.
 
-- **Scale the application and validate HA:** This hands-on exercise aims to adjust the application's scale and confirm its high availability to ensure it performs well under varying loads. Participants will scale the application to handle varying loads and confirmed its high availability to maintain performance and reliability.
+- **Scale the application and validate HA:** This hands-on exercise aims to adjust the application's scale and confirm its high availability to ensure it performs well under varying loads. Participants will scale the application to handle varying loads and confirm its high availability to maintain performance and reliability.
 
-- **Updating Apps & Managing Kubernetes Ingress:** This hands-on exercise aims to apply updates to your application and configure Kubernetes Ingress to manage and route external traffic effectively. Participants will update the application successfully and configure Kubernetes Ingress to effectively manage and route external traffic.
+- **Updating Apps & Managing Kubernetes Ingress:** This hands-on exercise aims to apply updates to your application and configure Kubernetes Ingress to manage and route external traffic effectively. Participants will update the application successfully and configure Kubernetes Ingress to manage and route external traffic effectively.
 
 - **Azure Monitor for Containers:** This hands-on exercise aims to utilize Azure Monitor for Containers to track and analyze the performance and health of your containerized applications in AKS. Participants will enable monitoring of containerize applications with Azure Monitor, providing insights into performance and operational health.
 
@@ -30,7 +30,7 @@ Participants should have:
 
 - Understanding Docker concepts such as containers, images, and Dockerfiles.
 - Knowledge of MongoDB data structures and Azure Cosmos DB capabilities for effective migration.
-- Basic understanding of Kubernetes concepts including pods, deployments, and services, as well as Azure Kubernetes Service (AKS).
+- Basic understanding of Kubernetes concepts, including pods, deployments, and services, as well as Azure Kubernetes Service (AKS).
 - An active Azure subscription with appropriate permissions to create and manage resources.
 - General understanding of cloud services, container orchestration, and scaling strategies.
 - Proficiency in using command-line tools and interfaces, such as Azure CLI and Docker CLI.
@@ -61,11 +61,11 @@ Welcome to your Cloud Native Applications Workshop! We've prepared a seamless en
 
 ## Accessing Your Lab Environment
 
-1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises of the lab guide.
+1. Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will be loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises in the lab guide.
 
    ![](media/english-get-01.png "Lab Environment")
 
-1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide on a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
+1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide in a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
 
    ![](media/english-get-02.png "Lab Environment")
  
@@ -85,7 +85,7 @@ To adjust the zoom level for the environment page, click the **A↕ : 100%** ico
 
 ## Lab Validation
 
-1. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+1. After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task; if not, carefully read the error message and retry the step, following the instructions in the lab guide.
 
    ![Inline Validation](media/inline-vald-01.png)
 
@@ -93,11 +93,11 @@ To adjust the zoom level for the environment page, click the **A↕ : 100%** ico
      
 ## Login to Azure Portal
 
-1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser which is created on the desktop.
+1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser, which is created on the desktop.
 
    ![](media/portal-01.png "Lab Environment")
    
-1. On the **Sign into Microsoft Azure** tab you will see the login screen, in that enter the following email/username and then click on **Next**. 
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
