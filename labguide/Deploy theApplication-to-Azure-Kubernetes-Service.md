@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault Secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault Secrets and ACR, where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
 
 ## Lab Objectives
 
@@ -20,13 +20,13 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 > **Note**: The following tasks should be executed in the command prompt.
 
-1. Open a new command prompt as Administrator in your jump VM and login to azure with the below command.
+1. Open a new command prompt as Administrator in your jump VM and log in to Azure with the below command.
    
     ```bash
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
     
-    > **Note:** If you face any error while running the 'az' command, then run the below command to install the azure cli and close the command prompt. Re-perform the step-1 in a new command prompt as Administrator.
+    > **Note:** If you face any error while running the 'az' command, then run the below command to install the Azure CLI and close the command prompt. Re-perform step 1 in a new command prompt as Administrator.
 
     ```bash
     choco install azure-cli
@@ -45,7 +45,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
       az account set --subscription {id}
       ```
 
-1. Run the below command to set up the Kubernetes cluster connection using kubectl.
+1. Run the following command to set up the Kubernetes cluster connection using kubectl.
 
    ```bash
    az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
@@ -66,17 +66,17 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. Navigate back to the **ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>**, and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>**.
    
-1. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders** namespace only. 
+1. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders** namespace only. 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/contoso-traders.png "Add a Service")
     
-1. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses (1)** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create (2)** and choose **Apply a YAML (3)**. 
+1. Define a Service for your API so that the application is accessible within the cluster. Select the **Services and ingresses (1)** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create (2)** and choose **Apply a YAML (3)**. 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/applyayaml.png "Add a Service")
 
-1. In the **Apply with YAML** pane, paste the below YAML code which creates a service in AKS and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** **(1)** value in the YAML file.
+1. In the **Apply with YAML** pane, paste the below YAML code, which creates a service in AKS and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** **(1)** value in the YAML file.
     
-    >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
+    >**Info**: The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in the previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
       #YAML Script
@@ -104,7 +104,8 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![Select workloads under Kubernetes resources.](media/applyayaml34567.png "Select workloads under Kubernetes resources")
 
-1. In the **Apply with YAML** pane, paste the below YAML code which creates a workload in AKS and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/> (1)** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+1. In the **Apply with YAML** pane, paste the below YAML code, which creates a workload in AKS and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/> (1)** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+
     >**Info**: The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
    ```YAML
@@ -155,7 +156,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
      
    ![Selecting + Add to create a deployment.](media/english-02.png "Selecting + Add to create a deployment")
 
-1. After a few minutes, you will see the deployment listed and it should be in a running state.
+1. After a few minutes, you will see the deployment listed, and it should be in a running state.
 
    ![Selecting + Add to create a deployment.](media/english-03.png "Selecting + Add to create a deployment")
 
@@ -172,11 +173,11 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Open a **File Explorer** from your JumpVM.
 
-1. Navigate to `C:\LabFiles` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS code.
+1. Navigate to `C:\LabFiles` **(1)** directory and select `web.deployment.yml` **(2)** file. Right-click and select **Open** **(3)** to open the file in VS Code.
 
    ![](media/new-cloud-native-eng-ex3-4.png)
 
-1. Make sure to Update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
+1. Make sure to update the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to match the name of your ACR Login Server.
 
     ![In this screenshot of the Azure Cloud Shell editor window, the ... button has been selected and the Close Editor option is highlighted.](media/sfx.png "Close Azure Cloud Editor")
 
@@ -195,7 +196,7 @@ In this task, you will deploy the web service & its workload using kubectl.
     ```
 
 1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
-   >**Info**: The below kubectl command will create the Deployment workload and Service into the namespace that we have defined in the YAML files. 
+   >**Info**: The below kubectl command will create the Deployment workload and Service in the namespace that we have defined in the YAML files. 
 
     ```bash
     kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
@@ -220,7 +221,7 @@ In this task, you will deploy the web service & its workload using kubectl.
      
 ## Summary
 
-In this exercise, you have deployed your containerized web application to AKS that contains, the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint.
+In this exercise, you have deployed your containerized web application to AKS that contains the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint.
 
 
 ### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.
