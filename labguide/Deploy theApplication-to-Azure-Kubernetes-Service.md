@@ -64,7 +64,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
 
-1. Navigate back to the **ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>**, and open **contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>**.
+1. Navigate back to the **ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>** resource group, and select the **contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>** Kubernetes service.
    
 1. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders** namespace only. 
 
@@ -158,7 +158,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. After a few minutes, you will see the deployment listed, and it should be in a running state.
 
-   ![Selecting + Add to create a deployment.](media/english-03.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/18042025(3).png "Selecting + Add to create a deployment")
 
 <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 
