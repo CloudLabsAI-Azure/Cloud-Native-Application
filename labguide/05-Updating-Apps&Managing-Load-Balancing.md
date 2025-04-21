@@ -156,10 +156,10 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```
 
    > **Note**: If you get a "no repositories found." error, then run the following command. This will be added back to the official Helm "stable" repository.
-   >
-   > ```bash
-   > helm repo add stable https://charts.helm.sh/stable 
-   > ```
+   
+    ```bash
+    helm repo add stable https://charts.helm.sh/stable 
+    ```
 
 1. Install the Ingress Controller resource to handle ingress requests as they come in. The Ingress Controller will receive a public IP of its own on the Azure Load Balancer and handle requests for multiple services over ports 80 and 443.
 
@@ -170,11 +170,11 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-ingress-nginx-controller` service.
 
    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
-   >
-   > ```bash
-   > kubectl get svc --namespace contoso-traders
-   > ```
-   >
+   
+   ```bash
+   kubectl get svc --namespace contoso-traders
+   ```
+   
    ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
 
 1. In **Azure Portal**, search and open the **Microsoft Entra ID**, and copy **Tenant ID**.

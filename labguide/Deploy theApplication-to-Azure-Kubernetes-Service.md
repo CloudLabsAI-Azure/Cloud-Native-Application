@@ -66,7 +66,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. Navigate back to the **ContosoTraders-<inject key="DeploymentID" />** resource group, and select the **contoso-traders-aks<inject key="DeploymentID" />** Kubernetes service.
    
-1. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders** namespace only. 
+1. Go the **Namespaces** under the **Kubernetes resources** from the left navigation pane. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders** namespace only. 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/contoso-traders.png "Add a Service")
     
@@ -204,7 +204,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/kubectlcreated.png "kubectl create application")
 
-1. Return to the AKS blade in the Azure Portal. From the navigation menu, select the **Services and ingresses (1)** under **Kubernetes resources**. You should be able to access the website via an **External endpoint (2)**.
+1. Return to the AKS blade in the Azure Portal. From the navigation menu, select the **Services and ingresses (1)** under **Kubernetes resources**. You should be able to access the website via an **External IP (2)**.
 
     ![AKS services and ingresses shown with External IP highlighted](media/english-04.png "AKS services and ingresses shown with External IP highlighted")
 

@@ -11,7 +11,7 @@ At this point, you have deployed a single instance of the Web and Products API s
 You will be able to complete the following tasks:
 
 - Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
-- Task 2: Resolve failed replica provisioning
+- Task 2: Resolve failed replicas provisioning
 - Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 - Task 4: Autoscaling on Azure Kubernetes Service cluster
 - Task 5: Restart containers and validate HA
@@ -45,7 +45,7 @@ In this task, you will increase the number of instances for the API deployment i
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-### Task 2: Resolve failed replica provisioning 
+### Task 2: Resolve failed replicas provisioning 
 
 In this task, you will resolve the failed API replicas. These failures occur due to the inability to meet the requested resources.
 
@@ -87,7 +87,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 In this task, you will be configuring the Horizontal Autoscaling for your Kubernetes service pods.
    
-1. Navigate back to your Windows command prompt.
+1. Navigate back to your Windows command prompt where you are logged in as Administrator, without connecting via SSH.
 
 1. Run the below command to configure the Horizontal autoscaling for your API Products pods.
 
@@ -111,7 +111,7 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
 
 In this task, you will be enabling the cluster autoscaler for the existing AKS cluster, and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the command below.
+1. If you are not logged into Azure, log in to Azure with the command below.
 
     ```
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
@@ -159,7 +159,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")
 
-1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and when prompted, Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Select the **YAML (1)** navigation item and increase the required replicas count to `4` **(2)** then click on **Review + save (3)**, and when prompted, Confirm manifest change, check **Confirm manifest change** and select **Save**.
  
    ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/new-cloud-native-eng-ex4-5.png "API pod deployments")
 
@@ -171,7 +171,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/11.png "View web task hostname")
 
-1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
+1. Go back to the **contoso-traders-products | Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
    ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/deletepods.png "Delete running pod instance")
 
@@ -183,7 +183,7 @@ In this task, you will restart containers and validate that the restart does not
 
    ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/new-cloud-native-eng-ex4-6.png "API Pods changing state")
 
-1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
+1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replicas.
 
    ![Viewing replica set in the Azure Portal.](media/8.png "Viewing replica set in the Azure Portal")
 
@@ -214,7 +214,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
     ![](media/exe4-task6-step3-select-settings.png "View replica details")
 
-5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
+5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput (autoscale)** setting under **Scale** and click on **Save (3)**.
 
     ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autoscale1.png "CosmosDB collection scale and settings")
 
@@ -224,44 +224,42 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
-1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
-
-2. Select **Connection strings** under **Settings** tab.
+1. Select **Connection strings** under **Settings** tab.
 
    ![](media/new-cloud-native-eng-ex4-8.png "View replica details")
 
-3. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in a text file for later use.
+1. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in a text file for later use.
 
     ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
 
-4. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
+1. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
-5. When asked for the password, enter the **Build Agent VM Password** given below.
+1. When asked for the password, enter the **Build Agent VM Password** given below.
 
    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-6. On the **Build agent VM**, navigate to the `~/labfiles` directory.
+1. On the **Build agent VM**, navigate to the `~/labfiles` directory.
 
     ```bash
     cd Cloud-Native-Application/labfiles/src
     ```
 
-7. Run the following command to open the `perftest.sh` script in the editor window.
+1. Run the following command to open the `perftest.sh` script in the editor window.
 
     ```bash
     sudo chmod 777 perftest.sh
     vi perftest.sh
     ```
 
-8. There are several variables declared at the top of the `perftest.sh` script. Press **_i_** to get into `insert` mode. Then modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
+1. There are several variables declared at the top of the `perftest.sh` script. Press **_i_** to get into `insert` mode. Then modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
 
     ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/updatepreftest.png "Modify the connection information in Vim")
 
-9. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
+1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
     >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
     
-10. Run the following command to execute the `perftest.sh` script to run a small load test against Cosmos DB. This script will consume RUs in Cosmos DB by inserting many documents into the Sessions container.
+1. Run the following command to execute the `perftest.sh` script to run a small load test against Cosmos DB. This script will consume RUs in Cosmos DB by inserting many documents into the Sessions container.
 
     ```bash
     bash ./perftest.sh
@@ -269,19 +267,19 @@ In this task, you will run a performance test script that will test the Autoscal
 
     > **Note:** The script will take a few minutes to complete its execution.
 
-11. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
+1. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
 
-12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
+1. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
     > **Note:** It may take 2 - 5 minutes for the activity on the Cosmos DB collection to appear in the activity log. Wait a couple of minutes and then refresh the page if the recent Request charge doesn't show up right now.
 
-13. Notice that the **Request charge** now shows there was activity on the **Cosmos DB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
+1. Notice that the **Request charge** now shows there was activity on the **Cosmos DB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
 
     ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/english-09.png "Recent CosmosDB activity graph")
     
     >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
 
-14. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
