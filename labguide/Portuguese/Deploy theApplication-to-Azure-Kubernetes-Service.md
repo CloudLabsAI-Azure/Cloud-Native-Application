@@ -215,7 +215,7 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
 1. Após alguns minutos, verá a implementação listada, que deverá estar a ser executada.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-05.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn49.png "Adicionar um Namespace")
 
 <validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 

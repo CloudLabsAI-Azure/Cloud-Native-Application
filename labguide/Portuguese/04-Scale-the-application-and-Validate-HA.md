@@ -28,7 +28,7 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
 1. Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/portu-07.png "Definir réplicas para 2")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
 1. Selecione **YAML (1)** no menu esquerdo na vista geral de **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e selecione **Rever + guardar (3)**. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (4)** e selecione **Guardar (5)**.
 
@@ -55,9 +55,9 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
 Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem devido à incapacidade de atender aos recursos solicitados.
 
-1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products (2)** implantação.
+1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products** implantação.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/portu-07.png "Definir réplicas para 2")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
 1. Selecione **YAML** no menu esquerdo na vista geral de **contoso-traders-products**.
 
@@ -90,7 +90,7 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
 
 1. Volte à vista principal **Cargas de trabalho** do serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, actualize a página e verá agora que o A a implantação está íntegra com **two** pods em funcionamento.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-07.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn54.png "A implementação da API está agora íntegra")
 
 ### Tarefa 3: configurar o escalonamento automático horizontal para os pods de serviço Kubernetes
 
@@ -164,9 +164,9 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
 Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização não afeta o serviço em execução.
 
-1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products (2)** implantação.
+1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products** implantação.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/portu-07.png "Definir réplicas para 2")
+   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn54.png "Definir réplicas para 2")
 
 1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessária para `4` **(2)** e clique em **Rever + guardar (3)** e, quando solicitado , Confirmar alteração do manifesto, assinale **Confirmar alterações ao manifesto (4)** e selecione **Guardar (5)**.
 
@@ -176,13 +176,15 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
 1. Após alguns momentos, irá descobrir que a implementação do **contoso-traders-products** está agora a executar `4` réplicas com êxito.
 
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn61.png "A implementação da API está agora íntegra")
+
 1. Volte ao separador do navegador com a página de estatísticas da aplicação web carregada. Atualize a página repetidamente. Não verá nenhum erro.
 
    ![Na página Estatísticas da aplicação Web Contoso Neuro, são destacados dois valores de nome de host de API diferentes.](../media/11.png "Ver nome de host de tarefa Web")
 
 1. Voltar para **contoso-traders-products | Na página Visão geral**, selecione **dois dos pods (1)** aleatoriamente e escolha **Eliminar (2)**.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-08.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn62.png "A implementação da API está agora íntegra")
 
 1. Na página **Eliminar**, selecione **Confirmar eliminação (1)** e clique novamente em **Eliminar (2)**.
 
@@ -190,7 +192,7 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
 1. O Kubernetes lançará novos pods para satisfazer a contagem de réplicas necessária. Dependendo da sua visão, poderá ver as instâncias antigas a serem encerradas e novas instâncias a serem criadas.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-09.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn64.png "A implementação da API está agora íntegra")
 
 1. Volte à implementação da API **contoso-traders-products**. Selecione o item de navegação **YAML (1)** e reduza-o para a réplica `1` **(2)** e clique em **Rever + guardar (3)** e, quando solicitado , Confirmar alteração do manifesto, assinale **Confirmar alterações ao manifesto (4)** e selecione **Guardar (5)**.
 
