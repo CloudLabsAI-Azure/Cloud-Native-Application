@@ -345,7 +345,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
       > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
       > ```
 
-      It can take between 5 and 30 minutes before the tls-secret becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
+      > It can take between 5 and 30 minutes before the tls-secret becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt. Also, note down the DNS name, will use later in the same tasks.
+
+      ![](media/english-09.png )
 
 16. Now you can create an ingress resource for the content applications.
 
@@ -408,6 +410,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 22. Test TLS termination by visiting services again using `https://`.
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
+
+    >**Note:** If the website doesn't appear when accessed through the IP, use the DNS name you copied. Add `http://` before it, paste it into the browser, and check.
 
 23. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
