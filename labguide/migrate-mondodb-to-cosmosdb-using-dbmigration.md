@@ -149,9 +149,9 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![La captura de pantalla muestra la actividad de MigrateData mostrando el estado completado.](media/a4.png "Actividad MigrateData completada")
 
-1. Para verificar los datos migrados, navegue hasta la cuenta Azure CosmosDB for MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />** en el Grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Seleccione **Explorador de datos** del menú izquierdo.
+1. Para verificar los datos migrados, navegue hasta la cuenta Azure CosmosDB for MongoDB account (RU) en **contosotraders-<inject key="DeploymentID" enableCopy="false" />** en el Grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Seleccione **Explorador de datos** del menú izquierdo.
 
-   ![La captura de pantalla muestra que Cosmos DB está abierto en el Portal de Azure con Explorador de datos abierto mostrando los datos que se han migrado.](media/ex2-migrateditem.png "Cosmos DB está abierto")
+   ![La captura de pantalla muestra que Cosmos DB está abierto en el Portal de Azure con Explorador de datos abierto mostrando los datos que se han migrado.](media/spanish-048.png "Cosmos DB está abierto")
 
 1. Verá las colecciones `items` **(1)** y `products` **(2)** listadas dentro de la base de datos `contentdb` y podrá explorar los documentos **(3)**.
 

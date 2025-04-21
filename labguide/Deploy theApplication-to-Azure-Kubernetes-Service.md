@@ -192,7 +192,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 
 1. Después de unos minutos, verá la implementación en la lista, que debería estar ejecutándose.
 
-   ![Implementación en ejecución.](media/spanish-11.png "Implementación en ejecución")
+   ![Implementación en ejecución.](media/conrunning-09.png "Implementación en ejecución")
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.

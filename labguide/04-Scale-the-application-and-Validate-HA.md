@@ -12,7 +12,7 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
 1. Vaya al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** del grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Seleccione **Cargas de trabajo (1)** en recursos de Kubernetes en el menú del lado izquierdo y luego seleccione la implementación **contoso-traders-products (2)**.
 
-   ![Seleccionando la carga de trabajo en AKS.](media/spanish-13.png "Seleccionando la carga de trabajo en AKS")
+   ![Seleccionando la carga de trabajo en AKS.](media/spanish-0980.png "Seleccionando la carga de trabajo en AKS")
 
 1. Seleccione **YAML (1)** en el menú de la izquierda en la Descripción general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar y guardar (3)**. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
@@ -39,7 +39,7 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
 
 1. En el servicio Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, seleccione **Cargas de trabajo (1)** y luego elija la implementación **contoso-traders-products (2)**. 
 
-    ![Seleccionando la carga de trabajo.](media/spanish-13.png "Seleccionando la carga de trabajo")
+    ![Seleccionando la carga de trabajo en AKS.](media/spanish-0980.png "Seleccionando la carga de trabajo en AKS")
 
 1. Seleccione **YAML** en el menú de la izquierda en la Descripción general de **contoso-traders-products**.
 
@@ -69,7 +69,7 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
 
 1. Regrese a la vista principal **Cargas de trabajo (1)** del servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, refresque la página y ahora verá que la implementación está sana con **dos (2)** Pods en funcionamiento.
 
-   ![Despliegue del API en estado sano.](media/spanish-13.png "Despliegue del API en estado sano.")       
+   ![Despliegue del API en estado sano.](media/2.png "Despliegue del API en estado sano.")       
 
 ## Tarea 3: Configurar el Autoescalado Horizontal para pods del servicio de Kubernetes
 
@@ -153,13 +153,15 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 1. Después de unos momentos, encontrará que el despliegue de **contoso-traders-product** ahora está ejecutando `4` réplicas exitosamente.
 
+    ![Eliminando dos pods en ejecución.](media/5.png "Eliminando dos pods en ejecución")
+
 1. Regrese a la pestaña del navegador con la página de la aplicación web cargada. Actualice la página una y otra vez. No verá ningún error.
 
    ![Página web de Contoso Traders.](media/11.png "Página web de Contoso Traders")
 
 1. Regrese a la página **contoso-traders-products| Descripción general**, seleccione **dos de los Pods (1)** al azar y elija **Eliminar (2)**.
 
-   ![Eliminando dos pods en ejecución.](media/spanish-14.png "Eliminando dos pods en ejecución")
+   ![Eliminando dos pods en ejecución.](media/spanish-90890.png "Eliminando dos pods en ejecución")
 
 1. En la página **Eliminar**, seleccione **Confirmar eliminación (1)** y haga clic en **Eliminar (2)** nuevamente.
 
@@ -167,7 +169,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 1. Kubernetes lanzará nuevos Pods para cumplir con el número de réplicas requerido. Dependiendo de su vista, es posible que vea las instancias antiguas con el estado Finalizando y nuevas instancias con el estado Creado.
 
-   ![API Pods cambiando de estado".](media/spanish-15.png "API Pods cambiando de estado")
+   ![API Pods cambiando de estado".](media/nwcontainer.png "API Pods cambiando de estado")
 
 1. Regrese a la implementación de API de **contoso-traders-product**. Seleccione el elemento de navegación **YAML** y escale nuevamente a la réplica `1`.
 
