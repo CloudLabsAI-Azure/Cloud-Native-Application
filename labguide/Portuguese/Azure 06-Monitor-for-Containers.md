@@ -30,9 +30,9 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.
 
     ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn92.png "Definir réplicas para 2")
    
-1. Navegue até a seção **Monitor** na folha de recursos do serviço Kubernetes, você poderá ver alguns logs.
+1. Navegue até a seção **Monitorar** folha de recursos do serviço Kubernetes, você poderá ver alguns logs.
    
-    > **Nota**: O Monitor do Azure pode demorar até 15 minutos a preencher os dados na folha de insights.
+    > **Nota**: O Monitorar do Azure pode demorar até 15 minutos a preencher os dados na folha de insights.
 
     ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn93.png "Definir réplicas para 2")
 
