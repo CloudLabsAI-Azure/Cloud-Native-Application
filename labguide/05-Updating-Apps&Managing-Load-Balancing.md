@@ -132,6 +132,8 @@ In this task, you will edit the web application source code to update some confi
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
 
+   >**Note:** If you do not receive the output within a minute, proceed to the next task without waiting. You can check the output later.
+
 <validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:

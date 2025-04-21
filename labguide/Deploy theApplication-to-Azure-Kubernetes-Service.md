@@ -183,7 +183,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Save the changes by **CTRL + S** button to **Save**.
 
-1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
+1. Navigate back to your Windows command prompt where you are logged in as Administrator, without connecting via SSH. Run the below command to change the directory to the `~/LabFiles` folder.
 
     ```bash
     cd C:/LabFiles

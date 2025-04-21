@@ -265,9 +265,9 @@ In this task, you will run a performance test script that will test the Autoscal
     bash ./perftest.sh
     ```
 
-    > **Note:** The script will take a few minutes to complete its execution.
+    > **Note:** Don't wait for the script to complete; proceed to the next step.
 
-1. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
+1. Navigate back to the **Cosmos DB account** in the Azure portal.
 
 1. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
