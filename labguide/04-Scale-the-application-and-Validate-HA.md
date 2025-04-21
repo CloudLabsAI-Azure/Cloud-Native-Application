@@ -24,7 +24,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads (1)** under Kubernetes resources from the left side menu and then select the **contoso-traders-products (2)** deployment.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/english-05.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/18042025(3).png "Setting replicas to 2")
 
 1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to confirm manifest change, check **Confirm manifest change** and select **Save**.
 
@@ -51,7 +51,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
 
-    ![In the Workload view with the API deployment highlighted.](media/english-05.png "API deployment is now healthy")
+    ![In the Workload view with the API deployment highlighted.](media/18042025(3).png "API deployment is now healthy")
 
 1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
 
@@ -81,7 +81,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
 1. Return to the **Workloads (1)** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, refresh the page and you will now see that the Deployment is healthy with **two (2)** Pods operating.
 
-   ![In the Workload view with the API deployment highlighted.](media/english-05.png "API deployment is now healthy")       
+   ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")       
 
 ### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 
@@ -157,7 +157,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. In the Azure Kubernetes Service blade, select **Workloads (1)** and then select the **contoso-traders-product (2)** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/english-05.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")
 
 1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and when prompted, Confirm manifest change, check **Confirm manifest change** and select **Save**.
  
@@ -165,13 +165,15 @@ In this task, you will restart containers and validate that the restart does not
 
 1. After a few moments, you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
 
+    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/contosoproducts.png "View web task hostname")
+
 1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/11.png "View web task hostname")
 
 1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/english-07.png "Delete running pod instance")
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/deletepods.png "Delete running pod instance")
 
 1. On the **Delete** page, Select **Confirm delete (1)**, and click on **Delete (2)** again.
 
@@ -179,7 +181,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view, you may see the old instances terminating and new instances being created.
 
-   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/english-08.png "API Pods changing state")
+   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/new-cloud-native-eng-ex4-6.png "API Pods changing state")
 
 1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
 
