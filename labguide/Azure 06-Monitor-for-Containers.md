@@ -28,7 +28,7 @@ In this task, you will be reviewing the monitored AKS cluster.
      
 1. On the Kubernetes Services page, select **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**.
    
-1. From the left navigation pane select **Insights** under the **Monitoring**, under monitoring in your Kubernetes service resource blade and you should be able to see some logs.
+1. From the left navigation pane select **Insights** under the **Monitoring** in your Kubernetes service resource blade and you should be able to see some logs.
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in the insight blade.
     
