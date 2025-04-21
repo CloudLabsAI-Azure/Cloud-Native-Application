@@ -12,7 +12,7 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
 1. Vaya al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** del grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Seleccione **Cargas de trabajo (1)** en recursos de Kubernetes en el menú del lado izquierdo y luego seleccione la implementación **contoso-traders-products (2)**.
 
-   ![Seleccionando la carga de trabajo en AKS.](media/new-cloud-native-spn-ex4-3.png "Seleccionando la carga de trabajo en AKS")
+   ![Seleccionando la carga de trabajo en AKS.](media/spanish-0980.png "Seleccionando la carga de trabajo en AKS")
 
 1. Seleccione **YAML (1)** en el menú de la izquierda en la Descripción general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar y guardar (3)**. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
 
@@ -39,7 +39,7 @@ En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se 
 
 1. En el servicio Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, seleccione **Cargas de trabajo (1)** y luego elija la implementación **contoso-traders-products (2)**. 
 
-    ![Seleccionando la carga de trabajo.](media/new-cloud-native-spn-ex4-3.png "Seleccionando la carga de trabajo")
+    ![Seleccionando la carga de trabajo en AKS.](media/spanish-0980.png "Seleccionando la carga de trabajo en AKS")
 
 1. Seleccione **YAML** en el menú de la izquierda en la Descripción general de **contoso-traders-products**.
 
@@ -153,7 +153,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 1. Después de unos momentos, encontrará que el despliegue de **contoso-traders-product** ahora está ejecutando `4` réplicas exitosamente.
 
-   ![Viendo el conjunto de réplicas en el Portal de Azure.](media/5.png "Viendo el conjunto de réplicas en el Portal de Azure")
+    ![Eliminando dos pods en ejecución.](media/5.png "Eliminando dos pods en ejecución")
 
 1. Regrese a la pestaña del navegador con la página de la aplicación web cargada. Actualice la página una y otra vez. No verá ningún error.
 
@@ -161,7 +161,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 1. Regrese a la página **contoso-traders-products| Descripción general**, seleccione **dos de los Pods (1)** al azar y elija **Eliminar (2)**.
 
-   ![Eliminando dos pods en ejecución.](media/6.png "Eliminando dos pods en ejecución")
+   ![Eliminando dos pods en ejecución.](media/spanish-90890.png "Eliminando dos pods en ejecución")
 
 1. En la página **Eliminar**, seleccione **Confirmar eliminación (1)** y haga clic en **Eliminar (2)** nuevamente.
 
@@ -196,15 +196,15 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
 2. Seleccione **Explorador de datos (1)** del menú del lado izquierdo. En **Explorador de datos**, expanda la base de datos `contentdb` **(2)**.
 
-    ![](media/9.png "MongoDB contentdb")
+    ![](media/spanish-16.png "MongoDB contentdb")
 
 4. En la base de datos `contentdb`, expanda la colección **Items (1)**, seleccione **Settings (2)**.
 
-    ![](media/exe4-task6-step3-select-settings.png "MogoDB contentdb")
+    ![](media/spanish-17.png "MogoDB contentdb")
 
 5. En la pestaña **Scale & Settings (1)**, seleccione **Autoscale (2)** para la configuración **Throughput** en **Scale** y haga clic en **Save (3)**.
 
-    ![La captura de pantalla muestra la pestaña Escala y configuración de Cosmos DB con Autoscale seleccionada](media/exe4-task6-step4-autoscale.png "Escala y configuración de la colección CosmosDB")
+    ![La captura de pantalla muestra la pestaña Escala y configuración de Cosmos DB con Autoscale seleccionada](media/spanish-188.png "Escala y configuración de la colección CosmosDB")
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
@@ -221,7 +221,7 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
 
 2. Seleccione **Cadena de conexión** en **Configuración**.
 
-   ![](media/new-cloud-native-spn-ex4-7.png "Ver cadena de conexión")
+   ![](media/spanish-20.png "Ver cadena de conexión")
 
 3. En el panel **Cadena de conexión**, copie los valores **HOST (1)**, **NOMBRE DE USUARIO (2)** y **CONTRASEÑA PRINCIPAL (3)**. Guárdelos en un archivo de texto para usarlos más adelante.
 
@@ -270,7 +270,7 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
 
 13. Observe que el **Cargo de la solicitud** ahora muestra que hubo actividad en la **cuenta de CosmosDB** que superó el límite de 400 RU/s que se estableció previamente antes de activar Autoscale.
 
-    ![La captura de pantalla muestra el gráfico de cargos de la solicitud de Cosmos DB que muestra la actividad reciente de la prueba de rendimiento](media/cosmos-request-charge.png "Gráfico de actividad reciente de CosmosDB")
+    ![La captura de pantalla muestra el gráfico de cargos de la solicitud de Cosmos DB que muestra la actividad reciente de la prueba de rendimiento](media/spanish-21.png "Gráfico de actividad reciente de CosmosDB")
     
     >**Nota**: En caso de que no vea datos en el gráfico, configure el rango de tiempo para que dure 1 hora.
 

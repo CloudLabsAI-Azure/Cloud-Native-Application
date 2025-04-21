@@ -16,6 +16,20 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
 1. Primero, realizará algunos cambios en el código fuente de su aplicación web y creará una nueva imagen de Docker basada en los últimos cambios.
 
+1. Abre una nueva ventana del símbolo del sistema.
+
+1. Ejecuta el comando proporcionado **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** Para conectarte a la VM de Linux usando ssh.
+
+    >**Nota**: En el símbolo del sistema, escribe **yes** y presiona **Enter** cuando aparezca el mensaje `¿Está seguro de que desea continuar conectándose (yes/no/[fingerprint])?`
+
+1. Una vez que la conexión SSH se establezca con la VM, por favor ingresa la contraseña de la VM proporcionada a continuación:
+
+   * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+
+     ![](media/ex1-connecttolinuxvm.png "abrir cmd")
+
+      >**Nota**: Ten en cuenta que mientras escribes la contraseña no podrás verla debido a preocupaciones de seguridad.
+
 1. Vuelva al Símbolo del sistema de Windows donde se conectó a su MV de Linux y ejecute el siguiente comando para navegar hasta el directorio donde deberá realizar los cambios en el código fuente de la aplicación web.
 
      ```bash

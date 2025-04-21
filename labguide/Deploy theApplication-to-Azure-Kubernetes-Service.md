@@ -32,10 +32,10 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
 
    - Asegúrese de estar conectado a la suscripción correcta. De lo contrario, enumere sus suscripciones y luego configure la suscripción por su ID con los siguientes comandos:
 
-   ```bash
-   az account list
-   az account set --subscription {id}
-   ```
+      ```bash
+      az account list
+      az account set --subscription {id}
+      ```
 
 1. Ejecute el siguiente comando para configurar la conexión del clúster de Kubernetes utilizando kubectl.
 
@@ -57,9 +57,9 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
 
 En esta tarea, generará un secreto en Key vault y creará la conexión entre AKS y Key Vault.
 
-1. Navegue al Portal de Azure, busque **Key Vault** en la barra de búsqueda, y seleccione **Almacenes de claves** de la lista.
+1. Navegue al Portal de Azure, busque **Key Vault (1)** en la barra de búsqueda, y seleccione **Almacenes de claves (2)** de la lista.
 
-    ![Esta es una captura de pantalla del Portal de Azure para buscar Key Vault.](media/cloudnative9.png "Buscar Key Vault")
+    ![Esta es una captura de pantalla del Portal de Azure para buscar Key Vault.](media/spanish-05.png "Buscar Key Vault")
 
 1. A continuación seleccione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />**, key vault de la lista.
 
@@ -74,10 +74,10 @@ En esta tarea, generará un secreto en Key vault y creará la conexión entre AK
 1. En el panel **Crear un secreto**, ingrese los siguientes detalles:
 
     - Nombre: **mongodbconnection**
-    - Valor secreto: Pegue la cadena de conexión de la cuenta de Azure CosmosDB for MongoDB que copió en el ejercicio anterior. 
-    - Mantenga los demás valores con la información por defecto y haga clic en **Crear**.
+    - Valor secreto: Pegue la cadena de conexión de la cuenta de Azure CosmosDB for MongoDB que copió en el ejercicio anterior. **(1)**
+    - Mantenga los demás valores con la información por defecto y haga clic en **Crear (2)**.
 
-      ![Esta es una captura de pantalla con los valores a colocar al crear un secreto.](media/mongodbconnection.jpg "Crear un secreto")
+      ![Esta es una captura de pantalla con los valores a colocar al crear un secreto.](media/spanish-06.jpg "Crear un secreto")
 
       ![Esta es una captura de pantalla con el secreto mongodbconnection creado.](media/kv5.png "Secreto mongodbconnection creado")
 
@@ -111,7 +111,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
     
     ![Esta es una captura de pantalla del Portal de Azure para AKS que muestra cómo agregar un servicio.](media/CNV2-E3-T3-S3new.png "Agregando un Servicio")
 
-3. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Aplicar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML.
+3. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Aplicar (2)**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/> (1)** proporcionado en el archivo YAML.
     >**Información**: El siguiente script YAML creará un servicio AKS dentro del espacio de nombres contoso-traders que creó en los pasos anteriores. El servicio AKS es una forma abstracta de exponer una aplicación que se ejecuta en un conjunto de Pods como un servicio de red. 
 
     ```yaml
@@ -132,15 +132,15 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
           app: contoso-traders-products
 
       ```       
-   ![Agregando con YAML.](media/new-cloud-native-spn-ex3-1.png "Agregando con YAML")
+   ![Agregando con YAML.](media/spanish-08.png "Agregando con YAML")
 
    **Nota:** Asegúrese de que la sangría en su script YAML coincida con el formato que se muestra en la imagen para evitar errores.
 
 1. Seleccione **Cargas de trabajo (1)** en la sección de recursos Kubernetes en el menú a la izquierda. Con **Implementaciones** seleccionado por defecto, elija **+ Crear (2)** y luego seleccione **Aplicar un YAML (3)**.
 
-    ![Seleccione cargas de trabajo en los recursos de Kubernetes.](media/CNV2-E3-T3-S5.png "SSeleccione cargas de trabajo en los recursos de Kubernetes")
+    ![Seleccione cargas de trabajo en los recursos de Kubernetes.](media/spanish-09.png "SSeleccione cargas de trabajo en los recursos de Kubernetes")
 
-1. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Aplicar**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
+1. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Aplicar (2)**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/> (1)** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
     >**Información**: El siguiente archivo YAML creará pods de despliegue en el espacio de nombres contoso-traders. Una implementación de Kubernetes le dice a Kubernetes cómo crear o modificar instancias de los pods que contienen una aplicación en contenedores. Las implementaciones pueden ayudar a escalar de manera eficiente el número de réplicas de pods, permitir el despliegue de código actualizado de una manera controlada o volver a una versión de implementación anterior si es necesario.
 
    ```YAML
@@ -188,11 +188,11 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
                  hostPort: 3001
                  protocol: TCP
    ```
-   ![Agregando con YAML.](media/new-cloud-native-spn-ex3-2.png "Agregando con YAML")
+   ![Agregando con YAML.](media/spanish-10.png "Agregando con YAML")
 
 1. Después de unos minutos, verá la implementación en la lista, que debería estar ejecutándose.
 
-   ![Implementación en ejecución.](media/conrunning.png "Implementación en ejecución")
+   ![Implementación en ejecución.](media/conrunning-09.png "Implementación en ejecución")
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
@@ -241,7 +241,7 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
 
 1. Regrese a la hoja de AKS en el Portal de Azure. En el menú de navegación, seleccione **Servicios y entradas** en **Recursos de Kubernetes**. Debería poder acceder al sitio web a través de un **Punto de conexión externo**.
 
-    ![Servicios y entradas de AKS mostrados con la IP externa resaltada](media/website.png "Servicios y entradas de AKS mostrados con la IP externa resaltada")
+    ![Servicios y entradas de AKS mostrados con la IP externa resaltada](media/spanish-12.png "Servicios y entradas de AKS mostrados con la IP externa resaltada")
 
     ![Accediendo a la aplicación web](media/website2.png "Accediendo a la aplicación web")
 
