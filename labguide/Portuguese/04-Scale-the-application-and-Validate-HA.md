@@ -283,7 +283,7 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
     bash ./perftest.sh
     ```
 
-    > **Nota:** O script demorará alguns minutos a concluir a sua execução.
+    > **Nota:** Não espere o script terminar; prossiga para o próximo passo.
 
 11. Assim que a execução do script estiver concluída, navegue de volta para a **Cosmos DB account** no portal Azure.
 

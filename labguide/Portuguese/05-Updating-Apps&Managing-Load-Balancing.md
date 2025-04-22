@@ -124,6 +124,8 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
    ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/webupdates.png "A implementação do pod está em curso")
 
+   >**Nota:** Se você não receber o resultado dentro de um minuto, prossiga para a próxima tarefa sem esperar. Você pode verificar o resultado mais tarde.
+
 <validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
@@ -342,7 +344,9 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
         > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
         > ```
 
-    Pode demorar 5 a 30 minutos até que o tls-secret fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt.
+      > Pode demorar 5 a 30 minutos até que o tls-secret fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt. Também, anote o nome DNS, vamos usá-lo mais tarde nas mesmas tarefas.
+
+      ![](../media/english-09.png)
 
 16. Agora pode criar um recurso de entrada para as aplicações de conteúdo.
 
@@ -405,6 +409,8 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 21. Atualize o endpoint de entrada no seu browser. Deverá poder visitar o site e ver todo o conteúdo.
 
     ![](../media/16.png)
+
+    >**Nota:** Se o site não aparecer ao acessá-lo pelo IP, use o nome DNS que você copiou. Adicione `http://` antes, cole no navegador e verifique.
 
 22. Teste a terminação do TLS visitando novamente os serviços utilizando `https`.
 
