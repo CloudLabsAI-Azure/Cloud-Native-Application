@@ -260,7 +260,7 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
     bash ./perftest.sh
     ```
 
-    > **Nota:** El script tardará unos minutos en completar su ejecución.
+    > **Nota:** No esperes a que el script termine; continúa con el siguiente paso.
 
 11. Una vez que se complete la ejecución del script, regrese a la **Cuenta de CosmosDB** en el Portal de Azure.
 

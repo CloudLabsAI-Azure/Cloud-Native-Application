@@ -119,6 +119,8 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
    ![Actualización de la página web.](media/webupdates.png "Actualización de la página web")
 
+    >**Nota:** Si no recibes el resultado en un minuto, continúa con la siguiente tarea sin esperar. Puedes revisar el resultado más tarde.
+
 <validation step="2ff92949-6873-481f-9805-f362697ba094" />
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
@@ -336,7 +338,9 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
     > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
     > ```
 
-    Pueden pasar entre 5 y 30 minutos antes de que tls-secret esté disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt.
+    > Pueden pasar entre 5 y 30 minutos antes de que tls-secret esté disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt. También, anota el nombre DNS, lo usaremos más adelante en las mismas tareas.
+
+    ![](media/english-09.png)
 
 1. Ahora puede crear un recurso de Ingress para las aplicaciones de contenido.
  
@@ -394,7 +398,9 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
 1. Actualice el punto de conexión de Ingress en su navegador. Debería poder visitar el sitio web y ver todo el contenido.
 
-    ![](media/16.png )
+    ![](media/16.png)
+
+    > **Nota:** Si el sitio web no aparece al acceder a través de la IP, utiliza el nombre DNS que copiaste. Añade `http://` antes, pégalo en el navegador y verifica.
    
 1. Pruebe la terminación TLS visitando los servicios nuevamente usando `https://`.
 
