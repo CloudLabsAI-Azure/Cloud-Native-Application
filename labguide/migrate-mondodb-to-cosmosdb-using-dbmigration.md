@@ -87,7 +87,7 @@ In this task, you will create a Migration project within Azure Database Migratio
     - **Project name**: `contoso` **(1)**
     - **Source server type**: `MongoDB` **(2)**
     - **Target server type**: `Cosmos DB (MongoDB API)` **(3)**
-    - **Choose type of activity**: `Offline data migration` **(4)**
+    - **Choose type activity**: `Offline data migration` **(4)**
 
       ![The screenshot shows the New migration project pane with values entered.](media/ex2-newmigrationproject.png  "New migration project pane")
 
@@ -96,7 +96,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 1. On the **MongoDB to Azure Database for CosmosDB Offline Migration Wizard** pane, enter the following values for the **Select source** tab:
 
     - Mode: **Standard mode (1)**
-    - Source server name: Enter the Private IP Address of the Build Agent VM used in this lab. **(2)**
+    - Source server name: Enter the Private IP Address of the **contosotraders** VM used in this lab. **(2)**
     - Server port: `27017` **(3)**
     - Require SSL: Unchecked **(4)**
     - Choose **Next: Select target >> (5)**
@@ -126,7 +126,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
       ![The Select target tab with values selected.](media/targetmongo-01.png "MongoDB to Azure Database for Cosmos DB - Select target")
 
-      >**Note:** Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
+      >**Note:** Notice, the **Connection String** will automatically populate with the Key for your Azure CosmosDB instance.
 
 1. Select **Next: Database setting >>**.
 
@@ -142,7 +142,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media/migratedata-dul.png "Migration summary")
 
-1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **complete**. 
+1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **Complete**. 
 
    ![The screenshot shows the MigrateData activity showing the status has completed.](media/completed.png "MigrateData activity completed")
 
