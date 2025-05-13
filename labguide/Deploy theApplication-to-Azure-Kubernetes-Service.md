@@ -31,15 +31,14 @@ This task will gather the information you need about your Azure Kubernetes Servi
     ```bash
     choco install azure-cli
     ```
-
-
-1. Run the following command to set up the Kubernetes cluster connection using kubectl.
+    
+2. Run the following command to set up the Kubernetes cluster connection using kubectl.
 
    ```bash
    az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
    ```
 
-1. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
+3. Run a quick kubectl command to generate a list of nodes to verify if the setup is correct.
 
    ```bash
    kubectl get nodes
