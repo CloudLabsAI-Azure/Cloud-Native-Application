@@ -1,10 +1,19 @@
 # Ejercicio 3: Implementar la aplicación en Azure Kubernetes Service
 
-### Duración : 40 Minutos
+### Duración estimada: 120 minutos
 
 ## Descripción general
 
 En este ejercicio, desplegará su aplicación web en contenedores hacia AKS (Azure Kubernetes Service) con la ayuda de Key Vault Secrets y ACR, donde almacenó las imágenes de su aplicación web en contenedores. Además, explorará dos formas de desplegar la aplicación en AKS.
+
+## Objetivos del laboratorio
+
+Podrá completar las siguientes tareas:
+
+- Tarea 1: Tunelizar en el clúster de Azure Kubernetes Service
+- Tarea 2: Implementar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service mediante el Portal de Azure
+- Tarea 3: Implementar un servicio y una carga de trabajo mediante kubectl
+
 
 ## Tarea 1: Túnel hacia el clúster de Azure Kubernetes Service 
 
@@ -24,19 +33,6 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
     choco install azure-cli
     ```
 
-1. Verifique que esté conectado a la suscripción correcta con el siguiente comando para mostrar su suscripción predeterminada:
-
-   ```bash
-   az account show
-   ```
-
-   - Asegúrese de estar conectado a la suscripción correcta. De lo contrario, enumere sus suscripciones y luego configure la suscripción por su ID con los siguientes comandos:
-
-      ```bash
-      az account list
-      az account set --subscription {id}
-      ```
-
 1. Ejecute el siguiente comando para configurar la conexión del clúster de Kubernetes utilizando kubectl.
 
    ```bash
@@ -53,53 +49,8 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
 
    ![En esta captura de pantalla de la consola, kubectl get nodes se escribió y ejecutó en el símbolo del sistema, lo que produce una lista de nodos.](media/cloudnative5.png "kubectl get nodes")   
 
-## Tarea 2: Configurar Key Vault & Secretos
 
-En esta tarea, generará un secreto en Key vault y creará la conexión entre AKS y Key Vault.
-
-1. Navegue al Portal de Azure, busque **Key Vault (1)** en la barra de búsqueda, y seleccione **Almacenes de claves (2)** de la lista.
-
-    ![Esta es una captura de pantalla del Portal de Azure para buscar Key Vault.](media/spanish-05.png "Buscar Key Vault")
-
-1. A continuación seleccione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />**, key vault de la lista.
-
-1. Una vez que esté en la página del Almacén de claves **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** , seleccione **Secretos** debajo de Objetos en el menú lateral izquierdo.
-
-    ![Esta es una captura de pantalla del Portal de Azure accediendo a los secretos del key vault.](media/kv2.png "Select Key Vault secrets")
-    
-1. Ahora haga clic en el botón **Generar o importar** para crear el nuevo secreto.
-
-    ![Esta es una captura de pantalla del portal de Azure para generar un nuevo secreto.](media/kv3.png "Generar un secreto")
-    
-1. En el panel **Crear un secreto**, ingrese los siguientes detalles:
-
-    - Nombre: **mongodbconnection**
-    - Valor secreto: Pegue la cadena de conexión de la cuenta de Azure CosmosDB for MongoDB que copió en el ejercicio anterior. **(1)**
-    - Mantenga los demás valores con la información por defecto y haga clic en **Crear (2)**.
-
-      ![Esta es una captura de pantalla con los valores a colocar al crear un secreto.](media/spanish-06.jpg "Crear un secreto")
-
-      ![Esta es una captura de pantalla con el secreto mongodbconnection creado.](media/kv5.png "Secreto mongodbconnection creado")
-
-1. Abra un nuevo **Símbolo del sistema** y ejecute el siguiente comando para crear un secreto usando kubectl. 
-
-    ```sh
-    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnection --namespace=contoso-traders
-    ```
-    ![Esta es una captura de pantalla para crear un secreto usando kubectl.](media/3..1.png "kubectl create secret")
-    
-1. Vuelva al navegador y abra el AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure, seleccione **Configuración (1)** del menú del lado izquierdo y haga clic en la sección **Secretos (2)**. En **Secretos (3)**, debería poder ver el secreto recién creado. 
-
-     ![Esta es una captura de pantalla del Portal de Azure para visualizar los secretos de AKS.](media/aksfinal.png "Visualizando los secretos de AKS")     
-
-> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
-> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
-> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
-> - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
-
-<validation step="90140152-1f25-4761-805f-6ecb42cd0f5b" />
-
-## Tarea 3: Desplegar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service utilizando el Portal de Azure
+## Tarea 2: Implementar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service mediante el Portal de Azure
    
 En esta tarea, implementará la aplicación API Carts en el clúster de Azure Kubernetes Service utilizando el Portal de Azure.
    
@@ -201,7 +152,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 
 <validation step="5027ff24-34ab-49f1-9fa2-72e214db0831" />
 
-## Tarea 4: Implementar un servicio y una carga de trabajo usando kubectl
+## Tarea 3: Implementar un servicio y una carga de trabajo mediante kubectl
 
 En esta tarea, implementará el servicio web y su carga de trabajo utilizando kubectl.
 
