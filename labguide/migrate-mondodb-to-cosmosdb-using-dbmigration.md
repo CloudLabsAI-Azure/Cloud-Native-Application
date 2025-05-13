@@ -10,26 +10,37 @@ En este ejercicio, migrará su base de datos MongoDB on-premises (local) hospeda
 
 En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina Virtual Linux de Azure y explorará las bases de datos y colecciones que contiene.
 
-1. Mientras está conectado a su MV Linux, ejecute el siguiente comando para conectarse a Mongo shell y mostrar las bases de datos y colecciones que contiene usando Mongo shell.
+1. Conéctese a su máquina virtual Linux y ejecute el siguiente comando para comprobar si MongoDB está instalado:
 
    ```
-   mongo
-   ```
+   mongo --version
+   ```  
 
-   >**Nota:** Las advertencias que se muestran después de ejecutar el comando se pueden ignorar.
-   
-   >**Nota**: Si tiene un problema al conectarse a la base de datos de origen con un error de conexión rechazada, ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, escriba **yes** cuando diga **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e ingrese la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante ssh. Ejecute los siguientes comandos y vuelva a realizar el paso 1 de la tarea. 
+   >**Nota:** Si MongoDB está instalado, continúe con el siguiente paso. Si no lo está, siga los pasos de solución de problemas a continuación.
+
+   >Ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**. Escriba **yes** en el mensaje **Are you sure you want to continue connection (yes/no/[fingerprint])?** e introduzca la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante SSH. Ejecute los siguientes comandos.
+
 
    ```
    sudo apt install mongodb-server
    cd /etc
    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+   cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
+   npm ci
+   nodejs server.js   
    sudo service mongodb stop
    sudo service mongodb start
-   ```
-   
+   ```   
+
    ![](media/EX2-T1-S1.png)
+
+1. Mientras esté conectado a su máquina virtual Linux, ejecute el siguiente comando para conectarse al shell mongo para mostrar las bases de datos y colecciones en él usando el shell mongo.
+
+   ```
+   mongo
+   ```
+
    
 1. Ejecute los siguientes comandos para verificar la base de datos en Mongo shell. Debería poder ver la base de datos **contentdb** disponible y las colecciones **item & products** dentro de **contentdb**.
 
@@ -41,17 +52,6 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    
    ![](media/mongo.png) 
 
-   >**Nota**: En caso de que no vea los datos dentro de Mongo. Siga los pasos que se mencionan a continuación.
-
-   - Ingrese `exit` para salir de Mongo.
-
-   - Por favor ejecute los comandos que se mencionan a continuación en el símbolo del sistema y realice los pasos 1 y 2 nuevamente.
-
-      ```
-      cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
-      sudo npm ci
-      nodejs server.js
-      ```     
 
 ## Tarea 2: Crear un Proyecto de Migración y migrar datos a Azure CosmosDB
 
