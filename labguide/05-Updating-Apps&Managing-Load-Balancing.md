@@ -124,21 +124,36 @@ In this task, you will edit the web application source code to update some confi
      
     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
 
-1. Now try describing the latest pods again and see which image is mapped with the pod.
+1. Run the below kubectl command to get the current updated pods in your AKS. Copy the name of the **contoso-traders-web###** to the notepad. 
 
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
+    ```bash
+    kubectl get pods -n contoso-traders
+    ```
+    
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9-1.png "Pod deployment is in progress")
+
+1. Now run the below command to describe the latest pods and see which image is mapped with the pod. Make sure to update the **PODNAME** value with the value you copied in the last step.
+
+     ```bash
+     kubectl describe pods [PODNAME] -n contoso-traders
+     ```
+
+     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
+
     
 1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
 
-<validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-    
+
+<validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
+
 ### Task 2: Configure Kubernetes Ingress
 
 This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.
