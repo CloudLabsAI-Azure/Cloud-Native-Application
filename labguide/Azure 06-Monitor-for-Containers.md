@@ -1,6 +1,6 @@
-# Ejercicio 6: Azure Monitor para contenedores - Opcional
+# Ejercicio 6: Azure Monitor para Contenedores
 
-### Duración : 10 Minutos
+### Duración estimada: 40 minutos
 
 ## Descripción general
 
@@ -11,11 +11,16 @@ Algunos ejemplos de lo que puede hacer con Azure Monitor incluyen:
 - Detectar y diagnosticar problemas entre aplicaciones y dependencias con Application Insights.
 - Correlacionar problemas de infraestructura con información de MV y de contenedores.
 - Recopile datos de recursos monitoreados mediante Azure Monitor Metrics.
-  
+
+## Objetivos del laboratorio
+
+Podrá completar las siguientes tareas:
+
+- Tarea 1: Revisar las métricas de Azure Monitor  
 
 ## Tarea 1: Revisar las métricas de Azure Monitor
 
-En esta tarea, revisará el clúster de AKS monitoreado.
+En esta tarea, revisará el clúster de AKS supervisado. Esta tarea se centra en la revisión visual de las métricas y los registros disponibles en Azure Monitor para su clúster de AKS. No se prevé la detección de alertas ni problemas a menos que se configuren explícitamente.
 
 1. Vuelva al Portal de Azure en el navegador y busque **aks (1)**. Seleccione **Servicios de Kubernetes (2)** en el resultado.
 
@@ -26,7 +31,9 @@ En esta tarea, revisará el clúster de AKS monitoreado.
 1. En la sección Información de la hoja de recursos del servicio Kubernetes debería poder ver algunos registros.
 
    > **Nota**: Azure Monitor puede tardar hasta 15 minutos en mostrar datos en la hoja de información.
-    
+
+   > **Importante**: Esta tarea es solo para revisión visual. Si desea explorar las alertas, puede configurar una regla de alerta en Azure Monitor. Por ejemplo, puede crear una alerta para un uso elevado de CPU o de memoria. Consulte la documentación de Azure para obtener instrucciones sobre cómo configurar reglas de alerta.
+
     ![Esta es una captura de pantalla que muestra datos monitoreados en el servicio Kubernetes.](media/12.png "Datos monitoreados del servicio Kubernetes")
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
@@ -38,6 +45,6 @@ En esta tarea, revisará el clúster de AKS monitoreado.
 
 ## Resumen
 
-En este ejercicio, revisó la información sobre contenedores de Azure Monitor para el clúster de AKS.
+En este ejercicio, ha revisado la información del contenedor de Azure Monitor para el clúster de AKS.
 
-## Fin del laboratorio
+### ¡Ha completado el laboratorio correctamente!
