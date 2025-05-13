@@ -17,25 +17,36 @@ You will be able to complete the following tasks:
 
 In this task, you will be connecting to a Mongodb database hosted on an Azure Linux VM and exploring the databases and collections in it.
 
-1. While connected to your Linux VM, run the following command to connect to the mongo shell to display the databases and collections in it using the mongo shell.
+1. While connected to your Linux VM, run the following command to verify whether MongoDB is installed:
 
    ```
-   mongo
-   ```
-   
-   >**Note**: If you face an issue while connecting to the source DB with an error connection is refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command, Type **yes** when it says **Are you sure you want to continue connecting (yes/no/[fingerprint])?** and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using ssh. Please run the following commands and reperform step 1 of the task.
+   mongo --version
+   ```   
+
+   >**Note:** If MongoDB is installed, proceed to the next step. If it is not installed, follow the troubleshooting steps provided below.
+
+   >Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command, Type **yes** when it says **Are you sure you want to continue connecting (yes/no/[fingerprint])?** and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using ssh. Please run the following commands.
 
    ```
    sudo apt install mongodb-server
    cd /etc
    sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
    sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+   cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
+   npm ci
+   nodejs server.js   
    sudo service mongodb stop
    sudo service mongodb start
+   ```   
+
+
+1. While connected to your Linux VM, run the following command to connect to the mongo shell to display the databases and collections in it using the mongo shell.
+
    ```
-   
-   ![](media/ex2-mongo2.png)
-   
+   mongo
+   ```
+
+
 1. Run the following commands to verify the database in the mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
 
    ```
@@ -46,17 +57,6 @@ In this task, you will be connecting to a Mongodb database hosted on an Azure Li
    
    ![](media/mongo.png) 
 
-   >**Note**: In case you don't see the data inside the mongo. Please follow the steps mentioned below.
-
-   - Enter `exit` to exit from mongo.
-
-   - Please run the below-mentioned commands in the command prompt and perform steps 1 and 2 again.
-
-      ```
-      cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
-      npm ci
-      nodejs server.js
-      ```     
 
 ### Task 2: Create Migration Project and migrate data to Azure Cosmos DB
 
@@ -66,7 +66,12 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/privateip.png)
 
-1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" />** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Cosmos DB resource and click on **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
+1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" />** **(1)** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(2)** Cosmos DB resource.
+
+   ![](media/select-cosmos-db.png)
+
+
+1. Click on **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
 
    ![](media/cosmosdb_newcollection1.png)
 
@@ -76,7 +81,9 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    >**Note:** To see the configurations, ensure that Provision throughput is **Checked**.
 
-1. Navigate to the Azure Database Migration Service **contosotraders<inject key="DeploymentID" enableCopy="false" />** resource blade in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. In the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group, search for **contosotraders<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure Database Migration Service resource and navigate to that resource **(2)**
+
+   ![](media/select-azure-dms.png)
 
 1. On the Azure Database Migration Service blade, select **+ New Migration Project** on the **Overview** pane.
 
@@ -160,12 +167,13 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+
+<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
 
 ## Summary
 
