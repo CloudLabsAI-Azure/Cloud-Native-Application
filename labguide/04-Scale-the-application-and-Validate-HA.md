@@ -1,10 +1,22 @@
 # Ejercicio 4: Escalar la aplicación y validar la Alta Disponibilidad
 
-### Duración : 40 minutos
+### Duración estimada: 120 minutos
 
 ## Descripción general
 
 En este punto, ha desplegado una sola instancia de los contenedores de servicios Web y API Productos. En este ejercicio, aumentará el número de instancias de contenedor para el servicio web y escalará el front-end en el clúster existente.
+
+## Objetivos del laboratorio
+
+Podrá completar las siguientes tareas:
+
+- Tarea 1: Modificar las implementaciones de recursos de Kubernetes en el servicio de Kubernetes
+- Tarea 2: Resolver errores de aprovisionamiento de réplicas
+- Tarea 3: Configurar el escalado automático horizontal para pods del servicio Kubernetes
+- Tarea 4: Escalado automático en el clúster de Azure Kubernetes Service
+- Tarea 5: Reiniciar los contenedores y validar la alta disponibilidad (HA)
+- Tarea 6: Configurar el escalado automático de Cosmos DB
+- Tarea 7: Probar el escalado automático de Cosmos DB
 
 ## Tarea 1: Modificar las implementaciones de recursos de Kubernetes en el servicio de Kubernetes
 
@@ -26,6 +38,8 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
     ![Aplicación web funcionando correctamente.](media/11.png "Aplicación web funcionando correctamente")
 
+1. Si encontró algún error o problema al agregar una nueva instancia en la Tarea 2, continúe con la Tarea 2 para solucionarlo. Si no encontró ningún problema, omita la Tarea 2 y continúe directamente con la Tarea 3.
+
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
@@ -33,9 +47,9 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
 <validation step="	39567d0b-df57-4e1b-a388-c7e0c82f4bc6" />
 
-## Tarea 2: Resolver el aprovisionamiento de réplicas fallido
+## Tarea 2: Resolver errores de aprovisionamiento de réplicas
 
-En esta tarea, resolverá las réplicas de API que han fallado. Estas fallas se producen por la imposibilidad de satisfacer los recursos solicitados.
+En esta tarea, resolverá las réplicas de API fallidas, que suelen ocurrir debido a la falta de recursos para cumplir con los requisitos solicitados. Realice esta tarea solo si encontró errores o problemas en la tarea anterior. Si no encontró problemas, puede omitir esta tarea.
 
 1. En el servicio Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, seleccione **Cargas de trabajo (1)** y luego elija la implementación **contoso-traders-products (2)**. 
 
@@ -95,7 +109,7 @@ En esta tarea, configurará el autoescalado horizontal para sus pods del servici
 
    >**Nota:** Si no obtiene el resultado esperado, espere unos minutos ya que puede tardar un tiempo en reflejarse.
 
-## Tarea 4: Autoescalado en el clúster de Azure Kubernetes Service
+## Tarea 4: Escalado automático en el clúster de Azure Kubernetes Service
 
 En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS existente y escalará automáticamente los grupos de nodos del clúster.
 
@@ -139,7 +153,7 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
    
    >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la actualización. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente.
 
-## Tarea 5: Reiniciar contenedores y validar HA
+## Tarea 5: Reiniciar los contenedores y validar la alta disponibilidad (HA)
 
 En esta tarea, reiniciará los contenedores y validará que el reinicio no afecte al servicio en ejecución.
 
@@ -188,7 +202,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 <validation step="	010994f7-b80b-4ba5-a807-e1d6ac030ea7" />
 
-## Tarea 6: Configurar Autoscale en CosmosDB
+## Tarea 6: Configurar el escalado automático de Cosmos DB
 
 En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
@@ -213,7 +227,7 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
 <validation step="56f38190-cea0-441f-ba7d-717395a4a622" />
 
-## Tarea 7: Probar Autoscale de CosmosDB
+## Tarea 7: Probar el escalado automático de Cosmos DB
 
 En esta tarea, ejecutará un script de prueba de rendimiento que probará la característica Autoscale de Azure Cosmos DB para que pueda ver que ahora escalará a más de 400 RU/s.
 
@@ -277,7 +291,6 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
 14. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
       
-
 ## Resumen
 
 En este ejercicio, ha aumentado las instancias de servicio y configurado el autoescalado horizontal para los pods de AKS. Además, ha configurado y probado CosmosDB Autoscale.

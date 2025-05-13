@@ -1,12 +1,19 @@
 # Ejercicio 5: Actualización de Aplicaciones y Gestión de Kubernetes Ingress
 
-### Duración : 40 minutos
+### Duración estimada: 70 minutos
 
 ## Descripción general
 
 En el ejercicio anterior, introdujimos una restricción a las propiedades de escalado del servicio. En este ejercicio, configurará las implementaciones de API para crear pods que utilicen asignaciones de puertos dinámicas para eliminar la restricción de recursos del puerto durante las actividades de escalado.
 
 Los servicios de Kubernetes pueden descubrir los puertos asignados a cada pod, lo que le permite ejecutar varias instancias del pod en el mismo nodo del agente --- algo que no es posible cuando configura un puerto estático específico (como 3001 para el servicio API).
+
+## Objetivos del laboratorio
+
+Podrá completar las siguientes tareas:
+
+- Tarea 1: Realizar una actualización continua
+- Tarea 2: Configurar Kubernetes Ingress
 
 ## Tarea 1: Realizar una actualización continua
  
@@ -111,9 +118,24 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
      
      ![Configurando la nueva imagen de los pods.](media/EX5-T1-S11.png "kubectl set image deployments")
 
-1. Ahora intente describir los pods más recientes nuevamente y vea qué imagen está asignada al pod.
+1. Ejecute el siguiente comando kubectl para obtener los pods actualizados en su AKS. Copie el nombre **contoso-traders-web###** en el bloc de notas.
+
+
+    ```bash
+    kubectl get pods -n contoso-traders
+    ```
+
+   ![Obteniendo los pods.](media/EX5-T1-S9-1.png "get pods")
+
+1. Ahora ejecute el siguiente comando para describir los pods más recientes y ver qué imagen está asignada a cada uno. Asegúrese de actualizar el valor **PODNAME** con el valor que copió en el paso anterior.
+
+
+     ```bash
+     kubectl describe pods [PODNAME] -n contoso-traders
+     ```
 
      ![Descripción de los pods más recientes.](media/imageupdates2.png "Descripción de los pods más recientes")
+
     
 1. Una vez realizada la actualización de la imagen en el pod, regrese al portal de Azure y explore/actualice la página de la aplicación web nuevamente y debería poder ver los cambios en la página de inicio.
 
@@ -121,12 +143,14 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
     >**Nota:** Si no recibes el resultado en un minuto, continúa con la siguiente tarea sin esperar. Puedes revisar el resultado más tarde.
 
-<validation step="2ff92949-6873-481f-9805-f362697ba094" />
+
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
 > - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
+
+<validation step="2ff92949-6873-481f-9805-f362697ba094" />
 
 ## Tarea 2: Configurar Kubernetes Ingress
 

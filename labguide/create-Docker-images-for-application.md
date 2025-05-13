@@ -1,11 +1,18 @@
 # Ejercicio 1: Crear Imágenes de Docker para la Aplicación
   
-### Duración: 30 Minutos
+### Duración estimada: 65 minutos
 
 ## Descripción General
 
 En este ejercicio, aprenderá a containerizar la aplicación Contoso Traders utilizando imágenes de Docker. Las aplicaciones en contenedores son aplicaciones que se ejecutan en entornos de ejecución aislados llamados contenedores. Una imagen de Docker es un archivo que se utiliza para ejecutar código en un contenedor de Docker. Las imágenes de Docker actúan como un conjunto de instrucciones para crear un contenedor Docker, como una plantilla. Además, enviará las imágenes de Docker creadas a Azure Container Registry.
-   
+
+## Objetivos del laboratorio
+
+Podrá completar las siguientes tareas:
+
+- Tarea 1: Configurar una infraestructura local con la máquina virtual Linux
+- Tarea 2: Crear imágenes de Docker para contenerizar la aplicación y enviarlas a Container Registry
+
 ## Tarea 1: Configurar una infraestructura local con la Máquina Virtual Linux
 
 En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilación mediante el Símbolo del sistema y clonará el repositorio de GitHub del sitio web de Contoso Traders.
@@ -113,6 +120,8 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     ```
     
     ![](media/screenshot1.png)
+
+    >**Nota:** Este paso puede tardar entre 1 y 2 minutos para generar la imagen de Docker.
     
 1. Repita los pasos para crear la imagen docker **contosotraders-Products** con el siguiente comando. 
 
@@ -121,6 +130,8 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     ```
 
     ![](media/api-products.png)
+
+    >**Nota:** Este paso puede tardar entre 1 y 2 minutos para generar la imagen de Docker.
 
 1. Ejecute el siguiente comando para cambiar el directorio a `services` y abra el archivo `configService.js`.
 
@@ -215,3 +226,5 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 ## Resumen
 
 En este ejercicio, ha contenedorizado completamente su aplicación web con la ayuda de Docker y la ha empujado al registro de contenedores.
+
+### Ha completado el laboratorio correctamente. Haga clic en **Siguiente >>** para continuar con el siguiente ejercicio.
