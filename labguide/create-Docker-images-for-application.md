@@ -113,7 +113,9 @@ In this task, you will be building the Docker images to containerize the applica
     ```
     
     ![](media/screenshot1.png)
-    
+
+    >**Note:** This step might take 1-2 minutes to build docker image.
+
 1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. 
 
     ```
@@ -121,6 +123,8 @@ In this task, you will be building the Docker images to containerize the applica
     ```
 
     ![](media/api-products.png)
+
+    >**Note:** This step might take 1-2 minutes to build docker image.
 
 1. Run the below command to change the directory to `services` and open the `configService.js` file.
 

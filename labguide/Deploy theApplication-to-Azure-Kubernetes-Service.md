@@ -32,18 +32,6 @@ This task will gather the information you need about your Azure Kubernetes Servi
     choco install azure-cli
     ```
 
-1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
-
-   ```bash
-   az account show
-   ```
-
-   - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
-
-      ```bash
-      az account list
-      az account set --subscription {id}
-      ```
 
 1. Run the following command to set up the Kubernetes cluster connection using kubectl.
 
@@ -160,12 +148,13 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/18042025(3).png "Selecting + Add to create a deployment")
 
-<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+
+<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
 
 ### Task 3: Deploy a service & workload using kubectl
 
@@ -212,13 +201,14 @@ In this task, you will deploy the web service & its workload using kubectl.
     
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-<validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-     
+
+<validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+
 ## Summary
 
 In this exercise, you have deployed your containerized web application to AKS that contains the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint.

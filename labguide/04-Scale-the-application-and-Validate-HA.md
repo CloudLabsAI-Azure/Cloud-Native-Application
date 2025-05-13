@@ -26,11 +26,15 @@ In this task, you will increase the number of instances for the API deployment i
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/18042025(3).png "Setting replicas to 2")
 
-1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. When prompted to confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. 
 
    ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/new-cloud-native-eng-ex4-01.png "Setting replicas to 2")
 
-    >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.
+1. When prompted to confirm manifest change, check **Confirm manifest change (1)** and select **Save (2)**. Then, click on **Overview (3)** to navigate back to deployments.
+
+    ![](media/confirm-manifest-changes.png)
+
+    >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.    
 
 1. It is currently deploying, and you can see that there is one healthy instance and one awaiting instance.
 
@@ -38,16 +42,18 @@ In this task, you will increase the number of instances for the API deployment i
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
 
-<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
+1. If you encountered any errors or issues while adding a new instance in Task 2, continue with Task 2 to troubleshoot and resolve them. If no issues were encountered, skip Task 2 and proceed directly to Task 3.
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
+<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
+
 ### Task 2: Resolve failed replica provisioning 
 
-In this task, you will resolve the failed API replicas. These failures occur due to the inability to meet the requested resources.
+In this task, you will resolve failed API replicas, which typically occur due to insufficient resources to meet the requested requirements. Perform this task only if you encountered errors or issues in the previous task. If no issues were encountered, you may skip this task.
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
 
@@ -159,11 +165,15 @@ In this task, you will restart containers and validate that the restart does not
 
    ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")
 
-1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**, and when prompted, Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**.
  
    ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/new-cloud-native-eng-ex4-5.png "API pod deployments")
 
-1. After a few moments, you will find that the **contoso-traders-product** deployment is now running `4` replicas successfully.
+1. When prompted to confirm manifest change, check **Confirm manifest change (1)** and select **Save (2)**. Then, click on **Overview (3)** to navigate back to deployments.
+
+    ![](media/confirm-manifest-changes.png)
+
+1. You will find that the **contoso-traders-product** deployment is now running `4` replicas successfully after 5 minutes.
 
     ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/contosoproducts.png "View web task hostname")
 
@@ -193,12 +203,14 @@ In this task, you will restart containers and validate that the restart does not
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/11.png "View replica details")
 
-<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
+
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+
+<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
 
 ### Task 6: Configure Cosmos DB Autoscale
 
@@ -217,6 +229,12 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
 
     ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autoscale1.png "CosmosDB collection scale and settings")
+
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - If you receive a success message, you can proceed to the next task.
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
    <validation step="772e22fb-588f-41b1-b761-428e48c79279" />
 
@@ -267,7 +285,7 @@ In this task, you will run a performance test script that will test the Autoscal
     bash ./perftest.sh
     ```
 
-    > **Note:** The script will take a few minutes to complete its execution.
+    > **Note:** The script will take a few minutes to complete its execution, if the script get stuck while getting executed, click `Ctrl+C` to stop the script.
 
 11. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
 
