@@ -129,12 +129,11 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
 1. Ahora ejecute el siguiente comando para describir los pods más recientes y ver qué imagen está asignada a cada uno. Asegúrese de actualizar el valor **PODNAME** con el valor que copió en el paso anterior.
 
-
      ```bash
      kubectl describe pods [PODNAME] -n contoso-traders
      ```
 
-     ![Descripción de los pods más recientes.](media/imageupdates2.png "Descripción de los pods más recientes")
+   ![Descripción de los pods más recientes.](media/imageupdates2.png "Descripción de los pods más recientes")
 
     
 1. Una vez realizada la actualización de la imagen en el pod, regrese al portal de Azure y explore/actualice la página de la aplicación web nuevamente y debería poder ver los cambios en la página de inicio.
