@@ -1,10 +1,18 @@
 # Ejercicio 2: Migrar MongoDB a Cosmos DB mediante Azure Database Migration
   
-### Duración : 30 Minutos
+### Duración estimada: 65 minutos
 
 ## Descripción General
 
 En este ejercicio, migrará su base de datos MongoDB on-premises (local) hospedada en una Máquina Virtual (MV) Linux de Azure a Azure CosmosDB utilizando la Azure Database Migration. Azure Database Migration Service es una herramienta que le ayuda a simplificar, guiar y automatizar la migración de su base de datos a Azure.
+
+## Objetivos del laboratorio
+
+Podrá completar las siguientes tareas:
+
+- Tarea 1: Explorar las bases de datos y colecciones en MongoDB
+- Tarea 2: Crear un proyecto de migración y migrar datos a Azure Cosmos DB
+
 
 ## Tarea 1: Explorar las bases de datos y colecciones en MongoDB
 
@@ -173,3 +181,5 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 ## Resumen
 
 En este ejercicio, completó la exploración de su MongoDB on-premises (local) y la migración de su base de datos MongoDB local a Azure CosmosDB mediante el servicio Azure Database Migration.
+
+### Ha completado el laboratorio correctamente. Haga clic en **Siguiente >>** para continuar con el siguiente ejercicio.
