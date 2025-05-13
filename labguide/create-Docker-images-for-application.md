@@ -113,6 +113,8 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     ```
     
     ![](media/screenshot1.png)
+
+    >**Nota:** Este paso puede tardar entre 1 y 2 minutos para generar la imagen de Docker.
     
 1. Repita los pasos para crear la imagen docker **contosotraders-Products** con el siguiente comando. 
 
@@ -121,6 +123,8 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     ```
 
     ![](media/api-products.png)
+
+    >**Nota:** Este paso puede tardar entre 1 y 2 minutos para generar la imagen de Docker.
 
 1. Ejecute el siguiente comando para cambiar el directorio a `services` y abra el archivo `configService.js`.
 
