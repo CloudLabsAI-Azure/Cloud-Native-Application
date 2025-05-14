@@ -27,14 +27,17 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 1. Log in to Azure with the below commands after updating the values in the command.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
-   
-      ```bash
-      az login -u [username] -p [Password]
-      ```
+    ```bash
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
+    ```
 
-      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn29.png "Add a Namespace")    
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn29.png "Add a Namespace")
+
+     > **Note:** If you face any error while running the 'az' command, then run the below command to install the Azure CLI and close the command prompt. Re-perform step 1 in a new command prompt as Administrator.
+
+    ```bash
+    choco install azure-cli
+    ```
     
 1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
 
@@ -212,11 +215,8 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Log in to Azure if not already done with the below command after updating the values in the command.
 
-   * Username: **<inject key="AzureAdUserEmail"></inject>**
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
-
-    ```
-    az login -u [username] -p [Password]
+    ```bash
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
 1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
