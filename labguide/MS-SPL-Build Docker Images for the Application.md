@@ -176,7 +176,7 @@ In this task, you will be building the Docker images to containerize the applica
 
     ![](media/cn7.png)
 
-1. Navigate to the Azure portal, search for **Resource group (1)** and select **Resource group (2)** from the services.      
+1. Navigate to the Azure portal, search for **Resource group (1)** and select **Resource groups (2)** from the services.      
 
    ![](media/cn8.png)
 
@@ -184,13 +184,13 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/cn9.png)
 
-1. Open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
    ![](media/cn10.png)
-   
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys (2)** under Settings from left side menu. **Copy** the **Password (3)** and paste it into a text file for later use.
 
-   ![](media/ex1-acr2.png)    
+1. From the **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** container registry, navigate to **Access keys (2)** under **Settings** in the left menu, then copy the **Password (3)** and save it in a notepad for later use.
+
+   ![](media/14052025(5).png)    
 
 1. Now, log in to ACR using the command below. Please update the ACR password value in the command below. You should be able to see the output below in the screenshot. Make sure to replace the `[password]` with the copied container registry password, which you have copied in the previous step in the below command.
 
