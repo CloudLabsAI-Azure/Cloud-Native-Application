@@ -85,7 +85,7 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/cn1.png)
    
-1. On the **Sign in to Microsoft Azure** tab, you will see a login screen, in that enter the following email/username and then click on **Next**.
+1. On the **Sign in to Microsoft Azure** tab, you will see a login screen. Enter the following email/username and then click on **Next**.
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
 
@@ -103,7 +103,7 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/ex1-logincomplete.png)
    
-1. Run the below command to build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced. 
+1. Run the below command to build the **contosotraders-carts** Docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced. 
 
     ```
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest
