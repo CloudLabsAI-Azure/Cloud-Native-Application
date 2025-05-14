@@ -76,7 +76,7 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
     
 1. Select **Configuration (1)** from the left side menu under **Kubernate resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created secret. **(3)** 
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn50.png "Add a Namespace")
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14052025(8).png "Add a Namespace")
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
@@ -97,7 +97,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cn42.png "Add a Service")
 
-1. In the **Apply with YAML** pane, paste the below YAML code, which creates a service in AKS **(1)** and click on **Add (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
+1. In the **Apply with YAML** pane, paste the below YAML code, which creates a service in AKS **(1)** and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
 
     >**Info:** The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
@@ -234,6 +234,8 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/cn49.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
+
+    > **Note:** This may take 1–2 minutes to load thanks for your patience!
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
