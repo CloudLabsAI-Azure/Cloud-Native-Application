@@ -38,12 +38,6 @@ This task will gather the information you need about your Azure Kubernetes Servi
     ```bash
     choco install azure-cli
     ```
-    
-1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
-
-   ```bash
-   az account show
-   ```
 
 1. Run the following command to set up the Kubernetes cluster connection using kubectl. 
 
