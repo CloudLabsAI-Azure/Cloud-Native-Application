@@ -53,9 +53,9 @@ Welcome to your Cloud Native Application Architecture Workshop! We've prepared a
 
 ## Accessing Your Lab Environment
  
-Once you're ready to dive in, your virtual machine and **Lab guide** will be right at your fingertips within your web browser.
+Once you're ready to dive in, your virtual machine and **Guide** will be right at your fingertips within your web browser.
 
-   ![](media/cng1.png "Lab Environment")
+   ![](media/14052025.png "Lab Environment")
 
 ## Virtual Machine & Lab Guide
  
@@ -63,29 +63,29 @@ Your virtual machine is your workhorse throughout the workshop. The lab guide is
  
 ## Exploring Your Lab Resources
  
-To get a better understanding of your lab resources and credentials, navigate to the **Environment (1)** tab.
+To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
  
-![Explore Lab Resources](media/cng-9.png)
+![Explore Lab Resources](media/14052025(1).png)
  
-   > You will see the **DeploymentID (2)** value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
+   > You will see the **DeploymentID** value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
 
 ## Utilizing the Split Window Feature
  
 For convenience, you can open the lab guide in a separate window by selecting the **Split Window** button from the Top right corner.
  
- ![Use the Split Window Feature](media/cng10.png)
+ ![Use the Split Window Feature](media/14052025(2).png)
 
 ## Managing Your Virtual Machine
  
-Feel free to **start, stop, or restart (2)** your virtual machine as needed from the **Resources (1)** tab. Your experience is in your hands!
+Feel free to **Start, Stop, or Restart** your virtual machine as needed from the **Resources** tab. Your experience is in your hands!
  
-![Manage Your Virtual Machine](media/cng3.png)    
+![Manage Your Virtual Machine](media/14052025(4).png)    
 
 ## Lab Guide Zoom In/Zoom Out
 
 To adjust the zoom level for the environment page, click the **A↕ : 100%** icon located next to the timer in the lab environment.
 
-![Manage Your Virtual Machine](media/cng2.png)
+![Manage Your Virtual Machine](media/14052025(3).png)
 
 ## Lab Validation
 
