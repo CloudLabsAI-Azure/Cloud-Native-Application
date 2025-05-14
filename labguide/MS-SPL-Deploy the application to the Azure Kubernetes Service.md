@@ -30,23 +30,16 @@ This task will gather the information you need about your Azure Kubernetes Servi
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
    
-    ```bash
-    az login -u [username] -p [Password]
-    ```
+      ```bash
+      az login -u [username] -p [Password]
+      ```
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn29.png "Add a Namespace")    
+      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn29.png "Add a Namespace")    
     
 1. Verify that you are connected to the correct subscription with the following command to show your default subscription:
 
    ```bash
    az account show
-   ```
-
-   - Ensure you are connected to the correct subscription. If not, list your subscriptions and then set the subscription by its ID with the following commands:
-
-   ```bash
-   az account list
-   az account set --subscription {id}
    ```
 
 1. Run the following command to set up the Kubernetes cluster connection using kubectl. 
@@ -69,7 +62,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 In this task, you will be creating a secret in the Kubernetes cluster to fetch the data from MongoDB.
      
-1. Open a new **Command Prompt** and run the following command to create a secret using kubectl. 
+1. Run the following command to create a secret using kubectl. 
 
     ```sh
     kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnection --namespace=contoso-traders
@@ -90,7 +83,7 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="d838945d-f950-452c-b5c4-9c516a60b595" />
+<validation step="c33258ca-4b95-48b4-9483-25b150719d00" />
 
 ### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
