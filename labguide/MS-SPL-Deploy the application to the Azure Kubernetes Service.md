@@ -33,7 +33,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn29.png "Add a Namespace")
 
-     > **Note:** If you face any error while running the 'az' command, then run the below command to install the Azure CLI and close the command prompt. Re-perform step 1 in a new command prompt as Administrator.
+     > **Note:** If you face any error while running the 'az' command, then run the below command to install the Azure CLI and close the command prompt. Re-perform step 2 in a new command prompt as Administrator.
 
     ```bash
     choco install azure-cli
