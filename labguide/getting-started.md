@@ -98,11 +98,11 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
      
 ## Login to Azure Portal
 
-1. In the JumpVM, click on the **Azure portal** shortcut of the Microsoft Edge browser which is created on the desktop.
+1. In the JumpVM, click on the **Azure portal** shortcut of the Microsoft Edge browser, which is created on the desktop.
 
    ![](media/cng12.png "Lab Environment")
    
-1. On the **Sign into Microsoft Azure** tab you will see the login screen, in that enter the following email/username and then click on **Next**. 
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
      ![](media/cng6.png "Enter Email")
@@ -138,4 +138,3 @@ Now, click on **Next** from the lower right corner to move on to the next page.
 ![Launch Azure Portal](media/cng4.png)
 
 ## Happy Learning!!
-
