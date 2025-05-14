@@ -71,7 +71,7 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn40.png "Add a Namespace")
     
-1. Select **Configuration (1)** from the left side menu under **Kubernetes resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created secret. **(3)** 
+1. Select **Configuration (1)** from the left side menu under **Kubernetes resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created secret **(3)**.
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14052025(8).png "Add a Namespace")
 
@@ -86,7 +86,7 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Select **Namedpace (1)** from the left side menu under **Kubernate resources**. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders (2)** namespace only. 
+1. Select **Namespaces (1)** from the left side menu under **Kubernetes resources**. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders (2)** namespace only. 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cn41.png "Add a Service")
     
@@ -96,7 +96,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. In the **Apply with YAML** pane, paste the below YAML code, which creates a service in AKS **(1)** and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
 
-    >**Info:** The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
+    >**Info:** The below YAML script will create an AKS service inside the contoso-traders namespace that you have created in the previous steps. AKS Service is an abstract way to expose an application running on a set of Pods as a network service. 
 
     ```yaml
       #YAML Script
@@ -114,8 +114,8 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
           - port: 80
         selector:
           app: contoso-traders-products
+      ```
 
-      ```     
       ![Select workloads under Kubernetes resources.](media/cn43.png "Select workloads under Kubernetes resources") 
 
 1. Select **Workloads (1)** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
@@ -229,7 +229,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
 
-    > **Note:** This may take 1–2 minutes to load thanks for your patience!
+    > **Note:** This may take 1–2 minutes to load Thank you for your patience!
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
