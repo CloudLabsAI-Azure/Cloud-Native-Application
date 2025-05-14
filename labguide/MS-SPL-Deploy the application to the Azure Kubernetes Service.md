@@ -25,7 +25,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn28.png "Add a Namespace")
 
-1. Log in to Azure with the below commands after updating the values in the below command.
+1. Log in to Azure with the below commands after updating the values in the command.
 
    * Username: **<inject key="AzureAdUserEmail"></inject>**
    * Password: **<inject key="AzureAdUserPassword"></inject>**
