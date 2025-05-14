@@ -67,11 +67,11 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn39.png "Add a Namespace")
 
-1. Navigate back to **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Search for **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/> (1)** and select **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/> (2)** Kuberbate service. 
+1. Navigate back to **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Search for **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/> (1)** and select **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/> (2)** Kubernetes service. 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn40.png "Add a Namespace")
     
-1. Select **Configuration (1)** from the left side menu under **Kubernate resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created secret. **(3)** 
+1. Select **Configuration (1)** from the left side menu under **Kubernetes resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created secret. **(3)** 
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14052025(8).png "Add a Namespace")
 
@@ -86,7 +86,7 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
-1. Select **Namedpace (1)** from the left side menu under **Kubernate resources**. We have already defined a new Namespace for your API deployment. Going further you will be using the **contoso-traders (2)** namespace only. 
+1. Select **Namedpace (1)** from the left side menu under **Kubernate resources**. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders (2)** namespace only. 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cn41.png "Add a Service")
     
