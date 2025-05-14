@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will be migrating your on-premises MongoDB database hosted over Azure Linux VM to Azure CosmosDB using Azure database migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure.
+In this exercise, you will be migrating your on-premises MongoDB database hosted over Azure Linux VM to Azure Cosmos DB using Azure Database Migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure.
 
 ## Objectives
 
@@ -15,9 +15,9 @@ In this Exercise, you will be able to complete the following tasks:
 
 ### Task 1: Explore the databases and collections in MongoDB
 
-In this task, you will be connecting to a mongo database hosted over Azure Linux VM and exploring the databases and collections in it.
+In this task, you will be connecting to a mongo database hosted on an Azure Linux VM and exploring the databases and collections in it.
 
-1. While connected to your Linux VM, run the below command for connecting to mongo shell to display the databases and collections in it using the mongo shell.
+1. While connected to your Linux VM, run the below command to connect to mongo shell to display the databases and collections in it using the mongo shell.
 
    ```
    mongo
@@ -25,7 +25,7 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
 
    ![](media/cn11.png)   
    
-   >**Note**: If you face an issue while connecting to the source DB with an error connection is refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using ssh. Please run the following commands and reperform step - 1 of the task.
+   >**Note:** If you face an issue while connecting to the source DB with an error connection is refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using SSH. Please run the following commands and reperform step 1 of the task.
 
    ```
    sudo apt install mongodb-server
@@ -48,11 +48,11 @@ In this task, you will be connecting to a mongo database hosted over Azure Linux
    
    ![](media/mongo.png) 
 
-   >**Note**: In case if you don't see the data inside the mongo. Please follow the steps mentioned below.
+   >**Note:** In case you don't see the data inside the mongo. Please follow the steps mentioned below.
 
    - Enter `exit` to exit from mongo.
 
-   - Please run the below mentioned commands in the command prompt and perform step 1 and 2 again.
+   - Please run the below-mentioned commands in the command prompt and perform steps 1 and 2 again.
 
    ```
    cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
@@ -68,7 +68,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/cn12.png)
 
-1. Copy the **Private IP address** and paste it on the notepad for later use.
+1. Copy the **Private IP address** and paste it into Notepad for later use.
 
    ![](media/cn13.png)
 
@@ -76,7 +76,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/cn14.png)
 
-1. Click on **Data Explorer(1)**. Now click on drop down arrow, adjacent to **New Collection(2)** and then select **New Database(3)**.
+1. Click on **Data Explorer(1)**. Now click on drop-down arrow, adjacent to **New Collection(2)** and then select **New Database(3)**.
 
    ![](media/cn15.png)
 
@@ -100,23 +100,30 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/cn18.png)
 
-1. On the **New migration project** pane, enter the following values and then select **Create and run activity (5)**:
+1. On the **New migration project** pane, enter the following values and then select **Create and run activity (5):**
 
     - Project name: `contoso (1)`
+    
     - Source server type: `MongoDB (2)`
+    
     - Target server type: `CosmosDB (MongoDB API) (3)`
+    
     - Choose type of activity: `Offline data migration (4)`
 
       ![The screenshot shows the New migration project pane with values entered.](media/cn19.png  "New migration project pane")
 
-      >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
+      >**Note:** The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
 
 1. On the **MongoDB to Azure Database for CosmosDB Offline Migration Wizard** pane, enter the following values for the **Select source** tab:
 
     - Mode: **Standard mode (1)**
+    
     - Source server name: Enter the Private IP Address of the Build Agent VM that you have copied in **Task 2 step 2 (2)**.
+    
     - Server port: `27017 (3)`
+    
     - Require SSL: Unchecked **(4)**
+    
     - Select **Next: Select target >> (5)**.
 
     > **Note:** Leave the **User Name** and **Password** blank as the MongoDB instance on the Build Agent VM for this lab does not have authentication turned on. The Azure Database Migration Service is connected to the same VNet as the Build Agent VM, so it's able to communicate within the VNet directly to the VM without exposing the MongoDB service to the Internet. In production scenarios, you should always have authentication enabled on MongoDB.
@@ -126,7 +133,6 @@ In this task, you will create a Migration project within Azure Database Migratio
     > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
 
     ```bash
-    
     cd /etc
     sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongod.conf
     sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongod.conf
@@ -182,7 +188,6 @@ In this task, you will create a Migration project within Azure Database Migratio
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 <validation step="4a5c93cd-63af-49ac-8a9d-a6c92e6a71dd" />
-
 
 ## Review
 
