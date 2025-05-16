@@ -30,7 +30,7 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
-1. Selecione **YAML (1)** no menu esquerdo na vista geral de **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e selecione **Rever + guardar (3)**. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (4)** e selecione **Guardar (5)**.
+1. Selecione **YAML (1)** no menu à esquerda na visão geral do **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e depois selecione **Rever + guardar (3)**.
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn50.png "Definir réplicas para 2")
 
