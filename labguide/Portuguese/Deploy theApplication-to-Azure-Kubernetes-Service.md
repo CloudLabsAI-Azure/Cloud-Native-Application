@@ -35,21 +35,6 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
      choco install azure-cli
      ```
 
-1. Verifique se está ligado à assinatura correta com o seguinte comando para mostrar a sua assinatura predefinida:
-
-    ```bash
-    az account show
-    ```
-
-    ![](../media/c34.png "abrir cmd")    
-
-   - Certifique-se de que está ligado à assinatura correta. Caso contrário, liste as suas assinaturas e defina-as pelo seu ID com os seguintes comandos:
-
-        ```bash
-        az account list
-        az account set --subscription {id}
-        ```
-
 1. Execute o comando abaixo para configurar a conexão do cluster Kubernetes usando kubectl.
 
     ```bash
@@ -112,12 +97,13 @@ Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-03.jpg "Adicionar um Namespace")
 
-<validation step="106806cb-79ab-406a-b481-f125954d286e" />
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
 > - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.   
+
+<validation step="106806cb-79ab-406a-b481-f125954d286e" />
 
 ### Tarefa 3: Implementar um namespace, serviço e workload no Serviço Azure Kubernetes utilizando o Portal do Azure
 
@@ -217,12 +203,12 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn49.png "Adicionar um Namespace")
 
-<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
-
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
+
+<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />   
 
 ### Tarefa 4: Implementar um serviço e workload usando a linha de comandos kubectl
 
