@@ -36,7 +36,8 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
 1. Quando for solicitado a confirmar a alteração do manifesto, selecione **Confirmar alteração do manifesto (1)** e clique em **Guardar (2)**. Em seguida, clique em **Visão geral (3)** para voltar aos deployments.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/E4-T1-S4.png "Definir réplicas para 2")
+    ![](../media/E4-T1-S4.png)
+
 
     >**Nota**: Se a implementação for concluída rapidamente, poderá não ver a implementação no estado em espera no portal, conforme descrito nos passos seguintes.
 
