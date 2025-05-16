@@ -40,14 +40,14 @@ In this task, you will be connecting to a Mongodb database hosted on an Azure Li
    ```   
 
 
-1. While connected to your Linux VM, run the following command to connect to the mongo shell to display the databases and collections in it using the mongo shell.
+2. While connected to your Linux VM, run the following command to connect to the mongo shell to display the databases and collections in it using the mongo shell.
 
    ```
    mongo
    ```
 
 
-1. Run the following commands to verify the database in the mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
+3. Run the following commands to verify the database in the mongo shell. You should be able to see the **contentdb** available and **item & products** collections inside **contentdb**.
 
    ```
    show dbs
