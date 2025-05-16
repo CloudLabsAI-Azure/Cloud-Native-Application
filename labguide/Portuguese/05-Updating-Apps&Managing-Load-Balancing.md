@@ -127,10 +127,6 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
    ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/cn80.png "A implementação do pod está em curso")
 
-1. Agora tente descrever novamente os pods mais recentes e veja qual a imagem que está mapeada com o pod.
-
-   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/cn81.png "A implementação do pod está em curso")
-
 1. Execute o comando kubectl abaixo para obter os pods atualizados no seu AKS. Copie o nome do contoso-traders-web### para o Bloco de Notas.
 
     ```
@@ -144,7 +140,7 @@ ADDD AN IMAGE HEREEEE
      kubectl describe pods [PODNAME] -n contoso-traders
     ```
 
-ADDD AN IMAGE HEREEEE
+   ![No topo da lista, um novo conjunto de réplicas Web é listado como uma implementação pendente na caixa Conjunto de réplicas.](../media/cn81.png "A implementação do pod está em curso")
 
 1. Assim que a atualização da imagem para o pod estiver concluída, navegue de volta para o portal Azure e navegue/atualize novamente a página da aplicação Web e poderá ver as alterações na página inicial.
 
