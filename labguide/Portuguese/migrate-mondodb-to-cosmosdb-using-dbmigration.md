@@ -66,8 +66,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
 1. Navegue até ao grupo de recursos **ContosoTraders (1)** e abra o recurso **contosotraders- (2)** do Cosmos DB.
 
-
-IMAGE TO ADD .......
+   ![](../media/E2-T2-S2MongoDB.png)
 
 1. Navegue até ao grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" /> (1)** e abra o recurso de CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** e clique em **Data Explorer (3)**. Clique agora na seta suspensa, adjacente a **+ New Collection (4)** e selecione **+ New Database (5)**.
 
