@@ -179,7 +179,7 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
 1. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (1)** e selecione **Guardar (2)**. Em seguida, clique em **Visão geral (3)** para voltar aos deployments.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn-60.png "A implementação da API está agora íntegra")  PROPER IMAGE
+    ![](../media/E4-T1-S4.png)
 
 1. Irá verificar que o deployment **contoso-traders-product** está agora a executar `4` réplicas com sucesso passados 5 minutos.
 
