@@ -207,7 +207,6 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
 1. Selecione **Rever + guardar** e, quando for solicitado a confirmar a alteração do manifesto, assinale **Confirmar alteração do manifesto** e selecione **Guardar**.
 
-    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn66.png "A implementação da API está agora íntegra") CHANGE IMAGE!!!!!
 
 1. Volte à página de estatísticas do site ContosoTarders no browser e atualize enquanto o Kubernetes reduz o número de pods. Deve conseguir ver o site a funcionar sem problemas
 
