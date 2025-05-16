@@ -132,7 +132,6 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
     ```
      kubectl get pods -n contoso-traders
     ```
-ADDD AN IMAGE HEREEEE
 
 1. Agora, execute o comando abaixo para descrever os pods mais recentes e verificar que imagem está associada ao pod. Certifique-se de atualizar o valor de PODNAME com o valor que copiou no passo anterior.
 
