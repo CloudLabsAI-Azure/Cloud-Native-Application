@@ -30,11 +30,14 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
-1. Selecione **YAML (1)** no menu esquerdo na vista geral de **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e selecione **Rever + guardar (3)**. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (4)** e selecione **Guardar (5)**.
+1. Selecione **YAML (1)** no menu à esquerda na visão geral do **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e depois selecione **Rever + guardar (3)**.
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn50.png "Definir réplicas para 2")
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn51.png "Definir réplicas para 2")
+1. Quando for solicitado a confirmar a alteração do manifesto, selecione **Confirmar alteração do manifesto (1)** e clique em **Guardar (2)**. Em seguida, clique em **Visão geral (3)** para voltar aos deployments.
+
+    ![](../media/E4-T1-S4.png)
+
 
     >**Nota**: Se a implementação for concluída rapidamente, poderá não ver a implementação no estado em espera no portal, conforme descrito nos passos seguintes.
 
@@ -44,12 +47,14 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
    ![Os conjuntos de réplicas são selecionados em Cargas de trabalho no menu de navegação à esquerda e, à direita, o estado dos pods: 1 pendente, 1 em execução é realçado. Abaixo disto, uma seta vermelha aponta para a implementação da API na caixa Pods.](../media/11.png "Ver detalhes da réplica")
 
-<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
+1. Se encontrou algum erro ou problema ao adicionar uma nova instância na Tarefa 2, continue com a Tarefa 2 para os resolver. Se não encontrou nenhum problema, ignore a Tarefa 2 e avance diretamente para a Tarefa 3.
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.    
+
+<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />  
 
 ### Tarefa 2: Resolver falha no aprovisionamento de réplicas
 
@@ -168,13 +173,15 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn54.png "Definir réplicas para 2")
 
-1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessária para `4` **(2)** e clique em **Rever + guardar (3)** e, quando solicitado , Confirmar alteração do manifesto, assinale **Confirmar alterações ao manifesto (4)** e selecione **Guardar (5)**.
+1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessária para `4` **(2)** e clique em **Rever + guardar (3)**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn59.png "A implementação da API está agora íntegra")
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn-60.png "A implementação da API está agora íntegra")
+1. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (1)** e selecione **Guardar (2)**. Em seguida, clique em **Visão geral (3)** para voltar aos deployments.
 
-1. Após alguns momentos, irá descobrir que a implementação do **contoso-traders-products** está agora a executar `4` réplicas com êxito.
+    ![](../media/E4-T1-S4.png)
+
+1. Irá verificar que o deployment **contoso-traders-product** está agora a executar `4` réplicas com sucesso passados 5 minutos.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn61.png "A implementação da API está agora íntegra")
 
@@ -194,22 +201,24 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn64.png "A implementação da API está agora íntegra")
 
-1. Volte à implementação da API **contoso-traders-products**. Selecione o item de navegação **YAML (1)** e reduza-o para a réplica `1` **(2)** e clique em **Rever + guardar (3)** e, quando solicitado , Confirmar alteração do manifesto, assinale **Confirmar alterações ao manifesto (4)** e selecione **Guardar (5)**.
+1. Volte ao deployment da API **contoso-traders-product**. Selecione o item de navegação **YAML** e reduza novamente para `1` réplica.
 
     ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn65.png "A implementação da API está agora íntegra")
 
-    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn66.png "A implementação da API está agora íntegra")
+1. Selecione **Rever + guardar** e, quando for solicitado a confirmar a alteração do manifesto, assinale **Confirmar alteração do manifesto** e selecione **Guardar**.
+
 
 1. Volte à página de estatísticas do site ContosoTarders no browser e atualize enquanto o Kubernetes reduz o número de pods. Deve conseguir ver o site a funcionar sem problemas
 
    ![Os conjuntos de réplicas estão seleccionados em Cargas de trabalho no menu de navegação à esquerda. À direita estão as caixas Detalhes e Pods. Apenas um nome de host da API, que tem uma marca de verificação verde e está listado como em execução, aparece na caixa Pods.](../media/11.png "Ver detalhes da réplica")
 
-<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
+
+<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />      
 
 ### Tarefa 6: Configurar a escala automática do CosmosDB
 
@@ -217,24 +226,25 @@ Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
 1. No Portal do Azure, navegue até **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Conta do Azure Cosmos DB.
 
-2. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
+1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-10.png "A implementação da API está agora íntegra")
 
-4. Na base de dados `contentdb`, expanda a coleção **Items (1)**, selecione **Settings (2)**.
+1. Na base de dados `contentdb`, expanda a coleção **Items (1)**, selecione **Settings (2)**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(33).png "A implementação da API está agora íntegra")
 
-5. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
+1. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/spanish-188.png "A implementação da API está agora íntegra")
-
-<validation step="772e22fb-588f-41b1-b761-428e48c79279" />
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
+   
+<validation step="772e22fb-588f-41b1-b761-428e48c79279" />
+    
 
 ### Tarefa 7: Testar a escala automática do CosmosDB
 
@@ -242,38 +252,38 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 1. No Portal do Azure, navegue até **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Conta do Azure Cosmos DB.
 
-2. Selecione **Cadeia de Ligação** em **Definições**.
+1. Selecione **Cadeia de Ligação** em **Definições**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-11.png "A implementação da API está agora íntegra")
 
-3. No painel **Cadeia de Ligação**, copie os valores **ANFITRIÃO (1)**, **NOME DE UTILIZADOR (2)** e **PALAVRA-PASSE PRIMÁRIA (3)**. Guarde-os num ficheiro de texto para uso posterior.
+1. No painel **Cadeia de Ligação**, copie os valores **ANFITRIÃO (1)**, **NOME DE UTILIZADOR (2)** e **PALAVRA-PASSE PRIMÁRIA (3)**. Guarde-os num ficheiro de texto para uso posterior.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cnctionstringnew.png "A implementação da API está agora íntegra")
 
-4. Abra o comando de linha e ligue-se à VM do agente de construção utilizando o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
+1. Abra o comando de linha e ligue-se à VM do agente de construção utilizando o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
-5. Quando a palavra-passe for solicitada, introduza **Build Agent VM Password** fornecida abaixo.
+1. Quando a palavra-passe for solicitada, introduza **Build Agent VM Password** fornecida abaixo.
 
    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-6. Na **Build agent VM**, navegue até ao diretório `~/labfiles`.
+1. Na **Build agent VM**, navegue até ao diretório `~/labfiles`.
 
     ```bash
     cd Cloud-Native-Application/labfiles/src
     ```
 
-7. Execute o seguinte comando para abrir o script `perftest.sh` na janela do editor.
+1. Execute o seguinte comando para abrir o script `perftest.sh` na janela do editor.
 
     ```bash
     sudo chmod 777 perftest.sh
     vi perftest.sh
     ```
 
-8. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Prima **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**host**, **NOME DE USUÁRIO** e **SENHA PRIMÁRIA** definindo os seus valores para os valores correspondentes da cadeia de ligação do Cosmos DB que foram copiados anteriormente.
+1. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Prima **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**host**, **NOME DE USUÁRIO** e **SENHA PRIMÁRIA** definindo os seus valores para os valores correspondentes da cadeia de ligação do Cosmos DB que foram copiados anteriormente.
 
    ![A captura de ecrã mostra o Vim com o ficheiro perftest.sh aberto e as variáveis ​​definidas para os valores da cadeia de ligação do Cosmos DB.](../media/updatepreftest.png "Modificar as informações de ligação no Vim")
 
-9. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e feche o ficheiro.
+1. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e feche o ficheiro.
 
    >**Nota**: Se **_ESC_** não funcionar, prima `ctrl+[` e depois escreva **_:wq_** para guardar as suas alterações e fechar o ficheiro.
 
@@ -283,21 +293,21 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
     bash ./perftest.sh
     ```
 
-    > **Nota:** Não espere o script terminar; prossiga para o próximo passo.
+    > **Nota:** O script irá demorar alguns minutos a concluir a sua execução. Se o script ficar bloqueado durante a execução, pressione `Ctrl+C` para interromper o script.
 
-11. Assim que a execução do script estiver concluída, navegue de volta para a **Cosmos DB account** no portal Azure.
+1. Assim que a execução do script estiver concluída, navegue de volta para a **Cosmos DB account** no portal Azure.
 
-12. Desça no painel **Visão geral** da folha **Cosmos DB account** e localize o gráfico **Solicitar taxa**.
+1. Desça no painel **Visão geral** da folha **Cosmos DB account** e localize o gráfico **Solicitar taxa**.
 
     > **Nota:** Pode demorar 2 a 5 minutos para que a atividade na coleção do CosmosDB apareça no registo de atividades. Aguarde alguns minutos e atualize a página se a cobrança de pedidos recentes não aparecer agora.
 
-13. Note que a **Solicitar taxa** mostra agora que houve atividade na **Cosmos DB account** que excedeu o limite de 400 RU/s definido anteriormente antes da ativação do dimensionamento automático.
+1. Note que a **Solicitar taxa** mostra agora que houve atividade na **Cosmos DB account** que excedeu o limite de 400 RU/s definido anteriormente antes da ativação do dimensionamento automático.
 
     ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-12.png "A implementação da API está agora íntegra")
 
     >**Nota**: Caso não veja os dados no gráfico, defina o intervalo de tempo para durar 1 hora.
 
-14. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuare com o exercício seguinte.
+1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuare com o exercício seguinte.
 
 ## Resumo
 

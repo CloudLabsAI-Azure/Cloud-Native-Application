@@ -119,6 +119,8 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cn5.png)
 
+   >**Nota**: Este passo pode demorar 1-2 minutos a construir a imagem Docker.
+
 1. Repita os passos para criar a imagem docker **contosotraders-Products** com o comando abaixo.
 
     ```
@@ -126,6 +128,8 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     ```
 
    ![](../media/cn6.png)
+
+   >**Nota**: Este passo pode demorar 1-2 minutos a construir a imagem Docker.
 
 1. Execute o comando abaixo para alterar o directório para `services` e abra o ficheiro `configService.js`.
 

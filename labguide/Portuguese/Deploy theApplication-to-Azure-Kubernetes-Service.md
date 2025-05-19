@@ -35,21 +35,6 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
      choco install azure-cli
      ```
 
-1. Verifique se está ligado à assinatura correta com o seguinte comando para mostrar a sua assinatura predefinida:
-
-    ```bash
-    az account show
-    ```
-
-    ![](../media/c34.png "abrir cmd")    
-
-   - Certifique-se de que está ligado à assinatura correta. Caso contrário, liste as suas assinaturas e defina-as pelo seu ID com os seguintes comandos:
-
-        ```bash
-        az account list
-        az account set --subscription {id}
-        ```
-
 1. Execute o comando abaixo para configurar a conexão do cluster Kubernetes usando kubectl.
 
     ```bash
@@ -66,60 +51,7 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
 
     ![Nesta captura de ecrã da consola, o kubectl get nodes foi digitado e executado no prompt de comando, que produz uma lista de nós.](../media/cn36.png "kubectl get nodes")
 
-### Tarefa 2: Configurar Key Vault e segredos
-
-Nesta tarefa, irá gerar um segredo no Key Vault e criar a ligação entre o AKS e o Key Vault.
-
-1. Navegue até ao Portal do Azure, pesquise **Cofres de chaves (1)** na barra de pesquisa e selecione **Cofres de chaves (2)** na lista.
-
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(1).png "Adicionar um Namespace")
-
-1. De seguida, selecione **contosotraderskv<inject key="DeploymentID" enableCopy="false" />** Cofres de chaves na lista.
-
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(2).png "Adicionar um Namespace")
-
-1. Quando estiver na página **contosotraderskv<inject key="DeploymentID" enableCopy="false" /> (1)** Cofres de chaves, selecione **Segredos (2)** em **Objetos** no menu à esquerda.
-
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(3).png "Adicionar um Namespace")
-
-1. Clique agora no botão **+ Gerar/Importar** para criar o novo segredo.
-
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(4).png "Adicionar um Namespace")
-
-1. No painel **Crie um segredo**, introduza os seguintes detalhes:
-
-    - Nome: **mongodbconnection (1)**
-    - Valor Secreto: cole a cadeia de ligação do Azure CosmosDB para a conta MongoDB que copiou no exercício anterior **(2)**.
-    - Mantenha os outros valores por defeito e clique em **Criar (3)**
-
-      ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(5).png "Adicionar um Namespace")
-
-      ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/22-10-24(7).png "Adicionar um Namespace")
-
-1. Abra um novo **Prompt de comando** e execute o comando abaixo para criar um segredo utilizando o kubectl.
-
-    ```sh
-    kubectl create secret generic mongodbconnection --from-literal=mongodbconnection=mongodbconnection --namespace=contoso-traders
-    ```
-
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn-37.png "Adicionar um Namespace")
-
-1. Navegue de volta para o browser e abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no portal do Azure.
-
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn38.png "Adicionar um Namespace")
-
-1. Seleccione **Configuração (1)** em **Recursos do Kubernetes** no menu do lado esquerdo e clique em Secção **Segredos (2)**. Em **segredo recém-criado**, poderá ver os novos segredos criados. **(3)**
-
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-03.jpg "Adicionar um Namespace")
-
-<validation step="106806cb-79ab-406a-b481-f125954d286e" />
-
-> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
-> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
-> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.   
-
-### Tarefa 3: Implementar um namespace, serviço e workload no Serviço Azure Kubernetes utilizando o Portal do Azure
+### Tarefa 2: Implementar um namespace, serviço e workload no Serviço Azure Kubernetes utilizando o Portal do Azure
 
 Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kubernetes Service utilizando o Portal do Azure.
 
@@ -217,14 +149,14 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
    ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/cn49.png "Adicionar um Namespace")
 
-<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
-
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.      
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
 
-### Tarefa 4: Implementar um serviço e workload usando a linha de comandos kubectl
+<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />   
+
+### Tarefa 3: Implementar um serviço e workload usando a linha de comandos kubectl
 
 Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizando o kubectl.
 
@@ -274,12 +206,13 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o exercício seguinte.
 
- <validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.   
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo. 
+
+<validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />  
 
 ## Resumo
 

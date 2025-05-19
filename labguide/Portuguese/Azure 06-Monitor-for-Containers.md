@@ -20,7 +20,7 @@ Poderá completar as seguintes tarefas:
 
 ### Tarefa 1: Rever as métricas do Azure Monitorar
 
-Nesta tarefa, irá rever o cluster AKS monitorizado.
+Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na revisão visual das métricas e dos registos disponíveis no Azure Monitor para o seu cluster AKS. Não se espera a deteção de alertas ou problemas, a menos que sejam configurados explicitamente.
 
 1. Navegue de volta para o portal do Azure e procure **aks (1)**, selecione **Serviços Kubernetes (2)** no resultado.
 
@@ -33,15 +33,19 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.
 1. Navegue até a seção **Monitorar** folha de recursos do serviço Kubernetes, você poderá ver alguns logs.
    
     > **Nota**: O Monitorar do Azure pode demorar até 15 minutos a preencher os dados na folha de insights.
+    
+    > **Importante**: Esta tarefa destina-se apenas à revisão visual. Se desejar explorar alertas, pode configurar uma regra de alerta no Azure Monitor. Por exemplo, pode criar um alerta para utilização elevada de CPU ou consumo de memória. Consulte a documentação da Azure para obter orientações sobre como configurar regras de alerta.
+
 
     ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn93.png "Definir réplicas para 2")
 
-<validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.        
+> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.    
+
+<validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />    
 
 ## Sumário
 

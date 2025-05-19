@@ -17,13 +17,34 @@ Poderá completar as seguintes tarefas:
 
 Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do Azure e explorar as bases de dados e as coleções nela contidas.
 
+1. Enquanto estiver ligado à sua VM Linux, execute o seguinte comando para verificar se o MongoDB está instalado:
+   
+    ```
+    mongo --version
+    ```
+
+   >**Nota:** Se o MongoDB estiver instalado, avance para o passo seguinte. Caso não esteja instalado, siga os passos de resolução de problemas indicados abaixo.
+
+   >Execute o comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, escreva **yes** quando surgir a mensagem **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e introduza a password da VM **<inject key="Build Agent VM Password" enableCopy="true" />** para se ligar à VM Linux usando ssh. Por favor, execute os seguintes comandos.
+   
+
+   ```
+   sudo apt install mongodb-server
+   cd /etc
+   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+   cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
+   npm ci
+   nodejs server.js   
+   sudo service mongodb stop
+   sudo service mongodb start
+   ```   
+
 1. Enquanto estiver ligado à sua VM Linux, execute o comando abaixo para se ligar ao shell do Mongo para exibir as bases de dados e as coleções nele contidas utilizando a shell do Mongo.
 
     ```
     mongo
     ```
-
-    > **Observação**: Os avisos mostrados após a execução do comando podem ser ignorados.
 
 1. Execute os seguintes comandos para verificar a base de dados no shell do Mongo. Poderá ver as coleções **contentdb** disponíveis e **item & products** dentro de **contentdb**.
 
@@ -35,45 +56,17 @@ Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do A
 
     ![](../media/cn15.png)
 
-    >**Observação**: Caso não veja os dados dentro do ficheiro Mongo. Siga os passos mencionados abaixo.
-
-    - Introduza `exit` para sair do Mongo.
-
-    - Execute os comandos mencionados abaixo na linha de comandos e execute novamente os passos 1 e 2.
-
-        ```
-        cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
-        npm ci
-        nodejs server.js
-        ```    
-
-    > **Observação**: Se você enfrentar um problema ao se conectar ao banco de dados de origem com um erro de conexão recusada. Execute o comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**, digite **yes** quando ele disser **Are you sure you want to continue connecting (yes/no/[fingerprint])?** e insira a senha da VM **<inject key="Build Agent VM Password" enableCopy="true" />** para se conectar à VM Linux usando ssh. Execute os seguintes comandos e repita a etapa - 1 da tarefa.
-
-   ```
-   cd ..
-   cd ..
-   sudo apt install mongodb-server
-   cd /etc
-   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
-   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
-   sudo service mongodb stop
-   sudo service mongodb start
-   ```
-
-   ![](../media/EX2-T1-S1.png)
-
-
 ### Tarefa 2: Criar um projeto de migração e migrar dados para o Azure CosmosDB
 
 Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de Base de Dados do Azure e, em seguida, migrar os dados do MongoDB para o Azure Cosmos DB. Nos exercícios posteriores, irá utilizar o Azure CosmosDB para pesquisar os dados da página de products.
 
-1. No Portal Azure, navegue até à sua máquina virtual **contosotraders** no grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**. 
-
-   ![](../media/cn16.png)
-
-1. Copie o **Endereço IP privado** e cole-o no bloco de notas para utilização posterior.
+1. No Portal do Azure, navegue até à sua máquina virtual **contosotraders** no grupo de recursos **ContosoTraders-**. Copie o endereço IP privado e cole-o no Bloco de Notas para utilização posterior.
 
    ![](../media/1-10-24(18).png)
+
+1. Navegue até ao grupo de recursos **ContosoTraders (1)** e abra o recurso **contosotraders- (2)** do Cosmos DB.
+
+   ![](../media/E2-T2-S2MongoDB.png)
 
 1. Navegue até ao grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" /> (1)** e abra o recurso de CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** e clique em **Data Explorer (3)**. Clique agora na seta suspensa, adjacente a **+ New Collection (4)** e selecione **+ New Database (5)**.
 
@@ -177,12 +170,12 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o exercício seguinte.
 
-<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
-
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
 > - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
+
+<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
 
 ## Resumo
 
