@@ -44,7 +44,7 @@ Welcome to your Cloud Native Application lab, We've prepared a seamless environm
  
 Once you're ready to dive in, your virtual machine and **Lab Guide** will be right at your fingertips within your web browser.
 
-   ![](./media/GS6.png)
+   ![](./media/SSG.png)
 
 ### **Virtual Machine & Lab Guide**
  
@@ -54,19 +54,19 @@ Your virtual machine is your workhorse throughout the workshop. The lab guide is
  
 To get a better understanding of your lab resources and credentials, navigate to the **Environment Details** tab.
 
-   ![](./media/GS11.png)
+   ![](./media/CL02.png)
  
 ## **Utilizing the Split Window Feature**
  
 For convenience, you can open the lab guide in a separate window by selecting the **Split Window** button from the Top right corner.
  
-   ![](./media/GS8.png)
+   ![](./media/CL3.png)
  
 ## **Managing Your Virtual Machine**
  
 Feel free to start, stop, or restart your virtual machine as needed from the **Resources** tab. Your experience is in your hands!
  
-  ![](./media/GS5.png)
+   ![](./media/SS3.png)
  
 ## **Let's Get Started with Azure Portal**
  
@@ -78,17 +78,17 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
  
    - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
  
-        ![](./media/GS2.png "Enter Email")
+     ![](./media/GS2.png "Enter Email")
  
 3. Next, provide your password:
  
    - **Password:** <inject key="AzureAdUserPassword"></inject>
  
-        ![](./media/GS3.png "Enter Password")
+     ![](./media/GS3.png "Enter Password")
  
 4. If you see the pop-up **Stay Signed in?**, click **No**.
 
-    ![](./media/GS9.png "Enter Password")
+     ![](./media/GS9.png "Enter Password")
 
 5. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
@@ -106,7 +106,7 @@ Learner Support Contacts:
    
 Now, click on Next from the lower right corner to move to the next page.
 
-![](./media/GS4.png "Enter Password")
+   ![](./media/GS4.png "Enter Password")
 
 ### Happy Learning!!
 
