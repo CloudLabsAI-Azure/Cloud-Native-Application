@@ -1,6 +1,6 @@
 ## Hands-On-Lab: Build Docker Images for the Application
   
-### Estimated Duration: 75 minutes
+### Estimated Duration: 75 Minutes
 
 ## Overview
 
@@ -13,7 +13,7 @@ In this exercise, you will be able to complete the following tasks:
 - Task 1: Set up a local infrastructure with the Linux VM
 - Task 2: Build Docker images to containerize the application and push them to the container registry
    
-### Task 1: Set up a local infrastructure with the Linux VM
+## Task 1: Set up a local infrastructure with the Linux VM
 
 In this task, you will be connecting to the Build agent VM using the Command prompt and will be cloning the Contoso trader website GitHub repo.  
 
@@ -59,11 +59,11 @@ In this task, you will be connecting to the Build agent VM using the Command pro
     
     ![](media/ex1-cd.png)
     
-### Task 2: Build Docker images to containerize the application and push them to the container registry
+## Task 2: Build Docker images to containerize the application and push them to the container registry
 
 In this task, you will be building the Docker images to containerize the application and will be pushing them to the ACR (Azure Container Registry) to later use in AKS.
 
-1. Please make sure that you are in the **labfiles** directory before running the next steps, as the Docker build needs to find the DockerFile to create the image.
+1. Please make sure that you are in the **labfiles** directory before running the next steps, as the Docker build needs to find the Dockerfile to create the image.
 
 1. Run the below command to download the Azure CLI,
 
@@ -134,7 +134,6 @@ In this task, you will be building the Docker images to containerize the applica
     ![](media/cn5.png)
     
     >**Note:** If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
-    
 
     ```
     const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
@@ -168,7 +167,7 @@ In this task, you will be building the Docker images to containerize the applica
     cd Cloud-Native-Application/labfiles/
     ```
 
-1. Observe the built Docker images by running the command `docker image ls`. The images are tagged with the latest, also it is possible to use other tag values for versioning.
+1. Observe the built Docker images by running the command `docker image ls`. The images are tagged with the latest, also, it is possible to use other tag values for versioning.
 
     ```
     docker image ls
