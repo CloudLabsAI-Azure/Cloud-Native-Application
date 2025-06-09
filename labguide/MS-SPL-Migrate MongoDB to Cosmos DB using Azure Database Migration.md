@@ -1,10 +1,10 @@
 ## Hands-On-Lab: Migrate MongoDB to Cosmos DB using Azure Database Migration
   
-### Estimated Duration: 75 minutes
+### Estimated Duration: 75 Minutes
 
 ## Overview
 
-In this exercise, you will be migrating your on-premises MongoDB database hosted over Azure Linux VM to Azure Cosmos DB using Azure Database Migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure.
+In this exercise, you will be migrating your on-premises MongoDB database hosted on an Azure Linux VM to Azure Cosmos DB using Azure Database Migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure.
 
 ## Objectives
 
@@ -13,7 +13,7 @@ In this Exercise, you will be able to complete the following tasks:
 - Task 1: Explore the databases and collections in MongoDB
 - Task 2: Create a Migration Project and migrate data to Azure CosmosDB
 
-### Task 1: Explore the databases and collections in MongoDB
+## Task 1: Explore the databases and collections in MongoDB
 
 In this task, you will be connecting to a mongo database hosted on an Azure Linux VM and exploring the databases and collections in it.
 
@@ -60,9 +60,9 @@ In this task, you will be connecting to a mongo database hosted on an Azure Linu
    nodejs server.js
    ```     
 
-### Task 2: Create Migration Project and migrate data to Azure CosmosDB
+## Task 2: Create Migration Project and migrate data to Azure CosmosDB
 
-In this task, you will create a Migration project within Azure Database Migration Service, and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises, you will be using the Azure CosmosDB to fetch the data for the products page. 
+In this task, you will create a Migration project within Azure Database Migration Service and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises, you will be using the Azure CosmosDB to fetch the data for the products page. 
 
 1. In the Azure Portal, navigate to your **contosotraders** virtual machine in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. 
 
@@ -76,7 +76,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/cn14.png)
 
-1. Click on **Data Explorer (1)**. Now click on drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
+1. Click on **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
 
    ![](media/cn15.png)
 
@@ -118,7 +118,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
     - Mode: **Standard mode (1)**
     
-    - Source server name: Enter the Private IP Address of the Build Agent VM that you have copied in **Task 2 step 2 (2)**.
+    - Source server name: Enter the Private IP Address of the Build Agent VM that you have copied in **Task 2 Step 2 (2)**.
     
     - Server port: `27017` **(3)**
     
@@ -130,7 +130,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
     ![Select source tab with values selected for the MongoDB server.](media/cn20.png "MongoDB to Azure Database for CosmosDB - Select source")
     
-    > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
+    > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in the **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
 
     ```bash
     cd /etc
@@ -166,7 +166,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media/cn24.png "Migration summary")
 
-1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **complete**. 
+1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **Complete**. 
 
    ![The screenshot shows the MigrateData activity showing the status has completed.](media/cn25.png "MigrateData activity completed")
 
@@ -177,10 +177,6 @@ In this task, you will create a Migration project within Azure Database Migratio
 1. Select **Data Explorer (1)** from the left menu. You will see the `items` and `products` collections listed within the `contentdb` database **(2)** and you will be able to explore the documents **(3)**.
 
    ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/14052025(6).png "Cosmos DB is open")
-
-1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure Cosmos DB for MongoDB account (RU). Select **Quick start** **(2)** from the left menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it into Notepad for later use in the next exercise.
-
-   ![](media/14052025(7).png)
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
@@ -193,6 +189,6 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 In this exercise, you have accomplished the following:
 - Task 1: Explored the databases and collections in MongoDB
-- Task 2: Created a Migration Project and migrated data to Azure CosmosDB
+- Task 2: Created a Migration Project and migrated data to Azure Cosmos DB
 
 Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
