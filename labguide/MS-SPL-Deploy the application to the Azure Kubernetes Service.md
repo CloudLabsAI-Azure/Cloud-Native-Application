@@ -120,7 +120,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 1. Select **Workloads (1)** under the **Kubernetes resources** section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
-    ![Select workloads under Kubernetes resources.](media/cn44.png "Select workloads under Kubernetes resources")
+    ![Select workloads under Kubernetes resources.](media/10062025(1).png "Select workloads under Kubernetes resources")
 
 1. In the **Apply with YAML** pane, paste the below YAML code, which creates a workload in AKS and click on **Apply**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
 
