@@ -1,6 +1,6 @@
 ## Hands-On-Lab: Deploy the application to the Azure Kubernetes Service
    
-### Estimated Duration: 90 minutes
+### Estimated Duration: 90 Minutes
 
 ## Overview
 
@@ -15,7 +15,7 @@ In this Exercise, you will be able to complete the following tasks:
 - Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
 - Task 4: Deploy a service & workload using kubectl
 
-### Task 1: Tunnel into the Azure Kubernetes Service cluster  
+## Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
 This task will gather the information you need about your Azure Kubernetes Service cluster to connect to the cluster and execute commands to connect to the Kubernetes management dashboard from the cloud shell.
 
@@ -55,7 +55,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
    ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/cn31.png "kubectl get nodes")   
 
-### Task 2: Set up MongoDB Secrets with AKS 
+## Task 2: Set up MongoDB Secrets with AKS 
 
 In this task, you will be creating a secret in the Kubernetes cluster to fetch the data from MongoDB.
      
@@ -82,7 +82,7 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
 
 <validation step="c33258ca-4b95-48b4-9483-25b150719d00" />
 
-### Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
+## Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
 In this task, you will deploy the API Carts application to the Azure Kubernetes Service cluster using the Azure Portal.
    
@@ -118,7 +118,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
       ![Select workloads under Kubernetes resources.](media/cn43.png "Select workloads under Kubernetes resources") 
 
-1. Select **Workloads (1)** under the Kubernetes resources section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
+1. Select **Workloads (1)** under the **Kubernetes resources** section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
     ![Select workloads under Kubernetes resources.](media/cn44.png "Select workloads under Kubernetes resources")
 
@@ -174,7 +174,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
    ![Selecting + Add to create a deployment.](media/cn45.png "Selecting + Add to create a deployment")
 
-1. After a few minutes, you will see the deployment listed and it should be in a running state.
+1. After a few minutes, you will see the deployment listed, and it should be in a running state.
 
    ![Selecting + Add to create a deployment.](media/cn-46.png "Selecting + Add to create a deployment")
 
@@ -185,7 +185,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
 <validation step="9975e483-b432-47bf-99bf-eca3572721f1" />
 
-### Task 4: Deploy a service & workload using kubectl
+## Task 4: Deploy a service & workload using kubectl
 
 In this task, you will deploy the web service & its workload using kubectl.
 
@@ -229,7 +229,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
 
-    > **Note:** This may take 1–2 minutes to load Thank you for your patience!
+    > **Note:** This may take 1–2 minutes to load. Thank you for your patience!
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
