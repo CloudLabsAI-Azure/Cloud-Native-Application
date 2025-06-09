@@ -24,7 +24,7 @@ Participants should have:
 
 - Understanding Docker concepts such as containers, images, and Dockerfiles.
 - Knowledge of MongoDB data structures and Azure Cosmos DB capabilities for effective migration.
-- Basic understanding of Kubernetes concepts including pods, deployments, and services, as well as Azure Kubernetes Service (AKS).
+- Basic understanding of Kubernetes concepts, including pods, deployments, and services, as well as Azure Kubernetes Service (AKS).
 - An active Azure subscription with appropriate permissions to create and manage resources.
 - General understanding of cloud services, container orchestration, and scaling strategies.
 - Proficiency in using command-line tools and interfaces, such as Azure CLI and Docker CLI.
@@ -89,16 +89,15 @@ To adjust the zoom level for the environment page, click the **A↕ : 100%** ico
 
 ## Lab Validation
 
-After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task, if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task; if not, carefully read the error message and retry the step, following the instructions in the lab guide.
 
    ![Inline Validation](media/cng13.png)
 
 If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
 
-     
 ## Login to Azure Portal
 
-1. In the JumpVM, click on the **Azure portal** shortcut of the Microsoft Edge browser, which is created on the desktop.
+1. In the JumpVM, click on the **Azure Portal** shortcut of the Microsoft Edge browser, which is created on the desktop.
 
    ![](media/cng12.png "Lab Environment")
    
@@ -111,10 +110,6 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
    * Password: <inject key="AzureAdUserPassword"></inject>
    
      ![](media/cng7.png "Enter Password")
-     
-1. If **Action required** pop-up window appears, click on **Ask later**.
-
-   ![](media/cng8.png "Enter Password")
   
 1. If you see the pop-up **Stay Signed in?**, click **No**.
 
@@ -122,7 +117,7 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
 
 1. If a **Welcome to Microsoft Azure** popup window appears, click **Cancel** to skip the tour.
   
-This hands-on-lab will help you to gain insights on how Azure OpenAI’s content filtering mechanisms contribute to responsible AI deployment, and how you can leverage these filters to ensure that your AI models adhere to appropriate content standards.
+This hands-on lab will help you gain insights into how Azure OpenAI’s content filtering mechanisms contribute to responsible AI deployment and how you can leverage these filters to ensure that your AI models adhere to appropriate content standards.
 
 ## Support Contact
 
