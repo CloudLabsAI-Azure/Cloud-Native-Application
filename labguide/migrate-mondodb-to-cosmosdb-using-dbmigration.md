@@ -68,12 +68,12 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" />** **(1)** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(2)** Cosmos DB resource.
 
-   ![](media/select-cosmos-db.png)
+   ![](media/select-cosmos-new-db.png)
 
 
 1. Click on **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
 
-   ![](media/cosmosdb_newcollection1.png)
+   ![](media/cosmosdb_newcollection1-new.png)
 
 1. Provide name as `contentdb` **(1)** for **Database id**. Select **Provision throughput (2)** and then select **Databse throughput** as **Manual** **(3)**,  provide the RU/s value to `400` **(4)** and click on **OK (5)**.
 
@@ -83,7 +83,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. In the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group, search for **contosotraders<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure Database Migration Service resource and navigate to that resource **(2)**
 
-   ![](media/select-azure-dms.png)
+   ![](media/select-azure-dms-new.png)
 
 1. On the Azure Database Migration Service blade, select **+ New Migration Project** on the **Overview** pane.
 
