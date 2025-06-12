@@ -224,7 +224,9 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
 Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
-1. No Portal do Azure, navegue até **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Conta do Azure Cosmos DB.
+1. No Portal do Azure, navegue até a conta **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
+
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/12062025-p5(1).png "A implementação da API está agora íntegra")
 
 1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
 
@@ -250,7 +252,9 @@ Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
 Nesta tarefa, irá executar um script de teste de desempenho que testará a funcionalidade Autoscale do Azure Cosmos DB para que possa ver que agora será dimensionado para mais de 400 RU/s.
 
-1. No Portal do Azure, navegue até **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Conta do Azure Cosmos DB.
+1. No Portal do Azure, navegue até a conta **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
+
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/12062025-p5(1).png "A implementação da API está agora íntegra")
 
 1. Selecione **Cadeia de Ligação** em **Definições**.
 
