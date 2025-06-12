@@ -218,7 +218,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB for MongoDB Account.
 
-    ![](media/p5-t6-st1-new.png "View replica details")
+    ![](media/p5-t6-st1--new.png "View replica details")
 
 2. Select **Data Explorer (1)** from the left side menu. Within **Data Explorer**, expand the `contentdb` **(2)** database.
 
@@ -246,7 +246,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** .Azure Cosmos DB for MongoDB Account.
 
-    ![](media/p5-t6-st1-new.png "View replica details")
+    ![](media/p5-t6-st1--new.png "View replica details")
 
 1. Select **Connection strings** under **Settings** tab.
 

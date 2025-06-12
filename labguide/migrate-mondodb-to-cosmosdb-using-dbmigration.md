@@ -70,11 +70,10 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/select-cosmos-new-db.png)
 
-
 1. Click on **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
-
+  
    ![](media/cosmosdb_newcollection1-new.png)
-
+   
 1. Provide name as `contentdb` **(1)** for **Database id**. Select **Provision throughput (2)** and then select **Databse throughput** as **Manual** **(3)**,  provide the RU/s value to `400` **(4)** and click on **OK (5)**.
 
    ![](media/cn1887.png)
