@@ -27,6 +27,8 @@ En esta tarea, revisará el clúster de AKS supervisado. Esta tarea se centra en
    ![Esta es una captura de pantalla mostrando cómo acceder a Azure Monitor.](media/a6.png "Accediendo a Azure Monitor")
      
 1. En la página Servicios de Kubernetes, seleccione contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>
+
+   ![](media/12062025-p7.png)
    
 1. En la sección Información de la hoja de recursos del servicio Kubernetes debería poder ver algunos registros.
 
