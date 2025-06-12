@@ -206,17 +206,19 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
 En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
-1. En el Portal de Azure, navegue hasta la cuenta Azure CosmosDB **Contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
+1. En el portal de Azure, navegue hasta la cuenta de Azure Cosmos DB para MongoDB **Contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-2. Seleccione **Explorador de datos (1)** del menú del lado izquierdo. En **Explorador de datos**, expanda la base de datos `contentdb` **(2)**.
+   ![](media/12062025-e2.png "MongoDB contentdb")
+
+1. Seleccione **Explorador de datos (1)** del menú del lado izquierdo. En **Explorador de datos**, expanda la base de datos `contentdb` **(2)**.
 
     ![](media/spanish-16.png "MongoDB contentdb")
 
-4. En la base de datos `contentdb`, expanda la colección **Items (1)**, seleccione **Settings (2)**.
+1. En la base de datos `contentdb`, expanda la colección **Items (1)**, seleccione **Settings (2)**.
 
     ![](media/spanish-17.png "MogoDB contentdb")
 
-5. En la pestaña **Scale & Settings (1)**, seleccione **Autoscale (2)** para la configuración **Throughput** en **Scale** y haga clic en **Save (3)**.
+1. En la pestaña **Scale & Settings (1)**, seleccione **Autoscale (2)** para la configuración **Throughput** en **Scale** y haga clic en **Save (3)**.
 
     ![La captura de pantalla muestra la pestaña Escala y configuración de Cosmos DB con Autoscale seleccionada](media/spanish-188.png "Escala y configuración de la colección CosmosDB")
 
@@ -231,44 +233,46 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
 En esta tarea, ejecutará un script de prueba de rendimiento que probará la característica Autoscale de Azure Cosmos DB para que pueda ver que ahora escalará a más de 400 RU/s.
 
-1. En el Portal de Azure, navegue hasta la cuenta de Azure CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
+1. En el portal de Azure, navegue hasta la cuenta de Azure Cosmos DB para MongoDB **Contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-2. Seleccione **Cadena de conexión** en **Configuración**.
+   ![](media/12062025-e2.png "MongoDB contentdb")
+
+1. Seleccione **Cadena de conexión** en **Configuración**.
 
    ![](media/spanish-20.png "Ver cadena de conexión")
 
-3. En el panel **Cadena de conexión**, copie los valores **HOST (1)**, **NOMBRE DE USUARIO (2)** y **CONTRASEÑA PRINCIPAL (3)**. Guárdelos en un archivo de texto para usarlos más adelante.
+1. En el panel **Cadena de conexión**, copie los valores **HOST (1)**, **NOMBRE DE USUARIO (2)** y **CONTRASEÑA PRINCIPAL (3)**. Guárdelos en un archivo de texto para usarlos más adelante.
 
     ![El panel Cadena de conexión de la cuenta de Cosmos DB con los campos para copiar resaltados.](media/cnctionstringnew.png "Ver Cadena de conexión de CosmosDB")
 
-4. Abra el símbolo del sistema y conéctese a la MV del Agente de Compilación usando el comando  **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** proporcionado.
+1. Abra el símbolo del sistema y conéctese a la MV del Agente de Compilación usando el comando  **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** proporcionado.
 
-5. Cuando se le solicite la contraseña, ingrese la **Contraseña de la MV del Agente de Compilación** que se proporciona a continuación.
+1. Cuando se le solicite la contraseña, ingrese la **Contraseña de la MV del Agente de Compilación** que se proporciona a continuación.
 
    * Contraseña: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-6. En la **MV del Agente de Compilación**, mavegue hasta el directorio `~/labfiles`.
+1. En la **MV del Agente de Compilación**, mavegue hasta el directorio `~/labfiles`.
 
     ```bash
     cd Cloud-Native-Application/labfiles/src
     ```
 
-7. Ejecute el siguiente comando para abrir el script `perftest.sh` en la ventana del editor.
+1. Ejecute el siguiente comando para abrir el script `perftest.sh` en la ventana del editor.
 
     ```bash
     sudo chmod 777 perftest.sh
     vi perftest.sh
     ```
 
-8. Hay varias variables declaradas en la parte superior del script `perftest.sh`. Presione **_i_** para ingresar al modo `insert`. Luego modifique las variables **host**, **username** y **password** estableciendo sus valores en los valores correspondientes de la Cadena de Conexión de Cosmos DB que se copiaron anteriormente.
+1. Hay varias variables declaradas en la parte superior del script `perftest.sh`. Presione **_i_** para ingresar al modo `insert`. Luego modifique las variables **host**, **username** y **password** estableciendo sus valores en los valores correspondientes de la Cadena de Conexión de Cosmos DB que se copiaron anteriormente.
 
     ![La captura de pantalla muestra Vim con el archivo perftest.sh abierto y las variables configuradas en valores de cadena de conexión de Cosmos DB.](media/updatepreftest.png "Modificar la información de conexión en Vim")
 
-9. Luego presione **_ESC_**, escriba **_:wq_** para guardar los cambios y cerrar el archivo.
+1. Luego presione **_ESC_**, escriba **_:wq_** para guardar los cambios y cerrar el archivo.
     
     >**Nota**: Si **_ESC_** no funciona, presione `ctrl+[` y luego escriba **_:wq_** para guardar los cambios y cerrar el archivo.
     
-10. Ejecute el siguiente comando para ejecutar el script `perftest.sh` para ejecutar una pequeña prueba de carga en CosmosDB. Este script consumirá RUs en CosmosDB al insertar muchos documentos en el contenedor Sessions.
+1. Ejecute el siguiente comando para ejecutar el script `perftest.sh` para ejecutar una pequeña prueba de carga en CosmosDB. Este script consumirá RUs en CosmosDB al insertar muchos documentos en el contenedor Sessions.
 
     ```bash
     bash ./perftest.sh
@@ -276,19 +280,19 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
 
     > **Nota:** No esperes a que el script termine; continúa con el siguiente paso.
 
-11. Una vez que se complete la ejecución del script, regrese a la **Cuenta de CosmosDB** en el Portal de Azure.
+1. Una vez que se complete la ejecución del script, regrese a la **Cuenta de CosmosDB** en el Portal de Azure.
 
-12. Desplácese hacia abajo en el panel **Descripción general** de la hoja **Cuenta de Cosmos DB** y busque el gráfico **Cargo de la solicitud**.
+1. Desplácese hacia abajo en el panel **Descripción general** de la hoja **Cuenta de Cosmos DB** y busque el gráfico **Cargo de la solicitud**.
 
     > **Nota:** La actividad en la colección CosmosDB puede tardar de 2 a 5 minutos en aparecer en el registro de actividad. Espere un par de minutos y luego actualice la página si la carga de las solicitudes recientes no aparece en este momento.
 
-13. Observe que el **Cargo de la solicitud** ahora muestra que hubo actividad en la **cuenta de CosmosDB** que superó el límite de 400 RU/s que se estableció previamente antes de activar Autoscale.
+1. Observe que el **Cargo de la solicitud** ahora muestra que hubo actividad en la **cuenta de CosmosDB** que superó el límite de 400 RU/s que se estableció previamente antes de activar Autoscale.
 
     ![La captura de pantalla muestra el gráfico de cargos de la solicitud de Cosmos DB que muestra la actividad reciente de la prueba de rendimiento](media/spanish-21.png "Gráfico de actividad reciente de CosmosDB")
     
     >**Nota**: En caso de que no vea datos en el gráfico, configure el rango de tiempo para que dure 1 hora.
 
-14. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
+1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
       
 ## Resumen

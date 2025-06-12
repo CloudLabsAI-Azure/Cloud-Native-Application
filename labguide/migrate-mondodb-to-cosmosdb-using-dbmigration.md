@@ -69,11 +69,15 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![](media/privateip.png)
 
-1. Navegue al grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra el recurso CosmosDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)** , haga clic en **Explorador de datos (3)**. Ahora haga clic en la flecha desplegable, junto a **New Collection (4)** y luego seleccione **New Database (5)**.
+1. Navegue al grupo de recursos **ContosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra la cuenta de Cosmos DB para MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)**.
 
-   ![](media/newdatabse-spanish.png)
+   ![](media/12062025-e2.png)
 
    > **Nota:** Si recibe una ventana emergente **¡Bienvenido! ¿Qué es Cosmos DB?** ventana emergente, ciérrela haciendo clic en **X**.
+
+1. Haga clic en **Explorador de datos (1)**. Ahora haga clic en la flecha desplegable, junto a **+ Nueva colección (2)** y luego seleccione **+ Nueva base de datos (3)**.
+
+   ![](media/12062025-e2(2)-new.png)
 
 1. Proporcione el nombre como `contentdb` **(1)** para el **Id. de la base de datos**. Seleccione **Asignar rendimiento (2)** y luego seleccione **Rendimiento de la base de datos** como **Manual** **(3)**, proporcione el valor de RU/s como `400` **(4)** y haga clic en **Aceptar (5)**.
 
@@ -85,7 +89,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. En la hoja Azure Database Migration Service, seleccione **+ Nuevo Proyecto de Migración** en el panel **información general**.
 
-   ![](media/newproject.png)
+   ![](media/newproject-new.png)
 
 1. En el panel **Nuevo proyecto de migración**, ingrese los siguientes valores y luego seleccione **Crear y ejecutar una actividad**:
 

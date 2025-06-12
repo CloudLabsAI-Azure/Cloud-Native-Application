@@ -59,7 +59,7 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. Una vez que se haya aprovisionado el ambiente, se cargarán una máquina virtual (JumpVM) y una guía de laboratorio en su navegador. Utilice esta máquina virtual durante todo el taller para realizar el laboratorio. Puede ver el número en la parte inferior de la guía de laboratorio para cambiar a los diferentes ejercicios de la guía de laboratorio.
 
-   ![](media/spanish-22.png "Ambiente de Laboratorio")
+   ![](media/1262025(1).png "Ambiente de Laboratorio")
 
 1. Para obtener los detalles del ambiente de laboratorio, puede seleccionar la pestaña **Ambiente**. Además, las credenciales también se enviarán por correo electrónico a su dirección de correo electrónico registrada. También puede abrir la Guía de Laboratorio en una ventana separada y completa seleccionando **Ventana Dividida** en la esquina superior derecha. Además, puede iniciar, detener y reiniciar máquinas virtuales desde la pestaña **Recursos**.
 
@@ -79,17 +79,17 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. En JumpVM, haga clic en el acceso directo del portal de Azure del navegador Microsoft Edge que se crea en el escritorio.
 
-   ![](media/spanish-25.png "Ambiente de Laboratorio")
+   ![](media/1262025(2).png "Ambiente de Laboratorio")
    
 1. En la pestaña **Iniciar sesión en Microsoft Azure** verá la pantalla de inicio de sesión, en ella ingrese el siguiente correo electrónico/nombre de usuario y luego haga clic en **Siguiente**.
    * Correo electrónico/Nombre de usuario: <inject key="AzureAdUserEmail"></inject>
    
-     ![](media/gs-4.png "Ingrese Correo Electrónico")
+     ![](media/1262025(3).png "Ingrese Correo Electrónico")
      
 1. Ahora ingrese la siguiente contraseña y haga clic en **Iniciar sesión**.
    * Contraseña: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/gs-5.png "Ingrese Contraseña")
+     ![](media/1262025(4)-new.png "Ingrese Contraseña")
      
      > Si ve el cuadro de diálogo **Ayúdenos a proteger su cuenta**, seleccione la opción **Omitir por ahora**.
 

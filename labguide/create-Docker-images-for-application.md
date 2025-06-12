@@ -19,7 +19,7 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
 
 1. Una vez que inicie sesión en la Máquina Virtual, busque **cmd** **(1)** en la barra de búsqueda de Windows y haga clic en **Símbolo del sistema** **(2)** para abrirla.
 
-   ![](media/a5.png "abrir cmd")
+   ![](media/1262025-p2(1).png "abrir cmd")
     
 1. Ejecute el comando proporcionado **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para conectarse a la MV de Linux usando ssh.
    
@@ -189,7 +189,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 
 1. Navegue al Portal de Azure, abra el Registro de contenedor **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** desde el Grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-   ![](media/ex1-acr1.png)
+   ![](media/12062025-p2(2).png)
    
 1. Desde el Registro de Contenedor **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** seleccione **Claves de acceso** **(2)** en Configuración del menú lateral de la izquierda. **Copie** **(3)** la Contraseña y péguela en un archivo de texto para usarla más adelante.
 
