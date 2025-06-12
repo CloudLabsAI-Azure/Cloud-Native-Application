@@ -59,7 +59,7 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
 1. Depois de o ambiente ser provisionado, uma máquina virtual (JumpVM) e um guia de laboratório serão carregados no seu browser. Utilize esta máquina virtual durante todo o workshop para realizar o laboratório. Pode ver o número na parte inferior do guia de laboratório para alternar para os diferentes exercícios do **Guia do laboratório**.
 
-   ![](../media/portu-13.png "Ambiente de laboratório")
+   ![](../media/portu-13-new.png "Ambiente de laboratório")
 
 ## Utilizando o recurso de aumentar/diminuir zoom   
 
