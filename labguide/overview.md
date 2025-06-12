@@ -89,7 +89,7 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 1. Ahora ingrese la siguiente contraseña y haga clic en **Iniciar sesión**.
    * Contraseña: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/1262025(4).png "Ingrese Contraseña")
+     ![](media/1262025(4)-new.png "Ingrese Contraseña")
      
      > Si ve el cuadro de diálogo **Ayúdenos a proteger su cuenta**, seleccione la opción **Omitir por ahora**.
 
