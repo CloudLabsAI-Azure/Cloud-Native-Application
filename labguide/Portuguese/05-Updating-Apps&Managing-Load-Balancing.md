@@ -100,6 +100,18 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
      ```
       az login
      ```
+1. Na guia Iniciar sessão na Microsoft, você verá a tela de login. Insira seu e-mail/nome de usuário e clique em Avançar.
+
+   ![](../media/12062025-p6(1).png)
+
+   >**Nota**: Para obter suas credenciais de login, navegue até a guia Ambiente. Na seção Campos de Autenticação, você encontrará o Nome de Usuário e a Senha necessários para acessar o ambiente do laboratório. Use o ícone de copiar ao lado de cada campo para copiar os valores instantaneamente.
+
+1. Agora insira a senha e clique em Entrar.
+
+   ![](../media/12062025-p6(2).png)
+
+   >**Nota**: Durante o login, pode aparecer uma tela com a pergunta: "Iniciar sessão automaticamente em todos os aplicativos da área de trabalho e sites neste dispositivo?" Clique em Não, apenas este aplicativo.
+     
 1. Execute o comando kubectl abaixo para obter a implementação atual no seu AKS, pois agora iremos atualizar a API web para a imagem mais recente. **Copie** o nome de **contoso-traders-web###** para o bloco de notas.
 
     ```bash
