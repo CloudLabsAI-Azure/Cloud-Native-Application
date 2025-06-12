@@ -77,7 +77,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
 1. Haga clic en **Explorador de datos (1)**. Ahora haga clic en la flecha desplegable, junto a **+ Nueva colección (2)** y luego seleccione **+ Nueva base de datos (3)**.
 
-   ![](media/12062025-e2(2).png)
+   ![](media/12062025-e2(2)-new.png)
 
 1. Proporcione el nombre como `contentdb` **(1)** para el **Id. de la base de datos**. Seleccione **Asignar rendimiento (2)** y luego seleccione **Rendimiento de la base de datos** como **Manual** **(3)**, proporcione el valor de RU/s como `400` **(4)** y haga clic en **Aceptar (5)**.
 
