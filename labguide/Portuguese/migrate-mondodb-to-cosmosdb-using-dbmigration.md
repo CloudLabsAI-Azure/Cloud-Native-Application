@@ -64,7 +64,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
    ![](../media/1-10-24(18).png)
 
-1. Navegue até ao grupo de recursos **ContosoTraders (1)** e abra o recurso **contosotraders- (2)** do Cosmos DB.
+1. Navegue até ao grupo de recursos **ContosoTraders (1)** e abra **contosotraders- (2)**, a conta do Cosmos DB para MongoDB.
 
    ![](../media/E2-T2-S2MongoDB.png)
 
