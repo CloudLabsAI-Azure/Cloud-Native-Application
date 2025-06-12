@@ -66,7 +66,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/privateip.png)
 
-1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" />** **(1)** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(2)** Cosmos DB resource.
+1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" />** **(1)** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(2)** Cosmos DB for MongoDB account.
 
    ![](media/select-cosmos-new-db.png)
 
