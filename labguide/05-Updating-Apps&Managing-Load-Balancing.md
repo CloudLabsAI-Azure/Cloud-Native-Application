@@ -94,7 +94,7 @@ In this task, you will edit the web application source code to update some confi
 1. Open a new Command Prompt and log in using the following command:
 
    ``` 
-   az login
+   az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
    ```
 
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
