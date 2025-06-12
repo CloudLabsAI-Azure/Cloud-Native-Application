@@ -218,6 +218,8 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
 
+    ![](media/p5-t6-st1.png "View replica details")
+
 2. Select **Data Explorer (1)** from the left side menu. Within **Data Explorer**, expand the `contentdb` **(2)** database.
 
     ![](media/contosodb.png "View replica details")
@@ -244,42 +246,44 @@ In this task, you will run a performance test script that will test the Autoscal
 
 1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB Account.
 
+    ![](media/p5-t6-st1.png "View replica details")
+
 2. Select **Connection strings** under **Settings** tab.
 
-   ![](media/new-cloud-native-eng-ex4-8.png "View replica details")
+   ![](media/new-cloud-native-eng-ex4-8-new.png "View replica details")
 
-3. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in a text file for later use.
+4. On the **Connection String** pane, copy the **HOST (1)**, **USERNAME (2)**, and **PRIMARY PASSWORD (3)** values. Save these in a text file for later use.
 
     ![The Cosmos DB account Connection String pane with the fields to copy highlighted.](media/cnctionstringnew.png "View CosmosDB connection string")
 
-4. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
+5. Open the Command prompt, and connect to the build agent VM using the given command **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
-5. When asked for the password, enter the **Build Agent VM Password** given below.
+6. When asked for the password, enter the **Build Agent VM Password** given below.
 
    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-6. On the **Build agent VM**, navigate to the `~/labfiles` directory.
+7. On the **Build agent VM**, navigate to the `~/labfiles` directory.
 
     ```bash
     cd Cloud-Native-Application/labfiles/src
     ```
 
-7. Run the following command to open the `perftest.sh` script in the editor window.
+8. Run the following command to open the `perftest.sh` script in the editor window.
 
     ```bash
     sudo chmod 777 perftest.sh
     vi perftest.sh
     ```
 
-8. There are several variables declared at the top of the `perftest.sh` script. Press **_i_** to get into `insert` mode. Then modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
+9. There are several variables declared at the top of the `perftest.sh` script. Press **_i_** to get into `insert` mode. Then modify the **host**, **username**, and **password** variables by setting their values to the corresponding Cosmos DB Connection String values that were copied previously.
 
     ![The screenshot shows Vim with perftest.sh file open and variables set to Cosmos DB Connection String values.](media/updatepreftest.png "Modify the connection information in Vim")
 
-9. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
+10. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
     >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
     
-10. Run the following command to execute the `perftest.sh` script to run a small load test against Cosmos DB. This script will consume RUs in Cosmos DB by inserting many documents into the Sessions container.
+11. Run the following command to execute the `perftest.sh` script to run a small load test against Cosmos DB. This script will consume RUs in Cosmos DB by inserting many documents into the Sessions container.
 
     ```bash
     bash ./perftest.sh
@@ -287,19 +291,19 @@ In this task, you will run a performance test script that will test the Autoscal
 
     > **Note:** The script will take a few minutes to complete its execution, if the script get stuck while getting executed, click `Ctrl+C` to stop the script.
 
-11. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
+12. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
 
-12. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
+13. Scroll down on the **Overview** pane of the **Cosmos DB account** blade and locate the **Request Charge** graph.
 
     > **Note:** It may take 2 - 5 minutes for the activity on the Cosmos DB collection to appear in the activity log. Wait a couple of minutes and then refresh the page if the recent Request charge doesn't show up right now.
 
-13. Notice that the **Request charge** now shows there was activity on the **Cosmos DB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
+14. Notice that the **Request charge** now shows there was activity on the **Cosmos DB account** that exceeded the 400 RU/s limit that was previously set before Autoscale was turned on.
 
     ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/english-09.png "Recent CosmosDB activity graph")
     
     >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
 
-14. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+15. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
