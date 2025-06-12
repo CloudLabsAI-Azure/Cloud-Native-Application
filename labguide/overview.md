@@ -61,7 +61,7 @@ Welcome to your Cloud Native Applications Workshop! We've prepared a seamless en
 
 ## Accessing Your Lab Environment
 
-1. Once the environment is provisioned, a virtual machine (JumpVM) and guide will be loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the lab guide to switch to different exercises in the lab guide.
+1. Once the environment is provisioned, a virtual machine (JumpVM) and guide will be loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the guide to switch to different exercises in the guide.
 
    ![](media/english-get-new-01.png "Lab Environment")
 
