@@ -96,7 +96,18 @@ In this task, you will edit the web application source code to update some confi
    ``` 
    az login
    ```
+1. On sign in to Microsoft tab you will see login screen. enter the email/username and then click Next.
 
+   ![](media/p6-st12.png)
+   
+   >**Note**: To get your login credentials, navigate to the **Environment** tab. Under the Auth Fields section, you will find the **Username** and **Password** required to access the lab environment. Use the copy icon next to each field to copy the values instantly. 
+
+1. Now enter the password and click on **Sign in**
+
+   ![](media/p6-st13.png)
+
+   >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**.
+   
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
 
     ```bash

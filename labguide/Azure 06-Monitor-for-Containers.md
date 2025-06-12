@@ -27,6 +27,8 @@ In this task, you will be reviewing the monitored AKS cluster. This task is focu
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/a7.png "Add a Namespace")
      
 1. On the Kubernetes Services page, select **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**.
+
+   ![](media/p7-st2.png "select aks")
    
 1. In the Insights section, under monitoring in your Kubernetes service resource blade and you should be able to see some logs.
 

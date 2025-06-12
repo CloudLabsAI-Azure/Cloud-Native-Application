@@ -134,7 +134,7 @@ In this task, you will be building the Docker images to containerize the applica
     vi configService.js
     ```
     
-    ![](media/latest-ex1-cd-website.png)
+    ![](media/latest-ex1-new-cd-website.png)
     
 1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given deploymentID **<inject key="DeploymentID" enableCopy="true"/>** and Region **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to the product API once it's pushed to AKS containers.
     
