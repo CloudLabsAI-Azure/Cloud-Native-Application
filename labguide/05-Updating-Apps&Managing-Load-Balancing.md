@@ -98,13 +98,13 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
    ```
 1. En la pestaña Iniciar sesión en Microsoft, verá la pantalla de inicio de sesión. Ingrese el correo electrónico/nombre de usuario y luego haga clic en Siguiente.
 
-   ![](media/12062025-p5(1).png)
+   ![](media/12062025-p5(1)-new.png)
 
    >**Nota**: Para obtener sus credenciales de inicio de sesión, navegue a la pestaña Entorno. En la sección Campos de autenticación, encontrará el nombre de usuario y la contraseña necesarios para acceder al entorno del laboratorio. Utilice el ícono de copiar junto a cada campo para copiar los valores al instante.
 
 1. Ahora ingrese la contraseña y haga clic en Iniciar sesión.
 
-   ![](media/12062025-p5(2).png)
+   ![](media/12062025-p5(2)-new.png)
 
    >**Nota**: Durante el inicio de sesión, es posible que se le muestre una pantalla que pregunta: "¿Iniciar sesión automáticamente en todas las aplicaciones de escritorio y sitios web en este dispositivo?" Haga clic en No, solo esta aplicación.
 
