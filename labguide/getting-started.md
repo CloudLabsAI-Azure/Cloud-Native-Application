@@ -57,6 +57,10 @@ Once you're ready to dive in, your virtual machine and **Guide** will be right a
 
    ![](media/14052025.png "Lab Environment")
 
+   **Note:** Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
+
+   ![](media/setup.jpg)
+
 ## Virtual Machine & Lab Guide
  
 Your virtual machine is your workhorse throughout the workshop. The lab guide is your roadmap to success.

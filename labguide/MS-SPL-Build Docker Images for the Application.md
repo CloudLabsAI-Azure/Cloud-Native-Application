@@ -187,7 +187,7 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/cn10.png)
 
-1. From the **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** container registry, navigate to **Access keys (2)** under **Settings** in the left menu, then copy the **Password (3)** and save it in a notepad for later use.
+1. From the **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** container registry, navigate to **Access keys (2)** under **Settings** in the left menu, Click on **Show** then copy the **Password (3)** and save it in a notepad for later use.
 
    ![](media/14052025(5).png)    
 

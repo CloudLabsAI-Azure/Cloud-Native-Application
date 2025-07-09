@@ -25,6 +25,10 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn28.png "Add a Namespace")
 
+1. If you're prompted with a message saying **Do you want to allow this app to make changes to your device?**, click **Yes** to continue.
+
+    ![](media/cloudnative-1.jpg)
+
 1. Log in to Azure with the below commands after updating the values in the command.
 
     ```bash
@@ -118,6 +122,9 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
       ![Select workloads under Kubernetes resources.](media/cn43.png "Select workloads under Kubernetes resources") 
 
+      >**Note:** While entering the YAML code, if you're prompted with suggestion **Draft with Copilot**, click the **Close** button to dismiss it.
+      ![](media/cloudnative-2.jpg)
+       
 1. Select **Workloads (1)** under the **Kubernetes resources** section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
     ![Select workloads under Kubernetes resources.](media/10062025(1).png "Select workloads under Kubernetes resources")
