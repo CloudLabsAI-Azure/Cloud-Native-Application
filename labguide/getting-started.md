@@ -57,7 +57,9 @@ Once you're ready to dive in, your virtual machine and **Guide** will be right a
 
    ![](media/14052025.png "Lab Environment")
 
-   **Note:** Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
+   >**Note:** Once the environment gets set up, you will see the PowerShell automation script executing on the desktop. Wait for it to complete and ensure not to close or cancel it.
+
+   >**Note:** Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
 
    ![](media/setup.jpg)
 
