@@ -61,7 +61,7 @@ Welcome to your Cloud Native Application Architecture Workshop! We've prepared a
 
  2. Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
 
-   ![](media/setup.jpg)
+    ![](media/setup.jpg)
 
 ## Virtual Machine & Lab Guide
  
