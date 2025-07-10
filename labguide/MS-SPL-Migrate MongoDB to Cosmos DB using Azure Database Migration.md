@@ -80,6 +80,9 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/cn15.png)
 
+   >**Note:** If a pop-up appears saying **Welcome! What is Cosmos DB?**, click **Close X** to dismiss it.
+   ![](media/cloudnative-3.jpg)
+
 1. Provide the following details under **New Database** and then click on **OK (5)**.
 
    - Provide name as `contentdb` **(1)** for **Database id**

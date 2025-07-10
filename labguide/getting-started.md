@@ -53,9 +53,15 @@ Welcome to your Cloud Native Application Architecture Workshop! We've prepared a
 
 ## Accessing Your Lab Environment
  
-Once you're ready to dive in, your virtual machine and **Guide** will be right at your fingertips within your web browser.
+1. Once you're ready to dive in, your virtual machine and **Guide** will be right at your fingertips within your web browser.
 
    ![](media/14052025.png "Lab Environment")
+
+   >**Note:** Once the environment gets set up, you will see the PowerShell automation script executing on the desktop. Wait for it to complete and ensure not to close or cancel it.
+
+ 2. Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
+
+    ![](media/setup.jpg)
 
 ## Virtual Machine & Lab Guide
  

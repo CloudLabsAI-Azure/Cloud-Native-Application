@@ -85,21 +85,23 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/cn1.png)
    
-1. On the **Sign in to Microsoft Azure** tab, you will see a login screen. Enter the following email/username and then click on **Next**.
+1. On the **Sign in to Microsoft Azure** tab, you will see a **Pick an account** screen. Choose the user that is already signed in from the list.
 
-   * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
+   * **Email/Username**: **<inject key="AzureAdUserEmail"></inject>**
 
      ![](media/cn2.png)   
 
-1. If prompted, enter the following password and click on **Sign in**.
+1. If prompted, enter the following **Password (1)** and click on **Sign in (2)**.
 
-   * Password: **<inject key="AzureAdUserPassword"></inject>**
+   * **Password**: **<inject key="AzureAdUserPassword"></inject>**
+
+     ![](media/cloudnative-4.png)  
 
 1. In a pop-up to confirm the sign-in to Microsoft Azure CLI, click on **Continue**.
 
    ![](media/ex1-logincontinue.png)
 
-1. Once you log in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
+1. Once you log in to Azure, Navigate back to command prompt now you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
    ![](media/ex1-logincomplete.png)
    
@@ -187,7 +189,7 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/cn10.png)
 
-1. From the **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** container registry, navigate to **Access keys (2)** under **Settings** in the left menu, then copy the **Password (3)** and save it in a notepad for later use.
+1. From the **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** container registry, navigate to **Access keys (2)** under **Settings** in the left menu, Click on **Show** then copy the **Password (3)** and save it in a notepad for later use.
 
    ![](media/14052025(5).png)    
 
