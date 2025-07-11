@@ -64,6 +64,10 @@ Welcome to your Cloud Native Applications Workshop! We've prepared a seamless en
 1. Once the environment is provisioned, a virtual machine (JumpVM) and guide will be loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the guide to switch to different exercises in the guide.
 
    ![](media/english-get-new-01.png "Lab Environment")
+   
+1. Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
+
+    ![](media/setup.jpg)
 
 1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide in a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
 
