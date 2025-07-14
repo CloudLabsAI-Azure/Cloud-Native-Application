@@ -124,7 +124,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
       >**Note:** While entering the YAML code, if you're prompted with suggestion **Draft with Copilot**, click the **Close** button to dismiss it.
       
-      ![](media/cloudnative-2.jpg)
+      > ![](media/cloudnative-2.jpg)
        
 1. Select **Workloads (1)** under the **Kubernetes resources** section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
