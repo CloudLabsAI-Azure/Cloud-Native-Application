@@ -1,4 +1,4 @@
-## Hands-On-Lab: Build Docker Images for the Application
+## Exercise 01 : Build Docker Images for the Application
   
 ### Estimated Duration: 75 Minutes
 
@@ -73,7 +73,7 @@ In this task, you will be building the Docker images to containerize the applica
 
     >**Note:** In the command prompt type **Y**, and press **Enter** for **Do you want to continue? [Y/n]**.
     
-1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
+1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and **Copy** the **Authentication code.**
 
    ``` 
    az login
@@ -111,7 +111,7 @@ In this task, you will be building the Docker images to containerize the applica
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest
     ```
     
-    ![](media/cn3.png)
+    ![](media/cloudnative-v1-ex1.png)
     
 1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. 
 
@@ -132,17 +132,15 @@ In this task, you will be building the Docker images to containerize the applica
     ![](media/latest-ex1-cd-website.png)
     
 1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given `DeploymentID` with **<inject key="DeploymentID" enableCopy="true"/>** and `Region` with  **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
-
-    ![](media/cn5.png)
     
-    >**Note:** If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
-
     ```
     const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
     const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
-
+    ![](media/cn5.png)
     ![](media/cn6.png)
+
+    >**Note:** If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
 
 1. Run the below command to change the directory to the `ContosoTraders.Ui.Website` folder.
 
@@ -177,7 +175,7 @@ In this task, you will be building the Docker images to containerize the applica
 
     ![](media/cn7.png)
 
-1. Navigate to the Azure portal, search for **Resource group (1)** and select **Resource groups (2)** from the services.      
+1. Navigate to the Azure portal, and on the home page, search for **Resource group (1)**, then select **Resource groups (2)** from the search results.     
 
    ![](media/cn8.png)
 
@@ -185,9 +183,9 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/cn9.png)
 
-1. Open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. In the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**  resource group, search for **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** in the search box, and then select the **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (2)** Container Registry from the results.
 
-   ![](media/cn10.png)
+   ![](media/cloudnative-v1-ex1.2.png)
 
 1. From the **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** container registry, navigate to **Access keys (2)** under **Settings** in the left menu, Click on **Show** then copy the **Password (3)** and save it in a notepad for later use.
 
@@ -217,7 +215,7 @@ In this task, you will be building the Docker images to containerize the applica
    
 1. You should be able to see the Docker image getting pushed to ACR as shown in the screenshot below. 
     
-    ![](media/ex1-dockerpush.png "open cmd")
+    ![](media/cloudnative-v1-2.png "open cmd")
     
 ## Review
 
@@ -225,4 +223,6 @@ In this exercise, you have accomplished the following:
 - Task 1: Set up a local infrastructure with the Linux VM
 - Task 2: Built Docker images to containerize the application and pushed them to the container registry
 
-Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+Click the **Next >>** button located in the bottom right corner of this lab guide to continue with the next exercise.
+
+![](media/cloudnative-v1-16.png "open cmd")
