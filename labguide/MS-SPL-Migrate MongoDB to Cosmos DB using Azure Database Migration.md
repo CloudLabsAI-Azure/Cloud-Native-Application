@@ -94,7 +94,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    - Select the **Provision throughput** checkbox **(2)**
 
-   - Select **Databse throughput (400 -unlimited RU/s)** as **Manual** **(3)** 
+   - Select **Databse throughput (400 - unlimited RU/s)** as **Manual** **(3)** 
 
    - Provide the **Database Required RU/s** value to `400` **(4)**
 
@@ -126,7 +126,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
     - **Mode:** **Standard mode (1)**
     
-    - **Source server name:** Enter the Private IP Address of the Build Agent VM that you have copied in **Task 2 Step 2 (2)**.
+    - **Source server name:** Enter the Private IP Address of the Build Agent VM that you have copied in **Task 2 Step 3 (2)**.
     
     - **Server port:** `27017` **(3)**
     
@@ -193,7 +193,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 <validation step="4a5c93cd-63af-49ac-8a9d-a6c92e6a71dd" />
 
-## Review
+## Summary
 
 In this exercise, you have accomplished the following:
 - Task 1: Explored the databases and collections in MongoDB
@@ -201,4 +201,4 @@ In this exercise, you have accomplished the following:
 
 Click the **Next >>** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-![](media/cloudnative-v1-17.png)
+![](media/cloudnative-v2-1.png)

@@ -138,6 +138,7 @@ In this task, you will be building the Docker images to containerize the applica
     const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
     ![](media/cn5.png)
+
     ![](media/cn6.png)
 
     >**Note:** If **_ESC_** doesn't work press `ctrl + [` and then write **_:wq_** to save you changes and close the file.
@@ -217,7 +218,7 @@ In this task, you will be building the Docker images to containerize the applica
     
     ![](media/cloudnative-v1-2.png "open cmd")
     
-## Review
+## Summary
 
 In this exercise, you have accomplished the following:
 - Task 1: Set up a local infrastructure with the Linux VM
@@ -225,4 +226,4 @@ In this exercise, you have accomplished the following:
 
 Click the **Next >>** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-![](media/cloudnative-v1-16.png "open cmd")
+![](media/cloudnative-v2-2.png)
