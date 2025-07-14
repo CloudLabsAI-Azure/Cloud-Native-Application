@@ -64,7 +64,7 @@ In this task, you will be connecting to a mongo database hosted on an Azure Linu
 
 In this task, you will create a Migration project within Azure Database Migration Service and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises, you will be using the Azure CosmosDB to fetch the data for the products page. 
 
-1. Navigate to the Azure portal, and on the home page, search for **ContosoTraders-<inject key="DeploymentID" enableCopy="false" /> (1)**  resource group, then select the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" /> (2)** from the search results.     
+1. Navigate to the Azure portal, and on the home page, search for **ContosoTraders-<inject key="DeploymentID" enableCopy="false" /> (1)**, then select the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" /> (2)** resource group from the search results.     
 
    ![](media/cloudnative-v1-ex2.2.png)
 
