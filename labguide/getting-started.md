@@ -1,6 +1,6 @@
 # Cloud Native Application Architecture
 
-### Overall Estimated Duration: 4 hours
+### Overall Estimated Duration: 4 Hours
 
 ## Overview
 
@@ -25,7 +25,6 @@ Participants should have:
 - Understanding Docker concepts such as containers, images, and Dockerfiles.
 - Knowledge of MongoDB data structures and Azure Cosmos DB capabilities for effective migration.
 - Basic understanding of Kubernetes concepts, including pods, deployments, and services, as well as Azure Kubernetes Service (AKS).
-- An active Azure subscription with appropriate permissions to create and manage resources.
 - General understanding of cloud services, container orchestration, and scaling strategies.
 - Proficiency in using command-line tools and interfaces, such as Azure CLI and Docker CLI.
 
@@ -53,15 +52,11 @@ Welcome to your Cloud Native Application Architecture Workshop! We've prepared a
 
 ## Accessing Your Lab Environment
  
-1. Once you're ready to dive in, your virtual machine and **Guide** will be right at your fingertips within your web browser.
+Once you're ready to dive in, your virtual machine and **Guide** will be right at your fingertips within your web browser.
 
    ![](media/14052025.png "Lab Environment")
 
    >**Note:** Once the environment gets set up, you will see the PowerShell automation script executing on the desktop. Wait for it to complete and ensure not to close or cancel it.
-
- 2. Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
-
-    ![](media/setup.jpg)
 
 ## Virtual Machine & Lab Guide
  
@@ -85,7 +80,7 @@ For convenience, you can open the lab guide in a separate window by selecting th
  
 Feel free to **Start, Stop, or Restart** your virtual machine as needed from the **Resources** tab. Your experience is in your hands!
  
-![Manage Your Virtual Machine](media/14052025(4).png)    
+![Manage Your Virtual Machine](media/resourcetab-v1.png)    
 
 ## Lab Guide Zoom In/Zoom Out
 
@@ -102,6 +97,10 @@ After completing the task, hit the **Validate** button under the Validation tab 
 If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
 
 ## Login to Azure Portal
+
+1. Once you are on the JumpVM, if a Windows screen titled **Choose privacy settings for your device** appears, proceed by clicking **Next** through each of the configuration steps, typically four times, then click **Accept** to complete the setup.
+
+   ![](media/setup.jpg)
 
 1. In the JumpVM, click on the **Azure Portal** shortcut of the Microsoft Edge browser, which is created on the desktop.
 

@@ -1,4 +1,4 @@
-## Hands-On-Lab: Deploy the application to the Azure Kubernetes Service
+## Exercise 03 : Deploy the application to the Azure Kubernetes Service
    
 ### Estimated Duration: 90 Minutes
 
@@ -21,7 +21,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 > **Note:** The following tasks should be executed in the command prompt.
 
-1. In the LabVM, search for **cmd (1)**, right click on the **Command prompt (1)** then select **Run as administrator (3)**.
+1. In the LabVM, search for **cmd (1)**, right click on the **Command Prompt (1)** then select **Run as administrator (3)**.
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn28.png "Add a Namespace")
 
@@ -73,9 +73,9 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
 
 1. Navigate back to **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Search for **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/> (1)** and select **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/> (2)** Kubernetes service. 
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn40.png "Add a Namespace")
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cloudnative-v1-18.png "Add a Namespace")
     
-1. Select **Configuration (1)** from the left side menu under **Kubernetes resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created secret **(3)**.
+1. Select **Configuration (1)** from the left side menu under **Kubernetes resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created `mongodbconnection` secret **(3)**.
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14052025(8).png "Add a Namespace")
 
@@ -92,11 +92,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    
 1. Select **Namespaces (1)** from the left side menu under **Kubernetes resources**. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders (2)** namespace only. 
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cn41.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-19.png "Add a Service")
     
-3. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses (1)** blade of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS resource detail page in the Azure Portal. In the Services tab, select **+ Create (2)** and choose **Apply a YAML (3)**. 
+3. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses (1)** from the left-hand menu. In the Services tab click on the drop-down arrow, adjacent to **+ Create (2)** and then select **+ Apply a YAML (3)**.
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cn42.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-20.png "Add a Service")
 
 1. In the **Apply with YAML** pane, paste the below YAML code, which creates a service in AKS **(1)** and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
 
@@ -123,13 +123,13 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
       ![Select workloads under Kubernetes resources.](media/cn43.png "Select workloads under Kubernetes resources") 
 
       >**Note:** While entering the YAML code, if you're prompted with suggestion **Draft with Copilot**, click the **Close** button to dismiss it.
-      ![](media/cloudnative-2.jpg)
+      > ![](media/cloudnative-2.jpg)
        
 1. Select **Workloads (1)** under the **Kubernetes resources** section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
-    ![Select workloads under Kubernetes resources.](media/10062025(1).png "Select workloads under Kubernetes resources")
+    ![Select workloads under Kubernetes resources.](media/cloudnative-v1-21.png "Select workloads under Kubernetes resources")
 
-1. In the **Apply with YAML** pane, paste the below YAML code, which creates a workload in AKS and click on **Apply**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
+1. In the **Apply with YAML** pane, paste the below **YAML code (1)**, which creates a workload in AKS and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file to update the LOGINSERVER name of the ACR instance.
 
     >**Info:** The below YAML file will create deployment pods in the namespace contoso-traders. A Kubernetes Deployment tells Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can help to efficiently scale the number of replica pods, enable the rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary.
 
@@ -179,11 +179,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
                  protocol: TCP
    ```
 
-   ![Selecting + Add to create a deployment.](media/cn45.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/cloudnative-v1-22.png "Selecting + Add to create a deployment")
 
 1. After a few minutes, you will see the deployment listed, and it should be in a running state.
 
-   ![Selecting + Add to create a deployment.](media/cn-46.png "Selecting + Add to create a deployment")
+   ![Selecting + Add to create a deployment.](media/cloudnative-v1-23.png "Selecting + Add to create a deployment")
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
@@ -230,16 +230,16 @@ In this task, you will deploy the web service & its workload using kubectl.
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/cn48.png "kubectl create application")
 
-1. Return to the AKS blade in the Azure Portal. From the navigation menu, select the **Services and ingresses (1)** under **Kubernetes resources**. You should be able to access the website via an **External endpoint (2)**.
+1. Return to the AKS blade in the Azure Portal. From the navigation menu, select the **Services and ingresses (1)** under **Kubernetes resources**. You should be able to access the website via an **External IP (2)**.
 
-    ![AKS services and ingresses shown with External IP highlighted](media/cn49.png "AKS services and ingresses shown with External IP highlighted")
+    ![AKS services and ingresses shown with External IP highlighted](media/cloudnative-v1-24.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
 
     > **Note:** This may take 1–2 minutes to load. Thank you for your patience!
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
+> - Hit the Validate button for the corresponding task. If you receive a success message, it indicates that you have successfully completed the hands-on lab.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 

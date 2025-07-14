@@ -42,7 +42,7 @@ In this task, you will increase the number of instances for the API deployment i
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
 
-1. If you encountered any errors or issues while adding a new instance in Task 2, continue with Task 2 to troubleshoot and resolve them. If no issues were encountered, skip Task 2 and proceed directly to Task 3.
+1. If you encountered any errors or issues while adding a new instance in Task 1, continue with Task 2 to troubleshoot and resolve them. If no issues were encountered, skip Task 2 and proceed directly to Task 3.
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.

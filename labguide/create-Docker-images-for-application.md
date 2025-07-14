@@ -98,11 +98,13 @@ In this task, you will be building the Docker images to containerize the applica
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
+     ![](media/cloudnative-4.png)
+
 1. In a pop-up to confirm the sign-in to Microsoft Azure CLI, click on **Continue**.
 
    ![](media/ex1-logincontinue.png)
 
-1. Once you log in to Azure, you are going to build the Docker images in the next steps and will be pushing them to ACR.
+1. Once you log in to Azure, Navigate back to command prompt now you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
    ![](media/aiwshared3.png)
    

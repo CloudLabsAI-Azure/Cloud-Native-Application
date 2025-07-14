@@ -96,18 +96,14 @@ In this task, you will edit the web application source code to update some confi
    ``` 
    az login
    ```
-1. On sign in to Microsoft tab you will see login screen. enter the email/username and then click Next.
+1. On the **Let's get you signed in** tab, choose the account that you're already signed in with.
 
-   ![](media/p6-st12-new.png)
-   
-   >**Note**: To get your login credentials, navigate to the **Environment** tab. Under the Auth Fields section, you will find the **Username** and **Password** required to access the lab environment. Use the copy icon next to each field to copy the values instantly. 
+   ![](media/cloudnative-5.png)
 
-1. Now enter the password and click on **Sign in**
+   >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**. 
 
-   ![](media/p6-st13-new.png)
-
-   >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**.
-   
+    > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
+  
 1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
 
     ```bash
@@ -174,12 +170,14 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```bash
    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
    ```
+   ![](media/cloudnative-6.png)
 
 1. Update your helm package list.
 
    ```bash
    helm repo update
    ```
+   ![](media/cloudnative-7.png)
 
    > **Note**: If you get a "no repositories found." error, then run the following command. This will be added back to the official Helm "stable" repository.
    >
@@ -195,6 +193,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-ingress-nginx-controller` service.
 
+   ![](media/cloudnative-9.png)
+
    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
    >
    > ```bash
@@ -204,6 +204,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
 
 1. In **Azure Portal**, search and open the **Microsoft Entra ID**, and copy **Tenant ID**.
+
+   ![](media/cloudnative-8.png)
 
 1. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
 
@@ -248,7 +250,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
      }
      }
      ```
-6. Save changes and close the editor.
+     ![](media/cloudnative-10.png)
+
+6. Save the changes by **CTRL + S** button to **Save**. and close the editor.
 
 7. Run the update script.
 
@@ -256,7 +260,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    powershell ./update-ip.ps1
    ```
    
-   ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/2dg125.jpg "Update the IP and SUFFIX values")
+   ![A screenshot of cloud shell editor showing the updated IP and SUFFIX values.](media/cloudnative-11.png "Update the IP and SUFFIX values")
 
    >**Note:** If you encounter any errors, ignore them and proceed to the next step.
 
@@ -280,6 +284,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```bash
    kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
    ```
+   
+   ![](media/cloudnative-12.png)
 
 10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
 
@@ -310,13 +316,14 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
               class: nginx
     ```
 
-12. Save changes and close the editor.
+12. Save the changes by **CTRL + S** button to **Save** and close the editor.
 
 13. Create the issuer using `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f clusterissuer.yml
     ```
+    ![](media/cloudnative-13.png)
 
 14. Now you can create a certificate object.
 
@@ -356,7 +363,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     ```bash
     kubectl create --save-config=true -f certificate.yml
     ```
-    
+      ![](media/cloudnative-14.png)
+
       > **Note**: To check the status of the certificate issuance, use the `kubectl describe certificate tls-secret -n contoso-traders` command and look for an _Events_ output similar to the following:
       >
       > ```text
@@ -417,6 +425,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 18. Use the following as the contents and update the `[SUFFIX]`: **<inject key="DeploymentID" />** and `[AZURE-REGION]`: **<inject key="Region" />** to match your ingress DNS name.
 
+    ![](media/cloudnative-15.png)
+
 19. Save changes and close the editor.
 
 20. Create the ingress using `kubectl`.
@@ -424,6 +434,8 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     ```bash
     kubectl create --save-config=true -f content.ingress.yml
     ```
+    
+    ![](media/cloudnative-16.png)
 
 21. Refresh the ingress endpoint in your browser. You should be able to visit the website and see all the content.
 
