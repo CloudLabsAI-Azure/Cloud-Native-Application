@@ -94,7 +94,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-19.png "Add a Service")
     
-3. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. In the Services tab click on the drop-down arrow, adjacent to **+ Create (2)** and then select **+ Apply a YAML (3)**.
+3. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. Click on the drop-down arrow, adjacent to **+ Create (2)** and then select **+ Apply a YAML (3)**.
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-20.png "Add a Service")
 
