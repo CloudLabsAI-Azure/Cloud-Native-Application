@@ -94,7 +94,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-19.png "Add a Service")
     
-3. Define a Service for your API, so that the application is accessible within the cluster. Select the **Services and ingresses (1)** from the left-hand menu. In the Services tab click on the drop-down arrow, adjacent to **+ Create (2)** and then select **+ Apply a YAML (3)**.
+3. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. Click on the drop-down arrow, adjacent to **+ Create (2)** and then select **+ Apply a YAML (3)**.
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-20.png "Add a Service")
 
@@ -123,6 +123,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
       ![Select workloads under Kubernetes resources.](media/cn43.png "Select workloads under Kubernetes resources") 
 
       >**Note:** While entering the YAML code, if you're prompted with suggestion **Draft with Copilot**, click the **Close** button to dismiss it.
+      
       > ![](media/cloudnative-2.jpg)
        
 1. Select **Workloads (1)** under the **Kubernetes resources** section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
@@ -245,7 +246,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 <validation step="d838945d-f950-452c-b5c4-9c516a60b595" />
 
-## Review
+## Summary
 
 In this exercise, you have accomplished the following:
 

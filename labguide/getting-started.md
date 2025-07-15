@@ -98,11 +98,11 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
 
 ## Login to Azure Portal
 
-1. Once you are on the JumpVM, if a Windows screen titled **Choose privacy settings for your device** appears, proceed by clicking **Next** through each of the configuration steps, typically four times, then click **Accept** to complete the setup.
+1. Once you are on the LabVM, if a Windows screen titled **Choose privacy settings for your device** appears, proceed by clicking **Next** through each of the configuration steps, typically four times, then click **Accept** to complete the setup.
 
    ![](media/setup.jpg)
 
-1. In the JumpVM, click on the **Azure Portal** shortcut of the Microsoft Edge browser, which is created on the desktop.
+1. In the LabVM, click on the **Azure Portal** shortcut of the Microsoft Edge browser, which is created on the desktop.
 
    ![](media/cng12.png "Lab Environment")
    
