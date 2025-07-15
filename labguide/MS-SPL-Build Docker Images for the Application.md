@@ -226,4 +226,4 @@ In this exercise, you have accomplished the following:
 
 Click the **Next >>** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
-![](media/cloudnative-v2-2.png)
+![](media/cloudnative-v2-1.png)
