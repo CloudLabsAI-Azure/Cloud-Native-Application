@@ -110,7 +110,7 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
 
    ![](media/signin-1.jpg)
 
-1. On the **Let's get you signed in** tab, you will see the login screen, in that enter the following email/username and then click on **Sign in**.
+1. On the **Let's get you signed in** pane, you will see the login screen, in that enter the following email/username and then click on **Sign in**.
 
     * Email/Username: <inject key="AzureAdUserEmail"></inject>
 
