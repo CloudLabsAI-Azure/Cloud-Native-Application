@@ -17,9 +17,9 @@ Irá completar as seguintes tarefas:
 
 Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos e clonar o repositório GitHub onde está o código fonte do site da Contoso Trader.
 
-1. Depois de iniciar sessão na VM, pesquise **prompt de Comando** **(1)** na barra de pesquisa do Windows e clique em **prompt de Comando** **(2)** para abrir.
+1. Depois de iniciar sessão na VM, pesquise **linha de comandos** **(1)** na barra de pesquisa do Windows e clique em **linha de comandos** **(2)** para abrir.
 
-   ![](../media/22-10-24(22).png "abrir cmd")
+   ![](../media/open-cmdline-0608.png "abrir cmd")
 
 1. Execute o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para se ligar à VM Linux utilizando o ssh.
 
@@ -29,7 +29,7 @@ Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos
 
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-      ![](../media/EX1-T1-S3.png "abrir cmd")
+      ![](../media/ssh-login-0608.png "abrir cmd")
 
       >**Nota**: Note que ao introduzir a palavra-passe não a poderá ver devido a questões de segurança.
 
@@ -39,7 +39,7 @@ Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
     ```
 
-    ![](../media/EX1-T1-S4.png)
+    ![](../media/git-clone-0608.png)
 
     > **Nota:** Se receber uma mensagem de saída a informar - o caminho de destino 'Cloud-Native-Application' já existe e não é um diretório vazio. Execute os comandos seguintes e execute novamente o passo 4 da tarefa.
 
@@ -49,7 +49,7 @@ Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos
     exit
     ```
 
-   ![](../media/EX1-T1-S4-1.png)
+   ![](../media/git-clone2-0608.png)
 
 1. Após a conclusão da clonagem do GitHub, execute o comando abaixo para alterar o diretório para os ficheiros de laboratório.
 
@@ -57,7 +57,7 @@ Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos
     cd Cloud-Native-Application/labfiles/
     ```
 
-   ![](../media/EX1-T1-S5.png)
+   ![](../media/cd-labfiles-0608.png)
 
 ### Tarefa 2: Criar imagens Docker para colocar a aplicação em contentor e enviá-las para o registo do contentor
 
@@ -81,7 +81,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     az login
     ```
 
-   ![](../media/EX1-T2-S1.png)
+   ![](../media/azlogin-0608.png)
 
 1. Introduza o código de autenticação copiado **(1)** e clique em **Seguinte** **(2)**.
 
@@ -139,7 +139,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     vi configService.js
     ```
 
-   ![](../media/EX1-T2-S10.png)
+   ![](../media/E1T2S12-0608.png)
 
 1. No editor `vi`, prima **_i_** para entrar no modo `insert`. Em APIUrl e APIUrlShoppingCart, substitua **deploymentid** pelo valor **<inject key="DeploymentID" enableCopy="true"/>** e **REGION** por **<inject key="Region" enableCopy= "true"/>** valor. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e feche o ficheiro. Precisamos de atualizar o URL da API aqui para que a aplicação Contoso Traders possa ligar-se à API do produto depois de enviado para contentores AKS.
 
@@ -150,7 +150,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
-   ![](../media/cn7.png)
+   ![](../media/E1T2S13-0608.png)
 
 1. Execute o comando abaixo para alterar o directório para a pasta `ContosoTraders.Ui.Website`.
 
@@ -184,13 +184,13 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cn10.png)
 
-1. Navegue até ao portal Azure, abra o Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** no Grupo de Recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
+1. Navegue até ao portal Azure, abra o Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** no Grupo de Recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-   ![](../media/cn11.png)
+   ![](../media/E1T2S18-0608.png)
 
-1. No Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)**, selecione **Chave de acesso** **(2)** em Settings à esquerda menu lateral. **Cópia** **(3)** a palavra-passe e cole-a num ficheiro de texto para utilização posterior.
+1. A partir do **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** no registo de contentores, selecione **Chaves de acesso (2)** nas Definições no menu do lado esquerdo. Clique em **Mostrar (3)** e depois **Copiar (4)** a Senha e cole-a num ficheiro de texto para uso posterior.
 
-   ![](../media/cn12.png)
+   ![](../media/E1T2S19-0608.png)
 
 1. Agora inicie sessão no ACR utilizando o comando abaixo, atualize o valor do sufixo e da **palavra-passe** do ACR no comando abaixo. Deve conseguir ver a saída abaixo na captura de ecrã. Certifique-se de substituir a **palavra-passe** pela **palavra-passe** copiada do registo do contentor que copiou no passo anterior no comando abaixo.
 
@@ -224,4 +224,6 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
 Neste exercício, containerizou completamente a sua aplicação web com a ajuda do docker e enviou-a para o registo do contentores.
 
-### Concluiu o laboratório com sucesso
+### Você completou com sucesso este exercício. Clique em "Próximo" para prosseguir para o próximo exercício.
+
+![](../media/imag1.png)
