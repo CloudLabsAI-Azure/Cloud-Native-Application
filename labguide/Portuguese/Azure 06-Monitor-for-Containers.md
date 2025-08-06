@@ -1,6 +1,6 @@
 # Exercício 6: Azure Monitor para contentores
 
-### Duração estimada: 20 minutos
+### Duração estimada: 20 Minutos
 
 ## Visão geral
 
@@ -46,7 +46,7 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na 
 
 <validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />    
 
-## Sumário
+## Resumo
 
 Neste exercício, reviu os insights do contentor do Azure Monitor para o cluster AKS.
 
