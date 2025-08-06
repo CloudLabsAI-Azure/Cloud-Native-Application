@@ -168,41 +168,41 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
 1. Certifique-se de que atualiza o SUFFIX com o valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML para corresponder ao nome do seu servidor de início de sessão ACR.
 
-   ![Nesta captura de ecrã da janela do editor Azure Cloud Shell, o botão ... foi selecionado e a opção Fechar Editor está destacada.](../media/cloudnative7.png "Fechar Azure Cloud Editor")
+    ![Nesta captura de ecrã da janela do editor Azure Cloud Shell, o botão ... foi selecionado e a opção Fechar Editor está destacada.](../media/cloudnative7.png "Fechar Azure Cloud Editor")
 
 1. Guarde as alterações com o botão **CTRL + S** para **Salvar**.
 
 1. Navegue de volta para o prompt de comando do Windows e execute o comando abaixo para alterar o diretório para a pasta `~/LabFiles`.
 
-    ```bash
-    cd C:/LabFiles
-    ```
+      ```bash
+      cd C:/LabFiles
+      ```
 
-    ![](../media/cn43.png)    
+      ![](../media/cn43.png)    
 
 1. Faça login no Azure se ainda não tiver feito com o comando abaixo após atualizar os valores no comando.
 
-    ```
-    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
-    ```
+      ```
+      az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
+      ```
 
 1. Execute o comando abaixo para implementar a aplicação descrita nos ficheiros YAML. Receberá uma mensagem indicando que o item `kubectl` criou uma implementação web e um serviço web.
  
     >**Info**: O comando kubectl abaixo irá criar a carga de trabalho de implementação e o serviço no namespace que definimos nos ficheiros YAML.
 
-    ```bash
-    kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
-    ```
+      ```bash
+      kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
+      ```
 
-   ![Nesta captura de ecrã da consola, o kubectl apply -f kubernetes-web.yaml foi introduzido e executado no prompt de comando. As mensagens sobre a implementação web e a criação de serviços web aparecem abaixo.](../media/kubectlcreated.png "kubectl create application")
+      ![Nesta captura de ecrã da consola, o kubectl apply -f kubernetes-web.yaml foi introduzido e executado no prompt de comando. As mensagens sobre a implementação web e a criação de serviços web aparecem abaixo.](../media/kubectlcreated.png "kubectl create application")
 
 1. Volte à folha AKS no Portal Azure. No menu de navegação, selecione **Serviços e entradas (1)** em **Recursos do Kubernetes**. Deverá conseguir aceder ao site através de um **IP Externo (2)**.
 
-   ![](../media/E3T3S8-0608.png)
+      ![](../media/E3T3S8-0608.png)
 
-   ![Serviços e entradas AKS mostrados com IP externo destacado](../media/website2.png "Serviços e entradas AKS mostrados com IP externo destacado")
+      ![Serviços e entradas AKS mostrados com IP externo destacado](../media/website2.png "Serviços e entradas AKS mostrados com IP externo destacado")
 
-    > **Nota:** Se o site não carregar, tente atualizar a página várias vezes, pois pode demorar um pouco até que o AKS preencha o site.
+      > **Nota:** Se o site não carregar, tente atualizar a página várias vezes, pois pode demorar um pouco até que o AKS preencha o site.
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o exercício seguinte.
 
