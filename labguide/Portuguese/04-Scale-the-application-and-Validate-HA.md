@@ -38,8 +38,7 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
     ![](../media/E4-T1-S4.png)
 
-
-   >**Nota**: Se a implementação for concluída rapidamente, poderá não ver a implementação no estado em espera no portal, conforme descrito nos passos seguintes.
+    >**Nota**: Se a implementação for concluída rapidamente, poderá não ver a implementação no estado em espera no portal, conforme descrito nos passos seguintes.
 
 1. Está a ser implementado no momento e pode ver que há uma instância íntegra e uma instância em espera.
 
@@ -95,7 +94,7 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
 
 1. Volte à vista principal **Cargas de trabalho** do serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, actualize a página e verá agora que o A a implantação está íntegra com **two** pods em funcionamento.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn54.png "A implementação da API está agora íntegra")
+      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn54.png "A implementação da API está agora íntegra")
 
 ### Tarefa 3: configurar o escalonamento automático horizontal para os pods de serviço Kubernetes
 
@@ -105,7 +104,7 @@ Nesta tarefa, irá configurar o escalonamento automático horizontal para os seu
 
 1. Execute o comando abaixo para configurar o escalonamento automático horizontal para os seus pods de produtos API.
 
-    ```bash
+   ```bash
     kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10
     ```
 
@@ -125,31 +124,31 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
 1. Navegue de volta para o Linha de comandos do Windows. Se você não estiver conectado ao Azure, faça login no Azure com o comando abaixo após atualizar os valores no comando abaixo.
 
-   ```
-   az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
-   ```
+    ```
+    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
+    ```
 
 1. Para configurar a conexão do cluster Kubernetes, execute o comando abaixo.
 
-   ```
-   az aks get-credentials --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
-   ```
+    ```
+    az aks get-credentials --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
+    ```
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn55.png "A implementação da API está agora íntegra")   
 
 1. Verifique o `count` de pools de nós no cluster e certifique-se de que `enablingAutoScaling` é `null/false`.
 
-    ```
-    az aks nodepool list --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
-    ```
+     ```
+     az aks nodepool list --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
+     ```
 
    ![](../media/cn56.png)
 
 1. Execute o comando abaixo para ativar o dimensionamento automático do cluster no cluster existente. Verifique se `enablingAutoScaling` é `true`.
 
-    ```
-    az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
-    ```
+     ```
+     az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
+     ```
 
    ![](../media/cn57.png)
 
@@ -157,9 +156,9 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
 1. Execute o comando abaixo para dimensionar automaticamente os pools de nós no cluster existente.
 
-    ```
-    az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
-    ```
+     ```
+     az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
+     ```
 
    ![](../media/cn58.png)
 
@@ -171,35 +170,35 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
 1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products** implantação.
 
-   ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn54.png "Definir réplicas para 2")
+      ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn54.png "Definir réplicas para 2")
 
 1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessária para `4` **(2)** e clique em **Rever + guardar (3)**.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn59.png "A implementação da API está agora íntegra")
+      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn59.png "A implementação da API está agora íntegra")
 
 1. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (1)** e selecione **Guardar (2)**. Em seguida, clique em **Descrição Geral (3)** para voltar aos deployments.
 
-    ![](../media/E4-T1-S4.png)
+      ![](../media/E4-T1-S4.png)
 
 1. Irá verificar que o deployment **contoso-traders-product** está agora a executar `4` réplicas com sucesso passados 5 minutos.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn61.png "A implementação da API está agora íntegra")
+      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn61.png "A implementação da API está agora íntegra")
 
 1. Volte ao separador do navegador com a página de estatísticas da aplicação web carregada. Atualize a página repetidamente. Não verá nenhum erro.
 
-   ![Na página Estatísticas da aplicação Web Contoso Neuro, são destacados dois valores de nome de host de API diferentes.](../media/11.png "Ver nome de host de tarefa Web")
+      ![Na página Estatísticas da aplicação Web Contoso Neuro, são destacados dois valores de nome de host de API diferentes.](../media/11.png "Ver nome de host de tarefa Web")
 
 1. Voltar para **contoso-traders-products | Na página Descrição Geral**, selecione **dois dos pods (1)** aleatoriamente e escolha **Eliminar (2)**.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn62.png "A implementação da API está agora íntegra")
+      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn62.png "A implementação da API está agora íntegra")
 
 1. Na página **Eliminar**, selecione **Confirmar eliminação (1)** e clique novamente em **Eliminar (2)**.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn63.png "A implementação da API está agora íntegra")
+      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn63.png "A implementação da API está agora íntegra")
 
 1. O Kubernetes lançará novos pods para satisfazer a contagem de réplicas necessária. Dependendo da sua visão, poderá ver as instâncias antigas a serem encerradas e novas instâncias a serem criadas.
 
-   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn64.png "A implementação da API está agora íntegra")
+      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn64.png "A implementação da API está agora íntegra")
 
 1. Volte ao deployment da API **contoso-traders-product**. Selecione o item de navegação **YAML** e reduza novamente para `1` réplica.
 
@@ -210,7 +209,7 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 
 1. Volte à página de estatísticas do site ContosoTarders no browser e atualize enquanto o Kubernetes reduz o número de pods. Deve conseguir ver o site a funcionar sem problemas
 
-   ![Os conjuntos de réplicas estão seleccionados em Cargas de trabalho no menu de navegação à esquerda. À direita estão as caixas Detalhes e Pods. Apenas um nome de host da API, que tem uma marca de verificação verde e está listado como em execução, aparece na caixa Pods.](../media/11.png "Ver detalhes da réplica")
+      ![Os conjuntos de réplicas estão seleccionados em Cargas de trabalho no menu de navegação à esquerda. À direita estão as caixas Detalhes e Pods. Apenas um nome de host da API, que tem uma marca de verificação verde e está listado como em execução, aparece na caixa Pods.](../media/11.png "Ver detalhes da réplica")
 
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
