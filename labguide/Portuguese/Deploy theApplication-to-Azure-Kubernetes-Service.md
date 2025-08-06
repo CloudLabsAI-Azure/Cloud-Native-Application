@@ -1,6 +1,6 @@
 # Exercício 3: Implementar a aplicação no Azure Kubernetes Service
 
-### Duração estimada: 90 minutos
+### Duração estimada: 90 Minutos
 
 ## Visão geral
 
@@ -55,13 +55,13 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
 
 Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kubernetes Service utilizando o Portal do Azure.
 
-1. Já definimos um novo **Namespaces (1)** para a sua implementação de API. Indo mais além, apenas utilizará o namespace **contoso-traders (2)**.
+1. Já definimos um novo **Espaços de nomes (1)** para a sua implementação de API. Indo mais além, apenas utilizará o namespace **contoso-traders (2)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-01.jpg "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/E3T2S1-0608.png "Adicionar um Namespace")
 
-3. Defina um serviço para a sua API, para que a aplicação fique acessível dentro do cluster. Selecione o blade **Serviços e entradas (1)** da página de detalhes do recurso **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no Portal Azure. No separador **Serviços**, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
+1. Defina um serviço para a sua API, para que a aplicação fique acessível dentro do cluster. Selecione o blade **Serviços e entradas (1)** da página de detalhes do recurso **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** AKS no Portal Azure. No separador **Serviços**, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-022.jpg "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/E3T2S2-0608.png "Adicionar um Namespace")
 
 1. No painel **Aplicar um YAML**, cole o código YAML abaixo que cria um serviço no AKS **(1)** e clique em **Aplicar (2)**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML.
 
@@ -92,7 +92,7 @@ Nesta tarefa, irá implementar a aplicação API Carts no cluster do Azure Kuber
 
 1. Selecione **Cargas de trabalho (1)** na secção Recursos do Kubernetes na navegação esquerda. Com **Implantações** selecionadas por defeito, selecione **+ Criar (2)** e escolha **Aplicar um YAML (3)**.
 
-   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/portu-04.png "Adicionar um Namespace")
+   ![Esta é uma captura de ecrã do Portal Azure para AKS que mostra a adição de um Namespace.](../media/E3T2S4-0608.png "Adicionar um Namespace")
 
 1. No painel **Adicionar com YAML**, cole o código YAML abaixo que cria uma carga de trabalho no AKS **(1)** e clique em **Aplicar (2)**. Certifique-se de que substitui o SUFFIX pelo valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML para atualizar o nome LOGINSERVER da instância ACR.
 
@@ -164,7 +164,7 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
 1. Navegue até ao diretório `C:\LabFiles` **(1)** e selecione o ficheiro `web.deployment.yml` **(2)**. Clique com o botão direito do rato e selecione **Abrir** **(3)** para abrir o ficheiro no código VS.
 
-   ![](../media/22-10-24(16).png)
+      ![](../media/E3T3S2-0608.png)
 
 1. Certifique-se de que atualiza o SUFFIX com o valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** fornecido no ficheiro YAML para corresponder ao nome do seu servidor de início de sessão ACR.
 
@@ -198,7 +198,7 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
 1. Volte à folha AKS no Portal Azure. No menu de navegação, selecione **Serviços e entradas (1)** em **Recursos do Kubernetes**. Deverá conseguir aceder ao site através de um **IP Externo (2)**.
 
-   ![](../media/portu-06.png)
+   ![](../media/E3T3S8-0608.png)
 
    ![Serviços e entradas AKS mostrados com IP externo destacado](../media/website2.png "Serviços e entradas AKS mostrados com IP externo destacado")
 
@@ -218,4 +218,6 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
 Neste exercício, implementou a sua aplicação Web contentorizada no AKS que contém o namespace, o serviço e a carga de trabalho no Azure Kubernetes. Além disso, criou um serviço para o AKS e acedeu ao site utilizando um endpoint externo. Além disso, configurou o segredo do cofre de chaves para aceder ao MongoDB a partir do AKS.
 
-### Concluiu o laboratório com sucesso
+### Você completou com sucesso este exercício. Clique em "Próximo" para prosseguir para o próximo exercício.
+
+![](../media/imag1.png)
