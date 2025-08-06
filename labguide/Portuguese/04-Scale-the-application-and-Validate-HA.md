@@ -101,7 +101,7 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
 
 Nesta tarefa, irá configurar o escalonamento automático horizontal para os seus pods de serviço Kubernetes.
 
-1. Navegue de volta para o **prompt de comando** do Windows.
+1. Navegue de volta para o **Linha de comandos** do Windows.
 
 1. Execute o comando abaixo para configurar o escalonamento automático horizontal para os seus pods de produtos API.
 
@@ -123,7 +123,7 @@ Nesta tarefa, irá configurar o escalonamento automático horizontal para os seu
 
 Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AKS existente e dimensionará automaticamente os pools de nós do cluster.
 
-1. Navegue de volta para o prompt de comando do Windows. Se você não estiver conectado ao Azure, faça login no Azure com o comando abaixo após atualizar os valores no comando abaixo.
+1. Navegue de volta para o Linha de comandos do Windows. Se você não estiver conectado ao Azure, faça login no Azure com o comando abaixo após atualizar os valores no comando abaixo.
 
    ```
    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>

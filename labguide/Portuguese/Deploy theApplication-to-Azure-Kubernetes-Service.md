@@ -19,9 +19,9 @@ Poderá completar as seguintes tarefas:
 
 Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviço Azure Kubernetes para se ligar ao cluster e executar comandos para se ligar ao painel de gestão do Kubernetes a partir da shell da cloud.
 
-> **Nota**: As tarefas seguintes devem ser executadas no **Prompt de comando**.
+> **Nota**: As tarefas seguintes devem ser executadas no **Linha de comandos**.
 
-1. Abra um novo prompt de comando como Administrador em sua VM de salto e faça login no azure com os comandos abaixo após atualizar os valores no comando abaixo.
+1. Abra um novo Linha de comandos como Administrador em sua VM de salto e faça login no azure com os comandos abaixo após atualizar os valores no comando abaixo.
 
     ```bash
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
@@ -29,7 +29,7 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
 
     ![](../media/cn33.png "abrir cmd")
 
-     > **Observação:** Se você enfrentar algum erro ao executar o comando 'az', execute o comando abaixo para instalar o azure cli e feche o prompt de comando. Execute novamente a etapa 1 em um novo prompt de comando como Administrador.
+     > **Observação:** Se você enfrentar algum erro ao executar o comando 'az', execute o comando abaixo para instalar o azure cli e feche o Linha de comandos. Execute novamente a etapa 1 em um novo Linha de comandos como Administrador.
 
      ```bash
      choco install azure-cli
@@ -49,7 +49,7 @@ Esta tarefa irá reunir as informações necessárias sobre o cluster do Serviç
     kubectl get nodes
     ```
 
-    ![Nesta captura de ecrã da consola, o kubectl get nodes foi digitado e executado no prompt de comando, que produz uma lista de nós.](../media/cn36.png "kubectl get nodes")
+    ![Nesta captura de ecrã da consola, o kubectl get nodes foi digitado e executado no Linha de comandos, que produz uma lista de nós.](../media/cn36.png "kubectl get nodes")
 
 ### Tarefa 2: Implementar um namespace, serviço e workload no Serviço Azure Kubernetes utilizando o Portal do Azure
 
@@ -172,7 +172,7 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
 
 1. Guarde as alterações com o botão **CTRL + S** para **Salvar**.
 
-1. Navegue de volta para o prompt de comando do Windows e execute o comando abaixo para alterar o diretório para a pasta `~/LabFiles`.
+1. Navegue de volta para o Linha de comandos do Windows e execute o comando abaixo para alterar o diretório para a pasta `~/LabFiles`.
 
       ```bash
       cd C:/LabFiles
@@ -194,7 +194,7 @@ Nesta tarefa, irá implementar o serviço web e a sua carga de trabalho utilizan
       kubectl create --save-config=true -f web.deployment.yml -f web.service.yml
       ```
 
-      ![Nesta captura de ecrã da consola, o kubectl apply -f kubernetes-web.yaml foi introduzido e executado no prompt de comando. As mensagens sobre a implementação web e a criação de serviços web aparecem abaixo.](../media/kubectlcreated.png "kubectl create application")
+      ![Nesta captura de ecrã da consola, o kubectl apply -f kubernetes-web.yaml foi introduzido e executado no Linha de comandos. As mensagens sobre a implementação web e a criação de serviços web aparecem abaixo.](../media/kubectlcreated.png "kubectl create application")
 
 1. Volte à folha AKS no Portal Azure. No menu de navegação, selecione **Serviços e entradas (1)** em **Recursos do Kubernetes**. Deverá conseguir aceder ao site através de um **IP Externo (2)**.
 

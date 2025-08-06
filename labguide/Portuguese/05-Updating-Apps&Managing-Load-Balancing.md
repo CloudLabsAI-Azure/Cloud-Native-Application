@@ -1,6 +1,6 @@
 # Exercício 5: Atualização de aplicações e gestão de Ingress do Kubernetes
 
-### Duração estimada: 60 minutos
+### Duração estimada: 60 Minutos
 
 ## Visão geral
 
@@ -23,11 +23,11 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
 1. Em primeiro lugar, fará algumas alterações no código-fonte da sua aplicação web e criará uma nova imagem do Docker com base nas alterações mais recentes.
 
-1. Abra um novo Prompt de Comando.
+1. Abra um novo Linha de comandos.
 
 1. Execute o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para se conectar à VM Linux usando SSH.
 
-    >**Nota**: No prompt de comando, digite **yes** e pressione **Enter** quando aparecer a mensagem `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
+    >**Nota**: No Linha de comandos, digite **yes** e pressione **Enter** quando aparecer a mensagem `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
 
 1. Depois que o SSH estiver conectado à VM, por favor, insira a senha da VM fornecida abaixo:
 
@@ -37,7 +37,7 @@ Nesta tarefa, irá editar o código-fonte da aplicação web para atualizar algu
 
       >**Nota**: Por favor, note que, por motivos de segurança, ao digitar a senha, ela não será exibida na tela.
 
-1. Navegue de volta para a **Prompt de comando** do Windows onde se ligou à sua VM Linux e execute o comando abaixo para navegar até ao diretório onde terá de fazer as alterações no código-fonte da aplicação web.
+1. Navegue de volta para a **Linha de comandos** do Windows onde se ligou à sua VM Linux e execute o comando abaixo para navegar até ao diretório onde terá de fazer as alterações no código-fonte da aplicação web.
 
     ```bash
     cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
@@ -287,6 +287,8 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
     ```
 
+    ![](../media/E5T2S9-0608.png )
+
 10. Para criar um recurso `ClusterIssuer` personalizado para o serviço `cert-manager` utilizar ao lidar com pedidos de certificados SSL, execute o comando abaixo na linha de comandos do Windows.
 
     ```bash
@@ -317,7 +319,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
               class: nginx
     ```
 
-12. **Guarde** as alterações e feche o editor.
+12. **Guarde** as alterações **Ctrl + S** e feche o editor.
 
 13. Crie o emissor (issuer) usando `kubectl`.
 
@@ -455,4 +457,6 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
 Neste exercício, executou uma atualização contínua e configurou o Kubernetes Ingress.
 
-### Concluiu o laboratório com sucesso
+### Você completou com sucesso este exercício. Clique em "Próximo" para prosseguir para o próximo exercício.
+
+![](../media/imag1.png)
