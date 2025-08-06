@@ -172,19 +172,19 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
 1. Execute o seguinte comando num terminal de comando do Windows para adicionar o repositório Helm estável do Nginx:
 
-    ```bash
-    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-    ```
+     ```bash
+     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+     ```
 
-    ![](../media/cn82.png)    
+      ![](../media/cn82.png)    
 
 2. Atualize a sua lista de pacotes do helm.
 
-    ```bash
-    helm repo update
-    ```
+     ```bash
+     helm repo update
+     ```
 
-    ![](../media/cn83.png)
+      ![](../media/cn83.png)
 
     > **Nota**: Se receber a mensagem "nenhum repositório encontrado." erro e execute o seguinte comando. Este será adicionado de volta ao repositório "estável" oficial do Helm.
     >
@@ -194,11 +194,11 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
 3. Instale a funcionalidade Controlador de Ingress para lidar com pedidos de entrada à medida que estes chegam. O Controlador de Ingresso receberá um IP público próprio no Balanceador de Carga do Azure e processará solicitações de vários serviços nas portas 80 e 443.
 
-    ```bash
-    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
-    ```
+     ```bash
+     helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
+     ```
 
-    ![](../media/cn84.png)
+      ![](../media/cn84.png)
 
 4. Navegue até ao Portal Azure, abra o serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes. Selecione **Services and ingresses** nos recursos do Kubernetes e copie o endereço IP para o **External IP** para o serviço `nginx-ingress-RANDOM-nginx-ingress`.
 
@@ -208,13 +208,14 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     > kubectl get svc --namespace contoso-traders
     > ```
     >
-   ![Uma captura de ecrã do Azure Cloud Shell mostrando a saída do comando.](../media/cn85.png "Ver o controlador de entrada LoadBalancer")
 
-5. No terminal de comandos do Windows, crie um script para atualizar o nome DNS público do IP de entrada externo.
+      ![Uma captura de ecrã do Azure Cloud Shell mostrando a saída do comando.](../media/cn85.png "Ver o controlador de entrada LoadBalancer")
 
-    ```bash
-    code update-ip.ps1
-    ```
+6. No terminal de comandos do Windows, crie um script para atualizar o nome DNS público do IP de entrada externo.
+
+     ```bash
+     code update-ip.ps1
+     ```
 
     Cole o seguinte como conteúdo. Certifique-se de que substitui os seguintes espaços reservados no script:
 
@@ -253,35 +254,35 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       }
       ```
 
-      ![](../media/cn86.png)      
+         ![](../media/cn86.png)      
 
-6. **Guarde** as alterações e feche o editor.
+7. **Guarde** as alterações e feche o editor.
 
-7. Execute o script de atualização.
+8. Execute o script de atualização.
 
-    ```bash
-    powershell ./update-ip.ps1
-    ```
+     ```bash
+     powershell ./update-ip.ps1
+     ```
 
-   ![Uma captura de ecrã do editor Cloud Shell mostrando os valores actualizados de IP e SUFFIX.](../media/2dg125.jpg "Actualizar os valores de IP e SUFFIX")
+      ![Uma captura de ecrã do editor Cloud Shell mostrando os valores actualizados de IP e SUFFIX.](../media/2dg125.jpg "Actualizar os valores de IP e SUFFIX")
 
-8. Verifique a atualização do IP visitando a URL no seu navegador.
+9. Verifique a atualização do IP visitando a URL no seu navegador.
 
    > **Observação**: É normal receber uma mensagem 404 neste momento.
 
-    ```text
-    http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
-    ```
+     ```text
+     http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
+     ```
 
-    ![](../media/cn87.png )
+      ![](../media/cn87.png )
 
-    >**Nota**: Se o URL não funcionar ou não receber um erro 404. Execute o comando mencionado abaixo e tente aceder novamente ao URL.
+      >**Nota**: Se o URL não funcionar ou não receber um erro 404. Execute o comando mencionado abaixo e tente aceder novamente ao URL.
 
-    ```bash
-    helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
-    ```
+   ```bash
+   helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
+   ```
 
-9. Utilize o helm para instalar o `cert-manager`, uma ferramenta que pode aprovisionar certificados SSL automaticamente em letsencrypt.org.
+10. Utilize o helm para instalar o `cert-manager`, uma ferramenta que pode aprovisionar certificados SSL automaticamente em letsencrypt.org.
 
     ```bash
     kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
@@ -289,13 +290,13 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
     ![](../media/E5T2S9-0608.png )
 
-10. Para criar um recurso `ClusterIssuer` personalizado para o serviço `cert-manager` utilizar ao lidar com pedidos de certificados SSL, execute o comando abaixo na linha de comandos do Windows.
+11. Para criar um recurso `ClusterIssuer` personalizado para o serviço `cert-manager` utilizar ao lidar com pedidos de certificados SSL, execute o comando abaixo na linha de comandos do Windows.
 
     ```bash
     code clusterissuer.yml
     ```
 
-11. No interior do ficheiro **clusterissuer.yml** copie e cole o seguinte conteúdo:
+12. No interior do ficheiro **clusterissuer.yml** copie e cole o seguinte conteúdo:
 
     ```yaml
     apiVersion: cert-manager.io/v1
@@ -319,15 +320,15 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
               class: nginx
     ```
 
-12. **Guarde** as alterações **Ctrl + S** e feche o editor.
+13. **Guarde** as alterações **Ctrl + S** e feche o editor.
 
-13. Crie o emissor (issuer) usando `kubectl`.
+14. Crie o emissor (issuer) usando `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f clusterissuer.yml
     ```
 
-14. Agora pode criar um objeto de certificado.
+15. Agora pode criar um objeto de certificado.
 
     > **Nota**:
     > O Cert-manager pode já ter criado um objeto de certificado para si utilizando o ingress-shim.
@@ -340,7 +341,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
     code certificate.yml
     ```
 
-15. No interior do ficheiro **certificate.yml** copie e cole o seguinte conteúdo:
+16. No interior do ficheiro **certificate.yml** copie e cole o seguinte conteúdo:
 
      ```yaml
      apiVersion: cert-manager.io/v1
@@ -357,7 +358,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
          kind: ClusterIssuer
      ```
 
-16. Use o seguinte como conteúdo e atualize `[SUFFIX]` com **<inject key="DeploymentID" />** e `[AZURE-REGION]` com **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
+17. Use o seguinte como conteúdo e atualize `[SUFFIX]` com **<inject key="DeploymentID" />** e `[AZURE-REGION]` com **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
 
 14. Guarde as alterações e feche o editor.
 
