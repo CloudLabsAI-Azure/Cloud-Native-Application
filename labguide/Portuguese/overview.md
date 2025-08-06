@@ -57,15 +57,9 @@ A arquitetura deste laboratório envolve vários componentes principais:
 
 ## Introdução ao laboratório
 
-1. Depois de o ambiente ser provisionado, uma máquina virtual (JumpVM) e um guia de laboratório serão carregados no seu browser. Utilize esta máquina virtual durante todo o workshop para realizar o laboratório. Pode ver o número na parte inferior do guia de laboratório para alternar para os diferentes exercícios do **Guia do laboratório**.
+Depois de o ambiente ser provisionado, uma máquina virtual (JumpVM) e um guia de laboratório serão carregados no seu browser. Utilize esta máquina virtual durante todo o workshop para realizar o laboratório. Pode ver o número na parte inferior do guia de laboratório para alternar para os diferentes exercícios do **Guia do laboratório**.
 
-   ![](../media/portu-13-new.png "Ambiente de laboratório")
-
-## Utilizando o recurso de aumentar/diminuir zoom   
-
-Para ajustar o nível de zoom da página do ambiente, clique no ícone **A↕ : 100%** localizado próximo ao cronômetro no ambiente de laboratório.
-
-![](../media/portu-17.png "Ambiente de laboratório")
+   ![](../media/accessing-env-0608.png "Ambiente de laboratório")
 
 ## Máquina Virtual e Guia de Laboratório
 
@@ -73,15 +67,21 @@ Sua máquina virtual é seu carro-chefe durante todo o workshop. O guia de labor
 
 1. Para obter os detalhes do ambiente de laboratório, pode selecionar o separador **Ambiente**. Além disso, as credenciais também serão enviadas para o seu endereço de e-mail registado. Também pode abrir o Guia do laboratório numa janela completa e separada, selecionando **Janela dividida** no canto superior direito. 
 
-   ![](../media/portu-14.png "Ambiente de laboratório")
+   ![](../media/resources-0608.png "Ambiente de laboratório")
 
    > Verá o valor DeploymentID no separador **Ambiente**.
 
 ## Gerenciando sua máquina virtual
 
-Além disso, pode **iniciar, parar e reiniciar (2)** máquinas virtuais no separador **Recursos (1)**.
+Clique em **Mais (1)** e vá à aba **Recursos (2)** para **Iniciar, Parar ou Reiniciar** a máquina virtual..
 
-   ![](../media/portu-15.png "Ambiente de laboratório")
+   ![](../media/resource-operation-0608.png "Ambiente de laboratório")
+
+## Utilizando o recurso de aumentar/diminuir zoom   
+
+Para ajustar o nível de zoom da página do ambiente, clique no ícone **A↕ : 100%** localizado próximo ao cronômetro no ambiente de laboratório.
+
+![](../media/portu-17.png "Ambiente de laboratório")
 
 ## Validação do Lab
 
