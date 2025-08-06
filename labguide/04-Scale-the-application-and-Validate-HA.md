@@ -4,7 +4,7 @@
 
 ## Overview
 
-At this point, you have deployed a single instance of the Web and Products API service containers. In this exercise, you will increase the number of container instances for the web service and scale the front end in the existing cluster.
+In the previous exercise, you deployed a single instance of the Web and Products API service containers. In this exercise, you will scale out the web service by increasing the number of container replicas, thereby scaling the front-end application within the existing cluster.
 
 ## Lab Objectives
 
@@ -20,19 +20,19 @@ You will be able to complete the following tasks:
 
 ### Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
 
-In this task, you will increase the number of instances for the API deployment in the AKS. While it is deploying, you will observe the changing status.
+In this task, you will scale the API deployment in AKS by increasing the number of replicas. During the scaling process, you will observe the deployment status as it progresses accordingly.
 
-1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads (1)** under Kubernetes resources from the left side menu and then select the **contoso-traders-products (2)** deployment.
+1. Navigate to Azure portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service from **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Workloads (1)** under Kubernetes resources from the left side menu and then select the **contoso-traders-products (2)** deployment.
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/18042025(3).png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/E3T2S7.png "Setting replicas to 2")
 
 1. Select **YAML (1)** from the left menu in the **contoso-traders-products** overview and scroll down until you find **replicas** under **spec** section. Change the number of replicas to **2 (2)**, and then select **Review + save (3)**. 
 
-   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/new-cloud-native-eng-ex4-01.png "Setting replicas to 2")
+   ![In the edit YAML dialog, 2 is entered in the desired number of replicas.](media/E4T1S2.png "Setting replicas to 2")
 
 1. When prompted to confirm manifest change, check **Confirm manifest change (1)** and select **Save (2)**. Then, click on **Overview (3)** to navigate back to deployments.
 
-    ![](media/confirm-manifest-changes.png)
+    ![](media/E4T1S3.png)
 
     >**Note**: If the deployment completes quickly, you may not see the deployment in waiting states in the portal, as described in the following steps.    
 
@@ -40,7 +40,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 1. Open the Contoso Traders web application, and you can see that the application should still work without errors.
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/11.png "View replica details")
+    ![Replica Sets is selected under Workloads in the navigation menu on the left, and at right, Pods status: 1 pending, 1 running is highlighted. Below that, a red arrow points at the API deployment in the Pods box.](media/E4T1S5.png "View replica details")
 
 1. If you encountered any errors or issues while adding a new instance in Task 1, continue with Task 2 to troubleshoot and resolve them. If no issues were encountered, skip Task 2 and proceed directly to Task 3.
 
@@ -57,15 +57,15 @@ In this task, you will resolve failed API replicas, which typically occur due to
 
 1. In the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, select **Workloads (1)** and then select the **contoso-traders-products (2)** deployment. 
 
-    ![In the Workload view with the API deployment highlighted.](media/18042025(3).png "API deployment is now healthy")
+    ![In the Workload view with the API deployment highlighted.](media/E3T2S7.png "API deployment is now healthy")
 
-1. Select the **YAML** from the left menu in the **contoso-traders-products** Overview.
+1. Select the **YAML (1)** from the left menu in the **contoso-traders-products** Overview.
 
-   ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-2.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/E4T2S2.png "API deployment is now healthy")
 
-1. In the **YAML** screen, scroll down and update the following items:
+1. In the **YAML** screen, scroll down and update the following items. Select **Review + save (4)** once after the changes made.
 
-   - Under the **spec** section, make sure the following ports are provided:
+   - Under the **spec (1)** section, make sure the following **ports (2)** are provided:
 
       ```yaml
       ports:
@@ -73,7 +73,7 @@ In this task, you will resolve failed API replicas, which typically occur due to
           protocol: TCP
       ```
 
-   - Modify the **cpu** and set it to **100m**. The CPU is divided between all Pods on a Node.
+   - Modify the **cpu** and **memory** **(3)** in the same spec section. The CPU is divided between all Pods on a Node.
 
       ```yaml
       requests:
@@ -81,13 +81,13 @@ In this task, you will resolve failed API replicas, which typically occur due to
          memory: 128Mi
       ```
 
-      ![In the edit YAML dialog, showing two changes required.](media/english-06.png "Modify deployment manifest")
+      ![In the edit YAML dialog, showing two changes required.](media/E4T2S3.png "Modify deployment manifest")
 
-1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
+1. When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
 1. Return to the **Workloads (1)** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, refresh the page and you will now see that the Deployment is healthy with **two (2)** Pods operating.
 
-   ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")       
+    ![In the Workload view with the API deployment highlighted.](media/E4T2S5.png "API deployment is now healthy")       
 
 ### Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
 
@@ -101,7 +101,7 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
    kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10
    ```
    
-   ![In the Workload view with the API deployment highlighted.](media/HS11.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/E4T3S2.png "API deployment is now healthy")
    
 1. Run the below command to check the status of the newly added Horizontal Pod Autoscaler.
 
@@ -109,7 +109,7 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
    kubectl get hpa -n contoso-traders
    ```
    
-   ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-4.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/E4T3S3.png "API deployment is now healthy")
 
    >**Note:** If you do not get the expected output, please wait for a few minutes as it may take some time to reflect.
 
@@ -122,6 +122,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
     ```
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
+    ![](media/E3T1S1.png)
 
 1. In order to set up the Kubernetes cluster connection, run the following command.
 
@@ -129,21 +130,21 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
     az aks get-credentials --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
     ```
     
-1.  Verify the `count` of node pools in the cluster and ensure that `enablingAutoScaling` is `false`.
+1.  Verify the `count` **(1)** of node pools in the cluster and ensure that `enablingAutoScaling` is `false` **(2)**.
     
      ```
      az aks nodepool list --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
      ```   
     
-    ![](media/countenableautoscailing.png)
+    ![](media/E4T4S3.png)
 
-1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`.
+1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`**(2)**.
 
     ```
     az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
     ```
   
-   ![](media/ex4-t3-scaling2.png)
+   ![](media/E4T4S4.png)
    
     >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
    
@@ -153,7 +154,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
     az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
     ```
    
-   ![](media/ex4-t3-scaling3.png)
+   ![](media/E4T4S5.png)
    
    >**Note**: Please be aware that the above command may take up to 5 minutes to finish the updation. Before taking any further action, make sure it runs successfully.
 
@@ -163,19 +164,19 @@ In this task, you will restart containers and validate that the restart does not
 
 1. In the Azure Kubernetes Service blade, select **Workloads (1)** and then select the **contoso-traders-product (2)** deployment. 
 
-   ![In the Workload view with the API deployment highlighted.](media/new-cloud-native-eng-ex4-3.png "API deployment is now healthy")
+   ![In the Workload view with the API deployment highlighted.](media/E4T2S5.png "API deployment is now healthy")
 
 1. Select the **YAML (1)** navigation item and increase the required replica count to `4` **(2)** then click on **Review + save (3)**.
  
-   ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/new-cloud-native-eng-ex4-5.png "API pod deployments")
+   ![In the left menu the Deployments item is selected. The API deployment is highlighted in the Deployments list box.](media/E4T5S2.png "API pod deployments")
 
 1. When prompted to confirm manifest change, check **Confirm manifest change (1)** and select **Save (2)**. Then, click on **Overview (3)** to navigate back to deployments.
 
-    ![](media/confirm-manifest-changes.png)
+    ![](media/E4T5S3.png)
 
 1. You will find that the **contoso-traders-product** deployment is now running `4` replicas successfully after 5 minutes.
 
-    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/contosoproducts.png "View web task hostname")
+    ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/E4T5S4.png "View web task hostname")
 
 1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
@@ -183,11 +184,11 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/deletepods.png "Delete running pod instance")
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/E4T5S6.png "Delete running pod instance")
 
 1. On the **Delete** page, Select **Confirm delete (1)**, and click on **Delete (2)** again.
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/7.png "Delete running pod instance")
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/E4T5S7.png "Delete running pod instance")
 
 1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view, you may see the old instances terminating and new instances being created.
 
@@ -310,3 +311,4 @@ In this task, you will run a performance test script that will test the Autoscal
 In this exercise, you have increased service instances and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
 
 ### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.
+![](media/4-n.png "Next")

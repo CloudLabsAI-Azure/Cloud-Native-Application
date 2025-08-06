@@ -20,23 +20,23 @@ You will be able to complete the following tasks:
 
 ### Task 1: Review Azure Monitor metrics
 
-In this task, you will be reviewing the monitored AKS cluster. This task is focused on visually reviewing the metrics and logs available in Azure Monitor for your AKS cluster. No alerts or issues are expected to be detected unless explicitly configured.
+In this task, you will review the monitored AKS cluster, focusing on visually inspecting the metrics and logs available in Azure Monitor. No alerts or issues are expected to detect unless they have been explicitly configured.
 
 1. Navigate back to the Azure portal in the browser and search for **aks (1)**, Select **Kubernetes services (2)** from the result.
 
-   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/a7.png "Add a Namespace")
+   ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/E6T1S1.png "Add a Namespace")
      
 1. On the Kubernetes Services page, select **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**.
 
-   ![](media/p7-st2-new.png "select aks")
+   ![](media/E6T1S2.png "select aks")
    
-1. In the Insights section, under monitoring in your Kubernetes service resource blade and you should be able to see some logs.
+1. In the **Monitor (1)** section of your Kubernetes service resource blade,you can view logs related to the service's activity such as Node CPU, Node Memory utilization etc.
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in the insight blade.
 
    > **Important**: This task is for visual review only. If you wish to explore alerts, you can configure an alert rule in Azure Monitor. For example, you can create an alert for high CPU usage or memory consumption. Refer to the Azure documentation for guidance on setting up alert rules.
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/12.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/E6T1S3.png "Add a Namespace")
 
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
@@ -51,3 +51,7 @@ In this task, you will be reviewing the monitored AKS cluster. This task is focu
 In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster.
 
 ### You have successfully completed the lab!
+
+## Conclusion
+
+By completing this **Cloud Native Applications** hands-on lab, you will gain practical experience in containerizing applications, pushing Docker images to a container registry, and deploying them to Azure Kubernetes Service (AKS). You will also understand how to manage container lifecycles, scale deployments, and monitor applications using Azure Monitor. This proof of concept will provide valuable insights into building and managing modern, cloud-native applications using containers and Kubernetes.

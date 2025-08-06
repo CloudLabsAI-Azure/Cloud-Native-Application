@@ -4,9 +4,9 @@
 
 ## Overview
 
-In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the API deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
+In the previous exercise, we implemented a restriction related to the service's scale properties. In this exercise, you will configure the API deployments to use dynamic port mappings for pod creation, which helps eliminate port resource constraints during scaling operations.
 
-Kubernetes services can discover the ports assigned to each pod, allowing you to run multiple instances of the pod on the same agent node --- something that is not possible when you configure a specific static port (such as 3001 for the API service).
+Kubernetes services can automatically discover the dynamically assigned ports for each pod. This allows multiple instances of the pod to run on the same agent node, something which isn't feasible when a specific static port (such as 3001 for the API service) is configured.
 
 ## Lab Objectives
 
@@ -17,11 +17,11 @@ You will be able to complete the following tasks:
 
 ### Task 1: Perform a rolling update
  
-In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
+In this task, you will modify the web application's source code to apply configuration changes and update the Docker image used in the deployment. You will then perform a rolling update to demonstrate how to deploy the code changes. Rolling updates enable the  updates to occur with zero downtime by gradually replacing existing Pod instances with new ones. The updated Pods will be scheduled on Nodes that have available resources.
 
 >**Note**: Please perform this task using a new command prompt which should be not connected to the build agent VM but should be logged into Azure.
 
-1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
+1. First, you will modify the source code in your web application, and then you will create a new Docker image that aligns with the latest changes. 
 
 1. Open a new Command Prompt.
 
@@ -37,21 +37,21 @@ In this task, you will edit the web application source code to update some confi
    
      >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
 
-1. Run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
+1. Run the below command to navigate to the directory where you'll modify the web application source code with the required changes
 
      ```bash
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
      ```
-1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
+1. Once you are in the correct directory, run the below command to open the **hero.js** file to make the text modification to the web application's homepage.
 
      ```bash
      sudo chmod 777 hero.js
      vim hero.js
      ```
      
-   ![A screenshot of the code editor showing updates in context of the app.js file](media/updatetext.png "AppInsights updates in app.js")
+   ![A screenshot of the code editor showing updates in context of the app.js file](media/E5T1S6.png "AppInsights updates in app.js")
    
-1. Once the file is open, press "i" to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
+1. Once the file is open, press **"i"** to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
 
      ```
      The latest, Fastest, Most Powerful Xbox Ever.
@@ -61,7 +61,7 @@ In this task, you will edit the web application source code to update some confi
 
 1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
-    >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
+    >**Note**: If **_ESC_** doesn't work, press `ctrl+[` and then write **_:wq_** to save your changes and close the file.
     
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
@@ -83,7 +83,7 @@ In this task, you will edit the web application source code to update some confi
 
    > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
 
-   >**Note:** If it throws error, run the below command:
+   >**Note:** If it throws any error, run the below command:
 
    ```
    az acr login -n contosotradersacr<inject key="DeploymentID" enableCopy="false" />
@@ -104,16 +104,16 @@ In this task, you will edit the web application source code to update some confi
 
     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
   
-1. Run the below kubectl command to get the current deployment in your AKS as now we will be updating the web API to the latest image. Copy the name of the **contoso-traders-web###** to the notepad. 
+1. Run the below **_kubectl_** command to retrieve the current deployment in your AKS cluster, as we will be updating the web API to use the latest image. Ensure to copy the name of the **contoso-traders-web###** **(1)** to the notepad. 
 
     ```bash
     kubectl get deployments -n contoso-traders
     kubectl get pods -n contoso-traders
     ```
     
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S14i.png "Pod deployment is in progress")
 
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9-1.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S14ii.png "Pod deployment is in progress")
 
 1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
@@ -121,7 +121,7 @@ In this task, you will edit the web application source code to update some confi
      kubectl describe pods [PODNAME] -n contoso-traders
      ```
    
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S10.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S15.png "Pod deployment is in progress")
 
 1. Now to set the new image on the pods, run the below command.
 
@@ -129,15 +129,15 @@ In this task, you will edit the web application source code to update some confi
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
      ```
      
-    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S11.png "Pod deployment is in progress")
+    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S16.png "Pod deployment is in progress")
 
-1. Run the below kubectl command to get the current updated pods in your AKS. Copy the name of the **contoso-traders-web###** to the notepad. 
+1. Run the below kubectl command to get the current updated pods in your AKS. Copy the name of the **contoso-traders-web###** **(1)** to the notepad. 
 
     ```bash
     kubectl get pods -n contoso-traders
     ```
     
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/EX5-T1-S9-1.png "Pod deployment is in progress")
+    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S17.png "Pod deployment is in progress")
 
 1. Now run the below command to describe the latest pods and see which image is mapped with the pod. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
@@ -145,12 +145,12 @@ In this task, you will edit the web application source code to update some confi
      kubectl describe pods [PODNAME] -n contoso-traders
      ```
 
-     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/imageupdates2.png "Pod deployment is in progress")
+     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S18.png "Pod deployment is in progress")
 
     
 1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
 
-   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/webupdates.png "Pod deployment is in progress")
+   ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S19.png "Pod deployment is in progress")
 
 
 
@@ -191,9 +191,11 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
    ```
 
-1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources and copy the IP Address for the **External IP** for the `nginx-ingress-ingress-nginx-controller` service.
+1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources.
 
-   ![](media/cloudnative-9.png)
+1. On the **Overview** **(1)** pane, copy the IP Address for the **External IP** **(2)** for the `nginx-ingress-ingress-nginx-controller` service.
+
+    ![](media/E5T2S5.png)
 
    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
    >
@@ -201,7 +203,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    > kubectl get svc --namespace contoso-traders
    > ```
    >
-   ![A screenshot of Azure Cloud Shell showing the command output.](media/controller.png "View the ingress controller LoadBalancer")
+   ![A screenshot of Azure Cloud Shell showing the command output.](media/E5T2S5-N.png "View the ingress controller LoadBalancer")
 
 1. In **Azure Portal**, search and open the **Microsoft Entra ID**, and copy **Tenant ID**.
 
@@ -271,7 +273,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```text
    http://contosotraders-<inject key="DeploymentID" />-ingress.<inject key="Region" />.cloudapp.azure.com/
    ```
-   ![](media/15.png )
+    ![](media/E5T2S10.png )
 
    >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below-mentioned command and try accessing the URL again.
 
@@ -439,7 +441,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 21. Refresh the ingress endpoint in your browser. You should be able to visit the website and see all the content.
 
-    ![](media/16.png )
+    ![](media/E5T2S26.png )
    
 22. Test TLS termination by visiting services again using `https://`.
 
