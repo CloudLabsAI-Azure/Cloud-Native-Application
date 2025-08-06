@@ -1,6 +1,6 @@
 # Exercício 2: Migrar MongoDB para Cosmos DB utilizando o Azure Database Migration
 
-### Duração estimada: 60 minutos
+### Duração estimada: 60 Minutos
 
 ## Visão geral
 
@@ -60,17 +60,17 @@ Nesta tarefa, irá ligar-se a uma base de dados Mongo alojada numa VM Linux do A
 
 Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de Base de Dados do Azure e, em seguida, migrar os dados do MongoDB para o Azure Cosmos DB. Nos exercícios posteriores, irá utilizar o Azure CosmosDB para pesquisar os dados da página de products.
 
-1. No Portal do Azure, navegue até à sua máquina virtual **contosotraders** no grupo de recursos **ContosoTraders-**. Copie o endereço IP privado e cole-o no Bloco de Notas para utilização posterior.
+1. No Portal do Azure, navegue até à sua máquina virtual **contosotraders** no grupo de recursos **contosoTraders-**. Copie o endereço IP privado e cole-o no Bloco de Notas para utilização posterior.
 
-   ![](../media/1-10-24(18).png)
+   ![](../media/E2T2S1-0608.png)
 
-1. Navegue até ao grupo de recursos **ContosoTraders (1)** e abra **contosotraders- (2)**, a conta do Cosmos DB para MongoDB.
+1. Navegue até ao grupo de recursos **contosoTraders (1)** e abra **contosotraders- (2)**, a conta do Cosmos DB para MongoDB.
 
-   ![](../media/E2-T2-S2MongoDB.png)
+   ![](../media/E2T2S2-0608.png)
 
 1.  Clique em **Data Explorer (1)**. Agora clique na seta suspensa, ao lado de **+ New Collection (2)**, e depois selecione **+ New Database (3)**.
 
-    ![](../media/12062025-p3(1).png)
+    ![](../media/E2T2S3-0608.png)
 
     > **Observação:** Se receber **Bem-vindo! O que é Cosmos DB?**, feche-o clicando em **X**.
 
@@ -80,13 +80,13 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
    > **Observação:** Para visualizar as configurações, certifique-se de que a opção **Provision throughput** esteja **marcada**.
 
-1. Navegue até ao serviço de migração de base de dados do Azure **contosotraders<inject key="DeploymentID" enableCopy="false" />** no grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy= "false" />**.
+1. Navegue até ao serviço de migração de base de dados do Azure **contosotraders<inject key="DeploymentID" enableCopy="false" />** no grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy= "false" />**.
 
-   ![](../media/cn19.png)
+   ![](../media/E2T2S5-0608.png)
 
 1. Na página Azure Database Migration Service, selecione **+ Novo projeto de migração** no painel **Visão geral**.
 
-   ![](../media/cn20.png)
+   ![](../media/E2T2S6-0608.png)
 
 1. No painel **Novo projeto de migração**, introduza os seguintes valores e selecione **Criar e executar atividade (5)**:
 
@@ -102,7 +102,7 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 1. No painel **MongoDB para Banco de Dados do Azure para Assistente de Migração Offline CosmosDB**, introduza os seguintes valores para o separador **Selecionar origen**:
 
     - Modo: **Modo padrão (1)**
-    - Nome do servidor de origem: Insira o endereço IP **Privado** da VM **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** que você copiou anteriormente nesta tarefa **(2)**
+    - Nome do servidor de origem: Insira o endereço IP **Privado** da VM **contosotraders-<inject key="DeploymentID" enableCopy="false" />** que você copiou anteriormente nesta tarefa **(2)**
     - Porta do servidor: `27017` **(3)**
     - Exigir SSL: desmarcado **(4)**
     - Selecione **Seguinte: Selecionar destino >> (5)**.
@@ -181,4 +181,6 @@ Nesta tarefa, irá criar um projeto de migração no Serviço de Migração de B
 
 Neste exercício, concluiu a exploração do Mongodb local e a migração da base de dados MongoDB local para o Azure CosmosDB utilizando a migração da base de dados do Azure.
 
-### Concluiu o laboratório com sucesso
+### Você completou com sucesso este exercício. Clique em "Próximo" para prosseguir para o próximo exercício.
+
+![](../media/imag1.png)

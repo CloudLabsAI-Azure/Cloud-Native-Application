@@ -1,6 +1,6 @@
 # Exercício 6: Azure Monitor para contentores
 
-### Duração estimada: 20 minutos
+### Duração estimada: 20 Minutos
 
 ## Visão geral
 
@@ -24,7 +24,7 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na 
 
 1. Navegue de volta para o portal do Azure e procure **aks (1)**, selecione **Serviços Kubernetes (2)** no resultado.
 
-    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn91.png "Definir réplicas para 2")
+    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/E6T1S1-0608.png "Definir réplicas para 2")
 
 1. Na página Serviços Kubernetes, selecione **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**.
 
@@ -32,12 +32,11 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na 
    
 1. Navegue até a seção **Monitorar** folha de recursos do serviço Kubernetes, você poderá ver alguns logs.
    
+    ![](../media/cn93.png "Definir réplicas para 2")
+
     > **Nota**: O Monitorar do Azure pode demorar até 15 minutos a preencher os dados na folha de insights.
     
     > **Importante**: Esta tarefa destina-se apenas à revisão visual. Se desejar explorar alertas, pode configurar uma regra de alerta no Azure Monitor. Por exemplo, pode criar um alerta para utilização elevada de CPU ou consumo de memória. Consulte a documentação da Azure para obter orientações sobre como configurar regras de alerta.
-
-
-    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn93.png "Definir réplicas para 2")
 
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
@@ -47,8 +46,10 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na 
 
 <validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />    
 
-## Sumário
+## Resumo
 
 Neste exercício, reviu os insights do contentor do Azure Monitor para o cluster AKS.
 
-### Concluiu o laboratório com sucesso
+### Concluíste o laboratório com sucesso.
+
+Ao concluir este laboratório prático de Cloud Native Applications irá adquirir experiência prática na conteinerização de aplicações, no envio de imagens Docker para um registo de contêineres e na sua implementação no Azure Kubernetes Service (AKS). Irá também compreender como gerir o ciclo de vida dos contêineres, escalar implementações e monitorizar aplicações utilizando o Azure Monitor. Esta prova de conceito fornecerá conhecimentos valiosos sobre como desenvolver e gerir aplicações modernas e nativas da cloud utilizando contêineres e Kubernetes.
