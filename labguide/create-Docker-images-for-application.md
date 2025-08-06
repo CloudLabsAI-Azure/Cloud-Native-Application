@@ -33,31 +33,32 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
    
       >**Nota**: Tenga en cuenta que mientras escribe la contraseña no podrá verla por motivos de seguridad.
     
-1. Una vez que la VM esté conectada, ejecute el siguiente comando para clonar el repositorio de GitHub que usaremos para la práctica de laboratorio.
+1. Una vez que la VM esté conectada, ejecute el siguiente comando para navegar al repositorio GitHub clonado que vamos a utilizar para el laboratorio.
 
     ``` 
-    git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
+    cd Cloud-Native-Application/labfiles/
     ```
     
-    ![](media/EX1-T1-S4.png)
+    ![](media/E1T1S4.png)
     
-    > **Nota:** Si recibe un mensaje de salida que indica: - la ruta de destino 'Cloud-Native-Application' ya existe y no es un directorio vacío, por favor ejecute los siguientes comandos y luego vuelva a realizar el paso 4 de la tarea.
+    **Nota:** Si recibe un mensaje de salida que indica que la ruta de destino es 'Cloud-Native-Application/labfiles'. No existe el archivo o directorio. Ejecute el siguiente comando y vuelva a realizar el paso 4 de la tarea.
+
+    ```
+    git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
+    
+    ```
+
+    ![](media/E1T1S4i.png)
+
+    - Si recibe un mensaje de salida que indica que la ruta de destino "Cloud-Native-Application" ya existe y no es un directorio vacío, ejecute los siguientes comandos y, a continuación, vuelva a ejecutar el comando "git clone" y repita el paso 4 para acceder al repositorio clonado.
 
      ```
     sudo su
     rm -rf Cloud-Native-Application
     exit
      ```   
-     ![](media/EX1-T1-S4-1.png)
-    
-1. Una vez completada la clonación de GitHub, ejecute el siguiente comando para cambiar el directorio a los archivos de laboratorio.
-    
-    ```
-    cd Cloud-Native-Application/labfiles/ 
-    ```
-    
-    ![](media/EX1-T1-S5.png)
-    
+     ![](media/SE1T1S4ii.png)
+        
 ## Tarea 2: Crear Imágenes de Docker para contenerizar la aplicación y empujarlas al registro del contenedor
 
 En esta tarea, creará las imágenes de Docker para contenerizar la aplicación y las enviará a ACR (Azure Container Registry) para usarlas más adelante en AKS.
@@ -82,7 +83,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
    az login
    ```
     
-   ![](media/EX1-T2-S1.png)
+   ![](media/SE1T2S3.png)
     
 1. Ingrese el código de autenticación copiado **(1)** y haga clic en **Siguiente** **(2)**.
 
@@ -111,7 +112,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 
 1. Una vez que inicie sesión en Azure, creará las imágenes de Docker en los siguientes pasos y las enviará a ACR.
 
-   ![](media/EX1-T2-S6.png)
+   ![](media/E1T2S8.png)
     
 1. Ahora construya la imagen docker **contosotraders-carts** usando el Dockerfile que se encuentra en el directorio. Observe cómo se hace referencia al Azure Container Registry implementado.
 
@@ -141,7 +142,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     vi configService.js
     ```
     
-    ![](media/EX1-T2-S10.png)
+    ![](media/E1T2S11.png)
     
 1. En el editor `vi`, presione **_i_** para ingresar al modo `insertar`. Reemplace el ID de implementación y el valor de Región proporcionados en APIUrl. Luego presione **ESC**, escriba **:wq** para guardar los cambios y cierre el archivo. Necesitamos actualizar la URL de la API aquí para que la aplicación Contoso Traders pueda conectarse a la API del producto una vez que se envíe a los contenedores de AKS.
 
@@ -153,7 +154,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
     ```
 
-    ![](media/cdnfix1.png)
+    ![](media/SE1T2S13.png)
 
 1. Ejecute el siguiente comando para cambiar el directorio a la carpeta `ContosoTraders.Ui.Website`.
 
@@ -185,15 +186,15 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     docker image ls
     ```
 
-    ![](media/EX1-T2-S15.png)
+    ![](media/E1T2S16.png)
 
 1. Navegue al Portal de Azure, abra el Registro de contenedor **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** desde el Grupo de recursos **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
-   ![](media/12062025-p2(2).png)
+   ![](media/SE1T2S18.png)
    
 1. Desde el Registro de Contenedor **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** seleccione **Claves de acceso** **(2)** en Configuración del menú lateral de la izquierda. **Copie** **(3)** la Contraseña y péguela en un archivo de texto para usarla más adelante.
 
-   ![](media/ex1-acr2.png)    
+    ![](media/SE1T2S19.png)    
 
 1. Ahora inicie sesión en ACR usando el siguiente comando, actualice el valor del sufijo y la contraseña de ACR en el siguiente comando. Debería poder ver el resultado a continuación en la captura de pantalla. Asegúrese de reemplazar la contraseña con la contraseña de registro del contenedor copiada que copió en el paso anterior en el siguiente comando.
 
@@ -201,7 +202,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
-    ![](media/loginsucceded.png "abrir cmd")
+    ![](media/E1T2S19.png "abrir cmd")
 
 1. Una vez que inicie sesión en ACR, ejecute los siguientes comandos para enviar las imágenes de Docker al registro del contenedor de Azure.
 
@@ -228,3 +229,5 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 En este ejercicio, ha contenedorizado completamente su aplicación web con la ayuda de Docker y la ha empujado al registro de contenedores.
 
 ### Ha completado el laboratorio correctamente. Haga clic en **Siguiente >>** para continuar con el siguiente ejercicio.
+
+![](media/1-sn.png "Next")

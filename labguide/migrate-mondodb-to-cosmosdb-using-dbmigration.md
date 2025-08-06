@@ -187,3 +187,5 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 En este ejercicio, completó la exploración de su MongoDB on-premises (local) y la migración de su base de datos MongoDB local a Azure CosmosDB mediante el servicio Azure Database Migration.
 
 ### Ha completado el laboratorio correctamente. Haga clic en **Siguiente >>** para continuar con el siguiente ejercicio.
+
+![](media/2-sn.png "Next")
