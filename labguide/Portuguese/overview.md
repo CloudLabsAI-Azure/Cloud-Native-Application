@@ -1,6 +1,6 @@
 # Aplicações nativas da nuvem
 
-### Duração estimada: 8 horas
+### Duração estimada: 8 Horas
 
 ## Visão geral
 
