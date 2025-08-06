@@ -29,7 +29,7 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
    
     * Contraseña: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-      ![](media/a2.png "abrir cmd")
+      ![](media/E1T1S3.png "abrir cmd")
    
       >**Nota**: Tenga en cuenta que mientras escribe la contraseña no podrá verla por motivos de seguridad.
     
