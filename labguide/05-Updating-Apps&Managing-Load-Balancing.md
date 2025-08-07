@@ -138,11 +138,11 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 1. Ejecute el siguiente comando kubectl para obtener los pods actualizados en su AKS. Copie el nombre **contoso-traders-web###** en el bloc de notas.
 
 
-    ```bash
-    kubectl get pods -n contoso-traders
-    ```
+      ```bash
+      kubectl get pods -n contoso-traders
+      ```
 
-   ![Obteniendo los pods.](media/E5T1S17.png "get pods")
+    ![Obteniendo los pods.](media/E5T1S17.png "get pods")
 
 1. Ahora ejecute el siguiente comando para describir los pods más recientes y ver qué imagen está asignada a cada uno. Asegúrese de actualizar el valor **PODNAME** con el valor que copió en el paso anterior.
 
@@ -177,7 +177,8 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    ```bash
    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
    ```
-  ![](media/cloudnative-6.png)
+    ![](media/cloudnative-6.png)
+
 1. Actualice su lista de paquetes de helm.
 
    ```bash

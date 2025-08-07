@@ -26,7 +26,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
 
    >**Nota:** Si MongoDB está instalado, continúe con el siguiente paso. Si no lo está, siga los pasos de solución de problemas a continuación.
 
-   >Ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**. Escriba **yes** en el mensaje **Are you sure you want to continue connection (yes/no/[fingerprint])?** e introduzca la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante SSH. Ejecute los siguientes comandos.
+   > Ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**. Escriba **yes** en el mensaje **Are you sure you want to continue connection (yes/no/[fingerprint])?** e introduzca la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante SSH. Ejecute los siguientes comandos.
 
 
    ```
@@ -41,7 +41,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    sudo service mongodb start
    ```   
 
-   ![](media/EX2-T1-S1.png)
+      ![](media/EX2-T1-S1.png)
 
 1. Mientras esté conectado a su máquina virtual Linux, ejecute el siguiente comando para conectarse al shell mongo para mostrar las bases de datos y colecciones en él usando el shell mongo.
 
