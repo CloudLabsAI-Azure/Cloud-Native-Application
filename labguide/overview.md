@@ -59,11 +59,11 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. Una vez que se haya aprovisionado el ambiente, se cargarán una máquina virtual (JumpVM) y una guía de laboratorio en su navegador. Utilice esta máquina virtual durante todo el taller para realizar el laboratorio. Puede ver el número en la parte inferior de la guía de laboratorio para cambiar a los diferentes ejercicios de la guía de laboratorio.
 
-   ![](media/1262025(1).png "Ambiente de Laboratorio")
+   ![](media/S1.png "Ambiente de Laboratorio")
 
 1. Para obtener los detalles del ambiente de laboratorio, puede seleccionar la pestaña **Ambiente**. Además, las credenciales también se enviarán por correo electrónico a su dirección de correo electrónico registrada. También puede abrir la Guía de Laboratorio en una ventana separada y completa seleccionando **Ventana Dividida** en la esquina superior derecha. Además, puede iniciar, detener y reiniciar máquinas virtuales desde la pestaña **Recursos**.
 
-   ![](media/spanish-23.png "Ambiente de Laboratorio")
+   ![](media/S3.png "Ambiente de Laboratorio")
  
    > Verá el valor de DeploymentID en la pestaña **Ambiente**, úselo donde vea SUFFIX o DeploymentID en los pasos del laboratorio.
 
@@ -79,17 +79,17 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 1. En JumpVM, haga clic en el acceso directo del portal de Azure del navegador Microsoft Edge que se crea en el escritorio.
 
-   ![](media/1262025(2).png "Ambiente de Laboratorio")
+   ![](media/S4.png "Ambiente de Laboratorio")
    
 1. En la pestaña **Iniciar sesión en Microsoft Azure** verá la pantalla de inicio de sesión, en ella ingrese el siguiente correo electrónico/nombre de usuario y luego haga clic en **Siguiente**.
    * Correo electrónico/Nombre de usuario: <inject key="AzureAdUserEmail"></inject>
    
-     ![](media/1262025(3).png "Ingrese Correo Electrónico")
+     ![](media/Spanish-GS3.png "Ingrese Correo Electrónico")
      
 1. Ahora ingrese la siguiente contraseña y haga clic en **Iniciar sesión**.
    * Contraseña: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/1262025(4)-new.png "Ingrese Contraseña")
+     ![](media/Spanish-GS4.png "Ingrese Contraseña")
      
      > Si ve el cuadro de diálogo **Ayúdenos a proteger su cuenta**, seleccione la opción **Omitir por ahora**.
 
@@ -97,13 +97,15 @@ La arquitectura de este laboratorio incluye varios componentes clave:
   
 1. Si ve la ventana emergente **¿Desea permanecer conectado?**, haga clic en No
 
+      ![](media/Spanish-GS5.png "Ingrese Contraseña")
+
 1. Si ve la ventana emergente **¡Tiene recomendaciones gratuitas de Azure Advisor!**, cierre la ventana para continuar con el laboratorio.
 
 1. Si aparece una ventana emergente **Bienvenido a Microsoft Azure**, haga clic en **Quizás más tarde** para omitir la visita guiada.
    
 1. Ahora verá el Panel del portal de Azure; haga clic en **Grupos de recursos** en el panel Navegar para ver los grupos de recursos.
 
-    ![](media/gs-7.png "Grupos de recursos")
+    ![](media/Spanish-AzureHome.png "Grupos de recursos")
    
 Al finalizar este laboratorio, los participantes aprenderán a crear imágenes de Docker para contenerizar aplicaciones, migrar datos de MongoDB a Azure Cosmos DB e implementar aplicaciones en Azure Kubernetes Service (AKS) para la orquestación. También escalarán aplicaciones y garantizarán una alta disponibilidad, administrarán actualizaciones y enrutamiento de tráfico, y usarán Azure Monitor para realizar un seguimiento del rendimiento y el estado de sus aplicaciones en contenedores.
 
