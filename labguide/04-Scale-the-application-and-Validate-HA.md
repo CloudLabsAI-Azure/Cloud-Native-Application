@@ -221,7 +221,7 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 
 1. Seleccione **Explorador de datos (1)** del menú del lado izquierdo. En **Explorador de datos**, expanda la base de datos `contentdb` **(2)**.
 
-    ![](media/spanish-16.png "MongoDB contentdb")
+    ![](media/SE4T6S2.png "MongoDB contentdb")
 
 1. En la base de datos `contentdb`, expanda la colección **Items (1)**, seleccione **Settings (2)**.
 

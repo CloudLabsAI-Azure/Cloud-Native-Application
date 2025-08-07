@@ -36,7 +36,7 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
 1. Ejecute el siguiente comando para configurar la conexión del clúster de Kubernetes utilizando kubectl.
 
    ```bash
-   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
+   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/>
    ```
    
     ![](media/E3T1S2.png)
@@ -164,7 +164,7 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
 
 1. Navegue hasta el directorio `C:\LabFiles` **(1)** y seleccione el archivo `web.deployment.yml` **(2)**. Haga clic derecho y seleccione **Abrir** **(3)** para abrir el archivo en VS Code.
 
-   ![](media/cloudnative8.png)
+   ![](media/SE3T3S1.png)
 
 1. Asegúrese de actualizar **_SUFFIX_** con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** indicado en el archivo YAML para que coincida con el nombre de su servidor de inicio de sesión de ACR.
 
