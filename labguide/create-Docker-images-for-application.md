@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will learn how to Containerize the Contoso Traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
+In this exercise, you will learn how to Containerize the Contoso Traders application using Docker images. Containerized applications run in isolated runtime environments called containers. A Docker image is a file used to build and run the code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will push the created Docker images to the Azure Container Registry.
 
 ## Lab Objectives
 
@@ -29,41 +29,44 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-     ![](media/ex1-connecttolinuxvm.png "open cmd")
+     ![](media/E1T1S3.png "open cmd")
    
      >**Note**: Please note that while typing the password, you won’t be able to see it due to security concerns.
     
-1. Once the VM is connected, run the following command to clone the GitHub repository that we are going to use for the lab.
+1. Once the VM is connected, run the following command to navigate to the clonedGitHub repository that we are going to use for the lab.
 
+     ``` 
+    cd Cloud-Native-Application/labfiles/
     ``` 
-    git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
-    ```
-    
-    ![](media/ex1-gitclone.png)
-    
-    > **Note:** If you receive an output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform step 4 of the task.
+       
+     ![](media/E1T1S4.png)
 
-     ```
-    sudo su
-    rm -rf Cloud-Native-Application
-    exit
-     ```   
-     ![](media/cloudn.png)
     
-1. After the GitHub cloning is completed, run the following command to change the directory to the lab files.
+    > **Note:** If you receive an output message stating - destination path 'Cloud-Native-Application/labfiles' No such file or directory. Please run the following command and then reperform step 4 of the task.
+
+    ```
+    git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
     
     ```
-    cd Cloud-Native-Application/labfiles/ 
-    ```
+
+    ![](media/E1T1S4i.png)
+
+    - If you receive an output message stating - destination path 'Cloud-Native-Application' already exists and is not an empty directory. Please run the following commands and then reperform the "git clone" command and repeat Step 4 to navigate to the cloned repository.
+
+        ```
+        sudo su
+        rm -rf Cloud-Native-Application
+        exit
+        ```   
+        ![](media/cloudn.png)
     
-    ![](media/admincontoso.png)
     
 ### Task 2: Build Docker images to containerize the application and push them to the container registry
 
-In this task, you will be building the Docker images to containerize the application and will be pushing them to the ACR (Azure Container Registry) to later use in AKS.
+In this task, you will build the Docker images to containerize the application and subsequently will be pushing them to the Azure Container Registry (ACR) for later use in Azure Kubernetes Service (AKS).
 
 
-1. Please make sure that you are in the **labfiles** directory before running the next steps, as the Docker build needs to find the Dockerfile to create the image.
+1. Ensure that you are in the **labfiles** directory before proceeding with the next steps, as the Docker build need to access the Docker file to create the image.
 
     ```
     cd Cloud-Native-Application/labfiles/
@@ -86,27 +89,28 @@ In this task, you will be building the Docker images to containerize the applica
    
    > **Note:** If you receive an error command az not found, then run the command _'sudo apt install azure-cli'_ to install az cli. 
     
-1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
+1. Enter the copied **Authentication code** **(1)** and click on **Next** **(2)**.
 
-   ![](media/ex1-codelogin.png)
+   ![](media/Link-code-login.png)
    
 1. On the **Sign in to Microsoft Azure** tab, you will see a login screen. Enter the following email/username and then click on **Next**.
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
+    ![](media/corsspf-username.png)
 
 1. Now enter the following password and click on **Sign in**.
 
    * Password: **<inject key="AzureAdUserPassword"></inject>**
 
-     ![](media/cloudnative-4.png)
+     ![](media/GS4.png)
 
 1. In a pop-up to confirm the sign-in to Microsoft Azure CLI, click on **Continue**.
 
-   ![](media/ex1-logincontinue.png)
+   ![](media/crosspf-continue.png)
 
 1. Once you log in to Azure, Navigate back to command prompt now you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
-   ![](media/aiwshared3.png)
+   ![](media/E1T2S8.png)
    
 1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced.
 
@@ -136,7 +140,7 @@ In this task, you will be building the Docker images to containerize the applica
     vi configService.js
     ```
     
-    ![](media/latest-ex1-new-cd-website.png)
+    ![](media/E1T2S11.png)
     
 1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given deploymentID **<inject key="DeploymentID" enableCopy="true"/>** and Region **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to the product API once it's pushed to AKS containers.
     
@@ -182,15 +186,15 @@ In this task, you will be building the Docker images to containerize the applica
     docker image ls
     ```
 
-    ![](media/T2S15.png)
+    ![](media/E1T2S16.png)
 
-1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry from **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** **(2)** resource group.
 
-   ![](media/contosotraders.png)
+   ![](media/E1T2S17.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys (2)** under Settings from left side menu. **Copy (3)** the Password and paste it into a text file for later use.
+1. On the **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry page, select **Access keys (1)** blade under Settings from left side menu. **Copy (2)** the Password and paste it into a notepad for later use.
 
-   ![](media/aceeskeys.png)    
+   ![](media/E1T2S18.png)    
 
 1. Now, log in to ACR using the command below. Please update the ACR password value in the command below. You should be able to see the output below in the screenshot. Make sure to replace the password with the copied container registry password, which you have copied in the previous step, in the below command.
 
@@ -198,7 +202,7 @@ In this task, you will be building the Docker images to containerize the applica
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
     ```
 
-    ![](media/loginsucceded.png "open cmd")
+    ![](media/E1T2S19.png "open cmd")
 
 1. Once you have logged in to the ACR, please run the following commands to push the Docker images to the Azure container registry.
 
@@ -226,3 +230,4 @@ In this task, you will be building the Docker images to containerize the applica
 In this exercise, you have completely containerized your web application with the help of Docker and pushed it to the container registry.
 
 ### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.
+![](media/1-n.png "Next")
