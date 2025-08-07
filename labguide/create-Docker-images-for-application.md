@@ -96,6 +96,7 @@ In this task, you will build the Docker images to containerize the application a
 1. On the **Sign in to Microsoft Azure** tab, you will see a login screen. Enter the following email/username and then click on **Next**.
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
+   
     ![](media/corsspf-username.png)
 
 1. Now enter the following password and click on **Sign in**.
