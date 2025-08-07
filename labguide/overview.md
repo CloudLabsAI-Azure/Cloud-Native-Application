@@ -63,7 +63,7 @@ Welcome to your Cloud Native Applications Workshop! We've prepared a seamless en
 
 1. Once the environment is provisioned, a virtual machine (JumpVM) and guide will be loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the guide to switch to different exercises in the guide.
 
-   ![](media/english-get-new-01.png "Lab Environment")
+   ![](media/P1.png "Lab Environment")
    
 1. Once you are on the JumpVM, if a Windows pane appears with **Choose privacy settings for your device**, click on **Next** > **Next** > **Accept** to proceed through the setup.
 
@@ -71,7 +71,7 @@ Welcome to your Cloud Native Applications Workshop! We've prepared a seamless en
 
 1. To get the lab environment details, you can select the **Environment** tab. Additionally, the credentials will also be emailed to your registered email address. You can also open the Lab Guide in a separate and full window by selecting the **Split Window** from the top right corner. Also, you can start, stop, and restart virtual machines from the **Resources** tab.
 
-   ![](media/english-get-02.png "Lab Environment")
+   ![](media/P3.png "Lab Environment")
  
    > You will see the DeploymentID value on the **Environment** tab, use it wherever you see SUFFIX or DeploymentID in lab steps.
 
@@ -99,25 +99,27 @@ To adjust the zoom level for the environment page, click the **A↕ : 100%** ico
 
 1. In the JumpVM, click on the Azure portal shortcut of the Microsoft Edge browser, which is created on the desktop.
 
-   ![](media/portal-new-01.png "Lab Environment")
+   ![](media/P4.png "Lab Environment")
    
 1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
-     ![](media/gs-4.png "Enter Email")
+     ![](media/GS3.png "Enter Email")
      
 1. Now enter the following password and click on **Sign in**.
 
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/gs-5.png "Enter Password")
+     ![](media/GS4.png "Enter Password")
      
      > If you see the **Help us protect your account** dialog box, then select the **Skip for now** option.
 
      ![](media/gs-6.png "Enter Password")
   
 1. If you see the pop-up **Stay Signed in?**, click No
+
+   ![](media/GS5.png "Click No")
 
 1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 

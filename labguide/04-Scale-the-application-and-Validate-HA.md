@@ -180,7 +180,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Return to the browser tab with the web application stats page loaded. Refresh the page over and over. You will not see any errors.
 
-   ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/11.png "View web task hostname")
+   ![On the Stats page in the Contoso Neuro web application, two different api host name values are highlighted.](media/E4T1S5.png "View web task hostname")
 
 1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
@@ -202,7 +202,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Return to the ContosoTarders website's stats page in the browser and refresh while Kubernetes is scaling down the number of Pods. You should be able to see the website running without any issues
 
-    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/11.png "View replica details")
+    ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/E4T1S5.png "View replica details")
 
 
 
@@ -219,7 +219,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB for MongoDB Account.
 
-    ![](media/p5-t6-st1--new.png "View replica details")
+    ![](media/E2T2S2.png "View replica details")
 
 2. Select **Data Explorer (1)** from the left side menu. Within **Data Explorer**, expand the `contentdb` **(2)** database.
 

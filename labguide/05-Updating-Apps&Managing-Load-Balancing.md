@@ -33,7 +33,7 @@ In this task, you will modify the web application's source code to apply configu
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-     ![](media/ex1-connecttolinuxvm.png "open cmd")
+     ![](media/E1T1S3.png "open cmd")
    
      >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
 
@@ -51,13 +51,13 @@ In this task, you will modify the web application's source code to apply configu
      
    ![A screenshot of the code editor showing updates in context of the app.js file](media/E5T1S6.png "AppInsights updates in app.js")
    
-1. Once the file is open, press **"i"** to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
+1. Once the file is open, press **"i"** to enter the insert mode and update the existing value mentioned below in the **items (1)** section and in the **name** **(2)** value.
 
      ```
-     The latest, Fastest, Most Powerful Xbox Ever.
+     The Latest, Fastest, Most Powerful Xbox Ever.
      ```
  
-   ![A screenshot of the code editor showing updates in context of the app.js file](media/exe5-task1-step4-update-herojs-file.png "AppInsights updates in app.js")
+   ![A screenshot of the code editor showing updates in context of the app.js file](media/E5T1S7.png "AppInsights updates in app.js")
 
 1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
@@ -195,7 +195,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 1. On the **Overview** **(1)** pane, copy the IP Address for the **External IP** **(2)** for the `nginx-ingress-ingress-nginx-controller` service.
 
-    ![](media/E5T2S5.png)
+    ![](media/E5T2S4.png)
 
    > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
    >
@@ -207,7 +207,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 1. In **Azure Portal**, search and open the **Microsoft Entra ID**, and copy **Tenant ID**.
 
-   ![](media/cloudnative-8.png)
+   ![](media/E5T2S5.png)
 
 1. Within the Windows command terminal, create a script to update the public DNS name for the external ingress IP.
 
@@ -217,11 +217,12 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
-   - `[ipaddress]`: Replace this with the IP Address copied from step 4.
-   - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
-   - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** that you have used previously for this lab.
-   - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />**.
-   - `$env:tenantId`: Enter the tenant ID which you copied in previous step. 
+  - `$env:tenantId`: Enter the tenant ID which you copied in previous step **(1)**.
+
+   - `[ipaddress]`: Replace this with the IP Address copied from step 4 **(2)**.
+   - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** **(3)**.
+   - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** **(4)** that you have used previously for this lab.
+   - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** **(5)**. 
 
      ```bash
      # Create a SecureString from the client's secret
@@ -252,7 +253,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
      }
      }
      ```
-     ![](media/cloudnative-10.png)
+     ![](media/E5T2S7.png)
 
 6. Save the changes by **CTRL + S** button to **Save**. and close the editor.
 

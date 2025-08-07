@@ -74,7 +74,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Click on **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
   
-   ![](media/E2T2S3-new.png)
+   ![](media/E2T2S3.png)
    
 1. Provide name as `contentdb` **(1)** for **Database id**. Select **Provision throughput (2)** and then select **Databse throughput** as **Manual** **(3)**,  provide the RU/s value to `400` **(4)** and click on **OK (5)**.
 
@@ -132,39 +132,39 @@ In this task, you will create a Migration project within Azure Database Migratio
 
     - Select Cosmos DB name: Select the **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (3)** Cosmos DB instance.
 
-      ![The Select target tab with values selected.](media/targetmongo-01.png "MongoDB to Azure Database for Cosmos DB - Select target")
+    - Select **Next: Database setting >> (4)**.
+
+      ![The Select target tab with values selected.](media/E2T2S9.png "MongoDB to Azure Database for Cosmos DB - Select target")
 
       >**Note:** Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
-1. Select **Next: Database setting >>**.
-
 1. On the **Database setting** tab, select the `contentdb` **Source Database (1)**, so this database from MongoDB will be migrated to Azure Cosmos DB. Select **Next: Collection setting >> (2)**.
 
-   ![The screenshot shows the Database setting tab with the contentdb source database selected.](media/contentdb-09.png "Database setting tab")
+   ![The screenshot shows the Database setting tab with the contentdb source database selected.](media/E2T2S10.png "Database setting tab")
 
 1. On the **Collection setting** tab, expand the **contentdb** database, and ensure both the **products** and **items** collections are selected for migration. Also, update the **Throughput (RU/s)** to `400` for both collections **(1)**. Select **Next: Migration summary >> (2)**.
 
-   ![The screenshot shows the Collection setting tab with both items and items collections selected with Throughput RU/s set to 400 for both collections.](media/db3-dul.png "Throughput RU")
+   ![The screenshot shows the Collection setting tab with both items and items collections selected with Throughput RU/s set to 400 for both collections.](media/E2T2S11.png "Throughput RU")
 
 1. On the **Migration summary** tab, enter `MigrateData` **(1)** in the **Activity name** field, and then select **Start migration (2)** to initiate the migration of the MongoDB data to Azure Cosmos DB.
 
-   ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media/migratedata-dul.png "Migration summary")
+   ![The screenshot shows the Migration summary is shown with MigrateData entered in the Activity name field.](media/E2T2S12.png "Migration summary")
 
 1. The migration activity's status will be displayed. The migration will be finished in a matter of seconds. Select **Refresh** to reload the status and ensure it is **complete**. 
 
-   ![The screenshot shows the MigrateData activity showing the status has completed.](media/completed.png "MigrateData activity completed")
+   ![The screenshot shows the MigrateData activity showing the status has completed.](media/E2T2S13.png "MigrateData activity completed")
 
-1. To verify the migrated data, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB for MongoDB account (RU) in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Data Explorer** from the left menu.
+1. To verify the migrated data, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB for MongoDB account (RU) in the **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Data Explorer** from the left menu.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/18042025(2).png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/E2T2S14.png "Cosmos DB is open")
 
 1. You will see the `items` **(1)** and `products` **(2)** collections listed within the `contentdb` database and you will be able to explore the documents **(3)**.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/itemsproducts-dul.png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/E2T2S15.png "Cosmos DB is open")
 
 1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure Cosmos DB for MongoDB account (RU). Select **Quick start** **(2)** from the left menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it into the text file for later use in the next exercise.
 
-   ![](media/primaryconnectionstring.png)
+   ![](media/E2T2S16.png)
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
