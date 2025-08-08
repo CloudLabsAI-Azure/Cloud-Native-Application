@@ -174,7 +174,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
+<validation step="a8c090c8-01fe-467c-840b-a9a271068777" />
 
 ## Summary
 
