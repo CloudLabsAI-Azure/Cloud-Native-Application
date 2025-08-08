@@ -24,7 +24,7 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na 
 
 1. Navegue de volta para o portal do Azure e procure **aks (1)**, selecione **Serviços Kubernetes (2)** no resultado.
 
-    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/E6T1S1-0608.png "Definir réplicas para 2")
+    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/E6T1S1-0808.png "Definir réplicas para 2")
 
 1. Na página Serviços Kubernetes, selecione **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**.
 
@@ -50,6 +50,4 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na 
 
 Neste exercício, reviu os insights do contentor do Azure Monitor para o cluster AKS.
 
-### Concluíste o laboratório com sucesso.
-
-Ao concluir este laboratório prático de Cloud Native Applications irá adquirir experiência prática na conteinerização de aplicações, no envio de imagens Docker para um registo de contêineres e na sua implementação no Azure Kubernetes Service (AKS). Irá também compreender como gerir o ciclo de vida dos contêineres, escalar implementações e monitorizar aplicações utilizando o Azure Monitor. Esta prova de conceito fornecerá conhecimentos valiosos sobre como desenvolver e gerir aplicações modernas e nativas da cloud utilizando contêineres e Kubernetes.
+Ao concluir este **Cloud Native Applications hands-on lab**, containerizou a aplicação Contoso Traders utilizando o Docker, migrou os dados do MongoDB para o Azure Cosmos DB e implementou-a no Azure Kubernetes Service (AKS) para orquestração escalável. Aprendeu a escalar a aplicação e validar a sua alta disponibilidade, a aplicar atualizações e a configurar o Kubernetes Ingress para uma gestão eficiente do tráfego. Por fim, ativou o Azure Monitor for Containers para obter informações valiosas sobre o desempenho e a integridade. Estas competências oferecem-lhe experiência prática na criação, implementação, escalabilidade e monitorização de aplicações modernas cloud-native no Azure.
