@@ -219,23 +219,28 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 <validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />      
 
 ### Tarefa 6: Configurar a escala automática do CosmosDB
+
 Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
 1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
 
       <img src="../media/E4T6S1-0608.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
 
+
 1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
 
       <img src="../media/portu-10.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
+
 
 1. Na base de dados `contentdb`, expanda a coleção **Items (1)**, selecione **Settings (2)**.
 
       <img src="../media/22-10-24(33).png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
 
+
 1. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
 
       <img src="../media/spanish-188.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
+
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
