@@ -19,9 +19,9 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
 
 1. Conéctese a su máquina virtual Linux y ejecute el siguiente comando para comprobar si MongoDB está instalado:
 
-    ```
-    mongo --version
-    ```  
+   ```
+   mongo --version
+   ```  
 
       ![](media/E2T1S1.png)   
 
