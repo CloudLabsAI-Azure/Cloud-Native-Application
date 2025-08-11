@@ -129,10 +129,11 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
 1. Ahora, para configurar la nueva imagen en los pods, ejecute el siguiente comando.
 
-     ```bash
-     kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
-     ```
+      ```bash
+      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
+      ```
      
+
      ![Configurando la nueva imagen de los pods.](media/E5T1S16.png "kubectl set image deployments")
 
 1. Ejecute el siguiente comando kubectl para obtener los pods actualizados en su AKS. Copie el nombre **contoso-traders-web###** en el bloc de notas.
@@ -141,6 +142,8 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
       ```bash
       kubectl get pods -n contoso-traders
       ```
+
+
 
     ![Obteniendo los pods.](media/E5T1S17.png "get pods")
 

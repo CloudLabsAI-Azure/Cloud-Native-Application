@@ -29,17 +29,17 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    > Ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**. Escriba **yes** en el mensaje **Are you sure you want to continue connection (yes/no/[fingerprint])?** e introduzca la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante SSH. Ejecute los siguientes comandos.
 
 
-   ```
-   sudo apt install mongodb-server
-   cd /etc
-   sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
-   sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
-   cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
-   npm ci
-   nodejs server.js   
-   sudo service mongodb stop
-   sudo service mongodb start
-   ```   
+      ```
+      sudo apt install mongodb-server
+      cd /etc
+      sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+      sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+      cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
+      npm ci
+      nodejs server.js   
+      sudo service mongodb stop
+      sudo service mongodb start
+      ```   
 
       ![](media/EX2-T1-S1.png)
 
@@ -65,11 +65,11 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
 
 En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migration Service, y luego migrará los datos de MongoDB a Azure Cosmos DB. En los ejercicios posteriores, utilizará Azure CosmosDB para recuperar los datos de la página de productos. 
 
-1. En el Portal de Azure, navegue a su máquina virtual **contosotraders** en el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**. Copie la **Dirección IP Privada** **(2)** y péguela en el bloc de notas para usarla más adelante.
+1. En el Portal de Azure, navegue a su máquina virtual **contosotraders** en el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**. En la hoja **Informacion general(1)**, copie la **Dirección IP Privada** **(2)** y péguela en el bloc de notas para usarla más adelante.
 
    ![](media/SE2T2S1.png)
 
-1. Navegue al grupo de recursos **contosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra la cuenta de Cosmos DB para MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)**.
+1. Navegue al grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />(1)** y abra la cuenta de Cosmos DB para MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)**.
 
    ![](media/SE2T2S2.png)
 
@@ -91,13 +91,13 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![](media/SE2T2S6.png)
 
-1. En el panel **Nuevo proyecto de migración**, ingrese los siguientes valores y luego seleccione **Crear y ejecutar una actividad**:
+1. En el panel **Nuevo proyecto de migración**, ingrese los siguientes valores y luego seleccione **Crear y ejecutar una actividad (5)**:
 
     - **Nombre de proyecto**: `contoso` **(1)**
     - **Tipo de servidor de origen**: `MongoDB` **(2)**
     - **Tipo de servidor de destino**: `CosmosDB (API de MongoDB)` **(3)**
-    - **Tipo de actividad de migración**: `Migración de datos sin conexión` **(4)**
-
+    - **Tipo de actividad de migración**: `Migración de datos sin conexión` **(4)**.
+   
       ![La captura de pantalla muestra el panel Nuevo proyecto de migración con los valores ingresados.](media/SE2T2S7.png  "Panel Nuevo proyecto de migración")
 
       >**Nota**: El tipo de actividad **Migración de datos sin conexión** está seleccionado ya que realizará una migración única de MongoDB a Cosmos DB. Además, los datos de la base de datos no se actualizarán durante la migración. En un escenario de producción, deberá elegir el tipo de actividad del proyecto de migración que mejor se adapte a los requisitos de su solución.
@@ -137,7 +137,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
       ![La pestaña Seleccionar destino con los valores seleccionados.](media/SE2T2S9.png "MongoDB a Azure Database for CosmosDB - Seleccionar destino")
 
-      Tenga en cuenta que la **Cadena de conexión** se completará automáticamente con la clave de su instancia de Azure Cosmos DB.
+      > **Nota:** Tenga en cuenta que la **Cadena de conexión** se completará automáticamente con la clave de su instancia de Azure Cosmos DB.
 
 1. En la pestaña **Configuración de base de datos**, seleccione la **Base de datos de origen** `contentdb` **(1)**, a fin de que esta base de datos de MongoDB se migre a Azure Cosmos DB. Seleccione **Siguiente: Configuración de colecciónes >> (2)**.
 
