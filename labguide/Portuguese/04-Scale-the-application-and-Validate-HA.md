@@ -223,8 +223,8 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
 1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
- 
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/E4T6S1-0608.png "A implementação da API está agora íntegra")
+
+   <img src="../media/E4T6S1-0608.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
 
 1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
  
