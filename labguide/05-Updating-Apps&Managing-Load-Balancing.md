@@ -169,7 +169,7 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="2ff92949-6873-481f-9805-f362697ba094" />
+<validation step="4f7d1822-6f06-4979-84e9-5664ebcf7ef4" />
 
 ## Tarea 2: Configurar Kubernetes Ingress
 
