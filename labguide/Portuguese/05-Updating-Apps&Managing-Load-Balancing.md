@@ -378,7 +378,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
      > Pode demorar 5 a 30 minutos até que o tls-secret fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt. Também, anote o nome DNS, vamos usá-lo mais tarde nas mesmas tarefas.
 
-      ![](../media/english-09.png)
+   ![](../media/english-09.png)
 
 1. Agora pode criar um recurso de entrada para as aplicações de conteúdo.
 
@@ -426,7 +426,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
 1. Use o seguinte como conteúdo e atualize `[SUFFIX]`: **<inject key="DeploymentID" />** e `[AZURE-REGION]`: **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
 
-      ![](../media/cn88.png)
+   ![](../media/cn88.png)
 
 1. **Guarde** as alterações e feche o editor.
 
@@ -436,11 +436,11 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       kubectl create --save-config=true -f content.ingress.yml
       ```
 
-      ![](../media/cn89.png)    
+   ![](../media/cn89.png)    
 
 1. Atualize o endpoint de entrada no seu browser. Deverá poder visitar o site e ver todo o conteúdo.
 
-      ![](../media/16.png)
+   ![](../media/16.png)
 
       >**Nota:** Se o site não aparecer ao acessá-lo pelo IP, use o nome DNS que você copiou. Adicione `http://` antes, cole no navegador e verifique.
 
