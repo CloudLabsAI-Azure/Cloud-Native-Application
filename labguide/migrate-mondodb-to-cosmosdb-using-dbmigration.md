@@ -19,9 +19,9 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
 
 1. Conéctese a su máquina virtual Linux y ejecute el siguiente comando para comprobar si MongoDB está instalado:
 
-       ```
-       mongo --version
-       ```  
+    ```
+    mongo --version
+    ```  
 
       ![](media/E2T1S1.png)   
 
@@ -30,15 +30,15 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
       >Ejecute el comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**. Escriba **yes** en el mensaje **Are you sure you want to continue connection (yes/no/[fingerprint])?** e                introduzca la contraseña de la máquina virtual **<inject key="Build Agent VM Password" enableCopy="true" />** para conectarse a la máquina virtual Linux mediante SSH. Ejecute los siguientes comandos.
 
       ```
-         sudo apt install mongodb-server
-         cd /etc
-         sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
-         sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
-         cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
-         npm ci
-         nodejs server.js   
-         sudo service mongodb stop
-         sudo service mongodb start
+      sudo apt install mongodb-server
+      cd /etc
+      sudo sed -i 's/bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+      sudo sed -i 's/#port = 27017/port = 27017/g' /etc/mongodb.conf
+      cd ~/Cloud-Native-Application/labfiles/src/developer/content-init
+      npm ci
+      nodejs server.js   
+      sudo service mongodb stop
+      sudo service mongodb start
       ```   
 
       ![](media/EX2-T1-S1.png)
