@@ -10,7 +10,7 @@ Neste ponto, implementou uma única instância dos contentores de serviço da AP
 
 Poderá completar as seguintes tarefas:
 
-- Tarefa 1: Modificar as implementações de recursos do Kubernetes no serviço Kubernetes
+- Tarefa 1: Modificar as implementações de Recursos Kubernetes no serviço Kubernetes
 - Tarefa 2: Resolver falha no aprovisionamento de réplicas
 - Tarefa 3: Configurar o escalonamento automático horizontal para os pods de serviço Kubernetes
 - Tarefa 4: Dimensionamento automático no cluster do Azure Kubernetes Service
@@ -18,7 +18,7 @@ Poderá completar as seguintes tarefas:
 - Tarefa 6: Configurar a escala automática do CosmosDB
 - Tarefa 7: Testar a escala automática do CosmosDB
 
-### Tarefa 1: modificar as implementações de recursos do Kubernetes no serviço Kubernetes
+### Tarefa 1: modificar as implementações de Recursos Kubernetes no serviço Kubernetes
 
 Nesta tarefa, irá aumentar o número de instâncias para a implementação da API no AKS. Durante a implementação, observará a mudança de estado.
 
@@ -26,7 +26,7 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/E4T1S1-0608.png "Definir réplicas para 2")
 
-1. Selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
+1. Selecione **Cargas de trabalho (1)** em **Recursos Kubernetes** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
@@ -59,7 +59,7 @@ Nesta tarefa, irá aumentar o número de instâncias para a implementação da A
 
 Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem devido à incapacidade de atender aos recursos solicitados.
 
-1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products** implantação.
+1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho (1)** em **Recursos Kubernetes** e, em seguida, seleccione **contoso-traders-products (2)** implantação.
 
       ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
@@ -168,7 +168,7 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
 Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização não afeta o serviço em execução.
 
-1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho** em **Recursos do Kubernetes** e, em seguida, seleccione **contoso- traders-products** implantação.
+1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho** em **Recursos Kubernetes** e, em seguida, seleccione **contoso- traders-products** implantação.
 
       ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn54.png "Definir réplicas para 2")
 
@@ -223,20 +223,20 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
 1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
-
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/E4T6S1-0608.png "A implementação da API está agora íntegra")
+ 
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/E4T6S1-0608.png "A implementação da API está agora íntegra")
 
 1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
  
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-10.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-10.png "A implementação da API está agora íntegra")
 
 1. Na base de dados `contentdb`, expanda a coleção **Items (1)**, selecione **Settings (2)**.
 
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(33).png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(33).png "A implementação da API está agora íntegra")
 
 1. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
 
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/spanish-188.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/spanish-188.png "A implementação da API está agora íntegra")
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
@@ -252,15 +252,15 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
 
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/E4T6S1-0608.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/E4T6S1-0608.png "A implementação da API está agora íntegra")
 
 1. Selecione **Cadeia de Ligação** em **Definições**.
 
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-11.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-11.png "A implementação da API está agora íntegra")
 
 1. No painel **Cadeia de Ligação**, copie os valores **ANFITRIÃO (1)**, **NOME DE UTILIZADOR (2)** e **PALAVRA-PASSE PRIMÁRIA (3)**. Guarde-os num ficheiro de texto para uso posterior.
 
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cnctionstringnew.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cnctionstringnew.png "A implementação da API está agora íntegra")
 
 1. Abra o comando de linha e ligue-se à VM do agente de construção utilizando o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
@@ -283,7 +283,7 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 1. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Prima **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**host**, **NOME DE USUÁRIO** e **SENHA PRIMÁRIA** definindo os seus valores para os valores correspondentes da cadeia de ligação do Cosmos DB que foram copiados anteriormente.
 
-      ![A captura de ecrã mostra o Vim com o ficheiro perftest.sh aberto e as variáveis ​​definidas para os valores da cadeia de ligação do Cosmos DB.](../media/updatepreftest.png "Modificar as informações de ligação no Vim")
+   ![A captura de ecrã mostra o Vim com o ficheiro perftest.sh aberto e as variáveis ​​definidas para os valores da cadeia de ligação do Cosmos DB.](../media/updatepreftest.png "Modificar as informações de ligação no Vim")
 
 1. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e feche o ficheiro.
 
@@ -305,7 +305,7 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 1. Note que a **Solicitar taxa** mostra agora que houve atividade na **Cosmos DB account** que excedeu o limite de 400 RU/s definido anteriormente antes da ativação do dimensionamento automático.
 
-      ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-12.png "A implementação da API está agora íntegra")
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-12.png "A implementação da API está agora íntegra")
 
       >**Nota**: Caso não veja os dados no gráfico, defina o intervalo de tempo para durar 1 hora.
 
