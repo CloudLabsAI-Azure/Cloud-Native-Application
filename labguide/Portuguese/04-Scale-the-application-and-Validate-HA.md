@@ -226,20 +226,17 @@ Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
       <img src="../media/E4T6S1-0608.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
 
-
 1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
-
-      <img src="../media/portu-10.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
-
+ 
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-10.png "A implementação da API está agora íntegra")
 
 1. Na base de dados `contentdb`, expanda a coleção **Items (1)**, selecione **Settings (2)**.
 
-      <img src="../media/22-10-24(33).png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
-
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(33).png "A implementação da API está agora íntegra")
 
 1. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
 
-      <img src="../media/spanish-188.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/spanish-188.png "A implementação da API está agora íntegra")
 
 
 > **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
@@ -256,15 +253,15 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
 
-      <img src="../media/E4T6S1-0608.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/E4T6S1-0608.png "A implementação da API está agora íntegra")
 
 1. Selecione **Cadeia de Ligação** em **Definições**.
 
-      <img src="../media/portu-11.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-11.png "A implementação da API está agora íntegra")
 
 1. No painel **Cadeia de Ligação**, copie os valores **ANFITRIÃO (1)**, **NOME DE UTILIZADOR (2)** e **PALAVRA-PASSE PRIMÁRIA (3)**. Guarde-os num ficheiro de texto para uso posterior.
 
-      <img src="../media/cnctionstringnew.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cnctionstringnew.png "A implementação da API está agora íntegra")
 
 1. Abra o comando de linha e ligue-se à VM do agente de construção utilizando o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
@@ -287,7 +284,7 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 1. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Prima **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**host**, **NOME DE USUÁRIO** e **SENHA PRIMÁRIA** definindo os seus valores para os valores correspondentes da cadeia de ligação do Cosmos DB que foram copiados anteriormente.
 
-      <img src="../media/updatepreftest.png" alt="A captura de ecrã mostra o Vim com o ficheiro perftest.sh aberto e as variáveis ​​definidas para os valores da cadeia de ligação do Cosmos DB." title="Modificar as informações de ligação no Vim" width="900">
+   ![A captura de ecrã mostra o Vim com o ficheiro perftest.sh aberto e as variáveis ​​definidas para os valores da cadeia de ligação do Cosmos DB.](../media/updatepreftest.png "Modificar as informações de ligação no Vim")
 
 1. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e feche o ficheiro.
 
@@ -309,7 +306,7 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
 
 1. Note que a **Solicitar taxa** mostra agora que houve atividade na **Cosmos DB account** que excedeu o limite de 400 RU/s definido anteriormente antes da ativação do dimensionamento automático.
 
-      <img src="../media/portu-12.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
+   ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-12.png "A implementação da API está agora íntegra")
 
       >**Nota**: Caso não veja os dados no gráfico, defina o intervalo de tempo para durar 1 hora.
 
