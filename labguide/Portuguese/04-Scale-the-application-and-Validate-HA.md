@@ -219,7 +219,6 @@ Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização nã
 <validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />      
 
 ### Tarefa 6: Configurar a escala automática do CosmosDB
-
 Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
 
 1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
