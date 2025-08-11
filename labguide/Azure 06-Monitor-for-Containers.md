@@ -43,7 +43,7 @@ En esta tarea, revisará el clúster de AKS supervisado. Esta tarea se centra en
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="cfa0366b-4e75-49b9-8d47-ec6d7e50c3b2" />
+<validation step="1f2ef3e0-8908-4650-b10e-2c40270bf655" />
 
 ## Resumen
 
@@ -53,4 +53,4 @@ En este ejercicio, ha revisado la información del contenedor de Azure Monitor p
 
 ## Conclusión
 
-Al completar este laboratorio práctico de **Cloud Native Applications**, obtendrás experiencia práctica en la conteinerización de aplicaciones, el envío de imágenes Docker a un registro de contenedores y su implementación en Azure Kubernetes Service (AKS). También comprenderás cómo gestionar el ciclo de vida de los contenedores, escalar implementaciones y monitorizar aplicaciones mediante Azure Monitor. Esta prueba de concepto te proporcionará conocimientos valiosos sobre cómo construir y gestionar aplicaciones modernas y nativas de la nube utilizando contenedores y Kubernetes.
+Al completar este laboratorio práctico de **Aplicaciones Nativas de la Nube**, obtendrá experiencia práctica en la contenedorización de aplicaciones, el envío de imágenes Docker a un registro de contenedores y su implementación en Azure Kubernetes Service (AKS). También comprenderá cómo gestionar el ciclo de vida de los contenedores, escalar implementaciones y monitorizar aplicaciones mediante Azure Monitor. Esta prueba de concepto le proporcionará conocimientos valiosos sobre cómo construir y gestionar aplicaciones modernas y nativas de la nube utilizando contenedores y Kubernetes.

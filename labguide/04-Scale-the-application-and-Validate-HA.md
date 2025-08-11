@@ -49,7 +49,7 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="	39567d0b-df57-4e1b-a388-c7e0c82f4bc6" />
+<validation step="18dfcb34-0d2a-46c0-a43d-16dc61776cc2" />
 
 ## Tarea 2: Resolver errores de aprovisionamiento de réplicas
 
@@ -209,7 +209,7 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="	010994f7-b80b-4ba5-a807-e1d6ac030ea7" />
+<validation step="161c5ef0-0789-417c-a716-27b6251ddff7" />
 
 ## Tarea 6: Configurar el escalado automático de Cosmos DB
 
@@ -236,7 +236,7 @@ En esta tarea, configurará Autoscale en Azure Cosmos DB.
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="56f38190-cea0-441f-ba7d-717395a4a622" />
+   <validation step="25abb127-b20f-4048-a74c-4c47edcee4cb" />
 
 ## Tarea 7: Probar el escalado automático de Cosmos DB
 

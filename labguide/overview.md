@@ -12,7 +12,7 @@ En este laboratorio práctico, ayudará a completar esta prueba de concepto con 
 
 Este laboratorio está diseñado para brindar a los participantes experiencia práctica en la creación de imágenes de Docker, la migración de MongoDB a Cosmos DB, la implementación y el escalado de aplicaciones en Azure Kubernetes Service, la administración de actualizaciones y el enrutamiento del tráfico, y el monitoreo del rendimiento de los contenedores con Azure Monitor.
 
-- **Crear imágenes de Docker para la Aplicación:** Este ejercicio práctico tiene como objetivo crear imágenes de Docker para contenerizar su aplicación para despliegues consistentes y portátiles. Los participantes podrán contenerizar la aplicación con éxito, permitiendo una implementación consistente en varios entornos.
+- **Crear imágenes de Docker para la Aplicación:** Este ejercicio práctico tiene como objetivo crear imágenes de Docker para contenerizar su aplicación para despliegues consistentes y portátiles. Los participantes contenedorizarán la aplicación con éxito, permitiendo una implementación consistente en varios entornos.
 
 - **Migrar MongoDB a Cosmos DB mediante Azure Database Migration:** Este ejercicio práctico tiene como objetivo transferir sus datos de MongoDB a Azure Cosmos DB para aprovechar sus servicios de base de datos escalables y administrados. Los participantes migrarán sin problemas los datos de MongoDB a Azure Cosmos DB, garantizando la disponibilidad de los datos y la compatibilidad con los servicios de Azure.
 
@@ -57,15 +57,35 @@ La arquitectura de este laboratorio incluye varios componentes clave:
 
 ## Comenzando con el Laboratorio
 
+¡Bienvenido a su taller de Aplicaciones Nativas de la Nube! Hemos preparado un entorno perfecto para que explore y aprenda sobre los servicios de Azure. Empecemos por aprovechar al máximo esta experiencia:
+
+## Acceso a su Ambiente de Laboratorio
+
 1. Una vez que se haya aprovisionado el ambiente, se cargarán una máquina virtual (JumpVM) y una guía de laboratorio en su navegador. Utilice esta máquina virtual durante todo el taller para realizar el laboratorio. Puede ver el número en la parte inferior de la guía de laboratorio para cambiar a los diferentes ejercicios de la guía de laboratorio.
 
    ![](media/S1.png "Ambiente de Laboratorio")
+
+1. Una vez en JumpVM, si aparece un panel de Windows con **Elegir la configuración de privacidad para su dispositivo**, haga clic en **Siguiente** > **Siguiente** > **Aceptar** para continuar con la configuración.
+
+    ![](media/setup.jpg)
 
 1. Para obtener los detalles del ambiente de laboratorio, puede seleccionar la pestaña **Ambiente**. Además, las credenciales también se enviarán por correo electrónico a su dirección de correo electrónico registrada. También puede abrir la Guía de Laboratorio en una ventana separada y completa seleccionando **Ventana Dividida** en la esquina superior derecha. Además, puede iniciar, detener y reiniciar máquinas virtuales desde la pestaña **Recursos**.
 
    ![](media/S3.png "Ambiente de Laboratorio")
  
    > Verá el valor de DeploymentID en la pestaña **Ambiente**, úselo donde vea SUFFIX o DeploymentID en los pasos del laboratorio.
+
+## Administración de su máquina virtual
+
+Puede iniciar, detener o reiniciar su máquina virtual según sea necesario desde la pestaña Recursos. ¡Su experiencia está en sus manos!
+
+![](media/resources-get.png)
+
+## Acercar/Alejar la Guía de Laboratorio
+
+Para ajustar el nivel de zoom de la página del ambiente, haga clic en el icono **A↕ : 100%** ubicado junto al temporizador en el entorno de laboratorio.
+
+![](media/size-get.png)
 
 ## Validación de Laboratorio
 

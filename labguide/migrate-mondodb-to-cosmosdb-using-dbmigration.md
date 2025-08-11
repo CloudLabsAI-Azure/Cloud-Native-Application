@@ -4,7 +4,7 @@
 
 ## Descripción General
 
-En este ejercicio, migrará su base de datos MongoDB on-premises (local) hospedada en una Máquina Virtual (MV) Linux de Azure a Azure CosmosDB utilizando la Azure Database Migration. Azure Database Migration Service es una herramienta que le ayuda a simplificar, guiar y automatizar la migración de su base de datos a Azure.
+En este ejercicio, migrará su base de datos MongoDB on-premises (local) hospedada en una Máquina Virtual (MV) Linux de Azure a Azure CosmosDB utilizando Azure Database Migration. Azure Database Migration Service es una herramienta que le ayuda a simplificar, guiar y automatizar la migración de su base de datos a Azure.
 
 ## Objetivos del laboratorio
 
@@ -12,7 +12,6 @@ Podrá completar las siguientes tareas:
 
 - Tarea 1: Explorar las bases de datos y colecciones en MongoDB
 - Tarea 2: Crear un proyecto de migración y migrar datos a Azure Cosmos DB
-
 
 ## Tarea 1: Explorar las bases de datos y colecciones en MongoDB
 
@@ -23,6 +22,8 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    ```
    mongo --version
    ```  
+
+   ![](media/E2T1S1.png)   
 
    >**Nota:** Si MongoDB está instalado, continúe con el siguiente paso. Si no lo está, siga los pasos de solución de problemas a continuación.
 
@@ -49,6 +50,8 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    mongo
    ```
 
+   ![](media/E2T1S2.png) 
+
    
 1. Ejecute los siguientes comandos para verificar la base de datos en Mongo shell. Debería poder ver la base de datos **contentdb** disponible y las colecciones **item & products** dentro de **contentdb**.
 
@@ -69,11 +72,9 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![](media/SE2T2S1.png)
 
-1. Navegue al grupo de recursos **contosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra la cuenta de Cosmos DB para MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)**.
+1. Navegue al grupo de recursos **contosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** y abra la cuenta de Cosmos DB para MongoDB (RU) **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)**.
 
    ![](media/SE2T2S2.png)
-
-   > **Nota:** Si recibe una ventana emergente **¡Bienvenido! ¿Qué es Cosmos DB?** ventana emergente, ciérrela haciendo clic en **X**.
 
 1. Haga clic en **Explorador de datos (1)**. Ahora haga clic en la flecha desplegable, junto a **+ Nueva colección (2)** y luego seleccione **+ Nueva base de datos (3)**.
 
@@ -85,7 +86,9 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    > **Nota:** Para visualizar las configuraciones, asegúrate de que la opción Provision throughput esté **marcada**.
 
-1. Navegue a la hoja de recursos **contosotraders<inject key="DeploymentID" enableCopy="false" />** de Azure Database Migration Service en el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
+1. En el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**, busque el recurso **contosotraders<inject key="DeploymentID" enableCopy="false" />** **(1)** de Azure Database Migration Service y diríjase a ese recurso **(2)**
+
+   ![](media/E2T2S5.png)
 
 1. En la hoja Azure Database Migration Service, seleccione **+ Nuevo Proyecto de Migración (2)** en el panel **información general (1)**.
 
@@ -143,11 +146,9 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    ![La captura de pantalla muestra la pestaña Configuración de la base de datos con la base de datos de origen contentdb seleccionada.](media/SE2T2S10.png "Pestaña Configuración de la base de datos")
 
-
 1. En la pestaña **Configuración de colección**, expanda la base de datos **contentdb** y asegúrese de que tanto las colecciones **products** como **items** estén seleccionadas para la migración. Además, actualice el **Rendimiento (RU/s)** a `400` **(1)** para ambas colecciones. Seleccione **Siguiente: Resumen de migración >> (2)**.
 
    ![La captura de pantalla muestra la pestaña de Configuración de colección con los elementos y las colecciones de elementos seleccionados con el Rendimiento RU/s establecido en 400 para ambas colecciones.](media/SE2T2S11.png "Rendimiento RU")
-
 
 1. En la pestaña **Resumen de migración**, ingrese `MigrateData` **(1)** en el campo **Nombre de actividad** y luego seleccione **Iniciar la migración (2)** para iniciar la migración de los datos de MongoDB a Azure Cosmos DB.
 
@@ -176,7 +177,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="c6c50372-1483-47b0-8708-a17700f724c0" />
+<validation step="a8c090c8-01fe-467c-840b-a9a271068777" />
 
 ## Resumen
 

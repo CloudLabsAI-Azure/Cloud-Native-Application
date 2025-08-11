@@ -14,7 +14,6 @@ Podrá completar las siguientes tareas:
 - Tarea 2: Implementar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service mediante el Portal de Azure
 - Tarea 3: Implementar un servicio y una carga de trabajo mediante kubectl
 
-
 ## Tarea 1: Túnel hacia el clúster de Azure Kubernetes Service 
 
 Esta tarea recopilará la información que necesita sobre su clúster de Azure Kubernetes Service para conectarse al clúster y ejecutar comandos para conectarse al panel de administración de Kubernetes desde Cloud Shell.
@@ -52,13 +51,17 @@ Esta tarea recopilará la información que necesita sobre su clúster de Azure K
 
 ## Tarea 2: Implementar un espacio de nombres, un servicio y una carga de trabajo en Azure Kubernetes Service mediante el Portal de Azure
    
-En esta tarea, implementará la aplicación API Carts en el clúster de Azure Kubernetes Service utilizando el Portal de Azure.
-   
+En esta tarea, definirá un servicio de Kubernetes para su API a fin de habilitar la accesibilidad interna de la aplicación dentro del clúster de Azure Kubernetes Service (AKS).
+
+1. Regrese al grupo de recursos **contosoTraders-<inject key="DeploymentID" />** y seleccione el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" />** **(1)**.
+
+    ![Esta es una captura de pantalla del Portal de Azure para AKS que muestra cómo agregar un servicio.](media/E3T2S1.png "Agregando un Servicio")
+
 1. Ya hemos definido un nuevo **Espacio de nombres (1)** para el despliegue de su API. En el futuro, utilizará únicamente el espacio de nombres **contoso-traders (2)**. 
 
     ![Esta es una captura de pantalla del Portal de Azure mostrando cómo acceder a los espacios de nombres en AKS.](media/SE3T2S1.png "Espacios de nombres en AKS")
-    
-2. Defina un Servicio para su API, de modo que se pueda acceder a la aplicación dentro del clúster Seleccione la hoja **Servicios y entradas (1)** de la página de detalles del recurso AKS **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** en el Portal de Azure. En la pestaña Servicios, seleccione **+ Crear (2)** y elija **Aplicar un YAML (3)**. 
+
+1. En la página del recurso **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**, seleccione la hoja **Servicios y Entradas (1)**, seleccione **+ Crear (2)** y haga clic en **Aplicar un YAML (3)**. 
     
     ![Esta es una captura de pantalla del Portal de Azure para AKS que muestra cómo agregar un servicio.](media/SE3T2S2.png "Agregando un Servicio")
 
@@ -85,17 +88,17 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
       ```       
     ![Agregando con YAML.](media/SE3T2S4.png "Agregando con YAML")
 
-   **Nota:** Asegúrese de que la sangría en su script YAML coincida con el formato que se muestra en la imagen para evitar errores.
-
    **Nota:** Al ingresar el código YAML, si se le solicita la sugerencia **Borrador con Copilot**, haga clic en el botón **Cerrar** **(1)** para descartarla.
 
    ![](media/SE3T2S4-N.png)
 
-1. Seleccione **Cargas de trabajo (1)** en la sección de recursos Kubernetes en el menú a la izquierda. Con **Implementaciones** seleccionado por defecto, elija **+ Crear (2)** y luego seleccione **Aplicar un YAML (3)**.
+   **Nota:** Asegúrese de que la sangría en su script YAML coincida con el formato que se muestra en la imagen para evitar errores.
+
+1. Seleccione **Cargas de trabajo (1)** en la sección de recursos Kubernetes en el menú a la izquierda, elija **+ Crear (2)** y luego seleccione **Aplicar un YAML (3)**.
 
     ![Seleccione cargas de trabajo en los recursos de Kubernetes.](media/SE3T2S5.png "SSeleccione cargas de trabajo en los recursos de Kubernetes")
 
-1. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea un servicio en AKS y haga clic en **Aplicar (2)**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/> (1)** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
+1. En el panel **Aplicar con YAML**, pegue el siguiente código YAML que crea una carga de trabajo en AKS y haga clic en **Aplicar (2)**. Asegúrese de reemplazar SUFFIX con el valor DeploymentID **<inject key="DeploymentID" enableCopy="true"/> (1)** proporcionado en el archivo YAML para actualizar el nombre LOGINSERVER de la instancia ACR.
     >**Información**: El siguiente archivo YAML creará pods de despliegue en el espacio de nombres contoso-traders. Una implementación de Kubernetes le dice a Kubernetes cómo crear o modificar instancias de los pods que contienen una aplicación en contenedores. Las implementaciones pueden ayudar a escalar de manera eficiente el número de réplicas de pods, permitir el despliegue de código actualizado de una manera controlada o volver a una versión de implementación anterior si es necesario.
 
    ```YAML
@@ -154,7 +157,7 @@ En esta tarea, implementará la aplicación API Carts en el clúster de Azure Ku
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="5027ff24-34ab-49f1-9fa2-72e214db0831" />
+<validation step="8b5c5c75-60f4-4907-ab80-49469cffd04d" />
 
 ## Tarea 3: Implementar un servicio y una carga de trabajo mediante kubectl
 
@@ -184,6 +187,7 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
     ![](media/E3T3S6.png)
+
 1. Ejecute el siguiente comando para desplegar la aplicación descrita en los archivos YAML. Recibirá un mensaje indicando que el elemento `kubectl` ha creado una implementación web y un servicio web.
    
    >**Información**: El siguiente comando kubectl creará la carga de trabajo de implementación y el servicio en el espacio de nombres que hemos definido en los archivos YAML. 
@@ -200,8 +204,6 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
 
     ![Accediendo a la aplicación web](media/website2.png "Accediendo a la aplicación web")
 
-   > **Nota:** Si el sitio web no se carga, intente actualizar la página varias veces, ya que AKS puede tardar un poco en completar el sitio web.
-    
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
 
 > **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
@@ -209,10 +211,12 @@ En esta tarea, implementará el servicio web y su carga de trabajo utilizando ku
 > - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
 > - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
 
-<validation step="bf5a46a2-1e97-41f7-a010-d514c5e91636" />
+<validation step="82b31abd-3a30-4b1b-9bc6-42a3aed66c36" />
 
 ## Resumen
 
 En este ejercicio, implementó su aplicación web en contenedores en AKS que contiene el espacio de nombres, el servicio y la carga de trabajo en Azure Kubernetes. Además, creó un servicio para AKS y accedió al sitio web mediante un punto de conexión externo. Además, ha configurado el secreto del almacén de claves para acceder a MongoDB desde AKS.
+
+### Ha completado el laboratorio correctamente. Haga clic en **Siguiente >>** para continuar con el siguiente ejercicio.
 
 ![](media/3-sn.png "Next")

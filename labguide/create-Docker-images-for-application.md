@@ -1,4 +1,4 @@
-# Ejercicio 1: Crear Imágenes de Docker para la Aplicación
+    # Ejercicio 1: Crear Imágenes de Docker para la Aplicación
   
 ### Duración estimada: 65 minutos
 
@@ -41,7 +41,7 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
     
     ![](media/E1T1S4.png)
     
-    **Nota:** Si recibe un mensaje de salida que indica que la ruta de destino es 'Cloud-Native-Application/labfiles'. No existe el archivo o directorio. Ejecute el siguiente comando y vuelva a realizar el paso 4 de la tarea.
+    **Nota:** Si recibe un mensaje de salida que indica que la ruta de destino 'Cloud-Native-Application/labfiles' no existe, ejecute el siguiente comando y vuelva a realizar el paso 4 de la tarea.
 
     ```
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
@@ -59,9 +59,9 @@ En esta tarea, se conectará a la Máquina Virtual (MV) del Agente de Compilaci�
      ```   
      ![](media/SE1T1S4ii.png)
         
-## Tarea 2: Crear Imágenes de Docker para contenerizar la aplicación y empujarlas al registro del contenedor
+## Tarea 2: Crear Imágenes de Docker para contenerizar la aplicación y subirlas al registro del contenedor
 
-En esta tarea, creará las imágenes de Docker para contenerizar la aplicación y las enviará a ACR (Azure Container Registry) para usarlas más adelante en AKS.
+En esta tarea, creará las imágenes de Docker para contenerizar la aplicación y las enviará a ACR (Azure Container Registry) para usarlas más adelante en Azure Kubernetes Service (AKS).
 
 1. Asegúrese de estar en el directorio **labfiles** antes de ejecutar los siguientes pasos, ya que la compilación de Docker necesita encontrar DockerFile para crear la imagen.
 
@@ -75,7 +75,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     sudo apt install azure-cli
     ```
 
-    >**Nota:** En el símbolo del sistema, escriba **Y** y presione **Entrar** para **¿Quieres continuar? [T/n]**.
+    >**Nota:** En el símbolo del sistema, escriba **Y** y presione **Enter** para **¿Quieres continuar? [Y/n]**.
 
 1. Ejecute el siguiente comando para iniciar sesión en Azure, navegue hasta la URL de inicio de sesión del dispositivo `https://microsoft.com/devicelogin` en el navegador y copie el código de autenticación.
 
@@ -85,6 +85,8 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     
    ![](media/SE1T2S3.png)
     
+   > **Note:** Si recibe un error que indica que no se encontró el comando az, ejecute el comand _'sudo apt install azure-cli'_ para instalar la CLI de Azure. 
+
 1. Ingrese el código de autenticación copiado **(1)** y haga clic en **Siguiente** **(2)**.
 
    ![](media/ex1-codelogin.png)
@@ -94,30 +96,22 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 
    * Correo electrónico/Nombre de usuario: **<inject key="AzureAdUserEmail"></inject>**
 
-     > **Nota:** Si aparece una ventana emergente **Elige una cuenta**, seleccione el ID de Correo electrónico anterior.
-
 1. Ahora ingrese la siguiente contraseña y haga clic en **Iniciar sesión**.
 
    * Contraseña: **<inject key="AzureAdUserPassword"></inject>**
-
-     > **Nota:** No aparecerá la ventana emergente para ingresar la contraseña si apareció la ventana emergente **Elija una cuenta** donde seleccionó la cuenta.
 
 1. En la ventana emergente para confirmar el inicio de sesión en la CLI de Microsoft Azure, haga clic en **Continuar**.
 
    ![](media/ex1-logincontinue.png)
 
-1. Después de iniciar sesión, verá una ventana emergente de confirmación **Ha iniciado sesión en la Aplicación Multiplataforma de la Interfaz de Línea de Comandos de Microsoft Azure en su dispositivo**. Cierre la pestaña del navegador y abra la sesión anterior del Símbolo del sistema.
-
-   ![](media/ex1-t2-step6-signin-confirm.png)
-
-1. Una vez que inicie sesión en Azure, creará las imágenes de Docker en los siguientes pasos y las enviará a ACR.
+1. Una vez que inicie sesión en Azure, vuelva al símbolo del sistema. Creará las imágenes de Docker en los siguientes pasos y las enviará a ACR.
 
    ![](media/E1T2S8.png)
     
 1. Ahora construya la imagen docker **contosotraders-carts** usando el Dockerfile que se encuentra en el directorio. Observe cómo se hace referencia al Azure Container Registry implementado.
 
     ```
-    docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest
+    docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest
     ```
     
     ![](media/screenshot1.png)
@@ -127,7 +121,8 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 1. Repita los pasos para crear la imagen docker **contosotraders-Products** con el siguiente comando. 
 
     ```
-    docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
+    docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
+
     ```
 
     ![](media/api-products.png)
@@ -144,7 +139,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     
     ![](media/E1T2S11.png)
     
-1. En el editor `vi`, presione **_i_** para ingresar al modo `insertar`. Reemplace el ID de implementación y el valor de Región proporcionados en APIUrl. Luego presione **ESC**, escriba **:wq** para guardar los cambios y cierre el archivo. Necesitamos actualizar la URL de la API aquí para que la aplicación Contoso Traders pueda conectarse a la API del producto una vez que se envíe a los contenedores de AKS.
+1. En el editor `vi`, presione **_i_** para ingresar al modo `insertar`. Reemplace el ID de implementación **<inject key="DeploymentID" enableCopy="true"/>** y el valor de Región **<inject key="Region" enableCopy="true"/>** en APIUrl. Luego presione **ESC**, escriba **:wq** para guardar los cambios y cierre el archivo. Necesitamos actualizar la URL de la API aquí para que la aplicación Contoso Traders pueda conectarse a la API del producto una vez que se envíe a los contenedores de AKS.
 
     > **Nota**: Si **ESC** no funciona, presione `ctrl + [` y luego escriba **:wq** para guardar los cambios y cerrar el archivo.
     
@@ -171,7 +166,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
     
     ![](media/contosobuild.png)
     
-    >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la compilación. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente. Además, es posible que observe algunas advertencias relacionadas con la actualización de la versión de npm, lo cual es esperado y no afecta la funcionalidad del laboratorio.
+    >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la compilación. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente. 
     
 1. Rediríjase al directorio **labfiles** antes de ejecutar los siguientes pasos.
 
@@ -196,7 +191,7 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 
     ![](media/SE1T2S19.png)    
 
-1. Ahora inicie sesión en ACR usando el siguiente comando, actualice el valor del sufijo y la contraseña de ACR en el siguiente comando. Debería poder ver el resultado a continuación en la captura de pantalla. Asegúrese de reemplazar la contraseña con la contraseña de registro del contenedor copiada que copió en el paso anterior en el siguiente comando.
+1. Ahora inicie sesión en ACR usando el siguiente comando, actualice el valor de la contraseña de ACR en el siguiente comando. Debería poder ver el resultado a continuación en la captura de pantalla. Asegúrese de reemplazar la contraseña con la contraseña de registro del contenedor copiada que copió en el paso anterior en el siguiente comando.
 
     ```
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
