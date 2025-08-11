@@ -144,11 +144,11 @@ En esta tarea, creará las imágenes de Docker para contenerizar la aplicación 
 
       > **Nota**: Si **ESC** no funciona, presione `ctrl + [` y luego escriba **:wq** para guardar los cambios y cerrar el archivo.
     
-       ```
-       const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
+      ```
+      const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
 
-       const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
-       ```
+      const APIUrlShoppingCart = 'https://contoso-traders-carts<inject key="DeploymentID" enableCopy="true"/>.orangeflower-95b09b9d.<inject key="Region" enableCopy="true"/>.azurecontainerapps.io/v1';
+      ```
 
       ![](media/SE1T2S13.png)
 
