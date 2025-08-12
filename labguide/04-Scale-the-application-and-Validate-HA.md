@@ -138,7 +138,7 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
     
     ![](media/E4T4S3.png)
 
-1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` sea `true`. Proporcione el siguiente comando y ejecútelo.
+1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` **(1)** sea `true` **(2)**. Proporcione el siguiente comando y ejecútelo.
 
     ```
     az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
