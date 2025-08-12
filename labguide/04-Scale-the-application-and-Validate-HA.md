@@ -26,15 +26,15 @@ En esta tarea, aumentará el número de instancias para la implementación del A
 
    ![Seleccionando la carga de trabajo en AKS.](media/SE3T2S7.png "Seleccionando la carga de trabajo en AKS")
 
-1. Seleccione **YAML (1)** en el menú de la izquierda en la Descripción general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar y guardar (3)**. 
+1. Seleccione **YAML (1)** en el menú de la izquierda en la Información general de **contoso-traders-products** y desplácese hacia abajo hasta encontrar **réplicas** en la sección **especificaciones**. Cambie el número de réplicas a **2 (2)** y luego seleccione **Revisar y guardar (3)**. 
 
    ![En el cuadro de diálogo de edición de YAML, se ingresa 2 en el número deseado de réplicas.](media/SE4T1S2.png "Configurando las réplicas en 2")
 
-    >**Nota**: Si la implementación se completa rápidamente, es posible que no vea la implementación en estados de espera en el portal, como se describe en los siguientes pasos.
-
-1. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto (1)** y seleccione **Guardar (2)**.
+1. Cuando se le solicite Confirmar los cambios en el manifiesto, marque **Confirmar cambio de manifiesto (1)** y seleccione **Guardar (2)**. A continuación, haga clic en **Información General** para volver a las implementaciones.
 
     ![](media/SE4T1S3.png)
+
+    >**Nota**: Si la implementación se completa rápidamente, es posible que no vea la implementación en estados de espera en el portal, como se describe en los siguientes pasos.
 
 1. Actualmente se está implementando y puede ver que hay una instancia en estado sana y otra en espera.
 
@@ -65,7 +65,7 @@ En esta tarea, resolverá las réplicas de API fallidas, que suelen ocurrir debi
 
 1. En la pantalla **YAML**, desplácese hacia abajo y actualice los siguientes elementos. Seleccione **Revisar y guardar (4)** una vez realizados los cambios.
 
-   - En la sección **especificaciones (1)**, asegúrese de que se proporcionen los siguientes **ports** :
+   - En la sección **spec (1)**, asegúrese de que se proporcionen los siguientes **ports** :
 
       ```yaml
       ports:
@@ -138,7 +138,7 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
     
     ![](media/E4T4S3.png)
 
-1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` **(1)** sea `true` **(2)**. Proporcione el siguiente comando y ejecútelo.
+1. Ejecute el siguiente comando para habilitar el autoescalado del clúster en el clúster existente. Verifique que `enablementAutoScaling` sea `true`. Proporcione el siguiente comando y ejecútelo.
 
     ```
     az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
@@ -148,7 +148,7 @@ En esta tarea, habilitará el autoescalador del clúster para el clúster de AKS
    
     >**Nota**: Tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la actualización. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente.
    
-1. Ejecute el siguiente comando para escalar automáticamente los grupos de nodos en el clúster existente. Proporcione el siguiente comando y ejecútelo.
+1. Ejecute el siguiente comando para escalar automáticamente los grupos de nodos en el clúster existente. 
 
     ```
     az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
@@ -166,15 +166,15 @@ En esta tarea, reiniciará los contenedores y validará que el reinicio no afect
 
    ![En la vista Carga de trabajo con la implementación de API resaltada.](media/SE4T2S5.png "La implementación de API ahora está en estado sano")
 
-1. Seleccione el elemento de navegación **YAML (1)** y aumente el contador de réplicas requeridas a `4` **(2)**, luego haga clic en **Revisar y guardar (3)** y, cuando se le solicite Confirmar cambio de manifiesto, marque **Confirmar cambio de manifiesto** y seleccione **Guardar**.
+1. Seleccione el elemento de navegación **YAML (1)** y aumente el contador de réplicas requeridas a `4` **(2)**, luego haga clic en **Revisar y guardar (3)**.
  
    ![Editando el número de replicas.](media/SE4T5S2.png "Editando el número de replicas")
 
-1. Cuando se le solicite que confirme el cambio de manifiesto, marque la opción "Confirmar cambio de manifiesto" (1) y seleccione "Guardar" (2). Luego, haga clic en "Resumen" (3) para volver a las implementaciones.
+1. Cuando se le solicite que confirme el cambio de manifiesto, marque la opción **Confirmar cambio de manifiesto (1)** y seleccione **Guardar (2)**. Luego, haga clic en **Información General (3)** para volver a las implementaciones.
 
     ![Editando el número de replicas.](media/SE4T5S3.png "Editando el número de replicas")
 
-1. Después de unos momentos, encontrará que el despliegue de **contoso-traders-product** ahora está ejecutando `4` réplicas exitosamente.
+1. Encontrará que el despliegue de **contoso-traders-product** ahora está ejecutando `4` réplicas exitosamente después de 5 minutos.
 
     ![Eliminando dos pods en ejecución.](media/SE4T5S4.png "Eliminando dos pods en ejecución")
 
@@ -260,7 +260,7 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
 
    * Contraseña: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-1. En la **MV del Agente de Compilación**, mavegue hasta el directorio `~/labfiles`.
+1. En la **MV del Agente de Compilación**, navegue hasta el directorio `~/labfiles`.
 
     ```bash
     cd Cloud-Native-Application/labfiles/src
@@ -287,7 +287,7 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
     bash ./perftest.sh
     ```
 
-    > **Nota:** No esperes a que el script termine; continúa con el siguiente paso.
+    > **Nota:** El script tomará unos minutos en completar su ejecución, si el script se bloquea durante la ejecución, haga clic en `Ctrl+C` para detenerlo.
 
 1. Una vez que se complete la ejecución del script, regrese a la **Cuenta de CosmosDB** en el Portal de Azure.
 
@@ -302,10 +302,11 @@ En esta tarea, ejecutará un script de prueba de rendimiento que probará la car
     >**Nota**: En caso de que no vea datos en el gráfico, configure el rango de tiempo para que dure 1 hora.
 
 1. Haga clic en el botón **Siguiente** ubicado en la esquina inferior derecha de esta guía de laboratorio para continuar con el siguiente ejercicio.
-
       
 ## Resumen
 
 En este ejercicio, ha aumentado las instancias de servicio y configurado el autoescalado horizontal para los pods de AKS. Además, ha configurado y probado CosmosDB Autoscale.
+
+### Ha completado el laboratorio correctamente. Haga clic en **Siguiente >>** para continuar con el siguiente ejercicio.
 
 ![](media/4-sn.png "Next")
