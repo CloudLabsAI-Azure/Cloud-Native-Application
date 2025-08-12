@@ -23,9 +23,9 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
 1. Primero, realizará algunos cambios en el código fuente de su aplicación web y creará una nueva imagen de Docker basada en los últimos cambios.
 
-1. Abre una nueva ventana del símbolo del sistema.
+1. Abra una nueva ventana del símbolo del sistema.
 
-1. Ejecuta el comando proporcionado **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** Para conectarte a la VM de Linux usando ssh.
+1. Ejecute el comando proporcionado **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** Para conectarte a la VM de Linux usando ssh.
 
     >**Nota**: En el símbolo del sistema, escribe **yes** y presiona **Enter** cuando aparezca el mensaje `¿Está seguro de que desea continuar conectándose (yes/no/[fingerprint])?`
 
@@ -35,7 +35,7 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 
      ![](media/E1T1S3.png "abrir cmd")
 
-      >**Nota**: Ten en cuenta que mientras escribes la contraseña no podrás verla debido a preocupaciones de seguridad.
+      >**Nota**: Tenga en cuenta que mientras escriba la contraseña no podrá verla debido a preocupaciones de seguridad.
 
 1. Vuelva al Símbolo del sistema de Windows donde se conectó a su MV de Linux y ejecute el siguiente comando para navegar hasta el directorio donde deberá realizar los cambios en el código fuente de la aplicación web.
 
@@ -76,9 +76,9 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
    >**Nota**: Observe que esta vez estamos usando la etiqueta "V1" para la imagen.
   
       ```bash
-      docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:V1 -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:V1
+      docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1 -t contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
 
-      docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:V1
+      docker push contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
       ```
 
    > **Nota:** Por favor tenga en cuenta que el comando anterior puede tardar hasta 5 minutos en finalizar la compilación. Antes de realizar cualquier otra acción, asegúrese de que se ejecute correctamente. Además, es posible que observe algunas advertencias relacionadas con la actualización de la versión de npm, lo cual es esperado, y no afecta la funcionalidad del laboratorio.
@@ -96,19 +96,15 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
    ``` 
    az login
    ```
-1. En la pestaña Iniciar sesión en Microsoft, verá la pantalla de inicio de sesión. Ingrese el correo electrónico/nombre de usuario y luego haga clic en Siguiente.
+1. En la pestaña Iniciar sesión en Microsoft, elija la cuenta en la que ya ha iniciado sesión.
 
-   ![](media/SE5T1S14.png)
-
-   >**Nota**: Para obtener sus credenciales de inicio de sesión, navegue a la pestaña Entorno. En la sección Campos de autenticación, encontrará el nombre de usuario y la contraseña necesarios para acceder al entorno del laboratorio. Utilice el ícono de copiar junto a cada campo para copiar los valores al instante.
-
-1. Ahora ingrese la contraseña y haga clic en Iniciar sesión.
-
-   ![](media/SE5T1S14i.png)
+   ![](media/cloudnative-5.png)
 
    >**Nota**: Durante el inicio de sesión, es posible que se le muestre una pantalla que pregunta: "¿Iniciar sesión automáticamente en todas las aplicaciones de escritorio y sitios web en este dispositivo?" Haga clic en No, solo esta aplicación.
 
-1. Ejecute el siguiente comando kubectl para obtener la implementación actual en su AKS, ya que ahora actualizaremos la API web a la imagen más reciente. Copie el nombre de **contoso-traders-web###** en el Bloc de notas.
+   >**Nota**: Después de ejecutar `az login`, si se le solicita que seleccione una **suscripción** o un **inquilino**, simplemente presione **Enter** para continuar con la **suscripción predeterminada** y el inquilino asociado con su cuenta.
+
+1. Ejecute el siguiente comando **_kubectl_** para obtener la implementación actual en su AKS, ya que ahora actualizaremos la API web a la imagen más reciente. Copie el nombre de **contoso-traders-web###** en el Bloc de notas.
 
     ```bash
     kubectl get deployments -n contoso-traders
@@ -133,17 +129,13 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
       kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
       ```
      
-
      ![Configurando la nueva imagen de los pods.](media/E5T1S16.png "kubectl set image deployments")
 
-1. Ejecute el siguiente comando kubectl para obtener los pods actualizados en su AKS. Copie el nombre **contoso-traders-web###** en el bloc de notas.
-
+1. Ejecute el siguiente comando kubectl para obtener los pods actualizados en su AKS. Copie el nombre **contoso-traders-web###** **(1)** en el bloc de notas.
 
       ```bash
       kubectl get pods -n contoso-traders
       ```
-
-
 
     ![Obteniendo los pods.](media/E5T1S17.png "get pods")
 
@@ -159,8 +151,6 @@ En esta tarea, editará el código fuente de la aplicación web para actualizar 
 1. Una vez realizada la actualización de la imagen en el pod, regrese al portal de Azure y explore/actualice la página de la aplicación web nuevamente y debería poder ver los cambios en la página de inicio.
 
    ![Actualización de la página web.](media/E5T1S19.png "Actualización de la página web")
-
-    >**Nota:** Si no recibes el resultado en un minuto, continúa con la siguiente tarea sin esperar. Puedes revisar el resultado más tarde.
 
 
 
@@ -202,20 +192,21 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
    ```
 
-1. Navegue al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**. Seleccione **Servicios y entradas** en los recursos de Kubernetes y copie la Dirección IP en **External IP** para el servicio `nginx-ingress-ingress-nginx-controller`.
+1. Navegue al Portal de Azure, abra el servicio de Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**. Seleccione **Servicios y entradas** en los recursos de Kubernetes.
+
+1. En el panel de **Información general** **(1)**, copie la Dirección IP en **External IP** **(2)** para el servicio `nginx-ingress-ingress-nginx-controller`.
+
+   ![](media/E5T2S4.png "IP Address")
 
    > **Nota**: La actualización podría tardar unos minutos; alternativamente, puede encontrar la IP usando el siguiente comando en Azure Cloud Shell.
-    
    >
    > ```bash
    > kubectl get svc --namespace contoso-traders
    > ```
    >
-   ![](media/SE5T2S4.png "IP Address")
-
    ![Una captura de pantalla de Azure Cloud Shell que muestra el resultado del comando.](media/E5T2S5-N.png "Viendo la dirección IP del Controlador de Ingress")
 
-1. En **Azure Portal**, busque y abra **Microsoft Entra ID** y copie **Tenant ID**.
+1. En el **Portal de Azure**, busque y abra **Microsoft Entra ID** y copie **Tenant ID**.
 
    ![](media/SE5T2S5.png "Next")
 
@@ -263,7 +254,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
      }
      }
      ```
-      ![](media/E5T2S7.png)
+    ![](media/E5T2S7.png)
 
 1. Guarde los cambios y cierre el editor.
 
@@ -287,7 +278,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
    ![](media/E5T2S10.png )
 
-   > **Nota**: Si la URL no funciona o no recibe un error 404. Ejecute el comando que se menciona a continuación e intente acceder a la URL nuevamente.
+   > **Nota**: Si la URL no funciona o no recibe un error 404, ejecute el comando que se menciona a continuación e intente acceder a la URL nuevamente.
 
    ```bash
    helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
@@ -299,12 +290,13 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
    kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
    ```
 
+   ![](media/cloudnative-12.png)
+
 1. Para crear un recurso `ClusterIssuer` personalizado para que el servicio `cert-manager` lo utilice al manejar solicitudes de certificados SSL, ejecute el siguiente comando en el Símbolo del sistema de Windows.
 
     ```bash 
     code clusterissuer.yml
     ```
-
 1. Dentro del archivo **clusterissuer.yml** copie y pegue el siguiente contenido:
 
     ```yaml
@@ -329,13 +321,15 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
               class: nginx
     ```
 
-1. Guarde los cambios y cierre el editor.
+1. Guarde los cambios con **CTRL + S** para **Guardar** y cerrar el editor.
 
 1. Cree el emisor usando `kubectl`.
 
     ```bash
     kubectl create --save-config=true -f clusterissuer.yml
     ```
+
+    ![](media/cloudnative-13.png)
 
 1. Ahora puede crear un objeto de certificado.
 
@@ -366,7 +360,6 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
          name: letsencrypt-prod
          kind: ClusterIssuer
      ```
-
 1. Actualice el valor `[SUFFIX]` con **<inject key="DeploymentID" />** y `[AZURE-REGION]` con **<inject key="Region" />** para que coincida con su nombre DNS de Ingress.
 
 1. Guarde los cambios y cierre el editor.
@@ -376,22 +369,21 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
     ```bash
     kubectl create --save-config=true -f certificate.yml
     ```
+      ![](media/cloudnative-14.png)
 
-    > **Nota**: Para verificar el estado de la emisión del certificado, use el comando `kubectl describe certificate tls-secret -n contoso-traders` y busque en la salida una sección _Events_ similar a la siguiente:
-    >
-    > ```text
-    > Type    Reason         Age   From          Message
-    > ----    ------         ----  ----          -------
-    > Normal  Generated           38s   cert-manager  Generated new private key
-    > Normal  GenerateSelfSigned  38s   cert-manager  Generated temporary self signed certificate
-    > Normal  OrderCreated        38s   cert-manager  Created Order resource "tls-secret-3254248695"
-    > Normal  OrderComplete       12s   cert-manager  Order "tls-secret-3254248695" completed successfully
-    > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
-    > ```
+      > **Nota**: Para verificar el estado de la emisión del certificado, use el comando `kubectl describe certificate tls-secret -n contoso-traders` y busque en la salida una sección _Events_ similar a la siguiente:
+      >
+      > ```text
+      > Type    Reason         Age   From          Message
+      > ----    ------         ----  ----          -------
+      > Normal  Generated           38s   cert-manager  Generated new private key
+      > Normal  GenerateSelfSigned  38s   cert-manager  Generated temporary self signed certificate
+      > Normal  OrderCreated        38s   cert-manager  Created Order resource "tls-secret-3254248695"
+      > Normal  OrderComplete       12s   cert-manager  Order "tls-secret-3254248695" completed successfully
+      > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
+      > ```
 
-    > Pueden pasar entre 5 y 30 minutos antes de que tls-secret esté disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt. También, anota el nombre DNS, lo usaremos más adelante en las mismas tareas.
-
-    ![](media/SE5T2S19-N.png)
+      > Pueden pasar entre 5 y 30 minutos antes de que tls-secret esté disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt. 
 
 1. Ahora puede crear un recurso de Ingress para las aplicaciones de contenido.
  
@@ -439,6 +431,8 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 
 1. Actualice el valor `[SUFFIX]`: **<inject key="DeploymentID" />** y `[AZURE-REGION]`: **<inject key="Region" />** para que coincidan con su nombre DNS de Ingress.
 
+    ![](media/cloudnative-15.png)
+
 1. Guarde los cambios y cierre el editor.
 
 1. Cree el ingress usando `kubectl`.
@@ -447,12 +441,12 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
     kubectl create --save-config=true -f content.ingress.yml
     ```
 
+    ![](media/cloudnative-16.png)
+
 1. Actualice el punto de conexión de Ingress en su navegador. Debería poder visitar el sitio web y ver todo el contenido.
 
     ![](media/E5T2S25.png)
 
-    > **Nota:** Si el sitio web no aparece al acceder a través de la IP, utiliza el nombre DNS que copiaste. Añade `http://` antes, pégalo en el navegador y verifica.
-   
 1. Pruebe la terminación TLS visitando los servicios nuevamente usando `https://`.
 
     > **Nota**: El sitio SSL puede tardar entre 5 y 30 minutos en estar disponible. Esto se debe al retraso que implica el aprovisionamiento de un certificado TLS de Let's Encrypt.
@@ -462,5 +456,7 @@ Esta tarea configurará un Kubernetes Ingress utilizando un [servidor proxy Ngin
 ## Resumen
 
 En este ejercicio, realizó una actualización continua y configuró Kubernetes Ingress.
+
+### Ha completado el laboratorio correctamente. Haga clic en Siguiente >> para continuar con el siguiente ejercicio.
 
 ![](media/5-sn.png "Next")
