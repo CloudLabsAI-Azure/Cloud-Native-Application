@@ -52,7 +52,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
    ![](media/E2T1S2.png) 
 
    
-1. Ejecute los siguientes comandos para verificar la base de datos en Mongo shell. Debería poder ver la base de datos **contentdb** disponible y las colecciones **item & products** dentro de **contentdb**.
+1. Ejecute los siguientes comandos para verificar la base de datos en Mongo shell. Debería poder ver la base de datos **contentdb (1)** disponible y las colecciones **item & products (2)** dentro de **contentdb**.
 
    ```
    show dbs
@@ -67,7 +67,7 @@ En esta tarea, se conectará a una base de datos Mongo alojada en una Máquina V
 
 En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migration Service, y luego migrará los datos de MongoDB a Azure Cosmos DB. En los ejercicios posteriores, utilizará Azure CosmosDB para recuperar los datos de la página de productos. 
 
-1. En el Portal de Azure, navegue a su máquina virtual **contosotraders** en el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**. En la hoja **Informacion general(1)**, copie la **Dirección IP Privada** **(2)** y péguela en el bloc de notas para usarla más adelante.
+1. En el Portal de Azure, navegue a su máquina virtual **contosotraders** en el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**. En la hoja **Informacion general (1)**, copie la **Dirección IP Privada** **(2)** y péguela en el bloc de notas para usarla más adelante.
 
    ![](media/SE2T2S1.png)
 
@@ -85,7 +85,7 @@ En esta tarea, creará un Proyecto de Migración dentro de Azure Database Migrat
 
    > **Nota:** Para visualizar las configuraciones, asegúrate de que la opción Provision throughput esté **marcada**.
 
-1. En el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**, busque el recurso **contosotraders<inject key="DeploymentID" enableCopy="false" />** **(1)** de Azure Database Migration Service y diríjase a ese recurso **(2)**
+1. En el grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**, busque el recurso **contosotraders<inject key="DeploymentID" enableCopy="false" />** **(1)** de Azure Database Migration Service y diríjase a ese recurso **(2)**.
 
    ![](media/E2T2S5.png)
 
