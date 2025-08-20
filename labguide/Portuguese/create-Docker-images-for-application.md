@@ -1,39 +1,46 @@
 # Exercício 1: Criar imagens Docker para a aplicação
 
-### Duração estimada: 60 Minutos
+### Duração estimada: 65 Minutos
 
 ## Visão geral
 
-Neste exercício, aprenderá a containerizar a aplicação Contoso Traders utilizando imagens Docker. As aplicações em contentores são aplicações que são executadas em ambientes de tempo de execução isolados, chamados contentores. Uma imagem Docker é um ficheiro utilizado para executar código num contentor Docker. As imagens Docker atuam como um conjunto de instruções para construir um contentor Docker, como um modelo. Além disso, enviará as imagens Docker criadas para o Azure Container Registry.
+Neste exercício, você aprenderá como conteinerizar a aplicação Contoso Traders usando imagens Docker. Aplicações conteinerizadas rodam em ambientes de execução isolados chamados contêineres. Uma imagem Docker é um arquivo usado para construir e executar o código em um contêiner Docker. As imagens Docker funcionam como um conjunto de instruções para construir um contêiner Docker, como um modelo. Além disso, você enviará as imagens Docker criadas para o Azure Container Registry.
 
-## Objetivos do laboratório
+## Objetivos do Laboratório
 
-Irá completar as seguintes tarefas:
+Você será capaz de completar as seguintes tarefas:
 
 - Tarefa 1: Configurar uma infraestrutura local com a VM Linux
-- Tarefa 2: Criar imagens Docker para colocar a aplicação em contentor e enviá-las para o Azure Container Registry
+- Tarefa 2: Criar imagens Docker para conteinerizar a aplicação e enviá-las para o registro de contêiner
 
 ### Tarefa 1: Configurar uma infraestrutura local com a VM Linux
 
-Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos e clonar o repositório GitHub onde está o código fonte do site da Contoso Trader.
+Nesta tarefa, você se conectará à VM do agente de Build usando o Prompt de Comando e clonará o repositório GitHub do site Contoso Traders.
 
-1. Depois de iniciar sessão na VM, pesquise **Linha de comandos** **(1)** na barra de pesquisa do Windows e clique em **linha de comandos** **(2)** para abrir.
+1. Depois de iniciar sessão na VM, pesquise **CMD** **(1)** na barra de pesquisa do Windows e clique em **Prompt de Comando** **(2)** para abrir.
 
    ![](../media/open-cmdline-0608.png "abrir cmd")
 
-1. Execute o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para se ligar à VM Linux utilizando o ssh.
+1. Execute o comando **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** para se conectar à VM Linux usando SSH.
 
-    >**Nota**: Na linha de comandos, digite **yes** e prima **Enter** para `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
+    >**Observação**: No prompt de comando, digite **yes** e pressione **Enter** para a pergunta `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
 
-1. Assim que o SSH estiver ligado à VM, introduza a palavra-passe da VM fornecida abaixo:
+1. Assim que o SSH estiver conectado à VM, por favor, insira a senha da VM fornecida abaixo:
 
-    * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+    * Senha: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
       ![](../media/ssh-login-0608.png "abrir cmd")
 
-      >**Nota**: Note que ao introduzir a palavra-passe não a poderá ver devido a questões de segurança.
+      >**Observação**: Por favor, observe que ao digitar a senha, você não conseguirá vê-la por questões de segurança.
 
-1. Assim que a VM estiver ligada, execute o comando abaixo para clonar o repositório GitHub que iremos utilizar no laboratório.
+1. Uma vez que a VM esteja conectada, execute o seguinte comando para navegar até o repositório GitHub clonado que usaremos no laboratório.
+
+    ``` 
+    cd Cloud-Native-Application/labfiles/
+    ```
+    ![](../media/cd-labfiles-0608.png)
+   
+     > **Observação:** Se receber uma mensagem de saída a informando - `destination path 'Cloud-Native-Application/labfiles' No such file or directory`, por favor, execute o comando a seguir e, em seguida, refaça o passo 4 da tarefa.
 
     ```
     git clone https://github.com/CloudLabsAI-Azure/Cloud-Native-Application
@@ -41,8 +48,8 @@ Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos
 
     ![](../media/git-clone-0608.png)
 
-    > **Nota:** Se receber uma mensagem de saída a informar - o caminho de destino 'Cloud-Native-Application' já existe e não é um diretório vazio. Execute os comandos seguintes e execute novamente o passo 4 da tarefa.
-
+    > **Observação:** Se você receber uma mensagem de saída informando - `destination path 'Cloud-Native-Application' already exists and is not an empty directory`, por favor, execute os seguintes comandos e, em seguida, refaça o comando "git clone" e repita o Passo 4 para navegar até o repositório clonado.
+    
     ```
     sudo su
     rm -rf Cloud-Native-Application
@@ -51,21 +58,15 @@ Nesta tarefa, irá ligar-se à VM do agente Build utilizando a linha de comandos
 
    ![](../media/git-clone2-0608.png)
 
-1. Após a conclusão da clonagem do GitHub, execute o comando abaixo para alterar o diretório para os ficheiros de laboratório.
+### Tarefa 2: Criar imagens Docker para conteinerizar a aplicação e enviá-las para o registro de contêiner
 
-    ```
+Nesta tarefa, você irá construir as imagens Docker para conteinerizar a aplicação e, subsequentemente, enviá-las para o **Azure Container Registry (ACR)** para uso posterior no **Azure Kubernetes Service (AKS)**.
+
+1. Certifique-se de que você está no diretório **labfiles** antes de prosseguir com os próximos passos, pois o build do Docker precisa acessar o Dockerfile para criar a imagem.
+
+     ```
     cd Cloud-Native-Application/labfiles/
     ```
-
-   ![](../media/cd-labfiles-0608.png)
-
-### Tarefa 2: Criar imagens Docker para colocar a aplicação em contentor e enviá-las para o registo do contentor
-
-Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e enviá-las usando um comando push para o ACR (Azure Container Registry) para utilização posterior no AKS.
-
-1. Certifique-se de estar no diretório **labfiles** antes de executar as próximas etapas, pois o docker build precisa encontrar o DockerFile para criar a imagem.
-
-   ![](../media/cn9.png "abrir cmd")
 
 1. Execute o comando abaixo para baixar o Azure CLI,
 
@@ -73,9 +74,9 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
    sudo apt install azure-cli
    ```
 
-   >**Nota:** no prompt de comando, digite **Y** e pressione **Enter** para **Você quer continuar? [S/n]**.
+   >**Observação:** No prompt de comando, digite **Y** e pressione **Enter** para a pergunta **Do you want to continue? [Y/n]**.
 
-1. Execute o comando abaixo para iniciar sessão no Azure, navegue até ao URL de início de sessão do dispositivo `https://microsoft.com/devicelogin` no browser e copie o código de autenticação.
+1. Execute o comando abaixo para fazer login no Azure. Navegue até a URL de login do dispositivo `https://microsoft.com/devicelogin` no navegador e copie o código de autenticação.
 
     ```
     az login
@@ -83,35 +84,29 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/azlogin-0608.png)
 
-1. Introduza o código de autenticação copiado **(1)** e clique em **Seguinte** **(2)**.
+   >**Observação:** Se você receber um erro `command az not found`, execute o comando `sudo apt install azure-cli` para instalar a CLI do Azure.
+
+1. Insira o **código de autenticação** copiado **(1)** e clique em **Avançar** **(2)**.
 
    ![](../media/cn-1.png)
 
-1. No separador **Faça login na sua conta** verá um ecrã de login, nele digite o seguinte e-mail/nome de utilizador e clique em **Seguinte**.
+1. Na aba **Entrar no Microsoft Azure**, você verá uma tela de login. Insira o seguinte e-mail/nome de usuário e clique em**Avançar**.
 
-    * E-mail/Nome de utilizador: **<inject key="AzureAdUserEmail"></inject>**
+    * E-mail/Usuário: **<inject key="AzureAdUserEmail"></inject>**
 
-      > **Nota:** Se receber um pop-up **Escolha uma conta**, selecione o ID de e-mail acima.
+1. Agora digite a seguinte senha e clique em **Entrar**.
 
-1. Agora digite a seguinte palavra-passe e clique em **Entrar**.
+    * Senha: **<inject key="AzureAdUserPassword"></inject>**
 
-    * Palavra-passe: **<inject key="AzureAdUserPassword"></inject>**
-
-      > **Nota:** Não verá o pop-up para introduzir a palavra-passe se tiver o pop-up **Escolha uma conta** onde escolheu a conta.
-
-1. Num pop-up para confirmar o início de sessão na CLI do Microsoft Azure, clique em **Continuar**.
+1. Em um pop-up para confirmar o login na CLI do Microsoft Azure, clique em **Continuar**.
 
    ![](../media/cn2.png)
 
-1. Depois de entrar, verá um pop-up de confirmação **Entrou na aplicação Interface de linha de comando multiplataforma do Microsoft Azure no seu dispositivo**. Feche o separador do navegador e abra a sessão anterior do comando de linha.
-
-   ![](../media/cn3.png)
-
-1. Depois de fazer login no Azure, irá construir as imagens do Docker nos próximos passos e enviá-las para o ACR.
+1. Assim que fizer login no Azure, volte para o prompt de comando. Agora você irá construir as imagens Docker nos próximos passos e enviá-las para o ACR.
 
    ![](../media/cn4.png)
 
-1. Agora crie a imagem docker **contosotraders-carts** utilizando o Dockerfile no diretório. Observe como o Registo de Contentor do Azure implantado é referenciado.
+1. Agora, crie a imagem docker **contosotraders-carts** utilizando o Dockerfile no diretório. Observe como o Azure Container Registry implantado é referenciado.
 
     ```
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest
@@ -119,7 +114,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cn5.png)
 
-   >**Nota**: Este passo pode demorar 1-2 minutos a construir a imagem Docker.
+   >**Observação**:  Este passo pode levar de 1 a 2 minutos para construir a imagem docker.
 
 1. Repita os passos para criar a imagem docker **contosotraders-Products** com o comando abaixo.
 
@@ -129,9 +124,9 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cn6.png)
 
-   >**Nota**: Este passo pode demorar 1-2 minutos a construir a imagem Docker.
+   >**Observação**: Este passo pode levar de 1 a 2 minutos para construir a imagem docker.
 
-1. Execute o comando abaixo para alterar o directório para `services` e abra o ficheiro `configService.js`.
+1. Execute o comando abaixo para mudar para o diretório `services` e abra o arquivo `configService.js`.
 
     ```
     cd src/ContosoTraders.Ui.Website/src/services
@@ -141,9 +136,9 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/E1T2S12-0608.png)
 
-1. No editor `vi`, prima **_i_** para entrar no modo `insert`. Em APIUrl e APIUrlShoppingCart, substitua **deploymentid** pelo valor **<inject key="DeploymentID" enableCopy="true"/>** e **REGION** por **<inject key="Region" enableCopy= "true"/>** valor. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e feche o ficheiro. Precisamos de atualizar o URL da API aqui para que a aplicação Contoso Traders possa ligar-se à API do produto depois de enviado para contentores AKS.
+1. No editor `vi`, pressione **_i_** para entrar no modo `insert`.  Substitua os valores de **deploymentid** **<inject key="DeploymentID" enableCopy="true"/>** e **REGION** **<inject key="Region" enableCopy= "true"/>** fornecidos na `APIUrl`. Em seguida, pressione **_ESC_**, escreva **_:wq_** para salvar suas alterações e feche o arquivo. Precisamos atualizar a URL da API aqui para que a aplicação Contoso Traders possa se conectar à API de produtos assim que for enviada para os contêineres do AKS.
 
-    >**Nota**: Se **_ESC_** não funcionar pressione `ctrl + [` e depois escreva **_:wq_** para guardar as suas alterações e fechar o ficheiro.
+    >**Observação**: Se **_ESC_** não funcionar pressione `ctrl + [` e depois escreva **_:wq_** para salvar suas alterações e fechar o arquivo.
 
     ```
     const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';
@@ -152,14 +147,14 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/E1T2S13-0608.png)
 
-1. Execute o comando abaixo para alterar o directório para a pasta `ContosoTraders.Ui.Website`.
+1. Execute o comando abaixo para mudar para o diretório da pasta `ContosoTraders.Ui.Website`.
 
     ```
     cd
     cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
     ```
 
-1. Crie agora a imagem docker **contosotraders-UI-Website** com o comando abaixo.
+1. Agora, crie a imagem docker **contosotraders-UI-Website** com o comando abaixo.
 
     ```
     docker build . -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
@@ -167,7 +162,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cn8.png)
 
-   >**Nota**: Tenha em atenção que o comando acima pode demorar até 5 minutos para completar a compilação. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso. Além disso, poderá notar alguns avisos relacionados com a atualização da versão do npm que é esperada e não afeta a funcionalidade do laboratório.
+   >**Observação**: Por favor, esteja ciente de que o comando acima pode levar até 5 minutos para concluir a construção. Antes de tomar qualquer outra ação, certifique-se de que ele foi executado com sucesso.
 
 1. Redirecione para o diretório **labfiles** antes de executar os próximos passos.
 
@@ -176,7 +171,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     cd Cloud-Native-Application/labfiles/
     ```
 
-1. Observe as imagens Docker construídas executando o comando `docker image ls`. As imagens são marcadas com o que há de mais recente, sendo também possível utilizar outros valores de tag para versionamento.
+1. Observe as imagens Docker construídas executando o comando `docker image ls`. As imagens são marcadas com a tag `latest`. Também é possível usar outros valores de tag para versionamento.
 
     ```
     docker image ls
@@ -184,15 +179,15 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cn10.png)
 
-1. Navegue até ao portal Azure, abra o Container Registry **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** no Grupo de Recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
+1. Navegue até ao portal Azure, abra o registro de contêiner **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** a partir do grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy="false" />**.
 
    ![](../media/E1T2S18-0608.png)
 
-1. A partir do **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)** no registo de contentores, selecione **Chaves de acesso (2)** nas Definições no menu do lado esquerdo. Clique em **Mostrar (3)** e depois **Copiar (4)** a Senha e cole-a num ficheiro de texto para uso posterior.
+1. Na página do registro de contêiner **contosotradersacr<inject key="DeploymentID" enableCopy="false" /> (1)**, selecione **Chaves de acesso (2)** m Configurações no menu do lado esquerdo. Clique em **Mostrar (3)** e depois **Copie (4)** a senha e cole-a em um bloco de notas para uso posterior.
 
    ![](../media/E1T2S19-0608.png)
 
-1. Agora inicie sessão no ACR utilizando o comando abaixo, atualize o valor do sufixo e da **palavra-passe** do ACR no comando abaixo. Deve conseguir ver a saída abaixo na captura de ecrã. Certifique-se de substituir a **palavra-passe** pela **palavra-passe** copiada do registo do contentor que copiou no passo anterior no comando abaixo.
+1. Agora, faça login no ACR usando o comando abaixo. Por favor, atualize o valor da **senha** do ACR no comando. Você deverá ver a saída mostrada na captura de tela. Certifique-se de substituir a senha pela senha do registro de contêiner que você copiou no passo anterior.
 
     ```
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
@@ -200,7 +195,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
    ![](../media/cn13.png "abrir cmd")
 
-1. Depois de iniciar sessão no ACR, execute os comandos abaixo para enviar as imagens do Docker para o registo de contentores do Azure.
+1. Depois de fazer login no ACR, execute os seguintes comandos para enviar as imagens Docker para o registro de contêiner do Azure.
 
     ```
     docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapicarts:latest 
@@ -214,7 +209,7 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
     docker push contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersuiweb:latest
     ```
 
-1. Deverá conseguir ver a imagem do docker a ser enviada para o ACR, como mostra a captura de ecrã abaixo.
+1. Você deverá ver a imagem Docker sendo enviada para o ACR, como mostrado na captura de tela abaixo.
 
    ![](../media/cn14.png "abrir cmd")
 
@@ -222,8 +217,8 @@ Nesta tarefa, irá criar as imagens do Docker para containerizar a aplicação e
 
 ## Resumo
 
-Neste exercício, containerizou completamente a sua aplicação web com a ajuda do docker e enviou-a para o registo do contentores.
+Neste exercício, você conteinerizou completamente sua aplicação web com a ajuda do Docker e a enviou para o registro de contêiner.
 
-### Você completou com sucesso este exercício. Clique em "Próximo" para prosseguir para o próximo exercício.
+### Você completou o laboratório com sucesso. Clique em "Próximo" para prosseguir para o próximo exercício.
 
 ![](../media/imag1.png)
