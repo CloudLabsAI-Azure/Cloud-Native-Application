@@ -138,7 +138,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
     
     ![](media/E4T4S3.png)
 
-1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` is `true`**(2)**.
+1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` **(1)** is `true`**(2)**.
 
     ```
     az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
@@ -192,11 +192,11 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Kubernetes will launch new Pods to meet the required replica count. Depending on your view, you may see the old instances terminating and new instances being created.
 
-   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/new-cloud-native-eng-ex4-6.png "API Pods changing state")
+   ![The first row of the Pods box is highlighted, and the pod has a green check mark and is running.](media/E4T5S8.png "API Pods changing state")
 
 1. Return to the **contoso-traders-product** API Deployment. Select the **YAML** navigation item and scale it back to the `1` replica.
 
-   ![Viewing replica set in the Azure Portal.](media/8.png "Viewing replica set in the Azure Portal")
+    ![Viewing replica set in the Azure Portal.](media/E4T5S9.png "Viewing replica set in the Azure Portal")
 
 1. Select **Review + save**, and When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
 

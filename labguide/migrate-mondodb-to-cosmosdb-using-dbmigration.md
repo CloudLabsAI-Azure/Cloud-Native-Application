@@ -64,11 +64,11 @@ In this task, you will be connecting to a Mongodb database hosted on an Azure Li
 
 In this task, you will create a Migration project within Azure Database Migration Service and then migrate the data from MongoDB to Azure Cosmos DB. In the later exercises, you will be using the Azure Cosmos DB to fetch the data for the products page. 
 
-1. In the Azure Portal, navigate to your **contosotraders** virtual machine in the **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Copy the **Private IP address** and paste it into Notepad for later use.
+1. In the Azure Portal, navigate to your **contosotraders** virtual machine in the **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. On the **Overview (1)** blade, copy the **Private IP address (2)** and paste it into Notepad for later use.
 
    ![](media/E2T2S1.png)
 
-1. Navigate to **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** resource group and open **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** **(2)** Cosmos DB for MongoDB account(RU).
+1. Navigate to **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(2)** Cosmos DB for MongoDB account(RU).
 
    ![](media/E2T2S2.png)
 
@@ -82,7 +82,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    >**Note:** To see the configurations, ensure that Provision throughput is **Checked**.
 
-1. In the **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group, search for **contosotraders<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure Database Migration Service resource and navigate to that resource **(2)**
+1. In the **contosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group, search for **contosotraders<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure Database Migration Service resource and navigate to that resource **(2)**.
 
    ![](media/E2T2S5.png)
 

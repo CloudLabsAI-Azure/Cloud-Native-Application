@@ -36,7 +36,7 @@ In this task, you will gather the necessary information about your Azure Kuberne
 2. Run the following command to set up the Kubernetes cluster connection using kubectl.
 
    ```bash
-   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/>
+   az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/>
    ```
    ![](media/E3T1S2.png)
 
@@ -161,7 +161,7 @@ In this task, you will define a Kubernetes Service for your API to enable intern
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="8b5c5c75-60f4-4907-ab80-49469cffd04d" />
+<validation step="82b31abd-3a30-4b1b-9bc6-42a3aed66c36" />
 
 ### Task 3: Deploy a service & workload using kubectl
 
@@ -215,7 +215,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="82b31abd-3a30-4b1b-9bc6-42a3aed66c36" />
+<validation step="6774ebe8-1e68-4d70-b9a9-03c34118d492" />
 
 ## Summary
 
