@@ -49,7 +49,7 @@ In this task, you will scale the API deployment in AKS by increasing the number 
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="18dfcb34-0d2a-46c0-a43d-16dc61776cc2" />
+<validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />
 
 ### Task 2: Resolve failed replica provisioning 
 
@@ -211,7 +211,7 @@ In this task, you will restart containers and validate that the restart does not
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="161c5ef0-0789-417c-a716-27b6251ddff7" />
+<validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />
 
 ### Task 6: Configure Cosmos DB Autoscale
 
@@ -239,7 +239,7 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-   <validation step="25abb127-b20f-4048-a74c-4c47edcee4cb" />
+   <validation step="772e22fb-588f-41b1-b761-428e48c79279" />
 
 ### Task 7: Test CosmosDB Autoscale
 
