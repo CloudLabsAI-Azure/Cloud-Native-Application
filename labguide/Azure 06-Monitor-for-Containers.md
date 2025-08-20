@@ -44,7 +44,7 @@ In this task, you will review the monitored AKS cluster, focusing on visually in
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="1f2ef3e0-8908-4650-b10e-2c40270bf655" />
+<validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />
 
 ## Summary
 

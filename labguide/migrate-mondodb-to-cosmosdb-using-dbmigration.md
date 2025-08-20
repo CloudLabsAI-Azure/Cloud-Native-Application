@@ -138,7 +138,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
       >**Note:** Notice, the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
-1. On the **Database setting** tab, select the `contentdb` **Source Database (1)**, so this database from MongoDB will be migrated to Azure Cosmos DB. Select **Next: Collection setting >> (2)**.
+1. On the **Database setting** tab, select the `contentdb` as **Source Database (1)**, so this database from MongoDB will be migrated to Azure Cosmos DB. Select **Next: Collection setting >> (2)**.
 
    ![The screenshot shows the Database setting tab with the contentdb source database selected.](media/E2T2S10.png "Database setting tab")
 
@@ -174,7 +174,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="a8c090c8-01fe-467c-840b-a9a271068777" />
+<validation step="8b5cf0f8-b2b7-4802-bb0a-ecd34be43ab2" />
 
 ## Summary
 

@@ -159,7 +159,7 @@ In this task, you will modify the web application's source code to apply configu
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-<validation step="4f7d1822-6f06-4979-84e9-5664ebcf7ef4" />
+<validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
 
 ### Task 2: Configure Kubernetes Ingress
 
