@@ -46,13 +46,13 @@ In this task, you will gather the necessary information about your Azure Kuberne
    
      ![](media/GS4.png "Enter Password")
 
-1. Then you will see popup **Automatically sign in to all desktop apps and websites on this device?** click on **No, this app only (1)**.
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**.
 
-    ![](media/E3T1S4.png)
+     ![](media/E3T1S4.png)
 
-1. Once after giving the credentials it will fetch the tenants/subscriptions associated to the give username then press **Enter** to select the default Tenant/Subscription.
+     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
 
-    ![](media/E3T1S5.png)
+     ![](media/E3T1S5.png)
     
 1. Run the following command to set up the Kubernetes cluster connection using kubectl.
 
@@ -227,8 +227,6 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/E3T3S8.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2--new.png "AKS services and ingresses shown with External IP highlighted")
-    
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:

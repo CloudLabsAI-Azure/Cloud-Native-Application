@@ -91,18 +91,34 @@ In this task, you will modify the web application's source code to apply configu
 
 1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
-1. Open a new Command Prompt and log in using the following command:
+1. Open a new Command Prompt and log in using the following command **(1)**. Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.:
 
    ``` 
    az login
    ```
-1. On the **Let's get you signed in** tab, choose the account that you're already signed in with.
+   ![](media/E3T1S1.png)
 
-   ![](media/cloudnative-5.png)
+   > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
 
-   >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**. 
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+
+   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+   
+     ![](media/GS3.png "Enter Email")
+     
+1. Now enter the following password and click on **Sign in**.
+
+   * Password: <inject key="AzureAdUserPassword"></inject>
+   
+     ![](media/GS4.png "Enter Password")
+
+   >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**.
+
+    ![](media/E3T1S4.png) 
 
     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
+
+    ![](media/E3T1S5.png)
   
 1. Run the below **_kubectl_** command to retrieve the current deployment in your AKS cluster, as we will be updating the web API to use the latest image. Ensure to copy the name of the **contoso-traders-web###** **(1)** to the notepad. 
 
@@ -448,7 +464,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
     > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
 
-23. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
+
 
 ## Summary
 

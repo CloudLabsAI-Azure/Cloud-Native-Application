@@ -137,13 +137,13 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
    
      ![](media/GS4.png "Enter Password")
 
-1. Then you will see popup **Automatically sign in to all desktop apps and websites on this device?** click on **No, this app only (1)**.
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**. 
 
-    ![](media/E3T1S4.png)
+     ![](media/E3T1S4.png)
 
-1. Once after giving the credentials it will fetch the **Tenants/Subscriptions** associated to the give username then press **Enter** to select the default Tenant/Subscription.
+     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
 
-    ![](media/E4T1S1.png)
+     ![](media/E4T1S1.png)
 
 1. In order to set up the Kubernetes cluster connection, run the following command.
 
@@ -162,7 +162,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
 1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` **(1)** is `true`**(2)**.
 
     ```
-    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
+    az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
     ```
   
    ![](media/E4T4S4.png)
@@ -325,8 +325,6 @@ In this task, you will run a performance test script that will test the Autoscal
     ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/english-09.png "Recent CosmosDB activity graph")
     
     >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
-
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
