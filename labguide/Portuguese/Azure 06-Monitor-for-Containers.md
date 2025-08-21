@@ -1,45 +1,44 @@
-# Exercício 6: Azure Monitor para contentores
+# Exercício 6: Azure Monitor para Contêineres
 
-### Duração estimada: 20 Minutos
+### Duração estimada: 40 Minutos
 
 ## Visão geral
 
-Neste exercício, irá analisar os insights do contentor no Azure Monitor para o cluster AKS. O Azure Monitor ajuda-o a maximizar a disponibilidade e o desempenho das suas aplicações e serviços. Oferece uma solução abrangente para recolher, analisar e atuar na telemetria dos seus ambientes de cloud e locais.
+Neste exercício, você explorará os Container Insights do Azure Monitor para o cluster AKS. O Azure Monitor é uma ferramenta essencial para maximizar a disponibilidade e o desempenho de aplicações e serviços, oferecendo uma solução completa para coletar, analisar e agir com base na telemetria de ambientes em nuvem e locais (on-premises).
 
 Alguns exemplos do que pode fazer com o Azure Monitor incluem:
 
 - Detetar e diagnosticar problemas em aplicações e dependências com o Application Insights.
-- Correlacionar problemas de infraestrutura com insights de VM e insights de contentores.
-- Recolher dados de recursos monitorizados utilizando métricas do Azure Monitor.
+- Correlacionar problemas de infraestrutura utilizando os VM Insights e os Container Insights.
+- Coletar dados dos recursos monitorados por meio das métricas do Azure Monitor.
 
-## Objectivos do Laboratório
+## Objetivos do Laboratório
 
-Poderá completar as seguintes tarefas:
+Você será capaz de completar as seguintes tarefas:
 
 - Tarefa 1: Rever as métricas do Azure Monitorar
 
-### Tarefa 1: Rever as métricas do Azure Monitorar
+### Tarefa 1: Revisar as métricas do Azure Monitorar
 
-Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na revisão visual das métricas e dos registos disponíveis no Azure Monitor para o seu cluster AKS. Não se espera a deteção de alertas ou problemas, a menos que sejam configurados explicitamente.
+Nesta tarefa, você revisará o cluster AKS monitorado, com foco na inspeção visual das métricas e logs disponíveis no Azure Monitor. Nenhum alerta ou problema deverá aparecer, a menos que tenha sido configurado previamente.
 
-1. Navegue de volta para o portal do Azure e procure **aks (1)**, selecione **Serviços Kubernetes (2)** no resultado.
+1. No portal do Azure, procure por **aks (1)** e selecione **Serviços do Kubernetes (2)** no resultado.
 
     ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/E6T1S1-0808.png "Definir réplicas para 2")
 
-1. Na página Serviços Kubernetes, selecione **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**.
+1. Na página Serviços do Kubernetes, selecione **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**.
 
     ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn92.png "Definir réplicas para 2")
    
-1. Navegue até a seção **Monitorar** folha de recursos do serviço Kubernetes, você poderá ver alguns logs.
+1. Na seção **Monitorar**, no painel de recursos do seu serviço Kubernetes, é possível visualizar logs relacionados à atividade do serviço, como uso de CPU do nó, uso de memória do nó, entre outros.
    
     ![](../media/cn93.png "Definir réplicas para 2")
 
-    > **Nota**: O Monitorar do Azure pode demorar até 15 minutos a preencher os dados na folha de insights.
+    > **Observação**: O Azure Monitor pode levar até 15 minutos para popular os dados no painel de insights.
     
-    > **Importante**: Esta tarefa destina-se apenas à revisão visual. Se desejar explorar alertas, pode configurar uma regra de alerta no Azure Monitor. Por exemplo, pode criar um alerta para utilização elevada de CPU ou consumo de memória. Consulte a documentação da Azure para obter orientações sobre como configurar regras de alerta.
+    > **Importante**:Esta tarefa é apenas para revisão visual. Caso queira monitorar possíveis problemas, você pode configurar regras de alerta no Azure Monitor — por exemplo, para identificar alto uso de CPU ou consumo excessivo de memória. Para instruções detalhadas sobre como criar e gerenciar alertas, consulte a documentação oficial do Azure.
 
-
-> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> **Parabéns** por concluir a tarefa! Agora, é hora de validá-la. Aqui estão os passos:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
 > - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.    
@@ -48,6 +47,10 @@ Nesta tarefa, irá rever o cluster AKS monitorizado.Esta tarefa está focada na 
 
 ## Resumo
 
-Neste exercício, reviu os insights do contentor do Azure Monitor para o cluster AKS.
+Neste exercício, você revisou os insights de contêiner do Azure Monitor para o cluster AKS.
 
-Ao concluir este **Cloud Native Applications hands-on lab**, containerizou a aplicação Contoso Traders utilizando o Docker, migrou os dados do MongoDB para o Azure Cosmos DB e implementou-a no Azure Kubernetes Service (AKS) para orquestração escalável. Aprendeu a escalar a aplicação e validar a sua alta disponibilidade, a aplicar atualizações e a configurar o Kubernetes Ingress para uma gestão eficiente do tráfego. Por fim, ativou o Azure Monitor for Containers para obter informações valiosas sobre o desempenho e a integridade. Estas competências oferecem-lhe experiência prática na criação, implementação, escalabilidade e monitorização de aplicações modernas cloud-native no Azure.
+**Você concluiu o laboratório com sucesso!**
+
+## Conclusão
+
+Ao completar este laboratório prático de **Aplicações Nativas para Nuvem**, você adquirirá experiência prática em conteinerização de aplicações, publicação de imagens Docker em um registro de contêiner e implantação no Azure Kubernetes Service (AKS). Além disso, aprenderá a gerenciar o ciclo de vida dos contêineres, escalar implantações e monitorar aplicações com o Azure Monitor. Essa prova de conceito oferece uma visão prática e valiosa sobre como construir, implantar e operar aplicações modernas e nativas da nuvem utilizando contêineres e Kubernetes.
