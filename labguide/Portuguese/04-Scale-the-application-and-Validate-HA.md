@@ -1,75 +1,75 @@
-# Exercício 4: Dimensione a aplicação e valide o HA
+# Exercício 4: Escalar a aplicação e validar a Alta Disponibilidade (HA)
 
-### Duração estimada: 90 Minutos
+### Duração estimada: 120 Minutos
 
 ## Descrição Geral
 
-Neste ponto, implementou uma única instância dos contentores de serviço da API Web e de produtos. Neste exercício, irá aumentar o número de instâncias de contentores para o serviço Web e escalar o front-end no cluster existente.
+No exercício anterior, você implantou uma única instância dos contêineres dos serviços Web e da API de Produtos. Agora, neste exercício, você irá escalar horizontalmente o serviço Web, aumentando o número de réplicas de contêiner. Com isso, a aplicação de front-end será expandida dentro do cluster existente, garantindo maior disponibilidade e capacidade de atendimento.
 
-## Objectivos do Laboratório
+## Objetivos do Laboratório
 
 Poderá completar as seguintes tarefas:
 
-- Tarefa 1: Modificar as implementações de Recursos Kubernetes no serviço Kubernetes
-- Tarefa 2: Resolver falha no aprovisionamento de réplicas
-- Tarefa 3: Configurar o escalonamento automático horizontal para os pods de serviço Kubernetes
-- Tarefa 4: Dimensionamento automático no cluster do Azure Kubernetes Service
-- Tarefa 5: Reiniciar contentores e validar HA
-- Tarefa 6: Configurar a escala automática do CosmosDB
-- Tarefa 7: Testar a escala automática do CosmosDB
+- Tarefa 1: Modificar as implantações de recursos do Kubernetes no serviço Kubernetes
+- Tarefa 2: Resolver o provisionamento de réplicas com falha
+- Tarefa 3: Configurar o Escalonamento Automático Horizontal para os pods do serviço Kubernetes
+- Tarefa 4: Escalonamento automático no cluster do Serviço de Kubernetes do Azure
+- Tarefa 5: Reiniciar contêineres e validar a Alta Disponibilidade (HA)
+- Tarefa 6: Configurar o escalonamento automático do Cosmos DB
+- Tarefa 7: Testar o escalonamento automático do Cosmos DB
 
-### Tarefa 1: modificar as implementações de Recursos Kubernetes no serviço Kubernetes
+### Tarefa 1: Modificar as implantações de recursos do Kubernetes no serviço Kubernetes
 
-Nesta tarefa, irá aumentar o número de instâncias para a implementação da API no AKS. Durante a implementação, observará a mudança de estado.
+Nesta tarefa, você escalará a implantação da API no AKS, aumentando o número de réplicas. Durante o processo de escalonamento, você observará o status da implantação à medida que ela progride.
 
-1. Navegue até ao portal do Azure, abra **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** serviço Kubernetes de **contosoTraders-<inject key="DeploymentID" enableCopy=" false" />** grupo de recursos. 
+1. No portal do Azure, acesse o serviço Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** dentro do grupo de recursos **contosoTraders-<inject key="DeploymentID" enableCopy=" false" />**.
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/E4T1S1-0608.png "Definir réplicas para 2")
 
-1. Selecione **Cargas de trabalho (1)** em **Recursos Kubernetes** nas características do Kubernetes no menu do lado esquerdo e, em seguida, selecione a implementação **contoso-traders-products (2)**.
+1. No menu à esquerda, em Recursos do Kubernetes, selecione **Cargas de trabalho** **(1)** e, em seguida, clique na implantação **contoso-traders-products** **(2)**.
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
-1. Selecione **YAML (1)** no menu à esquerda na Descrição Geral do **contoso-traders-products** e desça até encontrar **replicas** na secção **spec**. Altere o número de réplicas para **2 (2)** e depois selecione **Rever + guardar (3)**.
+1. Selecione **YAML** **(1)** no menu esquerdo na visão geral de **contoso-traders-products** e role para baixo até encontrar **replicas** na seção **spec**. Altere o número de réplicas para **2** **(2)** e, em seguida, selecione **Revisar + salvar (3)**.
 
    ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn50.png "Definir réplicas para 2")
 
-1. Quando for solicitado a confirmar a alteração do manifesto, selecione **Confirmar alteração do manifesto (1)** e clique em **Guardar (2)**. Em seguida, clique em **Descrição Geral (3)** para voltar aos deployments.
+1. Quando solicitado a confirmar a alteração do manifesto, marque **Confirmar alteração do manifesto (1)** e clique em **Salvar (2)**. Em seguida, clique em **Visão Geral (3)** para navegar de volta para as implantações.
 
     ![](../media/E4-T1-S4.png)
 
-    >**Nota**: Se a implementação for concluída rapidamente, poderá não ver a implementação no estado em espera no portal, conforme descrito nos passos seguintes.
+    >**Observação**: Se a implantação for concluída rapidamente, você pode не ver a implantação nos estados de espera no portal, conforme descrito nos passos seguintes.
 
-1. Está a ser implementado no momento e pode ver que há uma instância íntegra e uma instância em espera.
+1. No momento, a implantação está em andamento: é possível visualizar uma instância em execução e saudável, enquanto outra ainda está em fase de inicialização.
 
-1. Abra a aplicação Web Contoso Traders e verá que a aplicação ainda deve funcionar sem erros.
+1. Abra a aplicação Web Contoso Traders, e você verá que a aplicação ainda deve funcionar sem erros.
 
    ![Os conjuntos de réplicas são selecionados em Cargas de trabalho no menu de navegação à esquerda e, à direita, o estado dos pods: 1 pendente, 1 em execução é realçado. Abaixo disto, uma seta vermelha aponta para a implementação da API na caixa Pods.](../media/11.png "Ver detalhes da réplica")
 
-1. Se encontrou algum erro ou problema ao adicionar uma nova instância na Tarefa 2, continue com a Tarefa 2 para os resolver. Se não encontrou nenhum problema, ignore a Tarefa 2 e avance diretamente para a Tarefa 3.
+1. Se você encontrou algum erro ou dificuldade ao adicionar uma nova instância na Tarefa 1, prossiga para a Tarefa 2 para solucioná-los. Caso contrário, avance diretamente para a Tarefa 3.
 
-> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> **Parabéns** por concluir a tarefa! Agora, é hora de validá-la. Aqui estão os passos:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
 > - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.    
 
 <validation step="cd2e41f5-e0af-43fc-97ac-3358da846e31" />  
 
-### Tarefa 2: Resolver falha no aprovisionamento de réplicas
+### Tarefa 2: Resolver o provisionamento de réplicas com falha
 
-Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem devido à incapacidade de atender aos recursos solicitados.
+Nesta tarefa, você corrigirá falhas nas réplicas da API, geralmente causadas por recursos insuficientes para atender às demandas da aplicação. Execute esta tarefa somente se tiver identificado erros ou problemas na etapa anterior; caso contrário, você pode pular diretamente para a próxima etapa.
 
-1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho (1)** em **Recursos Kubernetes** e, em seguida, seleccione **contoso-traders-products (2)** implantação.
+1. No serviço Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, selecione **Cargas de trabalho (1)** em **Recursos do Kubernetes** e, em seguida, selecione  a implantação **contoso-traders-products (2)**.
 
       ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn49.png "Definir réplicas para 2")
 
-1. Selecione **YAML** no menu esquerdo na vista geral de **contoso-traders-products**.
+1. Selecione **YAML** no menu esquerdo na seção Visão geral de **contoso-traders-products**.
 
       ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn52.png "Definir réplicas para 2")
 
-1. No ecrã **YAML**, desça e altere os seguintes itens:
+1. Na tela do **YAML**, role para baixo e atualize os seguintes itens. Selecione **Revisar + salvar** **(4)** após as alterações serem feitas.
 
-      - Na secção **spec** adicione as seguintes **ports (1)**.
+      - Na seção **spec**, verifique se a **porta listada abaixo** **(1)** está corretamente configurada:
 
          ```yaml
          ports:
@@ -77,7 +77,7 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
               protocol: TCP
          ```
 
-      - Modifique a **cpu** e configure-a para **100m (2)**. A CPU é dividida entre todos os pods de um Node.
+      - Modifique a **cpu** e a **memória (2)** na mesma seção spec. A CPU é dividida entre todos os Pods em um Nó..
    
          ```yaml
          resources:
@@ -86,23 +86,23 @@ Nesta tarefa, irá resolver as réplicas de API com falha. Estas falhas ocorrem 
             memory: 128Mi
          ```
 
-      - Selecione **Rever + guardar (3)**.
+      - Selecione **Revisar + salvar (3)**.
 
       ![Na caixa de diálogo de edição YAML, mostrando duas alterações necessárias.](../media/cn53.png "Modificar manifesto de implementação")
 
-1. Confirmar alteração do manifesto, assinale **Confirmar alteração ao manifesto** e selecione **Guardar**.
+1. Quando solicitado, marque **Confirmar alteração ao manifesto** e selecione **Salvar**.
 
-1. Volte à vista principal **Cargas de trabalho** do serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, actualize a página e verá agora que o A a implantação está íntegra com **two** pods em funcionamento.
+1. Retorne à visualização principal de **Cargas de trabalho** do serviço Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />**, atualize a página e você verá que a Implantação está saudável, com **dois** **(2)** Pods em operação.
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn54.png "A implementação da API está agora íntegra")
 
-### Tarefa 3: configurar o escalonamento automático horizontal para os pods de serviço Kubernetes
+### Tarefa 3: Configurar o Escalonamento Automático Horizontal para os pods do serviço Kubernetes
 
-Nesta tarefa, irá configurar o escalonamento automático horizontal para os seus pods de serviço Kubernetes.
+Nesta tarefa, você irá configurar o escalonamento automático horizontal para os pods do seu serviço Kubernetes.
 
-1. Navegue de volta para o **Linha de comandos** do Windows.
+1. Navegue de volta para o seu prompt de comando do Windows.
 
-1. Execute o comando abaixo para configurar o escalonamento automático horizontal para os seus pods de produtos API.
+1. Execute o comando abaixo para configurar o escalonamento automático horizontal para os pods da sua API de Produtos.
 
       ```bash
        kubectl autoscale deployment contoso-traders-products -n contoso-traders --cpu-percent=50 --min=1 --max=10
@@ -110,7 +110,7 @@ Nesta tarefa, irá configurar o escalonamento automático horizontal para os seu
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/HS11.png "A implementação da API está agora íntegra")
 
-1. Execute o comando abaixo para verificar o estado do Horizontal Pod Au recentemente adicionado escalador.
+1. Execute o comando abaixo para verificar o status do Horizontal Pod Autoscaler que foi adicionado recentemente.
       
       ```
        kubectl get hpa -n contoso-traders
@@ -118,11 +118,11 @@ Nesta tarefa, irá configurar o escalonamento automático horizontal para os seu
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/HS12.png "A implementação da API está agora íntegra")
 
-### Tarefa 4: escalonamento automático no cluster do serviço Azure Kubernetes
+### Tarefa 4: Escalonamento automático no cluster do Serviço de Kubernetes do Azure
 
-Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AKS existente e dimensionará automaticamente os pools de nós do cluster.
+Nesta tarefa, você habilitará o escalonador automático do cluster para o cluster AKS existente e escalará automaticamente os pools de nós do cluster.
 
-1. Navegue de volta para o Linha de comandos do Windows. Se você não estiver conectado ao Azure, faça login no Azure com o comando abaixo após atualizar os valores no comando abaixo.
+1. Navegue de volta para o seu prompt de comando do Windows. Se não estiver logado no Azure, faça login com o comando abaixo.
 
       ```
       az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
@@ -136,7 +136,7 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn55.png "A implementação da API está agora íntegra")   
 
-1. Verifique o `count` de pools de nós no cluster e certifique-se de que `enablingAutoScaling` é `null/false`.
+1. Verifique o `count` de pools de nós no cluster e garanta que `enablingAutoScaling` seja `null/false`.
 
       ```
       az aks nodepool list --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
@@ -144,7 +144,7 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
       ![](../media/cn56.png)
 
-1. Execute o comando abaixo para ativar o dimensionamento automático do cluster no cluster existente. Verifique se `enablingAutoScaling` é `true`.
+1. Execute o comando abaixo para habilitar o escalonamento automático do cluster existente. Verifique se `enablingAutoScaling` é `true`.
 
       ```
       az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
@@ -152,9 +152,9 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
       ![](../media/cn57.png)
 
-      >**Nota**: Tenha em atenção que o comando acima pode demorar até 5 minutos para concluir a atualização. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso.
+      >**Observação**: Tenha em mente que o comando acima pode levar até 5 minutos para concluir a atualização. Antes de tomar qualquer outra ação, certifique-se de que ele foi executado com sucesso.
 
-1. Execute o comando abaixo para dimensionar automaticamente os pools de nós no cluster existente.
+1. Execute o comando abaixo para escalar automaticamente os pools de nós no cluster existente.
 
       ```
       az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
@@ -162,56 +162,56 @@ Nesta tarefa, irá ativar o escalonador automático de cluster para o cluster AK
 
       ![](../media/cn58.png)
 
-      >**Nota**: Tenha em atenção que o comando acima pode demorar até 5 minutos para concluir a atualização. Antes de realizar qualquer ação adicional, certifique-se de que é executada com sucesso.
+      >**Observação**: Tenha em mente que o comando acima pode levar até 5 minutos para concluir a atualização. Antes de prosseguir com qualquer outra ação, verifique se ele foi executado com sucesso.
 
-### Tarefa 5: reiniciar os contentores e validar o HA
+### Tarefa 5: Reiniciar contêineres e validar a Alta Disponibilidade (HA)
 
-Nesta tarefa, irá reiniciar os contentores e validar se a reinicialização não afeta o serviço em execução.
+Nesta tarefa, você reiniciará contêineres e validará que a reinicialização não afeta o serviço em execução.
 
-1. No serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes, Selecione **Cargas de trabalho** em **Recursos Kubernetes** e, em seguida, seleccione **contoso- traders-products** implantação.
+1. No serviço Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** , Selecione **Cargas de trabalho** em **Recursos do Kubernetes** e, em seguida, selecione a implantação **contoso- traders-products**.
 
       ![Na caixa de diálogo de edição YAML, é introduzido 2 no número de réplicas pretendido.](../media/cn54.png "Definir réplicas para 2")
 
-1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessária para `4` **(2)** e clique em **Rever + guardar (3)**.
+1. Selecione o item de navegação **YAML (1)** e aumente a contagem de réplicas necessárias para `4` **(2)** e clique em **Revisar + salvar (3)**.
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn59.png "A implementação da API está agora íntegra")
 
-1. Quando lhe for pedido para confirmar a alteração do manifesto, assinale **Confirmar alteração ao manifesto (1)** e selecione **Guardar (2)**. Em seguida, clique em **Descrição Geral (3)** para voltar aos deployments.
+1. Quando solicitado, marque **Confirmar alteração ao manifesto (1)** e selecione **Salvar (2)**. Em seguida, clique em **Visão Geral (3)** para voltar.
 
       ![](../media/E4-T1-S4.png)
 
-1. Irá verificar que o deployment **contoso-traders-product** está agora a executar `4` réplicas com sucesso passados 5 minutos.
+1. ocê verá que a implantação **contoso-traders-product** agora está executando `4` réplicas com sucesso passados 5 minutos.
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn61.png "A implementação da API está agora íntegra")
 
-1. Volte ao separador do navegador com a página de estatísticas da aplicação web carregada. Atualize a página repetidamente. Não verá nenhum erro.
+1. Retorne à aba do navegador com a página de estatísticas da aplicação web carregada. Atualize a página repetidamente. Você não verá nenhum erro.
 
       ![Na página Estatísticas da aplicação Web Contoso Neuro, são destacados dois valores de nome de host de API diferentes.](../media/11.png "Ver nome de host de tarefa Web")
 
-1. Voltar para **contoso-traders-products | Na página Descrição Geral**, selecione **dois dos pods (1)** aleatoriamente e escolha **Eliminar (2)**.
+1. Retorne para a página **contoso-traders-products | Na página Visão geral**, selecione **dois dos Pods (1)** aleatoriamente e escolha **Excluir (2)**.
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn62.png "A implementação da API está agora íntegra")
 
-1. Na página **Eliminar**, selecione **Confirmar eliminação (1)** e clique novamente em **Eliminar (2)**.
+1. Na página **Excluir**, selecione **Confirmar exclusão (1)** e clique novamente em **Excluir (2)**.
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn63.png "A implementação da API está agora íntegra")
 
-1. O Kubernetes lançará novos pods para satisfazer a contagem de réplicas necessária. Dependendo da sua visão, poderá ver as instâncias antigas a serem encerradas e novas instâncias a serem criadas.
+1. O Kubernetes iniciará novos Pods para atender à contagem de réplicas necessária. Dependendo da sua visualização, você pode ver as instâncias antigas sendo encerradas e novas instâncias sendo criadas.
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn64.png "A implementação da API está agora íntegra")
 
-1. Volte ao deployment da API **contoso-traders-product**. Selecione o item de navegação **YAML** e reduza novamente para `1` réplica.
+1. Retorne à Implantação da API **contoso-traders-product**. Selecione o item de navegação **YAML** e reduza a escala de volta para `1` réplica.
 
       ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cn65.png "A implementação da API está agora íntegra")
 
-1. Selecione **Rever + guardar** e, quando for solicitado a confirmar a alteração do manifesto, assinale **Confirmar alteração do manifesto** e selecione **Guardar**.
+1. Selecione **Revisar + salvar** e, quando for solicitado, marque **Confirmar alteração do manifesto** e selecione **Salvar**.
 
-1. Volte à página de estatísticas do site ContosoTarders no browser e atualize enquanto o Kubernetes reduz o número de pods. Deve conseguir ver o site a funcionar sem problemas
+1. Retorne à página de estatísticas do site ContosoTraders no navegador e atualize enquanto o Kubernetes está reduzindo o número de Pods. Você deve conseguir ver o site funcionando sem problemas.
 
       ![Os conjuntos de réplicas estão seleccionados em Cargas de trabalho no menu de navegação à esquerda. À direita estão as caixas Detalhes e Pods. Apenas um nome de host da API, que tem uma marca de verificação verde e está listado como em execução, aparece na caixa Pods.](../media/11.png "Ver detalhes da réplica")
 
 
-> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> **Parabéns** por concluir a tarefa! Agora, é hora de validá-la. Aqui estão os passos:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
 > - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
