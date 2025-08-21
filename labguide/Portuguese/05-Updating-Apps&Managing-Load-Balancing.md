@@ -168,9 +168,9 @@ As atualizações contínuas permitem que as mudanças sejam implantadas sem ger
 
 ### Tarefa 2: Configurar o Ingress em Kubernetes
 
-Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy Nginx](https://nginx.org/en/) para tirar partido do encaminhamento baseado em caminhos e da terminação TLS.
+Esta tarefa irá configurar uma entrada (Ingress) Kubernetes utilizando um [servidor proxy Nginx](https://nginx.org/en/) para aproveitar o roteamento baseado em caminho e a terminação TLS.
 
-1. Execute o seguinte comando num terminal de comando do Windows para adicionar o repositório Helm estável do Nginx:
+1. Execute o seguinte comando em um terminal de comando do Windows para adicionar o repositório Helm estável do Nginx:
 
       ```bash
       helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -186,13 +186,13 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
       ![](../media/cn83.png)
 
-      > **Nota**: Se receber a mensagem "nenhum repositório encontrado." erro e execute o seguinte comando. Este será adicionado de volta ao repositório "estável" oficial do Helm.
+      > **Observação**: Se você receber um erro "nenhum repositório encontrado.", execute o seguinte comando. Isso será adicionado de volta ao repositório "estável" oficial do Helm.
       >
       > ```bash
       > helm repo add stable https://charts.helm.sh/stable
       > ```
 
-1. Instale a funcionalidade Controlador de Ingress para lidar com pedidos de entrada à medida que estes chegam. O Controlador de Ingresso receberá um IP público próprio no Balanceador de Carga do Azure e processará solicitações de vários serviços nas portas 80 e 443.
+1. Instale o recurso do Controlador de Ingress para lidar com as solicitações de ingresso à medida que chegam. O Controlador de Ingress receberá um IP público próprio no Azure Load Balancer e lidará com solicitações para múltiplos serviços nas portas 80 e 443.
 
       ```bash
       helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
@@ -200,24 +200,26 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
       ![](../media/cn84.png)
 
-1. Navegue até ao Portal Azure, abra o serviço **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes. Selecione **Services and ingresses** nos recursos do Kubernetes e copie o endereço IP para o **External IP** para o serviço `nginx-ingress-RANDOM-nginx-ingress`.
+1. Navegue até o Portal do Azure, abra o serviço Kubernetes **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>**. Na seção, Recursos do Kubernetes, selecione **Serviços e entradas**  e copie o endereço IP do **IP Externo** para o serviço `nginx-ingress-RANDOM-nginx-ingress`.
 
-      ![Uma captura de ecrã do Azure Cloud Shell mostrando a saída do comando.](../media/cn85.png "Ver o controlador de entrada LoadBalancer")
+      ![Uma captura de tela do Azure Cloud Shell mostrando a saída do comando.](../media/cn85.png "Ver o controlador de entrada LoadBalancer")
 
-      > **Nota**: A atualização pode demorar alguns minutos.
+      > **Observação**: ode levar alguns minutos para atualizar; alternativamente, você pode encontrar o IP usando o seguinte comando no Azure Cloud Shell.
       >
       > ```bash
       > kubectl get svc --namespace contoso-traders
       > ```
       >
 
-1. No terminal de comandos do Windows, crie um script para atualizar o nome DNS público do IP de entrada externo.
+1. No Portal do Azure, pesquise e abra o **Microsoft Entra ID** e copie o ID do Locatário.
+
+1. Dentro do terminal de comando do Windows, crie um script para atualizar o nome DNS público para o IP externo do ingress.
 
       ```bash
       code update-ip.ps1
       ```
 
-      Cole o seguinte como conteúdo. Certifique-se de que substitui os seguintes espaços reservados no script:
+      Cole o seguinte como conteúdo. Certifique-se de substituir os seguintes espaços reservados no script:
 
       - `[ipaddress]`: Substitua pelo endereço IP copiado do passo 4.
       - `[KUBERNETES_NODE_RG]`: Substitua o `SUFFIX` por este valor **<inject key="DeploymentID" />**.
@@ -256,7 +258,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
          ![](../media/cn86.png)      
 
-1. **Guarde** as alterações e feche o editor.
+1. **Salve** as alterações com o atalho **CTRL + S** e feche o editor.
 
 1. Execute o script de atualização.
 
@@ -264,21 +266,21 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       powershell ./update-ip.ps1
       ```
 
-      ![Uma captura de ecrã do editor Cloud Shell mostrando os valores actualizados de IP e SUFFIX.](../media/2dg125.jpg "Actualizar os valores de IP e SUFFIX")
+      ![Uma captura de tela do editor Cloud Shell mostrando os valores actualizados de IP e SUFFIX.](../media/2dg125.jpg "Actualizar os valores de IP e SUFFIX")
 
-1. Verifique a atualização do IP visitando este http://contosotraders-<inject key="DeploymentID" enableCopy="false" />-ingress.<inject key="Region" enableCopy="false" />.cloudapp.azure.com/ no seu navegador.
+1. Verifique a atualização do IP visitando a URL em seu navegador. http://contosotraders-<inject key="DeploymentID" enableCopy="false" />-ingress.<inject key="Region" enableCopy="false" />.cloudapp.azure.com/ no seu navegador.
 
       > **Observação**: É normal receber uma mensagem 404 neste momento.
 
       ![](../media/cn87.png )
 
-      >**Nota**: Se o URL não funcionar ou não receber um erro 404. Execute o comando mencionado abaixo e tente aceder novamente ao URL.
+      >**Observação**: Se a URL não funcionar ou se você não receber um erro 404, por favor, execute o comando abaixo e tente acessar a URL novamente.
 
       ```bash
       helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
       ```
 
-1. Utilize o helm para instalar o `cert-manager`, uma ferramenta que pode aprovisionar certificados SSL automaticamente em letsencrypt.org.
+1. Utilize o helm para instalar o `cert-manager`, uma ferramenta que pode provisionar certificados SSL automaticamente do letsencrypt.org.
 
       ```bash
       kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
@@ -286,13 +288,13 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
       ![](../media/E5T2S9-0608.png )
 
-1. Para criar um recurso `ClusterIssuer` personalizado para o serviço `cert-manager` utilizar ao lidar com pedidos de certificados SSL, execute o comando abaixo na linha de comandos do Windows.
+1. Para criar um recurso `ClusterIssuer` personalizado para o serviço `cert-manager` usar ao lidar com solicitações de certificados SSL, execute o comando abaixo no prompt de comando do Windows.
 
       ```bash
       code clusterissuer.yml
       ```
 
-1. No interior do ficheiro **clusterissuer.yml** copie e cole o seguinte conteúdo:
+1. Dentro do arquivo **clusterissuer.yml**, copie e cole o seguinte conteúdo:
 
       ```yaml
       apiVersion: cert-manager.io/v1
@@ -316,7 +318,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
                 class: nginx
       ```
 
-1. **Guarde** as alterações **Ctrl + S** e feche o editor.
+1. **Salve** as alterações com **Ctrl + S** e feche o editor.
 
 1. Crie o emissor (issuer) usando `kubectl`.
 
@@ -326,10 +328,10 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
 1. Agora pode criar um objeto de certificado.
 
-      > **Nota**:
+      > **Observação**:
       > O Cert-manager pode já ter criado um objeto de certificado para si utilizando o ingress-shim.
       >
-      > Para verificar se o certificado foi criado com sucesso, utilize o comando `kubectl descreve certificado tls-secret`.
+      > Para verificar se o certificado foi criado com sucesso, use o comando `kubectl descreve certificado tls-secret`.
       >
       > Se já estiver disponível um certificado, passe para o passo 16.
 
@@ -337,7 +339,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       code certificate.yml
       ```
 
-1. No interior do ficheiro **certificate.yml** copie e cole o seguinte conteúdo:
+1. Dentro do arquivo **certificate.yml**, copie e cole o seguinte conteúdo:
 
       ```yaml
       apiVersion: cert-manager.io/v1
@@ -354,9 +356,9 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
           kind: ClusterIssuer
       ```
 
-1. Use o seguinte como conteúdo e atualize `[SUFFIX]` com **<inject key="DeploymentID" />** e `[AZURE-REGION]` com **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
+1. Use o conteúdo a seguir e atualize o `[SUFFIX]` com **<inject key="DeploymentID" />** e o `[AZURE-REGION]` com **<inject key="Region" />** para corresponder ao seu nome DNS do ingress.
 
-1. Guarde as alterações e feche o editor.
+1. Salve as alterações e feche o editor.
 
 1. Crie o certificado utilizando `kubectl`.
 
@@ -364,7 +366,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       kubectl create --save-config=true -f certificate.yml
       ```
 
-     > **Nota**: Para verificar o estado da emissão do certificado, utilize o comando `kubectl description certificado tls-secret -n contoso-traders` e procure uma saída _Events_ semelhante a esta:
+     > **Observação**: Para verificar o estado da emissão do certificado, use o comando `kubectl description certificado tls-secret -n contoso-traders` e procure por uma saída de Eventos semelhante a esta:
      >
      > ```text
      > Type    Reason         Age   From          Message
@@ -376,7 +378,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
      > Normal  CertIssued          12s   cert-manager  Certificate issued successfully
      > ```
 
-     > Pode demorar 5 a 30 minutos até que o tls-secret fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt. Também, anote o nome DNS, vamos usá-lo mais tarde nas mesmas tarefas.
+     > Pode levar entre 5 e 30 minutos para que o `tls-secret` se torne disponível. Isso se deve ao atraso envolvido no provisionamento de um certificado TLS do Let's Encrypt.
 
    ![](../media/english-09.png)
 
@@ -386,7 +388,7 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
       code content.ingress.yml
       ```
 
-1. Dentro do ficheiro **content.ingress.yml** copie e cole o seguinte conteúdo:
+1. Dentro do arquivo **content.ingress.yml** copie e cole o seguinte conteúdo:
 
       ```yaml
       apiVersion: networking.k8s.io/v1
@@ -424,11 +426,11 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
                      number: 3001
       ```
 
-1. Use o seguinte como conteúdo e atualize `[SUFFIX]`: **<inject key="DeploymentID" />** e `[AZURE-REGION]`: **<inject key="Region" />** para corresponder ao seu nome DNS de entrada.
+1. Use o conteúdo a seguir e atualize o `[SUFFIX]`: **<inject key="DeploymentID" />** e `[AZURE-REGION]`: **<inject key="Region" />** para corresponder ao seu nome DNS do ingress.
 
    ![](../media/cn88.png)
 
-1. **Guarde** as alterações e feche o editor.
+1. **Salve** as alterações e feche o editor.
 
 1. Crie a entrada utilizando `kubectl`.
 
@@ -438,22 +440,22 @@ Esta tarefa irá configurar uma entrada Kubernetes utilizando um [servidor proxy
 
    ![](../media/cn89.png)    
 
-1. Atualize o endpoint de entrada no seu browser. Deverá poder visitar o site e ver todo o conteúdo.
+1. Atualize o endpoint do ingress em seu navegador. Você deve conseguir visitar o site e ver todo o conteúdo.
 
    ![](../media/16.png)
 
-      >**Nota:** Se o site não aparecer ao acessá-lo pelo IP, use o nome DNS que você copiou. Adicione `http://` antes, cole no navegador e verifique.
+      >**Observação:** Se o site não aparecer ao acessá-lo pelo IP, use o nome DNS que você copiou. Adicione `http://` antes, cole no navegador e verifique.
 
 1. Teste a terminação do TLS visitando novamente os serviços utilizando `https`.
 
-      > **Nota**: Pode demorar 5 a 30 minutos para que o site SSL fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt.
+      > **Observação**: Pode demorar 5 a 30 minutos para que o site SSL fique disponível. Isto deve-se ao atraso envolvido no provisionamento de um certificado TLS da Let Encrypt.
 
 1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
 ## Resumo
 
-Neste exercício, executou uma atualização contínua e configurou o Kubernetes Ingress.
+Neste exercício, você realizou uma atualização contínua e configurou o Ingress do Kubernetes.
 
-### Você completou com sucesso este exercício. Clique em "Próximo" para prosseguir para o próximo exercício.
+### Você concluiu o laboratório com sucesso. Clique em Próximo >> para prosseguir para o próximo exercício.
 
 ![](../media/imag1.png)
