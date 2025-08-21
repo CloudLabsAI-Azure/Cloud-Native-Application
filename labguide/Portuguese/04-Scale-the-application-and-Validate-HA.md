@@ -218,56 +218,54 @@ Nesta tarefa, você reiniciará contêineres e validará que a reinicialização
 
 <validation step="0cddaf1e-5cbe-4a3c-8b20-0e6999478048" />      
 
-### Tarefa 6: Configurar a escala automática do CosmosDB
+### Tarefa 6: Configurar o escalonamento automático do Cosmos DB
 
-Nesta tarefa, irá configurar o dimensionamento automático no Azure Cosmos DB.
+Nesta tarefa, você irá configurar o dimensionamento automático no Azure Cosmos DB.
 
-1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
+1. No Portal do Azure, navegue até a conta do Azure Cosmos DB para MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
 
       <img src="../media/E4T6S1-0608.png" alt="Na vista Carga de trabalho com a implementação da API destacada." title="A implementação da API está agora íntegra" width="900">
 
-1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a base de dados `contentdb` **(2)**.
+1. Selecione **Data Explorer (1)** no menu do lado esquerdo. No **Data Explorer**, expanda a banco de dados `contentdb` **(2)**.
  
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-10.png "A implementação da API está agora íntegra")
 
-1. Na base de dados `contentdb`, expanda a coleção **Items (1)**, selecione **Settings (2)**.
+1. No banco de dados `contentdb`, expanda a coleção **Items (1)**, clique **Scale & Settings (2)**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/22-10-24(33).png "A implementação da API está agora íntegra")
 
-1. No separador **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
+1. Na aba **Scale & Settings (1)**, selecione **Autoscale (2)** para a definição **Throughput** em **Scale** e clique em **Save (3)** .
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/spanish-188.png "A implementação da API está agora íntegra")
 
-
-> **Parabéns** por concluir a tarefa! Agora é hora de validá-lo. Aqui estão as etapas:
+> **Parabéns** por concluir a tarefa! Agora, é hora de validá-la. Aqui estão os passos:
 > - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
 > - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
 > - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.
    
 <validation step="772e22fb-588f-41b1-b761-428e48c79279" />
     
+### Tarefa 7: Testar o escalonamento automático do Cosmos DB
 
-### Tarefa 7: Testar a escala automática do CosmosDB
+Nesta tarefa, você executará um script de teste de desempenho que testará o recurso de Escalonamento Automático do Azure Cosmos DB para que você possa ver que ele agora escalará para mais de 400 RU/s.
 
-Nesta tarefa, irá executar um script de teste de desempenho que testará a funcionalidade Autoscale do Azure Cosmos DB para que possa ver que agora será dimensionado para mais de 400 RU/s.
-
-1. No Portal do Azure, navegue até a conta **contosotraders-<inject key="DeploymentID" enableCopy="false" />** do Azure Cosmos DB para MongoDB.
+1. No Portal do Azure, navegue até a conta do Azure Cosmos DB para MongoDB **contosotraders-<inject key="DeploymentID" enableCopy="false" />**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/E4T6S1-0608.png "A implementação da API está agora íntegra")
 
-1. Selecione **Cadeia de Ligação** em **Definições**.
+1. Na seção **Configurações**, clique em **Cadeia de Conexão**.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-11.png "A implementação da API está agora íntegra")
 
-1. No painel **Cadeia de Ligação**, copie os valores **ANFITRIÃO (1)**, **NOME DE UTILIZADOR (2)** e **PALAVRA-PASSE PRIMÁRIA (3)**. Guarde-os num ficheiro de texto para uso posterior.
+1. No painel **Cadeia de Conexão**, copie os valores **HOST (1)**, **USERNAME (2)** e **PRIMARY PASSWORD (3)**. Salve-os em um arquivo de texto para uso posterior.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/cnctionstringnew.png "A implementação da API está agora íntegra")
 
-1. Abra o comando de linha e ligue-se à VM do agente de construção utilizando o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
+1. Abra o prompt de comando e conecte-se à VM do agente de compilação usando o comando fornecido **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />**.
 
-1. Quando a palavra-passe for solicitada, introduza **Build Agent VM Password** fornecida abaixo.
+1. Quando a senha for solicitada, insira a **Build Agent VM Password** fornecida abaixo.
 
-   * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
+   * Senha: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
 1. Na **Build agent VM**, navegue até ao diretório `~/labfiles`.
 
@@ -282,40 +280,40 @@ Nesta tarefa, irá executar um script de teste de desempenho que testará a func
       vi perftest.sh
       ```
 
-1. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Prima **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**host**, **NOME DE USUÁRIO** e **SENHA PRIMÁRIA** definindo os seus valores para os valores correspondentes da cadeia de ligação do Cosmos DB que foram copiados anteriormente.
+1. Existem diversas variáveis ​​declaradas no topo do script `perftest.sh`. Pressione **_i_** para entrar no modo `inserir`. Em seguida, modifique as variáveis ​​​​**HOST**, **USERNAME** e **PRIMARY PASSWORD** definindo seus valores para os valores correspondentes da cadeia de conexão do Cosmos DB que foram copiados anteriormente.
 
    ![A captura de ecrã mostra o Vim com o ficheiro perftest.sh aberto e as variáveis ​​definidas para os valores da cadeia de ligação do Cosmos DB.](../media/updatepreftest.png "Modificar as informações de ligação no Vim")
 
-1. De seguida, prima **_ESC_**, escreva **_:wq_** para guardar as suas alterações e feche o ficheiro.
+1. De seguida, prima **_ESC_**, digite **_:wq_** para salvar as suas alterações e feche o arquivo.
 
-      >**Nota**: Se **_ESC_** não funcionar, prima `ctrl+[` e depois escreva **_:wq_** para guardar as suas alterações e fechar o ficheiro.
+      >**Observação**: Se **_ESC_** não funcionar, pressione `ctrl+[` e, em seguida, depois digite: **_:wq_** para salvar as suas alterações e fechar o arquivo.
 
-10. Execute o seguinte comando para executar o script `perftest.sh` para executar um pequeno teste de carga no CosmosDB. Este script irá consumir RUs no CosmosDB inserindo muitos documentos no contentor Sessions.
+10. Execute o seguinte comando para executar o script `perftest.sh` e realizar um pequeno teste de carga contra o Cosmos DB. Este script consumirá RUs no Cosmos DB inserindo muitos documentos no contêiner de Sessões.
 
       ```bash
       bash ./perftest.sh
       ```
 
-      > **Nota:** O script irá demorar alguns minutos a concluir a sua execução. Se o script ficar bloqueado durante a execução, pressione `Ctrl+C` para interromper o script.
+      > **Observação:** O script levará alguns minutos para concluir sua execução; se o script travar durante a execução, pressione `Ctrl+C` para interrompê-lo.
 
-1. Assim que a execução do script estiver concluída, navegue de volta para a **Cosmos DB account** no portal Azure.
+1. Assim que a execução do script estiver concluída, retorne para a conta do **Cosmos DB account** no portal Azure.
 
-1. Desça no painel **Descrição Geral** da folha **Cosmos DB account** e localize o gráfico **Solicitar taxa**.
+1. Role para baixo no painel de **Visão Geral** da conta do **Cosmos DB** e localize o gráfico **Cobrança de Requisição**.
 
-      > **Nota:** Pode demorar 2 a 5 minutos para que a atividade na coleção do CosmosDB apareça no registo de atividades. Aguarde alguns minutos e atualize a página se a cobrança de pedidos recentes não aparecer agora.
+      > **Observação:** Pode demorar 2 a 5 minutos para que a atividade na coleção do CosmosDB apareça no registo de atividades. Aguarde alguns minutos e atualize a página se a cobrança de pedidos recentes não aparecer imediatamente.
 
-1. Note que a **Solicitar taxa** mostra agora que houve atividade na **Cosmos DB account** que excedeu o limite de 400 RU/s definido anteriormente antes da ativação do dimensionamento automático.
+1. Observe que a **Cobrança de requisição** agora mostra que houve atividade na conta do **Cosmos DB** que excedeu o limite de 400 RU/s que estava definido antes de o escalonamento automático ser ativado.
 
    ![Na vista Carga de trabalho com a implementação da API destacada.](../media/portu-12.png "A implementação da API está agora íntegra")
 
-      >**Nota**: Caso não veja os dados no gráfico, defina o intervalo de tempo para durar 1 hora.
+      >**Observação**: Caso você не veja dados no gráfico, defina o intervalo de tempo para a última 1 hora.
 
-1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuare com o exercício seguinte.
+1. Clique no botão **Próximo** localizado no canto inferior direito deste guia de laboratório para continuar com o próximo exercício.
 
 ## Resumo
 
-Neste exercício, aumentou as instâncias de serviço e configurou o dimensionamento automático horizontal para pods AKS. Além disso, configurou e testou o dimensionamento automático do CosmosDB.
+Neste exercício, você aumentou as instâncias do serviço e configurou o escalonamento automático horizontal para os pods do AKS. Além disso, você configurou e testou o Escalonamento Automático do CosmosDB.
 
-### Você completou com sucesso este exercício. Clique em "Próximo" para prosseguir para o próximo exercício.
+### Você concluiu o laboratório com sucesso. Clique em Próximo >> para prosseguir para o próximo exercício.
 
 ![](../media/imag1.png)
