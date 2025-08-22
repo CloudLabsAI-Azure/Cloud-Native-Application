@@ -20,10 +20,10 @@ In this task, you will gather the necessary information about your Azure Kuberne
 
 > **Note**: The following tasks should be executed in the command prompt.
 
-1. Open a new command prompt as Administrator in your jump VM and log in to Azure with the below command.
+1. Open a new command prompt as Administrator in your jump VM and log in to Azure with the below command **(1)**. Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
    
     ```bash
-    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
+    az login
     ```
     ![](media/E3T1S1.png)
 
@@ -32,8 +32,29 @@ In this task, you will gather the necessary information about your Azure Kuberne
     ```bash
     choco install azure-cli
     ```
+    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+
+   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+   
+     ![](media/GS3.png "Enter Email")
+     
+1. Now enter the following password and click on **Sign in**.
+
+   * Password: <inject key="AzureAdUserPassword"></inject>
+   
+     ![](media/GS4.png "Enter Password")
+
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**.
+
+     ![](media/E3T1S4.png)
+
+     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
+
+     ![](media/E3T1S5.png)
     
-2. Run the following command to set up the Kubernetes cluster connection using kubectl.
+1. Run the following command to set up the Kubernetes cluster connection using kubectl.
 
    ```bash
    az aks get-credentials -a --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/>
@@ -57,7 +78,7 @@ In this task, you will define a Kubernetes Service for your API to enable intern
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/E3T2S1.png "Add a Service")
    
-1. We have already defined a new AKS **Namespaces** for your API deployment. Going further, you will be using the **contoso-traders** namespace only. 
+1. We have already defined a new AKS **Namespaces (2)** for your API deployment. Going further, you will be using the **contoso-traders (3)** namespace only. 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/E3T2S2.png "Add a Service")
     
@@ -206,8 +227,6 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/E3T3S8.png "AKS services and ingresses shown with External IP highlighted")
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2--new.png "AKS services and ingresses shown with External IP highlighted")
-    
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:

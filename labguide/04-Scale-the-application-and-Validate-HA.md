@@ -117,23 +117,44 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
 
 In this task, you will be enabling the cluster autoscaler for the existing AKS cluster, and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the command below.
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+    ```
+    az login 
+    ```
+    ![](media/E4T4S1.png)
 
-    ```
-    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
-    ```
-    ![](media/E3T1S1.png)
+    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+
+   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+   
+     ![](media/GS3.png "Enter Email")
+     
+1. Now enter the following password and click on **Sign in**.
+
+   * Password: <inject key="AzureAdUserPassword"></inject>
+   
+     ![](media/GS4.png "Enter Password")
+
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**. 
+
+     ![](media/E3T1S4.png)
+
+     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
+
+     ![](media/E4T1S1.png)
 
 1. In order to set up the Kubernetes cluster connection, run the following command.
 
     ```
-    az aks get-credentials --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
+    az aks get-credentials --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
     ```
     
 1.  Verify the `count` **(1)** of node pools in the cluster and ensure that `enablingAutoScaling` is `false` **(2)**.
     
      ```
-     az aks nodepool list --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
+     az aks nodepool list --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --cluster-name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
      ```   
     
     ![](media/E4T4S3.png)
@@ -141,7 +162,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
 1. Run the below command to enable the cluster autoscale in the existing cluster. Verify that `enablingAutoScaling` **(1)** is `true`**(2)**.
 
     ```
-    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
+    az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --enable-cluster-autoscaler --min-count 1 --max-count 3
     ```
   
    ![](media/E4T4S4.png)
@@ -151,7 +172,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
 1. Run the below command to autoscale the node pools in the existing cluster.
 
     ```
-    az aks update --resource-group ContosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
+    az aks update --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/> --update-cluster-autoscaler --min-count 1 --max-count 5
     ```
    
    ![](media/E4T4S5.png)
@@ -217,7 +238,7 @@ In this task, you will restart containers and validate that the restart does not
 
 In this task, you will set up Autoscale on Azure Cosmos DB.
 
-1. In the Azure Portal, navigate to the **Contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure Cosmos DB for MongoDB Account.
+1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** Azure Cosmos DB for MongoDB Account(RU) service in the RG **contosoTraders-<inject key="DeploymentID" enableCopy="false" /> (1)** .
 
     ![](media/E2T2S2.png "View replica details")
 
@@ -245,9 +266,10 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
-1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** .Azure Cosmos DB for MongoDB Account.
+1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** Azure Cosmos DB for MongoDB Account(RU) service in the RG **contosoTraders-<inject key="DeploymentID" enableCopy="false" /> (1)** .
 
-    ![](media/p5-t6-st1--new.png "View replica details")
+
+     ![](media/E2T2S2.png "View replica details")
 
 1. Select **Connection strings** under **Settings** tab.
 
@@ -303,8 +325,6 @@ In this task, you will run a performance test script that will test the Autoscal
     ![The screenshot shows the Cosmos DB request charge graph showing recent activity from performance test](media/english-09.png "Recent CosmosDB activity graph")
     
     >**Note**: In case you don't see data on the graph, please set the time range to last 1 hour.
-
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
 ## Summary
 
