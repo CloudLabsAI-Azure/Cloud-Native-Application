@@ -266,10 +266,9 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
 In this task, you will run a performance test script that will test the Autoscale feature of Azure Cosmos DB so you can see that it will now scale greater than 400 RU/s.
 
-1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** Azure Cosmos DB for MongoDB Account(RU) service in the RG **contosoTraders-<inject key="DeploymentID" enableCopy="false" /> (1)** .
+1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** Azure Cosmos DB for MongoDB Account(RU) service in the RG **contosoTraders-<inject key="DeploymentID" enableCopy="false" /> (1)**.
 
-
-     ![](media/E2T2S2.png "View replica details")
+    ![](media/E2T2S2.png "View replica details")
 
 1. Select **Connection strings** under **Settings** tab.
 
