@@ -268,7 +268,7 @@ In this task, you will run a performance test script that will test the Autoscal
 
 1. In the Azure Portal, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" /> (2)** Azure Cosmos DB for MongoDB Account(RU) service in the RG **contosoTraders-<inject key="DeploymentID" enableCopy="false" /> (1)**.
 
-    ![](media/E2T2S2.png "View replica details")
+      ![](media/E2T2S2.png "View replica details")
 
 1. Select **Connection strings** under **Settings** tab.
 
