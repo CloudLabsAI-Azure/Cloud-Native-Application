@@ -7,11 +7,12 @@ targetScope = 'resourceGroup'
 // common
 @minLength(3)
 @maxLength(7)
-@description('A unique environment name (max 7 characters, alphanumeric only).')
-param environment string
+@description('A unique environment suffix (max 6 characters, alphanumeric only).')
+param suffix string
 
-
-param sqlPassword string
+@secure()
+@description('A password which will be set on all SQL Azure DBs.')
+param sqlPassword string // @TODO: Obviously, we need to fix this!
 
 param resourceLocation string = resourceGroup().location
 
@@ -25,111 +26,137 @@ param prefix string = 'contosotraders'
 
 param prefixHyphenated string = 'contoso-traders'
 
+// sql
+param sqlServerHostName string = environment().suffixes.sqlServerHostname
+
+// use param to conditionally deploy private endpoint resources
+param deployPrivateEndpoints bool = false
+
 // variables
 ////////////////////////////////////////////////////////////////////////////////
 
 // key vault
-var kvName = '${prefix}kv${environment}'
+var kvName = '${prefix}kv${suffix}'
 var kvSecretNameProductsApiEndpoint = 'productsApiEndpoint'
 var kvSecretNameProductsDbConnStr = 'productsDbConnectionString'
 var kvSecretNameProfilesDbConnStr = 'profilesDbConnectionString'
 var kvSecretNameStocksDbConnStr = 'stocksDbConnectionString'
 var kvSecretNameCartsApiEndpoint = 'cartsApiEndpoint'
+var kvSecretNameCartsInternalApiEndpoint = 'cartsInternalApiEndpoint'
 var kvSecretNameCartsDbConnStr = 'cartsDbConnectionString'
 var kvSecretNameImagesEndpoint = 'imagesEndpoint'
-
-var kvSecretNameAppInsightsConnStr = 'appInsightsConnectionString'
+var kvSecretNameUiCdnEndpoint = 'uiCdnEndpoint'
+var kvSecretNameVnetAcaSubnetId = 'vnetAcaSubnetId'
 
 // user-assigned managed identity (for key vault access)
-var userAssignedMIForKVAccessName = '${prefixHyphenated}-mi-kv-access${environment}'
+var userAssignedMIForKVAccessName = '${prefixHyphenated}-mi-kv-access${suffix}'
 
 // cosmos db (stocks db)
-var stocksDbAcctName = '${prefixHyphenated}-stocks${environment}'
+var stocksDbAcctName = '${prefixHyphenated}-stocks${suffix}'
 var stocksDbName = 'stocksdb'
 var stocksDbStocksContainerName = 'stocks'
 
 // cosmos db (carts db)
-var cartsDbAcctName = '${prefixHyphenated}-carts${environment}'
+var cartsDbAcctName = '${prefixHyphenated}-carts${suffix}'
 var cartsDbName = 'cartsdb'
 var cartsDbStocksContainerName = 'carts'
 
 // app service plan (products api)
-var productsApiAppSvcPlanName = '${prefixHyphenated}-products${environment}'
-var productsApiAppSvcName = '${prefixHyphenated}-products${environment}'
+var productsApiAppSvcPlanName = '${prefixHyphenated}-products${suffix}'
+var productsApiAppSvcName = '${prefixHyphenated}-products${suffix}'
 var productsApiSettingNameKeyVaultEndpoint = 'KeyVaultEndpoint'
 var productsApiSettingNameManagedIdentityClientId = 'ManagedIdentityClientId'
 
 // sql azure (products db)
-var productsDbServerName = '${prefixHyphenated}-products${environment}'
+var productsDbServerName = '${prefixHyphenated}-products${suffix}'
 var productsDbName = 'productsdb'
 var productsDbServerAdminLogin = 'localadmin'
 var productsDbServerAdminPassword = sqlPassword
 
 // sql azure (profiles db)
-var profilesDbServerName = '${prefixHyphenated}-profiles${environment}'
+var profilesDbServerName = '${prefixHyphenated}-profiles${suffix}'
 var profilesDbName = 'profilesdb'
 var profilesDbServerAdminLogin = 'localadmin'
 var profilesDbServerAdminPassword = sqlPassword
 
 // azure container app (carts api)
-var cartsApiAcaName = '${prefixHyphenated}-carts${environment}'
-var cartsApiAcaEnvName = '${prefix}acaenv${environment}'
+var cartsApiAcaName = '${prefixHyphenated}-carts${suffix}'
+var cartsApiAcaEnvName = '${prefix}acaenv${suffix}'
 var cartsApiAcaSecretAcrPassword = 'acr-password'
-var cartsApiAcaContainerDetailsName = '${prefixHyphenated}-carts${environment}'
+var cartsApiAcaContainerDetailsName = '${prefixHyphenated}-carts${suffix}'
 var cartsApiSettingNameKeyVaultEndpoint = 'KeyVaultEndpoint'
 var cartsApiSettingNameManagedIdentityClientId = 'ManagedIdentityClientId'
 
+// azure container app (carts api - internal only)
+var cartsInternalApiAcaName = '${prefixHyphenated}-intcarts${suffix}'
+var cartsInternalApiAcaEnvName = '${prefix}intacaenv${suffix}'
+var cartsInternalApiAcaSecretAcrPassword = 'acr-password'
+var cartsInternalApiAcaContainerDetailsName = '${prefixHyphenated}-intcarts${suffix}'
+var cartsInternalApiSettingNameKeyVaultEndpoint = 'KeyVaultEndpoint'
+var cartsInternalApiSettingNameManagedIdentityClientId = 'ManagedIdentityClientId'
 
 // storage account (product images)
-var productImagesStgAccName = '${prefix}img${environment}'
+var productImagesStgAccName = '${prefix}img${suffix}'
 var productImagesProductDetailsContainerName = 'product-details'
 var productImagesProductListContainerName = 'product-list'
 
 // storage account (old website)
-var uiStgAccName = '${prefix}ui${environment}'
+var uiStgAccName = '${prefix}ui${suffix}'
 
 // storage account (new website)
-var ui2StgAccName = '${prefix}ui2${environment}'
+var ui2StgAccName = '${prefix}ui2${suffix}'
 
 // storage account (image classifier)
-var imageClassifierStgAccName = '${prefix}ic${environment}'
+var imageClassifierStgAccName = '${prefix}ic${suffix}'
 var imageClassifierWebsiteUploadsContainerName = 'website-uploads'
 
-// cognitive service (image recognition)
-
-
 // cdn
-var cdnProfileName = '${prefixHyphenated}-cdn${environment}'
-var cdnImagesEndpointName = '${prefixHyphenated}-images${environment}'
-var cdnUiEndpointName = '${prefixHyphenated}-ui${environment}'
-var cdnUi2EndpointName = '${prefixHyphenated}-ui2${environment}'
-
-// redis cache
-var redisCacheName = '${prefixHyphenated}-cache${environment}'
+var cdnProfileName = '${prefixHyphenated}-cdn${suffix}'
+var cdnImagesEndpointName = '${prefixHyphenated}-images${suffix}'
+var cdnUiEndpointName = '${prefixHyphenated}-ui${suffix}'
+var cdnUi2EndpointName = '${prefixHyphenated}-ui2${suffix}'
 
 // azure container registry
-var acrName = '${prefix}acr${environment}'
-// var acrCartsApiRepositoryName = '${prefix}apicarts' // @TODO: unused, probably remove later
+var acrName = '${prefix}acr${suffix}'
 
 // load testing service
-var loadTestSvcName = '${prefixHyphenated}-loadtest${environment}'
+var loadTestSvcName = '${prefixHyphenated}-loadtest${suffix}'
 
-// application insights
-var logAnalyticsWorkspaceName = '${prefixHyphenated}-loganalytics${environment}'
-var appInsightsName = '${prefixHyphenated}-ai${environment}'
 
-// portal dashboard
-var portalDashboardName = '${prefixHyphenated}-dashboard${environment}'
 
 // aks cluster
-var aksClusterName = '${prefixHyphenated}-aks${environment}'
-var aksClusterDnsPrefix = '${prefixHyphenated}-aks${environment}'
-var aksClusterNodeResourceGroup = '${prefixHyphenated}-aks-nodes-rg-${environment}'
+var aksClusterName = '${prefixHyphenated}-aks${suffix}'
+var aksClusterDnsPrefix = '${prefixHyphenated}-aks${suffix}'
+var aksClusterNodeResourceGroup = '${prefixHyphenated}-aks-nodes-rg${suffix}'
+
+// virtual network
+var vnetName = '${prefixHyphenated}-vnet${suffix}'
+var vnetAddressSpace = '10.0.0.0/16'
+var vnetAcaSubnetName = 'subnet-aca'
+var vnetAcaSubnetAddressPrefix = '10.0.0.0/23'
+var vnetVmSubnetName = 'subnet-vm'
+var vnetVmSubnetAddressPrefix = '10.0.2.0/23'
+var vnetLoadTestSubnetName = 'subnet-loadtest'
+var vnetLoadTestSubnetAddressPrefix = '10.0.4.0/23'
+
+// jumpbox vm
+var jumpboxPublicIpName = '${prefixHyphenated}-jumpbox${suffix}'
+var jumpboxNsgName = '${prefixHyphenated}-jumpbox${suffix}'
+var jumpboxNicName = '${prefixHyphenated}-jumpbox${suffix}'
+var jumpboxVmName = 'jumpboxvm'
+var jumpboxVmAdminLogin = 'localadmin'
+var jumpboxVmAdminPassword = sqlPassword
+var jumpboxVmShutdownSchduleName = 'shutdown-computevm-jumpboxvm'
+var jumpboxVmShutdownScheduleTimezoneId = 'UTC'
+
+// private dns zone
+var privateDnsZoneVnetLinkName = '${prefixHyphenated}-privatednszone-vnet-link${suffix}'
+
 
 // tags
 var resourceTags = {
   Product: prefixHyphenated
-  Environment: 'testing'
+  Environment: suffix
 }
 
 // resources
@@ -186,7 +213,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     tags: resourceTags
     properties: {
       contentType: 'connection string to the products db'
-      value: 'Server=tcp:${productsDbServerName}.database.windows.net,1433;Initial Catalog=${productsDbName};Persist Security Info=False;User ID=${productsDbServerAdminLogin};Password=${productsDbServerAdminPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;' // @TODO: hack, fix later
+      value: 'Server=tcp:${productsDbServerName}${sqlServerHostName},1433;Initial Catalog=${productsDbName};Persist Security Info=False;User ID=${productsDbServerAdminLogin};Password=${productsDbServerAdminPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
     }
   }
 
@@ -196,7 +223,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     tags: resourceTags
     properties: {
       contentType: 'connection string to the profiles db'
-      value: 'Server=tcp:${profilesDbServerName}.database.windows.net,1433;Initial Catalog=${profilesDbName};Persist Security Info=False;User ID=${profilesDbServerAdminLogin};Password=${profilesDbServerAdminPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;' // @TODO: hack, fix later
+      value: 'Server=tcp:${profilesDbServerName}${sqlServerHostName},1433;Initial Catalog=${profilesDbName};Persist Security Info=False;User ID=${profilesDbServerAdminLogin};Password=${profilesDbServerAdminPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
     }
   }
 
@@ -221,6 +248,16 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   }
 
   // secret
+  resource kv_secretCartsInternalApiEndpoint 'secrets' = if (deployPrivateEndpoints) {
+    name: kvSecretNameCartsInternalApiEndpoint
+    tags: resourceTags
+    properties: {
+      contentType: 'endpoint url (fqdn) of the (internal) carts api'
+      value: deployPrivateEndpoints ? cartsinternalapiaca.properties.configuration.ingress.fqdn : ''
+    }
+  }
+
+  // secret
   resource kv_secretCartsDbConnStr 'secrets' = {
     name: kvSecretNameCartsDbConnStr
     tags: resourceTags
@@ -236,22 +273,28 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
     tags: resourceTags
     properties: {
       contentType: 'endpoint url of the images cdn'
-      value: 'https://${cdnprofile_imagesendpoint.properties.hostName}'
+      value: 'https://${afdprofile_imagesendpoint.properties.hostName}'
+    }
+  }
+
+
+  // secret
+  resource kv_secretUiCdnEndpoint 'secrets' = {
+    name: kvSecretNameUiCdnEndpoint
+    tags: resourceTags
+    properties: {
+      contentType: 'endpoint url (cdn endpoint) of the ui'
+      value: afdprofile_ui2endpoint.properties.hostName
     }
   }
 
   // secret
-
-
-  // secret
-
-  // secret
-  resource kv_secretAppInsightsConnStr 'secrets' = {
-    name: kvSecretNameAppInsightsConnStr
+  resource kv_secretVnetAcaSubnetId 'secrets' = if (deployPrivateEndpoints) {
+    name: kvSecretNameVnetAcaSubnetId
     tags: resourceTags
     properties: {
-      contentType: 'connection string to the app insights instance'
-      value: appinsights.properties.ConnectionString
+      contentType: 'subnet id of the aca subnet'
+      value: deployPrivateEndpoints ? vnet.properties.subnets[0].id : ''
     }
   }
 
@@ -281,6 +324,8 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   }
 }
 
+
+
 resource userassignedmiforkvaccess 'Microsoft.ManagedIdentity/userAssignedIdentities@2022-01-31-preview' = {
   name: userAssignedMIForKVAccessName
   location: resourceLocation
@@ -292,7 +337,7 @@ resource userassignedmiforkvaccess 'Microsoft.ManagedIdentity/userAssignedIdenti
 //
 
 // cosmos db account
-resource stocksdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
+resource stocksdba 'Microsoft.DocumentDB/databaseAccounts@2022-08-15' = {
   name: stocksDbAcctName
   location: resourceLocation
   tags: resourceTags
@@ -346,7 +391,7 @@ resource stocksdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = 
 //
 
 // cosmos db account
-resource cartsdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
+resource cartsdba 'Microsoft.DocumentDB/databaseAccounts@2022-08-15' = {
   name: cartsDbAcctName
   location: resourceLocation
   tags: resourceTags
@@ -391,6 +436,56 @@ resource cartsdba 'Microsoft.DocumentDB/databaseAccounts@2022-02-15-preview' = {
           }
         }
       }
+    }
+  }
+}
+
+//
+// products api
+//
+
+// app service plan (linux)
+resource productsapiappsvcplan 'Microsoft.Web/serverfarms@2022-03-01' = {
+  name: productsApiAppSvcPlanName
+  location: resourceLocation
+  tags: resourceTags
+  sku: {
+    name: 'B1'
+  }
+  properties: {
+    reserved: true
+  }
+  kind: 'linux'
+}
+
+// app service
+resource productsapiappsvc 'Microsoft.Web/sites@2022-03-01' = {
+  name: productsApiAppSvcName
+  location: resourceLocation
+  tags: resourceTags
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${userassignedmiforkvaccess.id}': {}
+    }
+  }
+  properties: {
+    clientAffinityEnabled: false
+    httpsOnly: true
+    serverFarmId: productsapiappsvcplan.id
+    siteConfig: {
+      linuxFxVersion: 'DOTNETCORE|7.0'
+      alwaysOn: true
+      appSettings: [
+        {
+          name: productsApiSettingNameKeyVaultEndpoint
+          value: kv.properties.vaultUri
+        }
+        {
+          name: productsApiSettingNameManagedIdentityClientId
+          value: userassignedmiforkvaccess.properties.clientId
+        }
+      ]
     }
   }
 }
@@ -503,8 +598,7 @@ resource cartsapiaca 'Microsoft.App/containerApps@2022-06-01-preview' = {
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
-      '${userassignedmiforkvaccess.id}': {
-      }
+      '${userassignedmiforkvaccess.id}': {}
     }
   }
   properties: {
@@ -538,8 +632,8 @@ resource cartsapiaca 'Microsoft.App/containerApps@2022-06-01-preview' = {
     environmentId: cartsapiacaenv.id
     template: {
       scale: {
-        minReplicas: 0
-        maxReplicas: 4
+        minReplicas: 1
+        maxReplicas: 10
         rules: [
           {
             name: 'http-scaling-rule'
@@ -583,7 +677,7 @@ resource cartsapiaca 'Microsoft.App/containerApps@2022-06-01-preview' = {
 //
 
 // storage account (product images)
-resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
+resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: productImagesStgAccName
   location: resourceLocation
   tags: resourceTags
@@ -591,7 +685,9 @@ resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     name: 'Standard_LRS'
   }
   kind: 'StorageV2'
-
+  properties: {
+    allowBlobPublicAccess: true
+  }
   // blob service
   resource productimagesstgacc_blobsvc 'blobServices' = {
     name: 'default'
@@ -600,7 +696,7 @@ resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     resource productimagesstgacc_blobsvc_productdetailscontainer 'containers' = {
       name: productImagesProductDetailsContainerName
       properties: {
-        
+        publicAccess: 'Container'
       }
     }
 
@@ -608,7 +704,7 @@ resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     resource productimagesstgacc_blobsvc_productlistcontainer 'containers' = {
       name: productImagesProductListContainerName
       properties: {
-       
+        publicAccess: 'Container'
       }
     }
   }
@@ -620,7 +716,7 @@ resource productimagesstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
 //
 
 // storage account (main website)
-resource uistgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
+resource uistgacc 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: uiStgAccName
   location: resourceLocation
   tags: resourceTags
@@ -628,7 +724,9 @@ resource uistgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     name: 'Standard_LRS'
   }
   kind: 'StorageV2'
-
+  properties: {
+    allowBlobPublicAccess: true
+  }
   // blob service
   resource uistgacc_blobsvc 'blobServices' = {
     name: 'default'
@@ -648,8 +746,7 @@ resource uistgacc_roledefinition 'Microsoft.Authorization/roleDefinitions@2022-0
   name: '17d1049b-9a84-46fb-8f53-869881c3d3ab'
 }
 
-// @TODO: Unfortunately, this requires the service principal to be in the owner role for the subscription.
-// This is just a temporary mitigation, and needs to be fixed using a custom role.
+// This requires the service principal to be in 'owner' role or a custom role with 'Microsoft.Authorization/roleAssignments/write' permissions.
 // Details: https://learn.microsoft.com/en-us/answers/questions/287573/authorization-failed-when-when-writing-a-roleassig.html
 resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   scope: uistgacc
@@ -668,8 +765,7 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
-      '${uistgacc_mi.id}': {
-      }
+      '${uistgacc_mi.id}': {}
     }
   }
   dependsOn: [
@@ -716,9 +812,7 @@ resource ui2stgacc_mi 'Microsoft.ManagedIdentity/userAssignedIdentities@2022-01-
 }
 
 
-
-// @TODO: Unfortunately, this requires the service principal to be in the owner role for the subscription.
-// This is just a temporary mitigation, and needs to be fixed using a custom role.
+// This requires the service principal to be in 'owner' role or a custom role with 'Microsoft.Authorization/roleAssignments/write' permissions.
 // Details: https://learn.microsoft.com/en-us/answers/questions/287573/authorization-failed-when-when-writing-a-roleassig.html
 resource roleAssignment2 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   scope: ui2stgacc
@@ -737,8 +831,7 @@ resource deploymentScript2 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
-      '${ui2stgacc_mi.id}': {
-      }
+      '${ui2stgacc_mi.id}': {}
     }
   }
   dependsOn: [
@@ -767,7 +860,7 @@ resource deploymentScript2 'Microsoft.Resources/deploymentScripts@2020-10-01' = 
 //
 
 // storage account (main website)
-resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = {
+resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: imageClassifierStgAccName
   location: resourceLocation
   tags: resourceTags
@@ -775,6 +868,9 @@ resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = 
     name: 'Standard_LRS'
   }
   kind: 'StorageV2'
+  properties: {
+    allowBlobPublicAccess: true
+  }
 
   // blob service
   resource imageclassifierstgacc_blobsvc 'blobServices' = {
@@ -784,264 +880,328 @@ resource imageclassifierstgacc 'Microsoft.Storage/storageAccounts@2022-05-01' = 
     resource uistgacc_blobsvc_websiteuploadscontainer 'containers' = {
       name: imageClassifierWebsiteUploadsContainerName
       properties: {
-      
+        publicAccess: 'Container'
       }
     }
   }
 }
 
 //
-// cognitive services (image recognition)
-// 
-
-//
-// cdn
+// Azure Front Door
 //
 
-resource cdnprofile 'Microsoft.Cdn/profiles@2022-05-01-preview' = {
+resource afdprofile 'Microsoft.Cdn/profiles@2023-05-01' = {
   name: cdnProfileName
   location: 'global'
   tags: resourceTags
   sku: {
-    name: 'Standard_Microsoft'
+    name: 'Standard_AzureFrontDoor'
   }
 }
 
 // endpoint (product images)
-resource cdnprofile_imagesendpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-preview' = {
+resource afdprofile_imagesendpoint 'Microsoft.Cdn/profiles/afdEndpoints@2023-05-01' = {
   name: cdnImagesEndpointName
   location: 'global'
   tags: resourceTags
-  parent: cdnprofile
+  parent: afdprofile
   properties: {
-    isCompressionEnabled: true
-    contentTypesToCompress: [
-      'image/svg+xml'
-    ]
-    deliveryPolicy: {
-      rules: [
-        {
-          name: 'Global'
-          order: 0
-          actions: [
-            {
-              name: 'CacheExpiration'
-              parameters: {
-                typeName: 'DeliveryRuleCacheExpirationActionParameters'
-                cacheBehavior: 'SetIfMissing'
-                cacheType: 'All'
-                cacheDuration: '10:00:00'
-              }
-            }
-          ]
-        }
-      ]
-    }
-    originHostHeader: '${productImagesStgAccName}.blob.core.windows.net' // @TODO: Hack, fix later
-    origins: [
-      {
-        name: '${productImagesStgAccName}-blob-core-windows-net' // @TODO: Hack, fix later
-        properties: {
-          hostName: '${productImagesStgAccName}.blob.core.windows.net' // @TODO: Hack, fix later
-          originHostHeader: '${productImagesStgAccName}.blob.core.windows.net' // @TODO: Hack, fix later
-        }
-      }
-    ]
+    enabledState: 'Enabled'
   }
+}
+
+resource afdprofile_images_originGroup 'Microsoft.Cdn/profiles/originGroups@2023-05-01' = {
+  name: 'images-origin-group'
+  parent: afdprofile
+  properties: {
+    loadBalancingSettings: {
+      sampleSize: 4
+      successfulSamplesRequired: 3
+      additionalLatencyInMilliseconds: 50
+    }
+    healthProbeSettings: {
+      probePath: '/'
+      probeRequestType: 'HEAD'
+      probeProtocol: 'Http'
+      probeIntervalInSeconds: 100
+    }
+  }
+}
+
+resource afdprofile_images_origin 'Microsoft.Cdn/profiles/originGroups/origins@2023-05-01' = {
+  name: 'images-blob-origin'
+  parent: afdprofile_images_originGroup
+  properties: {
+    hostName: replace(replace(productimagesstgacc.properties.primaryEndpoints.blob, 'https://', ''), '/', '')
+    httpPort: 80
+    httpsPort: 443
+    originHostHeader: replace(replace(productimagesstgacc.properties.primaryEndpoints.blob, 'https://', ''), '/', '')
+    priority: 1
+    weight: 1000
+    enabledState: 'Enabled'
+  }
+}
+
+resource afdprofile_images_route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2023-05-01' = {
+  name: 'images-route'
+  parent: afdprofile_imagesendpoint
+  properties: {
+    originGroup: {
+      id: afdprofile_images_originGroup.id
+    }
+    supportedProtocols: [
+      'Http'
+      'Https'
+    ]
+    patternsToMatch: [
+      '/*'
+    ]
+    linkToDefaultDomain: 'Enabled'
+    httpsRedirect: 'Enabled'
+    enabledState: 'Enabled'
+    cacheConfiguration: {
+      compressionSettings: {
+        contentTypesToCompress: [
+          'image/svg+xml'
+        ]
+        isCompressionEnabled: true
+      }
+      queryStringCachingBehavior: 'IgnoreQueryString'
+    }
+  }
+  dependsOn: [
+    afdprofile_images_origin
+  ]
 }
 
 // endpoint (ui / old website)
-resource cdnprofile_uiendpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-preview' = {
+resource afdprofile_uiendpoint 'Microsoft.Cdn/profiles/afdEndpoints@2023-05-01' = {
   name: cdnUiEndpointName
   location: 'global'
   tags: resourceTags
-  parent: cdnprofile
+  parent: afdprofile
   properties: {
-    isCompressionEnabled: true
-    contentTypesToCompress: [
-      'application/eot'
-      'application/font'
-      'application/font-sfnt'
-      'application/javascript'
-      'application/json'
-      'application/opentype'
-      'application/otf'
-      'application/pkcs7-mime'
-      'application/truetype'
-      'application/ttf'
-      'application/vnd.ms-fontobject'
-      'application/xhtml+xml'
-      'application/xml'
-      'application/xml+rss'
-      'application/x-font-opentype'
-      'application/x-font-truetype'
-      'application/x-font-ttf'
-      'application/x-httpd-cgi'
-      'application/x-javascript'
-      'application/x-mpegurl'
-      'application/x-opentype'
-      'application/x-otf'
-      'application/x-perl'
-      'application/x-ttf'
-      'font/eot'
-      'font/ttf'
-      'font/otf'
-      'font/opentype'
-      'image/svg+xml'
-      'text/css'
-      'text/csv'
-      'text/html'
-      'text/javascript'
-      'text/js'
-      'text/plain'
-      'text/richtext'
-      'text/tab-separated-values'
-      'text/xml'
-      'text/x-script'
-      'text/x-component'
-      'text/x-java-source'
-    ]
-    deliveryPolicy: {
-      rules: [
-        {
-          name: 'Global'
-          order: 0
-          actions: [
-            {
-              name: 'CacheExpiration'
-              parameters: {
-                typeName: 'DeliveryRuleCacheExpirationActionParameters'
-                cacheBehavior: 'SetIfMissing'
-                cacheType: 'All'
-                cacheDuration: '10:00:00'
-              }
-            }
-          ]
-        }
-      ]
-    }
-    originHostHeader: '${uiStgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-    origins: [
-      {
-        name: '${uiStgAccName}-z13-web-core-windows-net' // @TODO: Hack, fix later
-        properties: {
-          hostName: '${uiStgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-          originHostHeader: '${uiStgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-        }
-      }
-    ]
+    enabledState: 'Enabled'
   }
 }
 
+resource afdprofile_ui_originGroup 'Microsoft.Cdn/profiles/originGroups@2023-05-01' = {
+  name: 'ui-origin-group'
+  parent: afdprofile
+  properties: {
+    loadBalancingSettings: {
+      sampleSize: 4
+      successfulSamplesRequired: 3
+      additionalLatencyInMilliseconds: 50
+    }
+    healthProbeSettings: {
+      probePath: '/'
+      probeRequestType: 'HEAD'
+      probeProtocol: 'Http'
+      probeIntervalInSeconds: 100
+    }
+  }
+}
+
+resource afdprofile_ui_origin 'Microsoft.Cdn/profiles/originGroups/origins@2023-05-01' = {
+  name: 'ui-web-origin'
+  parent: afdprofile_ui_originGroup
+  properties: {
+    hostName: replace(replace(uistgacc.properties.primaryEndpoints.web, 'https://', ''), '/', '')
+    httpPort: 80
+    httpsPort: 443
+    originHostHeader: replace(replace(uistgacc.properties.primaryEndpoints.web, 'https://', ''), '/', '')
+    priority: 1
+    weight: 1000
+    enabledState: 'Enabled'
+  }
+}
+
+resource afdprofile_ui_route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2023-05-01' = {
+  name: 'ui-route'
+  parent: afdprofile_uiendpoint
+  properties: {
+    originGroup: {
+      id: afdprofile_ui_originGroup.id
+    }
+    supportedProtocols: [
+      'Http'
+      'Https'
+    ]
+    patternsToMatch: [
+      '/*'
+    ]
+    linkToDefaultDomain: 'Enabled'
+    httpsRedirect: 'Enabled'
+    enabledState: 'Enabled'
+    cacheConfiguration: {
+      compressionSettings: {
+        contentTypesToCompress: [
+          'application/eot'
+          'application/font'
+          'application/font-sfnt'
+          'application/javascript'
+          'application/json'
+          'application/opentype'
+          'application/otf'
+          'application/pkcs7-mime'
+          'application/truetype'
+          'application/ttf'
+          'application/vnd.ms-fontobject'
+          'application/xhtml+xml'
+          'application/xml'
+          'application/xml+rss'
+          'application/x-font-opentype'
+          'application/x-font-truetype'
+          'application/x-font-ttf'
+          'application/x-httpd-cgi'
+          'application/x-javascript'
+          'application/x-mpegurl'
+          'application/x-opentype'
+          'application/x-otf'
+          'application/x-perl'
+          'application/x-ttf'
+          'font/eot'
+          'font/ttf'
+          'font/otf'
+          'font/opentype'
+          'image/svg+xml'
+          'text/css'
+          'text/csv'
+          'text/html'
+          'text/javascript'
+          'text/js'
+          'text/plain'
+          'text/richtext'
+          'text/tab-separated-values'
+          'text/xml'
+          'text/x-script'
+          'text/x-component'
+          'text/x-java-source'
+        ]
+        isCompressionEnabled: true
+      }
+      queryStringCachingBehavior: 'IgnoreQueryString'
+    }
+  }
+  dependsOn: [
+    afdprofile_ui_origin
+  ]
+}
+
 // endpoint (ui / new website)
-resource cdnprofile_ui2endpoint 'Microsoft.Cdn/profiles/endpoints@2022-05-01-preview' = {
+resource afdprofile_ui2endpoint 'Microsoft.Cdn/profiles/afdEndpoints@2023-05-01' = {
   name: cdnUi2EndpointName
   location: 'global'
   tags: resourceTags
-  parent: cdnprofile
+  parent: afdprofile
   properties: {
-    isCompressionEnabled: true
-    contentTypesToCompress: [
-      'application/eot'
-      'application/font'
-      'application/font-sfnt'
-      'application/javascript'
-      'application/json'
-      'application/opentype'
-      'application/otf'
-      'application/pkcs7-mime'
-      'application/truetype'
-      'application/ttf'
-      'application/vnd.ms-fontobject'
-      'application/xhtml+xml'
-      'application/xml'
-      'application/xml+rss'
-      'application/x-font-opentype'
-      'application/x-font-truetype'
-      'application/x-font-ttf'
-      'application/x-httpd-cgi'
-      'application/x-javascript'
-      'application/x-mpegurl'
-      'application/x-opentype'
-      'application/x-otf'
-      'application/x-perl'
-      'application/x-ttf'
-      'font/eot'
-      'font/ttf'
-      'font/otf'
-      'font/opentype'
-      'image/svg+xml'
-      'text/css'
-      'text/csv'
-      'text/html'
-      'text/javascript'
-      'text/js'
-      'text/plain'
-      'text/richtext'
-      'text/tab-separated-values'
-      'text/xml'
-      'text/x-script'
-      'text/x-component'
-      'text/x-java-source'
-    ]
-    deliveryPolicy: {
-      rules: [
-        {
-          name: 'Global'
-          order: 0
-          actions: [
-            {
-              name: 'CacheExpiration'
-              parameters: {
-                typeName: 'DeliveryRuleCacheExpirationActionParameters'
-                cacheBehavior: 'SetIfMissing'
-                cacheType: 'All'
-                cacheDuration: '02:00:00'
-              }
-            }
-          ]
-        }
-        {
-          name: 'EnforceHttps'
-          order: 1
-          conditions: [
-            {
-              name: 'RequestScheme'
-              parameters: {
-                typeName: 'DeliveryRuleRequestSchemeConditionParameters'
-                matchValues: [
-                  'HTTP'
-                ]
-                operator: 'Equal'
-                negateCondition: false
-                transforms: []
-              }
-            }
-          ]
-          actions: [
-            {
-              name: 'UrlRedirect'
-              parameters: {
-                typeName: 'DeliveryRuleUrlRedirectActionParameters'
-                redirectType: 'Found'
-                destinationProtocol: 'Https'
-              }
-            }
-          ]
-        }
-      ]
-    }
-    originHostHeader: '${ui2StgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-    origins: [
-      {
-        name: '${ui2StgAccName}-z13-web-core-windows-net' // @TODO: Hack, fix later
-        properties: {
-          hostName: '${ui2StgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-          originHostHeader: '${ui2StgAccName}.z13.web.core.windows.net' // @TODO: Hack, fix later
-        }
-      }
-    ]
+    enabledState: 'Enabled'
   }
+}
+
+resource afdprofile_ui2_originGroup 'Microsoft.Cdn/profiles/originGroups@2023-05-01' = {
+  name: 'ui2-origin-group'
+  parent: afdprofile
+  properties: {
+    loadBalancingSettings: {
+      sampleSize: 4
+      successfulSamplesRequired: 3
+      additionalLatencyInMilliseconds: 50
+    }
+    healthProbeSettings: {
+      probePath: '/'
+      probeRequestType: 'HEAD'
+      probeProtocol: 'Http'
+      probeIntervalInSeconds: 100
+    }
+  }
+}
+
+resource afdprofile_ui2_origin 'Microsoft.Cdn/profiles/originGroups/origins@2023-05-01' = {
+  name: 'ui2-web-origin'
+  parent: afdprofile_ui2_originGroup
+  properties: {
+    hostName: replace(replace(ui2stgacc.properties.primaryEndpoints.web, 'https://', ''), '/', '')
+    httpPort: 80
+    httpsPort: 443
+    originHostHeader: replace(replace(ui2stgacc.properties.primaryEndpoints.web, 'https://', ''), '/', '')
+    priority: 1
+    weight: 1000
+    enabledState: 'Enabled'
+  }
+}
+
+resource afdprofile_ui2_route 'Microsoft.Cdn/profiles/afdEndpoints/routes@2023-05-01' = {
+  name: 'ui2-route'
+  parent: afdprofile_ui2endpoint
+  properties: {
+    originGroup: {
+      id: afdprofile_ui2_originGroup.id
+    }
+    supportedProtocols: [
+      'Http'
+      'Https'
+    ]
+    patternsToMatch: [
+      '/*'
+    ]
+    linkToDefaultDomain: 'Enabled'
+    httpsRedirect: 'Enabled'
+    enabledState: 'Enabled'
+    cacheConfiguration: {
+      compressionSettings: {
+        contentTypesToCompress: [
+          'application/eot'
+          'application/font'
+          'application/font-sfnt'
+          'application/javascript'
+          'application/json'
+          'application/opentype'
+          'application/otf'
+          'application/pkcs7-mime'
+          'application/truetype'
+          'application/ttf'
+          'application/vnd.ms-fontobject'
+          'application/xhtml+xml'
+          'application/xml'
+          'application/xml+rss'
+          'application/x-font-opentype'
+          'application/x-font-truetype'
+          'application/x-font-ttf'
+          'application/x-httpd-cgi'
+          'application/x-javascript'
+          'application/x-mpegurl'
+          'application/x-opentype'
+          'application/x-otf'
+          'application/x-perl'
+          'application/x-ttf'
+          'font/eot'
+          'font/ttf'
+          'font/otf'
+          'font/opentype'
+          'image/svg+xml'
+          'text/css'
+          'text/csv'
+          'text/html'
+          'text/javascript'
+          'text/js'
+          'text/plain'
+          'text/richtext'
+          'text/tab-separated-values'
+          'text/xml'
+          'text/x-script'
+          'text/x-component'
+          'text/x-java-source'
+        ]
+        isCompressionEnabled: true
+      }
+      queryStringCachingBehavior: 'IgnoreQueryString'
+    }
+  }
+  dependsOn: [
+    afdprofile_ui2_origin
+  ]
 }
 
 //
@@ -1072,74 +1232,17 @@ resource loadtestsvc 'Microsoft.LoadTestService/loadTests@2022-12-01' = {
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
-      '${userassignedmiforkvaccess.id}': {
-      }
+      '${userassignedmiforkvaccess.id}': {}
     }
   }
 }
 
-//
-// application insights
-//
-
-// log analytics workspace
-resource loganalyticsworkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
-  name: logAnalyticsWorkspaceName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    publicNetworkAccessForIngestion: 'Enabled'
-    publicNetworkAccessForQuery: 'Enabled'
-    sku: {
-      name: 'PerGB2018' // pay-as-you-go
-    }
-  }
-}
-
-// app insights instance
-resource appinsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: appInsightsName
-  location: resourceLocation
-  tags: resourceTags
-  kind: 'web'
-  properties: {
-    Application_Type: 'web'
-    WorkspaceResourceId: loganalyticsworkspace.id
-  }
-}
-
-//
-// portal dashboard
-//
-
-resource dashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
-  name: portalDashboardName
-  location: resourceLocation
-  tags: resourceTags
-  properties: {
-    lenses: [
-      {
-        order: 0
-        parts: [
-          {
-            position: {
-              x: 0
-              y: 0
-              rowSpan: 4
-              colSpan: 2
-            }
-          }
-        ]
-      }
-    ]
-  }
-}
 
 //
 // aks cluster
 //
 
-resource aks 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
+resource aks 'Microsoft.ContainerService/managedClusters@2022-11-01' = {
   name: aksClusterName
   location: resourceLocation
   tags: resourceTags
@@ -1154,7 +1257,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
         name: 'agentpool'
         osDiskSizeGB: 0 // Specifying 0 will apply the default disk size for that agentVMSize.
         count: 3
-        vmSize: 'standard_d2s_v3'
+        vmSize: 'standard_b2s'
         osType: 'Linux'
         mode: 'System'
       }
@@ -1169,16 +1272,299 @@ resource aks 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
         ]
       }
     }
-    addonProfiles: {
-      omsagent: {
-        enabled: true
-        config: {
-          logAnalyticsWorkspaceResourceID: loganalyticsworkspace.id
+  }
+}
+
+
+
+
+//
+// virtual network
+//
+
+resource vnet 'Microsoft.Network/virtualNetworks@2022-07-01' = if (deployPrivateEndpoints) {
+  name: vnetName
+  location: resourceLocation
+  tags: resourceTags
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        vnetAddressSpace
+      ]
+    }
+    subnets: [
+      {
+        name: vnetAcaSubnetName
+        properties: {
+          addressPrefix: vnetAcaSubnetAddressPrefix
         }
       }
+      {
+        name: vnetVmSubnetName
+        properties: {
+          addressPrefix: vnetVmSubnetAddressPrefix
+        }
+      }
+      {
+        name: vnetLoadTestSubnetName
+        properties: {
+          addressPrefix: vnetLoadTestSubnetAddressPrefix
+        }
+      }
+    ]
+  }
+}
+
+//
+// jumpbox vm
+// 
+
+// public ip address
+resource jumpboxpublicip 'Microsoft.Network/publicIPAddresses@2022-07-01' = if (deployPrivateEndpoints) {
+  name: jumpboxPublicIpName
+  location: resourceLocation
+  tags: resourceTags
+  sku: {
+    name: 'Standard'
+    tier: 'Regional'
+  }
+  properties: {
+    deleteOption: 'Delete'
+    publicIPAllocationMethod: 'Static'
+  }
+}
+
+// network security group
+resource jumpboxnsg 'Microsoft.Network/networkSecurityGroups@2022-07-01' = if (deployPrivateEndpoints) {
+  name: jumpboxNsgName
+  location: resourceLocation
+  tags: resourceTags
+  properties: {
+    securityRules: [
+      {
+        name: 'allow-rdp-port-3389'
+        properties: {
+          access: 'Allow'
+          destinationAddressPrefix: 'VirtualNetwork'
+          destinationPortRange: '3389'
+          direction: 'Inbound'
+          priority: 300
+          protocol: '*'
+          sourceAddressPrefix: '*'
+          sourcePortRange: '*'
+        }
+      }
+    ]
+  }
+}
+
+// network interface controller
+resource jumpboxnic 'Microsoft.Network/networkInterfaces@2022-07-01' = if (deployPrivateEndpoints) {
+  name: jumpboxNicName
+  location: resourceLocation
+  tags: resourceTags
+  properties: {
+    ipConfigurations: [
+      {
+        name: 'nic-ip-config'
+        properties: {
+          primary: true
+          privateIPAllocationMethod: 'Dynamic'
+          subnet: {
+            id: deployPrivateEndpoints ? vnet.properties.subnets[1].id : ''
+          }
+          publicIPAddress: {
+            id: deployPrivateEndpoints ? jumpboxpublicip.id : ''
+          }
+        }
+      }
+    ]
+    networkSecurityGroup: {
+      id: deployPrivateEndpoints ? jumpboxnsg.id : ''
+    }
+    nicType: 'Standard'
+  }
+}
+
+// virtual machine
+resource jumpboxvm 'Microsoft.Compute/virtualMachines@2022-08-01' = if (deployPrivateEndpoints) {
+  name: jumpboxVmName
+  location: resourceLocation
+  tags: resourceTags
+  properties: {
+    hardwareProfile: {
+      vmSize: 'standard_b2s'
+    }
+    storageProfile: {
+      osDisk: {
+        createOption: 'FromImage'
+        managedDisk: {
+          storageAccountType: 'StandardSSD_LRS'
+        }
+      }
+      imageReference: {
+        offer: 'WindowsServer'
+        publisher: 'MicrosoftWindowsServer'
+        sku: '2019-datacenter-gensecond'
+        version: 'latest'
+      }
+    }
+    networkProfile: {
+      networkInterfaces: [
+        {
+          id: deployPrivateEndpoints ? jumpboxnic.id : ''
+          properties: {
+            deleteOption: 'Delete'
+          }
+        }
+      ]
+    }
+    osProfile: {
+      adminPassword: jumpboxVmAdminPassword
+      #disable-next-line adminusername-should-not-be-literal // @TODO: This is a temporary hack, until we can generate the password
+      adminUsername: jumpboxVmAdminLogin
+      computerName: jumpboxVmName
     }
   }
 }
 
+// auto-shutdown schedule
+resource jumpboxvmschedule 'Microsoft.DevTestLab/schedules@2018-09-15' = if (deployPrivateEndpoints) {
+  name: jumpboxVmShutdownSchduleName
+  location: resourceLocation
+  tags: resourceTags
+  properties: {
+    targetResourceId: deployPrivateEndpoints ? jumpboxvm.id : ''
+    dailyRecurrence: {
+      time: '2100'
+    }
+    notificationSettings: {
+      status: 'Disabled'
+    }
+    status: 'Enabled'
+    taskType: 'ComputeVmShutdownTask'
+    timeZoneId: jumpboxVmShutdownScheduleTimezoneId
+  }
+}
+
+//
+// private dns zone
+//
+
+module privateDnsZone './createPrivateDnsZone.bicep' = if (deployPrivateEndpoints) {
+  name: 'createPrivateDnsZone'
+  params: {
+    privateDnsZoneName: deployPrivateEndpoints ? join(skip(split(cartsinternalapiaca.properties.configuration.ingress.fqdn, '.'), 2), '.') : ''
+    privateDnsZoneVnetId: deployPrivateEndpoints ? vnet.id : ''
+    privateDnsZoneVnetLinkName: privateDnsZoneVnetLinkName
+    privateDnsZoneARecordName: deployPrivateEndpoints ? join(take(split(cartsinternalapiaca.properties.configuration.ingress.fqdn, '.'), 2), '.') : ''
+    privateDnsZoneARecordIp: deployPrivateEndpoints ? cartsinternalapiacaenv.properties.staticIp : ''
+    resourceTags: resourceTags
+  }
+}
+
+// aca environment (internal)
+resource cartsinternalapiacaenv 'Microsoft.App/managedEnvironments@2022-06-01-preview' = if (deployPrivateEndpoints) {
+  name: cartsInternalApiAcaEnvName
+  location: resourceLocation
+  tags: resourceTags
+  sku: {
+    name: 'Consumption'
+  }
+  properties: {
+    zoneRedundant: false
+    vnetConfiguration: {
+      infrastructureSubnetId: deployPrivateEndpoints ? vnet.properties.subnets[0].id : ''
+      internal: true
+    }
+  }
+}
+
+// aca (internal)
+resource cartsinternalapiaca 'Microsoft.App/containerApps@2022-06-01-preview' = if (deployPrivateEndpoints) {
+  name: cartsInternalApiAcaName
+  location: resourceLocation
+  tags: resourceTags
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${userassignedmiforkvaccess.id}': {}
+    }
+  }
+  properties: {
+    configuration: {
+      activeRevisionsMode: 'Single'
+      ingress: {
+        external: true
+        allowInsecure: false
+        targetPort: 80
+        traffic: [
+          {
+            latestRevision: true
+            weight: 100
+          }
+        ]
+      }
+      registries: [
+        {
+          passwordSecretRef: cartsInternalApiAcaSecretAcrPassword
+          server: acr.properties.loginServer
+          username: acr.name
+        }
+      ]
+      secrets: [
+        {
+          name: cartsInternalApiAcaSecretAcrPassword
+          value: acr.listCredentials().passwords[0].value
+        }
+      ]
+    }
+    environmentId: cartsinternalapiacaenv.id
+    template: {
+      scale: {
+        minReplicas: 1
+        maxReplicas: 3
+        rules: [
+          {
+            name: 'http-scaling-rule'
+            http: {
+              metadata: {
+                concurrentRequests: '3'
+              }
+            }
+          }
+        ]
+      }
+      containers: [
+        {
+          env: [
+            {
+              name: cartsInternalApiSettingNameKeyVaultEndpoint
+              value: kv.properties.vaultUri
+            }
+            {
+              name: cartsInternalApiSettingNameManagedIdentityClientId
+              value: userassignedmiforkvaccess.properties.clientId
+            }
+          ]
+          // using a public image initially because no images have been pushed to our private ACR yet
+          // at this point. At a later point, our github workflow will update the ACA app to use the 
+          // images from our private ACR.
+          image: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
+          name: cartsInternalApiAcaContainerDetailsName
+          resources: {
+            cpu: json('0.5')
+            memory: '1.0Gi'
+          }
+        }
+      ]
+    }
+  }
+}
+
+
 // outputs
 ////////////////////////////////////////////////////////////////////////////////
+
+output cartsApiEndpoint string = 'https://${cartsapiaca.properties.configuration.ingress.fqdn}'
+output uiCdnEndpoint string = 'https://${afdprofile_ui2endpoint.properties.hostName}'
