@@ -1,31 +1,16 @@
-name: contoso-traders-provisioning-deployment
+name: contoso-traders-infra-provisioning
 
 on:
   workflow_dispatch:
 
 env:
-  ACR_NAME: contosotradersacr
+  # You can specify any location for `SUB_DEPLOYMENT_REGION`. It's the region where the deployment
+  # metadata will be stored, and not where the resource groups will be deployed.
   AKS_CLUSTER_NAME: contoso-traders-aks
-  AKS_CPU_LIMIT: 250m
-  AKS_DNS_LABEL: contoso-traders-products
-  AKS_MEMORY_LIMIT: 256Mi
   AKS_NODES_RESOURCE_GROUP_NAME: contoso-traders-aks-nodes-rg
-  AKS_REPLICAS: "1"
-  AKS_SECRET_NAME_ACR_PASSWORD: contoso-traders-acr-password
-  AKS_SECRET_NAME_KV_ENDPOINT: contoso-traders-kv-endpoint
-  AKS_SECRET_NAME_MI_CLIENTID: contoso-traders-mi-clientid
-  AZURE_AD_APP_NAME: contoso-traders-cloud-testing-app
-  CARTS_ACA_NAME: contoso-traders-carts
-  CARTS_ACR_REPOSITORY_NAME: contosotradersapicarts
-  CARTS_INTERNAL_ACA_NAME: contoso-traders-intcarts
   CDN_PROFILE_NAME: contoso-traders-cdn
-  CHAOS_AKS_EXPERIMENT_NAME: contoso-traders-chaos-aks-experiment
+  SUB_DEPLOYMENT_REGION: eastus2
   KV_NAME: contosotraderskv
-  LOAD_TEST_SERVICE_NAME: contoso-traders-loadtest
-  MSGRAPH_API_ID: 00000003-0000-0000-c000-000000000000
-  MSGRAPH_API_PERMISSION_EMAIL: 64a6cdd6-aab1-4aaf-94b8-3cc8405e90d0=Scope
-  MSGRAPH_API_PERMISSION_USER_READ: e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope
-  PRODUCTS_ACR_REPOSITORY_NAME: contosotradersapiproducts
   PRODUCTS_DB_NAME: productsdb
   PRODUCTS_DB_SERVER_NAME: contoso-traders-products
   PRODUCTS_DB_USER_NAME: localadmin
@@ -35,99 +20,17 @@ env:
   PRODUCTS_CDN_ENDPOINT_NAME: contoso-traders-images
   RESOURCE_GROUP_NAME: contoso-traders-rg
   STORAGE_ACCOUNT_NAME: contosotradersimg
-  UI_CDN_ENDPOINT_NAME: contoso-traders-ui2
-  UI_STORAGE_ACCOUNT_NAME: contosotradersui2
-  USER_ASSIGNED_MANAGED_IDENTITY_NAME: contoso-traders-mi-kv-access
 
 jobs:
-  provision:
-    runs-on: ubuntu-22.04
-    env:
-      AADUSERNAME: ${{ secrets.AADUSERNAME }}
-      AADPASSWORD: ${{ secrets.AADPASSWORD }}
-    outputs:
-      azureAdAppClientId: ${{ steps.get-azureAdAppClientId.outputs.azureAdAppClientId }}
-      azureAdAppObjId: ${{ steps.get-azureAdAppObjId.outputs.azureAdAppObjId }}
-      cartsApiEndpoint: ${{ steps.get-cartsApiEndpoint.outputs.cartsApiEndpoint }}
-      productsApiEndpoint: ${{ steps.get-productsApiEndpoint.outputs.productsApiEndpoint }}
-      uiCdnEndpoint: ${{ steps.get-uiCdnEndpoint.outputs.uiCdnEndpoint }}
-    concurrency:
-      group: provision
-      cancel-in-progress: true
+  infrastructure-provisioning:
+    runs-on: ubuntu-latest
     steps:
       - name: checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: azure login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.SERVICEPRINCIPAL }}
-      # section #0: optional configuration of the Azure AD app.
-      # create the Azure AD application (and update it if it already exists).
-      # note: This is an idempotent operation.
-      - name: create/update azure active directory app
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        with:
-          inlineScript: |
-            mkdir -p /root/.azure/bin/
-            curl -o /root/.azure/bin/azcopy https://experienceazure.blob.core.windows.net/templates/devops-devsecops-hackathon/azcopy/azcopy
-            chmod +x /root/.azure/bin/azcopy
-            az ad app create --display-name ${{ env.AZURE_AD_APP_NAME}}${{ vars.SUFFIX }} --sign-in-audience AzureADandPersonalMicrosoftAccount
-      - name: get azure ad app's object id
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        id: get-azureAdAppObjId
-        with:
-          inlineScript: echo "azureAdAppObjId"="$(az ad app list --display-name ${{ env.AZURE_AD_APP_NAME }}${{ vars.SUFFIX }} --query [].id -o tsv)" >> $GITHUB_OUTPUT
-      - name: get azure ad app's client id
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        id: get-azureAdAppClientId
-        with:
-          inlineScript: echo "azureAdAppClientId"="$(az ad app list --display-name ${{ env.AZURE_AD_APP_NAME }}${{ vars.SUFFIX }} --query [].appId -o tsv)" >> $GITHUB_OUTPUT
-      - name: register app as a spa
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        with:
-          inlineScript: |
-            az rest \
-              --method PATCH \
-              --uri https://graph.microsoft.com/v1.0/applications/${{ steps.get-azureAdAppObjId.outputs.azureAdAppObjId }} \
-              --headers 'Content-Type=application/json' \
-              --body '{"spa":{"redirectUris":["https://localhost:3000/authcallback","http://localhost:3000/authcallback","https://production.contosotraders.com/authcallback","https://cloudtesting.contosotraders.com/authcallback"]}}'
-      - name: enable issuance of id, access tokens
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        with:
-          inlineScript: az ad app update --id ${{ steps.get-azureAdAppObjId.outputs.azureAdAppObjId }} --enable-access-token-issuance true --enable-id-token-issuance true
-      - name: enable email claim in access token
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        with:
-          inlineScript: az ad app update --id ${{ steps.get-azureAdAppObjId.outputs.azureAdAppObjId }} --optional-claims "{\"accessToken\":[{\"name\":\"email\",\"essential\":false}]}"
-      # note: requesting MS Graph permissions in Azure AD app unfortunately isn't idempotent.
-      # Even, if you have already requested the permissions, it'll keep adding to the list of requested permissions until you hit limit on max permissions requested.
-      # Details: https://github.com/Azure/azure-cli/issues/24512
-      - name: delete any requested Microsoft Graph permissions
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        with:
-          inlineScript: |
-            az ad app permission delete \
-              --id ${{ steps.get-azureAdAppObjId.outputs.azureAdAppObjId }} \
-              --api ${{ env.MSGRAPH_API_ID }}
-      - name: request Microsoft Graph permissions
-        uses: azure/CLI@v1
-        if: ${{ env.AADUSERNAME != '' && env.AADPASSWORD != '' }}
-        with:
-          inlineScript: |
-            az ad app permission add \
-              --id ${{ steps.get-azureAdAppObjId.outputs.azureAdAppObjId }} \
-              --api ${{ env.MSGRAPH_API_ID }} \
-              --api-permissions ${{ env.MSGRAPH_API_PERMISSION_USER_READ }} ${{ env.MSGRAPH_API_PERMISSION_EMAIL }}
-      #
-      # section #1: provisioning the resources on Azure using bicep templates
-      #
       # The first step is to create the resource group: `contoso-traders-rg`.
       # The below step can also be manually executed as follows:
       # az deployment sub create --location {LOCATION} --template-file .\createResourceGroup.bicep
@@ -137,78 +40,48 @@ jobs:
         uses: Azure/arm-deploy@v1
         with:
           scope: subscription
-          region: ${{ vars.DEPLOYMENTREGION }}
-          deploymentName: createResourceGroup-${{ vars.SUFFIX }}
+          region: ${{ env.SUB_DEPLOYMENT_REGION }}
           template: ./iac/createResourceGroup.bicep
-          parameters: rgName=${{ env.RESOURCE_GROUP_NAME }} suffix=${{ vars.SUFFIX }} rgLocation=${{ vars.DEPLOYMENTREGION }}
       # Next step is to deploy the Azure resources to the resource group `contoso-traders-rg` created above. The deployed resources
       # include storage accounts, function apps, app services cosmos db, and service bus etc.
       # The below step can also be manually executed as follows:
       # az deployment group create -g contoso-traders-rg --template-file .\createResources.bicep --parameters .\createResources.parameters.json
       # Note: The `createResources.parameters.json` file contains the parameters for the deployment; specifically the environment name.
       # You can modify the parameters to customize the deployment.
-      # Note: The bicep template outputs are not shown in the logs. You can extract the outputs as shown here:
-      # https://github.com/Azure/arm-deploy#another-example-on-how-to-use-this-action-to-get-the-output-of-arm-template
       - name: create resources
         uses: Azure/arm-deploy@v1
-        continue-on-error: true
         with:
           scope: resourcegroup
-          region: ${{ vars.DEPLOYMENTREGION }}
-          resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }}
+          region: ${{ env.SUB_DEPLOYMENT_REGION }}
+          resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}
           template: ./iac/createResources.bicep
-          parameters: ./iac/createResources.parameters.json suffix=${{ vars.SUFFIX }} sqlPassword=${{ secrets.SQLPASSWORD }} deployPrivateEndpoints=${{ vars.DEPLOYPRIVATEENDPOINTS }}
+          parameters: ./iac/createResources.parameters.json environment=${{ secrets.ENVIRONMENT }} sqlPassword=${{ secrets.SQL_PASSWORD }}
+          failOnStdErr: false # @TODO: Remove this later. Temporarily added to suppress warnings-as-errors during execution.
       # Add the logged-in service principal to the key vault access policy
       - name: add service principal to kv access policy
         uses: azure/CLI@v1
         with:
-          inlineScript: az keyvault set-policy -n ${{ env.KV_NAME }}${{ vars.SUFFIX }} -g ${{ env.RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }} --secret-permissions get list set --object-id $(az ad sp show --id $(az account show --query "user.name" -o tsv) --query "id" -o tsv)
-      # The AKS agent pool needs to be assigned the user-assigned managed identity created (which has kv access)
-      - name: assign user-assigned managed-identity to aks agentpool
+          inlineScript: az keyvault set-policy -n ${{ env.KV_NAME }}${{ secrets.ENVIRONMENT }} --secret-permissions get list set --object-id $(az ad sp show --id $(az account show --query "user.name" -o tsv) --query "id" -o tsv)
+      # @TODO: This next step really needs to go into the bicep provisioning script
+      - name: add aks agentpool to kv access policy
         uses: azure/CLI@v1
         with:
-          inlineScript: |
-            mkdir -p /root/.azure/bin/
-            curl -o /root/.azure/bin/azcopy https://experienceazure.blob.core.windows.net/templates/devops-devsecops-hackathon/azcopy/azcopy
-            chmod +x /root/.azure/bin/azcopy
-            az vmss identity assign \
-              --identities $(az identity show -g ${{ env.RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }} --name ${{ env.USER_ASSIGNED_MANAGED_IDENTITY_NAME }}${{ vars.SUFFIX }} --query "id" -o tsv) \
-              --ids $(az vmss list -g ${{ env.AKS_NODES_RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }} --query "[0].id" -o tsv) \
+          inlineScript: az keyvault set-policy -n ${{ env.KV_NAME }}${{ secrets.ENVIRONMENT }} --secret-permissions get list --object-id $(az identity show --name ${{ env.AKS_CLUSTER_NAME }}${{ secrets.ENVIRONMENT }}-agentpool -g ${{ env.AKS_NODES_RESOURCE_GROUP_NAME }} --query "principalId" -o tsv)
       # Seed the DBs and storage accounts
       - name: seed products db
-        uses: azure/sql-action@v2.2
+        uses: azure/sql-action@v2
         with:
-          connection-string: Server=tcp:${{ env.PRODUCTS_DB_SERVER_NAME }}${{ vars.SUFFIX }}.database.windows.net,1433;Initial Catalog=${{ env.PRODUCTS_DB_NAME }};Persist Security Info=False;User ID=${{ env.PRODUCTS_DB_USER_NAME }};Password=${{ secrets.SQLPASSWORD }};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+          connection-string: Server=tcp:${{ env.PRODUCTS_DB_SERVER_NAME }}${{ secrets.ENVIRONMENT }}.database.windows.net,1433;Initial Catalog=${{ env.PRODUCTS_DB_NAME }};Persist Security Info=False;User ID=${{ env.PRODUCTS_DB_USER_NAME }};Password=${{ secrets.SQL_PASSWORD }};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
           path: ./src/ContosoTraders.Api.Products/Migration/productsdb.sql
       - name: seed product image (product details)
         uses: azure/CLI@v1
         with:
-          inlineScript: az storage blob sync --account-name '${{ env.PRODUCT_IMAGES_STORAGE_ACCOUNT_NAME }}${{ vars.SUFFIX }}' -c '${{ env.PRODUCT_DETAILS_CONTAINER_NAME }}' -s 'src/ContosoTraders.Api.Images/product-details'
+          inlineScript: az storage blob sync --account-name '${{ env.PRODUCT_IMAGES_STORAGE_ACCOUNT_NAME }}${{ secrets.ENVIRONMENT }}' -c '${{ env.PRODUCT_DETAILS_CONTAINER_NAME }}' -s 'src/ContosoTraders.Api.Images/product-details'
       - name: seed product image (product list)
         uses: azure/CLI@v1
         with:
-          inlineScript: az storage blob sync --account-name '${{ env.PRODUCT_IMAGES_STORAGE_ACCOUNT_NAME }}${{ vars.SUFFIX }}' -c '${{ env.PRODUCT_LIST_CONTAINER_NAME }}' -s 'src/ContosoTraders.Api.Images/product-list'
-      - name: purge product images cdn endpoint
+          inlineScript: az storage blob sync --account-name '${{ env.PRODUCT_IMAGES_STORAGE_ACCOUNT_NAME }}${{ secrets.ENVIRONMENT }}' -c '${{ env.PRODUCT_LIST_CONTAINER_NAME }}' -s 'src/ContosoTraders.Api.Images/product-list'
+      - name: purge CDN endpoint
         uses: azure/CLI@v1
         with:
           inlineScript: az afd endpoint purge --no-wait --content-paths '/*'  --endpoint-name "${{ env.PRODUCTS_CDN_ENDPOINT_NAME }}${{ vars.SUFFIX }}" --profile-name "${{ env.CDN_PROFILE_NAME }}${{ vars.SUFFIX }}" --resource-group "${{ env.RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }}"
-
-      - name: extract acr password
-        uses: azure/CLI@v1
-        id: extract-acr-password
-        with:
-          inlineScript: |
-            acrPassword=$(az acr credential show -n ${{ env.ACR_NAME }}${{ vars.SUFFIX }} -g ${{ env.RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }} --query "passwords[0].value" --output tsv)
-            echo "::add-mask::$acrPassword"
-            echo acrPassword=$acrPassword >> $GITHUB_OUTPUT
-      - name: azure container registry login
-        uses: azure/docker-login@v1
-        with:
-          login-server: ${{ env.ACR_NAME }}${{ vars.SUFFIX }}.azurecr.io
-          username: ${{ env.ACR_NAME }}${{ vars.SUFFIX }}
-          password: ${{ steps.extract-acr-password.outputs.acrPassword }}
-      - name: set aks context
-        uses: azure/aks-set-context@v3
-        with:
-          resource-group: ${{ env.RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }}
-          cluster-name: ${{ env.AKS_CLUSTER_NAME }}${{ vars.SUFFIX }}
