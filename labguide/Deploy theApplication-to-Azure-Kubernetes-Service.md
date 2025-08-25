@@ -206,12 +206,33 @@ In this task, you will deploy the web service & its workload using kubectl.
     cd C:/LabFiles
     ```
 
-1. Log in to Azure if not already done with the below command after updating the values in the command.
+1. If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+    ```
+    az login 
+    ```
+    ![](media/E4T4S1.png)
 
-    ```
-    az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
-    ```
-    ![](media/E3T3S6.png)
+    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+
+   * Email/Username: <inject key="AzureAdUserEmail"></inject>
+   
+     ![](media/GS3.png "Enter Email")
+     
+1. Now enter the following password and click on **Sign in**.
+
+   * Password: <inject key="AzureAdUserPassword"></inject>
+   
+     ![](media/GS4.png "Enter Password")
+
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**. 
+
+     ![](media/E3T1S4.png)
+
+     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
+
+     ![](media/E4T1S1.png)
 
 1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
    >**Info**: The below kubectl command will create the Deployment workload and Service in the namespace that we have defined in the YAML files. 
