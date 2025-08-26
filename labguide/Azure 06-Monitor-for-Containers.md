@@ -38,13 +38,6 @@ En esta tarea, revisará el clúster de AKS supervisado. Esta tarea se centra en
 
       ![Esta es una captura de pantalla que muestra datos monitoreados en el servicio Kubernetes.](media/SE6T1S3.png "Datos monitoreados del servicio Kubernetes")
 
-> **Felicitaciones** por completar la tarea. Ahora es momento de validarla. Estos son los pasos:
-> - Si recibe un mensaje de éxito, puede continuar con la siguiente tarea.
-> - Si no es así, lea atentamente el mensaje de error y vuelva a intentar el paso, siguiendo las instrucciones de la guía de laboratorio.
-> - Si necesita ayuda, comuníquese con nosotros a cloudlabs-support@spektrasystems.com. Estamos disponibles las 24 horas, los 7 días de la semana para ayudarlo.
-
-<validation step="1f2ef3e0-8908-4650-b10e-2c40270bf655" />
-
 ## Resumen
 
 En este ejercicio, ha revisado la información del contenedor de Azure Monitor para el clúster de AKS.
