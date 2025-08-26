@@ -246,13 +246,10 @@ In this task, you will set up Autoscale on Azure Cosmos DB.
 
     ![](media/contosodb.png "View replica details")
 
-4. Under the `contentdb` database, expand **items (1)** collection, select **Settings (2)**.
+4. Under the `contentdb` database, select **scale** 
+5. In the **contentScale (1)** , select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
 
-    ![](media/exe4-task6-step3-select-settings.png "View replica details")
-
-5. In the **Scale & Settings (1)** tab, select **Autoscale (2)** for the **Throughput** setting under **Scale** and click on **Save (3)**.
-
-    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/autoscale1.png "CosmosDB collection scale and settings")
+    ![The screenshot displays Cosmos DB Scale and Settings tab with Autoscale selected](media/t53.png "CosmosDB collection scale and settings")
 
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
