@@ -38,13 +38,6 @@ Nesta tarefa, você revisará o cluster AKS monitorado, com foco na inspeção v
     
     > **Importante**:Esta tarefa é apenas para revisão visual. Caso queira monitorar possíveis problemas, você pode configurar regras de alerta no Azure Monitor — por exemplo, para identificar alto uso de CPU ou consumo excessivo de memória. Para instruções detalhadas sobre como criar e gerenciar alertas, consulte a documentação oficial do Azure.
 
-> **Parabéns** por concluir a tarefa! Agora, é hora de validá-la. Aqui estão os passos:
-> - Se você receber uma mensagem de sucesso, poderá prosseguir para a próxima tarefa.
-> - Caso contrário, leia atentamente a mensagem de erro e repita a etapa, seguindo as instruções do guia do laboratório.
-> - Se precisar de ajuda, entre em contato conosco em cloudlabs-support@spektrasystems.com. Estamos disponíveis 24/7 para ajudá-lo.    
-
-<validation step="ba51688d-c5b8-43c8-811c-e78e9a5539ce" />    
-
 ## Resumo
 
 Neste exercício, você revisou os insights de contêiner do Azure Monitor para o cluster AKS.
