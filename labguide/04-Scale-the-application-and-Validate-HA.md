@@ -205,7 +205,7 @@ In this task, you will restart containers and validate that the restart does not
 
 1. Go back to the **contoso-traders-products| Overview** page, Select **two of the Pods (1)** randomly and choose **Delete (2)**. 
 
-   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/E4T5S6.png "Delete running pod instance")
+   ![The context menu for a pod in the pod list is expanded with the Delete item selected.](media/E4T5S6a.png "Delete running pod instance")
 
 1. On the **Delete** page, Select **Confirm delete (1)**, and click on **Delete (2)** again.
 
