@@ -98,7 +98,7 @@ In this task, you will define a Kubernetes Service for your API to enable intern
         name: contoso-traders-products
         namespace: contoso-traders
         annotations:
-          # TODO: Replace 'SUFFIX' in the next line with whatever your ENVIRONMENT GitHub secret value is
+          # TODO: Replace 'SUFFIX' in the next line with the DeploymentID value  
           service.beta.kubernetes.io/azure-dns-label-name: contoso-traders-productsSUFFIX
       spec:
         type: LoadBalancer
@@ -144,7 +144,7 @@ In this task, you will define a Kubernetes Service for your API to enable intern
            "kubernetes.io/os": linux
          containers:
            - name: contoso-traders-products
-             # Note: The '{ENVIRONMENT}' token will be substituted with the value of the ENVIRONMENT GitHub secret by the GitHub workflow.
+             # Note: The '{DeploymentID}' token will be substituted with the value of the ENVIRONMENT GitHub secret by the GitHub workflow.
              image: contosotradersacrSUFFIX.azurecr.io/contosotradersapiproducts:latest
              env:
                - name: KeyVaultEndpoint
