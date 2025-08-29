@@ -128,6 +128,7 @@ To adjust the zoom level for the environment page, click the **A↕ : 100%** ico
 1. Now you will see the Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
 
    ![](media/Home(eng).png "Resource groups")
+   ![](media/pg1.png "Resource groups")
    
 By the end of this lab, participants will learn to build Docker images for containerizing applications, migrate data from MongoDB to Azure Cosmos DB, and deploy applications to Azure Kubernetes Service (AKS) for orchestration. They will also scale applications and ensure high availability, manage updates and traffic routing, and use Azure Monitor to track the performance and health of their containerized applications.
 
