@@ -304,7 +304,6 @@ In this task, you will deploy the web service & its workload using kubectl.
 
     ![AKS services and ingresses shown with External IP highlighted](media/website2--new.png "AKS services and ingresses shown with External IP highlighted")
 
-
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
