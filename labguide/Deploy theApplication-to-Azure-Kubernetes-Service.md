@@ -175,7 +175,62 @@ In this task, you will define a Kubernetes Service for your API to enable intern
 1. After a few minutes, you will see the deployment listed, and it should be in a running state.
 
     ![Selecting + Add to create a deployment.](media/E3T2S7.png "Selecting + Add to create a deployment")
+  
+    > **Note:** If the deployment status shows as **0/1** or remains in a failed state (⚠️) instead of running, perform the following steps:
 
+    1. At the top of the Azure Portal, click on the **Cloud Shell (1)** icon to open the Azure Cloud Shell session.
+
+      ![](media/synp-an-l3-4.png)
+    
+    1. In the **Welcome to Azure Cloud Shell** dialog, select **PowerShell** to proceed.
+
+      ![](media/synp-an-l3-5.png)
+
+    1. On the **Getting started** dialog:
+       - Select **No storage account required (1)**.  
+       - Choose your **Subscription (2)** from the drop-down list.  
+       - Click **Apply (3)** to continue.  
+
+        ![](media/synp-an-l3-6.png)
+
+    1. In the Cloud Shell PowerShell session, run the following command to set the Deployment ID:
+
+        ```powershell
+        $deploymentId = "<inject key="DeploymentID" enableCopy="true"/>"
+        ```
+
+        ![](media/synp-an-l3-7.png)
+    
+    1. Run the following PowerShell commands in the Cloud Shell to configure the required resources and restart the deployment:
+
+        ```powershell
+        $RESOURCE_GROUP_NAME = "contosotraders-$deploymentId"
+        $AKS_CLUSTER_NAME = "contoso-traders-aks$deploymentId"
+        $KV_NAME = "contosotraderskv$deploymentId"
+        $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentId"
+        $AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg-$deploymentId"
+      
+        $vmssName = $(az vmss list -g $AKS_NODES_RESOURCE_GROUP_NAME --query "[0].name" -o tsv)
+        if (-not $vmssName) { Write-Host "VMSS not found." -ForegroundColor Red; exit }
+      
+        $identityId = $(az identity show --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --resource-group $RESOURCE_GROUP_NAME --query "id" -o tsv)
+        if (-not $identityId) { Write-Host "Managed Identity not found." -ForegroundColor Red; exit }
+      
+        $assignedIdentities = $(az vmss identity show -g $AKS_NODES_RESOURCE_GROUP_NAME -n $vmssName --query "userAssignedIdentities" -o json)
+        if ($assignedIdentities -notlike "*$identityId*") {
+            az vmss identity assign --name $vmssName --resource-group $AKS_NODES_RESOURCE_GROUP_NAME --identities $identityId
+        }
+      
+        $principalId = $(az identity show --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --resource-group $RESOURCE_GROUP_NAME --query "principalId" -o tsv)
+        $policyCheck = $(az keyvault show --name $KV_NAME --query "properties.accessPolicies[?objectId=='$principalId' && permissions.secrets[?@=='get' || @=='list']].permissions.secrets" -o json)
+        if ($policyCheck -notlike "*get*" -or $policyCheck -notlike "*list*") {
+            az keyvault set-policy --name $KV_NAME --secret-permissions get list --object-id $principalId
+        }
+      
+        az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $AKS_CLUSTER_NAME --overwrite-existing
+        kubectl rollout restart deployment contoso-traders-products -n contoso-traders
+        ```
+      1. Wait for **2–3 minutes** to allow the deployment status to update. 
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - If you receive a success message, you can proceed to the next task.
