@@ -180,18 +180,18 @@ In this task, you will define a Kubernetes Service for your API to enable intern
 
     1. At the top of the Azure Portal, click on the **Cloud Shell (1)** icon to open the Azure Cloud Shell session.
 
-      ![](media/synp-an-l3-4.png)
+        ![](media/synp-an-l3-4.png)
     
     1. In the **Welcome to Azure Cloud Shell** dialog, select **PowerShell** to proceed.
 
-      ![](media/synp-an-l3-5.png)
+        ![](media/synp-an-l3-5.png)
 
     1. On the **Getting started** dialog:
        - Select **No storage account required (1)**.  
        - Choose your **Subscription (2)** from the drop-down list.  
        - Click **Apply (3)** to continue.  
 
-        ![](media/synp-an-l3-6.png)
+          ![](media/synp-an-l3-6.png)
 
     1. In the Cloud Shell PowerShell session, run the following command to set the Deployment ID:
 
