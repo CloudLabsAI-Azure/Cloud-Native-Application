@@ -178,6 +178,8 @@ In this task, you will define a Kubernetes Service for your API to enable intern
   
     > **Note:** If the deployment status shows as **0/1** or remains in a failed state (⚠️) instead of running, perform the following steps:
 
+        ![](media/synp-an-l3-8.png)
+
     1. At the top of the Azure Portal, click on the **Cloud Shell (1)** icon to open the Azure Cloud Shell session.
 
         ![](media/synp-an-l3-4.png)
