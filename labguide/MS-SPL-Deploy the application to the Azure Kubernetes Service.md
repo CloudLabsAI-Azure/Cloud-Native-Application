@@ -79,6 +79,64 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
 
      ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14052025(8).png "Add a Namespace")
 
+    > **Note:** If the deployment status shows as **0/1** or remains in a failed state (⚠️) instead of running, perform the following steps:
+
+      ![](media/synp-an-l3-8.png)
+
+    1. At the top of the Azure Portal, click on the **Cloud Shell (1)** icon to open the Azure Cloud Shell session.
+
+        ![](media/synp-an-l3-4.png)
+    
+    1. In the **Welcome to Azure Cloud Shell** dialog, select **PowerShell** to proceed.
+
+        ![](media/synp-an-l3-5.png)
+
+    1. On the **Getting started** dialog:
+       - Select **No storage account required (1)**.  
+       - Choose your **Subscription (2)** from the drop-down list.  
+       - Click **Apply (3)** to continue.  
+
+          ![](media/synp-an-l3-6.png)
+
+    1. In the Cloud Shell PowerShell session, run the following command to set the Deployment ID:
+
+        ```powershell
+        $deploymentId = "<inject key="DeploymentID" enableCopy="true"/>"
+        ```
+
+        ![](media/synp-an-l3-7.png)
+    
+    1. Run the following PowerShell commands in the Cloud Shell to configure the required resources and restart the deployment:
+
+        ```powershell
+        $RESOURCE_GROUP_NAME = "contosotraders-$deploymentId"
+        $AKS_CLUSTER_NAME = "contoso-traders-aks$deploymentId"
+        $KV_NAME = "contosotraderskv$deploymentId"
+        $USER_ASSIGNED_MANAGED_IDENTITY_NAME = "contoso-traders-mi-kv-access$deploymentId"
+        $AKS_NODES_RESOURCE_GROUP_NAME = "contoso-traders-aks-nodes-rg-$deploymentId"
+      
+        $vmssName = $(az vmss list -g $AKS_NODES_RESOURCE_GROUP_NAME --query "[0].name" -o tsv)
+        if (-not $vmssName) { Write-Host "VMSS not found." -ForegroundColor Red; exit }
+      
+        $identityId = $(az identity show --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --resource-group $RESOURCE_GROUP_NAME --query "id" -o tsv)
+        if (-not $identityId) { Write-Host "Managed Identity not found." -ForegroundColor Red; exit }
+      
+        $assignedIdentities = $(az vmss identity show -g $AKS_NODES_RESOURCE_GROUP_NAME -n $vmssName --query "userAssignedIdentities" -o json)
+        if ($assignedIdentities -notlike "*$identityId*") {
+            az vmss identity assign --name $vmssName --resource-group $AKS_NODES_RESOURCE_GROUP_NAME --identities $identityId
+        }
+      
+        $principalId = $(az identity show --name $USER_ASSIGNED_MANAGED_IDENTITY_NAME --resource-group $RESOURCE_GROUP_NAME --query "principalId" -o tsv)
+        $policyCheck = $(az keyvault show --name $KV_NAME --query "properties.accessPolicies[?objectId=='$principalId' && permissions.secrets[?@=='get' || @=='list']].permissions.secrets" -o json)
+        if ($policyCheck -notlike "*get*" -or $policyCheck -notlike "*list*") {
+            az keyvault set-policy --name $KV_NAME --secret-permissions get list --object-id $principalId
+        }
+      
+        az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $AKS_CLUSTER_NAME --overwrite-existing
+        kubectl rollout restart deployment contoso-traders-products -n contoso-traders
+        ```
+      1. Wait for **2–3 minutes** to allow the deployment status to update. 
+
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
@@ -226,7 +284,7 @@ In this task, you will deploy the web service & its workload using kubectl.
    >**Info:** The below kubectl command will create the Deployment workload and Service in the namespace that we have defined in the YAML files. 
 
     ```bash
-    kubectl create --save-config=true -f web.deployment.yaml -f web.service.yaml 
+    kubectl create --save-config=true -f web.deployment.yml -f web.service.yml 
     ```
 
     ![In this screenshot of the console, kubectl apply -f kubernetes-web.yaml has been typed and run at the command prompt. Messages about web deployment and web service creation appear below.](media/cn48.png "kubectl create application")
