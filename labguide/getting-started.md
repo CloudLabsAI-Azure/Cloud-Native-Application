@@ -105,16 +105,36 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
 1. In the LabVM, click on the **Azure Portal** shortcut of the Microsoft Edge browser, which is created on the desktop.
 
    ![](media/cng12.png "Lab Environment")
-   
-1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
-   * Email/Username: <inject key="AzureAdUserEmail"></inject>
-   
-     ![](media/cng6.png "Enter Email")
-     
+
+1. Click on **Sign in** under **Your profile** to begin the authentication process.
+
+   ![](media/signin-1.jpg)
+
+1. On the **Let's get you signed in** pane, you will see the login screen, in that enter the following email/username and then click on **Sign in**.
+
+    * Email/Username: <inject key="AzureAdUserEmail"></inject>
+
+      ![](media/signin-2.jpg)
+
 1. Now enter the following password and click on **Sign in**.
-   * Password: <inject key="AzureAdUserPassword"></inject>
-   
-     ![](media/cng7.png "Enter Password")
+
+    * Password: <inject key="AzureAdUserPassword"></inject>
+
+      ![](media/signin-3.jpg)
+
+1. On the **Automatically sign in to all desktop apps and websites on this device?** screen, click **Yes, all apps** to automatically sign in across all desktop apps.
+
+   ![](media/signin-4.jpg)
+
+1. Once the **You're all set!** screen appears, click **Done** to complete the sign-in process.
+
+   ![](media/signin-5.jpg)
+
+    >**Note:** Please Ignore if any Exceptions/error occures.
+
+1. **Close the Microsoft Edge browser** and reopen the **Azure Portal** shortcut from the desktop.
+
+1. If prompted again for sign-in, repeat **Step 4 and Step 5** to log in successfully.
   
 1. If you see the pop-up **Stay Signed in?**, click **No**.
 
