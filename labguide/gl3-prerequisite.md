@@ -68,6 +68,11 @@ In this task, you will be building the docker images to containerize the applica
 1. Run the below command to log in to Azure, navigate to the device login URL `https://microsoft.com/devicelogin` in the browser and copy the authentication code.
 
    ``` 
+   sudo apt install azure-cli
+   ```
+
+   >**Note:** If asked, type **Y**, and press enter.
+   ```
    az login
    ```
     
@@ -180,11 +185,11 @@ In this task, you will be building the docker images to containerize the applica
 
 1. Navigate to Azure portal, open **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry from **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
-   ![](media/ex1-acr1.png)
+   ![](media/ex1-acr1-1.png)
    
-1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** **(1)** Container registry, select **Access keys** **(2)** under Settings from left side menu. **Copy** **(3)** the Password and paste it into a text file for later use.
+1. From **contosotradersacr<inject key="DeploymentID" enableCopy="false" />** Container registry, select **Access keys** **(1)** under Settings from left side menu. **Copy** **(2)** the Password and paste it into a text file for later use.
 
-   ![](media/ex1-acr2.png)    
+   ![](media/new-01.png)    
 
 1. Now switch back to **Command Prompt** and login to ACR using the below command, please update the ACR password value in the below command. You should be able to see that output below in the screenshot. Make sure to replace the password with the copied container registry password which you have copied in the previous step in the below command.
 
@@ -284,17 +289,17 @@ In this task, you will create a Migration project within Azure Database Migratio
 
    ![](media/privateip.png)
 
-1. Navigate to **ContosoTraders<inject key="DeploymentID" enableCopy="false" />(1)** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />(2)** CosmosDB resource and click on **Data Explorer(3)**. Now click on drop down arrow, adjacent to **New Collection(4)** and then select **New Database(5)**.
+1. Navigate to **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group and open **contosotraders-<inject key="DeploymentID" enableCopy="false" />** CosmosDB resource and click on **Data Explorer(1)**. Now click on drop down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
 
-   ![](media/Ex2T2S2.png)
+   ![](media/new-02.png)
 
    > **Note:** If you get **Welcome! What is Cosmos DB?** popup, close it by click on **X**.
 
-1. Provide name as `contentdb` **(1)** for **Database id** and select **Databse throughput** as **Manual** **(2)**,  provide the RU/s value to `400` **(3)** and click on **OK(4)**.
+1. Provide name as `contentdb` **(1)** for **Database id**, select the checkbox of **Provision throughput (2)** and select **Databse throughput** as **Manual** **(3)**,  provide the RU/s value to `400` **(4)** and click on **OK (5)**.
 
-   ![](media/Ex2T2S3.png)
+   ![](media/new-03.png)
 
-1. Navigate to the Azure Database Migration Service **contosotraders<inject key="DeploymentID" enableCopy="false" />** resource blade in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
+1. Navigate to the Azure Database Migration Service **contosotraders<inject key="DeploymentID" enableCopy="false" />** resource blade from the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group.
 
 1. On the Azure Database Migration Service blade, select **+ New Migration Project** on the **Overview** pane.
 
@@ -309,7 +314,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
       ![The screenshot shows the New migration project pane with values entered.](media/ex2-newmigrationproject.png  "New migration project pane")
 
-   >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
+      >**Note**: The **Offline data migration** activity type is selected since you will be performing a one-time migration from MongoDB to Cosmos DB. Also, the data in the database won't be updated during the migration. In a production scenario, you will want to choose the migration project activity type that best fits your solution requirements.
 
 1. On the **MongoDB to Azure Database for CosmosDB Offline Migration Wizard** pane, enter the following values for the **Select source** tab:
 
@@ -318,7 +323,7 @@ In this task, you will create a Migration project within Azure Database Migratio
    - Server port: `27017`
    - Require SSL: Unchecked
 
-   > **Note:** Leave the **User Name** and **Password** blank as the MongoDB instance on the Build Agent VM for this lab does not have authentication turned on. The Azure Database Migration Service is connected to the same VNet as the Build Agent VM, so it's able to communicate within the VNet directly to the VM without exposing the MongoDB service to the Internet. In production scenarios, you should always have authentication enabled on MongoDB.
+      > **Note:** Leave the **User Name** and **Password** blank as the MongoDB instance on the Build Agent VM for this lab does not have authentication turned on. The Azure Database Migration Service is connected to the same VNet as the Build Agent VM, so it's able to communicate within the VNet directly to the VM without exposing the MongoDB service to the Internet. In production scenarios, you should always have authentication enabled on MongoDB.
 
       ![Select source tab with values selected for the MongoDB server.](media/CNV2-E2-T2-S5.png "MongoDB to Azure Database for CosmosDB - Select source")
     
@@ -345,7 +350,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
       ![The Select target tab with values selected.](media/targetmongo.png "MongoDB to Azure Database for CosmosDB - Select target")
 
-   Notice, that the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
+      >Notice, that the **Connection String** will automatically populate with the Key for your Azure Cosmos DB instance.
 
 1. Select **Next: Database setting >>**.
 
@@ -371,15 +376,15 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. To verify the migrated data, navigate to the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure CosmosDB for MongoDB account in the **ContosoTraders-<inject key="DeploymentID" enableCopy="false" />** resource group. Select **Data Explorer** from the left menu.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/dataexplorer.png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/new-04.png "Cosmos DB is open")
 
 1. You will see the `items` and `products` collections listed within the `contentdb` database and you will be able to explore the documents.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/migrates2.png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/new-05.png "Cosmos DB is open")
 
-1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** **(1)** Azure CosmosDB for MongoDB account. Select **Quick start** **(2)** from the left menu and **Copy** the **PRIMARY CONNECTION STRING** **(3)** and paste it into the text file for later use in the next exercise.
+1. Within the **contosotraders-<inject key="DeploymentID" enableCopy="false" />** Azure CosmosDB for MongoDB account. Select **Quick start** **(1)** from the left menu and **Copy** the **PRIMARY CONNECTION STRING** **(2)** and paste it into the text file for later use in the next exercise.
 
-   ![](media/ex2-cdb-copycs.png)
+   ![](media/new-06.png)
 
 1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
 
