@@ -83,7 +83,7 @@ For convenience, you can open the lab guide in a separate window by selecting th
  
 ## Managing Your Virtual Machine
  
-Feel free to start, stop, or restart your virtual machine as needed from the **Resources** tab. Your experience is in your hands!
+Feel free to **Start, Stop, or Restart (2)** your virtual machine as needed from the **Resources (1)** tab. Your experience is in your hands!
  
   ![](./media/manage-vm-1411.png)
 
@@ -140,4 +140,5 @@ Now, click on Next from the lower right corner to move to the next page.
 ![](./media/next-1411.png)
 
 ### Happy Learning!!
+
 
