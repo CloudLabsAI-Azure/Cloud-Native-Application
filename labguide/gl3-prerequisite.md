@@ -1,20 +1,20 @@
 # Exercise 1: Build Docker Images for the Application 
 
+### Estimated Duration: 60 Minutes
+
 ## Pre-requisites 
 
-Before you move to the next exercise, please make sure to complete the pre-requisite exercises as upcoming exercises are dependent on it.
+Before you move to the next exercise, please make sure to complete this pre-requisite exercises as upcoming exercises are dependent on it.
 
-## Lab scenario
+## Overview
 
 In this exercise, you will learn how to Containerize the Contoso Traders application using Docker images. Containerized applications are applications that run in isolated runtime environments called containers. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Also, you will be pushing the created Docker images to the Azure Container Registry.
 
-## Lab objectives
+## Objectives
 
-In this lab, you will complete the following tasks:
+In this exercise, you will complete the following tasks:
 - Task 1: Set up a local infrastructure with the Linux VM
 - Task 2: Build Docker images to containerize the application and push them to the container registry
-
-## Estimated timing: 60 minutes
 
 ### Task 1: Set up a local infrastructure with the Linux VM
 
@@ -224,17 +224,17 @@ In this exercise, you have deployed your containerized web application to AKS th
 
 # Exercise 2: Migrate MongoDB to Cosmos DB using Azure Database Migration
 
-## Lab scenario
+## Estimated Duration: 60 Minutes
+
+## Overview
 
 In this exercise, you will be migrating your on-premises MongoDB database hosted over Azure Linux VM to Azure CosmosDB using Azure database migration. Azure Database Migration Service is a tool that helps you simplify, guide, and automate your database migration to Azure.
 
-## Lab objectives
+## Objectives
 
-In this lab, you will complete the following tasks:
+In this exercise, you will complete the following tasks:
 - Task 1: Explore the databases and collections in MongoDB
 - Task 2: Create a Migration Project and migrate data to Azure CosmosDB
-
-## Estimated timing: 60 minutes
 
 ### Task 1: Explore the databases and collections in MongoDB
 
@@ -400,4 +400,6 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 In this exercise, you have completed exploring your on-prem Mongodb and migrating your on-premises MongoDB database to Azure CosmosDB using Azure database migration.
 
-### You have successfully completed the lab. Click on the Next button.
+### You have successfully completed the prerequisite exercises. Click on the Next button.
+
+![](./media/next-1411.png)
