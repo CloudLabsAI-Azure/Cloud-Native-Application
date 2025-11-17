@@ -19,9 +19,9 @@ In this exercise, you will complete the following task:
 
 ### Task 1: Review Azure Monitor metrics
 
-In this task, you will review the monitored AKS cluster, focusing on visually inspecting the metrics and logs available in Azure Monitor. No alerts or issues are expected to detect unless they have been explicitly configured.
+In this task, you will review the monitored AKS cluster, focusing on visually inspecting the metrics and logs available in Azure Monitor. No alerts or issues are expected to be detected unless they have been explicitly configured.
 
-1. Navigate back to the Azure portal in the browser and search for **aks (1)**, Select **Kubernetes services (2)** from the result.
+1. Navigate back to the Azure portal in the browser and search for **aks (1)**. Select **Kubernetes services (2)** from the result.
 
    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/E6T1S1.png "Add a Namespace")
      
@@ -29,7 +29,7 @@ In this task, you will review the monitored AKS cluster, focusing on visually in
 
    ![](media/E6T1S2.png "select aks")
    
-1. In the **Monitor (1)** section of your Kubernetes service resource blade,you can view logs related to the service's activity such as Node CPU, Node Memory utilization etc.
+1. In the **Monitor (1)** section of your Kubernetes service resource blade, you can view logs related to the service's activity, such as Node CPU, Node Memory utilization, etc.
 
    > **Note**: The Azure Monitor can take up to 15 minutes to populate the data in the insight blade.
 
@@ -37,6 +37,8 @@ In this task, you will review the monitored AKS cluster, focusing on visually in
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/E6T1S3.png "Add a Namespace")
 
+
+<!--
 #### Validation
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
@@ -45,9 +47,12 @@ In this task, you will review the monitored AKS cluster, focusing on visually in
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 <validation step="61a4d164-94b8-4a8a-a3cd-5000a222fa68" />
+-->
+
 
 ## Summary
 
-In this exercise, you have Reviewed Azure Monitor container insights for the AKS cluster.
+In this exercise, you have reviewed Azure Monitor container insights for the AKS cluster.
 
 ## Lab ends
+
