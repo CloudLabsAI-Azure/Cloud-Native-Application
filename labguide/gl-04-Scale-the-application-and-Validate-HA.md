@@ -8,7 +8,7 @@ At this point, you have deployed a single instance of the Web and Products API s
 
 ## Objectives
 
-In this exercise, you will complete the following exercise:
+In this exercise, you will complete the following:
 - Task 1: Modify the Kubernetes resource deployments in the Kubernetes service
 - Task 2: Resolve failed replica provisioning 
 - Task 3: Configure Horizontal Autoscaling for Kubernetes service pods
@@ -43,6 +43,7 @@ In this task, you will increase the number of instances for the API deployment i
 
 1. If you encountered any errors or issues while adding a new instance in Task 1, continue with Task 2 to troubleshoot and resolve them. If no issues were encountered, skip Task 2 and proceed directly to Task 3.
 
+<!--
 #### Validation
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
@@ -51,6 +52,7 @@ In this task, you will increase the number of instances for the API deployment i
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 <validation step="c807a0d7-9f5f-468f-b947-7ca77fdddb13" />
+-->
 
 ### Task 2: Resolve failed replica provisioning 
 
@@ -64,7 +66,7 @@ In this task, you will resolve the failed API replicas. These failures occur due
 
    ![In the Workload view with the API deployment highlighted.](media/E4T2S2.png "API deployment is now healthy")
 
-1. In the **YAML** screen, scroll down and update the following items. Select **Review + save (4)** once after the changes made.
+1. In the **YAML** screen, scroll down and update the following items. Select **Review + save (4)** once after the changes have been made.
 
    - Under the **spec (1)** section, make sure the following **ports (2)** are provided:
 
@@ -104,7 +106,7 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
    
       ![In the Workload view with the API deployment highlighted.](media/HS11.png "API deployment is now healthy")
    
-1. Run the below command to check the status of the newly added Horizontal Pod Autoscaler.
+1. Run the command below to check the status of the newly added Horizontal Pod Autoscaler.
 
    ```
    kubectl get hpa -n contoso-traders
@@ -114,19 +116,19 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
 
 ### Task 4: Autoscaling on Azure Kubernetes Service cluster
 
-In this task, you will be enabling the cluster autoscaler for the existing AKS cluster and you will be autoscaling the cluster node pools.
+In this task, you will enable the cluster autoscaler for the existing AKS cluster and autoscale the cluster node pools.
 
 1. Navigate back to your Windows command prompt. 
 
-   - If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+   - If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a pop-up appears for _SignIn,_ then choose **Work or school account (2)** and click on **Continue (3)**.
       ```
       az login 
       ```
       ![](media/E4T4S1.png)
 
-      > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+      > **Note:** If you are unable to see the pop-up for Signin, minimize the command prompt to view the pop-up window.
 
-   - On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+   - On the **Sign into Microsoft Azure** tab, you will see the login screen. Enter the following email/username and then click **Next**. 
 
       * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
@@ -146,7 +148,7 @@ In this task, you will be enabling the cluster autoscaler for the existing AKS c
 
          ![](media/E4T1S1.png)
 
-   - In order to set up the Kubernetes cluster connection, run the following command.
+   - To set up the Kubernetes cluster connection, run the following command.
 
       ```
       az aks get-credentials --resource-group contosoTraders-<inject key="DeploymentID" enableCopy="true"/> --name contoso-traders-aks<inject key="DeploymentID" enableCopy="true"/>
@@ -226,6 +228,7 @@ In this task, you will restart containers and validate that the restart does not
 
     ![Replica Sets is selected under Workloads in the navigation menu on the left. On the right are the Details and Pods boxes. Only one API hostname, which has a green check mark and is listed as running, appears in the Pods box.](media/E4T1S5.png "View replica details")
 
+<!--
 #### Validation
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
@@ -234,6 +237,7 @@ In this task, you will restart containers and validate that the restart does not
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 <validation step="1574f3ff-1798-4d16-bc2d-3ae482089bf4" />
+-->
 
 ### Task 6: Configure CosmosDB Autoscale
 
@@ -310,7 +314,7 @@ In this task, you will run a performance test script that will test the Autoscal
     bash ./perftest.sh
     ```
 
-    > **Note:** The script will take a few minutes to complete its execution, if the script get stuck while getting executed, click `Ctrl+C` to stop the script.
+    > **Note:** The script will take a few minutes to complete its execution. If the script gets stuck while getting executed, click `Ctrl+C` to stop the script.
 
 1. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
 
@@ -331,5 +335,6 @@ In this task, you will run a performance test script that will test the Autoscal
 In this exercise, you have increased service instances and configured horizontal autoscaling for AKS pods. Also, you have configured and tested CosmosDB Autoscale.
 
 ### You have successfully completed the exercise. Click on the Next button.
+
 
 ![](./media/next-1411.png)
