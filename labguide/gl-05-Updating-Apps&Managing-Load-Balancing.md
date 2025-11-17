@@ -4,7 +4,7 @@
 
 ## Overview
 
-In the previous exercise, we introduced a restriction to the scale properties of the service. In this exercise, you will configure the API deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
+In the previous exercise, we restricted the scale properties of the service. In this exercise, you will configure the API deployments to create pods that use dynamic port mappings to eliminate the port resource constraint during scale activities.
 
 Kubernetes services can discover the ports assigned to each pod, allowing you to run multiple instances of the pod on the same agent node --- something that is not possible when you configure a specific static port (such as 3001 for the API service).
 
@@ -17,16 +17,16 @@ In this exercise, you will complete the following tasks:
 
 ### Task 1: Perform a rolling update
  
-In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
+In this task, you will edit the web application source code to update some configurations and update the Docker image used by the deployment. Then you will perform a rolling update to demonstrate how to deploy a code change. Rolling updates allow Deployment updates to take place with zero downtime by incrementally updating Pod instances with new ones. The new Pods will be scheduled on Nodes with available resources.
 
-1. First you will be making some changes in your web application source code and will be creating a new docker image based on the latest changes.
+1. First, you will be making some changes in your web application source code and will be creating a new Docker image based on the latest changes.
 
-1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the below command to navigate to the directory where you'll need to make the changes in the web application source code.
+1. Navigate back to the Windows command prompt where you have connected to your Linux VM, and run the following command to navigate to the directory where you'll need to make the changes in the web application source code.
 
    ```bash
    cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
    ```
-1. Once you are in the correct directory, run the below command to open the **hero.js** file to make some text changes to the homepage of your web application.
+1. Once you are in the correct directory, run the command below to open the **hero.js** file to make some text changes to the homepage of your web application.
 
    ```bash
    sudo chmod 777 hero.js
@@ -35,7 +35,7 @@ In this task, you will edit the web application source code to update some confi
      
    ![A screenshot of the code editor showing updates in context of the app.js file](media/E5T1S6.png "AppInsights updates in app.js")
    
-1. Once the file is open, press "i" to enter the insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
+1. Once the file is open, press "i" to enter insert mode and update the existing value mentioned below in the **items** section and in the **name** value.
 
    ```
    The latest, Fastest, Most Powerful Xbox Ever.
@@ -45,7 +45,7 @@ In this task, you will edit the web application source code to update some confi
 
 1. Then press **_ESC_**, write **_:wq_** to save your changes and close the file.
     
-   >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still if there are any issues, connect to the LabVM via RDP using credentials provided in the Environment details tab.
+   >**Note**: If **_ESC_** doesn't work press `ctrl+[` and then write **_:wq_** to save your changes and close the file. Still, if there are any issues, connect to the LabVM via RDP using the credentials provided in the Environment details tab.
     
 
 1. Run the below command to change the directory to the ContosoTraders.Ui.Website folder.
@@ -55,7 +55,7 @@ In this task, you will edit the web application source code to update some confi
    cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
    ```
    
-1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application.
+1. Once you are in the correct directory, run the command below to create the new Docker image that will have all the latest changes of the web application.
   
    >**Note**: Observe that this time we are using "V1" tag for the image.
   
@@ -65,7 +65,7 @@ In this task, you will edit the web application source code to update some confi
       docker push contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
       ```
 
-   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
+   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update, which is expected and doesn't affect the lab's functionality.
 
    >**Note:** If it throws any error, run the below command:
 
@@ -73,16 +73,16 @@ In this task, you will edit the web application source code to update some confi
    az acr login -n contosotradersacr<inject key="DeploymentID" enableCopy="false" />
    ```
 
-1. Open a new **Command Prompt** and log in using the following command **(1)**. Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.:
+1. Open a new **Command Prompt** and log in using the following command **(1)**. Then a popup appears for _SignIn_, then choose **Work or school account (2)** and click on **Continue (3)**.:
 
    ``` 
    az login
    ```
    ![](media/E3T1S1.png)
 
-   > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+   > **Note:** If you are unable to see the pop-up for Signin, minimize the command prompt to view the pop-up window.
 
-1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen. Enter the following email/username and then click **Next**. 
 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
@@ -113,7 +113,7 @@ In this task, you will edit the web application source code to update some confi
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S14ii.png "Pod deployment is in progress")
 
-1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
+1. Now run the command below to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
    ```bash
    kubectl describe pods [PODNAME] -n contoso-traders
@@ -121,7 +121,7 @@ In this task, you will edit the web application source code to update some confi
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S15.png "Pod deployment is in progress")
 
-1. Now to set the new image on the pods, run the below command.
+1. Now, to set the new image on the pods, run the command below.
 
      ```bash
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
@@ -146,10 +146,11 @@ In this task, you will edit the web application source code to update some confi
      ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S18.png "Pod deployment is in progress")
 
     
-1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again and you should be able to see the changes on the home page.
+1. Once the image update to the pod is done, navigate back to the Azure portal and browse/refresh the web application page again, and you should be able to see the changes on the home page.
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S19.png "Pod deployment is in progress")
 
+<!--
 #### Validation
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
@@ -158,6 +159,7 @@ In this task, you will edit the web application source code to update some confi
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com. We are available 24/7 to help you out.
 
 <validation step="bc6d953d-e84f-4454-b736-b54ecf2ef76c" />
+-->
 
 ### Task 2: Configure Kubernetes Ingress
 
@@ -170,14 +172,14 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```
    ![](media/cloudnative-6.png)
 
-1. Update your helm package list.
+1. Update your Helm package list.
 
    ```bash
    helm repo update
    ```
    ![](media/cloudnative-7.png)
 
-   > **Note**: If you get a "no repositories found." error, then run the following command. This will be added back to the official Helm "stable" repository.
+   > **Note**: If you get a "no repositories found" error, then run the following command. This will be added back to the official Helm "stable" repository.
    >
    > ```bash
    > helm repo add stable https://charts.helm.sh/stable 
@@ -195,7 +197,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
     ![](media/E5T2S4.png)
 
-   > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
+   > **Note**: It could take a few minutes to refresh. Alternatively, you can find the IP using the following command in Azure Cloud Shell.
    >
    > ```bash
    > kubectl get svc --namespace contoso-traders
@@ -215,7 +217,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
-  - `$env:tenantId`: Enter the tenant ID which you copied in previous step **(1)**.
+  - `$env:tenantId`: Enter the tenant ID which you copied in the previous step **(1)**.
 
    - `[ipaddress]`: Replace this with the IP Address copied from step 4 **(2)**.
    - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** **(3)**.
@@ -274,13 +276,13 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```
     ![](media/E5T2S10.png )
 
-   >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the below-mentioned command and try accessing the URL again.
+   >**Note**: If the URL doesn't work or you don't receive a 404 error. Please run the command and try accessing the URL again.
 
    ```bash
    helm upgrade nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.service.externalTrafficPolicy=Local
    ```
 
-9. Use helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
+9. Use Helm to install `cert-manager`, a tool that can provision SSL certificates automatically from letsencrypt.org.
 
    ```bash
    kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.yaml
@@ -288,12 +290,12 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
    ![](media/cloudnative-12.png)
 
-10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
+10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the command below in the Windows command prompt.
 
     ```bash 
     code clusterissuer.yml
     ```
-11. Inside the **clusterissuer.yml** file copy and paste the following content:
+11. Inside the **clusterissuer.yml** file, copy and paste the following content:
 
     ```yaml
     apiVersion: cert-manager.io/v1
@@ -386,7 +388,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     code content.ingress.yml
     ```
 
-17. Inside the **content.ingress.yml** file copy and paste the following content:
+17. Inside the **content.ingress.yml** file, copy and paste the following content:
 
     ```yaml
     apiVersion: networking.k8s.io/v1
@@ -452,5 +454,6 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
 
 ### You have successfully completed the exercise. Click on the Next button.
+
 
 ![](./media/next-1411.png)
