@@ -4,13 +4,13 @@
 
 ## Overview
 
-Contoso Traders (ContosoTraders) provides online retail website services tailored to the electronics community. They are refactoring their application to run as a Docker application. They want to implement a proof of concept that will help them get familiar with the development process, lifecycle of deployment, and critical aspects of the hosting environment. They will be deploying their applications to Azure Kubernetes Service and want to learn how to deploy containers in a dynamically load-balanced manner, discover containers, and scale them on demand.
+Contoso Traders (ContosoTraders) provides online retail website services tailored to the electronics community. They are refactoring their application to run as a Docker application. They want to implement a proof of concept that will help them get familiar with the development process, the lifecycle of deployment, and the critical aspects of the hosting environment. They will be deploying their applications to Azure Kubernetes Service and want to learn how to deploy containers in a dynamically load-balanced manner, discover containers, and scale them on demand.
 
 In this hands-on lab, you will assist with completing this POC with a subset of the application codebase. You will use a pre-created build agent based on Linux and an Azure Kubernetes Service cluster for running deployed applications. You will be helping them to complete the Docker setup for their application, test locally, push to an image repository, deploy to the cluster, test load-balancing and scale and use Azure Monitor and view the insights.
 
 ## Objective
 
-The objective is to understand how to deploy containerized applications to Azure Kubernetes Service (AKS), manage scaling, and monitor performance.By the end of this lab, you will be able to:
+The objective is to understand how to deploy containerized applications to Azure Kubernetes Service (AKS), manage scaling, and monitor performance. By the end of this lab, you will be able to:
 
 - **Build Docker Images for the Application** The objective is to understand the process of containerizing an application using Docker images, pushing the images to Azure Container Registry, and managing them for secure and centralized access.
 
@@ -99,7 +99,7 @@ Feel free to **Start, Stop, or Restart (2)** your virtual machine as needed from
  
    ![Manage Your Virtual Machine](media/gext2.png)
 
-3. If you have not extended the duration prior to when the lab is about to end, a pop-up will appear, giving you the option to extend. Click **OK** to proceed.
+3. If you have not extended the duration before when the lab is about to end, a pop-up will appear, giving you the option to extend. Click **OK** to proceed.
       
 ## Let's Get Started with Azure Portal
  
@@ -140,5 +140,6 @@ Now, click on Next from the lower right corner to move to the next page.
 ![](./media/next-1411.png)
 
 ### Happy Learning!!
+
 
 
