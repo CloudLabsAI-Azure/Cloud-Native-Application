@@ -61,6 +61,10 @@ To get a better understanding of your lab resources and credentials, navigate to
 For convenience, you can open the lab guide in a separate window by selecting the **Split Window** button from the Top right corner.
  
    ![](./media/CL3.png)
+
+If a **PowerShell** window opens and starts installing packages, **do not close it**. Click the **Minimize** button and continue with the lab.
+
+   ![](./media/fr-gs-g1.png)
  
 ## **Managing Your Virtual Machine**
  
