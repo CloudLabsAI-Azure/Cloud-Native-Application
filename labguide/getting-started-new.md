@@ -46,6 +46,10 @@ Once you're ready to dive in, your virtual machine and **Lab Guide** will be rig
 
    ![](./media/SSG.png)
 
+If a **PowerShell** window opens and starts installing packages, **do not close it**. Click the **Minimize** button and continue with the lab.
+
+![](./media/fr-gs-g1.png)
+
 ### **Virtual Machine & Lab Guide**
  
 Your virtual machine is your workhorse throughout the workshop. The lab guide is your roadmap to success.
@@ -109,4 +113,5 @@ Now, click on Next from the lower right corner to move to the next page.
    ![](./media/GS4.png "Enter Password")
 
 ### Happy Learning!!
+
 
