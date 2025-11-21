@@ -24,10 +24,6 @@ Participants should have:
 
 This architecture illustrates the deployment process for containerizing an application using Docker and pushing the created images to Azure Container Registry. In this lab, the user will walk through the process of building a Docker image on a Linux VM, configuring Docker to containerize the application, and then pushing the Docker image to Azure Container Registry for secure storage and management. This lab provides a foundational understanding of working with Docker and Azure Container Registry to manage containerized applications in a cloud environment.
 
-## Architechture Diagram
-
-![](./media/module3arch.png)
-
 ## Explanation of Components
 
 - **Azure Virtual Machine:** A virtual machine running a Linux operating system, used to create and test the Docker image. The Linux VM serves as the environment where Docker is installed and configured to build containerized applications.
@@ -48,7 +44,7 @@ Once you're ready to dive in, your virtual machine and **Lab Guide** will be rig
 
 If a **PowerShell** window opens and starts installing packages, **do not close it**. Click the **Minimize** button and continue with the lab.
 
-![](./media/fr-gs-g1.png)
+![](./media/fr-gs-g1-up.png)
 
 ### **Virtual Machine & Lab Guide**
  
@@ -113,5 +109,6 @@ Now, click on Next from the lower right corner to move to the next page.
    ![](./media/GS4.png "Enter Password")
 
 ### Happy Learning!!
+
 
 
