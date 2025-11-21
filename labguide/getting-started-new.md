@@ -42,9 +42,13 @@ Once you're ready to dive in, your virtual machine and **Lab Guide** will be rig
 
    ![](./media/SSG.png)
 
+Once you get access to Virtual Machine, in the dialog for shutdown event tracker, click on **cancel**.
+
+   ![](./media/cn-img-up.png)
+
 If a **PowerShell** window opens and starts installing packages, **do not close it**. Click the **Minimize** button and continue with the lab.
 
-![](./media/fr-gs-g1-up.png)
+   ![](./media/fr-gs-g1-up.png)
 
 ### **Virtual Machine & Lab Guide**
  
@@ -109,6 +113,7 @@ Now, click on Next from the lower right corner to move to the next page.
    ![](./media/GS4.png "Enter Password")
 
 ### Happy Learning!!
+
 
 
 
