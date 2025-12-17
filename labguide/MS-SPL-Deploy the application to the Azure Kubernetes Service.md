@@ -1,4 +1,4 @@
-## Exercise 03 : Deploy the application to the Azure Kubernetes Service
+# Exercise 03 : Deploy the application to the Azure Kubernetes Service
    
 ### Estimated Duration: 90 Minutes
 
@@ -23,7 +23,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
 1. In the LabVM, search for **cmd (1)**, right click on the **Command Prompt (1)** then select **Run as administrator (3)**.
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cn28.png "Add a Namespace")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cnp-p4t1p1.png "Add a Namespace")
 
 1. If you're prompted with a message saying **Do you want to allow this app to make changes to your device?**, click **Yes** to continue.
 
@@ -42,6 +42,14 @@ This task will gather the information you need about your Azure Kubernetes Servi
     ```bash
     choco install azure-cli
     ```
+
+1. If you encounter this error, then follow the below steps:
+
+  ![](/media/cnp-p4t1p2.png)
+
+  - Run the command: `az login`
+
+  - In the 
 
 1. Run the following command to set up the Kubernetes cluster connection using kubectl. 
 
@@ -77,7 +85,7 @@ In this task, you will be creating a secret in the Kubernetes cluster to fetch t
     
 1. Select **Configuration (1)** from the left side menu under **Kubernetes resources** and click on **Secrets (2)** section. Under secrets, you should be able to see the newly created `mongodbconnection` secret **(3)**.
 
-     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/14052025(8).png "Add a Namespace")
+     ![This is a screenshot of the Azure Portal for AKS showing adding a Namespace.](media/cnp-p4t2p1.png "Add a Namespace")
 
     > **Note:** If the deployment status shows as **0/1** or remains in a failed state (⚠️) instead of running, perform the following steps:
 
@@ -150,11 +158,11 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
    
 1. Select **Namespaces (1)** from the left side menu under **Kubernetes resources**. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders (2)** namespace only. 
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-19.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cnp-p4t3p1.png "Add a Service")
     
-3. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. Click on the drop-down arrow, adjacent to **+ Create (2)** and then select **+ Apply a YAML (3)**.
+3. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. Click on the drop-down arrow, adjacent to **+ Create (2)** and then select **Apply a YAML (3)**.
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cloudnative-v1-20.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cnp-p4t3p2.png "Add a Service")
 
 1. In the **Apply with YAML** pane, paste the below YAML code, which creates a service in AKS **(1)** and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** value in the YAML file.
 

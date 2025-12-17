@@ -1,4 +1,4 @@
-## Exercise 02 : Migrate MongoDB to Cosmos DB using Azure Database Migration
+# Exercise 02 : Migrate MongoDB to Cosmos DB using Azure Database Migration
   
 ### Estimated Duration: 75 Minutes
 
@@ -82,7 +82,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. In the left-hand menu, select **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
 
-   ![](media/cloudnative-v1-5.png)
+   ![](media/cnp-p3t2p1.png)
 
    >**Note:** If a pop-up appears saying **Welcome! What is Cosmos DB?**, click **Close X** to dismiss it.
 
@@ -184,7 +184,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Select **Data Explorer (1)** from the left menu. You will see the `items` and `products` collections listed within the `contentdb` database **(2)** and you will be able to explore the documents **(3)**.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/14052025(6).png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/cnp-p3t2p2.png "Cosmos DB is open")
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next Exercise. 

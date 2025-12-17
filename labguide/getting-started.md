@@ -54,7 +54,7 @@ Welcome to your Cloud Native Application Architecture Workshop! We've prepared a
  
 Once you're ready to dive in, your virtual machine and **Guide** will be right at your fingertips within your web browser.
 
-   ![](media/14052025.png "Lab Environment")
+   ![](media/cnp-guidetab.png "Lab Environment")
 
    >**Note:** Once the environment gets set up, you will see the PowerShell automation script executing on the desktop. Wait for it to complete and ensure not to close or cancel it.
 
@@ -114,9 +114,11 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
 1. Now enter the following password and click on **Sign in**.
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/cng7.png "Enter Password")
+     ![](media/cnp-signinpassword.png "Enter Password")
   
 1. If you see the pop-up **Stay Signed in?**, click **No**.
+
+   ![](media/cnp-signinpassword(1).png "Enter Password")
 
 1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
