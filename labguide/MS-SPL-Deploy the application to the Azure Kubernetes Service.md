@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault secrets and ACR where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
+In this exercise, you will be deploying your containerized web application to AKS (Azure Kubernetes Service) with the help of Key Vault secrets and ACR, where you have stored your containerized web application images. Also, you will be exploring two ways to deploy the app to AKS. 
 
 ## Objectives
 
@@ -29,7 +29,7 @@ This task will gather the information you need about your Azure Kubernetes Servi
 
     ![](media/cloudnative-1.jpg)
 
-1. Open a new command prompt as Administrator in your jump VM and log in to Azure with the below command **(1)**. Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+1. Open a new command prompt as Administrator in your jump VM and log in to Azure with the below command **(1)**. Then a pop-up appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
    
     ```bash
     az login
@@ -41,9 +41,9 @@ This task will gather the information you need about your Azure Kubernetes Servi
     ```bash
     choco install azure-cli
     ```
-    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+    > **Note:** If you are unable to see the pop-up for Signin, minimize the command prompt to view the pop-up window.
 
-1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen. In that enter the following email/username and then click on **Next**. 
 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
@@ -149,7 +149,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
       ![Select workloads under Kubernetes resources.](media/cn43.png "Select workloads under Kubernetes resources") 
 
-      >**Note:** While entering the YAML code, if you're prompted with suggestion **Draft with Copilot**, click the **Close** button to dismiss it.
+      >**Note:** While entering the YAML code, if you're prompted with the suggestion **Draft with Copilot**, click the **Close** button to dismiss it.
       
       > ![](media/cloudnative-2.jpg)
        
@@ -271,13 +271,6 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
         ```
       1. Wait for **2–3 minutes** to allow the deployment status to update. 
 
-> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task.
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-<validation step="9975e483-b432-47bf-99bf-eca3572721f1" />
-
 ## Task 4: Deploy a service & workload using kubectl
 
 In this task, you will deploy the web service & its workload using kubectl.
@@ -294,7 +287,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Save the changes by **CTRL + S** button to **Save**.
 
-1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
+1. Navigate back to the Windows command prompt and run the command below to change the directory to the `~/LabFiles` folder.
 
     ```bash
     cd C:/LabFiles
@@ -306,7 +299,7 @@ In this task, you will deploy the web service & its workload using kubectl.
     az login -u <inject key="AzureAdUserEmail"></inject> -p <inject key="AzureAdUserPassword"></inject>
     ```
 
-1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
+1. Execute the command below to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
 
    >**Info:** The below kubectl command will create the Deployment workload and Service in the namespace that we have defined in the YAML files. 
 
@@ -323,13 +316,6 @@ In this task, you will deploy the web service & its workload using kubectl.
     ![AKS services and ingresses shown with External IP highlighted](media/website2.png "AKS services and ingresses shown with External IP highlighted")
 
     > **Note:** This may take 1–2 minutes to load. Thank you for your patience!
-
-> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - Hit the Validate button for the corresponding task. If you receive a success message, it indicates that you have successfully completed the hands-on lab.
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-<validation step="d838945d-f950-452c-b5c4-9c516a60b595" />
 
 ## Summary
 
