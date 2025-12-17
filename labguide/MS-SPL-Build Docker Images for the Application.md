@@ -1,4 +1,4 @@
-## Exercise 01 : Build Docker Images for the Application
+# Exercise 01 : Build Docker Images for the Application
   
 ### Estimated Duration: 75 Minutes
 
@@ -15,7 +15,7 @@ In this exercise, you will be able to complete the following tasks:
    
 ## Task 1: Set up a local infrastructure with the Linux VM
 
-In this task, you will be connecting to the Build agent VM using the Command prompt and will be cloning the Contoso trader website GitHub repo.  
+In this task, you will be connecting to the Build agent VM using the Command Prompt and will be cloning the Contoso trader website GitHub repo.  
 
 1. Once you log into the VM, search for **cmd** **(1)** in the Windows search bar and click on **Command Prompt** **(2)** to open.
 
@@ -101,7 +101,7 @@ In this task, you will be building the Docker images to containerize the applica
 
    ![](media/ex1-logincontinue.png)
 
-1. Once you log in to Azure, Navigate back to command prompt now you are going to build the Docker images in the next steps and will be pushing them to ACR.
+1. Once you log in to Azure, navigate back to the command prompt. Now, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
    ![](media/ex1-logincomplete.png)
    
@@ -113,7 +113,7 @@ In this task, you will be building the Docker images to containerize the applica
     
     ![](media/cloudnative-v1-ex1.png)
     
-1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. 
+1. Repeat the steps to create the **contosotraders-Products** Docker image with the below command. 
 
     ```
     docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io/contosotradersapiproducts:latest
@@ -131,7 +131,7 @@ In this task, you will be building the Docker images to containerize the applica
     
     ![](media/latest-ex1-cd-website.png)
     
-1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given `DeploymentID` with **<inject key="DeploymentID" enableCopy="true"/>** and `Region` with  **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to product API once it's pushed to AKS containers.
+1. In the `vi` editor, press **_i_** to get into the `insert` mode. Replace the given `DeploymentID` with **<inject key="DeploymentID" enableCopy="true"/>** and `Region` with  **<inject key="Region" enableCopy="true"/>** value in the APIUrl. Then press **_ESC_**, write **_:wq_** to save your changes, and close the file. We need to update the API URL here so that the Contoso Traders application can connect to the product API once it's pushed to AKS containers.
     
     ```
     const APIUrl = 'http://contoso-traders-products<inject key="DeploymentID" enableCopy="true"/>.<inject key="Region" enableCopy="true"/>.cloudapp.azure.com/v1';

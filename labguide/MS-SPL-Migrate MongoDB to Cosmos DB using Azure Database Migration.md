@@ -1,4 +1,4 @@
-## Exercise 02 : Migrate MongoDB to Cosmos DB using Azure Database Migration
+# Exercise 02 : Migrate MongoDB to Cosmos DB using Azure Database Migration
   
 ### Estimated Duration: 75 Minutes
 
@@ -17,7 +17,7 @@ In this Exercise, you will be able to complete the following tasks:
 
 In this task, you will be connecting to a mongo database hosted on an Azure Linux VM and exploring the databases and collections in it.
 
-1. While connected to your Linux VM, run the below command to connect to mongo shell to display the databases and collections in it using the mongo shell.
+1. While connected to your Linux VM, run the following command to connect to the mongo shell to display the databases and collections in it using the mongo shell.
 
    ```
    mongo
@@ -25,7 +25,7 @@ In this task, you will be connecting to a mongo database hosted on an Azure Linu
 
    ![](media/cn11.png)   
    
-   >**Note:** If you face an issue while connecting to the source DB with an error connection is refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using SSH. Please run the following commands and reperform step 1 of the task.
+   >**Note:** If you face an issue while connecting to the source DB, with an error connection is refused. Run the **<inject key="Command to Connect to Build Agent VM" enableCopy="true" />** command and enter the VM password **<inject key="Build Agent VM Password" enableCopy="true" />** to connect to the Linux VM using SSH. Please run the following commands and reperform step 1 of the task.
 
    ```
    sudo apt install mongodb-server
@@ -82,7 +82,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. In the left-hand menu, select **Data Explorer (1)**. Now click on the drop-down arrow, adjacent to **+ New Collection (2)** and then select **+ New Database (3)**.
 
-   ![](media/cloudnative-v1-5.png)
+   ![](media/cnp-p3t2p1.png)
 
    >**Note:** If a pop-up appears saying **Welcome! What is Cosmos DB?**, click **Close X** to dismiss it.
 
@@ -138,7 +138,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
     ![Select source tab with values selected for the MongoDB server.](media/cloudnative-v1-10.png "MongoDB to Azure Database for CosmosDB - Select source")
     
-    > **Note:** If you face an issue while connecting to the source DB with an error connection is refused. Please run the following commands in the **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
+    > **Note:** If you face an issue while connecting to the source DB, with an error connection is refused. Please run the following commands in the **build agent VM connected in CloudShell**. You can use the **Command to Connect to Build Agent VM**, which is given on the lab environment details page.
 
     ```bash
     cd /etc
@@ -184,7 +184,7 @@ In this task, you will create a Migration project within Azure Database Migratio
 
 1. Select **Data Explorer (1)** from the left menu. You will see the `items` and `products` collections listed within the `contentdb` database **(2)** and you will be able to explore the documents **(3)**.
 
-   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/14052025(6).png "Cosmos DB is open")
+   ![The screenshot shows the Cosmos DB is open in the Azure Portal with Data Explorer open showing the data has been migrated.](media/cnp-p3t2p2.png "Cosmos DB is open")
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next Exercise. 
