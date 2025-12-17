@@ -56,7 +56,7 @@ In this task, you will resolve failed API replicas, which typically occur due to
 
    ![In the Workload view with the API deployment highlighted.](media/E4T2S2.png "API deployment is now healthy")
 
-1. In the **YAML** screen, scroll down and update the following items. Select **Review + save (4)** once after the changes made.
+1. In the **YAML** screen, scroll down and update the following items. Select **Review + save (4)** once after the changes have been made.
 
    - Under the **spec (1)** section, make sure the following **ports (2)** are provided:
 
@@ -78,7 +78,7 @@ In this task, you will resolve failed API replicas, which typically occur due to
 
 1. When prompted Confirm manifest change, check **Confirm manifest change** and select **Save**.
 
-1. Return to the **Workloads (1)** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, refresh the page and you will now see that the Deployment is healthy with **two (2)** Pods operating.
+1. Return to the **Workloads (1)** main view of the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false" />** Kubernetes service, refresh the page, and you will now see that the Deployment is healthy with **two (2)** Pods operating.
 
     ![In the Workload view with the API deployment highlighted.](media/E4T2S5.png "API deployment is now healthy")       
 
@@ -110,13 +110,13 @@ In this task, you will be configuring the Horizontal Autoscaling for your Kubern
 
 In this task, you will be enabling the cluster autoscaler for the existing AKS cluster, and you will be autoscaling the cluster node pools.
 
-1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+1. Navigate back to your Windows command prompt. If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a pop-up appears for _SignIn,_ then choose **Work or school account (2)** and click on **Continue (3)**.
     ```
     az login 
     ```
     ![](media/E4T4S1.png)
 
-    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+    > **Note:** If you are unable to see the pop-up for Signin, minimize the command prompt to view the pop-up window.
 
 1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
 
@@ -297,7 +297,7 @@ In this task, you will run a performance test script that will test the Autoscal
     bash ./perftest.sh
     ```
 
-    > **Note:** The script will take a few minutes to complete its execution, if the script get stuck while getting executed, click `Ctrl+C` to stop the script.
+    > **Note:** The script will take a few minutes to complete its execution, if the script gets stuck while executing, click `Ctrl+C` to stop the script.
 
 1. Once the script execution is completed, navigate back to the **Cosmos DB account** in the Azure portal.
 
