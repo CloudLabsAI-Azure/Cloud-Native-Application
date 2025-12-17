@@ -4,9 +4,9 @@
 
 ## Overview
 
-Contoso Traders (ContosoTraders) provides online retail website services tailored to the electronics community. They are refactoring their application to run as a Docker application. They want to implement a proof of concept that will help them get familiar with the development process, lifecycle of deployment, and critical aspects of the hosting environment.
+Contoso Traders (ContosoTraders) provides online retail website services tailored to the electronics community. They are refactoring their application to run as a Docker application. They want to implement a proof of concept that will help them get familiar with the development process, the lifecycle of deployment, and the critical aspects of the hosting environment.
 
-In this hands-on lab, you will assist in containerizing their application by building Docker images and pushing them to Azure Container Registry (ACR) for secure access. You will also migrate an on-premises MongoDB database from an Azure Linux VM to Azure Cosmos DB using Azure Database Migration Service. Finally, you will deploy the application to Azure Kubernetes Service (AKS), integrating Key Vault Secrets and exploring different deployment strategies. By the end of this lab, you will gain practical experience in containerization, database migration, and Kubernetes-based deployment.
+In this hands-on lab, you will assist in containerising their application by building Docker images and pushing them to Azure Container Registry (ACR) for secure access. You will also migrate an on-premises MongoDB database from an Azure Linux VM to Azure Cosmos DB using Azure Database Migration Service. Finally, you will deploy the application to Azure Kubernetes Service (AKS), integrating Key Vault Secrets and exploring different deployment strategies. By the end of this lab, you will gain practical experience in containerization, database migration, and Kubernetes-based deployment.
 
 ## Objectives
 
@@ -106,7 +106,7 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
 
    ![](media/cng12.png "Lab Environment")
    
-1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen. In that enter the following email/username and then click on **Next**. 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    
      ![](media/cng6.png "Enter Email")
@@ -123,8 +123,6 @@ If you need any assistance, please contact us at cloudlabs-support@spektrasystem
 1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
 1. If a **Welcome to Microsoft Azure** popup window appears, click **Cancel** to skip the tour.
-  
-This hands-on lab will help you gain insights into how Azure OpenAI’s content filtering mechanisms contribute to responsible AI deployment and how you can leverage these filters to ensure that your AI models adhere to appropriate content standards.
 
 ## Support Contact
 
