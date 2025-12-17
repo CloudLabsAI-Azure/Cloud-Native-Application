@@ -1,6 +1,6 @@
 # Exercise 1: Build Docker Images for the Application
   
-### Estimated Duration: 65 minutes
+### Estimated Duration: 65 Minutes
 
 ## Overview
 
@@ -13,7 +13,7 @@ You will be able to complete the following tasks:
 - Task 1: Set up a local infrastructure with the Linux VM
 - Task 2: Build Docker images to containerize the application and push them to the container registry
    
-### Task 1: Set up a local infrastructure with the Linux VM
+## Task 1: Set up a local infrastructure with the Linux VM
 
 In this task, you will be connecting to the Build agent VM using the Command prompt and will be cloning the Contoso trader website GitHub repo.  
 
@@ -29,9 +29,9 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-     ![](media/E1T1S3.png "open cmd")
+        ![](media/E1T1S3.png "open cmd")
    
-     >**Note**: Please note that while typing the password, you won’t be able to see it due to security concerns.
+        >**Note**: Please note that while typing the password, you won’t be able to see it due to security concerns.
     
 1. Once the VM is connected, run the following command to navigate to the clonedGitHub repository that we are going to use for the lab.
 
@@ -61,7 +61,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
         ![](media/cloudn.png)
     
     
-### Task 2: Build Docker images to containerize the application and push them to the container registry
+## Task 2: Build Docker images to containerize the application and push them to the container registry
 
 In this task, you will build the Docker images to containerize the application and subsequently will be pushing them to the Azure Container Registry (ACR) for later use in Azure Kubernetes Service (AKS).
 
@@ -97,7 +97,7 @@ In this task, you will build the Docker images to containerize the application a
 
    * Email/Username: **<inject key="AzureAdUserEmail"></inject>**
    
-    ![](media/corsspf-username.png)
+        ![](media/corsspf-username.png)
 
 1. Now enter the following password and click on **Sign in**.
 

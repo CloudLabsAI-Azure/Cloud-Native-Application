@@ -1,6 +1,6 @@
 # Exercise 5: Updating Apps & Managing Kubernetes Ingress
 
-### Estimated Duration: 70 minutes
+### Estimated Duration: 70 Minutes
 
 ## Overview
 
@@ -15,7 +15,7 @@ You will be able to complete the following tasks:
 - Task 1: Perform a rolling update
 - Task 2: Configure Kubernetes Ingress
 
-### Task 1: Perform a rolling update
+## Task 1: Perform a rolling update
  
 In this task, you will modify the web application's source code to apply configuration changes and update the Docker image used in the deployment. You will then perform a rolling update to demonstrate how to deploy the code changes. Rolling updates enable the  updates to occur with zero downtime by gradually replacing existing Pod instances with new ones. The updated Pods will be scheduled on Nodes that have available resources.
 
@@ -33,9 +33,9 @@ In this task, you will modify the web application's source code to apply configu
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
-     ![](media/E1T1S3.png "open cmd")
+      ![](media/E1T1S3.png "open cmd")
    
-     >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
+      >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
 
 1. Run the below command to navigate to the directory where you'll modify the web application source code with the required changes
 
@@ -91,14 +91,13 @@ In this task, you will modify the web application's source code to apply configu
 
 1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
 
-1. Open a new Command Prompt and log in using the following command **(1)**. Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.:
+1. Open a new Command Prompt and log in to Azure with the command below **(1)**.Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+    ```
+    az login 
+    ```
+    ![](media/E4T4S1.png)
 
-   ``` 
-   az login
-   ```
-   ![](media/E3T1S1.png)
-
-   > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
 
 1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
 
@@ -110,15 +109,15 @@ In this task, you will modify the web application's source code to apply configu
 
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/GS4.png "Enter Password")
+     ![](media/cnp-p4t1p2(3).png "Enter Password")
 
-   >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**.
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Sign in to all apps, websites, and services on this device?", Click **No, this app only**.
 
-    ![](media/E3T1S4.png) 
+     ![](media/cnp-p4t1p2(4).png)
 
-    > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
+     > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
 
-    ![](media/E3T1S5.png)
+     ![](media/cnp-p4t1p2(5).png)
   
 1. Run the below **_kubectl_** command to retrieve the current deployment in your AKS cluster, as we will be updating the web API to use the latest image. Ensure to copy the name of the **contoso-traders-web###** **(1)** to the notepad. 
 
@@ -168,16 +167,7 @@ In this task, you will modify the web application's source code to apply configu
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S19.png "Pod deployment is in progress")
 
-
-
-> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - If you receive a success message, you can proceed to the next task.
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-<validation step="2215992c-23d6-4981-9192-cf953a1f8243" />
-
-### Task 2: Configure Kubernetes Ingress
+## Task 2: Configure Kubernetes Ingress
 
 This task will set up a Kubernetes Ingress using an [Nginx proxy server](https://nginx.org/en/) to take advantage of path-based routing and TLS termination.
 
@@ -207,7 +197,9 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    helm install nginx-ingress ingress-nginx/ingress-nginx --namespace contoso-traders --set controller.replicaCount=1 --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux --set controller.service.externalTrafficPolicy=Local
    ```
 
-1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses** under Kubernetes resources.
+1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses (1)** under Kubernetes resources and then click on **nginx-ingress-ingress-nginx-controller (2)**.
+
+  ![](media/cnapp-ex5t2p1.png)
 
 1. On the **Overview** **(1)** pane, copy the IP Address for the **External IP** **(2)** for the `nginx-ingress-ingress-nginx-controller` service.
 
@@ -221,7 +213,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    >
    ![A screenshot of Azure Cloud Shell showing the command output.](media/E5T2S5-N.png "View the ingress controller LoadBalancer")
 
-1. In **Azure Portal**, search and open the **Microsoft Entra ID**, and copy **Tenant ID**.
+1. In **Azure Portal**, search and open the **Microsoft Entra ID (1)**, and copy **Tenant ID (2)**.
 
    ![](media/E5T2S5.png)
 
@@ -233,43 +225,43 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
    Paste the following as the contents. Make sure to replace the following placeholders in the script:
 
-  - `$env:tenantId`: Enter the tenant ID which you copied in previous step **(1)**.
+    - `$env:tenantId`: Enter the tenant ID which you copied in previous step **(1)**.
 
-   - `[ipaddress]`: Replace this with the IP Address copied from step 4 **(2)**.
-   - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** **(3)**.
-   - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** **(4)** that you have used previously for this lab.
-   - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** **(5)**. 
+    - `[ipaddress]`: Replace this with the IP Address copied from step 4 **(2)**.
+    - `[KUBERNETES_NODE_RG]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** **(3)**.
+    - `[DNSNAME]`: Replace this with the same SUFFIX value **<inject key="DeploymentID" />** **(4)** that you have used previously for this lab.
+    - `[PUBLICIP]`: Replace the `SUFFIX` with this value **<inject key="DeploymentID" />** **(5)**. 
 
-     ```bash
-     # Create a SecureString from the client's secret
-     $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
-      
-     # Create a PSCredential object using the client ID and secure password
-     $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
-      
-     # Authenticate using the PSCredential object
-     Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
+      ```bash
+      # Create a SecureString from the client's secret
+      $securePassword = ConvertTo-SecureString $env:AppSecret -AsPlainText -Force
+        
+      # Create a PSCredential object using the client ID and secure password
+      $credential = New-Object System.Management.Automation.PSCredential($env:AppID, $securePassword)
+        
+      # Authenticate using the PSCredential object
+      Connect-AzAccount -ServicePrincipal -Credential $credential -TenantId $env:tenantId
 
-     $ipaddress="INGRESS PUBLIC IP"
+      $ipaddress="INGRESS PUBLIC IP"
 
-     $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
+      $KUBERNETES_NODE_RG="contoso-traders-aks-nodes-rg-SUFFIX"
 
-     $DNSNAME="contosotraders-SUFFIX-ingress"
+      $DNSNAME="contosotraders-SUFFIX-ingress"
 
-     $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
+      $PUBLICIP=Get-AzPublicIPAddress -ResourceGroupName contoso-traders-aks-nodes-rg-SUFFIX
 
-     $results = @()
+      $results = @()
 
-     ForEach ($i in $PUBLICIP)
-     {
-     If($i.IpAddress -eq $ipaddress){
-     $PIPNAME=$i.name
-     $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
-     Set-AzPublicIpAddress -PublicIpAddress $i
-     }
-     }
-     ```
-     ![](media/E5T2S7.png)
+      ForEach ($i in $PUBLICIP)
+      {
+      If($i.IpAddress -eq $ipaddress){
+      $PIPNAME=$i.name
+      $i.DnsSettings = @{"DomainNameLabel" = $DNSNAME} 
+      Set-AzPublicIpAddress -PublicIpAddress $i
+      }
+      }
+      ```
+      ![](media/E5T2S7.png)
 
 6. Save the changes by **CTRL + S** button to **Save**. and close the editor.
 
