@@ -33,7 +33,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
    
         >**Note**: Please note that while typing the password, you won’t be able to see it due to security concerns.
     
-1. Once the VM is connected, run the following command to navigate to the clonedGitHub repository that we are going to use for the lab.
+1. Once the VM is connected, run the following command to navigate to the cloned GitHub repository that we are going to use for the lab.
 
      ``` 
     cd Cloud-Native-Application/labfiles/
@@ -66,7 +66,7 @@ In this task, you will be connecting to the Build agent VM using the Command pro
 In this task, you will build the Docker images to containerize the application and subsequently will be pushing them to the Azure Container Registry (ACR) for later use in Azure Kubernetes Service (AKS).
 
 
-1. Ensure that you are in the **labfiles** directory before proceeding with the next steps, as the Docker build need to access the Docker file to create the image.
+1. Ensure that you are in the **labfiles** directory before proceeding with the next steps, as the Docker build needs to access the Docker file to create the image.
 
     ```
     cd Cloud-Native-Application/labfiles/
@@ -109,11 +109,11 @@ In this task, you will build the Docker images to containerize the application a
 
    ![](media/crosspf-continue.png)
 
-1. Once you log in to Azure, Navigate back to command prompt now you are going to build the Docker images in the next steps and will be pushing them to ACR.
+1. Once you log in to Azure, navigate back to the command prompt now, you are going to build the Docker images in the next steps and will be pushing them to ACR.
 
    ![](media/E1T2S8.png)
    
-1. Now build the **contosotraders-carts** docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced.
+1. Now build the **contosotraders-carts** Docker image using the Dockerfile in the directory. Take note of how the deployed Azure Container Registry is referenced.
 
     ```
     docker build src -f ./src/ContosoTraders.Api.Carts/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapicarts:latest
@@ -123,7 +123,7 @@ In this task, you will build the Docker images to containerize the application a
 
     >**Note:** This step might take 1-2 minutes to build docker image.
 
-1. Repeat the steps to create the **contosotraders-Products** docker image with the below command. 
+1. Repeat the steps to create the **contosotraders-Products** Docker image with the below command. 
 
     ```
      docker build src -f ./src/ContosoTraders.Api.Products/Dockerfile -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest -t contosotradersacr<inject key="DeploymentID" enableCopy="false"/>.azurecr.io/contosotradersapiproducts:latest
@@ -131,7 +131,7 @@ In this task, you will build the Docker images to containerize the application a
 
     ![](media/api-products.png)
 
-    >**Note:** This step might take 1-2 minutes to build docker image.
+    >**Note:** This step might take 1-2 minutes to build Docker image.
 
 1. Run the below command to change the directory to `services` and open the `configService.js` file.
 
@@ -197,7 +197,7 @@ In this task, you will build the Docker images to containerize the application a
 
    ![](media/E1T2S18.png)    
 
-1. Now, log in to ACR using the command below. Please update the ACR password value in the command below. You should be able to see the output below in the screenshot. Make sure to replace the password with the copied container registry password, which you have copied in the previous step, in the below command.
+1. Now, log in to ACR using the command below. Please update the ACR password value in the command below. You should be able to see the output below in the screenshot. Make sure to replace the password with the copied container registry password, which you have copied in the previous step, in the command below.
 
     ```
     docker login contosotradersacr<inject key="DeploymentID" enableCopy="true"/>.azurecr.io -u contosotradersacr<inject key="DeploymentID" enableCopy="true"/> -p [password]
@@ -230,5 +230,5 @@ In this task, you will build the Docker images to containerize the application a
 
 In this exercise, you have completely containerized your web application with the help of Docker and pushed it to the container registry.
 
-### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.
+### You have successfully completed the lab. Click on **Next >>** to proceed with the next exercise.
 ![](media/1-n.png "Next")
