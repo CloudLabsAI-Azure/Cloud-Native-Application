@@ -11,7 +11,7 @@ In this exercise, you will be deploying your containerized web application to AK
 In this Exercise, you will be able to complete the following tasks:
 
 - Task 1: Tunnel into the Azure Kubernetes Service cluster
-- Task 2: Set up Key Vault & Secrets
+- Task 2: Set up MongoDB Secrets with AKS 
 - Task 3: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
 - Task 4: Deploy a service & workload using kubectl
 
@@ -121,7 +121,7 @@ In this task, you will deploy the API Carts application to the Azure Kubernetes 
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cnp-p4t3p1.png "Add a Service")
     
-3. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. Click on the drop-down arrow, adjacent to **+ Create (2)** and then select **Apply a YAML (3)**.
+1. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. Click on the drop-down arrow, adjacent to **+ Create (2)** and then select **Apply a YAML (3)**.
     
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cnp-p4t3p2.png "Add a Service")
 
@@ -322,7 +322,7 @@ In this task, you will deploy the web service & its workload using kubectl.
 In this exercise, you have accomplished the following:
 
 - Task 1: Tunnelled into the Azure Kubernetes Service cluster
-- Task 2: Set up Key Vault & Secrets
+- Task 2: Set up MongoDB Secrets with AKS 
 - Task 3: Deployed a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
 - Task 4: Deployed a service & workload using kubectl
 
