@@ -29,20 +29,20 @@ In this task, you will modify the web application's source code to apply configu
    
    >**Note**: In the command prompt, type **yes** and press **Enter** for `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
    
-1. Once the ssh is getting connected to the VM, please enter the VM password given below:
+1. Once the SSH is connected to the VM, please enter the VM password given below:
    
     * Password: **<inject key="Build Agent VM Password" enableCopy="true" />**
 
       ![](media/E1T1S3.png "open cmd")
    
-      >**Note**: Please note that while typing the password you won’t be able to see it due to security concerns.
+      >**Note**: Please note that while typing the password, you won’t be able to see it due to security concerns.
 
 1. Run the below command to navigate to the directory where you'll modify the web application source code with the required changes
 
      ```bash
      cd ~/Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website/src/pages/home/sections/
      ```
-1. Once you are in the correct directory, run the below command to open the **hero.js** file to make the text modification to the web application's homepage.
+1. Once you are in the correct directory, run the following command to open the **hero.js** file to make the text modification to the web application's homepage.
 
      ```bash
      sudo chmod 777 hero.js
@@ -71,7 +71,7 @@ In this task, you will modify the web application's source code to apply configu
      cd Cloud-Native-Application/labfiles/src/ContosoTraders.Ui.Website
      ```
    
-1. Once you are in the correct directory, run the below command to create the new docker image that will have all the latest changes of the web application.
+1. Once you are in the correct directory, run the command below to create the new Docker image that will have all the latest changes of the web application.
   
    >**Note**: Observe that this time we are using "V1" tag for the image.
   
@@ -81,7 +81,7 @@ In this task, you will modify the web application's source code to apply configu
       docker push contosotradersacr<inject key="DeploymentID" enableCopy="false" />.azurecr.io/contosotradersuiweb:V1
       ```
 
-   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update which is expected and doesn't affect the lab's functionality.
+   > **Note:** Please be aware that the above command may take up to 5 minutes to finish the build. Before taking any further action, make sure it runs successfully. Also, you may notice a few warnings related to the npm version update, which is expected and doesn't affect the lab's functionality.
 
    >**Note:** If it throws any error, run the below command:
 
@@ -89,15 +89,15 @@ In this task, you will modify the web application's source code to apply configu
    az acr login -n contosotradersacr<inject key="DeploymentID" enableCopy="false" />
    ```
 
-1. Once the docker build and push are completed, Navigate back to the other Command prompt that is not connected to the Linux VM.
+1. Once the Docker build and push are completed, navigate back to the other Command prompt that is not connected to the Linux VM.
 
-1. Open a new Command Prompt and log in to Azure with the command below **(1)**.Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+1. Open a new Command Prompt and log in to Azure with the command below **(1)**.Then a pop-up appears for _SignIn,_ then choose **Work or school account (2)** and click on **Continue (3)**.
     ```
     az login 
     ```
     ![](media/E4T4S1.png)
 
-    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+    > **Note:** If you are unable to see the pop-up for Signin minimise the command prompt to view the pop-up window.
 
 1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
 
@@ -130,7 +130,7 @@ In this task, you will modify the web application's source code to apply configu
 
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S14ii.png "Pod deployment is in progress")
 
-1. Now run the below command to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
+1. Now run the command below to view the current image version of the app. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
      ```bash
      kubectl describe pods [PODNAME] -n contoso-traders
@@ -138,7 +138,7 @@ In this task, you will modify the web application's source code to apply configu
    
    ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S15.png "Pod deployment is in progress")
 
-1. Now to set the new image on the pods, run the below command.
+1. Now, to set the new image on the pods, run the command below.
 
      ```bash
      kubectl set image deployments/contoso-traders-web -n contoso-traders contoso-traders-web=contosotradersacr<inject key="DeploymentID" />.azurecr.io/contosotradersuiweb:V1
@@ -154,7 +154,7 @@ In this task, you will modify the web application's source code to apply configu
     
     ![At the top of the list, a new web replica set is listed as a pending deployment in the Replica Set box.](media/E5T1S17.png "Pod deployment is in progress")
 
-1. Now run the below command to describe the latest pods and see which image is mapped with the pod. Make sure to update the **PODNAME** value with the value you copied in the last step.
+1. Now run the command below to describe the latest pods and see which image is mapped with the pod. Make sure to update the **PODNAME** value with the value you copied in the last step.
 
      ```bash
      kubectl describe pods [PODNAME] -n contoso-traders
@@ -185,7 +185,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    ```
    ![](media/cloudnative-7.png)
 
-   > **Note**: If you get a "no repositories found." error, then run the following command. This will be added back to the official Helm "stable" repository.
+   > **Note**: If you get a "no repositories found" error, then run the following command. This will be added back to the official Helm "stable" repository.
    >
    > ```bash
    > helm repo add stable https://charts.helm.sh/stable 
@@ -199,13 +199,13 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
 
 1. Navigate to Azure Portal, open **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** Kubernetes service. Select **Services and ingresses (1)** under Kubernetes resources and then click on **nginx-ingress-ingress-nginx-controller (2)**.
 
-  ![](media/cnapp-ex5t2p1.png)
+   ![](media/cnapp-ex5t2p1.png)
 
 1. On the **Overview** **(1)** pane, copy the IP Address for the **External IP** **(2)** for the `nginx-ingress-ingress-nginx-controller` service.
 
     ![](media/E5T2S4.png)
 
-   > **Note**: It could take a few minutes to refresh, alternately, you can find the IP using the following command in Azure Cloud Shell.
+   > **Note**: It could take a few minutes to refresh. Alternatively, you can find the IP using the following command in Azure Cloud Shell.
    >
    > ```bash
    > kubectl get svc --namespace contoso-traders
@@ -298,12 +298,12 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
    ![](media/cloudnative-12.png)
 
-10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the below command in the Windows command prompt.
+10. To create a custom `ClusterIssuer` resource for the `cert-manager` service to use when handling requests for SSL certificates, run the command below in the Windows command prompt.
 
     ```bash 
     code clusterissuer.yml
     ```
-11. Inside the **clusterissuer.yml** file copy and paste the following content:
+11. Inside the **clusterissuer.yml** file, copy and paste the following content:
 
     ```yaml
     apiVersion: cert-manager.io/v1
@@ -349,7 +349,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     code certificate.yml
     ```
 
-15. Inside the **certificate.yml** file copy and paste the following content:
+15. Inside the **certificate.yml** file, copy and paste the following content:
 
      ```yaml
      apiVersion: cert-manager.io/v1
@@ -396,7 +396,7 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
     code content.ingress.yml
     ```
 
-17. Inside the **content.ingress.yml** file copy and paste the following content:
+17. Inside the **content.ingress.yml** file, copy and paste the following content:
 
     ```yaml
     apiVersion: networking.k8s.io/v1
@@ -454,14 +454,12 @@ This task will set up a Kubernetes Ingress using an [Nginx proxy server](https:/
    
 22. Test TLS termination by visiting services again using `https://`.
 
-    > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Let Encrypt.
-
-
+    > **Note**: It can take between 5 and 30 minutes before the SSL site becomes available. This is due to the delay involved with provisioning a TLS cert from Lets Encrypt.
 
 ## Summary
 
 In this exercise, you have performed a rolling update and configured Kubernetes Ingress.
 
-### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.
+### You have successfully completed the lab. Click on **Next >>** to proceed with the next exercise.
 
 ![](media/5-n.png "Next")
