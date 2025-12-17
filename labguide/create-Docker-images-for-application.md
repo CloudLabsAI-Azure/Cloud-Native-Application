@@ -222,9 +222,6 @@ In this task, you will build the Docker images to containerize the application a
 1. You should be able to see the Docker image getting pushed to ACR as shown in the screenshot below. 
     
     ![](media/pushlatest.png "open cmd")
-    
-1. Click the **Next** button located in the bottom right corner of this lab guide to continue with the next exercise.
-
 
 ## Summary
 
