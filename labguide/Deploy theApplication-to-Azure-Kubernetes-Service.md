@@ -1,10 +1,10 @@
 # Exercise 3: Deploy the application to the Azure Kubernetes Service
    
-### Estimated Duration: 120 minutes
+### Estimated Duration: 120 Minutes
 
 ## Overview
 
-In this exercise, you will deploy your containerized web application to Azure Kubernetes Service (AKS) using Azure Key Vault for managing secrets and Azure Container Registry (ACR) where we have the containerized web application images stored. Additionally, you will explore two different methods for deploying the application to AKS.
+In this exercise, you will deploy your containerized web application to Azure Kubernetes Service (AKS) using Azure Key Vault for managing secrets and Azure Container Registry (ACR), where we have the containerized web application images stored. Additionally, you will explore two different methods for deploying the application to AKS.
 
 ## Lab Objectives
 
@@ -14,13 +14,13 @@ You will be able to complete the following tasks:
 - Task 2: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
 - Task 3: Deploy a service & workload using kubectl
 
-### Task 1: Tunnel into the Azure Kubernetes Service cluster  
+## Task 1: Tunnel into the Azure Kubernetes Service cluster  
 
 In this task, you will gather the necessary information about your Azure Kubernetes Service (AKS) cluster to establish a connection and access the Kubernetes management dashboard from the Cloud Shell.
 
 > **Note**: The following tasks should be executed in the command prompt.
 
-1. Open a new command prompt as Administrator in your jump VM and log in to Azure with the below command **(1)**. Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+1. Open a new command prompt as Administrator in your jump VM and log in to Azure with the below command **(1)**. Then a pop-up appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
    
     ```bash
     az login
@@ -32,7 +32,7 @@ In this task, you will gather the necessary information about your Azure Kuberne
     ```bash
     choco install azure-cli
     ```
-    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+    > **Note:** If you are unable to see the pop-up for Signin minimize the command prompt to view the pop-up window.
 
 1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
 
@@ -44,15 +44,15 @@ In this task, you will gather the necessary information about your Azure Kuberne
 
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/GS4.png "Enter Password")
+     ![](media/cnp-p4t1p2(3).png "Enter Password")
 
-     >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**.
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Sign in to all apps, websites, and services on this device?", Click **No, this app only**.
 
-     ![](media/E3T1S4.png)
+     ![](media/cnp-p4t1p2(4).png)
 
      > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
 
-     ![](media/E3T1S5.png)
+     ![](media/cnp-p4t1p2(5).png)
     
 1. Run the following command to set up the Kubernetes cluster connection using kubectl.
 
@@ -70,7 +70,7 @@ In this task, you will gather the necessary information about your Azure Kuberne
    ![In this screenshot of the console, kubectl get nodes has been typed and run at the command prompt, which produces a list of nodes.](media/E3T1S3.png "kubectl get nodes")   
 
 
-### Task 2: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
+## Task 2: Deploy a namespace, service, and workload in the Azure Kubernetes Service using the Azure Portal
    
 In this task, you will define a Kubernetes Service for your API to enable internal accessibility of the application within the Azure Kubernetes Service (AKS) cluster.
 
@@ -78,13 +78,13 @@ In this task, you will define a Kubernetes Service for your API to enable intern
 
     ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/E3T2S1.png "Add a Service")
    
-1. We have already defined a new AKS **Namespaces (2)** for your API deployment. Going further, you will be using the **contoso-traders (3)** namespace only. 
+1. Select **Namespaces (1)** from the left side menu under **Kubernetes resources**. We have already defined a new Namespace for your API deployment. Going further, you will be using the **contoso-traders (2)** namespace only. 
 
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/E3T2S2.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cnp-p4t3p1.png "Add a Service")
     
-1. On the **contoso-traders-aks<inject key="DeploymentID" enableCopy="false"/>** resource page,  Select the **Services and ingresses (1)** blade then select **+ Create (2)** and click on **Apply a YAML (3)**. 
+1. Select the **Services and ingresses (1)** under **Kubernetes resources** from the left-hand menu. Click on the drop-down arrow, adjacent to **+ Create (2)** and then select **Apply a YAML (3)**.
     
-    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/E3T2S3.png "Add a Service")
+    ![This is a screenshot of the Azure Portal for AKS showing adding a Service.](media/cnp-p4t3p2.png "Add a Service")
 
 1. In the **Apply with YAML** pane, paste the below YAML code, which creates a service in AKS. Make sure to replace the **_SUFFIX_** with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/>** **(1)** value in the YAML file then click on **Apply (2)**. 
     
@@ -110,15 +110,15 @@ In this task, you will define a Kubernetes Service for your API to enable intern
       ```    
     ![Select workloads under Kubernetes resources.](media/E3T2S4.png "Select workloads under Kubernetes resources")
 
-    >**Note:** While entering the YAML code, if you're prompted with suggestion **Draft with Copilot**, click the **Close** **(1)** button to dismiss it.
+    >**Note:** While entering the YAML code, if you're prompted with the suggestion **Draft with Copilot**, click the **Close** **(1)** button to dismiss it.
 
       ![](media/E3T2S4-N.png)
 
     >**Note:** Ensure that the indentation in your YAML script matches the format shown in the image to avoid errors.
 
-1. Select **Workloads (1)** under the Kubernetes resources section, click on **+ Create (2)** and then choose **Apply a YAML (3)**.
+1. Select **Workloads (1)** under the **Kubernetes resources** section in the left navigation. With **Deployments** selected by default, select **+ Create (2)** and then choose **Apply a YAML (3)**.
 
-    ![Select workloads under Kubernetes resources.](media/E3T2S5.png "Select workloads under Kubernetes resources")
+    ![Select workloads under Kubernetes resources.](media/cloudnative-v1-21.png "Select workloads under Kubernetes resources")
 
 1. In the **Apply with YAML** pane, paste the below YAML code, which creates a workload in AKS and click on **Apply (2)**. Make sure to replace the SUFFIX with the given DeploymentID **<inject key="DeploymentID" enableCopy="true"/> (1)** value in the YAML file to update the LOGINSERVER name of the ACR instance.
 
@@ -234,14 +234,7 @@ In this task, you will define a Kubernetes Service for your API to enable intern
         ```
       1. Wait for **2–3 minutes** to allow the deployment status to update. 
 
-> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - If you receive a success message, you can proceed to the next task.
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-<validation step="8e8b8774-50eb-413f-84e0-c1861a2b10b7" />
-
-### Task 3: Deploy a service & workload using kubectl
+## Task 3: Deploy a service & workload using kubectl
 
 In this task, you will deploy the web service & its workload using kubectl.
 
@@ -257,19 +250,19 @@ In this task, you will deploy the web service & its workload using kubectl.
 
 1. Save the changes by **CTRL + S** button to **Save**.
 
-1. Navigate back to the Windows command prompt and run the below command to change the directory to the `~/LabFiles` folder.
+1. Navigate back to the Windows command prompt and run the command below to change the directory to the `~/LabFiles` folder.
 
     ```bash
     cd C:/LabFiles
     ```
 
-1. If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a popup appears for _SignIn_ then choose **Work or school account (2)** and click on **Continue (3)**.
+1. If you are not logged into Azure, log in to Azure with the command below **(1)**.Then a pop-up appears for _SignIn_, then choose **Work or school account (2)** and click on **Continue (3)**.
     ```
     az login 
     ```
     ![](media/E4T4S1.png)
 
-    > **Note:** If you are unable to see the pop for Signin minimize the command prompt to view the popup window.
+    > **Note:** If you are unable to see the pop-up for Signin minimize the command prompt to view the pop-up window.
 
 1. On the **Sign into Microsoft Azure** tab, you will see the login screen, in that enter the following email/username and then click on **Next**. 
 
@@ -281,17 +274,17 @@ In this task, you will deploy the web service & its workload using kubectl.
 
    * Password: <inject key="AzureAdUserPassword"></inject>
    
-     ![](media/GS4.png "Enter Password")
+     ![](media/cnp-p4t1p2(3).png "Enter Password")
 
-     >**Note**: During sign-in, you may be prompted with a screen asking: "Automatically sign in to all desktop apps and websites on this device", Click **No, this app only**. 
+     >**Note**: During sign-in, you may be prompted with a screen asking: "Sign in to all apps, websites, and services on this device?", Click **No, this app only**.
 
-     ![](media/E3T1S4.png)
+     ![](media/cnp-p4t1p2(4).png)
 
      > **Note:** After running `az login`, if you're prompted to select a **subscription** or **tenant**, simply press **Enter** to continue with the **default subscription** and tenant associated with your account.
 
-     ![](media/E4T1S1.png)
+     ![](media/cnp-p4t1p2(5).png)
 
-1. Execute the below command to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
+1. Execute the command below to deploy the application described in the YAML files. You will receive a message indicating the item `kubectl` has created a web deployment and a web service.
    >**Info**: The below kubectl command will create the Deployment workload and Service in the namespace that we have defined in the YAML files. 
 
     ```bash
@@ -304,19 +297,12 @@ In this task, you will deploy the web service & its workload using kubectl.
 
     ![AKS services and ingresses shown with External IP highlighted](media/E3T3S8.png "AKS services and ingresses shown with External IP highlighted")
 
-    ![AKS services and ingresses shown with External IP highlighted](media/website2--new.png "AKS services and ingresses shown with External IP highlighted")
-
-> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-> - If you receive a success message, you can proceed to the next task.
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide. 
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-<validation step="a9fa4d00-ae23-4b56-a3e3-ee1f2effdfb2" />
+    ![AKS services and ingresses shown with External IP highlighted](media/cnapp-t3p1.png "AKS services and ingresses shown with External IP highlighted")
 
 ## Summary
 
 In this exercise, you have deployed your containerized web application to AKS that contains the namespace, service, and workload in Azure Kubernetes. Also, you have created a service to AKS and accessed the website using an external endpoint.
 
 
-### You have successfully completed the lab. Click on **Next >>** to proceed with next exercise.
+### You have successfully completed the lab. Click on **Next >>** to proceed with the next exercise.
 ![](media/3-n.png "Next")
