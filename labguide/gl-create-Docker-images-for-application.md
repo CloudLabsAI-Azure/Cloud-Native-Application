@@ -69,6 +69,13 @@ In this task, you will be building the docker images to containerize the applica
    ```
     
    ![](media/EX1-T2-S1.png)
+
+   > **Note:** If `az login` isn’t recognized, install Azure CLI using the commands below, let the setup complete, and then rerun `az login` to proceed
+
+   ``` 
+   sudo apt update
+   sudo apt install azure-cli -y
+   ```
     
 1. Enter the copied authentication code **(1)** and click on **Next** **(2)**.
 
